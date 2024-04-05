@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVideoStreamTheoraList struct {
+}
+
+var ptrsForVideoStreamTheora ptrsForVideoStreamTheoraList
+
+func initVideoStreamTheoraPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VideoStreamTheora")
+  defer className.Destroy()
+}
+
 type VideoStreamTheora struct {
   VideoStream
 }

@@ -14,6 +14,137 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForRDTextureFormatList struct {
+  fnSetFormat gdc.MethodBindPtr
+  fnGetFormat gdc.MethodBindPtr
+  fnSetWidth gdc.MethodBindPtr
+  fnGetWidth gdc.MethodBindPtr
+  fnSetHeight gdc.MethodBindPtr
+  fnGetHeight gdc.MethodBindPtr
+  fnSetDepth gdc.MethodBindPtr
+  fnGetDepth gdc.MethodBindPtr
+  fnSetArrayLayers gdc.MethodBindPtr
+  fnGetArrayLayers gdc.MethodBindPtr
+  fnSetMipmaps gdc.MethodBindPtr
+  fnGetMipmaps gdc.MethodBindPtr
+  fnSetTextureType gdc.MethodBindPtr
+  fnGetTextureType gdc.MethodBindPtr
+  fnSetSamples gdc.MethodBindPtr
+  fnGetSamples gdc.MethodBindPtr
+  fnSetUsageBits gdc.MethodBindPtr
+  fnGetUsageBits gdc.MethodBindPtr
+  fnAddShareableFormat gdc.MethodBindPtr
+  fnRemoveShareableFormat gdc.MethodBindPtr
+}
+
+var ptrsForRDTextureFormat ptrsForRDTextureFormatList
+
+func initRDTextureFormatPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("RDTextureFormat")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_format")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnSetFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 565531219))
+  }
+  {
+    methodName := StringNameFromStr("get_format")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnGetFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2235804183))
+  }
+  {
+    methodName := StringNameFromStr("set_width")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnSetWidth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_width")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnGetWidth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_height")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnSetHeight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_height")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnGetHeight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_depth")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnSetDepth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_depth")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnGetDepth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_array_layers")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnSetArrayLayers = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_array_layers")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnGetArrayLayers = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_mipmaps")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnSetMipmaps = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_mipmaps")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnGetMipmaps = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_texture_type")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnSetTextureType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 652343381))
+  }
+  {
+    methodName := StringNameFromStr("get_texture_type")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnGetTextureType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4036357416))
+  }
+  {
+    methodName := StringNameFromStr("set_samples")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnSetSamples = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3774171498))
+  }
+  {
+    methodName := StringNameFromStr("get_samples")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnGetSamples = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 407791724))
+  }
+  {
+    methodName := StringNameFromStr("set_usage_bits")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnSetUsageBits = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 245642367))
+  }
+  {
+    methodName := StringNameFromStr("get_usage_bits")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnGetUsageBits = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1313398998))
+  }
+  {
+    methodName := StringNameFromStr("add_shareable_format")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnAddShareableFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 565531219))
+  }
+  {
+    methodName := StringNameFromStr("remove_shareable_format")
+    defer methodName.Destroy()
+    ptrsForRDTextureFormat.fnRemoveShareableFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 565531219))
+  }
+}
+
 type RDTextureFormat struct {
   RefCounted
 }
@@ -51,291 +182,191 @@ func (me *RDTextureFormat) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *RDTextureFormat) SetFormat(p_member RenderingDeviceDataFormat, )  {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_format")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 565531219) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnSetFormat), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDTextureFormat) GetFormat() RenderingDeviceDataFormat {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_format")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2235804183) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret RenderingDeviceDataFormat
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnGetFormat), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *RDTextureFormat) SetWidth(p_member int64, )  {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_width")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnSetWidth), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDTextureFormat) GetWidth() int64 {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_width")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnGetWidth), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RDTextureFormat) SetHeight(p_member int64, )  {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_height")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnSetHeight), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDTextureFormat) GetHeight() int64 {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_height")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnGetHeight), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RDTextureFormat) SetDepth(p_member int64, )  {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_depth")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnSetDepth), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDTextureFormat) GetDepth() int64 {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_depth")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnGetDepth), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RDTextureFormat) SetArrayLayers(p_member int64, )  {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_array_layers")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnSetArrayLayers), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDTextureFormat) GetArrayLayers() int64 {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_array_layers")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnGetArrayLayers), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RDTextureFormat) SetMipmaps(p_member int64, )  {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_mipmaps")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnSetMipmaps), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDTextureFormat) GetMipmaps() int64 {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_mipmaps")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnGetMipmaps), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RDTextureFormat) SetTextureType(p_member RenderingDeviceTextureType, )  {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_texture_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 652343381) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnSetTextureType), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDTextureFormat) GetTextureType() RenderingDeviceTextureType {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4036357416) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret RenderingDeviceTextureType
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnGetTextureType), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *RDTextureFormat) SetSamples(p_member RenderingDeviceTextureSamples, )  {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_samples")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3774171498) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnSetSamples), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDTextureFormat) GetSamples() RenderingDeviceTextureSamples {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_samples")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 407791724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret RenderingDeviceTextureSamples
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnGetSamples), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *RDTextureFormat) SetUsageBits(p_member RenderingDeviceTextureUsageBits, )  {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_usage_bits")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 245642367) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnSetUsageBits), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDTextureFormat) GetUsageBits() RenderingDeviceTextureUsageBits {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_usage_bits")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1313398998) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret RenderingDeviceTextureUsageBits
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnGetUsageBits), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *RDTextureFormat) AddShareableFormat(format RenderingDeviceDataFormat, )  {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_shareable_format")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 565531219) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&format) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnAddShareableFormat), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDTextureFormat) RemoveShareableFormat(format RenderingDeviceDataFormat, )  {
-  classNameV := StringNameFromStr("RDTextureFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_shareable_format")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 565531219) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&format) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureFormat.fnRemoveShareableFormat), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

@@ -14,6 +14,19 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorTranslationParserPluginList struct {
+  fnXParseFile gdc.MethodBindPtr
+  fnXGetRecognizedExtensions gdc.MethodBindPtr
+}
+
+var ptrsForEditorTranslationParserPlugin ptrsForEditorTranslationParserPluginList
+
+func initEditorTranslationParserPluginPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorTranslationParserPlugin")
+  defer className.Destroy()
+}
+
 type EditorTranslationParserPlugin struct {
   RefCounted
 }

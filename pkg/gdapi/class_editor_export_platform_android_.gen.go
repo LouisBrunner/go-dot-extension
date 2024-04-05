@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorExportPlatformAndroidList struct {
+}
+
+var ptrsForEditorExportPlatformAndroid ptrsForEditorExportPlatformAndroidList
+
+func initEditorExportPlatformAndroidPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorExportPlatformAndroid")
+  defer className.Destroy()
+}
+
 type EditorExportPlatformAndroid struct {
   EditorExportPlatform
 }

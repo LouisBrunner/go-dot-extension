@@ -14,6 +14,101 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForWebRTCDataChannelList struct {
+  fnPoll gdc.MethodBindPtr
+  fnClose gdc.MethodBindPtr
+  fnWasStringPacket gdc.MethodBindPtr
+  fnSetWriteMode gdc.MethodBindPtr
+  fnGetWriteMode gdc.MethodBindPtr
+  fnGetReadyState gdc.MethodBindPtr
+  fnGetLabel gdc.MethodBindPtr
+  fnIsOrdered gdc.MethodBindPtr
+  fnGetId gdc.MethodBindPtr
+  fnGetMaxPacketLifeTime gdc.MethodBindPtr
+  fnGetMaxRetransmits gdc.MethodBindPtr
+  fnGetProtocol gdc.MethodBindPtr
+  fnIsNegotiated gdc.MethodBindPtr
+  fnGetBufferedAmount gdc.MethodBindPtr
+}
+
+var ptrsForWebRTCDataChannel ptrsForWebRTCDataChannelList
+
+func initWebRTCDataChannelPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("WebRTCDataChannel")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("poll")
+    defer methodName.Destroy()
+    ptrsForWebRTCDataChannel.fnPoll = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 166280745))
+  }
+  {
+    methodName := StringNameFromStr("close")
+    defer methodName.Destroy()
+    ptrsForWebRTCDataChannel.fnClose = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("was_string_packet")
+    defer methodName.Destroy()
+    ptrsForWebRTCDataChannel.fnWasStringPacket = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_write_mode")
+    defer methodName.Destroy()
+    ptrsForWebRTCDataChannel.fnSetWriteMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1999768052))
+  }
+  {
+    methodName := StringNameFromStr("get_write_mode")
+    defer methodName.Destroy()
+    ptrsForWebRTCDataChannel.fnGetWriteMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2848495172))
+  }
+  {
+    methodName := StringNameFromStr("get_ready_state")
+    defer methodName.Destroy()
+    ptrsForWebRTCDataChannel.fnGetReadyState = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3501143017))
+  }
+  {
+    methodName := StringNameFromStr("get_label")
+    defer methodName.Destroy()
+    ptrsForWebRTCDataChannel.fnGetLabel = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("is_ordered")
+    defer methodName.Destroy()
+    ptrsForWebRTCDataChannel.fnIsOrdered = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_id")
+    defer methodName.Destroy()
+    ptrsForWebRTCDataChannel.fnGetId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("get_max_packet_life_time")
+    defer methodName.Destroy()
+    ptrsForWebRTCDataChannel.fnGetMaxPacketLifeTime = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("get_max_retransmits")
+    defer methodName.Destroy()
+    ptrsForWebRTCDataChannel.fnGetMaxRetransmits = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("get_protocol")
+    defer methodName.Destroy()
+    ptrsForWebRTCDataChannel.fnGetProtocol = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("is_negotiated")
+    defer methodName.Destroy()
+    ptrsForWebRTCDataChannel.fnIsNegotiated = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_buffered_amount")
+    defer methodName.Destroy()
+    ptrsForWebRTCDataChannel.fnGetBufferedAmount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+}
+
 type WebRTCDataChannel struct {
   PacketPeer
 }
@@ -65,210 +160,140 @@ func (me *WebRTCDataChannel) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *WebRTCDataChannel) Poll() Error {
-  classNameV := StringNameFromStr("WebRTCDataChannel")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("poll")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166280745) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebRTCDataChannel.fnPoll), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *WebRTCDataChannel) Close()  {
-  classNameV := StringNameFromStr("WebRTCDataChannel")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("close")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebRTCDataChannel.fnClose), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *WebRTCDataChannel) WasStringPacket() bool {
-  classNameV := StringNameFromStr("WebRTCDataChannel")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("was_string_packet")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebRTCDataChannel.fnWasStringPacket), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *WebRTCDataChannel) SetWriteMode(write_mode WebRTCDataChannelWriteMode, )  {
-  classNameV := StringNameFromStr("WebRTCDataChannel")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_write_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1999768052) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&write_mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebRTCDataChannel.fnSetWriteMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *WebRTCDataChannel) GetWriteMode() WebRTCDataChannelWriteMode {
-  classNameV := StringNameFromStr("WebRTCDataChannel")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_write_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2848495172) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret WebRTCDataChannelWriteMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebRTCDataChannel.fnGetWriteMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *WebRTCDataChannel) GetReadyState() WebRTCDataChannelChannelState {
-  classNameV := StringNameFromStr("WebRTCDataChannel")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_ready_state")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3501143017) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret WebRTCDataChannelChannelState
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebRTCDataChannel.fnGetReadyState), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *WebRTCDataChannel) GetLabel() String {
-  classNameV := StringNameFromStr("WebRTCDataChannel")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_label")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebRTCDataChannel.fnGetLabel), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *WebRTCDataChannel) IsOrdered() bool {
-  classNameV := StringNameFromStr("WebRTCDataChannel")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_ordered")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebRTCDataChannel.fnIsOrdered), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *WebRTCDataChannel) GetId() int64 {
-  classNameV := StringNameFromStr("WebRTCDataChannel")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_id")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebRTCDataChannel.fnGetId), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *WebRTCDataChannel) GetMaxPacketLifeTime() int64 {
-  classNameV := StringNameFromStr("WebRTCDataChannel")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_max_packet_life_time")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebRTCDataChannel.fnGetMaxPacketLifeTime), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *WebRTCDataChannel) GetMaxRetransmits() int64 {
-  classNameV := StringNameFromStr("WebRTCDataChannel")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_max_retransmits")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebRTCDataChannel.fnGetMaxRetransmits), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *WebRTCDataChannel) GetProtocol() String {
-  classNameV := StringNameFromStr("WebRTCDataChannel")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_protocol")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebRTCDataChannel.fnGetProtocol), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *WebRTCDataChannel) IsNegotiated() bool {
-  classNameV := StringNameFromStr("WebRTCDataChannel")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_negotiated")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebRTCDataChannel.fnIsNegotiated), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *WebRTCDataChannel) GetBufferedAmount() int64 {
-  classNameV := StringNameFromStr("WebRTCDataChannel")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_buffered_amount")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebRTCDataChannel.fnGetBufferedAmount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

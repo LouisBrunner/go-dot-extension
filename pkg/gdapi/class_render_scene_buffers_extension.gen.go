@@ -14,6 +14,21 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForRenderSceneBuffersExtensionList struct {
+  fnXConfigure gdc.MethodBindPtr
+  fnXSetFsrSharpness gdc.MethodBindPtr
+  fnXSetTextureMipmapBias gdc.MethodBindPtr
+  fnXSetUseDebanding gdc.MethodBindPtr
+}
+
+var ptrsForRenderSceneBuffersExtension ptrsForRenderSceneBuffersExtensionList
+
+func initRenderSceneBuffersExtensionPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("RenderSceneBuffersExtension")
+  defer className.Destroy()
+}
+
 type RenderSceneBuffersExtension struct {
   RenderSceneBuffers
 }

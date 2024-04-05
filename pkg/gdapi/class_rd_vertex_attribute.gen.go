@@ -14,6 +14,77 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForRDVertexAttributeList struct {
+  fnSetLocation gdc.MethodBindPtr
+  fnGetLocation gdc.MethodBindPtr
+  fnSetOffset gdc.MethodBindPtr
+  fnGetOffset gdc.MethodBindPtr
+  fnSetFormat gdc.MethodBindPtr
+  fnGetFormat gdc.MethodBindPtr
+  fnSetStride gdc.MethodBindPtr
+  fnGetStride gdc.MethodBindPtr
+  fnSetFrequency gdc.MethodBindPtr
+  fnGetFrequency gdc.MethodBindPtr
+}
+
+var ptrsForRDVertexAttribute ptrsForRDVertexAttributeList
+
+func initRDVertexAttributePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("RDVertexAttribute")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_location")
+    defer methodName.Destroy()
+    ptrsForRDVertexAttribute.fnSetLocation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_location")
+    defer methodName.Destroy()
+    ptrsForRDVertexAttribute.fnGetLocation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_offset")
+    defer methodName.Destroy()
+    ptrsForRDVertexAttribute.fnSetOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_offset")
+    defer methodName.Destroy()
+    ptrsForRDVertexAttribute.fnGetOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_format")
+    defer methodName.Destroy()
+    ptrsForRDVertexAttribute.fnSetFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 565531219))
+  }
+  {
+    methodName := StringNameFromStr("get_format")
+    defer methodName.Destroy()
+    ptrsForRDVertexAttribute.fnGetFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2235804183))
+  }
+  {
+    methodName := StringNameFromStr("set_stride")
+    defer methodName.Destroy()
+    ptrsForRDVertexAttribute.fnSetStride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_stride")
+    defer methodName.Destroy()
+    ptrsForRDVertexAttribute.fnGetStride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_frequency")
+    defer methodName.Destroy()
+    ptrsForRDVertexAttribute.fnSetFrequency = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 522141836))
+  }
+  {
+    methodName := StringNameFromStr("get_frequency")
+    defer methodName.Destroy()
+    ptrsForRDVertexAttribute.fnGetFrequency = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4154106413))
+  }
+}
+
 type RDVertexAttribute struct {
   RefCounted
 }
@@ -51,147 +122,97 @@ func (me *RDVertexAttribute) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *RDVertexAttribute) SetLocation(p_member int64, )  {
-  classNameV := StringNameFromStr("RDVertexAttribute")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_location")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDVertexAttribute.fnSetLocation), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDVertexAttribute) GetLocation() int64 {
-  classNameV := StringNameFromStr("RDVertexAttribute")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_location")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDVertexAttribute.fnGetLocation), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RDVertexAttribute) SetOffset(p_member int64, )  {
-  classNameV := StringNameFromStr("RDVertexAttribute")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDVertexAttribute.fnSetOffset), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDVertexAttribute) GetOffset() int64 {
-  classNameV := StringNameFromStr("RDVertexAttribute")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDVertexAttribute.fnGetOffset), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RDVertexAttribute) SetFormat(p_member RenderingDeviceDataFormat, )  {
-  classNameV := StringNameFromStr("RDVertexAttribute")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_format")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 565531219) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDVertexAttribute.fnSetFormat), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDVertexAttribute) GetFormat() RenderingDeviceDataFormat {
-  classNameV := StringNameFromStr("RDVertexAttribute")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_format")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2235804183) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret RenderingDeviceDataFormat
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDVertexAttribute.fnGetFormat), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *RDVertexAttribute) SetStride(p_member int64, )  {
-  classNameV := StringNameFromStr("RDVertexAttribute")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_stride")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDVertexAttribute.fnSetStride), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDVertexAttribute) GetStride() int64 {
-  classNameV := StringNameFromStr("RDVertexAttribute")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_stride")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDVertexAttribute.fnGetStride), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RDVertexAttribute) SetFrequency(p_member RenderingDeviceVertexFrequency, )  {
-  classNameV := StringNameFromStr("RDVertexAttribute")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_frequency")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 522141836) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDVertexAttribute.fnSetFrequency), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDVertexAttribute) GetFrequency() RenderingDeviceVertexFrequency {
-  classNameV := StringNameFromStr("RDVertexAttribute")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_frequency")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4154106413) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret RenderingDeviceVertexFrequency
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDVertexAttribute.fnGetFrequency), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

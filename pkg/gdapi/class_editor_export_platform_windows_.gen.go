@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorExportPlatformWindowsList struct {
+}
+
+var ptrsForEditorExportPlatformWindows ptrsForEditorExportPlatformWindowsList
+
+func initEditorExportPlatformWindowsPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorExportPlatformWindows")
+  defer className.Destroy()
+}
+
 type EditorExportPlatformWindows struct {
   EditorExportPlatformPC
 }

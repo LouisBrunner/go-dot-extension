@@ -14,6 +14,65 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForTorusMeshList struct {
+  fnSetInnerRadius gdc.MethodBindPtr
+  fnGetInnerRadius gdc.MethodBindPtr
+  fnSetOuterRadius gdc.MethodBindPtr
+  fnGetOuterRadius gdc.MethodBindPtr
+  fnSetRings gdc.MethodBindPtr
+  fnGetRings gdc.MethodBindPtr
+  fnSetRingSegments gdc.MethodBindPtr
+  fnGetRingSegments gdc.MethodBindPtr
+}
+
+var ptrsForTorusMesh ptrsForTorusMeshList
+
+func initTorusMeshPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("TorusMesh")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_inner_radius")
+    defer methodName.Destroy()
+    ptrsForTorusMesh.fnSetInnerRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_inner_radius")
+    defer methodName.Destroy()
+    ptrsForTorusMesh.fnGetInnerRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_outer_radius")
+    defer methodName.Destroy()
+    ptrsForTorusMesh.fnSetOuterRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_outer_radius")
+    defer methodName.Destroy()
+    ptrsForTorusMesh.fnGetOuterRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_rings")
+    defer methodName.Destroy()
+    ptrsForTorusMesh.fnSetRings = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_rings")
+    defer methodName.Destroy()
+    ptrsForTorusMesh.fnGetRings = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_ring_segments")
+    defer methodName.Destroy()
+    ptrsForTorusMesh.fnSetRingSegments = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_ring_segments")
+    defer methodName.Destroy()
+    ptrsForTorusMesh.fnGetRingSegments = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+}
+
 type TorusMesh struct {
   PrimitiveMesh
 }
@@ -51,118 +110,78 @@ func (me *TorusMesh) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *TorusMesh) SetInnerRadius(radius float64, )  {
-  classNameV := StringNameFromStr("TorusMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_inner_radius")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radius) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTorusMesh.fnSetInnerRadius), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TorusMesh) GetInnerRadius() float64 {
-  classNameV := StringNameFromStr("TorusMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_inner_radius")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTorusMesh.fnGetInnerRadius), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *TorusMesh) SetOuterRadius(radius float64, )  {
-  classNameV := StringNameFromStr("TorusMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_outer_radius")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radius) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTorusMesh.fnSetOuterRadius), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TorusMesh) GetOuterRadius() float64 {
-  classNameV := StringNameFromStr("TorusMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_outer_radius")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTorusMesh.fnGetOuterRadius), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *TorusMesh) SetRings(rings int64, )  {
-  classNameV := StringNameFromStr("TorusMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_rings")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&rings) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTorusMesh.fnSetRings), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TorusMesh) GetRings() int64 {
-  classNameV := StringNameFromStr("TorusMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_rings")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTorusMesh.fnGetRings), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *TorusMesh) SetRingSegments(rings int64, )  {
-  classNameV := StringNameFromStr("TorusMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_ring_segments")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&rings) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTorusMesh.fnSetRingSegments), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TorusMesh) GetRingSegments() int64 {
-  classNameV := StringNameFromStr("TorusMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_ring_segments")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTorusMesh.fnGetRingSegments), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

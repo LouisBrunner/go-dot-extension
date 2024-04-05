@@ -14,6 +14,44 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSyntaxHighlighterList struct {
+  fnXGetLineSyntaxHighlighting gdc.MethodBindPtr
+  fnXClearHighlightingCache gdc.MethodBindPtr
+  fnXUpdateCache gdc.MethodBindPtr
+  fnGetLineSyntaxHighlighting gdc.MethodBindPtr
+  fnUpdateCache gdc.MethodBindPtr
+  fnClearHighlightingCache gdc.MethodBindPtr
+  fnGetTextEdit gdc.MethodBindPtr
+}
+
+var ptrsForSyntaxHighlighter ptrsForSyntaxHighlighterList
+
+func initSyntaxHighlighterPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("SyntaxHighlighter")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_line_syntax_highlighting")
+    defer methodName.Destroy()
+    ptrsForSyntaxHighlighter.fnGetLineSyntaxHighlighting = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3554694381))
+  }
+  {
+    methodName := StringNameFromStr("update_cache")
+    defer methodName.Destroy()
+    ptrsForSyntaxHighlighter.fnUpdateCache = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("clear_highlighting_cache")
+    defer methodName.Destroy()
+    ptrsForSyntaxHighlighter.fnClearHighlightingCache = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("get_text_edit")
+    defer methodName.Destroy()
+    ptrsForSyntaxHighlighter.fnGetTextEdit = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1893027089))
+  }
+}
+
 type SyntaxHighlighter struct {
   Resource
 }
@@ -51,61 +89,41 @@ func (me *SyntaxHighlighter) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *SyntaxHighlighter) GetLineSyntaxHighlighting(line int64, ) Dictionary {
-  classNameV := StringNameFromStr("SyntaxHighlighter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_line_syntax_highlighting")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3554694381) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewDictionary()
   pinner.Pin(&line)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSyntaxHighlighter.fnGetLineSyntaxHighlighting), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *SyntaxHighlighter) UpdateCache()  {
-  classNameV := StringNameFromStr("SyntaxHighlighter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("update_cache")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSyntaxHighlighter.fnUpdateCache), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SyntaxHighlighter) ClearHighlightingCache()  {
-  classNameV := StringNameFromStr("SyntaxHighlighter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("clear_highlighting_cache")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSyntaxHighlighter.fnClearHighlightingCache), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SyntaxHighlighter) GetTextEdit() TextEdit {
-  classNameV := StringNameFromStr("SyntaxHighlighter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_text_edit")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1893027089) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTextEdit()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSyntaxHighlighter.fnGetTextEdit), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPlaceholderTexture3DList struct {
+  fnSetSize gdc.MethodBindPtr
+  fnGetSize gdc.MethodBindPtr
+}
+
+var ptrsForPlaceholderTexture3D ptrsForPlaceholderTexture3DList
+
+func initPlaceholderTexture3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PlaceholderTexture3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_size")
+    defer methodName.Destroy()
+    ptrsForPlaceholderTexture3D.fnSetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 560364750))
+  }
+  {
+    methodName := StringNameFromStr("get_size")
+    defer methodName.Destroy()
+    ptrsForPlaceholderTexture3D.fnGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2785653706))
+  }
+}
+
 type PlaceholderTexture3D struct {
   Texture3D
 }
@@ -51,31 +74,21 @@ func (me *PlaceholderTexture3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PlaceholderTexture3D) SetSize(size Vector3i, )  {
-  classNameV := StringNameFromStr("PlaceholderTexture3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 560364750) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{size.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPlaceholderTexture3D.fnSetSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PlaceholderTexture3D) GetSize() Vector3i {
-  classNameV := StringNameFromStr("PlaceholderTexture3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2785653706) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3i()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPlaceholderTexture3D.fnGetSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

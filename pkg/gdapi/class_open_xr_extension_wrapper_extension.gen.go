@@ -14,6 +14,51 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForOpenXRExtensionWrapperExtensionList struct {
+  fnXGetRequestedExtensions gdc.MethodBindPtr
+  fnXSetSystemPropertiesAndGetNextPointer gdc.MethodBindPtr
+  fnXSetInstanceCreateInfoAndGetNextPointer gdc.MethodBindPtr
+  fnXSetSessionCreateAndGetNextPointer gdc.MethodBindPtr
+  fnXSetSwapchainCreateInfoAndGetNextPointer gdc.MethodBindPtr
+  fnXOnRegisterMetadata gdc.MethodBindPtr
+  fnXOnBeforeInstanceCreated gdc.MethodBindPtr
+  fnXOnInstanceCreated gdc.MethodBindPtr
+  fnXOnInstanceDestroyed gdc.MethodBindPtr
+  fnXOnSessionCreated gdc.MethodBindPtr
+  fnXOnProcess gdc.MethodBindPtr
+  fnXOnPreRender gdc.MethodBindPtr
+  fnXOnSessionDestroyed gdc.MethodBindPtr
+  fnXOnStateIdle gdc.MethodBindPtr
+  fnXOnStateReady gdc.MethodBindPtr
+  fnXOnStateSynchronized gdc.MethodBindPtr
+  fnXOnStateVisible gdc.MethodBindPtr
+  fnXOnStateFocused gdc.MethodBindPtr
+  fnXOnStateStopping gdc.MethodBindPtr
+  fnXOnStateLossPending gdc.MethodBindPtr
+  fnXOnStateExiting gdc.MethodBindPtr
+  fnXOnEventPolled gdc.MethodBindPtr
+  fnGetOpenxrApi gdc.MethodBindPtr
+  fnRegisterExtensionWrapper gdc.MethodBindPtr
+}
+
+var ptrsForOpenXRExtensionWrapperExtension ptrsForOpenXRExtensionWrapperExtensionList
+
+func initOpenXRExtensionWrapperExtensionPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("OpenXRExtensionWrapperExtension")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_openxr_api")
+    defer methodName.Destroy()
+    ptrsForOpenXRExtensionWrapperExtension.fnGetOpenxrApi = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1637791613))
+  }
+  {
+    methodName := StringNameFromStr("register_extension_wrapper")
+    defer methodName.Destroy()
+    ptrsForOpenXRExtensionWrapperExtension.fnRegisterExtensionWrapper = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+}
+
 type OpenXRExtensionWrapperExtension struct {
   Object
 }
@@ -51,31 +96,21 @@ func (me *OpenXRExtensionWrapperExtension) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *OpenXRExtensionWrapperExtension) GetOpenxrApi() OpenXRAPIExtension {
-  classNameV := StringNameFromStr("OpenXRExtensionWrapperExtension")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_openxr_api")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1637791613) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewOpenXRAPIExtension()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRExtensionWrapperExtension.fnGetOpenxrApi), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *OpenXRExtensionWrapperExtension) RegisterExtensionWrapper()  {
-  classNameV := StringNameFromStr("OpenXRExtensionWrapperExtension")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("register_extension_wrapper")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRExtensionWrapperExtension.fnRegisterExtensionWrapper), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

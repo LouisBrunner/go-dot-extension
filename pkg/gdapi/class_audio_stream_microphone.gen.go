@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioStreamMicrophoneList struct {
+}
+
+var ptrsForAudioStreamMicrophone ptrsForAudioStreamMicrophoneList
+
+func initAudioStreamMicrophonePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioStreamMicrophone")
+  defer className.Destroy()
+}
+
 type AudioStreamMicrophone struct {
   AudioStream
 }

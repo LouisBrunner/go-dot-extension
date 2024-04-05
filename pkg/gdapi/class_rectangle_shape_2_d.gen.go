@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForRectangleShape2DList struct {
+  fnSetSize gdc.MethodBindPtr
+  fnGetSize gdc.MethodBindPtr
+}
+
+var ptrsForRectangleShape2D ptrsForRectangleShape2DList
+
+func initRectangleShape2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("RectangleShape2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_size")
+    defer methodName.Destroy()
+    ptrsForRectangleShape2D.fnSetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_size")
+    defer methodName.Destroy()
+    ptrsForRectangleShape2D.fnGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+}
+
 type RectangleShape2D struct {
   Shape2D
 }
@@ -51,31 +74,21 @@ func (me *RectangleShape2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *RectangleShape2D) SetSize(size Vector2, )  {
-  classNameV := StringNameFromStr("RectangleShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{size.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRectangleShape2D.fnSetSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RectangleShape2D) GetSize() Vector2 {
-  classNameV := StringNameFromStr("RectangleShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRectangleShape2D.fnGetSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

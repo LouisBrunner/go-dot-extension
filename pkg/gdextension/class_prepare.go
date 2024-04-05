@@ -104,7 +104,7 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 			fieldName = info.name
 		}
 
-		if reflectIsA[gdapi.Signal](ftyp) {
+		if reflectIsA[Signal](ftyp) {
 			signals = append(signals, classSignal{
 				name:    field.Name,
 				namePtr: *gdapi.StringNameFromStr(fieldName),

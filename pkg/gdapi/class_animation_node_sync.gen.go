@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAnimationNodeSyncList struct {
+  fnSetUseSync gdc.MethodBindPtr
+  fnIsUsingSync gdc.MethodBindPtr
+}
+
+var ptrsForAnimationNodeSync ptrsForAnimationNodeSyncList
+
+func initAnimationNodeSyncPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AnimationNodeSync")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_use_sync")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeSync.fnSetUseSync = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_using_sync")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeSync.fnIsUsingSync = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type AnimationNodeSync struct {
   AnimationNode
 }
@@ -51,31 +74,21 @@ func (me *AnimationNodeSync) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AnimationNodeSync) SetUseSync(enable bool, )  {
-  classNameV := StringNameFromStr("AnimationNodeSync")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_use_sync")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeSync.fnSetUseSync), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeSync) IsUsingSync() bool {
-  classNameV := StringNameFromStr("AnimationNodeSync")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_using_sync")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeSync.fnIsUsingSync), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

@@ -14,6 +14,47 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForBoneMapList struct {
+  fnGetProfile gdc.MethodBindPtr
+  fnSetProfile gdc.MethodBindPtr
+  fnGetSkeletonBoneName gdc.MethodBindPtr
+  fnSetSkeletonBoneName gdc.MethodBindPtr
+  fnFindProfileBoneName gdc.MethodBindPtr
+}
+
+var ptrsForBoneMap ptrsForBoneMapList
+
+func initBoneMapPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("BoneMap")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_profile")
+    defer methodName.Destroy()
+    ptrsForBoneMap.fnGetProfile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4291782652))
+  }
+  {
+    methodName := StringNameFromStr("set_profile")
+    defer methodName.Destroy()
+    ptrsForBoneMap.fnSetProfile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3870374136))
+  }
+  {
+    methodName := StringNameFromStr("get_skeleton_bone_name")
+    defer methodName.Destroy()
+    ptrsForBoneMap.fnGetSkeletonBoneName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1965194235))
+  }
+  {
+    methodName := StringNameFromStr("set_skeleton_bone_name")
+    defer methodName.Destroy()
+    ptrsForBoneMap.fnSetSkeletonBoneName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3740211285))
+  }
+  {
+    methodName := StringNameFromStr("find_profile_bone_name")
+    defer methodName.Destroy()
+    ptrsForBoneMap.fnFindProfileBoneName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1965194235))
+  }
+}
+
 type BoneMap struct {
   Resource
 }
@@ -51,75 +92,50 @@ func (me *BoneMap) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *BoneMap) GetProfile() SkeletonProfile {
-  classNameV := StringNameFromStr("BoneMap")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_profile")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4291782652) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewSkeletonProfile()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoneMap.fnGetProfile), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *BoneMap) SetProfile(profile SkeletonProfile, )  {
-  classNameV := StringNameFromStr("BoneMap")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_profile")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3870374136) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{profile.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoneMap.fnSetProfile), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BoneMap) GetSkeletonBoneName(profile_bone_name StringName, ) StringName {
-  classNameV := StringNameFromStr("BoneMap")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_skeleton_bone_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1965194235) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{profile_bone_name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewStringName()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoneMap.fnGetSkeletonBoneName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *BoneMap) SetSkeletonBoneName(profile_bone_name StringName, skeleton_bone_name StringName, )  {
-  classNameV := StringNameFromStr("BoneMap")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_skeleton_bone_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3740211285) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{profile_bone_name.AsCTypePtr(), skeleton_bone_name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoneMap.fnSetSkeletonBoneName), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BoneMap) FindProfileBoneName(skeleton_bone_name StringName, ) StringName {
-  classNameV := StringNameFromStr("BoneMap")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("find_profile_bone_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1965194235) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{skeleton_bone_name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewStringName()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoneMap.fnFindProfileBoneName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

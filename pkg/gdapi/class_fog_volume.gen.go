@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForFogVolumeList struct {
+  fnSetSize gdc.MethodBindPtr
+  fnGetSize gdc.MethodBindPtr
+  fnSetShape gdc.MethodBindPtr
+  fnGetShape gdc.MethodBindPtr
+  fnSetMaterial gdc.MethodBindPtr
+  fnGetMaterial gdc.MethodBindPtr
+}
+
+var ptrsForFogVolume ptrsForFogVolumeList
+
+func initFogVolumePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("FogVolume")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_size")
+    defer methodName.Destroy()
+    ptrsForFogVolume.fnSetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("get_size")
+    defer methodName.Destroy()
+    ptrsForFogVolume.fnGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("set_shape")
+    defer methodName.Destroy()
+    ptrsForFogVolume.fnSetShape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1416323362))
+  }
+  {
+    methodName := StringNameFromStr("get_shape")
+    defer methodName.Destroy()
+    ptrsForFogVolume.fnGetShape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3920334604))
+  }
+  {
+    methodName := StringNameFromStr("set_material")
+    defer methodName.Destroy()
+    ptrsForFogVolume.fnSetMaterial = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2757459619))
+  }
+  {
+    methodName := StringNameFromStr("get_material")
+    defer methodName.Destroy()
+    ptrsForFogVolume.fnGetMaterial = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 5934680))
+  }
+}
+
 type FogVolume struct {
   VisualInstance3D
 }
@@ -51,89 +98,59 @@ func (me *FogVolume) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *FogVolume) SetSize(size Vector3, )  {
-  classNameV := StringNameFromStr("FogVolume")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{size.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFogVolume.fnSetSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FogVolume) GetSize() Vector3 {
-  classNameV := StringNameFromStr("FogVolume")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFogVolume.fnGetSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *FogVolume) SetShape(shape RenderingServerFogVolumeShape, )  {
-  classNameV := StringNameFromStr("FogVolume")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_shape")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1416323362) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&shape) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFogVolume.fnSetShape), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FogVolume) GetShape() RenderingServerFogVolumeShape {
-  classNameV := StringNameFromStr("FogVolume")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_shape")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3920334604) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret RenderingServerFogVolumeShape
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFogVolume.fnGetShape), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *FogVolume) SetMaterial(material Material, )  {
-  classNameV := StringNameFromStr("FogVolume")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_material")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2757459619) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{material.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFogVolume.fnSetMaterial), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FogVolume) GetMaterial() Material {
-  classNameV := StringNameFromStr("FogVolume")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_material")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 5934680) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewMaterial()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFogVolume.fnGetMaterial), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

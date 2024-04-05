@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPanoramaSkyMaterialList struct {
+  fnSetPanorama gdc.MethodBindPtr
+  fnGetPanorama gdc.MethodBindPtr
+  fnSetFilteringEnabled gdc.MethodBindPtr
+  fnIsFilteringEnabled gdc.MethodBindPtr
+}
+
+var ptrsForPanoramaSkyMaterial ptrsForPanoramaSkyMaterialList
+
+func initPanoramaSkyMaterialPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PanoramaSkyMaterial")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_panorama")
+    defer methodName.Destroy()
+    ptrsForPanoramaSkyMaterial.fnSetPanorama = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4051416890))
+  }
+  {
+    methodName := StringNameFromStr("get_panorama")
+    defer methodName.Destroy()
+    ptrsForPanoramaSkyMaterial.fnGetPanorama = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
+  }
+  {
+    methodName := StringNameFromStr("set_filtering_enabled")
+    defer methodName.Destroy()
+    ptrsForPanoramaSkyMaterial.fnSetFilteringEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_filtering_enabled")
+    defer methodName.Destroy()
+    ptrsForPanoramaSkyMaterial.fnIsFilteringEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type PanoramaSkyMaterial struct {
   Material
 }
@@ -51,60 +86,40 @@ func (me *PanoramaSkyMaterial) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PanoramaSkyMaterial) SetPanorama(texture Texture2D, )  {
-  classNameV := StringNameFromStr("PanoramaSkyMaterial")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_panorama")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{texture.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPanoramaSkyMaterial.fnSetPanorama), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PanoramaSkyMaterial) GetPanorama() Texture2D {
-  classNameV := StringNameFromStr("PanoramaSkyMaterial")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_panorama")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPanoramaSkyMaterial.fnGetPanorama), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PanoramaSkyMaterial) SetFilteringEnabled(enabled bool, )  {
-  classNameV := StringNameFromStr("PanoramaSkyMaterial")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_filtering_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPanoramaSkyMaterial.fnSetFilteringEnabled), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PanoramaSkyMaterial) IsFilteringEnabled() bool {
-  classNameV := StringNameFromStr("PanoramaSkyMaterial")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_filtering_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPanoramaSkyMaterial.fnIsFilteringEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

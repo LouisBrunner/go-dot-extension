@@ -14,6 +14,20 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEngineProfilerList struct {
+  fnXToggle gdc.MethodBindPtr
+  fnXAddFrame gdc.MethodBindPtr
+  fnXTick gdc.MethodBindPtr
+}
+
+var ptrsForEngineProfiler ptrsForEngineProfilerList
+
+func initEngineProfilerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EngineProfiler")
+  defer className.Destroy()
+}
+
 type EngineProfiler struct {
   RefCounted
 }

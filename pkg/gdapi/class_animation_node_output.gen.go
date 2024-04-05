@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAnimationNodeOutputList struct {
+}
+
+var ptrsForAnimationNodeOutput ptrsForAnimationNodeOutputList
+
+func initAnimationNodeOutputPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AnimationNodeOutput")
+  defer className.Destroy()
+}
+
 type AnimationNodeOutput struct {
   AnimationNode
 }

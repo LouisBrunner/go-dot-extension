@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForRDAttachmentFormatList struct {
+  fnSetFormat gdc.MethodBindPtr
+  fnGetFormat gdc.MethodBindPtr
+  fnSetSamples gdc.MethodBindPtr
+  fnGetSamples gdc.MethodBindPtr
+  fnSetUsageFlags gdc.MethodBindPtr
+  fnGetUsageFlags gdc.MethodBindPtr
+}
+
+var ptrsForRDAttachmentFormat ptrsForRDAttachmentFormatList
+
+func initRDAttachmentFormatPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("RDAttachmentFormat")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_format")
+    defer methodName.Destroy()
+    ptrsForRDAttachmentFormat.fnSetFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 565531219))
+  }
+  {
+    methodName := StringNameFromStr("get_format")
+    defer methodName.Destroy()
+    ptrsForRDAttachmentFormat.fnGetFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2235804183))
+  }
+  {
+    methodName := StringNameFromStr("set_samples")
+    defer methodName.Destroy()
+    ptrsForRDAttachmentFormat.fnSetSamples = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3774171498))
+  }
+  {
+    methodName := StringNameFromStr("get_samples")
+    defer methodName.Destroy()
+    ptrsForRDAttachmentFormat.fnGetSamples = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 407791724))
+  }
+  {
+    methodName := StringNameFromStr("set_usage_flags")
+    defer methodName.Destroy()
+    ptrsForRDAttachmentFormat.fnSetUsageFlags = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_usage_flags")
+    defer methodName.Destroy()
+    ptrsForRDAttachmentFormat.fnGetUsageFlags = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+}
+
 type RDAttachmentFormat struct {
   RefCounted
 }
@@ -51,89 +98,59 @@ func (me *RDAttachmentFormat) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *RDAttachmentFormat) SetFormat(p_member RenderingDeviceDataFormat, )  {
-  classNameV := StringNameFromStr("RDAttachmentFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_format")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 565531219) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDAttachmentFormat.fnSetFormat), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDAttachmentFormat) GetFormat() RenderingDeviceDataFormat {
-  classNameV := StringNameFromStr("RDAttachmentFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_format")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2235804183) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret RenderingDeviceDataFormat
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDAttachmentFormat.fnGetFormat), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *RDAttachmentFormat) SetSamples(p_member RenderingDeviceTextureSamples, )  {
-  classNameV := StringNameFromStr("RDAttachmentFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_samples")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3774171498) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDAttachmentFormat.fnSetSamples), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDAttachmentFormat) GetSamples() RenderingDeviceTextureSamples {
-  classNameV := StringNameFromStr("RDAttachmentFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_samples")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 407791724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret RenderingDeviceTextureSamples
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDAttachmentFormat.fnGetSamples), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *RDAttachmentFormat) SetUsageFlags(p_member int64, )  {
-  classNameV := StringNameFromStr("RDAttachmentFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_usage_flags")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDAttachmentFormat.fnSetUsageFlags), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDAttachmentFormat) GetUsageFlags() int64 {
-  classNameV := StringNameFromStr("RDAttachmentFormat")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_usage_flags")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDAttachmentFormat.fnGetUsageFlags), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

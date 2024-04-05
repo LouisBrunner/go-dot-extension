@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeCurveXYZTextureList struct {
+  fnSetTexture gdc.MethodBindPtr
+  fnGetTexture gdc.MethodBindPtr
+}
+
+var ptrsForVisualShaderNodeCurveXYZTexture ptrsForVisualShaderNodeCurveXYZTextureList
+
+func initVisualShaderNodeCurveXYZTexturePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeCurveXYZTexture")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_texture")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeCurveXYZTexture.fnSetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 8031783))
+  }
+  {
+    methodName := StringNameFromStr("get_texture")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeCurveXYZTexture.fnGetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1950275015))
+  }
+}
+
 type VisualShaderNodeCurveXYZTexture struct {
   VisualShaderNodeResizableBase
 }
@@ -51,31 +74,21 @@ func (me *VisualShaderNodeCurveXYZTexture) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisualShaderNodeCurveXYZTexture) SetTexture(texture CurveXYZTexture, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeCurveXYZTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 8031783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{texture.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeCurveXYZTexture.fnSetTexture), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeCurveXYZTexture) GetTexture() CurveXYZTexture {
-  classNameV := StringNameFromStr("VisualShaderNodeCurveXYZTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1950275015) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewCurveXYZTexture()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeCurveXYZTexture.fnGetTexture), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

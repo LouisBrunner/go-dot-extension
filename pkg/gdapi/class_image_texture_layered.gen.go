@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForImageTextureLayeredList struct {
+  fnCreateFromImages gdc.MethodBindPtr
+  fnUpdateLayer gdc.MethodBindPtr
+}
+
+var ptrsForImageTextureLayered ptrsForImageTextureLayeredList
+
+func initImageTextureLayeredPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ImageTextureLayered")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("create_from_images")
+    defer methodName.Destroy()
+    ptrsForImageTextureLayered.fnCreateFromImages = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2785773503))
+  }
+  {
+    methodName := StringNameFromStr("update_layer")
+    defer methodName.Destroy()
+    ptrsForImageTextureLayered.fnUpdateLayer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3331733361))
+  }
+}
+
 type ImageTextureLayered struct {
   TextureLayered
 }
@@ -51,32 +74,22 @@ func (me *ImageTextureLayered) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ImageTextureLayered) CreateFromImages(images []Image, ) Error {
-  classNameV := StringNameFromStr("ImageTextureLayered")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("create_from_images")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2785773503) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&images) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
   pinner.Pin(&images)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImageTextureLayered.fnCreateFromImages), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *ImageTextureLayered) UpdateLayer(image Image, layer int64, )  {
-  classNameV := StringNameFromStr("ImageTextureLayered")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("update_layer")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3331733361) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{image.AsCTypePtr(), gdc.ConstTypePtr(&layer) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImageTextureLayered.fnUpdateLayer), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

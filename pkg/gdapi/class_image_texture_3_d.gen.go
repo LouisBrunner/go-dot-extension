@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForImageTexture3DList struct {
+  fnCreate gdc.MethodBindPtr
+  fnUpdate gdc.MethodBindPtr
+}
+
+var ptrsForImageTexture3D ptrsForImageTexture3DList
+
+func initImageTexture3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ImageTexture3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("create")
+    defer methodName.Destroy()
+    ptrsForImageTexture3D.fnCreate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1130379827))
+  }
+  {
+    methodName := StringNameFromStr("update")
+    defer methodName.Destroy()
+    ptrsForImageTexture3D.fnUpdate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 381264803))
+  }
+}
+
 type ImageTexture3D struct {
   Texture3D
 }
@@ -51,11 +74,6 @@ func (me *ImageTexture3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ImageTexture3D) Create(format ImageFormat, width int64, height int64, depth int64, use_mipmaps bool, data []Image, ) Error {
-  classNameV := StringNameFromStr("ImageTexture3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("create")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1130379827) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&format) , gdc.ConstTypePtr(&width) , gdc.ConstTypePtr(&height) , gdc.ConstTypePtr(&depth) , gdc.ConstTypePtr(&use_mipmaps) , gdc.ConstTypePtr(&data) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -67,21 +85,16 @@ func  (me *ImageTexture3D) Create(format ImageFormat, width int64, height int64,
   pinner.Pin(&use_mipmaps)
   pinner.Pin(&data)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImageTexture3D.fnCreate), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *ImageTexture3D) Update(data []Image, )  {
-  classNameV := StringNameFromStr("ImageTexture3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("update")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&data) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImageTexture3D.fnUpdate), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

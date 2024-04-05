@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForShaderList struct {
+  fnGetMode gdc.MethodBindPtr
+  fnSetCode gdc.MethodBindPtr
+  fnGetCode gdc.MethodBindPtr
+  fnSetDefaultTextureParameter gdc.MethodBindPtr
+  fnGetDefaultTextureParameter gdc.MethodBindPtr
+  fnGetShaderUniformList gdc.MethodBindPtr
+}
+
+var ptrsForShader ptrsForShaderList
+
+func initShaderPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Shader")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_mode")
+    defer methodName.Destroy()
+    ptrsForShader.fnGetMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3392948163))
+  }
+  {
+    methodName := StringNameFromStr("set_code")
+    defer methodName.Destroy()
+    ptrsForShader.fnSetCode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_code")
+    defer methodName.Destroy()
+    ptrsForShader.fnGetCode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("set_default_texture_parameter")
+    defer methodName.Destroy()
+    ptrsForShader.fnSetDefaultTextureParameter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2750740428))
+  }
+  {
+    methodName := StringNameFromStr("get_default_texture_parameter")
+    defer methodName.Destroy()
+    ptrsForShader.fnGetDefaultTextureParameter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3090538643))
+  }
+  {
+    methodName := StringNameFromStr("get_shader_uniform_list")
+    defer methodName.Destroy()
+    ptrsForShader.fnGetShaderUniformList = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1230511656))
+  }
+}
+
 type Shader struct {
   Resource
 }
@@ -60,92 +107,62 @@ func (me *Shader) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Shader) GetMode() ShaderMode {
-  classNameV := StringNameFromStr("Shader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3392948163) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ShaderMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForShader.fnGetMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Shader) SetCode(code String, )  {
-  classNameV := StringNameFromStr("Shader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_code")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{code.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForShader.fnSetCode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Shader) GetCode() String {
-  classNameV := StringNameFromStr("Shader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_code")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForShader.fnGetCode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Shader) SetDefaultTextureParameter(name StringName, texture Texture2D, index int64, )  {
-  classNameV := StringNameFromStr("Shader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_default_texture_parameter")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2750740428) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), texture.AsCTypePtr(), gdc.ConstTypePtr(&index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForShader.fnSetDefaultTextureParameter), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Shader) GetDefaultTextureParameter(name StringName, index int64, ) Texture2D {
-  classNameV := StringNameFromStr("Shader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_default_texture_parameter")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3090538643) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), gdc.ConstTypePtr(&index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2D()
   pinner.Pin(&index)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForShader.fnGetDefaultTextureParameter), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Shader) GetShaderUniformList(get_groups bool, ) Array {
-  classNameV := StringNameFromStr("Shader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_shader_uniform_list")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1230511656) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&get_groups) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
   pinner.Pin(&get_groups)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForShader.fnGetShaderUniformList), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

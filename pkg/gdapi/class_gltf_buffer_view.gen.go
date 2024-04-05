@@ -14,6 +14,77 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForGLTFBufferViewList struct {
+  fnGetBuffer gdc.MethodBindPtr
+  fnSetBuffer gdc.MethodBindPtr
+  fnGetByteOffset gdc.MethodBindPtr
+  fnSetByteOffset gdc.MethodBindPtr
+  fnGetByteLength gdc.MethodBindPtr
+  fnSetByteLength gdc.MethodBindPtr
+  fnGetByteStride gdc.MethodBindPtr
+  fnSetByteStride gdc.MethodBindPtr
+  fnGetIndices gdc.MethodBindPtr
+  fnSetIndices gdc.MethodBindPtr
+}
+
+var ptrsForGLTFBufferView ptrsForGLTFBufferViewList
+
+func initGLTFBufferViewPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("GLTFBufferView")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_buffer")
+    defer methodName.Destroy()
+    ptrsForGLTFBufferView.fnGetBuffer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2455072627))
+  }
+  {
+    methodName := StringNameFromStr("set_buffer")
+    defer methodName.Destroy()
+    ptrsForGLTFBufferView.fnSetBuffer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_byte_offset")
+    defer methodName.Destroy()
+    ptrsForGLTFBufferView.fnGetByteOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2455072627))
+  }
+  {
+    methodName := StringNameFromStr("set_byte_offset")
+    defer methodName.Destroy()
+    ptrsForGLTFBufferView.fnSetByteOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_byte_length")
+    defer methodName.Destroy()
+    ptrsForGLTFBufferView.fnGetByteLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2455072627))
+  }
+  {
+    methodName := StringNameFromStr("set_byte_length")
+    defer methodName.Destroy()
+    ptrsForGLTFBufferView.fnSetByteLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_byte_stride")
+    defer methodName.Destroy()
+    ptrsForGLTFBufferView.fnGetByteStride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2455072627))
+  }
+  {
+    methodName := StringNameFromStr("set_byte_stride")
+    defer methodName.Destroy()
+    ptrsForGLTFBufferView.fnSetByteStride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_indices")
+    defer methodName.Destroy()
+    ptrsForGLTFBufferView.fnGetIndices = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("set_indices")
+    defer methodName.Destroy()
+    ptrsForGLTFBufferView.fnSetIndices = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+}
+
 type GLTFBufferView struct {
   Resource
 }
@@ -51,147 +122,97 @@ func (me *GLTFBufferView) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *GLTFBufferView) GetBuffer() int64 {
-  classNameV := StringNameFromStr("GLTFBufferView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_buffer")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFBufferView.fnGetBuffer), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *GLTFBufferView) SetBuffer(buffer int64, )  {
-  classNameV := StringNameFromStr("GLTFBufferView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_buffer")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&buffer) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFBufferView.fnSetBuffer), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GLTFBufferView) GetByteOffset() int64 {
-  classNameV := StringNameFromStr("GLTFBufferView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_byte_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFBufferView.fnGetByteOffset), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *GLTFBufferView) SetByteOffset(byte_offset int64, )  {
-  classNameV := StringNameFromStr("GLTFBufferView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_byte_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&byte_offset) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFBufferView.fnSetByteOffset), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GLTFBufferView) GetByteLength() int64 {
-  classNameV := StringNameFromStr("GLTFBufferView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_byte_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFBufferView.fnGetByteLength), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *GLTFBufferView) SetByteLength(byte_length int64, )  {
-  classNameV := StringNameFromStr("GLTFBufferView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_byte_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&byte_length) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFBufferView.fnSetByteLength), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GLTFBufferView) GetByteStride() int64 {
-  classNameV := StringNameFromStr("GLTFBufferView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_byte_stride")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFBufferView.fnGetByteStride), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *GLTFBufferView) SetByteStride(byte_stride int64, )  {
-  classNameV := StringNameFromStr("GLTFBufferView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_byte_stride")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&byte_stride) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFBufferView.fnSetByteStride), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GLTFBufferView) GetIndices() bool {
-  classNameV := StringNameFromStr("GLTFBufferView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_indices")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFBufferView.fnGetIndices), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *GLTFBufferView) SetIndices(indices bool, )  {
-  classNameV := StringNameFromStr("GLTFBufferView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_indices")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&indices) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFBufferView.fnSetIndices), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

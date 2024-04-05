@@ -14,6 +14,101 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForNavigationPathQueryParameters3DList struct {
+  fnSetPathfindingAlgorithm gdc.MethodBindPtr
+  fnGetPathfindingAlgorithm gdc.MethodBindPtr
+  fnSetPathPostprocessing gdc.MethodBindPtr
+  fnGetPathPostprocessing gdc.MethodBindPtr
+  fnSetMap gdc.MethodBindPtr
+  fnGetMap gdc.MethodBindPtr
+  fnSetStartPosition gdc.MethodBindPtr
+  fnGetStartPosition gdc.MethodBindPtr
+  fnSetTargetPosition gdc.MethodBindPtr
+  fnGetTargetPosition gdc.MethodBindPtr
+  fnSetNavigationLayers gdc.MethodBindPtr
+  fnGetNavigationLayers gdc.MethodBindPtr
+  fnSetMetadataFlags gdc.MethodBindPtr
+  fnGetMetadataFlags gdc.MethodBindPtr
+}
+
+var ptrsForNavigationPathQueryParameters3D ptrsForNavigationPathQueryParameters3DList
+
+func initNavigationPathQueryParameters3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("NavigationPathQueryParameters3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_pathfinding_algorithm")
+    defer methodName.Destroy()
+    ptrsForNavigationPathQueryParameters3D.fnSetPathfindingAlgorithm = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 394560454))
+  }
+  {
+    methodName := StringNameFromStr("get_pathfinding_algorithm")
+    defer methodName.Destroy()
+    ptrsForNavigationPathQueryParameters3D.fnGetPathfindingAlgorithm = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3398491350))
+  }
+  {
+    methodName := StringNameFromStr("set_path_postprocessing")
+    defer methodName.Destroy()
+    ptrsForNavigationPathQueryParameters3D.fnSetPathPostprocessing = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2267362344))
+  }
+  {
+    methodName := StringNameFromStr("get_path_postprocessing")
+    defer methodName.Destroy()
+    ptrsForNavigationPathQueryParameters3D.fnGetPathPostprocessing = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3883858360))
+  }
+  {
+    methodName := StringNameFromStr("set_map")
+    defer methodName.Destroy()
+    ptrsForNavigationPathQueryParameters3D.fnSetMap = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2722037293))
+  }
+  {
+    methodName := StringNameFromStr("get_map")
+    defer methodName.Destroy()
+    ptrsForNavigationPathQueryParameters3D.fnGetMap = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
+  }
+  {
+    methodName := StringNameFromStr("set_start_position")
+    defer methodName.Destroy()
+    ptrsForNavigationPathQueryParameters3D.fnSetStartPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("get_start_position")
+    defer methodName.Destroy()
+    ptrsForNavigationPathQueryParameters3D.fnGetStartPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("set_target_position")
+    defer methodName.Destroy()
+    ptrsForNavigationPathQueryParameters3D.fnSetTargetPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("get_target_position")
+    defer methodName.Destroy()
+    ptrsForNavigationPathQueryParameters3D.fnGetTargetPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("set_navigation_layers")
+    defer methodName.Destroy()
+    ptrsForNavigationPathQueryParameters3D.fnSetNavigationLayers = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_navigation_layers")
+    defer methodName.Destroy()
+    ptrsForNavigationPathQueryParameters3D.fnGetNavigationLayers = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_metadata_flags")
+    defer methodName.Destroy()
+    ptrsForNavigationPathQueryParameters3D.fnSetMetadataFlags = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2713846708))
+  }
+  {
+    methodName := StringNameFromStr("get_metadata_flags")
+    defer methodName.Destroy()
+    ptrsForNavigationPathQueryParameters3D.fnGetMetadataFlags = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1582332802))
+  }
+}
+
 type NavigationPathQueryParameters3D struct {
   RefCounted
 }
@@ -71,205 +166,135 @@ func (me *NavigationPathQueryParameters3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *NavigationPathQueryParameters3D) SetPathfindingAlgorithm(pathfinding_algorithm NavigationPathQueryParameters3DPathfindingAlgorithm, )  {
-  classNameV := StringNameFromStr("NavigationPathQueryParameters3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_pathfinding_algorithm")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 394560454) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pathfinding_algorithm) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnSetPathfindingAlgorithm), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationPathQueryParameters3D) GetPathfindingAlgorithm() NavigationPathQueryParameters3DPathfindingAlgorithm {
-  classNameV := StringNameFromStr("NavigationPathQueryParameters3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_pathfinding_algorithm")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3398491350) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret NavigationPathQueryParameters3DPathfindingAlgorithm
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnGetPathfindingAlgorithm), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *NavigationPathQueryParameters3D) SetPathPostprocessing(path_postprocessing NavigationPathQueryParameters3DPathPostProcessing, )  {
-  classNameV := StringNameFromStr("NavigationPathQueryParameters3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_path_postprocessing")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2267362344) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&path_postprocessing) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnSetPathPostprocessing), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationPathQueryParameters3D) GetPathPostprocessing() NavigationPathQueryParameters3DPathPostProcessing {
-  classNameV := StringNameFromStr("NavigationPathQueryParameters3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_path_postprocessing")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3883858360) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret NavigationPathQueryParameters3DPathPostProcessing
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnGetPathPostprocessing), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *NavigationPathQueryParameters3D) SetMap(map_ RID, )  {
-  classNameV := StringNameFromStr("NavigationPathQueryParameters3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_map")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{map_.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnSetMap), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationPathQueryParameters3D) GetMap() RID {
-  classNameV := StringNameFromStr("NavigationPathQueryParameters3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_map")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRID()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnGetMap), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *NavigationPathQueryParameters3D) SetStartPosition(start_position Vector3, )  {
-  classNameV := StringNameFromStr("NavigationPathQueryParameters3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_start_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{start_position.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnSetStartPosition), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationPathQueryParameters3D) GetStartPosition() Vector3 {
-  classNameV := StringNameFromStr("NavigationPathQueryParameters3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_start_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnGetStartPosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *NavigationPathQueryParameters3D) SetTargetPosition(target_position Vector3, )  {
-  classNameV := StringNameFromStr("NavigationPathQueryParameters3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_target_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{target_position.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnSetTargetPosition), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationPathQueryParameters3D) GetTargetPosition() Vector3 {
-  classNameV := StringNameFromStr("NavigationPathQueryParameters3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_target_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnGetTargetPosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *NavigationPathQueryParameters3D) SetNavigationLayers(navigation_layers int64, )  {
-  classNameV := StringNameFromStr("NavigationPathQueryParameters3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_navigation_layers")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&navigation_layers) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnSetNavigationLayers), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationPathQueryParameters3D) GetNavigationLayers() int64 {
-  classNameV := StringNameFromStr("NavigationPathQueryParameters3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_navigation_layers")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnGetNavigationLayers), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NavigationPathQueryParameters3D) SetMetadataFlags(flags NavigationPathQueryParameters3DPathMetadataFlags, )  {
-  classNameV := StringNameFromStr("NavigationPathQueryParameters3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_metadata_flags")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2713846708) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flags) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnSetMetadataFlags), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationPathQueryParameters3D) GetMetadataFlags() NavigationPathQueryParameters3DPathMetadataFlags {
-  classNameV := StringNameFromStr("NavigationPathQueryParameters3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_metadata_flags")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1582332802) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret NavigationPathQueryParameters3DPathMetadataFlags
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnGetMetadataFlags), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

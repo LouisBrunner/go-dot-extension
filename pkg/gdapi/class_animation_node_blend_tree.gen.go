@@ -14,6 +14,83 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAnimationNodeBlendTreeList struct {
+  fnAddNode gdc.MethodBindPtr
+  fnGetNode gdc.MethodBindPtr
+  fnRemoveNode gdc.MethodBindPtr
+  fnRenameNode gdc.MethodBindPtr
+  fnHasNode gdc.MethodBindPtr
+  fnConnectNode gdc.MethodBindPtr
+  fnDisconnectNode gdc.MethodBindPtr
+  fnSetNodePosition gdc.MethodBindPtr
+  fnGetNodePosition gdc.MethodBindPtr
+  fnSetGraphOffset gdc.MethodBindPtr
+  fnGetGraphOffset gdc.MethodBindPtr
+}
+
+var ptrsForAnimationNodeBlendTree ptrsForAnimationNodeBlendTreeList
+
+func initAnimationNodeBlendTreePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AnimationNodeBlendTree")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("add_node")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeBlendTree.fnAddNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1980270704))
+  }
+  {
+    methodName := StringNameFromStr("get_node")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeBlendTree.fnGetNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 625644256))
+  }
+  {
+    methodName := StringNameFromStr("remove_node")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeBlendTree.fnRemoveNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3304788590))
+  }
+  {
+    methodName := StringNameFromStr("rename_node")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeBlendTree.fnRenameNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3740211285))
+  }
+  {
+    methodName := StringNameFromStr("has_node")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeBlendTree.fnHasNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2619796661))
+  }
+  {
+    methodName := StringNameFromStr("connect_node")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeBlendTree.fnConnectNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2168001410))
+  }
+  {
+    methodName := StringNameFromStr("disconnect_node")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeBlendTree.fnDisconnectNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2415702435))
+  }
+  {
+    methodName := StringNameFromStr("set_node_position")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeBlendTree.fnSetNodePosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1999414630))
+  }
+  {
+    methodName := StringNameFromStr("get_node_position")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeBlendTree.fnGetNodePosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3100822709))
+  }
+  {
+    methodName := StringNameFromStr("set_graph_offset")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeBlendTree.fnSetGraphOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_graph_offset")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeBlendTree.fnGetGraphOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+}
+
 type AnimationNodeBlendTree struct {
   AnimationRootNode
 }
@@ -62,160 +139,105 @@ func (me *AnimationNodeBlendTree) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AnimationNodeBlendTree) AddNode(name StringName, node AnimationNode, position Vector2, )  {
-  classNameV := StringNameFromStr("AnimationNodeBlendTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1980270704) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), node.AsCTypePtr(), position.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeBlendTree.fnAddNode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeBlendTree) GetNode(name StringName, ) AnimationNode {
-  classNameV := StringNameFromStr("AnimationNodeBlendTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 625644256) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewAnimationNode()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeBlendTree.fnGetNode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AnimationNodeBlendTree) RemoveNode(name StringName, )  {
-  classNameV := StringNameFromStr("AnimationNodeBlendTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeBlendTree.fnRemoveNode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeBlendTree) RenameNode(name StringName, new_name StringName, )  {
-  classNameV := StringNameFromStr("AnimationNodeBlendTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("rename_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3740211285) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), new_name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeBlendTree.fnRenameNode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeBlendTree) HasNode(name StringName, ) bool {
-  classNameV := StringNameFromStr("AnimationNodeBlendTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeBlendTree.fnHasNode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AnimationNodeBlendTree) ConnectNode(input_node StringName, input_index int64, output_node StringName, )  {
-  classNameV := StringNameFromStr("AnimationNodeBlendTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("connect_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2168001410) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{input_node.AsCTypePtr(), gdc.ConstTypePtr(&input_index) , output_node.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeBlendTree.fnConnectNode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeBlendTree) DisconnectNode(input_node StringName, input_index int64, )  {
-  classNameV := StringNameFromStr("AnimationNodeBlendTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("disconnect_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2415702435) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{input_node.AsCTypePtr(), gdc.ConstTypePtr(&input_index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeBlendTree.fnDisconnectNode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeBlendTree) SetNodePosition(name StringName, position Vector2, )  {
-  classNameV := StringNameFromStr("AnimationNodeBlendTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_node_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1999414630) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), position.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeBlendTree.fnSetNodePosition), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeBlendTree) GetNodePosition(name StringName, ) Vector2 {
-  classNameV := StringNameFromStr("AnimationNodeBlendTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_node_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3100822709) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeBlendTree.fnGetNodePosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AnimationNodeBlendTree) SetGraphOffset(offset Vector2, )  {
-  classNameV := StringNameFromStr("AnimationNodeBlendTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_graph_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeBlendTree.fnSetGraphOffset), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeBlendTree) GetGraphOffset() Vector2 {
-  classNameV := StringNameFromStr("AnimationNodeBlendTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_graph_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeBlendTree.fnGetGraphOffset), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

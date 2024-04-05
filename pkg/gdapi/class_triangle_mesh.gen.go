@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForTriangleMeshList struct {
+}
+
+var ptrsForTriangleMesh ptrsForTriangleMeshList
+
+func initTriangleMeshPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("TriangleMesh")
+  defer className.Destroy()
+}
+
 type TriangleMesh struct {
   RefCounted
 }

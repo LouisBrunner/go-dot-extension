@@ -14,6 +14,65 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAnimationTreeList struct {
+  fnSetTreeRoot gdc.MethodBindPtr
+  fnGetTreeRoot gdc.MethodBindPtr
+  fnSetAdvanceExpressionBaseNode gdc.MethodBindPtr
+  fnGetAdvanceExpressionBaseNode gdc.MethodBindPtr
+  fnSetAnimationPlayer gdc.MethodBindPtr
+  fnGetAnimationPlayer gdc.MethodBindPtr
+  fnSetProcessCallback gdc.MethodBindPtr
+  fnGetProcessCallback gdc.MethodBindPtr
+}
+
+var ptrsForAnimationTree ptrsForAnimationTreeList
+
+func initAnimationTreePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AnimationTree")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_tree_root")
+    defer methodName.Destroy()
+    ptrsForAnimationTree.fnSetTreeRoot = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2581683800))
+  }
+  {
+    methodName := StringNameFromStr("get_tree_root")
+    defer methodName.Destroy()
+    ptrsForAnimationTree.fnGetTreeRoot = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4110384712))
+  }
+  {
+    methodName := StringNameFromStr("set_advance_expression_base_node")
+    defer methodName.Destroy()
+    ptrsForAnimationTree.fnSetAdvanceExpressionBaseNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1348162250))
+  }
+  {
+    methodName := StringNameFromStr("get_advance_expression_base_node")
+    defer methodName.Destroy()
+    ptrsForAnimationTree.fnGetAdvanceExpressionBaseNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4075236667))
+  }
+  {
+    methodName := StringNameFromStr("set_animation_player")
+    defer methodName.Destroy()
+    ptrsForAnimationTree.fnSetAnimationPlayer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1348162250))
+  }
+  {
+    methodName := StringNameFromStr("get_animation_player")
+    defer methodName.Destroy()
+    ptrsForAnimationTree.fnGetAnimationPlayer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4075236667))
+  }
+  {
+    methodName := StringNameFromStr("set_process_callback")
+    defer methodName.Destroy()
+    ptrsForAnimationTree.fnSetProcessCallback = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1723352826))
+  }
+  {
+    methodName := StringNameFromStr("get_process_callback")
+    defer methodName.Destroy()
+    ptrsForAnimationTree.fnGetProcessCallback = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 891317132))
+  }
+}
+
 type AnimationTree struct {
   AnimationMixer
 }
@@ -58,118 +117,78 @@ func (me *AnimationTree) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AnimationTree) SetTreeRoot(animation_node AnimationRootNode, )  {
-  classNameV := StringNameFromStr("AnimationTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_tree_root")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2581683800) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{animation_node.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationTree.fnSetTreeRoot), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationTree) GetTreeRoot() AnimationRootNode {
-  classNameV := StringNameFromStr("AnimationTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_tree_root")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4110384712) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewAnimationRootNode()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationTree.fnGetTreeRoot), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AnimationTree) SetAdvanceExpressionBaseNode(path NodePath, )  {
-  classNameV := StringNameFromStr("AnimationTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_advance_expression_base_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationTree.fnSetAdvanceExpressionBaseNode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationTree) GetAdvanceExpressionBaseNode() NodePath {
-  classNameV := StringNameFromStr("AnimationTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_advance_expression_base_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNodePath()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationTree.fnGetAdvanceExpressionBaseNode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AnimationTree) SetAnimationPlayer(path NodePath, )  {
-  classNameV := StringNameFromStr("AnimationTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_animation_player")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationTree.fnSetAnimationPlayer), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationTree) GetAnimationPlayer() NodePath {
-  classNameV := StringNameFromStr("AnimationTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_animation_player")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNodePath()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationTree.fnGetAnimationPlayer), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AnimationTree) SetProcessCallback(mode AnimationTreeAnimationProcessCallback, )  {
-  classNameV := StringNameFromStr("AnimationTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_process_callback")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1723352826) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationTree.fnSetProcessCallback), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationTree) GetProcessCallback() AnimationTreeAnimationProcessCallback {
-  classNameV := StringNameFromStr("AnimationTree")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_process_callback")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 891317132) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret AnimationTreeAnimationProcessCallback
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationTree.fnGetProcessCallback), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

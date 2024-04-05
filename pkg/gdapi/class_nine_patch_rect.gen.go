@@ -14,6 +14,89 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForNinePatchRectList struct {
+  fnSetTexture gdc.MethodBindPtr
+  fnGetTexture gdc.MethodBindPtr
+  fnSetPatchMargin gdc.MethodBindPtr
+  fnGetPatchMargin gdc.MethodBindPtr
+  fnSetRegionRect gdc.MethodBindPtr
+  fnGetRegionRect gdc.MethodBindPtr
+  fnSetDrawCenter gdc.MethodBindPtr
+  fnIsDrawCenterEnabled gdc.MethodBindPtr
+  fnSetHAxisStretchMode gdc.MethodBindPtr
+  fnGetHAxisStretchMode gdc.MethodBindPtr
+  fnSetVAxisStretchMode gdc.MethodBindPtr
+  fnGetVAxisStretchMode gdc.MethodBindPtr
+}
+
+var ptrsForNinePatchRect ptrsForNinePatchRectList
+
+func initNinePatchRectPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("NinePatchRect")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_texture")
+    defer methodName.Destroy()
+    ptrsForNinePatchRect.fnSetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4051416890))
+  }
+  {
+    methodName := StringNameFromStr("get_texture")
+    defer methodName.Destroy()
+    ptrsForNinePatchRect.fnGetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
+  }
+  {
+    methodName := StringNameFromStr("set_patch_margin")
+    defer methodName.Destroy()
+    ptrsForNinePatchRect.fnSetPatchMargin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 437707142))
+  }
+  {
+    methodName := StringNameFromStr("get_patch_margin")
+    defer methodName.Destroy()
+    ptrsForNinePatchRect.fnGetPatchMargin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1983885014))
+  }
+  {
+    methodName := StringNameFromStr("set_region_rect")
+    defer methodName.Destroy()
+    ptrsForNinePatchRect.fnSetRegionRect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2046264180))
+  }
+  {
+    methodName := StringNameFromStr("get_region_rect")
+    defer methodName.Destroy()
+    ptrsForNinePatchRect.fnGetRegionRect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1639390495))
+  }
+  {
+    methodName := StringNameFromStr("set_draw_center")
+    defer methodName.Destroy()
+    ptrsForNinePatchRect.fnSetDrawCenter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_draw_center_enabled")
+    defer methodName.Destroy()
+    ptrsForNinePatchRect.fnIsDrawCenterEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_h_axis_stretch_mode")
+    defer methodName.Destroy()
+    ptrsForNinePatchRect.fnSetHAxisStretchMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3219608417))
+  }
+  {
+    methodName := StringNameFromStr("get_h_axis_stretch_mode")
+    defer methodName.Destroy()
+    ptrsForNinePatchRect.fnGetHAxisStretchMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3317113799))
+  }
+  {
+    methodName := StringNameFromStr("set_v_axis_stretch_mode")
+    defer methodName.Destroy()
+    ptrsForNinePatchRect.fnSetVAxisStretchMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3219608417))
+  }
+  {
+    methodName := StringNameFromStr("get_v_axis_stretch_mode")
+    defer methodName.Destroy()
+    ptrsForNinePatchRect.fnGetVAxisStretchMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3317113799))
+  }
+}
+
 type NinePatchRect struct {
   Control
 }
@@ -58,177 +141,117 @@ func (me *NinePatchRect) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *NinePatchRect) SetTexture(texture Texture2D, )  {
-  classNameV := StringNameFromStr("NinePatchRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{texture.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNinePatchRect.fnSetTexture), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NinePatchRect) GetTexture() Texture2D {
-  classNameV := StringNameFromStr("NinePatchRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNinePatchRect.fnGetTexture), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *NinePatchRect) SetPatchMargin(margin Side, value int64, )  {
-  classNameV := StringNameFromStr("NinePatchRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_patch_margin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 437707142) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&margin) , gdc.ConstTypePtr(&value) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNinePatchRect.fnSetPatchMargin), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NinePatchRect) GetPatchMargin(margin Side, ) int64 {
-  classNameV := StringNameFromStr("NinePatchRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_patch_margin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1983885014) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&margin) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
   pinner.Pin(&margin)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNinePatchRect.fnGetPatchMargin), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NinePatchRect) SetRegionRect(rect Rect2, )  {
-  classNameV := StringNameFromStr("NinePatchRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_region_rect")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2046264180) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{rect.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNinePatchRect.fnSetRegionRect), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NinePatchRect) GetRegionRect() Rect2 {
-  classNameV := StringNameFromStr("NinePatchRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_region_rect")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1639390495) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRect2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNinePatchRect.fnGetRegionRect), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *NinePatchRect) SetDrawCenter(draw_center bool, )  {
-  classNameV := StringNameFromStr("NinePatchRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_draw_center")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&draw_center) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNinePatchRect.fnSetDrawCenter), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NinePatchRect) IsDrawCenterEnabled() bool {
-  classNameV := StringNameFromStr("NinePatchRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_draw_center_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNinePatchRect.fnIsDrawCenterEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NinePatchRect) SetHAxisStretchMode(mode NinePatchRectAxisStretchMode, )  {
-  classNameV := StringNameFromStr("NinePatchRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_h_axis_stretch_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3219608417) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNinePatchRect.fnSetHAxisStretchMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NinePatchRect) GetHAxisStretchMode() NinePatchRectAxisStretchMode {
-  classNameV := StringNameFromStr("NinePatchRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_h_axis_stretch_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3317113799) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret NinePatchRectAxisStretchMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNinePatchRect.fnGetHAxisStretchMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *NinePatchRect) SetVAxisStretchMode(mode NinePatchRectAxisStretchMode, )  {
-  classNameV := StringNameFromStr("NinePatchRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_v_axis_stretch_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3219608417) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNinePatchRect.fnSetVAxisStretchMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NinePatchRect) GetVAxisStretchMode() NinePatchRectAxisStretchMode {
-  classNameV := StringNameFromStr("NinePatchRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_v_axis_stretch_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3317113799) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret NinePatchRectAxisStretchMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNinePatchRect.fnGetVAxisStretchMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

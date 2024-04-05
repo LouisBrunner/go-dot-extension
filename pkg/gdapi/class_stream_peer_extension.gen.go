@@ -14,6 +14,22 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForStreamPeerExtensionList struct {
+  fnXGetData gdc.MethodBindPtr
+  fnXGetPartialData gdc.MethodBindPtr
+  fnXPutData gdc.MethodBindPtr
+  fnXPutPartialData gdc.MethodBindPtr
+  fnXGetAvailableBytes gdc.MethodBindPtr
+}
+
+var ptrsForStreamPeerExtension ptrsForStreamPeerExtensionList
+
+func initStreamPeerExtensionPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("StreamPeerExtension")
+  defer className.Destroy()
+}
+
 type StreamPeerExtension struct {
   StreamPeer
 }

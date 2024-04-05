@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForHSplitContainerList struct {
+}
+
+var ptrsForHSplitContainer ptrsForHSplitContainerList
+
+func initHSplitContainerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("HSplitContainer")
+  defer className.Destroy()
+}
+
 type HSplitContainer struct {
   SplitContainer
 }

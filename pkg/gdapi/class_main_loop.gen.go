@@ -14,6 +14,21 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForMainLoopList struct {
+  fnXInitialize gdc.MethodBindPtr
+  fnXPhysicsProcess gdc.MethodBindPtr
+  fnXProcess gdc.MethodBindPtr
+  fnXFinalize gdc.MethodBindPtr
+}
+
+var ptrsForMainLoop ptrsForMainLoopList
+
+func initMainLoopPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("MainLoop")
+  defer className.Destroy()
+}
+
 type MainLoop struct {
   Object
 }

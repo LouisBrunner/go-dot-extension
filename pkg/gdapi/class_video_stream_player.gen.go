@@ -14,6 +14,185 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVideoStreamPlayerList struct {
+  fnSetStream gdc.MethodBindPtr
+  fnGetStream gdc.MethodBindPtr
+  fnPlay gdc.MethodBindPtr
+  fnStop gdc.MethodBindPtr
+  fnIsPlaying gdc.MethodBindPtr
+  fnSetPaused gdc.MethodBindPtr
+  fnIsPaused gdc.MethodBindPtr
+  fnSetLoop gdc.MethodBindPtr
+  fnHasLoop gdc.MethodBindPtr
+  fnSetVolume gdc.MethodBindPtr
+  fnGetVolume gdc.MethodBindPtr
+  fnSetVolumeDb gdc.MethodBindPtr
+  fnGetVolumeDb gdc.MethodBindPtr
+  fnSetAudioTrack gdc.MethodBindPtr
+  fnGetAudioTrack gdc.MethodBindPtr
+  fnGetStreamName gdc.MethodBindPtr
+  fnGetStreamLength gdc.MethodBindPtr
+  fnSetStreamPosition gdc.MethodBindPtr
+  fnGetStreamPosition gdc.MethodBindPtr
+  fnSetAutoplay gdc.MethodBindPtr
+  fnHasAutoplay gdc.MethodBindPtr
+  fnSetExpand gdc.MethodBindPtr
+  fnHasExpand gdc.MethodBindPtr
+  fnSetBufferingMsec gdc.MethodBindPtr
+  fnGetBufferingMsec gdc.MethodBindPtr
+  fnSetBus gdc.MethodBindPtr
+  fnGetBus gdc.MethodBindPtr
+  fnGetVideoTexture gdc.MethodBindPtr
+}
+
+var ptrsForVideoStreamPlayer ptrsForVideoStreamPlayerList
+
+func initVideoStreamPlayerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VideoStreamPlayer")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_stream")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnSetStream = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2317102564))
+  }
+  {
+    methodName := StringNameFromStr("get_stream")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnGetStream = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 438621487))
+  }
+  {
+    methodName := StringNameFromStr("play")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnPlay = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("stop")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnStop = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("is_playing")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnIsPlaying = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_paused")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnSetPaused = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_paused")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnIsPaused = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_loop")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnSetLoop = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("has_loop")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnHasLoop = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_volume")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnSetVolume = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_volume")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnGetVolume = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_volume_db")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnSetVolumeDb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_volume_db")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnGetVolumeDb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_audio_track")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnSetAudioTrack = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_audio_track")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnGetAudioTrack = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("get_stream_name")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnGetStreamName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("get_stream_length")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnGetStreamLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_stream_position")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnSetStreamPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_stream_position")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnGetStreamPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_autoplay")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnSetAutoplay = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("has_autoplay")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnHasAutoplay = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_expand")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnSetExpand = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("has_expand")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnHasExpand = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_buffering_msec")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnSetBufferingMsec = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_buffering_msec")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnGetBufferingMsec = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_bus")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnSetBus = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3304788590))
+  }
+  {
+    methodName := StringNameFromStr("get_bus")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnGetBus = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2002593661))
+  }
+  {
+    methodName := StringNameFromStr("get_video_texture")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayer.fnGetVideoTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
+  }
+}
+
 type VideoStreamPlayer struct {
   Control
 }
@@ -51,409 +230,269 @@ func (me *VideoStreamPlayer) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VideoStreamPlayer) SetStream(stream VideoStream, )  {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_stream")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2317102564) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{stream.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnSetStream), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VideoStreamPlayer) GetStream() VideoStream {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_stream")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 438621487) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVideoStream()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnGetStream), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *VideoStreamPlayer) Play()  {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("play")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnPlay), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VideoStreamPlayer) Stop()  {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("stop")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnStop), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VideoStreamPlayer) IsPlaying() bool {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_playing")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnIsPlaying), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *VideoStreamPlayer) SetPaused(paused bool, )  {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_paused")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&paused) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnSetPaused), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VideoStreamPlayer) IsPaused() bool {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_paused")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnIsPaused), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *VideoStreamPlayer) SetLoop(loop bool, )  {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_loop")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&loop) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnSetLoop), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VideoStreamPlayer) HasLoop() bool {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_loop")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnHasLoop), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *VideoStreamPlayer) SetVolume(volume float64, )  {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_volume")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&volume) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnSetVolume), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VideoStreamPlayer) GetVolume() float64 {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_volume")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnGetVolume), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *VideoStreamPlayer) SetVolumeDb(db float64, )  {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_volume_db")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&db) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnSetVolumeDb), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VideoStreamPlayer) GetVolumeDb() float64 {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_volume_db")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnGetVolumeDb), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *VideoStreamPlayer) SetAudioTrack(track int64, )  {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_audio_track")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnSetAudioTrack), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VideoStreamPlayer) GetAudioTrack() int64 {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_audio_track")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnGetAudioTrack), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *VideoStreamPlayer) GetStreamName() String {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_stream_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnGetStreamName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *VideoStreamPlayer) GetStreamLength() float64 {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_stream_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnGetStreamLength), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *VideoStreamPlayer) SetStreamPosition(position float64, )  {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_stream_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&position) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnSetStreamPosition), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VideoStreamPlayer) GetStreamPosition() float64 {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_stream_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnGetStreamPosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *VideoStreamPlayer) SetAutoplay(enabled bool, )  {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_autoplay")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnSetAutoplay), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VideoStreamPlayer) HasAutoplay() bool {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_autoplay")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnHasAutoplay), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *VideoStreamPlayer) SetExpand(enable bool, )  {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_expand")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnSetExpand), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VideoStreamPlayer) HasExpand() bool {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_expand")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnHasExpand), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *VideoStreamPlayer) SetBufferingMsec(msec int64, )  {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_buffering_msec")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&msec) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnSetBufferingMsec), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VideoStreamPlayer) GetBufferingMsec() int64 {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_buffering_msec")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnGetBufferingMsec), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *VideoStreamPlayer) SetBus(bus StringName, )  {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_bus")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{bus.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnSetBus), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VideoStreamPlayer) GetBus() StringName {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_bus")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewStringName()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnGetBus), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *VideoStreamPlayer) GetVideoTexture() Texture2D {
-  classNameV := StringNameFromStr("VideoStreamPlayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_video_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayer.fnGetVideoTexture), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

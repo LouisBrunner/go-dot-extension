@@ -14,6 +14,71 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForJoint2DList struct {
+  fnSetNodeA gdc.MethodBindPtr
+  fnGetNodeA gdc.MethodBindPtr
+  fnSetNodeB gdc.MethodBindPtr
+  fnGetNodeB gdc.MethodBindPtr
+  fnSetBias gdc.MethodBindPtr
+  fnGetBias gdc.MethodBindPtr
+  fnSetExcludeNodesFromCollision gdc.MethodBindPtr
+  fnGetExcludeNodesFromCollision gdc.MethodBindPtr
+  fnGetRid gdc.MethodBindPtr
+}
+
+var ptrsForJoint2D ptrsForJoint2DList
+
+func initJoint2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Joint2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_node_a")
+    defer methodName.Destroy()
+    ptrsForJoint2D.fnSetNodeA = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1348162250))
+  }
+  {
+    methodName := StringNameFromStr("get_node_a")
+    defer methodName.Destroy()
+    ptrsForJoint2D.fnGetNodeA = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4075236667))
+  }
+  {
+    methodName := StringNameFromStr("set_node_b")
+    defer methodName.Destroy()
+    ptrsForJoint2D.fnSetNodeB = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1348162250))
+  }
+  {
+    methodName := StringNameFromStr("get_node_b")
+    defer methodName.Destroy()
+    ptrsForJoint2D.fnGetNodeB = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4075236667))
+  }
+  {
+    methodName := StringNameFromStr("set_bias")
+    defer methodName.Destroy()
+    ptrsForJoint2D.fnSetBias = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_bias")
+    defer methodName.Destroy()
+    ptrsForJoint2D.fnGetBias = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_exclude_nodes_from_collision")
+    defer methodName.Destroy()
+    ptrsForJoint2D.fnSetExcludeNodesFromCollision = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_exclude_nodes_from_collision")
+    defer methodName.Destroy()
+    ptrsForJoint2D.fnGetExcludeNodesFromCollision = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_rid")
+    defer methodName.Destroy()
+    ptrsForJoint2D.fnGetRid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
+  }
+}
+
 type Joint2D struct {
   Node2D
 }
@@ -51,133 +116,88 @@ func (me *Joint2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Joint2D) SetNodeA(node NodePath, )  {
-  classNameV := StringNameFromStr("Joint2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_node_a")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{node.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJoint2D.fnSetNodeA), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Joint2D) GetNodeA() NodePath {
-  classNameV := StringNameFromStr("Joint2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_node_a")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNodePath()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJoint2D.fnGetNodeA), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Joint2D) SetNodeB(node NodePath, )  {
-  classNameV := StringNameFromStr("Joint2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_node_b")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{node.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJoint2D.fnSetNodeB), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Joint2D) GetNodeB() NodePath {
-  classNameV := StringNameFromStr("Joint2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_node_b")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNodePath()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJoint2D.fnGetNodeB), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Joint2D) SetBias(bias float64, )  {
-  classNameV := StringNameFromStr("Joint2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_bias")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bias) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJoint2D.fnSetBias), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Joint2D) GetBias() float64 {
-  classNameV := StringNameFromStr("Joint2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_bias")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJoint2D.fnGetBias), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Joint2D) SetExcludeNodesFromCollision(enable bool, )  {
-  classNameV := StringNameFromStr("Joint2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_exclude_nodes_from_collision")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJoint2D.fnSetExcludeNodesFromCollision), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Joint2D) GetExcludeNodesFromCollision() bool {
-  classNameV := StringNameFromStr("Joint2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_exclude_nodes_from_collision")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJoint2D.fnGetExcludeNodesFromCollision), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Joint2D) GetRid() RID {
-  classNameV := StringNameFromStr("Joint2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_rid")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRID()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJoint2D.fnGetRid), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

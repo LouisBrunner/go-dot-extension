@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForInputEventFromWindowList struct {
+  fnSetWindowId gdc.MethodBindPtr
+  fnGetWindowId gdc.MethodBindPtr
+}
+
+var ptrsForInputEventFromWindow ptrsForInputEventFromWindowList
+
+func initInputEventFromWindowPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("InputEventFromWindow")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_window_id")
+    defer methodName.Destroy()
+    ptrsForInputEventFromWindow.fnSetWindowId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_window_id")
+    defer methodName.Destroy()
+    ptrsForInputEventFromWindow.fnGetWindowId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+}
+
 type InputEventFromWindow struct {
   InputEvent
 }
@@ -51,31 +74,21 @@ func (me *InputEventFromWindow) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *InputEventFromWindow) SetWindowId(id int64, )  {
-  classNameV := StringNameFromStr("InputEventFromWindow")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_window_id")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventFromWindow.fnSetWindowId), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventFromWindow) GetWindowId() int64 {
-  classNameV := StringNameFromStr("InputEventFromWindow")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_window_id")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventFromWindow.fnGetWindowId), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

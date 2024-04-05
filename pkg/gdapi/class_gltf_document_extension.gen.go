@@ -14,6 +14,36 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForGLTFDocumentExtensionList struct {
+  fnXImportPreflight gdc.MethodBindPtr
+  fnXGetSupportedExtensions gdc.MethodBindPtr
+  fnXParseNodeExtensions gdc.MethodBindPtr
+  fnXParseImageData gdc.MethodBindPtr
+  fnXGetImageFileExtension gdc.MethodBindPtr
+  fnXParseTextureJson gdc.MethodBindPtr
+  fnXGenerateSceneNode gdc.MethodBindPtr
+  fnXImportPostParse gdc.MethodBindPtr
+  fnXImportNode gdc.MethodBindPtr
+  fnXImportPost gdc.MethodBindPtr
+  fnXExportPreflight gdc.MethodBindPtr
+  fnXConvertSceneNode gdc.MethodBindPtr
+  fnXExportPreserialize gdc.MethodBindPtr
+  fnXGetSaveableImageFormats gdc.MethodBindPtr
+  fnXSerializeImageToBytes gdc.MethodBindPtr
+  fnXSaveImageAtPath gdc.MethodBindPtr
+  fnXSerializeTextureJson gdc.MethodBindPtr
+  fnXExportNode gdc.MethodBindPtr
+  fnXExportPost gdc.MethodBindPtr
+}
+
+var ptrsForGLTFDocumentExtension ptrsForGLTFDocumentExtensionList
+
+func initGLTFDocumentExtensionPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("GLTFDocumentExtension")
+  defer className.Destroy()
+}
+
 type GLTFDocumentExtension struct {
   Resource
 }

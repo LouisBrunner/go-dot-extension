@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeParticleEmitterList struct {
+  fnSetMode2D gdc.MethodBindPtr
+  fnIsMode2D gdc.MethodBindPtr
+}
+
+var ptrsForVisualShaderNodeParticleEmitter ptrsForVisualShaderNodeParticleEmitterList
+
+func initVisualShaderNodeParticleEmitterPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeParticleEmitter")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_mode_2d")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeParticleEmitter.fnSetMode2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_mode_2d")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeParticleEmitter.fnIsMode2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type VisualShaderNodeParticleEmitter struct {
   VisualShaderNode
 }
@@ -51,31 +74,21 @@ func (me *VisualShaderNodeParticleEmitter) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisualShaderNodeParticleEmitter) SetMode2D(enabled bool, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeParticleEmitter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_mode_2d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeParticleEmitter.fnSetMode2D), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeParticleEmitter) IsMode2D() bool {
-  classNameV := StringNameFromStr("VisualShaderNodeParticleEmitter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_mode_2d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeParticleEmitter.fnIsMode2D), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

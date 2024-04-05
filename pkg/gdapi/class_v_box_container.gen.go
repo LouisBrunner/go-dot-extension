@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVBoxContainerList struct {
+}
+
+var ptrsForVBoxContainer ptrsForVBoxContainerList
+
+func initVBoxContainerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VBoxContainer")
+  defer className.Destroy()
+}
+
 type VBoxContainer struct {
   BoxContainer
 }

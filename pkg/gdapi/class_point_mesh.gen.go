@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPointMeshList struct {
+}
+
+var ptrsForPointMesh ptrsForPointMeshList
+
+func initPointMeshPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PointMesh")
+  defer className.Destroy()
+}
+
 type PointMesh struct {
   PrimitiveMesh
 }

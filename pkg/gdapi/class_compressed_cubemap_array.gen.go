@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCompressedCubemapArrayList struct {
+}
+
+var ptrsForCompressedCubemapArray ptrsForCompressedCubemapArrayList
+
+func initCompressedCubemapArrayPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CompressedCubemapArray")
+  defer className.Destroy()
+}
+
 type CompressedCubemapArray struct {
   CompressedTextureLayered
 }

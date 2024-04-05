@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForXRCamera3DList struct {
+}
+
+var ptrsForXRCamera3D ptrsForXRCamera3DList
+
+func initXRCamera3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("XRCamera3D")
+  defer className.Destroy()
+}
+
 type XRCamera3D struct {
   Camera3D
 }

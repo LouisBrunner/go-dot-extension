@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioEffectPannerList struct {
+  fnSetPan gdc.MethodBindPtr
+  fnGetPan gdc.MethodBindPtr
+}
+
+var ptrsForAudioEffectPanner ptrsForAudioEffectPannerList
+
+func initAudioEffectPannerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioEffectPanner")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_pan")
+    defer methodName.Destroy()
+    ptrsForAudioEffectPanner.fnSetPan = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_pan")
+    defer methodName.Destroy()
+    ptrsForAudioEffectPanner.fnGetPan = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type AudioEffectPanner struct {
   AudioEffect
 }
@@ -51,31 +74,21 @@ func (me *AudioEffectPanner) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AudioEffectPanner) SetPan(cpanume float64, )  {
-  classNameV := StringNameFromStr("AudioEffectPanner")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_pan")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&cpanume) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectPanner.fnSetPan), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectPanner) GetPan() float64 {
-  classNameV := StringNameFromStr("AudioEffectPanner")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_pan")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectPanner.fnGetPan), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

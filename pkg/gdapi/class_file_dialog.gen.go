@@ -14,6 +14,173 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForFileDialogList struct {
+  fnClearFilters gdc.MethodBindPtr
+  fnAddFilter gdc.MethodBindPtr
+  fnSetFilters gdc.MethodBindPtr
+  fnGetFilters gdc.MethodBindPtr
+  fnGetCurrentDir gdc.MethodBindPtr
+  fnGetCurrentFile gdc.MethodBindPtr
+  fnGetCurrentPath gdc.MethodBindPtr
+  fnSetCurrentDir gdc.MethodBindPtr
+  fnSetCurrentFile gdc.MethodBindPtr
+  fnSetCurrentPath gdc.MethodBindPtr
+  fnSetModeOverridesTitle gdc.MethodBindPtr
+  fnIsModeOverridingTitle gdc.MethodBindPtr
+  fnSetFileMode gdc.MethodBindPtr
+  fnGetFileMode gdc.MethodBindPtr
+  fnGetVbox gdc.MethodBindPtr
+  fnGetLineEdit gdc.MethodBindPtr
+  fnSetAccess gdc.MethodBindPtr
+  fnGetAccess gdc.MethodBindPtr
+  fnSetRootSubfolder gdc.MethodBindPtr
+  fnGetRootSubfolder gdc.MethodBindPtr
+  fnSetShowHiddenFiles gdc.MethodBindPtr
+  fnIsShowingHiddenFiles gdc.MethodBindPtr
+  fnSetUseNativeDialog gdc.MethodBindPtr
+  fnGetUseNativeDialog gdc.MethodBindPtr
+  fnDeselectAll gdc.MethodBindPtr
+  fnInvalidate gdc.MethodBindPtr
+}
+
+var ptrsForFileDialog ptrsForFileDialogList
+
+func initFileDialogPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("FileDialog")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("clear_filters")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnClearFilters = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("add_filter")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnAddFilter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3388804757))
+  }
+  {
+    methodName := StringNameFromStr("set_filters")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnSetFilters = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4015028928))
+  }
+  {
+    methodName := StringNameFromStr("get_filters")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnGetFilters = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1139954409))
+  }
+  {
+    methodName := StringNameFromStr("get_current_dir")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnGetCurrentDir = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("get_current_file")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnGetCurrentFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("get_current_path")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnGetCurrentPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("set_current_dir")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnSetCurrentDir = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("set_current_file")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnSetCurrentFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("set_current_path")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnSetCurrentPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("set_mode_overrides_title")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnSetModeOverridesTitle = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_mode_overriding_title")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnIsModeOverridingTitle = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_file_mode")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnSetFileMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3654936397))
+  }
+  {
+    methodName := StringNameFromStr("get_file_mode")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnGetFileMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4074825319))
+  }
+  {
+    methodName := StringNameFromStr("get_vbox")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnGetVbox = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 915758477))
+  }
+  {
+    methodName := StringNameFromStr("get_line_edit")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnGetLineEdit = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4071694264))
+  }
+  {
+    methodName := StringNameFromStr("set_access")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnSetAccess = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4104413466))
+  }
+  {
+    methodName := StringNameFromStr("get_access")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnGetAccess = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3344081076))
+  }
+  {
+    methodName := StringNameFromStr("set_root_subfolder")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnSetRootSubfolder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_root_subfolder")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnGetRootSubfolder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("set_show_hidden_files")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnSetShowHiddenFiles = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_showing_hidden_files")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnIsShowingHiddenFiles = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_use_native_dialog")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnSetUseNativeDialog = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_use_native_dialog")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnGetUseNativeDialog = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("deselect_all")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnDeselectAll = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("invalidate")
+    defer methodName.Destroy()
+    ptrsForFileDialog.fnInvalidate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+}
+
 type FileDialog struct {
   ConfirmationDialog
 }
@@ -67,378 +234,248 @@ func (me *FileDialog) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *FileDialog) ClearFilters()  {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("clear_filters")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnClearFilters), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FileDialog) AddFilter(filter String, description String, )  {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_filter")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3388804757) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{filter.AsCTypePtr(), description.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnAddFilter), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FileDialog) SetFilters(filters PackedStringArray, )  {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_filters")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4015028928) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{filters.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnSetFilters), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FileDialog) GetFilters() PackedStringArray {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_filters")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedStringArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnGetFilters), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *FileDialog) GetCurrentDir() String {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_current_dir")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnGetCurrentDir), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *FileDialog) GetCurrentFile() String {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_current_file")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnGetCurrentFile), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *FileDialog) GetCurrentPath() String {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_current_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnGetCurrentPath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *FileDialog) SetCurrentDir(dir String, )  {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_current_dir")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{dir.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnSetCurrentDir), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FileDialog) SetCurrentFile(file String, )  {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_current_file")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{file.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnSetCurrentFile), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FileDialog) SetCurrentPath(path String, )  {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_current_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnSetCurrentPath), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FileDialog) SetModeOverridesTitle(override bool, )  {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_mode_overrides_title")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&override) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnSetModeOverridesTitle), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FileDialog) IsModeOverridingTitle() bool {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_mode_overriding_title")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnIsModeOverridingTitle), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *FileDialog) SetFileMode(mode FileDialogFileMode, )  {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_file_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3654936397) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnSetFileMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FileDialog) GetFileMode() FileDialogFileMode {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_file_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4074825319) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret FileDialogFileMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnGetFileMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *FileDialog) GetVbox() VBoxContainer {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_vbox")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 915758477) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVBoxContainer()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnGetVbox), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *FileDialog) GetLineEdit() LineEdit {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_line_edit")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4071694264) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewLineEdit()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnGetLineEdit), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *FileDialog) SetAccess(access FileDialogAccess, )  {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_access")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4104413466) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&access) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnSetAccess), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FileDialog) GetAccess() FileDialogAccess {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_access")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3344081076) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret FileDialogAccess
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnGetAccess), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *FileDialog) SetRootSubfolder(dir String, )  {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_root_subfolder")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{dir.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnSetRootSubfolder), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FileDialog) GetRootSubfolder() String {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_root_subfolder")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnGetRootSubfolder), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *FileDialog) SetShowHiddenFiles(show bool, )  {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_show_hidden_files")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&show) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnSetShowHiddenFiles), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FileDialog) IsShowingHiddenFiles() bool {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_showing_hidden_files")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnIsShowingHiddenFiles), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *FileDialog) SetUseNativeDialog(native bool, )  {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_use_native_dialog")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&native) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnSetUseNativeDialog), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FileDialog) GetUseNativeDialog() bool {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_use_native_dialog")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnGetUseNativeDialog), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *FileDialog) DeselectAll()  {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("deselect_all")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnDeselectAll), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FileDialog) Invalidate()  {
-  classNameV := StringNameFromStr("FileDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("invalidate")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileDialog.fnInvalidate), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

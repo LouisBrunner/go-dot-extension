@@ -14,6 +14,657 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForNodeList struct {
+  fnXProcess gdc.MethodBindPtr
+  fnXPhysicsProcess gdc.MethodBindPtr
+  fnXEnterTree gdc.MethodBindPtr
+  fnXExitTree gdc.MethodBindPtr
+  fnXReady gdc.MethodBindPtr
+  fnXGetConfigurationWarnings gdc.MethodBindPtr
+  fnXInput gdc.MethodBindPtr
+  fnXShortcutInput gdc.MethodBindPtr
+  fnXUnhandledInput gdc.MethodBindPtr
+  fnXUnhandledKeyInput gdc.MethodBindPtr
+  fnPrintOrphanNodes gdc.MethodBindPtr
+  fnAddSibling gdc.MethodBindPtr
+  fnSetName gdc.MethodBindPtr
+  fnGetName gdc.MethodBindPtr
+  fnAddChild gdc.MethodBindPtr
+  fnRemoveChild gdc.MethodBindPtr
+  fnReparent gdc.MethodBindPtr
+  fnGetChildCount gdc.MethodBindPtr
+  fnGetChildren gdc.MethodBindPtr
+  fnGetChild gdc.MethodBindPtr
+  fnHasNode gdc.MethodBindPtr
+  fnGetNode gdc.MethodBindPtr
+  fnGetNodeOrNull gdc.MethodBindPtr
+  fnGetParent gdc.MethodBindPtr
+  fnFindChild gdc.MethodBindPtr
+  fnFindChildren gdc.MethodBindPtr
+  fnFindParent gdc.MethodBindPtr
+  fnHasNodeAndResource gdc.MethodBindPtr
+  fnGetNodeAndResource gdc.MethodBindPtr
+  fnIsInsideTree gdc.MethodBindPtr
+  fnIsAncestorOf gdc.MethodBindPtr
+  fnIsGreaterThan gdc.MethodBindPtr
+  fnGetPath gdc.MethodBindPtr
+  fnGetPathTo gdc.MethodBindPtr
+  fnAddToGroup gdc.MethodBindPtr
+  fnRemoveFromGroup gdc.MethodBindPtr
+  fnIsInGroup gdc.MethodBindPtr
+  fnMoveChild gdc.MethodBindPtr
+  fnGetGroups gdc.MethodBindPtr
+  fnSetOwner gdc.MethodBindPtr
+  fnGetOwner gdc.MethodBindPtr
+  fnGetIndex gdc.MethodBindPtr
+  fnPrintTree gdc.MethodBindPtr
+  fnPrintTreePretty gdc.MethodBindPtr
+  fnGetTreeString gdc.MethodBindPtr
+  fnGetTreeStringPretty gdc.MethodBindPtr
+  fnSetSceneFilePath gdc.MethodBindPtr
+  fnGetSceneFilePath gdc.MethodBindPtr
+  fnPropagateNotification gdc.MethodBindPtr
+  fnPropagateCall gdc.MethodBindPtr
+  fnSetPhysicsProcess gdc.MethodBindPtr
+  fnGetPhysicsProcessDeltaTime gdc.MethodBindPtr
+  fnIsPhysicsProcessing gdc.MethodBindPtr
+  fnGetProcessDeltaTime gdc.MethodBindPtr
+  fnSetProcess gdc.MethodBindPtr
+  fnSetProcessPriority gdc.MethodBindPtr
+  fnGetProcessPriority gdc.MethodBindPtr
+  fnSetPhysicsProcessPriority gdc.MethodBindPtr
+  fnGetPhysicsProcessPriority gdc.MethodBindPtr
+  fnIsProcessing gdc.MethodBindPtr
+  fnSetProcessInput gdc.MethodBindPtr
+  fnIsProcessingInput gdc.MethodBindPtr
+  fnSetProcessShortcutInput gdc.MethodBindPtr
+  fnIsProcessingShortcutInput gdc.MethodBindPtr
+  fnSetProcessUnhandledInput gdc.MethodBindPtr
+  fnIsProcessingUnhandledInput gdc.MethodBindPtr
+  fnSetProcessUnhandledKeyInput gdc.MethodBindPtr
+  fnIsProcessingUnhandledKeyInput gdc.MethodBindPtr
+  fnSetProcessMode gdc.MethodBindPtr
+  fnGetProcessMode gdc.MethodBindPtr
+  fnCanProcess gdc.MethodBindPtr
+  fnSetProcessThreadGroup gdc.MethodBindPtr
+  fnGetProcessThreadGroup gdc.MethodBindPtr
+  fnSetProcessThreadMessages gdc.MethodBindPtr
+  fnGetProcessThreadMessages gdc.MethodBindPtr
+  fnSetProcessThreadGroupOrder gdc.MethodBindPtr
+  fnGetProcessThreadGroupOrder gdc.MethodBindPtr
+  fnSetDisplayFolded gdc.MethodBindPtr
+  fnIsDisplayedFolded gdc.MethodBindPtr
+  fnSetProcessInternal gdc.MethodBindPtr
+  fnIsProcessingInternal gdc.MethodBindPtr
+  fnSetPhysicsProcessInternal gdc.MethodBindPtr
+  fnIsPhysicsProcessingInternal gdc.MethodBindPtr
+  fnGetWindow gdc.MethodBindPtr
+  fnGetLastExclusiveWindow gdc.MethodBindPtr
+  fnGetTree gdc.MethodBindPtr
+  fnCreateTween gdc.MethodBindPtr
+  fnDuplicate gdc.MethodBindPtr
+  fnReplaceBy gdc.MethodBindPtr
+  fnSetSceneInstanceLoadPlaceholder gdc.MethodBindPtr
+  fnGetSceneInstanceLoadPlaceholder gdc.MethodBindPtr
+  fnSetEditableInstance gdc.MethodBindPtr
+  fnIsEditableInstance gdc.MethodBindPtr
+  fnGetViewport gdc.MethodBindPtr
+  fnQueueFree gdc.MethodBindPtr
+  fnRequestReady gdc.MethodBindPtr
+  fnIsNodeReady gdc.MethodBindPtr
+  fnSetMultiplayerAuthority gdc.MethodBindPtr
+  fnGetMultiplayerAuthority gdc.MethodBindPtr
+  fnIsMultiplayerAuthority gdc.MethodBindPtr
+  fnGetMultiplayer gdc.MethodBindPtr
+  fnRpcConfig gdc.MethodBindPtr
+  fnSetEditorDescription gdc.MethodBindPtr
+  fnGetEditorDescription gdc.MethodBindPtr
+  fnSetUniqueNameInOwner gdc.MethodBindPtr
+  fnIsUniqueNameInOwner gdc.MethodBindPtr
+  fnRpc gdc.MethodBindPtr
+  fnRpcId gdc.MethodBindPtr
+  fnUpdateConfigurationWarnings gdc.MethodBindPtr
+  fnCallDeferredThreadGroup gdc.MethodBindPtr
+  fnSetDeferredThreadGroup gdc.MethodBindPtr
+  fnNotifyDeferredThreadGroup gdc.MethodBindPtr
+  fnCallThreadSafe gdc.MethodBindPtr
+  fnSetThreadSafe gdc.MethodBindPtr
+  fnNotifyThreadSafe gdc.MethodBindPtr
+}
+
+var ptrsForNode ptrsForNodeList
+
+func initNodePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Node")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("print_orphan_nodes")
+    defer methodName.Destroy()
+    ptrsForNode.fnPrintOrphanNodes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("add_sibling")
+    defer methodName.Destroy()
+    ptrsForNode.fnAddSibling = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2570952461))
+  }
+  {
+    methodName := StringNameFromStr("set_name")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_name")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2002593661))
+  }
+  {
+    methodName := StringNameFromStr("add_child")
+    defer methodName.Destroy()
+    ptrsForNode.fnAddChild = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3863233950))
+  }
+  {
+    methodName := StringNameFromStr("remove_child")
+    defer methodName.Destroy()
+    ptrsForNode.fnRemoveChild = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1078189570))
+  }
+  {
+    methodName := StringNameFromStr("reparent")
+    defer methodName.Destroy()
+    ptrsForNode.fnReparent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3685795103))
+  }
+  {
+    methodName := StringNameFromStr("get_child_count")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetChildCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 894402480))
+  }
+  {
+    methodName := StringNameFromStr("get_children")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetChildren = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 873284517))
+  }
+  {
+    methodName := StringNameFromStr("get_child")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetChild = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 541253412))
+  }
+  {
+    methodName := StringNameFromStr("has_node")
+    defer methodName.Destroy()
+    ptrsForNode.fnHasNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 861721659))
+  }
+  {
+    methodName := StringNameFromStr("get_node")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2734337346))
+  }
+  {
+    methodName := StringNameFromStr("get_node_or_null")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetNodeOrNull = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2734337346))
+  }
+  {
+    methodName := StringNameFromStr("get_parent")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetParent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3160264692))
+  }
+  {
+    methodName := StringNameFromStr("find_child")
+    defer methodName.Destroy()
+    ptrsForNode.fnFindChild = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2008217037))
+  }
+  {
+    methodName := StringNameFromStr("find_children")
+    defer methodName.Destroy()
+    ptrsForNode.fnFindChildren = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2560337219))
+  }
+  {
+    methodName := StringNameFromStr("find_parent")
+    defer methodName.Destroy()
+    ptrsForNode.fnFindParent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1140089439))
+  }
+  {
+    methodName := StringNameFromStr("has_node_and_resource")
+    defer methodName.Destroy()
+    ptrsForNode.fnHasNodeAndResource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 861721659))
+  }
+  {
+    methodName := StringNameFromStr("get_node_and_resource")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetNodeAndResource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 502563882))
+  }
+  {
+    methodName := StringNameFromStr("is_inside_tree")
+    defer methodName.Destroy()
+    ptrsForNode.fnIsInsideTree = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("is_ancestor_of")
+    defer methodName.Destroy()
+    ptrsForNode.fnIsAncestorOf = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3093956946))
+  }
+  {
+    methodName := StringNameFromStr("is_greater_than")
+    defer methodName.Destroy()
+    ptrsForNode.fnIsGreaterThan = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3093956946))
+  }
+  {
+    methodName := StringNameFromStr("get_path")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4075236667))
+  }
+  {
+    methodName := StringNameFromStr("get_path_to")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetPathTo = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 498846349))
+  }
+  {
+    methodName := StringNameFromStr("add_to_group")
+    defer methodName.Destroy()
+    ptrsForNode.fnAddToGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3683006648))
+  }
+  {
+    methodName := StringNameFromStr("remove_from_group")
+    defer methodName.Destroy()
+    ptrsForNode.fnRemoveFromGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3304788590))
+  }
+  {
+    methodName := StringNameFromStr("is_in_group")
+    defer methodName.Destroy()
+    ptrsForNode.fnIsInGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2619796661))
+  }
+  {
+    methodName := StringNameFromStr("move_child")
+    defer methodName.Destroy()
+    ptrsForNode.fnMoveChild = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3315886247))
+  }
+  {
+    methodName := StringNameFromStr("get_groups")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetGroups = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+  }
+  {
+    methodName := StringNameFromStr("set_owner")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetOwner = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1078189570))
+  }
+  {
+    methodName := StringNameFromStr("get_owner")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetOwner = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3160264692))
+  }
+  {
+    methodName := StringNameFromStr("get_index")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetIndex = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 894402480))
+  }
+  {
+    methodName := StringNameFromStr("print_tree")
+    defer methodName.Destroy()
+    ptrsForNode.fnPrintTree = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("print_tree_pretty")
+    defer methodName.Destroy()
+    ptrsForNode.fnPrintTreePretty = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("get_tree_string")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetTreeString = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2841200299))
+  }
+  {
+    methodName := StringNameFromStr("get_tree_string_pretty")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetTreeStringPretty = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2841200299))
+  }
+  {
+    methodName := StringNameFromStr("set_scene_file_path")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetSceneFilePath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_scene_file_path")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetSceneFilePath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("propagate_notification")
+    defer methodName.Destroy()
+    ptrsForNode.fnPropagateNotification = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("propagate_call")
+    defer methodName.Destroy()
+    ptrsForNode.fnPropagateCall = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1871007965))
+  }
+  {
+    methodName := StringNameFromStr("set_physics_process")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetPhysicsProcess = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_physics_process_delta_time")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetPhysicsProcessDeltaTime = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("is_physics_processing")
+    defer methodName.Destroy()
+    ptrsForNode.fnIsPhysicsProcessing = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_process_delta_time")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetProcessDeltaTime = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_process")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetProcess = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("set_process_priority")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetProcessPriority = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_process_priority")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetProcessPriority = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_physics_process_priority")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetPhysicsProcessPriority = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_physics_process_priority")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetPhysicsProcessPriority = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("is_processing")
+    defer methodName.Destroy()
+    ptrsForNode.fnIsProcessing = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_process_input")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetProcessInput = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_processing_input")
+    defer methodName.Destroy()
+    ptrsForNode.fnIsProcessingInput = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_process_shortcut_input")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetProcessShortcutInput = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_processing_shortcut_input")
+    defer methodName.Destroy()
+    ptrsForNode.fnIsProcessingShortcutInput = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_process_unhandled_input")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetProcessUnhandledInput = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_processing_unhandled_input")
+    defer methodName.Destroy()
+    ptrsForNode.fnIsProcessingUnhandledInput = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_process_unhandled_key_input")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetProcessUnhandledKeyInput = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_processing_unhandled_key_input")
+    defer methodName.Destroy()
+    ptrsForNode.fnIsProcessingUnhandledKeyInput = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_process_mode")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetProcessMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1841290486))
+  }
+  {
+    methodName := StringNameFromStr("get_process_mode")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetProcessMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 739966102))
+  }
+  {
+    methodName := StringNameFromStr("can_process")
+    defer methodName.Destroy()
+    ptrsForNode.fnCanProcess = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_process_thread_group")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetProcessThreadGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2275442745))
+  }
+  {
+    methodName := StringNameFromStr("get_process_thread_group")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetProcessThreadGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1866404740))
+  }
+  {
+    methodName := StringNameFromStr("set_process_thread_messages")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetProcessThreadMessages = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1357280998))
+  }
+  {
+    methodName := StringNameFromStr("get_process_thread_messages")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetProcessThreadMessages = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4228993612))
+  }
+  {
+    methodName := StringNameFromStr("set_process_thread_group_order")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetProcessThreadGroupOrder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_process_thread_group_order")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetProcessThreadGroupOrder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_display_folded")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetDisplayFolded = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_displayed_folded")
+    defer methodName.Destroy()
+    ptrsForNode.fnIsDisplayedFolded = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_process_internal")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetProcessInternal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_processing_internal")
+    defer methodName.Destroy()
+    ptrsForNode.fnIsProcessingInternal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_physics_process_internal")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetPhysicsProcessInternal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_physics_processing_internal")
+    defer methodName.Destroy()
+    ptrsForNode.fnIsPhysicsProcessingInternal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_window")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetWindow = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1757182445))
+  }
+  {
+    methodName := StringNameFromStr("get_last_exclusive_window")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetLastExclusiveWindow = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1757182445))
+  }
+  {
+    methodName := StringNameFromStr("get_tree")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetTree = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2958820483))
+  }
+  {
+    methodName := StringNameFromStr("create_tween")
+    defer methodName.Destroy()
+    ptrsForNode.fnCreateTween = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3426978995))
+  }
+  {
+    methodName := StringNameFromStr("duplicate")
+    defer methodName.Destroy()
+    ptrsForNode.fnDuplicate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3511555459))
+  }
+  {
+    methodName := StringNameFromStr("replace_by")
+    defer methodName.Destroy()
+    ptrsForNode.fnReplaceBy = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2570952461))
+  }
+  {
+    methodName := StringNameFromStr("set_scene_instance_load_placeholder")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetSceneInstanceLoadPlaceholder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_scene_instance_load_placeholder")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetSceneInstanceLoadPlaceholder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_editable_instance")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetEditableInstance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2731852923))
+  }
+  {
+    methodName := StringNameFromStr("is_editable_instance")
+    defer methodName.Destroy()
+    ptrsForNode.fnIsEditableInstance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3093956946))
+  }
+  {
+    methodName := StringNameFromStr("get_viewport")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetViewport = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3596683776))
+  }
+  {
+    methodName := StringNameFromStr("queue_free")
+    defer methodName.Destroy()
+    ptrsForNode.fnQueueFree = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("request_ready")
+    defer methodName.Destroy()
+    ptrsForNode.fnRequestReady = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("is_node_ready")
+    defer methodName.Destroy()
+    ptrsForNode.fnIsNodeReady = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_multiplayer_authority")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetMultiplayerAuthority = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 972357352))
+  }
+  {
+    methodName := StringNameFromStr("get_multiplayer_authority")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetMultiplayerAuthority = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("is_multiplayer_authority")
+    defer methodName.Destroy()
+    ptrsForNode.fnIsMultiplayerAuthority = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_multiplayer")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetMultiplayer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 406750475))
+  }
+  {
+    methodName := StringNameFromStr("rpc_config")
+    defer methodName.Destroy()
+    ptrsForNode.fnRpcConfig = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3776071444))
+  }
+  {
+    methodName := StringNameFromStr("set_editor_description")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetEditorDescription = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_editor_description")
+    defer methodName.Destroy()
+    ptrsForNode.fnGetEditorDescription = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("set_unique_name_in_owner")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetUniqueNameInOwner = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_unique_name_in_owner")
+    defer methodName.Destroy()
+    ptrsForNode.fnIsUniqueNameInOwner = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("rpc")
+    defer methodName.Destroy()
+    ptrsForNode.fnRpc = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4047867050))
+  }
+  {
+    methodName := StringNameFromStr("rpc_id")
+    defer methodName.Destroy()
+    ptrsForNode.fnRpcId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 361499283))
+  }
+  {
+    methodName := StringNameFromStr("update_configuration_warnings")
+    defer methodName.Destroy()
+    ptrsForNode.fnUpdateConfigurationWarnings = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("call_deferred_thread_group")
+    defer methodName.Destroy()
+    ptrsForNode.fnCallDeferredThreadGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3400424181))
+  }
+  {
+    methodName := StringNameFromStr("set_deferred_thread_group")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetDeferredThreadGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3776071444))
+  }
+  {
+    methodName := StringNameFromStr("notify_deferred_thread_group")
+    defer methodName.Destroy()
+    ptrsForNode.fnNotifyDeferredThreadGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("call_thread_safe")
+    defer methodName.Destroy()
+    ptrsForNode.fnCallThreadSafe = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3400424181))
+  }
+  {
+    methodName := StringNameFromStr("set_thread_safe")
+    defer methodName.Destroy()
+    ptrsForNode.fnSetThreadSafe = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3776071444))
+  }
+  {
+    methodName := StringNameFromStr("notify_thread_safe")
+    defer methodName.Destroy()
+    ptrsForNode.fnNotifyThreadSafe = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+}
+
 type Node struct {
   Object
 }
@@ -136,126 +787,81 @@ func (me *Node) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  NodePrintOrphanNodes()  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("print_orphan_nodes")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnPrintOrphanNodes), nil, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) AddSibling(sibling Node, force_readable_name bool, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_sibling")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2570952461) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{sibling.AsCTypePtr(), gdc.ConstTypePtr(&force_readable_name) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnAddSibling), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) SetName(name String, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetName), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) GetName() StringName {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewStringName()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) AddChild(node Node, force_readable_name bool, internal NodeInternalMode, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_child")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3863233950) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{node.AsCTypePtr(), gdc.ConstTypePtr(&force_readable_name) , gdc.ConstTypePtr(&internal) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnAddChild), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) RemoveChild(node Node, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_child")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{node.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnRemoveChild), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) Reparent(new_parent Node, keep_global_transform bool, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("reparent")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3685795103) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{new_parent.AsCTypePtr(), gdc.ConstTypePtr(&keep_global_transform) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnReparent), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) GetChildCount(include_internal bool, ) int64 {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_child_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 894402480) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&include_internal) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
   pinner.Pin(&include_internal)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetChildCount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) GetChildren(include_internal bool, ) []Node {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_children")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 873284517) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&include_internal) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -263,7 +869,7 @@ func  (me *Node) GetChildren(include_internal bool, ) []Node {
   defer ret.Destroy()
   pinner.Pin(&include_internal)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetChildren), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[Node](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -273,11 +879,6 @@ return sliceRet
 }
 
 func  (me *Node) GetChild(idx int64, include_internal bool, ) Node {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_child")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 541253412) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , gdc.ConstTypePtr(&include_internal) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -285,76 +886,51 @@ func  (me *Node) GetChild(idx int64, include_internal bool, ) Node {
   pinner.Pin(&idx)
   pinner.Pin(&include_internal)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetChild), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) HasNode(path NodePath, ) bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 861721659) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnHasNode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) GetNode(path NodePath, ) Node {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2734337346) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNode()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetNode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) GetNodeOrNull(path NodePath, ) Node {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_node_or_null")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2734337346) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNode()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetNodeOrNull), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) GetParent() Node {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_parent")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3160264692) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNode()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetParent), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) FindChild(pattern String, recursive bool, owned bool, ) Node {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("find_child")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2008217037) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{pattern.AsCTypePtr(), gdc.ConstTypePtr(&recursive) , gdc.ConstTypePtr(&owned) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -362,16 +938,11 @@ func  (me *Node) FindChild(pattern String, recursive bool, owned bool, ) Node {
   pinner.Pin(&recursive)
   pinner.Pin(&owned)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnFindChild), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) FindChildren(pattern String, type_ String, recursive bool, owned bool, ) []Node {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("find_children")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2560337219) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{pattern.AsCTypePtr(), type_.AsCTypePtr(), gdc.ConstTypePtr(&recursive) , gdc.ConstTypePtr(&owned) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -380,7 +951,7 @@ func  (me *Node) FindChildren(pattern String, type_ String, recursive bool, owne
   pinner.Pin(&recursive)
   pinner.Pin(&owned)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnFindChildren), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[Node](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -390,196 +961,131 @@ return sliceRet
 }
 
 func  (me *Node) FindParent(pattern String, ) Node {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("find_parent")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1140089439) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{pattern.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNode()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnFindParent), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) HasNodeAndResource(path NodePath, ) bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_node_and_resource")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 861721659) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnHasNodeAndResource), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) GetNodeAndResource(path NodePath, ) Array {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_node_and_resource")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 502563882) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetNodeAndResource), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) IsInsideTree() bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_inside_tree")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsInsideTree), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) IsAncestorOf(node Node, ) bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_ancestor_of")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3093956946) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{node.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsAncestorOf), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) IsGreaterThan(node Node, ) bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_greater_than")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3093956946) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{node.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsGreaterThan), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) GetPath() NodePath {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNodePath()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetPath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) GetPathTo(node Node, use_unique_path bool, ) NodePath {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_path_to")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 498846349) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{node.AsCTypePtr(), gdc.ConstTypePtr(&use_unique_path) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNodePath()
   pinner.Pin(&use_unique_path)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetPathTo), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) AddToGroup(group StringName, persistent bool, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_to_group")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3683006648) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{group.AsCTypePtr(), gdc.ConstTypePtr(&persistent) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnAddToGroup), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) RemoveFromGroup(group StringName, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_from_group")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{group.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnRemoveFromGroup), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) IsInGroup(group StringName, ) bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_in_group")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{group.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsInGroup), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) MoveChild(child_node Node, to_index int64, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("move_child")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3315886247) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{child_node.AsCTypePtr(), gdc.ConstTypePtr(&to_index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnMoveChild), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) GetGroups() []StringName {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_groups")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetGroups), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[StringName](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -589,988 +1095,648 @@ return sliceRet
 }
 
 func  (me *Node) SetOwner(owner Node, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_owner")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{owner.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetOwner), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) GetOwner() Node {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_owner")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3160264692) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNode()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetOwner), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) GetIndex(include_internal bool, ) int64 {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_index")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 894402480) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&include_internal) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
   pinner.Pin(&include_internal)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetIndex), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) PrintTree()  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("print_tree")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnPrintTree), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) PrintTreePretty()  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("print_tree_pretty")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnPrintTreePretty), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) GetTreeString() String {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_tree_string")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2841200299) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetTreeString), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) GetTreeStringPretty() String {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_tree_string_pretty")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2841200299) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetTreeStringPretty), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) SetSceneFilePath(scene_file_path String, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_scene_file_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{scene_file_path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetSceneFilePath), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) GetSceneFilePath() String {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_scene_file_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetSceneFilePath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) PropagateNotification(what int64, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("propagate_notification")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&what) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnPropagateNotification), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) PropagateCall(method StringName, args Array, parent_first bool, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("propagate_call")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1871007965) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{method.AsCTypePtr(), args.AsCTypePtr(), gdc.ConstTypePtr(&parent_first) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnPropagateCall), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) SetPhysicsProcess(enable bool, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_physics_process")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetPhysicsProcess), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) GetPhysicsProcessDeltaTime() float64 {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_physics_process_delta_time")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetPhysicsProcessDeltaTime), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) IsPhysicsProcessing() bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_physics_processing")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsPhysicsProcessing), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) GetProcessDeltaTime() float64 {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_process_delta_time")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetProcessDeltaTime), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) SetProcess(enable bool, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_process")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetProcess), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) SetProcessPriority(priority int64, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_process_priority")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&priority) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetProcessPriority), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) GetProcessPriority() int64 {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_process_priority")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetProcessPriority), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) SetPhysicsProcessPriority(priority int64, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_physics_process_priority")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&priority) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetPhysicsProcessPriority), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) GetPhysicsProcessPriority() int64 {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_physics_process_priority")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetPhysicsProcessPriority), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) IsProcessing() bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_processing")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsProcessing), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) SetProcessInput(enable bool, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_process_input")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetProcessInput), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) IsProcessingInput() bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_processing_input")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsProcessingInput), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) SetProcessShortcutInput(enable bool, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_process_shortcut_input")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetProcessShortcutInput), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) IsProcessingShortcutInput() bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_processing_shortcut_input")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsProcessingShortcutInput), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) SetProcessUnhandledInput(enable bool, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_process_unhandled_input")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetProcessUnhandledInput), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) IsProcessingUnhandledInput() bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_processing_unhandled_input")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsProcessingUnhandledInput), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) SetProcessUnhandledKeyInput(enable bool, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_process_unhandled_key_input")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetProcessUnhandledKeyInput), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) IsProcessingUnhandledKeyInput() bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_processing_unhandled_key_input")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsProcessingUnhandledKeyInput), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) SetProcessMode(mode NodeProcessMode, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_process_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1841290486) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetProcessMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) GetProcessMode() NodeProcessMode {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_process_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 739966102) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret NodeProcessMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetProcessMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Node) CanProcess() bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("can_process")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnCanProcess), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) SetProcessThreadGroup(mode NodeProcessThreadGroup, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_process_thread_group")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2275442745) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetProcessThreadGroup), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) GetProcessThreadGroup() NodeProcessThreadGroup {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_process_thread_group")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1866404740) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret NodeProcessThreadGroup
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetProcessThreadGroup), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Node) SetProcessThreadMessages(flags NodeProcessThreadMessages, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_process_thread_messages")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1357280998) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flags) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetProcessThreadMessages), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) GetProcessThreadMessages() NodeProcessThreadMessages {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_process_thread_messages")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4228993612) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret NodeProcessThreadMessages
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetProcessThreadMessages), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Node) SetProcessThreadGroupOrder(order int64, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_process_thread_group_order")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&order) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetProcessThreadGroupOrder), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) GetProcessThreadGroupOrder() int64 {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_process_thread_group_order")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetProcessThreadGroupOrder), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) SetDisplayFolded(fold bool, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_display_folded")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&fold) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetDisplayFolded), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) IsDisplayedFolded() bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_displayed_folded")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsDisplayedFolded), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) SetProcessInternal(enable bool, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_process_internal")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetProcessInternal), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) IsProcessingInternal() bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_processing_internal")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsProcessingInternal), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) SetPhysicsProcessInternal(enable bool, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_physics_process_internal")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetPhysicsProcessInternal), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) IsPhysicsProcessingInternal() bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_physics_processing_internal")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsPhysicsProcessingInternal), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) GetWindow() Window {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_window")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1757182445) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewWindow()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetWindow), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) GetLastExclusiveWindow() Window {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_last_exclusive_window")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1757182445) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewWindow()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetLastExclusiveWindow), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) GetTree() SceneTree {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_tree")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2958820483) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewSceneTree()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetTree), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) CreateTween() Tween {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("create_tween")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3426978995) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTween()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnCreateTween), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) Duplicate(flags int64, ) Node {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("duplicate")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3511555459) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flags) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNode()
   pinner.Pin(&flags)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnDuplicate), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) ReplaceBy(node Node, keep_groups bool, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("replace_by")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2570952461) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{node.AsCTypePtr(), gdc.ConstTypePtr(&keep_groups) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnReplaceBy), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) SetSceneInstanceLoadPlaceholder(load_placeholder bool, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_scene_instance_load_placeholder")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&load_placeholder) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetSceneInstanceLoadPlaceholder), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) GetSceneInstanceLoadPlaceholder() bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_scene_instance_load_placeholder")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetSceneInstanceLoadPlaceholder), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) SetEditableInstance(node Node, is_editable bool, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_editable_instance")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2731852923) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{node.AsCTypePtr(), gdc.ConstTypePtr(&is_editable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetEditableInstance), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) IsEditableInstance(node Node, ) bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_editable_instance")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3093956946) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{node.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsEditableInstance), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) GetViewport() Viewport {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_viewport")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3596683776) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewViewport()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetViewport), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) QueueFree()  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("queue_free")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnQueueFree), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) RequestReady()  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("request_ready")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnRequestReady), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) IsNodeReady() bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_node_ready")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsNodeReady), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) SetMultiplayerAuthority(id int64, recursive bool, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_multiplayer_authority")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 972357352) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id) , gdc.ConstTypePtr(&recursive) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetMultiplayerAuthority), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) GetMultiplayerAuthority() int64 {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_multiplayer_authority")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetMultiplayerAuthority), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) IsMultiplayerAuthority() bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_multiplayer_authority")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsMultiplayerAuthority), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) GetMultiplayer() MultiplayerAPI {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_multiplayer")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 406750475) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewMultiplayerAPI()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetMultiplayer), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) RpcConfig(method StringName, config Variant, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("rpc_config")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3776071444) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{method.AsCTypePtr(), config.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnRpcConfig), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) SetEditorDescription(editor_description String, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_editor_description")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{editor_description.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetEditorDescription), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) GetEditorDescription() String {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_editor_description")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetEditorDescription), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node) SetUniqueNameInOwner(enable bool, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_unique_name_in_owner")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetUniqueNameInOwner), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) IsUniqueNameInOwner() bool {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_unique_name_in_owner")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsUniqueNameInOwner), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node) Rpc(method StringName, varargs ...Variant) Error {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("rpc")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4047867050) // FIXME: should cache?
   cargs := make([]gdc.ConstVariantPtr, 0, 1 + len(varargs))
   var0 := method.AsVariant()
   defer var0.Destroy()
@@ -1581,7 +1747,7 @@ func  (me *Node) Rpc(method StringName, varargs ...Variant) Error {
   ret := NewVariant()
   defer ret.Destroy()
   cerr := &gdc.CallError{}
-  giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
+  giface.ObjectMethodBindCall(ensurePtr(ptrsForNode.fnRpc), me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
   if cerr.Error != gdc.CallOk {
     log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
     return Error(-1)
@@ -1595,11 +1761,6 @@ func  (me *Node) Rpc(method StringName, varargs ...Variant) Error {
 }
 
 func  (me *Node) RpcId(peer_id int64, method StringName, varargs ...Variant) Error {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("rpc_id")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 361499283) // FIXME: should cache?
   cargs := make([]gdc.ConstVariantPtr, 0, 2 + len(varargs))
   intVar0 := NewIntFromInt(peer_id)
   defer intVar0.Destroy()
@@ -1615,7 +1776,7 @@ func  (me *Node) RpcId(peer_id int64, method StringName, varargs ...Variant) Err
   ret := NewVariant()
   defer ret.Destroy()
   cerr := &gdc.CallError{}
-  giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
+  giface.ObjectMethodBindCall(ensurePtr(ptrsForNode.fnRpcId), me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
   if cerr.Error != gdc.CallOk {
     log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
     return Error(-1)
@@ -1629,25 +1790,15 @@ func  (me *Node) RpcId(peer_id int64, method StringName, varargs ...Variant) Err
 }
 
 func  (me *Node) UpdateConfigurationWarnings()  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("update_configuration_warnings")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnUpdateConfigurationWarnings), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) CallDeferredThreadGroup(method StringName, varargs ...Variant) Variant {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("call_deferred_thread_group")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3400424181) // FIXME: should cache?
   cargs := make([]gdc.ConstVariantPtr, 0, 1 + len(varargs))
   var0 := method.AsVariant()
   defer var0.Destroy()
@@ -1657,7 +1808,7 @@ func  (me *Node) CallDeferredThreadGroup(method StringName, varargs ...Variant) 
   }
   ret := NewVariant()
   cerr := &gdc.CallError{}
-  giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
+  giface.ObjectMethodBindCall(ensurePtr(ptrsForNode.fnCallDeferredThreadGroup), me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
   if cerr.Error != gdc.CallOk {
     log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
     return *ret
@@ -1666,39 +1817,24 @@ func  (me *Node) CallDeferredThreadGroup(method StringName, varargs ...Variant) 
 }
 
 func  (me *Node) SetDeferredThreadGroup(property StringName, value Variant, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_deferred_thread_group")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3776071444) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{property.AsCTypePtr(), value.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetDeferredThreadGroup), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) NotifyDeferredThreadGroup(what int64, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("notify_deferred_thread_group")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&what) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnNotifyDeferredThreadGroup), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) CallThreadSafe(method StringName, varargs ...Variant) Variant {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("call_thread_safe")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3400424181) // FIXME: should cache?
   cargs := make([]gdc.ConstVariantPtr, 0, 1 + len(varargs))
   var0 := method.AsVariant()
   defer var0.Destroy()
@@ -1708,7 +1844,7 @@ func  (me *Node) CallThreadSafe(method StringName, varargs ...Variant) Variant {
   }
   ret := NewVariant()
   cerr := &gdc.CallError{}
-  giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
+  giface.ObjectMethodBindCall(ensurePtr(ptrsForNode.fnCallThreadSafe), me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
   if cerr.Error != gdc.CallOk {
     log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
     return *ret
@@ -1717,30 +1853,20 @@ func  (me *Node) CallThreadSafe(method StringName, varargs ...Variant) Variant {
 }
 
 func  (me *Node) SetThreadSafe(property StringName, value Variant, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_thread_safe")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3776071444) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{property.AsCTypePtr(), value.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetThreadSafe), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node) NotifyThreadSafe(what int64, )  {
-  classNameV := StringNameFromStr("Node")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("notify_thread_safe")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&what) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnNotifyThreadSafe), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

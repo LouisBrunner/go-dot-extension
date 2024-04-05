@@ -14,6 +14,35 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForMutexList struct {
+  fnLock gdc.MethodBindPtr
+  fnTryLock gdc.MethodBindPtr
+  fnUnlock gdc.MethodBindPtr
+}
+
+var ptrsForMutex ptrsForMutexList
+
+func initMutexPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Mutex")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("lock")
+    defer methodName.Destroy()
+    ptrsForMutex.fnLock = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("try_lock")
+    defer methodName.Destroy()
+    ptrsForMutex.fnTryLock = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("unlock")
+    defer methodName.Destroy()
+    ptrsForMutex.fnUnlock = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+}
+
 type Mutex struct {
   RefCounted
 }
@@ -51,45 +80,30 @@ func (me *Mutex) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Mutex) Lock()  {
-  classNameV := StringNameFromStr("Mutex")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("lock")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMutex.fnLock), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Mutex) TryLock() bool {
-  classNameV := StringNameFromStr("Mutex")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("try_lock")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMutex.fnTryLock), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Mutex) Unlock()  {
-  classNameV := StringNameFromStr("Mutex")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("unlock")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMutex.fnUnlock), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

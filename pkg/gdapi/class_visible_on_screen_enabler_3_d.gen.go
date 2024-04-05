@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisibleOnScreenEnabler3DList struct {
+  fnSetEnableMode gdc.MethodBindPtr
+  fnGetEnableMode gdc.MethodBindPtr
+  fnSetEnableNodePath gdc.MethodBindPtr
+  fnGetEnableNodePath gdc.MethodBindPtr
+}
+
+var ptrsForVisibleOnScreenEnabler3D ptrsForVisibleOnScreenEnabler3DList
+
+func initVisibleOnScreenEnabler3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisibleOnScreenEnabler3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_enable_mode")
+    defer methodName.Destroy()
+    ptrsForVisibleOnScreenEnabler3D.fnSetEnableMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 320303646))
+  }
+  {
+    methodName := StringNameFromStr("get_enable_mode")
+    defer methodName.Destroy()
+    ptrsForVisibleOnScreenEnabler3D.fnGetEnableMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3352990031))
+  }
+  {
+    methodName := StringNameFromStr("set_enable_node_path")
+    defer methodName.Destroy()
+    ptrsForVisibleOnScreenEnabler3D.fnSetEnableNodePath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1348162250))
+  }
+  {
+    methodName := StringNameFromStr("get_enable_node_path")
+    defer methodName.Destroy()
+    ptrsForVisibleOnScreenEnabler3D.fnGetEnableNodePath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 277076166))
+  }
+}
+
 type VisibleOnScreenEnabler3D struct {
   VisibleOnScreenNotifier3D
 }
@@ -58,60 +93,40 @@ func (me *VisibleOnScreenEnabler3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisibleOnScreenEnabler3D) SetEnableMode(mode VisibleOnScreenEnabler3DEnableMode, )  {
-  classNameV := StringNameFromStr("VisibleOnScreenEnabler3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_enable_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 320303646) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisibleOnScreenEnabler3D.fnSetEnableMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisibleOnScreenEnabler3D) GetEnableMode() VisibleOnScreenEnabler3DEnableMode {
-  classNameV := StringNameFromStr("VisibleOnScreenEnabler3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_enable_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3352990031) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret VisibleOnScreenEnabler3DEnableMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisibleOnScreenEnabler3D.fnGetEnableMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *VisibleOnScreenEnabler3D) SetEnableNodePath(path NodePath, )  {
-  classNameV := StringNameFromStr("VisibleOnScreenEnabler3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_enable_node_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisibleOnScreenEnabler3D.fnSetEnableNodePath), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisibleOnScreenEnabler3D) GetEnableNodePath() NodePath {
-  classNameV := StringNameFromStr("VisibleOnScreenEnabler3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_enable_node_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 277076166) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNodePath()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisibleOnScreenEnabler3D.fnGetEnableNodePath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

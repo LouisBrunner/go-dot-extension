@@ -14,6 +14,35 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPlaceholderTextureLayeredList struct {
+  fnSetSize gdc.MethodBindPtr
+  fnGetSize gdc.MethodBindPtr
+  fnSetLayers gdc.MethodBindPtr
+}
+
+var ptrsForPlaceholderTextureLayered ptrsForPlaceholderTextureLayeredList
+
+func initPlaceholderTextureLayeredPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PlaceholderTextureLayered")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_size")
+    defer methodName.Destroy()
+    ptrsForPlaceholderTextureLayered.fnSetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1130785943))
+  }
+  {
+    methodName := StringNameFromStr("get_size")
+    defer methodName.Destroy()
+    ptrsForPlaceholderTextureLayered.fnGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3690982128))
+  }
+  {
+    methodName := StringNameFromStr("set_layers")
+    defer methodName.Destroy()
+    ptrsForPlaceholderTextureLayered.fnSetLayers = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+}
+
 type PlaceholderTextureLayered struct {
   TextureLayered
 }
@@ -51,45 +80,30 @@ func (me *PlaceholderTextureLayered) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PlaceholderTextureLayered) SetSize(size Vector2i, )  {
-  classNameV := StringNameFromStr("PlaceholderTextureLayered")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1130785943) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{size.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPlaceholderTextureLayered.fnSetSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PlaceholderTextureLayered) GetSize() Vector2i {
-  classNameV := StringNameFromStr("PlaceholderTextureLayered")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3690982128) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2i()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPlaceholderTextureLayered.fnGetSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PlaceholderTextureLayered) SetLayers(layers int64, )  {
-  classNameV := StringNameFromStr("PlaceholderTextureLayered")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_layers")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layers) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPlaceholderTextureLayered.fnSetLayers), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForResourceImporterDynamicFontList struct {
+}
+
+var ptrsForResourceImporterDynamicFont ptrsForResourceImporterDynamicFontList
+
+func initResourceImporterDynamicFontPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ResourceImporterDynamicFont")
+  defer className.Destroy()
+}
+
 type ResourceImporterDynamicFont struct {
   ResourceImporter
 }

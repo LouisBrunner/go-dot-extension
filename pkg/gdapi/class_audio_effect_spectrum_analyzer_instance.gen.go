@@ -14,6 +14,23 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioEffectSpectrumAnalyzerInstanceList struct {
+  fnGetMagnitudeForFrequencyRange gdc.MethodBindPtr
+}
+
+var ptrsForAudioEffectSpectrumAnalyzerInstance ptrsForAudioEffectSpectrumAnalyzerInstanceList
+
+func initAudioEffectSpectrumAnalyzerInstancePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioEffectSpectrumAnalyzerInstance")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_magnitude_for_frequency_range")
+    defer methodName.Destroy()
+    ptrsForAudioEffectSpectrumAnalyzerInstance.fnGetMagnitudeForFrequencyRange = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 797993915))
+  }
+}
+
 type AudioEffectSpectrumAnalyzerInstance struct {
   AudioEffectInstance
 }
@@ -57,11 +74,6 @@ func (me *AudioEffectSpectrumAnalyzerInstance) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AudioEffectSpectrumAnalyzerInstance) GetMagnitudeForFrequencyRange(from_hz float64, to_hz float64, mode AudioEffectSpectrumAnalyzerInstanceMagnitudeMode, ) Vector2 {
-  classNameV := StringNameFromStr("AudioEffectSpectrumAnalyzerInstance")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_magnitude_for_frequency_range")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 797993915) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_hz) , gdc.ConstTypePtr(&to_hz) , gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -70,7 +82,7 @@ func  (me *AudioEffectSpectrumAnalyzerInstance) GetMagnitudeForFrequencyRange(fr
   pinner.Pin(&to_hz)
   pinner.Pin(&mode)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectSpectrumAnalyzerInstance.fnGetMagnitudeForFrequencyRange), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

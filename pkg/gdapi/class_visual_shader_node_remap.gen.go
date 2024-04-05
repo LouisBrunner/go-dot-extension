@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeRemapList struct {
+}
+
+var ptrsForVisualShaderNodeRemap ptrsForVisualShaderNodeRemapList
+
+func initVisualShaderNodeRemapPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeRemap")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeRemap struct {
   VisualShaderNode
 }

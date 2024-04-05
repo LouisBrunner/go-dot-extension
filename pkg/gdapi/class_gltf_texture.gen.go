@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForGLTFTextureList struct {
+  fnGetSrcImage gdc.MethodBindPtr
+  fnSetSrcImage gdc.MethodBindPtr
+  fnGetSampler gdc.MethodBindPtr
+  fnSetSampler gdc.MethodBindPtr
+}
+
+var ptrsForGLTFTexture ptrsForGLTFTextureList
+
+func initGLTFTexturePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("GLTFTexture")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_src_image")
+    defer methodName.Destroy()
+    ptrsForGLTFTexture.fnGetSrcImage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_src_image")
+    defer methodName.Destroy()
+    ptrsForGLTFTexture.fnSetSrcImage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_sampler")
+    defer methodName.Destroy()
+    ptrsForGLTFTexture.fnGetSampler = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_sampler")
+    defer methodName.Destroy()
+    ptrsForGLTFTexture.fnSetSampler = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+}
+
 type GLTFTexture struct {
   Resource
 }
@@ -51,60 +86,40 @@ func (me *GLTFTexture) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *GLTFTexture) GetSrcImage() int64 {
-  classNameV := StringNameFromStr("GLTFTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_src_image")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFTexture.fnGetSrcImage), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *GLTFTexture) SetSrcImage(src_image int64, )  {
-  classNameV := StringNameFromStr("GLTFTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_src_image")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&src_image) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFTexture.fnSetSrcImage), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GLTFTexture) GetSampler() int64 {
-  classNameV := StringNameFromStr("GLTFTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_sampler")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFTexture.fnGetSampler), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *GLTFTexture) SetSampler(sampler int64, )  {
-  classNameV := StringNameFromStr("GLTFTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_sampler")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&sampler) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFTexture.fnSetSampler), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeLinearSceneDepthList struct {
+}
+
+var ptrsForVisualShaderNodeLinearSceneDepth ptrsForVisualShaderNodeLinearSceneDepthList
+
+func initVisualShaderNodeLinearSceneDepthPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeLinearSceneDepth")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeLinearSceneDepth struct {
   VisualShaderNode
 }

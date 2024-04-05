@@ -14,6 +14,89 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForRibbonTrailMeshList struct {
+  fnSetSize gdc.MethodBindPtr
+  fnGetSize gdc.MethodBindPtr
+  fnSetSections gdc.MethodBindPtr
+  fnGetSections gdc.MethodBindPtr
+  fnSetSectionLength gdc.MethodBindPtr
+  fnGetSectionLength gdc.MethodBindPtr
+  fnSetSectionSegments gdc.MethodBindPtr
+  fnGetSectionSegments gdc.MethodBindPtr
+  fnSetCurve gdc.MethodBindPtr
+  fnGetCurve gdc.MethodBindPtr
+  fnSetShape gdc.MethodBindPtr
+  fnGetShape gdc.MethodBindPtr
+}
+
+var ptrsForRibbonTrailMesh ptrsForRibbonTrailMeshList
+
+func initRibbonTrailMeshPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("RibbonTrailMesh")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_size")
+    defer methodName.Destroy()
+    ptrsForRibbonTrailMesh.fnSetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_size")
+    defer methodName.Destroy()
+    ptrsForRibbonTrailMesh.fnGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_sections")
+    defer methodName.Destroy()
+    ptrsForRibbonTrailMesh.fnSetSections = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_sections")
+    defer methodName.Destroy()
+    ptrsForRibbonTrailMesh.fnGetSections = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_section_length")
+    defer methodName.Destroy()
+    ptrsForRibbonTrailMesh.fnSetSectionLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_section_length")
+    defer methodName.Destroy()
+    ptrsForRibbonTrailMesh.fnGetSectionLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_section_segments")
+    defer methodName.Destroy()
+    ptrsForRibbonTrailMesh.fnSetSectionSegments = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_section_segments")
+    defer methodName.Destroy()
+    ptrsForRibbonTrailMesh.fnGetSectionSegments = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_curve")
+    defer methodName.Destroy()
+    ptrsForRibbonTrailMesh.fnSetCurve = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 270443179))
+  }
+  {
+    methodName := StringNameFromStr("get_curve")
+    defer methodName.Destroy()
+    ptrsForRibbonTrailMesh.fnGetCurve = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2460114913))
+  }
+  {
+    methodName := StringNameFromStr("set_shape")
+    defer methodName.Destroy()
+    ptrsForRibbonTrailMesh.fnSetShape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1684440262))
+  }
+  {
+    methodName := StringNameFromStr("get_shape")
+    defer methodName.Destroy()
+    ptrsForRibbonTrailMesh.fnGetShape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1317484155))
+  }
+}
+
 type RibbonTrailMesh struct {
   PrimitiveMesh
 }
@@ -57,176 +140,116 @@ func (me *RibbonTrailMesh) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *RibbonTrailMesh) SetSize(size float64, )  {
-  classNameV := StringNameFromStr("RibbonTrailMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRibbonTrailMesh.fnSetSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RibbonTrailMesh) GetSize() float64 {
-  classNameV := StringNameFromStr("RibbonTrailMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRibbonTrailMesh.fnGetSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RibbonTrailMesh) SetSections(sections int64, )  {
-  classNameV := StringNameFromStr("RibbonTrailMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_sections")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&sections) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRibbonTrailMesh.fnSetSections), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RibbonTrailMesh) GetSections() int64 {
-  classNameV := StringNameFromStr("RibbonTrailMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_sections")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRibbonTrailMesh.fnGetSections), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RibbonTrailMesh) SetSectionLength(section_length float64, )  {
-  classNameV := StringNameFromStr("RibbonTrailMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_section_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&section_length) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRibbonTrailMesh.fnSetSectionLength), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RibbonTrailMesh) GetSectionLength() float64 {
-  classNameV := StringNameFromStr("RibbonTrailMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_section_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRibbonTrailMesh.fnGetSectionLength), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RibbonTrailMesh) SetSectionSegments(section_segments int64, )  {
-  classNameV := StringNameFromStr("RibbonTrailMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_section_segments")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&section_segments) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRibbonTrailMesh.fnSetSectionSegments), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RibbonTrailMesh) GetSectionSegments() int64 {
-  classNameV := StringNameFromStr("RibbonTrailMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_section_segments")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRibbonTrailMesh.fnGetSectionSegments), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RibbonTrailMesh) SetCurve(curve Curve, )  {
-  classNameV := StringNameFromStr("RibbonTrailMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_curve")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{curve.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRibbonTrailMesh.fnSetCurve), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RibbonTrailMesh) GetCurve() Curve {
-  classNameV := StringNameFromStr("RibbonTrailMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_curve")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewCurve()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRibbonTrailMesh.fnGetCurve), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *RibbonTrailMesh) SetShape(shape RibbonTrailMeshShape, )  {
-  classNameV := StringNameFromStr("RibbonTrailMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_shape")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1684440262) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&shape) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRibbonTrailMesh.fnSetShape), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RibbonTrailMesh) GetShape() RibbonTrailMeshShape {
-  classNameV := StringNameFromStr("RibbonTrailMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_shape")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1317484155) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret RibbonTrailMeshShape
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRibbonTrailMesh.fnGetShape), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

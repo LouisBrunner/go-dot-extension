@@ -14,6 +14,23 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForWeakRefList struct {
+  fnGetRef gdc.MethodBindPtr
+}
+
+var ptrsForWeakRef ptrsForWeakRefList
+
+func initWeakRefPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("WeakRef")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_ref")
+    defer methodName.Destroy()
+    ptrsForWeakRef.fnGetRef = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1214101251))
+  }
+}
+
 type WeakRef struct {
   RefCounted
 }
@@ -51,17 +68,12 @@ func (me *WeakRef) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *WeakRef) GetRef() Variant {
-  classNameV := StringNameFromStr("WeakRef")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_ref")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1214101251) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVariant()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWeakRef.fnGetRef), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

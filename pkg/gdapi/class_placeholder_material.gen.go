@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPlaceholderMaterialList struct {
+}
+
+var ptrsForPlaceholderMaterial ptrsForPlaceholderMaterialList
+
+func initPlaceholderMaterialPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PlaceholderMaterial")
+  defer className.Destroy()
+}
+
 type PlaceholderMaterial struct {
   Material
 }

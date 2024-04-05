@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioEffectAmplifyList struct {
+  fnSetVolumeDb gdc.MethodBindPtr
+  fnGetVolumeDb gdc.MethodBindPtr
+}
+
+var ptrsForAudioEffectAmplify ptrsForAudioEffectAmplifyList
+
+func initAudioEffectAmplifyPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioEffectAmplify")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_volume_db")
+    defer methodName.Destroy()
+    ptrsForAudioEffectAmplify.fnSetVolumeDb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_volume_db")
+    defer methodName.Destroy()
+    ptrsForAudioEffectAmplify.fnGetVolumeDb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type AudioEffectAmplify struct {
   AudioEffect
 }
@@ -51,31 +74,21 @@ func (me *AudioEffectAmplify) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AudioEffectAmplify) SetVolumeDb(volume float64, )  {
-  classNameV := StringNameFromStr("AudioEffectAmplify")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_volume_db")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&volume) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectAmplify.fnSetVolumeDb), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectAmplify) GetVolumeDb() float64 {
-  classNameV := StringNameFromStr("AudioEffectAmplify")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_volume_db")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectAmplify.fnGetVolumeDb), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

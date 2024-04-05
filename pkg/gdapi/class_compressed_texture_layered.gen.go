@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCompressedTextureLayeredList struct {
+  fnLoad gdc.MethodBindPtr
+  fnGetLoadPath gdc.MethodBindPtr
+}
+
+var ptrsForCompressedTextureLayered ptrsForCompressedTextureLayeredList
+
+func initCompressedTextureLayeredPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CompressedTextureLayered")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("load")
+    defer methodName.Destroy()
+    ptrsForCompressedTextureLayered.fnLoad = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 166001499))
+  }
+  {
+    methodName := StringNameFromStr("get_load_path")
+    defer methodName.Destroy()
+    ptrsForCompressedTextureLayered.fnGetLoadPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+}
+
 type CompressedTextureLayered struct {
   TextureLayered
 }
@@ -51,32 +74,22 @@ func (me *CompressedTextureLayered) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *CompressedTextureLayered) Load(path String, ) Error {
-  classNameV := StringNameFromStr("CompressedTextureLayered")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("load")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166001499) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCompressedTextureLayered.fnLoad), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *CompressedTextureLayered) GetLoadPath() String {
-  classNameV := StringNameFromStr("CompressedTextureLayered")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_load_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCompressedTextureLayered.fnGetLoadPath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

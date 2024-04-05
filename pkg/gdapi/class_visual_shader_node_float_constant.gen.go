@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeFloatConstantList struct {
+  fnSetConstant gdc.MethodBindPtr
+  fnGetConstant gdc.MethodBindPtr
+}
+
+var ptrsForVisualShaderNodeFloatConstant ptrsForVisualShaderNodeFloatConstantList
+
+func initVisualShaderNodeFloatConstantPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeFloatConstant")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_constant")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeFloatConstant.fnSetConstant = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_constant")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeFloatConstant.fnGetConstant = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type VisualShaderNodeFloatConstant struct {
   VisualShaderNodeConstant
 }
@@ -51,31 +74,21 @@ func (me *VisualShaderNodeFloatConstant) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisualShaderNodeFloatConstant) SetConstant(constant float64, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeFloatConstant")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_constant")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&constant) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeFloatConstant.fnSetConstant), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeFloatConstant) GetConstant() float64 {
-  classNameV := StringNameFromStr("VisualShaderNodeFloatConstant")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_constant")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeFloatConstant.fnGetConstant), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

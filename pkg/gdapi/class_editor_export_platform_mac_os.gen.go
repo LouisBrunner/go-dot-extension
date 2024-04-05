@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorExportPlatformMacOSList struct {
+}
+
+var ptrsForEditorExportPlatformMacOS ptrsForEditorExportPlatformMacOSList
+
+func initEditorExportPlatformMacOSPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorExportPlatformMacOS")
+  defer className.Destroy()
+}
+
 type EditorExportPlatformMacOS struct {
   EditorExportPlatform
 }

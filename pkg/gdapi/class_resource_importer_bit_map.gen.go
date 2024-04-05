@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForResourceImporterBitMapList struct {
+}
+
+var ptrsForResourceImporterBitMap ptrsForResourceImporterBitMapList
+
+func initResourceImporterBitMapPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ResourceImporterBitMap")
+  defer className.Destroy()
+}
+
 type ResourceImporterBitMap struct {
   ResourceImporter
 }

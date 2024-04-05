@@ -14,6 +14,35 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorImportPluginList struct {
+  fnXGetImporterName gdc.MethodBindPtr
+  fnXGetVisibleName gdc.MethodBindPtr
+  fnXGetPresetCount gdc.MethodBindPtr
+  fnXGetPresetName gdc.MethodBindPtr
+  fnXGetRecognizedExtensions gdc.MethodBindPtr
+  fnXGetImportOptions gdc.MethodBindPtr
+  fnXGetSaveExtension gdc.MethodBindPtr
+  fnXGetResourceType gdc.MethodBindPtr
+  fnXGetPriority gdc.MethodBindPtr
+  fnXGetImportOrder gdc.MethodBindPtr
+  fnXGetOptionVisibility gdc.MethodBindPtr
+  fnXImport gdc.MethodBindPtr
+  fnAppendImportExternalResource gdc.MethodBindPtr
+}
+
+var ptrsForEditorImportPlugin ptrsForEditorImportPluginList
+
+func initEditorImportPluginPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorImportPlugin")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("append_import_external_resource")
+    defer methodName.Destroy()
+    ptrsForEditorImportPlugin.fnAppendImportExternalResource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 320493106))
+  }
+}
+
 type EditorImportPlugin struct {
   ResourceImporter
 }
@@ -51,17 +80,12 @@ func (me *EditorImportPlugin) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *EditorImportPlugin) AppendImportExternalResource(path String, custom_options Dictionary, custom_importer String, generator_parameters Variant, ) Error {
-  classNameV := StringNameFromStr("EditorImportPlugin")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("append_import_external_resource")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 320493106) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), custom_options.AsCTypePtr(), custom_importer.AsCTypePtr(), generator_parameters.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorImportPlugin.fnAppendImportExternalResource), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 

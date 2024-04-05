@@ -94,7 +94,7 @@ You can name the shared library whatever you want, the example above uses `libmy
 Here are some notes on how to write your class:
 
 - Any exported method will be available as a method on the Godot class (apart from any function called `Destroy`)
-- Any exported field will be available as a property on the Godot class (apart from any with type `gdapi.Signal` or `gdapi.SignalSubscribers`)
+- Any exported field will be available as a property on the Godot class (apart from any with type `gdextension.Signal` or `gdapi.SignalSubscribers`)
 - Any method starting with `X_` will be assumed to be a virtual method (e.g. `X_Ready` for `_ready`)
 - All methods and fields will be exported as `snake_case` (e.g. `MyMethod` will be `my_method`), this might lead to name conflicts, so make sure to use unique names
 - All exported methods must have 1 or no return value, multiple return values are not supported
@@ -134,6 +134,8 @@ You can find examples in the `examples` folder.
 
 ## Issues
 
+- cannot connect to signals from within Go (do it from GDScript/the editor directly)
+- no way to add custom enums or constants
 - the extension will exit the whole program when unloaded, otherwise it will just crash (most likely SIGSEGV)
 - cannot use another custom class as a base class
 - cannot receive another custom class as an argument on an exported method

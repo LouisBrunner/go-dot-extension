@@ -14,6 +14,65 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForXRNode3DList struct {
+  fnSetTracker gdc.MethodBindPtr
+  fnGetTracker gdc.MethodBindPtr
+  fnSetPoseName gdc.MethodBindPtr
+  fnGetPoseName gdc.MethodBindPtr
+  fnGetIsActive gdc.MethodBindPtr
+  fnGetHasTrackingData gdc.MethodBindPtr
+  fnGetPose gdc.MethodBindPtr
+  fnTriggerHapticPulse gdc.MethodBindPtr
+}
+
+var ptrsForXRNode3D ptrsForXRNode3DList
+
+func initXRNode3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("XRNode3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_tracker")
+    defer methodName.Destroy()
+    ptrsForXRNode3D.fnSetTracker = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3304788590))
+  }
+  {
+    methodName := StringNameFromStr("get_tracker")
+    defer methodName.Destroy()
+    ptrsForXRNode3D.fnGetTracker = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2002593661))
+  }
+  {
+    methodName := StringNameFromStr("set_pose_name")
+    defer methodName.Destroy()
+    ptrsForXRNode3D.fnSetPoseName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3304788590))
+  }
+  {
+    methodName := StringNameFromStr("get_pose_name")
+    defer methodName.Destroy()
+    ptrsForXRNode3D.fnGetPoseName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2002593661))
+  }
+  {
+    methodName := StringNameFromStr("get_is_active")
+    defer methodName.Destroy()
+    ptrsForXRNode3D.fnGetIsActive = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_has_tracking_data")
+    defer methodName.Destroy()
+    ptrsForXRNode3D.fnGetHasTrackingData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_pose")
+    defer methodName.Destroy()
+    ptrsForXRNode3D.fnGetPose = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2806551826))
+  }
+  {
+    methodName := StringNameFromStr("trigger_haptic_pulse")
+    defer methodName.Destroy()
+    ptrsForXRNode3D.fnTriggerHapticPulse = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 508576839))
+  }
+}
+
 type XRNode3D struct {
   Node3D
 }
@@ -51,119 +110,79 @@ func (me *XRNode3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *XRNode3D) SetTracker(tracker_name StringName, )  {
-  classNameV := StringNameFromStr("XRNode3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_tracker")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{tracker_name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRNode3D.fnSetTracker), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRNode3D) GetTracker() StringName {
-  classNameV := StringNameFromStr("XRNode3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_tracker")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewStringName()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRNode3D.fnGetTracker), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRNode3D) SetPoseName(pose StringName, )  {
-  classNameV := StringNameFromStr("XRNode3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_pose_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{pose.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRNode3D.fnSetPoseName), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRNode3D) GetPoseName() StringName {
-  classNameV := StringNameFromStr("XRNode3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_pose_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewStringName()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRNode3D.fnGetPoseName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRNode3D) GetIsActive() bool {
-  classNameV := StringNameFromStr("XRNode3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_is_active")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRNode3D.fnGetIsActive), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *XRNode3D) GetHasTrackingData() bool {
-  classNameV := StringNameFromStr("XRNode3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_has_tracking_data")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRNode3D.fnGetHasTrackingData), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *XRNode3D) GetPose() XRPose {
-  classNameV := StringNameFromStr("XRNode3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_pose")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2806551826) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewXRPose()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRNode3D.fnGetPose), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRNode3D) TriggerHapticPulse(action_name String, frequency float64, amplitude float64, duration_sec float64, delay_sec float64, )  {
-  classNameV := StringNameFromStr("XRNode3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("trigger_haptic_pulse")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 508576839) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{action_name.AsCTypePtr(), gdc.ConstTypePtr(&frequency) , gdc.ConstTypePtr(&amplitude) , gdc.ConstTypePtr(&duration_sec) , gdc.ConstTypePtr(&delay_sec) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRNode3D.fnTriggerHapticPulse), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

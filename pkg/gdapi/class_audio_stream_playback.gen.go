@@ -14,6 +14,25 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioStreamPlaybackList struct {
+  fnXStart gdc.MethodBindPtr
+  fnXStop gdc.MethodBindPtr
+  fnXIsPlaying gdc.MethodBindPtr
+  fnXGetLoopCount gdc.MethodBindPtr
+  fnXGetPlaybackPosition gdc.MethodBindPtr
+  fnXSeek gdc.MethodBindPtr
+  fnXMix gdc.MethodBindPtr
+  fnXTagUsedStreams gdc.MethodBindPtr
+}
+
+var ptrsForAudioStreamPlayback ptrsForAudioStreamPlaybackList
+
+func initAudioStreamPlaybackPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioStreamPlayback")
+  defer className.Destroy()
+}
+
 type AudioStreamPlayback struct {
   RefCounted
 }

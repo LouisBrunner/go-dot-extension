@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPanelContainerList struct {
+}
+
+var ptrsForPanelContainer ptrsForPanelContainerList
+
+func initPanelContainerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PanelContainer")
+  defer className.Destroy()
+}
+
 type PanelContainer struct {
   Container
 }

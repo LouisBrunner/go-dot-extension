@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioStreamPolyphonicList struct {
+  fnSetPolyphony gdc.MethodBindPtr
+  fnGetPolyphony gdc.MethodBindPtr
+}
+
+var ptrsForAudioStreamPolyphonic ptrsForAudioStreamPolyphonicList
+
+func initAudioStreamPolyphonicPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioStreamPolyphonic")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_polyphony")
+    defer methodName.Destroy()
+    ptrsForAudioStreamPolyphonic.fnSetPolyphony = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_polyphony")
+    defer methodName.Destroy()
+    ptrsForAudioStreamPolyphonic.fnGetPolyphony = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+}
+
 type AudioStreamPolyphonic struct {
   AudioStream
 }
@@ -51,31 +74,21 @@ func (me *AudioStreamPolyphonic) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AudioStreamPolyphonic) SetPolyphony(voices int64, )  {
-  classNameV := StringNameFromStr("AudioStreamPolyphonic")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_polyphony")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&voices) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamPolyphonic.fnSetPolyphony), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioStreamPolyphonic) GetPolyphony() int64 {
-  classNameV := StringNameFromStr("AudioStreamPolyphonic")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_polyphony")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamPolyphonic.fnGetPolyphony), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

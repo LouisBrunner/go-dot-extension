@@ -72,6 +72,8 @@ func mapName(n string) string {
 		return "string_"
 	case "len":
 		return "len_"
+	case "error":
+		return "error_"
 	}
 	return n
 }

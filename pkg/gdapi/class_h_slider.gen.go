@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForHSliderList struct {
+}
+
+var ptrsForHSlider ptrsForHSliderList
+
+func initHSliderPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("HSlider")
+  defer className.Destroy()
+}
+
 type HSlider struct {
   Slider
 }

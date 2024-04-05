@@ -14,6 +14,59 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPerformanceList struct {
+  fnGetMonitor gdc.MethodBindPtr
+  fnAddCustomMonitor gdc.MethodBindPtr
+  fnRemoveCustomMonitor gdc.MethodBindPtr
+  fnHasCustomMonitor gdc.MethodBindPtr
+  fnGetCustomMonitor gdc.MethodBindPtr
+  fnGetMonitorModificationTime gdc.MethodBindPtr
+  fnGetCustomMonitorNames gdc.MethodBindPtr
+}
+
+var ptrsForPerformance ptrsForPerformanceList
+
+func initPerformancePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Performance")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_monitor")
+    defer methodName.Destroy()
+    ptrsForPerformance.fnGetMonitor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1943275655))
+  }
+  {
+    methodName := StringNameFromStr("add_custom_monitor")
+    defer methodName.Destroy()
+    ptrsForPerformance.fnAddCustomMonitor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4099036814))
+  }
+  {
+    methodName := StringNameFromStr("remove_custom_monitor")
+    defer methodName.Destroy()
+    ptrsForPerformance.fnRemoveCustomMonitor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3304788590))
+  }
+  {
+    methodName := StringNameFromStr("has_custom_monitor")
+    defer methodName.Destroy()
+    ptrsForPerformance.fnHasCustomMonitor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2041966384))
+  }
+  {
+    methodName := StringNameFromStr("get_custom_monitor")
+    defer methodName.Destroy()
+    ptrsForPerformance.fnGetCustomMonitor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2138907829))
+  }
+  {
+    methodName := StringNameFromStr("get_monitor_modification_time")
+    defer methodName.Destroy()
+    ptrsForPerformance.fnGetMonitorModificationTime = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2455072627))
+  }
+  {
+    methodName := StringNameFromStr("get_custom_monitor_names")
+    defer methodName.Destroy()
+    ptrsForPerformance.fnGetCustomMonitorNames = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2915620761))
+  }
+}
+
 type Performance struct {
   Object
 }
@@ -89,107 +142,72 @@ func (me *Performance) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Performance) GetMonitor(monitor PerformanceMonitor, ) float64 {
-  classNameV := StringNameFromStr("Performance")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_monitor")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1943275655) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&monitor) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
   pinner.Pin(&monitor)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPerformance.fnGetMonitor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Performance) AddCustomMonitor(id StringName, callable Callable, arguments Array, )  {
-  classNameV := StringNameFromStr("Performance")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_custom_monitor")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4099036814) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{id.AsCTypePtr(), callable.AsCTypePtr(), arguments.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPerformance.fnAddCustomMonitor), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Performance) RemoveCustomMonitor(id StringName, )  {
-  classNameV := StringNameFromStr("Performance")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_custom_monitor")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{id.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPerformance.fnRemoveCustomMonitor), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Performance) HasCustomMonitor(id StringName, ) bool {
-  classNameV := StringNameFromStr("Performance")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_custom_monitor")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2041966384) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{id.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPerformance.fnHasCustomMonitor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Performance) GetCustomMonitor(id StringName, ) Variant {
-  classNameV := StringNameFromStr("Performance")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_custom_monitor")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2138907829) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{id.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVariant()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPerformance.fnGetCustomMonitor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Performance) GetMonitorModificationTime() int64 {
-  classNameV := StringNameFromStr("Performance")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_monitor_modification_time")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPerformance.fnGetMonitorModificationTime), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Performance) GetCustomMonitorNames() []StringName {
-  classNameV := StringNameFromStr("Performance")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_custom_monitor_names")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPerformance.fnGetCustomMonitorNames), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[StringName](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging

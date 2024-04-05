@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSkeletonProfileHumanoidList struct {
+}
+
+var ptrsForSkeletonProfileHumanoid ptrsForSkeletonProfileHumanoidList
+
+func initSkeletonProfileHumanoidPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("SkeletonProfileHumanoid")
+  defer className.Destroy()
+}
+
 type SkeletonProfileHumanoid struct {
   SkeletonProfile
 }

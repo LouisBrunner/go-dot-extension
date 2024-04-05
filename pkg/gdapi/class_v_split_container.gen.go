@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVSplitContainerList struct {
+}
+
+var ptrsForVSplitContainer ptrsForVSplitContainerList
+
+func initVSplitContainerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VSplitContainer")
+  defer className.Destroy()
+}
+
 type VSplitContainer struct {
   SplitContainer
 }

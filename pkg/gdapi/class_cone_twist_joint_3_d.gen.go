@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForConeTwistJoint3DList struct {
+  fnSetParam gdc.MethodBindPtr
+  fnGetParam gdc.MethodBindPtr
+}
+
+var ptrsForConeTwistJoint3D ptrsForConeTwistJoint3DList
+
+func initConeTwistJoint3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ConeTwistJoint3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_param")
+    defer methodName.Destroy()
+    ptrsForConeTwistJoint3D.fnSetParam = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1062470226))
+  }
+  {
+    methodName := StringNameFromStr("get_param")
+    defer methodName.Destroy()
+    ptrsForConeTwistJoint3D.fnGetParam = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2928790850))
+  }
+}
+
 type ConeTwistJoint3D struct {
   Joint3D
 }
@@ -61,32 +84,22 @@ func (me *ConeTwistJoint3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ConeTwistJoint3D) SetParam(param ConeTwistJoint3DParam, value float64, )  {
-  classNameV := StringNameFromStr("ConeTwistJoint3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_param")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1062470226) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param) , gdc.ConstTypePtr(&value) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForConeTwistJoint3D.fnSetParam), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ConeTwistJoint3D) GetParam(param ConeTwistJoint3DParam, ) float64 {
-  classNameV := StringNameFromStr("ConeTwistJoint3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_param")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2928790850) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
   pinner.Pin(&param)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForConeTwistJoint3D.fnGetParam), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

@@ -14,6 +14,157 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForBaseButtonList struct {
+  fnXPressed gdc.MethodBindPtr
+  fnXToggled gdc.MethodBindPtr
+  fnSetPressed gdc.MethodBindPtr
+  fnIsPressed gdc.MethodBindPtr
+  fnSetPressedNoSignal gdc.MethodBindPtr
+  fnIsHovered gdc.MethodBindPtr
+  fnSetToggleMode gdc.MethodBindPtr
+  fnIsToggleMode gdc.MethodBindPtr
+  fnSetShortcutInTooltip gdc.MethodBindPtr
+  fnIsShortcutInTooltipEnabled gdc.MethodBindPtr
+  fnSetDisabled gdc.MethodBindPtr
+  fnIsDisabled gdc.MethodBindPtr
+  fnSetActionMode gdc.MethodBindPtr
+  fnGetActionMode gdc.MethodBindPtr
+  fnSetButtonMask gdc.MethodBindPtr
+  fnGetButtonMask gdc.MethodBindPtr
+  fnGetDrawMode gdc.MethodBindPtr
+  fnSetKeepPressedOutside gdc.MethodBindPtr
+  fnIsKeepPressedOutside gdc.MethodBindPtr
+  fnSetShortcutFeedback gdc.MethodBindPtr
+  fnIsShortcutFeedback gdc.MethodBindPtr
+  fnSetShortcut gdc.MethodBindPtr
+  fnGetShortcut gdc.MethodBindPtr
+  fnSetButtonGroup gdc.MethodBindPtr
+  fnGetButtonGroup gdc.MethodBindPtr
+}
+
+var ptrsForBaseButton ptrsForBaseButtonList
+
+func initBaseButtonPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("BaseButton")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_pressed")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnSetPressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_pressed")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnIsPressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_pressed_no_signal")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnSetPressedNoSignal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_hovered")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnIsHovered = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_toggle_mode")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnSetToggleMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_toggle_mode")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnIsToggleMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_shortcut_in_tooltip")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnSetShortcutInTooltip = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_shortcut_in_tooltip_enabled")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnIsShortcutInTooltipEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_disabled")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnSetDisabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_disabled")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnIsDisabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_action_mode")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnSetActionMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1985162088))
+  }
+  {
+    methodName := StringNameFromStr("get_action_mode")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnGetActionMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2589712189))
+  }
+  {
+    methodName := StringNameFromStr("set_button_mask")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnSetButtonMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3950145251))
+  }
+  {
+    methodName := StringNameFromStr("get_button_mask")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnGetButtonMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2512161324))
+  }
+  {
+    methodName := StringNameFromStr("get_draw_mode")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnGetDrawMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2492721305))
+  }
+  {
+    methodName := StringNameFromStr("set_keep_pressed_outside")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnSetKeepPressedOutside = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_keep_pressed_outside")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnIsKeepPressedOutside = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_shortcut_feedback")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnSetShortcutFeedback = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_shortcut_feedback")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnIsShortcutFeedback = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_shortcut")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnSetShortcut = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 857163497))
+  }
+  {
+    methodName := StringNameFromStr("get_shortcut")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnGetShortcut = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3415666916))
+  }
+  {
+    methodName := StringNameFromStr("set_button_group")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnSetButtonGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1794463739))
+  }
+  {
+    methodName := StringNameFromStr("get_button_group")
+    defer methodName.Destroy()
+    ptrsForBaseButton.fnGetButtonGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 281644053))
+  }
+}
+
 type BaseButton struct {
   Control
 }
@@ -66,336 +217,221 @@ func (me *BaseButton) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *BaseButton) SetPressed(pressed bool, )  {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_pressed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pressed) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnSetPressed), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BaseButton) IsPressed() bool {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_pressed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnIsPressed), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *BaseButton) SetPressedNoSignal(pressed bool, )  {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_pressed_no_signal")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pressed) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnSetPressedNoSignal), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BaseButton) IsHovered() bool {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_hovered")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnIsHovered), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *BaseButton) SetToggleMode(enabled bool, )  {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_toggle_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnSetToggleMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BaseButton) IsToggleMode() bool {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_toggle_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnIsToggleMode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *BaseButton) SetShortcutInTooltip(enabled bool, )  {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_shortcut_in_tooltip")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnSetShortcutInTooltip), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BaseButton) IsShortcutInTooltipEnabled() bool {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_shortcut_in_tooltip_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnIsShortcutInTooltipEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *BaseButton) SetDisabled(disabled bool, )  {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_disabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&disabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnSetDisabled), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BaseButton) IsDisabled() bool {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_disabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnIsDisabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *BaseButton) SetActionMode(mode BaseButtonActionMode, )  {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_action_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1985162088) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnSetActionMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BaseButton) GetActionMode() BaseButtonActionMode {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_action_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2589712189) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret BaseButtonActionMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnGetActionMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *BaseButton) SetButtonMask(mask MouseButtonMask, )  {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_button_mask")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3950145251) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnSetButtonMask), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BaseButton) GetButtonMask() MouseButtonMask {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_button_mask")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2512161324) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret MouseButtonMask
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnGetButtonMask), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *BaseButton) GetDrawMode() BaseButtonDrawMode {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_draw_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2492721305) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret BaseButtonDrawMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnGetDrawMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *BaseButton) SetKeepPressedOutside(enabled bool, )  {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_keep_pressed_outside")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnSetKeepPressedOutside), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BaseButton) IsKeepPressedOutside() bool {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_keep_pressed_outside")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnIsKeepPressedOutside), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *BaseButton) SetShortcutFeedback(enabled bool, )  {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_shortcut_feedback")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnSetShortcutFeedback), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BaseButton) IsShortcutFeedback() bool {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_shortcut_feedback")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnIsShortcutFeedback), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *BaseButton) SetShortcut(shortcut Shortcut, )  {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_shortcut")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 857163497) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{shortcut.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnSetShortcut), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BaseButton) GetShortcut() Shortcut {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_shortcut")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3415666916) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewShortcut()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnGetShortcut), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *BaseButton) SetButtonGroup(button_group ButtonGroup, )  {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_button_group")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1794463739) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{button_group.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnSetButtonGroup), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BaseButton) GetButtonGroup() ButtonGroup {
-  classNameV := StringNameFromStr("BaseButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_button_group")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 281644053) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewButtonGroup()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBaseButton.fnGetButtonGroup), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

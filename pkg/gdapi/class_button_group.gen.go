@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForButtonGroupList struct {
+  fnGetPressedButton gdc.MethodBindPtr
+  fnGetButtons gdc.MethodBindPtr
+  fnSetAllowUnpress gdc.MethodBindPtr
+  fnIsAllowUnpress gdc.MethodBindPtr
+}
+
+var ptrsForButtonGroup ptrsForButtonGroupList
+
+func initButtonGroupPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ButtonGroup")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_pressed_button")
+    defer methodName.Destroy()
+    ptrsForButtonGroup.fnGetPressedButton = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3886434893))
+  }
+  {
+    methodName := StringNameFromStr("get_buttons")
+    defer methodName.Destroy()
+    ptrsForButtonGroup.fnGetButtons = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2915620761))
+  }
+  {
+    methodName := StringNameFromStr("set_allow_unpress")
+    defer methodName.Destroy()
+    ptrsForButtonGroup.fnSetAllowUnpress = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_allow_unpress")
+    defer methodName.Destroy()
+    ptrsForButtonGroup.fnIsAllowUnpress = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+}
+
 type ButtonGroup struct {
   Resource
 }
@@ -51,33 +86,23 @@ func (me *ButtonGroup) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ButtonGroup) GetPressedButton() BaseButton {
-  classNameV := StringNameFromStr("ButtonGroup")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_pressed_button")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3886434893) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBaseButton()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForButtonGroup.fnGetPressedButton), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ButtonGroup) GetButtons() []BaseButton {
-  classNameV := StringNameFromStr("ButtonGroup")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_buttons")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForButtonGroup.fnGetButtons), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[BaseButton](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -87,31 +112,21 @@ return sliceRet
 }
 
 func  (me *ButtonGroup) SetAllowUnpress(enabled bool, )  {
-  classNameV := StringNameFromStr("ButtonGroup")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_allow_unpress")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForButtonGroup.fnSetAllowUnpress), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ButtonGroup) IsAllowUnpress() bool {
-  classNameV := StringNameFromStr("ButtonGroup")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_allow_unpress")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForButtonGroup.fnIsAllowUnpress), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

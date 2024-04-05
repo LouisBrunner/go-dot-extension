@@ -14,6 +14,65 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForTexture3DList struct {
+  fnXGetFormat gdc.MethodBindPtr
+  fnXGetWidth gdc.MethodBindPtr
+  fnXGetHeight gdc.MethodBindPtr
+  fnXGetDepth gdc.MethodBindPtr
+  fnXHasMipmaps gdc.MethodBindPtr
+  fnXGetData gdc.MethodBindPtr
+  fnGetFormat gdc.MethodBindPtr
+  fnGetWidth gdc.MethodBindPtr
+  fnGetHeight gdc.MethodBindPtr
+  fnGetDepth gdc.MethodBindPtr
+  fnHasMipmaps gdc.MethodBindPtr
+  fnGetData gdc.MethodBindPtr
+  fnCreatePlaceholder gdc.MethodBindPtr
+}
+
+var ptrsForTexture3D ptrsForTexture3DList
+
+func initTexture3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Texture3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_format")
+    defer methodName.Destroy()
+    ptrsForTexture3D.fnGetFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3847873762))
+  }
+  {
+    methodName := StringNameFromStr("get_width")
+    defer methodName.Destroy()
+    ptrsForTexture3D.fnGetWidth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("get_height")
+    defer methodName.Destroy()
+    ptrsForTexture3D.fnGetHeight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("get_depth")
+    defer methodName.Destroy()
+    ptrsForTexture3D.fnGetDepth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("has_mipmaps")
+    defer methodName.Destroy()
+    ptrsForTexture3D.fnHasMipmaps = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_data")
+    defer methodName.Destroy()
+    ptrsForTexture3D.fnGetData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+  }
+  {
+    methodName := StringNameFromStr("create_placeholder")
+    defer methodName.Destroy()
+    ptrsForTexture3D.fnCreatePlaceholder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 121922552))
+  }
+}
+
 type Texture3D struct {
   Texture
 }
@@ -51,93 +110,63 @@ func (me *Texture3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Texture3D) GetFormat() ImageFormat {
-  classNameV := StringNameFromStr("Texture3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_format")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3847873762) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ImageFormat
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTexture3D.fnGetFormat), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Texture3D) GetWidth() int64 {
-  classNameV := StringNameFromStr("Texture3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_width")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTexture3D.fnGetWidth), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Texture3D) GetHeight() int64 {
-  classNameV := StringNameFromStr("Texture3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_height")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTexture3D.fnGetHeight), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Texture3D) GetDepth() int64 {
-  classNameV := StringNameFromStr("Texture3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_depth")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTexture3D.fnGetDepth), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Texture3D) HasMipmaps() bool {
-  classNameV := StringNameFromStr("Texture3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_mipmaps")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTexture3D.fnHasMipmaps), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Texture3D) GetData() []Image {
-  classNameV := StringNameFromStr("Texture3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_data")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTexture3D.fnGetData), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[Image](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -147,17 +176,12 @@ return sliceRet
 }
 
 func  (me *Texture3D) CreatePlaceholder() Resource {
-  classNameV := StringNameFromStr("Texture3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("create_placeholder")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 121922552) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewResource()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTexture3D.fnCreatePlaceholder), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

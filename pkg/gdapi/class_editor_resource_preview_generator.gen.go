@@ -14,6 +14,22 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorResourcePreviewGeneratorList struct {
+  fnXHandles gdc.MethodBindPtr
+  fnXGenerate gdc.MethodBindPtr
+  fnXGenerateFromPath gdc.MethodBindPtr
+  fnXGenerateSmallPreviewAutomatically gdc.MethodBindPtr
+  fnXCanGenerateSmallPreview gdc.MethodBindPtr
+}
+
+var ptrsForEditorResourcePreviewGenerator ptrsForEditorResourcePreviewGeneratorList
+
+func initEditorResourcePreviewGeneratorPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorResourcePreviewGenerator")
+  defer className.Destroy()
+}
+
 type EditorResourcePreviewGenerator struct {
   RefCounted
 }

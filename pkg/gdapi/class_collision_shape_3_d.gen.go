@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCollisionShape3DList struct {
+  fnResourceChanged gdc.MethodBindPtr
+  fnSetShape gdc.MethodBindPtr
+  fnGetShape gdc.MethodBindPtr
+  fnSetDisabled gdc.MethodBindPtr
+  fnIsDisabled gdc.MethodBindPtr
+  fnMakeConvexFromSiblings gdc.MethodBindPtr
+}
+
+var ptrsForCollisionShape3D ptrsForCollisionShape3DList
+
+func initCollisionShape3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CollisionShape3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("resource_changed")
+    defer methodName.Destroy()
+    ptrsForCollisionShape3D.fnResourceChanged = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 968641751))
+  }
+  {
+    methodName := StringNameFromStr("set_shape")
+    defer methodName.Destroy()
+    ptrsForCollisionShape3D.fnSetShape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1549710052))
+  }
+  {
+    methodName := StringNameFromStr("get_shape")
+    defer methodName.Destroy()
+    ptrsForCollisionShape3D.fnGetShape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3214262478))
+  }
+  {
+    methodName := StringNameFromStr("set_disabled")
+    defer methodName.Destroy()
+    ptrsForCollisionShape3D.fnSetDisabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_disabled")
+    defer methodName.Destroy()
+    ptrsForCollisionShape3D.fnIsDisabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("make_convex_from_siblings")
+    defer methodName.Destroy()
+    ptrsForCollisionShape3D.fnMakeConvexFromSiblings = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+}
+
 type CollisionShape3D struct {
   Node3D
 }
@@ -51,88 +98,58 @@ func (me *CollisionShape3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *CollisionShape3D) ResourceChanged(resource Resource, )  {
-  classNameV := StringNameFromStr("CollisionShape3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("resource_changed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 968641751) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{resource.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionShape3D.fnResourceChanged), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CollisionShape3D) SetShape(shape Shape3D, )  {
-  classNameV := StringNameFromStr("CollisionShape3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_shape")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1549710052) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{shape.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionShape3D.fnSetShape), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CollisionShape3D) GetShape() Shape3D {
-  classNameV := StringNameFromStr("CollisionShape3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_shape")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3214262478) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewShape3D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionShape3D.fnGetShape), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *CollisionShape3D) SetDisabled(enable bool, )  {
-  classNameV := StringNameFromStr("CollisionShape3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_disabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionShape3D.fnSetDisabled), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CollisionShape3D) IsDisabled() bool {
-  classNameV := StringNameFromStr("CollisionShape3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_disabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionShape3D.fnIsDisabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *CollisionShape3D) MakeConvexFromSiblings()  {
-  classNameV := StringNameFromStr("CollisionShape3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("make_convex_from_siblings")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionShape3D.fnMakeConvexFromSiblings), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

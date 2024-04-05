@@ -14,6 +14,71 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForNavigationMeshSourceGeometryData3DList struct {
+  fnSetVertices gdc.MethodBindPtr
+  fnGetVertices gdc.MethodBindPtr
+  fnSetIndices gdc.MethodBindPtr
+  fnGetIndices gdc.MethodBindPtr
+  fnClear gdc.MethodBindPtr
+  fnHasData gdc.MethodBindPtr
+  fnAddMesh gdc.MethodBindPtr
+  fnAddMeshArray gdc.MethodBindPtr
+  fnAddFaces gdc.MethodBindPtr
+}
+
+var ptrsForNavigationMeshSourceGeometryData3D ptrsForNavigationMeshSourceGeometryData3DList
+
+func initNavigationMeshSourceGeometryData3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("NavigationMeshSourceGeometryData3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_vertices")
+    defer methodName.Destroy()
+    ptrsForNavigationMeshSourceGeometryData3D.fnSetVertices = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2899603908))
+  }
+  {
+    methodName := StringNameFromStr("get_vertices")
+    defer methodName.Destroy()
+    ptrsForNavigationMeshSourceGeometryData3D.fnGetVertices = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 675695659))
+  }
+  {
+    methodName := StringNameFromStr("set_indices")
+    defer methodName.Destroy()
+    ptrsForNavigationMeshSourceGeometryData3D.fnSetIndices = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3614634198))
+  }
+  {
+    methodName := StringNameFromStr("get_indices")
+    defer methodName.Destroy()
+    ptrsForNavigationMeshSourceGeometryData3D.fnGetIndices = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1930428628))
+  }
+  {
+    methodName := StringNameFromStr("clear")
+    defer methodName.Destroy()
+    ptrsForNavigationMeshSourceGeometryData3D.fnClear = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("has_data")
+    defer methodName.Destroy()
+    ptrsForNavigationMeshSourceGeometryData3D.fnHasData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("add_mesh")
+    defer methodName.Destroy()
+    ptrsForNavigationMeshSourceGeometryData3D.fnAddMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 975462459))
+  }
+  {
+    methodName := StringNameFromStr("add_mesh_array")
+    defer methodName.Destroy()
+    ptrsForNavigationMeshSourceGeometryData3D.fnAddMeshArray = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4235710913))
+  }
+  {
+    methodName := StringNameFromStr("add_faces")
+    defer methodName.Destroy()
+    ptrsForNavigationMeshSourceGeometryData3D.fnAddFaces = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1440358797))
+  }
+}
+
 type NavigationMeshSourceGeometryData3D struct {
   Resource
 }
@@ -51,131 +116,86 @@ func (me *NavigationMeshSourceGeometryData3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *NavigationMeshSourceGeometryData3D) SetVertices(vertices PackedFloat32Array, )  {
-  classNameV := StringNameFromStr("NavigationMeshSourceGeometryData3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_vertices")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2899603908) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{vertices.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationMeshSourceGeometryData3D.fnSetVertices), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationMeshSourceGeometryData3D) GetVertices() PackedFloat32Array {
-  classNameV := StringNameFromStr("NavigationMeshSourceGeometryData3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_vertices")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 675695659) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedFloat32Array()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationMeshSourceGeometryData3D.fnGetVertices), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *NavigationMeshSourceGeometryData3D) SetIndices(indices PackedInt32Array, )  {
-  classNameV := StringNameFromStr("NavigationMeshSourceGeometryData3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_indices")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614634198) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{indices.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationMeshSourceGeometryData3D.fnSetIndices), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationMeshSourceGeometryData3D) GetIndices() PackedInt32Array {
-  classNameV := StringNameFromStr("NavigationMeshSourceGeometryData3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_indices")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1930428628) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedInt32Array()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationMeshSourceGeometryData3D.fnGetIndices), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *NavigationMeshSourceGeometryData3D) Clear()  {
-  classNameV := StringNameFromStr("NavigationMeshSourceGeometryData3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("clear")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationMeshSourceGeometryData3D.fnClear), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationMeshSourceGeometryData3D) HasData() bool {
-  classNameV := StringNameFromStr("NavigationMeshSourceGeometryData3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_data")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationMeshSourceGeometryData3D.fnHasData), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NavigationMeshSourceGeometryData3D) AddMesh(mesh Mesh, xform Transform3D, )  {
-  classNameV := StringNameFromStr("NavigationMeshSourceGeometryData3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_mesh")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 975462459) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{mesh.AsCTypePtr(), xform.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationMeshSourceGeometryData3D.fnAddMesh), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationMeshSourceGeometryData3D) AddMeshArray(mesh_array Array, xform Transform3D, )  {
-  classNameV := StringNameFromStr("NavigationMeshSourceGeometryData3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_mesh_array")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4235710913) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{mesh_array.AsCTypePtr(), xform.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationMeshSourceGeometryData3D.fnAddMeshArray), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationMeshSourceGeometryData3D) AddFaces(faces PackedVector3Array, xform Transform3D, )  {
-  classNameV := StringNameFromStr("NavigationMeshSourceGeometryData3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_faces")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1440358797) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{faces.AsCTypePtr(), xform.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationMeshSourceGeometryData3D.fnAddFaces), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

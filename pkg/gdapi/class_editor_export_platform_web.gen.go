@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorExportPlatformWebList struct {
+}
+
+var ptrsForEditorExportPlatformWeb ptrsForEditorExportPlatformWebList
+
+func initEditorExportPlatformWebPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorExportPlatformWeb")
+  defer className.Destroy()
+}
+
 type EditorExportPlatformWeb struct {
   EditorExportPlatform
 }

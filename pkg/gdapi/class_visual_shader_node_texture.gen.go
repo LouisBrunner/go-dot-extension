@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeTextureList struct {
+  fnSetSource gdc.MethodBindPtr
+  fnGetSource gdc.MethodBindPtr
+  fnSetTexture gdc.MethodBindPtr
+  fnGetTexture gdc.MethodBindPtr
+  fnSetTextureType gdc.MethodBindPtr
+  fnGetTextureType gdc.MethodBindPtr
+}
+
+var ptrsForVisualShaderNodeTexture ptrsForVisualShaderNodeTextureList
+
+func initVisualShaderNodeTexturePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeTexture")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_source")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeTexture.fnSetSource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 905262939))
+  }
+  {
+    methodName := StringNameFromStr("get_source")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeTexture.fnGetSource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2896297444))
+  }
+  {
+    methodName := StringNameFromStr("set_texture")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeTexture.fnSetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4051416890))
+  }
+  {
+    methodName := StringNameFromStr("get_texture")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeTexture.fnGetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
+  }
+  {
+    methodName := StringNameFromStr("set_texture_type")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeTexture.fnSetTextureType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 986314081))
+  }
+  {
+    methodName := StringNameFromStr("get_texture_type")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeTexture.fnGetTextureType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3290430153))
+  }
+}
+
 type VisualShaderNodeTexture struct {
   VisualShaderNode
 }
@@ -72,89 +119,59 @@ func (me *VisualShaderNodeTexture) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisualShaderNodeTexture) SetSource(value VisualShaderNodeTextureSource, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_source")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 905262939) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeTexture.fnSetSource), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeTexture) GetSource() VisualShaderNodeTextureSource {
-  classNameV := StringNameFromStr("VisualShaderNodeTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_source")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2896297444) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret VisualShaderNodeTextureSource
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeTexture.fnGetSource), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *VisualShaderNodeTexture) SetTexture(value Texture2D, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{value.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeTexture.fnSetTexture), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeTexture) GetTexture() Texture2D {
-  classNameV := StringNameFromStr("VisualShaderNodeTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeTexture.fnGetTexture), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *VisualShaderNodeTexture) SetTextureType(value VisualShaderNodeTextureTextureType, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_texture_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 986314081) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeTexture.fnSetTextureType), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeTexture) GetTextureType() VisualShaderNodeTextureTextureType {
-  classNameV := StringNameFromStr("VisualShaderNodeTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3290430153) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret VisualShaderNodeTextureTextureType
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeTexture.fnGetTextureType), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

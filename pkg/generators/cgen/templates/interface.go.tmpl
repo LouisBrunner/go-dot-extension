@@ -50,6 +50,10 @@ func (me *interfaceImpl) {{.Name}}(
   {{- if ne .GoToCGo.Free ""}}    {{.GoToCGo.Free}}
 {{end -}}
 {{- end }}  }(){{- end}}
+  {{if eq .Proc ""}}if ptrToCall == nil {
+    panic("ptrToCall is nil for {{.Name}}") // TODO: better error handling
+  }
+  {{end -}}
   {{if ne .ReturnType.GoType ""}}ret := {{end -}}
   C.call{{.Name}}(
     {{- if eq .Proc ""}}ptrToCall{{else}}me.ptr{{.Name}}{{end -}}

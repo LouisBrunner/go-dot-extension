@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorSceneFormatImporterFBXList struct {
+}
+
+var ptrsForEditorSceneFormatImporterFBX ptrsForEditorSceneFormatImporterFBXList
+
+func initEditorSceneFormatImporterFBXPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorSceneFormatImporterFBX")
+  defer className.Destroy()
+}
+
 type EditorSceneFormatImporterFBX struct {
   EditorSceneFormatImporter
 }

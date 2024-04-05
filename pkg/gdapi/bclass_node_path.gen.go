@@ -9,6 +9,99 @@ import (
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
+// FIXME: avoid unused imports
+var _ = fmt.Sprintf("")
+
+type ptrsForNodePathList struct {
+  ctrFn gdc.PtrConstructor
+  ctrFromNodePathFn gdc.PtrConstructor
+  ctrFromStringFn gdc.PtrConstructor
+  destructorFn gdc.PtrDestructor
+  methodIsAbsoluteFn gdc.PtrBuiltInMethod
+  methodGetNameCountFn gdc.PtrBuiltInMethod
+  methodGetNameFn gdc.PtrBuiltInMethod
+  methodGetSubnameCountFn gdc.PtrBuiltInMethod
+  methodHashFn gdc.PtrBuiltInMethod
+  methodGetSubnameFn gdc.PtrBuiltInMethod
+  methodGetConcatenatedNamesFn gdc.PtrBuiltInMethod
+  methodGetConcatenatedSubnamesFn gdc.PtrBuiltInMethod
+  methodGetAsPropertyPathFn gdc.PtrBuiltInMethod
+  methodIsEmptyFn gdc.PtrBuiltInMethod
+  operatorNotFn gdc.PtrOperatorEvaluator
+  operatorEqualNodePathFn gdc.PtrOperatorEvaluator
+  operatorNotEqualNodePathFn gdc.PtrOperatorEvaluator
+  operatorInDictionaryFn gdc.PtrOperatorEvaluator
+  operatorInArrayFn gdc.PtrOperatorEvaluator
+  toVariantFn gdc.TypeFromVariantConstructorFunc
+  fromVariantFn gdc.VariantFromTypeConstructorFunc
+}
+
+var ptrsForNodePath ptrsForNodePathList
+
+func initNodePathPtrs(iface gdc.Interface) {
+  ptrsForNodePath.ctrFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeNodePath, 0))
+  ptrsForNodePath.ctrFromNodePathFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeNodePath, 1))
+  ptrsForNodePath.ctrFromStringFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeNodePath, 2))
+  ptrsForNodePath.destructorFn = ensurePtr(iface.VariantGetPtrDestructor(gdc.VariantTypeNodePath))
+  {
+    methodName := StringNameFromStr("is_absolute")
+    defer methodName.Destroy()
+    ptrsForNodePath.methodIsAbsoluteFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, methodName.AsCPtr(), 3918633141))
+  }
+  {
+    methodName := StringNameFromStr("get_name_count")
+    defer methodName.Destroy()
+    ptrsForNodePath.methodGetNameCountFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, methodName.AsCPtr(), 3173160232))
+  }
+  {
+    methodName := StringNameFromStr("get_name")
+    defer methodName.Destroy()
+    ptrsForNodePath.methodGetNameFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, methodName.AsCPtr(), 2948586938))
+  }
+  {
+    methodName := StringNameFromStr("get_subname_count")
+    defer methodName.Destroy()
+    ptrsForNodePath.methodGetSubnameCountFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, methodName.AsCPtr(), 3173160232))
+  }
+  {
+    methodName := StringNameFromStr("hash")
+    defer methodName.Destroy()
+    ptrsForNodePath.methodHashFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, methodName.AsCPtr(), 3173160232))
+  }
+  {
+    methodName := StringNameFromStr("get_subname")
+    defer methodName.Destroy()
+    ptrsForNodePath.methodGetSubnameFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, methodName.AsCPtr(), 2948586938))
+  }
+  {
+    methodName := StringNameFromStr("get_concatenated_names")
+    defer methodName.Destroy()
+    ptrsForNodePath.methodGetConcatenatedNamesFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, methodName.AsCPtr(), 1825232092))
+  }
+  {
+    methodName := StringNameFromStr("get_concatenated_subnames")
+    defer methodName.Destroy()
+    ptrsForNodePath.methodGetConcatenatedSubnamesFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, methodName.AsCPtr(), 1825232092))
+  }
+  {
+    methodName := StringNameFromStr("get_as_property_path")
+    defer methodName.Destroy()
+    ptrsForNodePath.methodGetAsPropertyPathFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, methodName.AsCPtr(), 1598598043))
+  }
+  {
+    methodName := StringNameFromStr("is_empty")
+    defer methodName.Destroy()
+    ptrsForNodePath.methodIsEmptyFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, methodName.AsCPtr(), 3918633141))
+  }
+  ptrsForNodePath.operatorNotFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, gdc.VariantTypeNodePath, gdc.VariantTypeNil))
+  ptrsForNodePath.operatorEqualNodePathFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, gdc.VariantTypeNodePath, gdc.VariantTypeNodePath))
+  ptrsForNodePath.operatorNotEqualNodePathFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, gdc.VariantTypeNodePath, gdc.VariantTypeNodePath))
+  ptrsForNodePath.operatorInDictionaryFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, gdc.VariantTypeNodePath, gdc.VariantTypeDictionary))
+  ptrsForNodePath.operatorInArrayFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, gdc.VariantTypeNodePath, gdc.VariantTypeArray))
+  ptrsForNodePath.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypeNodePath))
+  ptrsForNodePath.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypeNodePath))
+}
+
 type NodePath struct {
   data   *[classSizeNodePath]byte
   iface  gdc.Interface
@@ -32,8 +125,7 @@ func NewNodePath() *NodePath {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newNodePath()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeNodePath, 0) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForNodePath.ctrFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
   return me
 }
 
@@ -41,8 +133,7 @@ func NewNodePathFromNodePath(from NodePath, ) *NodePath {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newNodePath()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeNodePath, 1) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForNodePath.ctrFromNodePathFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
   return me
 }
 
@@ -50,15 +141,13 @@ func NewNodePathFromString(from String, ) *NodePath {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newNodePath()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeNodePath, 2) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForNodePath.ctrFromStringFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
   return me
 }
 
 // Destructor
 func (me *NodePath) Destroy() {
-  dtr := me.iface.VariantGetPtrDestructor(gdc.VariantTypeNodePath)
-	me.iface.CallPtrDestructor(dtr, me.AsTypePtr())
+	me.iface.CallPtrDestructor(ensurePtr(ptrsForNodePath.destructorFn), me.AsTypePtr())
   me.pinner.Unpin()
 }
 
@@ -68,16 +157,14 @@ func (me *Variant) AsNodePath() (*NodePath, error) {
 		return nil, fmt.Errorf("variant is not a NodePath")
 	}
   bclass := newNodePath()
-	fn := me.iface.GetVariantToTypeConstructor(me.Type())
-	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	me.iface.CallTypeFromVariantConstructorFunc(ensurePtr(ptrsForNodePath.toVariantFn), bclass.asUninitialized(), me.AsPtr())
 	return bclass, nil
 }
 
 func (me *NodePath) AsVariant() *Variant {
   va := newVariant()
   va.inner = me
-  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
-  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  me.iface.CallVariantFromTypeConstructorFunc(ensurePtr(ptrsForNodePath.fromVariantFn), va.asUninitialized(), me.AsTypePtr())
   return va
 }
 
@@ -107,38 +194,26 @@ func (me *NodePath) asUninitialized() gdc.UninitializedTypePtr {
 // Methods
 
 func (me *NodePath) IsAbsolute() bool {
-  name := StringNameFromStr("is_absolute")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, name.AsCPtr(), 3918633141) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForNodePath.methodIsAbsoluteFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *NodePath) GetNameCount() int64 {
-  name := StringNameFromStr("get_name_count")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, name.AsCPtr(), 3173160232) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForNodePath.methodGetNameCountFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *NodePath) GetName(idx int64, ) StringName {
-  name := StringNameFromStr("get_name")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, name.AsCPtr(), 2948586938) // FIXME: should cache?
-
   ret := NewStringName()
 
   varg0 := NewIntFromInt(idx)
@@ -146,43 +221,31 @@ func (me *NodePath) GetName(idx int64, ) StringName {
   args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForNodePath.methodGetNameFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *NodePath) GetSubnameCount() int64 {
-  name := StringNameFromStr("get_subname_count")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, name.AsCPtr(), 3173160232) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForNodePath.methodGetSubnameCountFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *NodePath) Hash() int64 {
-  name := StringNameFromStr("hash")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, name.AsCPtr(), 3173160232) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForNodePath.methodHashFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *NodePath) GetSubname(idx int64, ) StringName {
-  name := StringNameFromStr("get_subname")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, name.AsCPtr(), 2948586938) // FIXME: should cache?
-
   ret := NewStringName()
 
   varg0 := NewIntFromInt(idx)
@@ -190,114 +253,98 @@ func (me *NodePath) GetSubname(idx int64, ) StringName {
   args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForNodePath.methodGetSubnameFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *NodePath) GetConcatenatedNames() StringName {
-  name := StringNameFromStr("get_concatenated_names")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, name.AsCPtr(), 1825232092) // FIXME: should cache?
-
   ret := NewStringName()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForNodePath.methodGetConcatenatedNamesFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *NodePath) GetConcatenatedSubnames() StringName {
-  name := StringNameFromStr("get_concatenated_subnames")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, name.AsCPtr(), 1825232092) // FIXME: should cache?
-
   ret := NewStringName()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForNodePath.methodGetConcatenatedSubnamesFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *NodePath) GetAsPropertyPath() NodePath {
-  name := StringNameFromStr("get_as_property_path")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, name.AsCPtr(), 1598598043) // FIXME: should cache?
-
   ret := NewNodePath()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForNodePath.methodGetAsPropertyPathFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *NodePath) IsEmpty() bool {
-  name := StringNameFromStr("is_empty")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, name.AsCPtr(), 3918633141) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForNodePath.methodIsEmptyFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 // Operators
 
 func (me *NodePath) EqualVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *NodePath) NotEqualVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *NodePath) Not() bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, me.Type(), gdc.VariantTypeNil) // FIXME: cache
+  opPtr := ptrsForNodePath.operatorNotFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), nil, ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *NodePath) EqualNodePath(right NodePath) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForNodePath.operatorEqualNodePathFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *NodePath) NotEqualNodePath(right NodePath) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForNodePath.operatorNotEqualNodePathFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *NodePath) InDictionary(right Dictionary) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForNodePath.operatorInDictionaryFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *NodePath) InArray(right Array) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForNodePath.operatorInArrayFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 

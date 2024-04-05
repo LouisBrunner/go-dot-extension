@@ -14,6 +14,80 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSkeletonModification2DList struct {
+  fnXExecute gdc.MethodBindPtr
+  fnXSetupModification gdc.MethodBindPtr
+  fnXDrawEditorGizmo gdc.MethodBindPtr
+  fnSetEnabled gdc.MethodBindPtr
+  fnGetEnabled gdc.MethodBindPtr
+  fnGetModificationStack gdc.MethodBindPtr
+  fnSetIsSetup gdc.MethodBindPtr
+  fnGetIsSetup gdc.MethodBindPtr
+  fnSetExecutionMode gdc.MethodBindPtr
+  fnGetExecutionMode gdc.MethodBindPtr
+  fnClampAngle gdc.MethodBindPtr
+  fnSetEditorDrawGizmo gdc.MethodBindPtr
+  fnGetEditorDrawGizmo gdc.MethodBindPtr
+}
+
+var ptrsForSkeletonModification2D ptrsForSkeletonModification2DList
+
+func initSkeletonModification2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("SkeletonModification2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_enabled")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2D.fnSetEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_enabled")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2D.fnGetEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("get_modification_stack")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2D.fnGetModificationStack = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2137761694))
+  }
+  {
+    methodName := StringNameFromStr("set_is_setup")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2D.fnSetIsSetup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_is_setup")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2D.fnGetIsSetup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_execution_mode")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2D.fnSetExecutionMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_execution_mode")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2D.fnGetExecutionMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("clamp_angle")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2D.fnClampAngle = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1229502682))
+  }
+  {
+    methodName := StringNameFromStr("set_editor_draw_gizmo")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2D.fnSetEditorDrawGizmo = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_editor_draw_gizmo")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2D.fnGetEditorDrawGizmo = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type SkeletonModification2D struct {
   Resource
 }
@@ -51,113 +125,73 @@ func (me *SkeletonModification2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *SkeletonModification2D) SetEnabled(enabled bool, )  {
-  classNameV := StringNameFromStr("SkeletonModification2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2D.fnSetEnabled), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SkeletonModification2D) GetEnabled() bool {
-  classNameV := StringNameFromStr("SkeletonModification2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2D.fnGetEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *SkeletonModification2D) GetModificationStack() SkeletonModificationStack2D {
-  classNameV := StringNameFromStr("SkeletonModification2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_modification_stack")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2137761694) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewSkeletonModificationStack2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2D.fnGetModificationStack), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *SkeletonModification2D) SetIsSetup(is_setup bool, )  {
-  classNameV := StringNameFromStr("SkeletonModification2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_is_setup")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&is_setup) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2D.fnSetIsSetup), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SkeletonModification2D) GetIsSetup() bool {
-  classNameV := StringNameFromStr("SkeletonModification2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_is_setup")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2D.fnGetIsSetup), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *SkeletonModification2D) SetExecutionMode(execution_mode int64, )  {
-  classNameV := StringNameFromStr("SkeletonModification2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_execution_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&execution_mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2D.fnSetExecutionMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SkeletonModification2D) GetExecutionMode() int64 {
-  classNameV := StringNameFromStr("SkeletonModification2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_execution_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2D.fnGetExecutionMode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *SkeletonModification2D) ClampAngle(angle float64, min float64, max float64, invert bool, ) float64 {
-  classNameV := StringNameFromStr("SkeletonModification2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("clamp_angle")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1229502682) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle) , gdc.ConstTypePtr(&min) , gdc.ConstTypePtr(&max) , gdc.ConstTypePtr(&invert) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -167,36 +201,26 @@ func  (me *SkeletonModification2D) ClampAngle(angle float64, min float64, max fl
   pinner.Pin(&max)
   pinner.Pin(&invert)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2D.fnClampAngle), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *SkeletonModification2D) SetEditorDrawGizmo(draw_gizmo bool, )  {
-  classNameV := StringNameFromStr("SkeletonModification2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_editor_draw_gizmo")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&draw_gizmo) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2D.fnSetEditorDrawGizmo), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SkeletonModification2D) GetEditorDrawGizmo() bool {
-  classNameV := StringNameFromStr("SkeletonModification2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_editor_draw_gizmo")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2D.fnGetEditorDrawGizmo), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

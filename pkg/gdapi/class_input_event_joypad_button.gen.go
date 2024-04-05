@@ -14,6 +14,47 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForInputEventJoypadButtonList struct {
+  fnSetButtonIndex gdc.MethodBindPtr
+  fnGetButtonIndex gdc.MethodBindPtr
+  fnSetPressure gdc.MethodBindPtr
+  fnGetPressure gdc.MethodBindPtr
+  fnSetPressed gdc.MethodBindPtr
+}
+
+var ptrsForInputEventJoypadButton ptrsForInputEventJoypadButtonList
+
+func initInputEventJoypadButtonPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("InputEventJoypadButton")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_button_index")
+    defer methodName.Destroy()
+    ptrsForInputEventJoypadButton.fnSetButtonIndex = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1466368136))
+  }
+  {
+    methodName := StringNameFromStr("get_button_index")
+    defer methodName.Destroy()
+    ptrsForInputEventJoypadButton.fnGetButtonIndex = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 595588182))
+  }
+  {
+    methodName := StringNameFromStr("set_pressure")
+    defer methodName.Destroy()
+    ptrsForInputEventJoypadButton.fnSetPressure = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_pressure")
+    defer methodName.Destroy()
+    ptrsForInputEventJoypadButton.fnGetPressure = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_pressed")
+    defer methodName.Destroy()
+    ptrsForInputEventJoypadButton.fnSetPressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+}
+
 type InputEventJoypadButton struct {
   InputEvent
 }
@@ -51,74 +92,49 @@ func (me *InputEventJoypadButton) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *InputEventJoypadButton) SetButtonIndex(button_index JoyButton, )  {
-  classNameV := StringNameFromStr("InputEventJoypadButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_button_index")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1466368136) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&button_index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventJoypadButton.fnSetButtonIndex), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventJoypadButton) GetButtonIndex() JoyButton {
-  classNameV := StringNameFromStr("InputEventJoypadButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_button_index")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 595588182) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret JoyButton
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventJoypadButton.fnGetButtonIndex), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *InputEventJoypadButton) SetPressure(pressure float64, )  {
-  classNameV := StringNameFromStr("InputEventJoypadButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_pressure")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pressure) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventJoypadButton.fnSetPressure), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventJoypadButton) GetPressure() float64 {
-  classNameV := StringNameFromStr("InputEventJoypadButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_pressure")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventJoypadButton.fnGetPressure), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *InputEventJoypadButton) SetPressed(pressed bool, )  {
-  classNameV := StringNameFromStr("InputEventJoypadButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_pressed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pressed) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventJoypadButton.fnSetPressed), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

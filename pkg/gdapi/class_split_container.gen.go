@@ -14,6 +14,71 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSplitContainerList struct {
+  fnSetSplitOffset gdc.MethodBindPtr
+  fnGetSplitOffset gdc.MethodBindPtr
+  fnClampSplitOffset gdc.MethodBindPtr
+  fnSetCollapsed gdc.MethodBindPtr
+  fnIsCollapsed gdc.MethodBindPtr
+  fnSetDraggerVisibility gdc.MethodBindPtr
+  fnGetDraggerVisibility gdc.MethodBindPtr
+  fnSetVertical gdc.MethodBindPtr
+  fnIsVertical gdc.MethodBindPtr
+}
+
+var ptrsForSplitContainer ptrsForSplitContainerList
+
+func initSplitContainerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("SplitContainer")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_split_offset")
+    defer methodName.Destroy()
+    ptrsForSplitContainer.fnSetSplitOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_split_offset")
+    defer methodName.Destroy()
+    ptrsForSplitContainer.fnGetSplitOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("clamp_split_offset")
+    defer methodName.Destroy()
+    ptrsForSplitContainer.fnClampSplitOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("set_collapsed")
+    defer methodName.Destroy()
+    ptrsForSplitContainer.fnSetCollapsed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_collapsed")
+    defer methodName.Destroy()
+    ptrsForSplitContainer.fnIsCollapsed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_dragger_visibility")
+    defer methodName.Destroy()
+    ptrsForSplitContainer.fnSetDraggerVisibility = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1168273952))
+  }
+  {
+    methodName := StringNameFromStr("get_dragger_visibility")
+    defer methodName.Destroy()
+    ptrsForSplitContainer.fnGetDraggerVisibility = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 967297479))
+  }
+  {
+    methodName := StringNameFromStr("set_vertical")
+    defer methodName.Destroy()
+    ptrsForSplitContainer.fnSetVertical = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_vertical")
+    defer methodName.Destroy()
+    ptrsForSplitContainer.fnIsVertical = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type SplitContainer struct {
   Container
 }
@@ -58,132 +123,87 @@ func (me *SplitContainer) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *SplitContainer) SetSplitOffset(offset int64, )  {
-  classNameV := StringNameFromStr("SplitContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_split_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&offset) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSplitContainer.fnSetSplitOffset), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SplitContainer) GetSplitOffset() int64 {
-  classNameV := StringNameFromStr("SplitContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_split_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSplitContainer.fnGetSplitOffset), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *SplitContainer) ClampSplitOffset()  {
-  classNameV := StringNameFromStr("SplitContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("clamp_split_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSplitContainer.fnClampSplitOffset), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SplitContainer) SetCollapsed(collapsed bool, )  {
-  classNameV := StringNameFromStr("SplitContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_collapsed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&collapsed) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSplitContainer.fnSetCollapsed), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SplitContainer) IsCollapsed() bool {
-  classNameV := StringNameFromStr("SplitContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_collapsed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSplitContainer.fnIsCollapsed), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *SplitContainer) SetDraggerVisibility(mode SplitContainerDraggerVisibility, )  {
-  classNameV := StringNameFromStr("SplitContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_dragger_visibility")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1168273952) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSplitContainer.fnSetDraggerVisibility), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SplitContainer) GetDraggerVisibility() SplitContainerDraggerVisibility {
-  classNameV := StringNameFromStr("SplitContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_dragger_visibility")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 967297479) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret SplitContainerDraggerVisibility
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSplitContainer.fnGetDraggerVisibility), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *SplitContainer) SetVertical(vertical bool, )  {
-  classNameV := StringNameFromStr("SplitContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_vertical")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&vertical) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSplitContainer.fnSetVertical), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SplitContainer) IsVertical() bool {
-  classNameV := StringNameFromStr("SplitContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_vertical")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSplitContainer.fnIsVertical), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

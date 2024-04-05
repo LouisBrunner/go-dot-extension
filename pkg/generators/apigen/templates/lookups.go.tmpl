@@ -29,9 +29,9 @@ var bclassDefaultConstructor = map[gdc.VariantType]bclassDefaultConstructorFn{
 type bclassFromVariantFn func(va *Variant) (BClass, error)
 
 var bclassFromVariant = map[gdc.VariantType]bclassFromVariantFn{
-{{- range .Sizes}}{{if ne .Name "Variant"}}{{if ne .Name "Object"}}
+{{- range .Sizes}}{{if and (ne .Name "Variant") (and (ne .Name "Object") (ne .Name "Nil")) }}
   gdc.VariantType{{pascalCased .Name}}: func(va *Variant) (BClass, error) { return va.As{{mapClass .Name}}() },
-{{- end }}{{- end }}{{- end }}
+{{- end }}{{- end }}
 }
 
 type bclassPtrConstructorFn func(ptr gdc.ConstTypePtr) any

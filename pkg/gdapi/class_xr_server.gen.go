@@ -14,6 +14,131 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForXRServerList struct {
+  fnGetWorldScale gdc.MethodBindPtr
+  fnSetWorldScale gdc.MethodBindPtr
+  fnGetWorldOrigin gdc.MethodBindPtr
+  fnSetWorldOrigin gdc.MethodBindPtr
+  fnGetReferenceFrame gdc.MethodBindPtr
+  fnCenterOnHmd gdc.MethodBindPtr
+  fnGetHmdTransform gdc.MethodBindPtr
+  fnAddInterface gdc.MethodBindPtr
+  fnGetInterfaceCount gdc.MethodBindPtr
+  fnRemoveInterface gdc.MethodBindPtr
+  fnGetInterface gdc.MethodBindPtr
+  fnGetInterfaces gdc.MethodBindPtr
+  fnFindInterface gdc.MethodBindPtr
+  fnAddTracker gdc.MethodBindPtr
+  fnRemoveTracker gdc.MethodBindPtr
+  fnGetTrackers gdc.MethodBindPtr
+  fnGetTracker gdc.MethodBindPtr
+  fnGetPrimaryInterface gdc.MethodBindPtr
+  fnSetPrimaryInterface gdc.MethodBindPtr
+}
+
+var ptrsForXRServer ptrsForXRServerList
+
+func initXRServerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("XRServer")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_world_scale")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnGetWorldScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_world_scale")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnSetWorldScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_world_origin")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnGetWorldOrigin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3229777777))
+  }
+  {
+    methodName := StringNameFromStr("set_world_origin")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnSetWorldOrigin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2952846383))
+  }
+  {
+    methodName := StringNameFromStr("get_reference_frame")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnGetReferenceFrame = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3229777777))
+  }
+  {
+    methodName := StringNameFromStr("center_on_hmd")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnCenterOnHmd = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1450904707))
+  }
+  {
+    methodName := StringNameFromStr("get_hmd_transform")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnGetHmdTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4183770049))
+  }
+  {
+    methodName := StringNameFromStr("add_interface")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnAddInterface = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1898711491))
+  }
+  {
+    methodName := StringNameFromStr("get_interface_count")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnGetInterfaceCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("remove_interface")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnRemoveInterface = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1898711491))
+  }
+  {
+    methodName := StringNameFromStr("get_interface")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnGetInterface = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4237347919))
+  }
+  {
+    methodName := StringNameFromStr("get_interfaces")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnGetInterfaces = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+  }
+  {
+    methodName := StringNameFromStr("find_interface")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnFindInterface = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1395192955))
+  }
+  {
+    methodName := StringNameFromStr("add_tracker")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnAddTracker = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2692800323))
+  }
+  {
+    methodName := StringNameFromStr("remove_tracker")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnRemoveTracker = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2692800323))
+  }
+  {
+    methodName := StringNameFromStr("get_trackers")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnGetTrackers = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3554694381))
+  }
+  {
+    methodName := StringNameFromStr("get_tracker")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnGetTracker = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2742084544))
+  }
+  {
+    methodName := StringNameFromStr("get_primary_interface")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnGetPrimaryInterface = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2143545064))
+  }
+  {
+    methodName := StringNameFromStr("set_primary_interface")
+    defer methodName.Destroy()
+    ptrsForXRServer.fnSetPrimaryInterface = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1898711491))
+  }
+}
+
 type XRServer struct {
   Object
 }
@@ -69,179 +194,119 @@ func (me *XRServer) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *XRServer) GetWorldScale() float64 {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_world_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnGetWorldScale), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *XRServer) SetWorldScale(scale float64, )  {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_world_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&scale) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnSetWorldScale), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRServer) GetWorldOrigin() Transform3D {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_world_origin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3229777777) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTransform3D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnGetWorldOrigin), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRServer) SetWorldOrigin(world_origin Transform3D, )  {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_world_origin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2952846383) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{world_origin.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnSetWorldOrigin), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRServer) GetReferenceFrame() Transform3D {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_reference_frame")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3229777777) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTransform3D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnGetReferenceFrame), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRServer) CenterOnHmd(rotation_mode XRServerRotationMode, keep_height bool, )  {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("center_on_hmd")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1450904707) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&rotation_mode) , gdc.ConstTypePtr(&keep_height) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnCenterOnHmd), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRServer) GetHmdTransform() Transform3D {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_hmd_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4183770049) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTransform3D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnGetHmdTransform), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRServer) AddInterface(interface_ XRInterface, )  {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_interface")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1898711491) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{interface_.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnAddInterface), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRServer) GetInterfaceCount() int64 {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_interface_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnGetInterfaceCount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *XRServer) RemoveInterface(interface_ XRInterface, )  {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_interface")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1898711491) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{interface_.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnRemoveInterface), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRServer) GetInterface(idx int64, ) XRInterface {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_interface")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4237347919) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewXRInterface()
   pinner.Pin(&idx)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnGetInterface), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRServer) GetInterfaces() []Dictionary {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_interfaces")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnGetInterfaces), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -251,105 +316,70 @@ return sliceRet
 }
 
 func  (me *XRServer) FindInterface(name String, ) XRInterface {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("find_interface")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1395192955) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewXRInterface()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnFindInterface), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRServer) AddTracker(tracker XRPositionalTracker, )  {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_tracker")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2692800323) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{tracker.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnAddTracker), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRServer) RemoveTracker(tracker XRPositionalTracker, )  {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_tracker")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2692800323) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{tracker.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnRemoveTracker), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRServer) GetTrackers(tracker_types int64, ) Dictionary {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_trackers")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3554694381) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tracker_types) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewDictionary()
   pinner.Pin(&tracker_types)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnGetTrackers), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRServer) GetTracker(tracker_name StringName, ) XRPositionalTracker {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_tracker")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2742084544) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{tracker_name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewXRPositionalTracker()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnGetTracker), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRServer) GetPrimaryInterface() XRInterface {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_primary_interface")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2143545064) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewXRInterface()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnGetPrimaryInterface), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRServer) SetPrimaryInterface(interface_ XRInterface, )  {
-  classNameV := StringNameFromStr("XRServer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_primary_interface")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1898711491) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{interface_.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRServer.fnSetPrimaryInterface), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

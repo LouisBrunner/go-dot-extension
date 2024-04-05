@@ -14,6 +14,101 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForKinematicCollision3DList struct {
+  fnGetTravel gdc.MethodBindPtr
+  fnGetRemainder gdc.MethodBindPtr
+  fnGetDepth gdc.MethodBindPtr
+  fnGetCollisionCount gdc.MethodBindPtr
+  fnGetPosition gdc.MethodBindPtr
+  fnGetNormal gdc.MethodBindPtr
+  fnGetAngle gdc.MethodBindPtr
+  fnGetLocalShape gdc.MethodBindPtr
+  fnGetCollider gdc.MethodBindPtr
+  fnGetColliderId gdc.MethodBindPtr
+  fnGetColliderRid gdc.MethodBindPtr
+  fnGetColliderShape gdc.MethodBindPtr
+  fnGetColliderShapeIndex gdc.MethodBindPtr
+  fnGetColliderVelocity gdc.MethodBindPtr
+}
+
+var ptrsForKinematicCollision3D ptrsForKinematicCollision3DList
+
+func initKinematicCollision3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("KinematicCollision3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_travel")
+    defer methodName.Destroy()
+    ptrsForKinematicCollision3D.fnGetTravel = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("get_remainder")
+    defer methodName.Destroy()
+    ptrsForKinematicCollision3D.fnGetRemainder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("get_depth")
+    defer methodName.Destroy()
+    ptrsForKinematicCollision3D.fnGetDepth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("get_collision_count")
+    defer methodName.Destroy()
+    ptrsForKinematicCollision3D.fnGetCollisionCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("get_position")
+    defer methodName.Destroy()
+    ptrsForKinematicCollision3D.fnGetPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1914908202))
+  }
+  {
+    methodName := StringNameFromStr("get_normal")
+    defer methodName.Destroy()
+    ptrsForKinematicCollision3D.fnGetNormal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1914908202))
+  }
+  {
+    methodName := StringNameFromStr("get_angle")
+    defer methodName.Destroy()
+    ptrsForKinematicCollision3D.fnGetAngle = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1242741860))
+  }
+  {
+    methodName := StringNameFromStr("get_local_shape")
+    defer methodName.Destroy()
+    ptrsForKinematicCollision3D.fnGetLocalShape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2639523548))
+  }
+  {
+    methodName := StringNameFromStr("get_collider")
+    defer methodName.Destroy()
+    ptrsForKinematicCollision3D.fnGetCollider = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2639523548))
+  }
+  {
+    methodName := StringNameFromStr("get_collider_id")
+    defer methodName.Destroy()
+    ptrsForKinematicCollision3D.fnGetColliderId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1591665591))
+  }
+  {
+    methodName := StringNameFromStr("get_collider_rid")
+    defer methodName.Destroy()
+    ptrsForKinematicCollision3D.fnGetColliderRid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1231817359))
+  }
+  {
+    methodName := StringNameFromStr("get_collider_shape")
+    defer methodName.Destroy()
+    ptrsForKinematicCollision3D.fnGetColliderShape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2639523548))
+  }
+  {
+    methodName := StringNameFromStr("get_collider_shape_index")
+    defer methodName.Destroy()
+    ptrsForKinematicCollision3D.fnGetColliderShapeIndex = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1591665591))
+  }
+  {
+    methodName := StringNameFromStr("get_collider_velocity")
+    defer methodName.Destroy()
+    ptrsForKinematicCollision3D.fnGetColliderVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1914908202))
+  }
+}
+
 type KinematicCollision3D struct {
   RefCounted
 }
@@ -51,222 +146,152 @@ func (me *KinematicCollision3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *KinematicCollision3D) GetTravel() Vector3 {
-  classNameV := StringNameFromStr("KinematicCollision3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_travel")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForKinematicCollision3D.fnGetTravel), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *KinematicCollision3D) GetRemainder() Vector3 {
-  classNameV := StringNameFromStr("KinematicCollision3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_remainder")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForKinematicCollision3D.fnGetRemainder), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *KinematicCollision3D) GetDepth() float64 {
-  classNameV := StringNameFromStr("KinematicCollision3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_depth")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForKinematicCollision3D.fnGetDepth), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *KinematicCollision3D) GetCollisionCount() int64 {
-  classNameV := StringNameFromStr("KinematicCollision3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_collision_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForKinematicCollision3D.fnGetCollisionCount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *KinematicCollision3D) GetPosition(collision_index int64, ) Vector3 {
-  classNameV := StringNameFromStr("KinematicCollision3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1914908202) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&collision_index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
   pinner.Pin(&collision_index)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForKinematicCollision3D.fnGetPosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *KinematicCollision3D) GetNormal(collision_index int64, ) Vector3 {
-  classNameV := StringNameFromStr("KinematicCollision3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_normal")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1914908202) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&collision_index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
   pinner.Pin(&collision_index)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForKinematicCollision3D.fnGetNormal), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *KinematicCollision3D) GetAngle(collision_index int64, up_direction Vector3, ) float64 {
-  classNameV := StringNameFromStr("KinematicCollision3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_angle")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1242741860) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&collision_index) , up_direction.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
   pinner.Pin(&collision_index)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForKinematicCollision3D.fnGetAngle), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *KinematicCollision3D) GetLocalShape(collision_index int64, ) Object {
-  classNameV := StringNameFromStr("KinematicCollision3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_local_shape")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2639523548) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&collision_index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewObject()
   pinner.Pin(&collision_index)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForKinematicCollision3D.fnGetLocalShape), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *KinematicCollision3D) GetCollider(collision_index int64, ) Object {
-  classNameV := StringNameFromStr("KinematicCollision3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_collider")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2639523548) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&collision_index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewObject()
   pinner.Pin(&collision_index)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForKinematicCollision3D.fnGetCollider), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *KinematicCollision3D) GetColliderId(collision_index int64, ) int64 {
-  classNameV := StringNameFromStr("KinematicCollision3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_collider_id")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1591665591) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&collision_index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
   pinner.Pin(&collision_index)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForKinematicCollision3D.fnGetColliderId), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *KinematicCollision3D) GetColliderRid(collision_index int64, ) RID {
-  classNameV := StringNameFromStr("KinematicCollision3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_collider_rid")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1231817359) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&collision_index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRID()
   pinner.Pin(&collision_index)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForKinematicCollision3D.fnGetColliderRid), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *KinematicCollision3D) GetColliderShape(collision_index int64, ) Object {
-  classNameV := StringNameFromStr("KinematicCollision3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_collider_shape")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2639523548) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&collision_index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewObject()
   pinner.Pin(&collision_index)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForKinematicCollision3D.fnGetColliderShape), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *KinematicCollision3D) GetColliderShapeIndex(collision_index int64, ) int64 {
-  classNameV := StringNameFromStr("KinematicCollision3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_collider_shape_index")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1591665591) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&collision_index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
   pinner.Pin(&collision_index)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForKinematicCollision3D.fnGetColliderShapeIndex), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *KinematicCollision3D) GetColliderVelocity(collision_index int64, ) Vector3 {
-  classNameV := StringNameFromStr("KinematicCollision3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_collider_velocity")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1914908202) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&collision_index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
   pinner.Pin(&collision_index)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForKinematicCollision3D.fnGetColliderVelocity), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

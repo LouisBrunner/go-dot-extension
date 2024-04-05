@@ -14,6 +14,156 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForRangeList struct {
+  fnXValueChanged gdc.MethodBindPtr
+  fnGetValue gdc.MethodBindPtr
+  fnGetMin gdc.MethodBindPtr
+  fnGetMax gdc.MethodBindPtr
+  fnGetStep gdc.MethodBindPtr
+  fnGetPage gdc.MethodBindPtr
+  fnGetAsRatio gdc.MethodBindPtr
+  fnSetValue gdc.MethodBindPtr
+  fnSetValueNoSignal gdc.MethodBindPtr
+  fnSetMin gdc.MethodBindPtr
+  fnSetMax gdc.MethodBindPtr
+  fnSetStep gdc.MethodBindPtr
+  fnSetPage gdc.MethodBindPtr
+  fnSetAsRatio gdc.MethodBindPtr
+  fnSetUseRoundedValues gdc.MethodBindPtr
+  fnIsUsingRoundedValues gdc.MethodBindPtr
+  fnSetExpRatio gdc.MethodBindPtr
+  fnIsRatioExp gdc.MethodBindPtr
+  fnSetAllowGreater gdc.MethodBindPtr
+  fnIsGreaterAllowed gdc.MethodBindPtr
+  fnSetAllowLesser gdc.MethodBindPtr
+  fnIsLesserAllowed gdc.MethodBindPtr
+  fnShare gdc.MethodBindPtr
+  fnUnshare gdc.MethodBindPtr
+}
+
+var ptrsForRange ptrsForRangeList
+
+func initRangePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Range")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_value")
+    defer methodName.Destroy()
+    ptrsForRange.fnGetValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("get_min")
+    defer methodName.Destroy()
+    ptrsForRange.fnGetMin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("get_max")
+    defer methodName.Destroy()
+    ptrsForRange.fnGetMax = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("get_step")
+    defer methodName.Destroy()
+    ptrsForRange.fnGetStep = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("get_page")
+    defer methodName.Destroy()
+    ptrsForRange.fnGetPage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("get_as_ratio")
+    defer methodName.Destroy()
+    ptrsForRange.fnGetAsRatio = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_value")
+    defer methodName.Destroy()
+    ptrsForRange.fnSetValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("set_value_no_signal")
+    defer methodName.Destroy()
+    ptrsForRange.fnSetValueNoSignal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("set_min")
+    defer methodName.Destroy()
+    ptrsForRange.fnSetMin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("set_max")
+    defer methodName.Destroy()
+    ptrsForRange.fnSetMax = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("set_step")
+    defer methodName.Destroy()
+    ptrsForRange.fnSetStep = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("set_page")
+    defer methodName.Destroy()
+    ptrsForRange.fnSetPage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("set_as_ratio")
+    defer methodName.Destroy()
+    ptrsForRange.fnSetAsRatio = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("set_use_rounded_values")
+    defer methodName.Destroy()
+    ptrsForRange.fnSetUseRoundedValues = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_using_rounded_values")
+    defer methodName.Destroy()
+    ptrsForRange.fnIsUsingRoundedValues = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_exp_ratio")
+    defer methodName.Destroy()
+    ptrsForRange.fnSetExpRatio = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_ratio_exp")
+    defer methodName.Destroy()
+    ptrsForRange.fnIsRatioExp = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_allow_greater")
+    defer methodName.Destroy()
+    ptrsForRange.fnSetAllowGreater = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_greater_allowed")
+    defer methodName.Destroy()
+    ptrsForRange.fnIsGreaterAllowed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_allow_lesser")
+    defer methodName.Destroy()
+    ptrsForRange.fnSetAllowLesser = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_lesser_allowed")
+    defer methodName.Destroy()
+    ptrsForRange.fnIsLesserAllowed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("share")
+    defer methodName.Destroy()
+    ptrsForRange.fnShare = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1078189570))
+  }
+  {
+    methodName := StringNameFromStr("unshare")
+    defer methodName.Destroy()
+    ptrsForRange.fnUnshare = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+}
+
 type Range struct {
   Control
 }
@@ -51,334 +201,219 @@ func (me *Range) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Range) GetValue() float64 {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnGetValue), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Range) GetMin() float64 {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_min")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnGetMin), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Range) GetMax() float64 {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_max")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnGetMax), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Range) GetStep() float64 {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_step")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnGetStep), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Range) GetPage() float64 {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_page")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnGetPage), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Range) GetAsRatio() float64 {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_as_ratio")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnGetAsRatio), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Range) SetValue(value float64, )  {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnSetValue), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Range) SetValueNoSignal(value float64, )  {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_value_no_signal")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnSetValueNoSignal), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Range) SetMin(minimum float64, )  {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_min")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&minimum) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnSetMin), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Range) SetMax(maximum float64, )  {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_max")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&maximum) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnSetMax), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Range) SetStep(step float64, )  {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_step")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&step) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnSetStep), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Range) SetPage(pagesize float64, )  {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_page")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pagesize) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnSetPage), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Range) SetAsRatio(value float64, )  {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_as_ratio")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnSetAsRatio), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Range) SetUseRoundedValues(enabled bool, )  {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_use_rounded_values")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnSetUseRoundedValues), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Range) IsUsingRoundedValues() bool {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_using_rounded_values")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnIsUsingRoundedValues), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Range) SetExpRatio(enabled bool, )  {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_exp_ratio")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnSetExpRatio), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Range) IsRatioExp() bool {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_ratio_exp")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnIsRatioExp), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Range) SetAllowGreater(allow bool, )  {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_allow_greater")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&allow) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnSetAllowGreater), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Range) IsGreaterAllowed() bool {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_greater_allowed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnIsGreaterAllowed), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Range) SetAllowLesser(allow bool, )  {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_allow_lesser")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&allow) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnSetAllowLesser), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Range) IsLesserAllowed() bool {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_lesser_allowed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnIsLesserAllowed), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Range) Share(with Node, )  {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("share")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{with.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnShare), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Range) Unshare()  {
-  classNameV := StringNameFromStr("Range")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("unshare")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRange.fnUnshare), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

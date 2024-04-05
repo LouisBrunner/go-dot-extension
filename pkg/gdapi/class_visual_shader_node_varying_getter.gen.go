@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeVaryingGetterList struct {
+}
+
+var ptrsForVisualShaderNodeVaryingGetter ptrsForVisualShaderNodeVaryingGetterList
+
+func initVisualShaderNodeVaryingGetterPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeVaryingGetter")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeVaryingGetter struct {
   VisualShaderNodeVarying
 }

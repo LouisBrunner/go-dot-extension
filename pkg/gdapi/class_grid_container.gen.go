@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForGridContainerList struct {
+  fnSetColumns gdc.MethodBindPtr
+  fnGetColumns gdc.MethodBindPtr
+}
+
+var ptrsForGridContainer ptrsForGridContainerList
+
+func initGridContainerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("GridContainer")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_columns")
+    defer methodName.Destroy()
+    ptrsForGridContainer.fnSetColumns = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_columns")
+    defer methodName.Destroy()
+    ptrsForGridContainer.fnGetColumns = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+}
+
 type GridContainer struct {
   Container
 }
@@ -51,31 +74,21 @@ func (me *GridContainer) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *GridContainer) SetColumns(columns int64, )  {
-  classNameV := StringNameFromStr("GridContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_columns")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&columns) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGridContainer.fnSetColumns), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GridContainer) GetColumns() int64 {
-  classNameV := StringNameFromStr("GridContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_columns")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGridContainer.fnGetColumns), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

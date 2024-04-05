@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeTexture2DArrayList struct {
+  fnSetTextureArray gdc.MethodBindPtr
+  fnGetTextureArray gdc.MethodBindPtr
+}
+
+var ptrsForVisualShaderNodeTexture2DArray ptrsForVisualShaderNodeTexture2DArrayList
+
+func initVisualShaderNodeTexture2DArrayPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeTexture2DArray")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_texture_array")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeTexture2DArray.fnSetTextureArray = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2206200446))
+  }
+  {
+    methodName := StringNameFromStr("get_texture_array")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeTexture2DArray.fnGetTextureArray = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 146117123))
+  }
+}
+
 type VisualShaderNodeTexture2DArray struct {
   VisualShaderNodeSample3D
 }
@@ -51,31 +74,21 @@ func (me *VisualShaderNodeTexture2DArray) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisualShaderNodeTexture2DArray) SetTextureArray(value Texture2DArray, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeTexture2DArray")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_texture_array")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2206200446) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{value.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeTexture2DArray.fnSetTextureArray), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeTexture2DArray) GetTextureArray() Texture2DArray {
-  classNameV := StringNameFromStr("VisualShaderNodeTexture2DArray")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture_array")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 146117123) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2DArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeTexture2DArray.fnGetTextureArray), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

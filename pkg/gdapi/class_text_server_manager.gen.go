@@ -14,6 +14,65 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForTextServerManagerList struct {
+  fnAddInterface gdc.MethodBindPtr
+  fnGetInterfaceCount gdc.MethodBindPtr
+  fnRemoveInterface gdc.MethodBindPtr
+  fnGetInterface gdc.MethodBindPtr
+  fnGetInterfaces gdc.MethodBindPtr
+  fnFindInterface gdc.MethodBindPtr
+  fnSetPrimaryInterface gdc.MethodBindPtr
+  fnGetPrimaryInterface gdc.MethodBindPtr
+}
+
+var ptrsForTextServerManager ptrsForTextServerManagerList
+
+func initTextServerManagerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("TextServerManager")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("add_interface")
+    defer methodName.Destroy()
+    ptrsForTextServerManager.fnAddInterface = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1799689403))
+  }
+  {
+    methodName := StringNameFromStr("get_interface_count")
+    defer methodName.Destroy()
+    ptrsForTextServerManager.fnGetInterfaceCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("remove_interface")
+    defer methodName.Destroy()
+    ptrsForTextServerManager.fnRemoveInterface = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1799689403))
+  }
+  {
+    methodName := StringNameFromStr("get_interface")
+    defer methodName.Destroy()
+    ptrsForTextServerManager.fnGetInterface = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1672475555))
+  }
+  {
+    methodName := StringNameFromStr("get_interfaces")
+    defer methodName.Destroy()
+    ptrsForTextServerManager.fnGetInterfaces = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+  }
+  {
+    methodName := StringNameFromStr("find_interface")
+    defer methodName.Destroy()
+    ptrsForTextServerManager.fnFindInterface = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240905781))
+  }
+  {
+    methodName := StringNameFromStr("set_primary_interface")
+    defer methodName.Destroy()
+    ptrsForTextServerManager.fnSetPrimaryInterface = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1799689403))
+  }
+  {
+    methodName := StringNameFromStr("get_primary_interface")
+    defer methodName.Destroy()
+    ptrsForTextServerManager.fnGetPrimaryInterface = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 905850878))
+  }
+}
+
 type TextServerManager struct {
   Object
 }
@@ -51,77 +110,52 @@ func (me *TextServerManager) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *TextServerManager) AddInterface(interface_ TextServer, )  {
-  classNameV := StringNameFromStr("TextServerManager")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_interface")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1799689403) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{interface_.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServerManager.fnAddInterface), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TextServerManager) GetInterfaceCount() int64 {
-  classNameV := StringNameFromStr("TextServerManager")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_interface_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServerManager.fnGetInterfaceCount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *TextServerManager) RemoveInterface(interface_ TextServer, )  {
-  classNameV := StringNameFromStr("TextServerManager")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_interface")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1799689403) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{interface_.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServerManager.fnRemoveInterface), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TextServerManager) GetInterface(idx int64, ) TextServer {
-  classNameV := StringNameFromStr("TextServerManager")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_interface")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1672475555) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTextServer()
   pinner.Pin(&idx)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServerManager.fnGetInterface), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *TextServerManager) GetInterfaces() []Dictionary {
-  classNameV := StringNameFromStr("TextServerManager")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_interfaces")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServerManager.fnGetInterfaces), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -131,46 +165,31 @@ return sliceRet
 }
 
 func  (me *TextServerManager) FindInterface(name String, ) TextServer {
-  classNameV := StringNameFromStr("TextServerManager")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("find_interface")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240905781) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTextServer()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServerManager.fnFindInterface), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *TextServerManager) SetPrimaryInterface(index TextServer, )  {
-  classNameV := StringNameFromStr("TextServerManager")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_primary_interface")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1799689403) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{index.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServerManager.fnSetPrimaryInterface), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TextServerManager) GetPrimaryInterface() TextServer {
-  classNameV := StringNameFromStr("TextServerManager")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_primary_interface")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 905850878) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTextServer()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServerManager.fnGetPrimaryInterface), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

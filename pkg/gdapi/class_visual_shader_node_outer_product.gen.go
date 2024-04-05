@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeOuterProductList struct {
+}
+
+var ptrsForVisualShaderNodeOuterProduct ptrsForVisualShaderNodeOuterProductList
+
+func initVisualShaderNodeOuterProductPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeOuterProduct")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeOuterProduct struct {
   VisualShaderNode
 }

@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForResourceImporterShaderFileList struct {
+}
+
+var ptrsForResourceImporterShaderFile ptrsForResourceImporterShaderFileList
+
+func initResourceImporterShaderFilePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ResourceImporterShaderFile")
+  defer className.Destroy()
+}
+
 type ResourceImporterShaderFile struct {
   ResourceImporter
 }

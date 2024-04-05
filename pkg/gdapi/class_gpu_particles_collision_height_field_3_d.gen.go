@@ -14,6 +14,65 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForGPUParticlesCollisionHeightField3DList struct {
+  fnSetSize gdc.MethodBindPtr
+  fnGetSize gdc.MethodBindPtr
+  fnSetResolution gdc.MethodBindPtr
+  fnGetResolution gdc.MethodBindPtr
+  fnSetUpdateMode gdc.MethodBindPtr
+  fnGetUpdateMode gdc.MethodBindPtr
+  fnSetFollowCameraEnabled gdc.MethodBindPtr
+  fnIsFollowCameraEnabled gdc.MethodBindPtr
+}
+
+var ptrsForGPUParticlesCollisionHeightField3D ptrsForGPUParticlesCollisionHeightField3DList
+
+func initGPUParticlesCollisionHeightField3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("GPUParticlesCollisionHeightField3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_size")
+    defer methodName.Destroy()
+    ptrsForGPUParticlesCollisionHeightField3D.fnSetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("get_size")
+    defer methodName.Destroy()
+    ptrsForGPUParticlesCollisionHeightField3D.fnGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("set_resolution")
+    defer methodName.Destroy()
+    ptrsForGPUParticlesCollisionHeightField3D.fnSetResolution = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1009996517))
+  }
+  {
+    methodName := StringNameFromStr("get_resolution")
+    defer methodName.Destroy()
+    ptrsForGPUParticlesCollisionHeightField3D.fnGetResolution = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1156065644))
+  }
+  {
+    methodName := StringNameFromStr("set_update_mode")
+    defer methodName.Destroy()
+    ptrsForGPUParticlesCollisionHeightField3D.fnSetUpdateMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 673680859))
+  }
+  {
+    methodName := StringNameFromStr("get_update_mode")
+    defer methodName.Destroy()
+    ptrsForGPUParticlesCollisionHeightField3D.fnGetUpdateMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1998141380))
+  }
+  {
+    methodName := StringNameFromStr("set_follow_camera_enabled")
+    defer methodName.Destroy()
+    ptrsForGPUParticlesCollisionHeightField3D.fnSetFollowCameraEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_follow_camera_enabled")
+    defer methodName.Destroy()
+    ptrsForGPUParticlesCollisionHeightField3D.fnIsFollowCameraEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type GPUParticlesCollisionHeightField3D struct {
   GPUParticlesCollision3D
 }
@@ -68,118 +127,78 @@ func (me *GPUParticlesCollisionHeightField3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *GPUParticlesCollisionHeightField3D) SetSize(size Vector3, )  {
-  classNameV := StringNameFromStr("GPUParticlesCollisionHeightField3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{size.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGPUParticlesCollisionHeightField3D.fnSetSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GPUParticlesCollisionHeightField3D) GetSize() Vector3 {
-  classNameV := StringNameFromStr("GPUParticlesCollisionHeightField3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGPUParticlesCollisionHeightField3D.fnGetSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *GPUParticlesCollisionHeightField3D) SetResolution(resolution GPUParticlesCollisionHeightField3DResolution, )  {
-  classNameV := StringNameFromStr("GPUParticlesCollisionHeightField3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_resolution")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1009996517) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&resolution) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGPUParticlesCollisionHeightField3D.fnSetResolution), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GPUParticlesCollisionHeightField3D) GetResolution() GPUParticlesCollisionHeightField3DResolution {
-  classNameV := StringNameFromStr("GPUParticlesCollisionHeightField3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_resolution")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1156065644) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret GPUParticlesCollisionHeightField3DResolution
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGPUParticlesCollisionHeightField3D.fnGetResolution), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *GPUParticlesCollisionHeightField3D) SetUpdateMode(update_mode GPUParticlesCollisionHeightField3DUpdateMode, )  {
-  classNameV := StringNameFromStr("GPUParticlesCollisionHeightField3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_update_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 673680859) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&update_mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGPUParticlesCollisionHeightField3D.fnSetUpdateMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GPUParticlesCollisionHeightField3D) GetUpdateMode() GPUParticlesCollisionHeightField3DUpdateMode {
-  classNameV := StringNameFromStr("GPUParticlesCollisionHeightField3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_update_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1998141380) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret GPUParticlesCollisionHeightField3DUpdateMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGPUParticlesCollisionHeightField3D.fnGetUpdateMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *GPUParticlesCollisionHeightField3D) SetFollowCameraEnabled(enabled bool, )  {
-  classNameV := StringNameFromStr("GPUParticlesCollisionHeightField3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_follow_camera_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGPUParticlesCollisionHeightField3D.fnSetFollowCameraEnabled), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GPUParticlesCollisionHeightField3D) IsFollowCameraEnabled() bool {
-  classNameV := StringNameFromStr("GPUParticlesCollisionHeightField3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_follow_camera_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGPUParticlesCollisionHeightField3D.fnIsFollowCameraEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

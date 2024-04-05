@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForReferenceRectList struct {
+  fnGetBorderColor gdc.MethodBindPtr
+  fnSetBorderColor gdc.MethodBindPtr
+  fnGetBorderWidth gdc.MethodBindPtr
+  fnSetBorderWidth gdc.MethodBindPtr
+  fnGetEditorOnly gdc.MethodBindPtr
+  fnSetEditorOnly gdc.MethodBindPtr
+}
+
+var ptrsForReferenceRect ptrsForReferenceRectList
+
+func initReferenceRectPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ReferenceRect")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_border_color")
+    defer methodName.Destroy()
+    ptrsForReferenceRect.fnGetBorderColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3444240500))
+  }
+  {
+    methodName := StringNameFromStr("set_border_color")
+    defer methodName.Destroy()
+    ptrsForReferenceRect.fnSetBorderColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2920490490))
+  }
+  {
+    methodName := StringNameFromStr("get_border_width")
+    defer methodName.Destroy()
+    ptrsForReferenceRect.fnGetBorderWidth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_border_width")
+    defer methodName.Destroy()
+    ptrsForReferenceRect.fnSetBorderWidth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_editor_only")
+    defer methodName.Destroy()
+    ptrsForReferenceRect.fnGetEditorOnly = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_editor_only")
+    defer methodName.Destroy()
+    ptrsForReferenceRect.fnSetEditorOnly = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+}
+
 type ReferenceRect struct {
   Control
 }
@@ -51,89 +98,59 @@ func (me *ReferenceRect) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ReferenceRect) GetBorderColor() Color {
-  classNameV := StringNameFromStr("ReferenceRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_border_color")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewColor()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForReferenceRect.fnGetBorderColor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ReferenceRect) SetBorderColor(color Color, )  {
-  classNameV := StringNameFromStr("ReferenceRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_border_color")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{color.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForReferenceRect.fnSetBorderColor), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ReferenceRect) GetBorderWidth() float64 {
-  classNameV := StringNameFromStr("ReferenceRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_border_width")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForReferenceRect.fnGetBorderWidth), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ReferenceRect) SetBorderWidth(width float64, )  {
-  classNameV := StringNameFromStr("ReferenceRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_border_width")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForReferenceRect.fnSetBorderWidth), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ReferenceRect) GetEditorOnly() bool {
-  classNameV := StringNameFromStr("ReferenceRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_editor_only")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForReferenceRect.fnGetEditorOnly), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ReferenceRect) SetEditorOnly(enabled bool, )  {
-  classNameV := StringNameFromStr("ReferenceRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_editor_only")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForReferenceRect.fnSetEditorOnly), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

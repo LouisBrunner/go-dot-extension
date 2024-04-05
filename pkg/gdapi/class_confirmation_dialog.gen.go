@@ -14,6 +14,35 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForConfirmationDialogList struct {
+  fnGetCancelButton gdc.MethodBindPtr
+  fnSetCancelButtonText gdc.MethodBindPtr
+  fnGetCancelButtonText gdc.MethodBindPtr
+}
+
+var ptrsForConfirmationDialog ptrsForConfirmationDialogList
+
+func initConfirmationDialogPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ConfirmationDialog")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_cancel_button")
+    defer methodName.Destroy()
+    ptrsForConfirmationDialog.fnGetCancelButton = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1856205918))
+  }
+  {
+    methodName := StringNameFromStr("set_cancel_button_text")
+    defer methodName.Destroy()
+    ptrsForConfirmationDialog.fnSetCancelButtonText = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_cancel_button_text")
+    defer methodName.Destroy()
+    ptrsForConfirmationDialog.fnGetCancelButtonText = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+}
+
 type ConfirmationDialog struct {
   AcceptDialog
 }
@@ -51,46 +80,31 @@ func (me *ConfirmationDialog) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ConfirmationDialog) GetCancelButton() Button {
-  classNameV := StringNameFromStr("ConfirmationDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_cancel_button")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1856205918) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewButton()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForConfirmationDialog.fnGetCancelButton), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ConfirmationDialog) SetCancelButtonText(text String, )  {
-  classNameV := StringNameFromStr("ConfirmationDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_cancel_button_text")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{text.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForConfirmationDialog.fnSetCancelButtonText), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ConfirmationDialog) GetCancelButtonText() String {
-  classNameV := StringNameFromStr("ConfirmationDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_cancel_button_text")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForConfirmationDialog.fnGetCancelButtonText), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

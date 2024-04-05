@@ -14,6 +14,59 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorDebuggerSessionList struct {
+  fnSendMessage gdc.MethodBindPtr
+  fnToggleProfiler gdc.MethodBindPtr
+  fnIsBreaked gdc.MethodBindPtr
+  fnIsDebuggable gdc.MethodBindPtr
+  fnIsActive gdc.MethodBindPtr
+  fnAddSessionTab gdc.MethodBindPtr
+  fnRemoveSessionTab gdc.MethodBindPtr
+}
+
+var ptrsForEditorDebuggerSession ptrsForEditorDebuggerSessionList
+
+func initEditorDebuggerSessionPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorDebuggerSession")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("send_message")
+    defer methodName.Destroy()
+    ptrsForEditorDebuggerSession.fnSendMessage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 85656714))
+  }
+  {
+    methodName := StringNameFromStr("toggle_profiler")
+    defer methodName.Destroy()
+    ptrsForEditorDebuggerSession.fnToggleProfiler = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1198443697))
+  }
+  {
+    methodName := StringNameFromStr("is_breaked")
+    defer methodName.Destroy()
+    ptrsForEditorDebuggerSession.fnIsBreaked = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("is_debuggable")
+    defer methodName.Destroy()
+    ptrsForEditorDebuggerSession.fnIsDebuggable = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("is_active")
+    defer methodName.Destroy()
+    ptrsForEditorDebuggerSession.fnIsActive = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("add_session_tab")
+    defer methodName.Destroy()
+    ptrsForEditorDebuggerSession.fnAddSessionTab = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1496901182))
+  }
+  {
+    methodName := StringNameFromStr("remove_session_tab")
+    defer methodName.Destroy()
+    ptrsForEditorDebuggerSession.fnRemoveSessionTab = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1496901182))
+  }
+}
+
 type EditorDebuggerSession struct {
   RefCounted
 }
@@ -51,103 +104,68 @@ func (me *EditorDebuggerSession) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *EditorDebuggerSession) SendMessage(message String, data Array, )  {
-  classNameV := StringNameFromStr("EditorDebuggerSession")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("send_message")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 85656714) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{message.AsCTypePtr(), data.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorDebuggerSession.fnSendMessage), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorDebuggerSession) ToggleProfiler(profiler String, enable bool, data Array, )  {
-  classNameV := StringNameFromStr("EditorDebuggerSession")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("toggle_profiler")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1198443697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{profiler.AsCTypePtr(), gdc.ConstTypePtr(&enable) , data.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorDebuggerSession.fnToggleProfiler), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorDebuggerSession) IsBreaked() bool {
-  classNameV := StringNameFromStr("EditorDebuggerSession")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_breaked")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorDebuggerSession.fnIsBreaked), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *EditorDebuggerSession) IsDebuggable() bool {
-  classNameV := StringNameFromStr("EditorDebuggerSession")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_debuggable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorDebuggerSession.fnIsDebuggable), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *EditorDebuggerSession) IsActive() bool {
-  classNameV := StringNameFromStr("EditorDebuggerSession")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_active")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorDebuggerSession.fnIsActive), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *EditorDebuggerSession) AddSessionTab(control Control, )  {
-  classNameV := StringNameFromStr("EditorDebuggerSession")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_session_tab")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1496901182) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{control.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorDebuggerSession.fnAddSessionTab), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorDebuggerSession) RemoveSessionTab(control Control, )  {
-  classNameV := StringNameFromStr("EditorDebuggerSession")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_session_tab")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1496901182) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{control.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorDebuggerSession.fnRemoveSessionTab), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

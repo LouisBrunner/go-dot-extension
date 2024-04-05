@@ -14,6 +14,35 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeInputList struct {
+  fnSetInputName gdc.MethodBindPtr
+  fnGetInputName gdc.MethodBindPtr
+  fnGetInputRealName gdc.MethodBindPtr
+}
+
+var ptrsForVisualShaderNodeInput ptrsForVisualShaderNodeInputList
+
+func initVisualShaderNodeInputPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeInput")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_input_name")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeInput.fnSetInputName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_input_name")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeInput.fnGetInputName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("get_input_real_name")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeInput.fnGetInputRealName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+}
+
 type VisualShaderNodeInput struct {
   VisualShaderNode
 }
@@ -51,46 +80,31 @@ func (me *VisualShaderNodeInput) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisualShaderNodeInput) SetInputName(name String, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeInput")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_input_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeInput.fnSetInputName), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeInput) GetInputName() String {
-  classNameV := StringNameFromStr("VisualShaderNodeInput")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_input_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeInput.fnGetInputName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *VisualShaderNodeInput) GetInputRealName() String {
-  classNameV := StringNameFromStr("VisualShaderNodeInput")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_input_real_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeInput.fnGetInputRealName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

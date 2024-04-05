@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioBusLayoutList struct {
+}
+
+var ptrsForAudioBusLayout ptrsForAudioBusLayoutList
+
+func initAudioBusLayoutPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioBusLayout")
+  defer className.Destroy()
+}
+
 type AudioBusLayout struct {
   Resource
 }

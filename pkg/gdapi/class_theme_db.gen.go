@@ -14,6 +14,89 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForThemeDBList struct {
+  fnGetDefaultTheme gdc.MethodBindPtr
+  fnGetProjectTheme gdc.MethodBindPtr
+  fnSetFallbackBaseScale gdc.MethodBindPtr
+  fnGetFallbackBaseScale gdc.MethodBindPtr
+  fnSetFallbackFont gdc.MethodBindPtr
+  fnGetFallbackFont gdc.MethodBindPtr
+  fnSetFallbackFontSize gdc.MethodBindPtr
+  fnGetFallbackFontSize gdc.MethodBindPtr
+  fnSetFallbackIcon gdc.MethodBindPtr
+  fnGetFallbackIcon gdc.MethodBindPtr
+  fnSetFallbackStylebox gdc.MethodBindPtr
+  fnGetFallbackStylebox gdc.MethodBindPtr
+}
+
+var ptrsForThemeDB ptrsForThemeDBList
+
+func initThemeDBPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ThemeDB")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_default_theme")
+    defer methodName.Destroy()
+    ptrsForThemeDB.fnGetDefaultTheme = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 754276358))
+  }
+  {
+    methodName := StringNameFromStr("get_project_theme")
+    defer methodName.Destroy()
+    ptrsForThemeDB.fnGetProjectTheme = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 754276358))
+  }
+  {
+    methodName := StringNameFromStr("set_fallback_base_scale")
+    defer methodName.Destroy()
+    ptrsForThemeDB.fnSetFallbackBaseScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_fallback_base_scale")
+    defer methodName.Destroy()
+    ptrsForThemeDB.fnGetFallbackBaseScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 191475506))
+  }
+  {
+    methodName := StringNameFromStr("set_fallback_font")
+    defer methodName.Destroy()
+    ptrsForThemeDB.fnSetFallbackFont = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1262170328))
+  }
+  {
+    methodName := StringNameFromStr("get_fallback_font")
+    defer methodName.Destroy()
+    ptrsForThemeDB.fnGetFallbackFont = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3656929885))
+  }
+  {
+    methodName := StringNameFromStr("set_fallback_font_size")
+    defer methodName.Destroy()
+    ptrsForThemeDB.fnSetFallbackFontSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_fallback_font_size")
+    defer methodName.Destroy()
+    ptrsForThemeDB.fnGetFallbackFontSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2455072627))
+  }
+  {
+    methodName := StringNameFromStr("set_fallback_icon")
+    defer methodName.Destroy()
+    ptrsForThemeDB.fnSetFallbackIcon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4051416890))
+  }
+  {
+    methodName := StringNameFromStr("get_fallback_icon")
+    defer methodName.Destroy()
+    ptrsForThemeDB.fnGetFallbackIcon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 255860311))
+  }
+  {
+    methodName := StringNameFromStr("set_fallback_stylebox")
+    defer methodName.Destroy()
+    ptrsForThemeDB.fnSetFallbackStylebox = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2797200388))
+  }
+  {
+    methodName := StringNameFromStr("get_fallback_stylebox")
+    defer methodName.Destroy()
+    ptrsForThemeDB.fnGetFallbackStylebox = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 496040854))
+  }
+}
+
 type ThemeDB struct {
   Object
 }
@@ -51,177 +134,117 @@ func (me *ThemeDB) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ThemeDB) GetDefaultTheme() Theme {
-  classNameV := StringNameFromStr("ThemeDB")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_default_theme")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 754276358) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTheme()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForThemeDB.fnGetDefaultTheme), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ThemeDB) GetProjectTheme() Theme {
-  classNameV := StringNameFromStr("ThemeDB")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_project_theme")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 754276358) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTheme()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForThemeDB.fnGetProjectTheme), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ThemeDB) SetFallbackBaseScale(base_scale float64, )  {
-  classNameV := StringNameFromStr("ThemeDB")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_fallback_base_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&base_scale) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForThemeDB.fnSetFallbackBaseScale), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ThemeDB) GetFallbackBaseScale() float64 {
-  classNameV := StringNameFromStr("ThemeDB")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_fallback_base_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 191475506) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForThemeDB.fnGetFallbackBaseScale), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ThemeDB) SetFallbackFont(font Font, )  {
-  classNameV := StringNameFromStr("ThemeDB")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_fallback_font")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1262170328) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{font.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForThemeDB.fnSetFallbackFont), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ThemeDB) GetFallbackFont() Font {
-  classNameV := StringNameFromStr("ThemeDB")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_fallback_font")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3656929885) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFont()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForThemeDB.fnGetFallbackFont), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ThemeDB) SetFallbackFontSize(font_size int64, )  {
-  classNameV := StringNameFromStr("ThemeDB")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_fallback_font_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&font_size) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForThemeDB.fnSetFallbackFontSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ThemeDB) GetFallbackFontSize() int64 {
-  classNameV := StringNameFromStr("ThemeDB")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_fallback_font_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForThemeDB.fnGetFallbackFontSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ThemeDB) SetFallbackIcon(icon Texture2D, )  {
-  classNameV := StringNameFromStr("ThemeDB")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_fallback_icon")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{icon.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForThemeDB.fnSetFallbackIcon), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ThemeDB) GetFallbackIcon() Texture2D {
-  classNameV := StringNameFromStr("ThemeDB")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_fallback_icon")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 255860311) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForThemeDB.fnGetFallbackIcon), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ThemeDB) SetFallbackStylebox(stylebox StyleBox, )  {
-  classNameV := StringNameFromStr("ThemeDB")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_fallback_stylebox")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2797200388) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{stylebox.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForThemeDB.fnSetFallbackStylebox), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ThemeDB) GetFallbackStylebox() StyleBox {
-  classNameV := StringNameFromStr("ThemeDB")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_fallback_stylebox")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 496040854) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewStyleBox()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForThemeDB.fnGetFallbackStylebox), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

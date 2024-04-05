@@ -14,6 +14,65 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSliderList struct {
+  fnSetTicks gdc.MethodBindPtr
+  fnGetTicks gdc.MethodBindPtr
+  fnGetTicksOnBorders gdc.MethodBindPtr
+  fnSetTicksOnBorders gdc.MethodBindPtr
+  fnSetEditable gdc.MethodBindPtr
+  fnIsEditable gdc.MethodBindPtr
+  fnSetScrollable gdc.MethodBindPtr
+  fnIsScrollable gdc.MethodBindPtr
+}
+
+var ptrsForSlider ptrsForSliderList
+
+func initSliderPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Slider")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_ticks")
+    defer methodName.Destroy()
+    ptrsForSlider.fnSetTicks = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_ticks")
+    defer methodName.Destroy()
+    ptrsForSlider.fnGetTicks = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("get_ticks_on_borders")
+    defer methodName.Destroy()
+    ptrsForSlider.fnGetTicksOnBorders = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_ticks_on_borders")
+    defer methodName.Destroy()
+    ptrsForSlider.fnSetTicksOnBorders = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("set_editable")
+    defer methodName.Destroy()
+    ptrsForSlider.fnSetEditable = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_editable")
+    defer methodName.Destroy()
+    ptrsForSlider.fnIsEditable = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_scrollable")
+    defer methodName.Destroy()
+    ptrsForSlider.fnSetScrollable = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_scrollable")
+    defer methodName.Destroy()
+    ptrsForSlider.fnIsScrollable = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type Slider struct {
   Range
 }
@@ -51,118 +110,78 @@ func (me *Slider) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Slider) SetTicks(count int64, )  {
-  classNameV := StringNameFromStr("Slider")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_ticks")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&count) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSlider.fnSetTicks), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Slider) GetTicks() int64 {
-  classNameV := StringNameFromStr("Slider")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_ticks")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSlider.fnGetTicks), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Slider) GetTicksOnBorders() bool {
-  classNameV := StringNameFromStr("Slider")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_ticks_on_borders")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSlider.fnGetTicksOnBorders), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Slider) SetTicksOnBorders(ticks_on_border bool, )  {
-  classNameV := StringNameFromStr("Slider")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_ticks_on_borders")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ticks_on_border) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSlider.fnSetTicksOnBorders), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Slider) SetEditable(editable bool, )  {
-  classNameV := StringNameFromStr("Slider")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_editable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&editable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSlider.fnSetEditable), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Slider) IsEditable() bool {
-  classNameV := StringNameFromStr("Slider")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_editable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSlider.fnIsEditable), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Slider) SetScrollable(scrollable bool, )  {
-  classNameV := StringNameFromStr("Slider")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_scrollable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&scrollable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSlider.fnSetScrollable), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Slider) IsScrollable() bool {
-  classNameV := StringNameFromStr("Slider")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_scrollable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSlider.fnIsScrollable), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

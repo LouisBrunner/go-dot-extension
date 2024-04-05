@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAnimationNodeAnimationList struct {
+  fnSetAnimation gdc.MethodBindPtr
+  fnGetAnimation gdc.MethodBindPtr
+  fnSetPlayMode gdc.MethodBindPtr
+  fnGetPlayMode gdc.MethodBindPtr
+}
+
+var ptrsForAnimationNodeAnimation ptrsForAnimationNodeAnimationList
+
+func initAnimationNodeAnimationPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AnimationNodeAnimation")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_animation")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeAnimation.fnSetAnimation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3304788590))
+  }
+  {
+    methodName := StringNameFromStr("get_animation")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeAnimation.fnGetAnimation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2002593661))
+  }
+  {
+    methodName := StringNameFromStr("set_play_mode")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeAnimation.fnSetPlayMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3347718873))
+  }
+  {
+    methodName := StringNameFromStr("get_play_mode")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeAnimation.fnGetPlayMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2061244637))
+  }
+}
+
 type AnimationNodeAnimation struct {
   AnimationRootNode
 }
@@ -57,60 +92,40 @@ func (me *AnimationNodeAnimation) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AnimationNodeAnimation) SetAnimation(name StringName, )  {
-  classNameV := StringNameFromStr("AnimationNodeAnimation")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_animation")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeAnimation.fnSetAnimation), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeAnimation) GetAnimation() StringName {
-  classNameV := StringNameFromStr("AnimationNodeAnimation")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_animation")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewStringName()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeAnimation.fnGetAnimation), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AnimationNodeAnimation) SetPlayMode(mode AnimationNodeAnimationPlayMode, )  {
-  classNameV := StringNameFromStr("AnimationNodeAnimation")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_play_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3347718873) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeAnimation.fnSetPlayMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeAnimation) GetPlayMode() AnimationNodeAnimationPlayMode {
-  classNameV := StringNameFromStr("AnimationNodeAnimation")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_play_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2061244637) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret AnimationNodeAnimationPlayMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeAnimation.fnGetPlayMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

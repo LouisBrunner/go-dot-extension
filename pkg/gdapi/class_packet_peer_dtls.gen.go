@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPacketPeerDTLSList struct {
+  fnPoll gdc.MethodBindPtr
+  fnConnectToPeer gdc.MethodBindPtr
+  fnGetStatus gdc.MethodBindPtr
+  fnDisconnectFromPeer gdc.MethodBindPtr
+}
+
+var ptrsForPacketPeerDTLS ptrsForPacketPeerDTLSList
+
+func initPacketPeerDTLSPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PacketPeerDTLS")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("poll")
+    defer methodName.Destroy()
+    ptrsForPacketPeerDTLS.fnPoll = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("connect_to_peer")
+    defer methodName.Destroy()
+    ptrsForPacketPeerDTLS.fnConnectToPeer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2880188099))
+  }
+  {
+    methodName := StringNameFromStr("get_status")
+    defer methodName.Destroy()
+    ptrsForPacketPeerDTLS.fnGetStatus = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3248654679))
+  }
+  {
+    methodName := StringNameFromStr("disconnect_from_peer")
+    defer methodName.Destroy()
+    ptrsForPacketPeerDTLS.fnDisconnectFromPeer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+}
+
 type PacketPeerDTLS struct {
   PacketPeer
 }
@@ -60,60 +95,40 @@ func (me *PacketPeerDTLS) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PacketPeerDTLS) Poll()  {
-  classNameV := StringNameFromStr("PacketPeerDTLS")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("poll")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPacketPeerDTLS.fnPoll), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PacketPeerDTLS) ConnectToPeer(packet_peer PacketPeerUDP, hostname String, client_options TLSOptions, ) Error {
-  classNameV := StringNameFromStr("PacketPeerDTLS")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("connect_to_peer")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2880188099) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{packet_peer.AsCTypePtr(), hostname.AsCTypePtr(), client_options.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPacketPeerDTLS.fnConnectToPeer), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *PacketPeerDTLS) GetStatus() PacketPeerDTLSStatus {
-  classNameV := StringNameFromStr("PacketPeerDTLS")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_status")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3248654679) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret PacketPeerDTLSStatus
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPacketPeerDTLS.fnGetStatus), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *PacketPeerDTLS) DisconnectFromPeer()  {
-  classNameV := StringNameFromStr("PacketPeerDTLS")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("disconnect_from_peer")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPacketPeerDTLS.fnDisconnectFromPeer), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

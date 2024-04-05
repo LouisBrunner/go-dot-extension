@@ -14,6 +14,23 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForGDScriptList struct {
+  fnNew gdc.MethodBindPtr
+}
+
+var ptrsForGDScript ptrsForGDScriptList
+
+func initGDScriptPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("GDScript")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("new")
+    defer methodName.Destroy()
+    ptrsForGDScript.fnNew = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1545262638))
+  }
+}
+
 type GDScript struct {
   Script
 }
@@ -51,18 +68,13 @@ func (me *GDScript) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *GDScript) New(varargs ...Variant) Variant {
-  classNameV := StringNameFromStr("GDScript")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("new")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1545262638) // FIXME: should cache?
   cargs := make([]gdc.ConstVariantPtr, 0, 0 + len(varargs))
   for _, v := range varargs {
     cargs = append(cargs, v.AsCPtr())
   }
   ret := NewVariant()
   cerr := &gdc.CallError{}
-  giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
+  giface.ObjectMethodBindCall(ensurePtr(ptrsForGDScript.fnNew), me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
   if cerr.Error != gdc.CallOk {
     log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
     return *ret

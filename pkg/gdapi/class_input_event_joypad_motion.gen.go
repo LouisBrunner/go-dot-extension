@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForInputEventJoypadMotionList struct {
+  fnSetAxis gdc.MethodBindPtr
+  fnGetAxis gdc.MethodBindPtr
+  fnSetAxisValue gdc.MethodBindPtr
+  fnGetAxisValue gdc.MethodBindPtr
+}
+
+var ptrsForInputEventJoypadMotion ptrsForInputEventJoypadMotionList
+
+func initInputEventJoypadMotionPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("InputEventJoypadMotion")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_axis")
+    defer methodName.Destroy()
+    ptrsForInputEventJoypadMotion.fnSetAxis = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1332685170))
+  }
+  {
+    methodName := StringNameFromStr("get_axis")
+    defer methodName.Destroy()
+    ptrsForInputEventJoypadMotion.fnGetAxis = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4019121683))
+  }
+  {
+    methodName := StringNameFromStr("set_axis_value")
+    defer methodName.Destroy()
+    ptrsForInputEventJoypadMotion.fnSetAxisValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_axis_value")
+    defer methodName.Destroy()
+    ptrsForInputEventJoypadMotion.fnGetAxisValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type InputEventJoypadMotion struct {
   InputEvent
 }
@@ -51,60 +86,40 @@ func (me *InputEventJoypadMotion) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *InputEventJoypadMotion) SetAxis(axis JoyAxis, )  {
-  classNameV := StringNameFromStr("InputEventJoypadMotion")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_axis")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1332685170) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&axis) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventJoypadMotion.fnSetAxis), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventJoypadMotion) GetAxis() JoyAxis {
-  classNameV := StringNameFromStr("InputEventJoypadMotion")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_axis")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4019121683) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret JoyAxis
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventJoypadMotion.fnGetAxis), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *InputEventJoypadMotion) SetAxisValue(axis_value float64, )  {
-  classNameV := StringNameFromStr("InputEventJoypadMotion")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_axis_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&axis_value) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventJoypadMotion.fnSetAxisValue), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventJoypadMotion) GetAxisValue() float64 {
-  classNameV := StringNameFromStr("InputEventJoypadMotion")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_axis_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventJoypadMotion.fnGetAxisValue), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForGrooveJoint2DList struct {
+  fnSetLength gdc.MethodBindPtr
+  fnGetLength gdc.MethodBindPtr
+  fnSetInitialOffset gdc.MethodBindPtr
+  fnGetInitialOffset gdc.MethodBindPtr
+}
+
+var ptrsForGrooveJoint2D ptrsForGrooveJoint2DList
+
+func initGrooveJoint2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("GrooveJoint2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_length")
+    defer methodName.Destroy()
+    ptrsForGrooveJoint2D.fnSetLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_length")
+    defer methodName.Destroy()
+    ptrsForGrooveJoint2D.fnGetLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_initial_offset")
+    defer methodName.Destroy()
+    ptrsForGrooveJoint2D.fnSetInitialOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_initial_offset")
+    defer methodName.Destroy()
+    ptrsForGrooveJoint2D.fnGetInitialOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type GrooveJoint2D struct {
   Joint2D
 }
@@ -51,60 +86,40 @@ func (me *GrooveJoint2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *GrooveJoint2D) SetLength(length float64, )  {
-  classNameV := StringNameFromStr("GrooveJoint2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&length) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGrooveJoint2D.fnSetLength), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GrooveJoint2D) GetLength() float64 {
-  classNameV := StringNameFromStr("GrooveJoint2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGrooveJoint2D.fnGetLength), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *GrooveJoint2D) SetInitialOffset(offset float64, )  {
-  classNameV := StringNameFromStr("GrooveJoint2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_initial_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&offset) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGrooveJoint2D.fnSetInitialOffset), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GrooveJoint2D) GetInitialOffset() float64 {
-  classNameV := StringNameFromStr("GrooveJoint2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_initial_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGrooveJoint2D.fnGetInitialOffset), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

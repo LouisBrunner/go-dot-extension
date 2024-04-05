@@ -14,6 +14,35 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSemaphoreList struct {
+  fnWait gdc.MethodBindPtr
+  fnTryWait gdc.MethodBindPtr
+  fnPost gdc.MethodBindPtr
+}
+
+var ptrsForSemaphore ptrsForSemaphoreList
+
+func initSemaphorePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Semaphore")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("wait")
+    defer methodName.Destroy()
+    ptrsForSemaphore.fnWait = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("try_wait")
+    defer methodName.Destroy()
+    ptrsForSemaphore.fnTryWait = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("post")
+    defer methodName.Destroy()
+    ptrsForSemaphore.fnPost = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+}
+
 type Semaphore struct {
   RefCounted
 }
@@ -51,45 +80,30 @@ func (me *Semaphore) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Semaphore) Wait()  {
-  classNameV := StringNameFromStr("Semaphore")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("wait")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSemaphore.fnWait), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Semaphore) TryWait() bool {
-  classNameV := StringNameFromStr("Semaphore")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("try_wait")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSemaphore.fnTryWait), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Semaphore) Post()  {
-  classNameV := StringNameFromStr("Semaphore")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("post")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSemaphore.fnPost), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

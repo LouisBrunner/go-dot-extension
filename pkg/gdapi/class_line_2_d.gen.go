@@ -14,6 +14,221 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForLine2DList struct {
+  fnSetPoints gdc.MethodBindPtr
+  fnGetPoints gdc.MethodBindPtr
+  fnSetPointPosition gdc.MethodBindPtr
+  fnGetPointPosition gdc.MethodBindPtr
+  fnGetPointCount gdc.MethodBindPtr
+  fnAddPoint gdc.MethodBindPtr
+  fnRemovePoint gdc.MethodBindPtr
+  fnClearPoints gdc.MethodBindPtr
+  fnSetClosed gdc.MethodBindPtr
+  fnIsClosed gdc.MethodBindPtr
+  fnSetWidth gdc.MethodBindPtr
+  fnGetWidth gdc.MethodBindPtr
+  fnSetCurve gdc.MethodBindPtr
+  fnGetCurve gdc.MethodBindPtr
+  fnSetDefaultColor gdc.MethodBindPtr
+  fnGetDefaultColor gdc.MethodBindPtr
+  fnSetGradient gdc.MethodBindPtr
+  fnGetGradient gdc.MethodBindPtr
+  fnSetTexture gdc.MethodBindPtr
+  fnGetTexture gdc.MethodBindPtr
+  fnSetTextureMode gdc.MethodBindPtr
+  fnGetTextureMode gdc.MethodBindPtr
+  fnSetJointMode gdc.MethodBindPtr
+  fnGetJointMode gdc.MethodBindPtr
+  fnSetBeginCapMode gdc.MethodBindPtr
+  fnGetBeginCapMode gdc.MethodBindPtr
+  fnSetEndCapMode gdc.MethodBindPtr
+  fnGetEndCapMode gdc.MethodBindPtr
+  fnSetSharpLimit gdc.MethodBindPtr
+  fnGetSharpLimit gdc.MethodBindPtr
+  fnSetRoundPrecision gdc.MethodBindPtr
+  fnGetRoundPrecision gdc.MethodBindPtr
+  fnSetAntialiased gdc.MethodBindPtr
+  fnGetAntialiased gdc.MethodBindPtr
+}
+
+var ptrsForLine2D ptrsForLine2DList
+
+func initLine2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Line2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_points")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnSetPoints = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1509147220))
+  }
+  {
+    methodName := StringNameFromStr("get_points")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnGetPoints = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2961356807))
+  }
+  {
+    methodName := StringNameFromStr("set_point_position")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnSetPointPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 163021252))
+  }
+  {
+    methodName := StringNameFromStr("get_point_position")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnGetPointPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2299179447))
+  }
+  {
+    methodName := StringNameFromStr("get_point_count")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnGetPointCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("add_point")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnAddPoint = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2654014372))
+  }
+  {
+    methodName := StringNameFromStr("remove_point")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnRemovePoint = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("clear_points")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnClearPoints = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("set_closed")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnSetClosed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_closed")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnIsClosed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_width")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnSetWidth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_width")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnGetWidth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_curve")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnSetCurve = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 270443179))
+  }
+  {
+    methodName := StringNameFromStr("get_curve")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnGetCurve = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2460114913))
+  }
+  {
+    methodName := StringNameFromStr("set_default_color")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnSetDefaultColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2920490490))
+  }
+  {
+    methodName := StringNameFromStr("get_default_color")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnGetDefaultColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3444240500))
+  }
+  {
+    methodName := StringNameFromStr("set_gradient")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnSetGradient = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2756054477))
+  }
+  {
+    methodName := StringNameFromStr("get_gradient")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnGetGradient = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 132272999))
+  }
+  {
+    methodName := StringNameFromStr("set_texture")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnSetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4051416890))
+  }
+  {
+    methodName := StringNameFromStr("get_texture")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnGetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
+  }
+  {
+    methodName := StringNameFromStr("set_texture_mode")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnSetTextureMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1952559516))
+  }
+  {
+    methodName := StringNameFromStr("get_texture_mode")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnGetTextureMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2341040722))
+  }
+  {
+    methodName := StringNameFromStr("set_joint_mode")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnSetJointMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 604292979))
+  }
+  {
+    methodName := StringNameFromStr("get_joint_mode")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnGetJointMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2546544037))
+  }
+  {
+    methodName := StringNameFromStr("set_begin_cap_mode")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnSetBeginCapMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1669024546))
+  }
+  {
+    methodName := StringNameFromStr("get_begin_cap_mode")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnGetBeginCapMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1107511441))
+  }
+  {
+    methodName := StringNameFromStr("set_end_cap_mode")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnSetEndCapMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1669024546))
+  }
+  {
+    methodName := StringNameFromStr("get_end_cap_mode")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnGetEndCapMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1107511441))
+  }
+  {
+    methodName := StringNameFromStr("set_sharp_limit")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnSetSharpLimit = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_sharp_limit")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnGetSharpLimit = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_round_precision")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnSetRoundPrecision = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_round_precision")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnGetRoundPrecision = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_antialiased")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnSetAntialiased = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_antialiased")
+    defer methodName.Destroy()
+    ptrsForLine2D.fnGetAntialiased = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type Line2D struct {
   Node2D
 }
@@ -72,495 +287,325 @@ func (me *Line2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Line2D) SetPoints(points PackedVector2Array, )  {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_points")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1509147220) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{points.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnSetPoints), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Line2D) GetPoints() PackedVector2Array {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_points")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2961356807) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedVector2Array()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnGetPoints), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Line2D) SetPointPosition(index int64, position Vector2, )  {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_point_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 163021252) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index) , position.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnSetPointPosition), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Line2D) GetPointPosition(index int64, ) Vector2 {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_point_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2299179447) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
   pinner.Pin(&index)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnGetPointPosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Line2D) GetPointCount() int64 {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_point_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnGetPointCount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Line2D) AddPoint(position Vector2, index int64, )  {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_point")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2654014372) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), gdc.ConstTypePtr(&index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnAddPoint), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Line2D) RemovePoint(index int64, )  {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_point")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnRemovePoint), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Line2D) ClearPoints()  {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("clear_points")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnClearPoints), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Line2D) SetClosed(closed bool, )  {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_closed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&closed) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnSetClosed), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Line2D) IsClosed() bool {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_closed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnIsClosed), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Line2D) SetWidth(width float64, )  {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_width")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnSetWidth), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Line2D) GetWidth() float64 {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_width")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnGetWidth), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Line2D) SetCurve(curve Curve, )  {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_curve")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{curve.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnSetCurve), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Line2D) GetCurve() Curve {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_curve")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewCurve()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnGetCurve), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Line2D) SetDefaultColor(color Color, )  {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_default_color")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{color.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnSetDefaultColor), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Line2D) GetDefaultColor() Color {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_default_color")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewColor()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnGetDefaultColor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Line2D) SetGradient(color Gradient, )  {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_gradient")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2756054477) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{color.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnSetGradient), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Line2D) GetGradient() Gradient {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_gradient")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 132272999) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewGradient()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnGetGradient), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Line2D) SetTexture(texture Texture2D, )  {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{texture.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnSetTexture), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Line2D) GetTexture() Texture2D {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnGetTexture), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Line2D) SetTextureMode(mode Line2DLineTextureMode, )  {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_texture_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1952559516) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnSetTextureMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Line2D) GetTextureMode() Line2DLineTextureMode {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2341040722) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Line2DLineTextureMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnGetTextureMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Line2D) SetJointMode(mode Line2DLineJointMode, )  {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_joint_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 604292979) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnSetJointMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Line2D) GetJointMode() Line2DLineJointMode {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_joint_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2546544037) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Line2DLineJointMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnGetJointMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Line2D) SetBeginCapMode(mode Line2DLineCapMode, )  {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_begin_cap_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1669024546) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnSetBeginCapMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Line2D) GetBeginCapMode() Line2DLineCapMode {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_begin_cap_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1107511441) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Line2DLineCapMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnGetBeginCapMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Line2D) SetEndCapMode(mode Line2DLineCapMode, )  {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_end_cap_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1669024546) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnSetEndCapMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Line2D) GetEndCapMode() Line2DLineCapMode {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_end_cap_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1107511441) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Line2DLineCapMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnGetEndCapMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Line2D) SetSharpLimit(limit float64, )  {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_sharp_limit")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&limit) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnSetSharpLimit), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Line2D) GetSharpLimit() float64 {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_sharp_limit")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnGetSharpLimit), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Line2D) SetRoundPrecision(precision int64, )  {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_round_precision")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&precision) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnSetRoundPrecision), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Line2D) GetRoundPrecision() int64 {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_round_precision")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnGetRoundPrecision), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Line2D) SetAntialiased(antialiased bool, )  {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_antialiased")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&antialiased) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnSetAntialiased), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Line2D) GetAntialiased() bool {
-  classNameV := StringNameFromStr("Line2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_antialiased")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLine2D.fnGetAntialiased), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

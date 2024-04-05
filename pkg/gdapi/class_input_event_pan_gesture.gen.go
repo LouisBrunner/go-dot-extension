@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForInputEventPanGestureList struct {
+  fnSetDelta gdc.MethodBindPtr
+  fnGetDelta gdc.MethodBindPtr
+}
+
+var ptrsForInputEventPanGesture ptrsForInputEventPanGestureList
+
+func initInputEventPanGesturePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("InputEventPanGesture")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_delta")
+    defer methodName.Destroy()
+    ptrsForInputEventPanGesture.fnSetDelta = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_delta")
+    defer methodName.Destroy()
+    ptrsForInputEventPanGesture.fnGetDelta = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+}
+
 type InputEventPanGesture struct {
   InputEventGesture
 }
@@ -51,31 +74,21 @@ func (me *InputEventPanGesture) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *InputEventPanGesture) SetDelta(delta Vector2, )  {
-  classNameV := StringNameFromStr("InputEventPanGesture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_delta")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{delta.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventPanGesture.fnSetDelta), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventPanGesture) GetDelta() Vector2 {
-  classNameV := StringNameFromStr("InputEventPanGesture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_delta")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventPanGesture.fnGetDelta), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

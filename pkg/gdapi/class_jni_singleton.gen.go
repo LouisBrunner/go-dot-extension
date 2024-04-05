@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForJNISingletonList struct {
+}
+
+var ptrsForJNISingleton ptrsForJNISingletonList
+
+func initJNISingletonPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("JNISingleton")
+  defer className.Destroy()
+}
+
 type JNISingleton struct {
   Object
 }

@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForConcavePolygonShape2DList struct {
+  fnSetSegments gdc.MethodBindPtr
+  fnGetSegments gdc.MethodBindPtr
+}
+
+var ptrsForConcavePolygonShape2D ptrsForConcavePolygonShape2DList
+
+func initConcavePolygonShape2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ConcavePolygonShape2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_segments")
+    defer methodName.Destroy()
+    ptrsForConcavePolygonShape2D.fnSetSegments = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1509147220))
+  }
+  {
+    methodName := StringNameFromStr("get_segments")
+    defer methodName.Destroy()
+    ptrsForConcavePolygonShape2D.fnGetSegments = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2961356807))
+  }
+}
+
 type ConcavePolygonShape2D struct {
   Shape2D
 }
@@ -51,31 +74,21 @@ func (me *ConcavePolygonShape2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ConcavePolygonShape2D) SetSegments(segments PackedVector2Array, )  {
-  classNameV := StringNameFromStr("ConcavePolygonShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_segments")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1509147220) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{segments.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForConcavePolygonShape2D.fnSetSegments), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ConcavePolygonShape2D) GetSegments() PackedVector2Array {
-  classNameV := StringNameFromStr("ConcavePolygonShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_segments")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2961356807) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedVector2Array()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForConcavePolygonShape2D.fnGetSegments), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

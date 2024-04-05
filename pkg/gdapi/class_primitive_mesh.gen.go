@@ -14,6 +14,84 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPrimitiveMeshList struct {
+  fnXCreateMeshArray gdc.MethodBindPtr
+  fnSetMaterial gdc.MethodBindPtr
+  fnGetMaterial gdc.MethodBindPtr
+  fnGetMeshArrays gdc.MethodBindPtr
+  fnSetCustomAabb gdc.MethodBindPtr
+  fnGetCustomAabb gdc.MethodBindPtr
+  fnSetFlipFaces gdc.MethodBindPtr
+  fnGetFlipFaces gdc.MethodBindPtr
+  fnSetAddUv2 gdc.MethodBindPtr
+  fnGetAddUv2 gdc.MethodBindPtr
+  fnSetUv2Padding gdc.MethodBindPtr
+  fnGetUv2Padding gdc.MethodBindPtr
+}
+
+var ptrsForPrimitiveMesh ptrsForPrimitiveMeshList
+
+func initPrimitiveMeshPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PrimitiveMesh")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_material")
+    defer methodName.Destroy()
+    ptrsForPrimitiveMesh.fnSetMaterial = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2757459619))
+  }
+  {
+    methodName := StringNameFromStr("get_material")
+    defer methodName.Destroy()
+    ptrsForPrimitiveMesh.fnGetMaterial = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 5934680))
+  }
+  {
+    methodName := StringNameFromStr("get_mesh_arrays")
+    defer methodName.Destroy()
+    ptrsForPrimitiveMesh.fnGetMeshArrays = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+  }
+  {
+    methodName := StringNameFromStr("set_custom_aabb")
+    defer methodName.Destroy()
+    ptrsForPrimitiveMesh.fnSetCustomAabb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 259215842))
+  }
+  {
+    methodName := StringNameFromStr("get_custom_aabb")
+    defer methodName.Destroy()
+    ptrsForPrimitiveMesh.fnGetCustomAabb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1068685055))
+  }
+  {
+    methodName := StringNameFromStr("set_flip_faces")
+    defer methodName.Destroy()
+    ptrsForPrimitiveMesh.fnSetFlipFaces = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_flip_faces")
+    defer methodName.Destroy()
+    ptrsForPrimitiveMesh.fnGetFlipFaces = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_add_uv2")
+    defer methodName.Destroy()
+    ptrsForPrimitiveMesh.fnSetAddUv2 = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_add_uv2")
+    defer methodName.Destroy()
+    ptrsForPrimitiveMesh.fnGetAddUv2 = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_uv2_padding")
+    defer methodName.Destroy()
+    ptrsForPrimitiveMesh.fnSetUv2Padding = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_uv2_padding")
+    defer methodName.Destroy()
+    ptrsForPrimitiveMesh.fnGetUv2Padding = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type PrimitiveMesh struct {
   Mesh
 }
@@ -51,162 +129,107 @@ func (me *PrimitiveMesh) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PrimitiveMesh) SetMaterial(material Material, )  {
-  classNameV := StringNameFromStr("PrimitiveMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_material")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2757459619) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{material.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPrimitiveMesh.fnSetMaterial), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PrimitiveMesh) GetMaterial() Material {
-  classNameV := StringNameFromStr("PrimitiveMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_material")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 5934680) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewMaterial()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPrimitiveMesh.fnGetMaterial), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PrimitiveMesh) GetMeshArrays() Array {
-  classNameV := StringNameFromStr("PrimitiveMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_mesh_arrays")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPrimitiveMesh.fnGetMeshArrays), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PrimitiveMesh) SetCustomAabb(aabb AABB, )  {
-  classNameV := StringNameFromStr("PrimitiveMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_custom_aabb")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 259215842) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{aabb.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPrimitiveMesh.fnSetCustomAabb), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PrimitiveMesh) GetCustomAabb() AABB {
-  classNameV := StringNameFromStr("PrimitiveMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_custom_aabb")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1068685055) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewAABB()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPrimitiveMesh.fnGetCustomAabb), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PrimitiveMesh) SetFlipFaces(flip_faces bool, )  {
-  classNameV := StringNameFromStr("PrimitiveMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_flip_faces")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flip_faces) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPrimitiveMesh.fnSetFlipFaces), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PrimitiveMesh) GetFlipFaces() bool {
-  classNameV := StringNameFromStr("PrimitiveMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_flip_faces")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPrimitiveMesh.fnGetFlipFaces), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *PrimitiveMesh) SetAddUv2(add_uv2 bool, )  {
-  classNameV := StringNameFromStr("PrimitiveMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_add_uv2")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&add_uv2) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPrimitiveMesh.fnSetAddUv2), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PrimitiveMesh) GetAddUv2() bool {
-  classNameV := StringNameFromStr("PrimitiveMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_add_uv2")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPrimitiveMesh.fnGetAddUv2), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *PrimitiveMesh) SetUv2Padding(uv2_padding float64, )  {
-  classNameV := StringNameFromStr("PrimitiveMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_uv2_padding")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&uv2_padding) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPrimitiveMesh.fnSetUv2Padding), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PrimitiveMesh) GetUv2Padding() float64 {
-  classNameV := StringNameFromStr("PrimitiveMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_uv2_padding")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPrimitiveMesh.fnGetUv2Padding), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

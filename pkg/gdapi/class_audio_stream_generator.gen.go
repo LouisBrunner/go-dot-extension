@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioStreamGeneratorList struct {
+  fnSetMixRate gdc.MethodBindPtr
+  fnGetMixRate gdc.MethodBindPtr
+  fnSetBufferLength gdc.MethodBindPtr
+  fnGetBufferLength gdc.MethodBindPtr
+}
+
+var ptrsForAudioStreamGenerator ptrsForAudioStreamGeneratorList
+
+func initAudioStreamGeneratorPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioStreamGenerator")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_mix_rate")
+    defer methodName.Destroy()
+    ptrsForAudioStreamGenerator.fnSetMixRate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_mix_rate")
+    defer methodName.Destroy()
+    ptrsForAudioStreamGenerator.fnGetMixRate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_buffer_length")
+    defer methodName.Destroy()
+    ptrsForAudioStreamGenerator.fnSetBufferLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_buffer_length")
+    defer methodName.Destroy()
+    ptrsForAudioStreamGenerator.fnGetBufferLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type AudioStreamGenerator struct {
   AudioStream
 }
@@ -51,60 +86,40 @@ func (me *AudioStreamGenerator) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AudioStreamGenerator) SetMixRate(hz float64, )  {
-  classNameV := StringNameFromStr("AudioStreamGenerator")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_mix_rate")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hz) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamGenerator.fnSetMixRate), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioStreamGenerator) GetMixRate() float64 {
-  classNameV := StringNameFromStr("AudioStreamGenerator")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_mix_rate")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamGenerator.fnGetMixRate), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioStreamGenerator) SetBufferLength(seconds float64, )  {
-  classNameV := StringNameFromStr("AudioStreamGenerator")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_buffer_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&seconds) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamGenerator.fnSetBufferLength), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioStreamGenerator) GetBufferLength() float64 {
-  classNameV := StringNameFromStr("AudioStreamGenerator")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_buffer_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamGenerator.fnGetBufferLength), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

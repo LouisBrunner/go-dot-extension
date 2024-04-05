@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForGLTFDocumentExtensionConvertImporterMeshList struct {
+}
+
+var ptrsForGLTFDocumentExtensionConvertImporterMesh ptrsForGLTFDocumentExtensionConvertImporterMeshList
+
+func initGLTFDocumentExtensionConvertImporterMeshPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("GLTFDocumentExtensionConvertImporterMesh")
+  defer className.Destroy()
+}
+
 type GLTFDocumentExtensionConvertImporterMesh struct {
   GLTFDocumentExtension
 }

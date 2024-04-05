@@ -14,6 +14,125 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForNavigationRegion3DList struct {
+  fnSetNavigationMesh gdc.MethodBindPtr
+  fnGetNavigationMesh gdc.MethodBindPtr
+  fnSetEnabled gdc.MethodBindPtr
+  fnIsEnabled gdc.MethodBindPtr
+  fnSetNavigationMap gdc.MethodBindPtr
+  fnGetNavigationMap gdc.MethodBindPtr
+  fnSetUseEdgeConnections gdc.MethodBindPtr
+  fnGetUseEdgeConnections gdc.MethodBindPtr
+  fnSetNavigationLayers gdc.MethodBindPtr
+  fnGetNavigationLayers gdc.MethodBindPtr
+  fnSetNavigationLayerValue gdc.MethodBindPtr
+  fnGetNavigationLayerValue gdc.MethodBindPtr
+  fnGetRegionRid gdc.MethodBindPtr
+  fnSetEnterCost gdc.MethodBindPtr
+  fnGetEnterCost gdc.MethodBindPtr
+  fnSetTravelCost gdc.MethodBindPtr
+  fnGetTravelCost gdc.MethodBindPtr
+  fnBakeNavigationMesh gdc.MethodBindPtr
+}
+
+var ptrsForNavigationRegion3D ptrsForNavigationRegion3DList
+
+func initNavigationRegion3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("NavigationRegion3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_navigation_mesh")
+    defer methodName.Destroy()
+    ptrsForNavigationRegion3D.fnSetNavigationMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2923361153))
+  }
+  {
+    methodName := StringNameFromStr("get_navigation_mesh")
+    defer methodName.Destroy()
+    ptrsForNavigationRegion3D.fnGetNavigationMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1468720886))
+  }
+  {
+    methodName := StringNameFromStr("set_enabled")
+    defer methodName.Destroy()
+    ptrsForNavigationRegion3D.fnSetEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_enabled")
+    defer methodName.Destroy()
+    ptrsForNavigationRegion3D.fnIsEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_navigation_map")
+    defer methodName.Destroy()
+    ptrsForNavigationRegion3D.fnSetNavigationMap = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2722037293))
+  }
+  {
+    methodName := StringNameFromStr("get_navigation_map")
+    defer methodName.Destroy()
+    ptrsForNavigationRegion3D.fnGetNavigationMap = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
+  }
+  {
+    methodName := StringNameFromStr("set_use_edge_connections")
+    defer methodName.Destroy()
+    ptrsForNavigationRegion3D.fnSetUseEdgeConnections = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_use_edge_connections")
+    defer methodName.Destroy()
+    ptrsForNavigationRegion3D.fnGetUseEdgeConnections = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_navigation_layers")
+    defer methodName.Destroy()
+    ptrsForNavigationRegion3D.fnSetNavigationLayers = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_navigation_layers")
+    defer methodName.Destroy()
+    ptrsForNavigationRegion3D.fnGetNavigationLayers = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_navigation_layer_value")
+    defer methodName.Destroy()
+    ptrsForNavigationRegion3D.fnSetNavigationLayerValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 300928843))
+  }
+  {
+    methodName := StringNameFromStr("get_navigation_layer_value")
+    defer methodName.Destroy()
+    ptrsForNavigationRegion3D.fnGetNavigationLayerValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
+  }
+  {
+    methodName := StringNameFromStr("get_region_rid")
+    defer methodName.Destroy()
+    ptrsForNavigationRegion3D.fnGetRegionRid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
+  }
+  {
+    methodName := StringNameFromStr("set_enter_cost")
+    defer methodName.Destroy()
+    ptrsForNavigationRegion3D.fnSetEnterCost = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_enter_cost")
+    defer methodName.Destroy()
+    ptrsForNavigationRegion3D.fnGetEnterCost = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_travel_cost")
+    defer methodName.Destroy()
+    ptrsForNavigationRegion3D.fnSetTravelCost = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_travel_cost")
+    defer methodName.Destroy()
+    ptrsForNavigationRegion3D.fnGetTravelCost = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("bake_navigation_mesh")
+    defer methodName.Destroy()
+    ptrsForNavigationRegion3D.fnBakeNavigationMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3216645846))
+  }
+}
+
 type NavigationRegion3D struct {
   Node3D
 }
@@ -51,264 +170,174 @@ func (me *NavigationRegion3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *NavigationRegion3D) SetNavigationMesh(navigation_mesh NavigationMesh, )  {
-  classNameV := StringNameFromStr("NavigationRegion3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_navigation_mesh")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2923361153) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{navigation_mesh.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnSetNavigationMesh), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationRegion3D) GetNavigationMesh() NavigationMesh {
-  classNameV := StringNameFromStr("NavigationRegion3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_navigation_mesh")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1468720886) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNavigationMesh()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnGetNavigationMesh), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *NavigationRegion3D) SetEnabled(enabled bool, )  {
-  classNameV := StringNameFromStr("NavigationRegion3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnSetEnabled), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationRegion3D) IsEnabled() bool {
-  classNameV := StringNameFromStr("NavigationRegion3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnIsEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NavigationRegion3D) SetNavigationMap(navigation_map RID, )  {
-  classNameV := StringNameFromStr("NavigationRegion3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_navigation_map")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{navigation_map.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnSetNavigationMap), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationRegion3D) GetNavigationMap() RID {
-  classNameV := StringNameFromStr("NavigationRegion3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_navigation_map")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRID()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnGetNavigationMap), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *NavigationRegion3D) SetUseEdgeConnections(enabled bool, )  {
-  classNameV := StringNameFromStr("NavigationRegion3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_use_edge_connections")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnSetUseEdgeConnections), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationRegion3D) GetUseEdgeConnections() bool {
-  classNameV := StringNameFromStr("NavigationRegion3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_use_edge_connections")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnGetUseEdgeConnections), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NavigationRegion3D) SetNavigationLayers(navigation_layers int64, )  {
-  classNameV := StringNameFromStr("NavigationRegion3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_navigation_layers")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&navigation_layers) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnSetNavigationLayers), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationRegion3D) GetNavigationLayers() int64 {
-  classNameV := StringNameFromStr("NavigationRegion3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_navigation_layers")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnGetNavigationLayers), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NavigationRegion3D) SetNavigationLayerValue(layer_number int64, value bool, )  {
-  classNameV := StringNameFromStr("NavigationRegion3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_navigation_layer_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number) , gdc.ConstTypePtr(&value) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnSetNavigationLayerValue), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationRegion3D) GetNavigationLayerValue(layer_number int64, ) bool {
-  classNameV := StringNameFromStr("NavigationRegion3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_navigation_layer_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
   pinner.Pin(&layer_number)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnGetNavigationLayerValue), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NavigationRegion3D) GetRegionRid() RID {
-  classNameV := StringNameFromStr("NavigationRegion3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_region_rid")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRID()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnGetRegionRid), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *NavigationRegion3D) SetEnterCost(enter_cost float64, )  {
-  classNameV := StringNameFromStr("NavigationRegion3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_enter_cost")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enter_cost) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnSetEnterCost), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationRegion3D) GetEnterCost() float64 {
-  classNameV := StringNameFromStr("NavigationRegion3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_enter_cost")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnGetEnterCost), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NavigationRegion3D) SetTravelCost(travel_cost float64, )  {
-  classNameV := StringNameFromStr("NavigationRegion3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_travel_cost")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&travel_cost) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnSetTravelCost), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationRegion3D) GetTravelCost() float64 {
-  classNameV := StringNameFromStr("NavigationRegion3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_travel_cost")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnGetTravelCost), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NavigationRegion3D) BakeNavigationMesh(on_thread bool, )  {
-  classNameV := StringNameFromStr("NavigationRegion3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("bake_navigation_mesh")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3216645846) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&on_thread) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnBakeNavigationMesh), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

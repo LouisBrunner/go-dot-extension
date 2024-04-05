@@ -14,6 +14,89 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioStreamMP3List struct {
+  fnSetData gdc.MethodBindPtr
+  fnGetData gdc.MethodBindPtr
+  fnSetLoop gdc.MethodBindPtr
+  fnHasLoop gdc.MethodBindPtr
+  fnSetLoopOffset gdc.MethodBindPtr
+  fnGetLoopOffset gdc.MethodBindPtr
+  fnSetBpm gdc.MethodBindPtr
+  fnGetBpm gdc.MethodBindPtr
+  fnSetBeatCount gdc.MethodBindPtr
+  fnGetBeatCount gdc.MethodBindPtr
+  fnSetBarBeats gdc.MethodBindPtr
+  fnGetBarBeats gdc.MethodBindPtr
+}
+
+var ptrsForAudioStreamMP3 ptrsForAudioStreamMP3List
+
+func initAudioStreamMP3Ptrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioStreamMP3")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_data")
+    defer methodName.Destroy()
+    ptrsForAudioStreamMP3.fnSetData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2971499966))
+  }
+  {
+    methodName := StringNameFromStr("get_data")
+    defer methodName.Destroy()
+    ptrsForAudioStreamMP3.fnGetData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2362200018))
+  }
+  {
+    methodName := StringNameFromStr("set_loop")
+    defer methodName.Destroy()
+    ptrsForAudioStreamMP3.fnSetLoop = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("has_loop")
+    defer methodName.Destroy()
+    ptrsForAudioStreamMP3.fnHasLoop = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_loop_offset")
+    defer methodName.Destroy()
+    ptrsForAudioStreamMP3.fnSetLoopOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_loop_offset")
+    defer methodName.Destroy()
+    ptrsForAudioStreamMP3.fnGetLoopOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_bpm")
+    defer methodName.Destroy()
+    ptrsForAudioStreamMP3.fnSetBpm = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_bpm")
+    defer methodName.Destroy()
+    ptrsForAudioStreamMP3.fnGetBpm = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_beat_count")
+    defer methodName.Destroy()
+    ptrsForAudioStreamMP3.fnSetBeatCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_beat_count")
+    defer methodName.Destroy()
+    ptrsForAudioStreamMP3.fnGetBeatCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_bar_beats")
+    defer methodName.Destroy()
+    ptrsForAudioStreamMP3.fnSetBarBeats = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_bar_beats")
+    defer methodName.Destroy()
+    ptrsForAudioStreamMP3.fnGetBarBeats = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+}
+
 type AudioStreamMP3 struct {
   AudioStream
 }
@@ -51,176 +134,116 @@ func (me *AudioStreamMP3) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AudioStreamMP3) SetData(data PackedByteArray, )  {
-  classNameV := StringNameFromStr("AudioStreamMP3")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_data")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2971499966) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{data.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamMP3.fnSetData), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioStreamMP3) GetData() PackedByteArray {
-  classNameV := StringNameFromStr("AudioStreamMP3")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_data")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2362200018) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedByteArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamMP3.fnGetData), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AudioStreamMP3) SetLoop(enable bool, )  {
-  classNameV := StringNameFromStr("AudioStreamMP3")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_loop")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamMP3.fnSetLoop), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioStreamMP3) HasLoop() bool {
-  classNameV := StringNameFromStr("AudioStreamMP3")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_loop")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamMP3.fnHasLoop), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioStreamMP3) SetLoopOffset(seconds float64, )  {
-  classNameV := StringNameFromStr("AudioStreamMP3")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_loop_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&seconds) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamMP3.fnSetLoopOffset), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioStreamMP3) GetLoopOffset() float64 {
-  classNameV := StringNameFromStr("AudioStreamMP3")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_loop_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamMP3.fnGetLoopOffset), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioStreamMP3) SetBpm(bpm float64, )  {
-  classNameV := StringNameFromStr("AudioStreamMP3")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_bpm")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bpm) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamMP3.fnSetBpm), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioStreamMP3) GetBpm() float64 {
-  classNameV := StringNameFromStr("AudioStreamMP3")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_bpm")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamMP3.fnGetBpm), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioStreamMP3) SetBeatCount(count int64, )  {
-  classNameV := StringNameFromStr("AudioStreamMP3")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_beat_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&count) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamMP3.fnSetBeatCount), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioStreamMP3) GetBeatCount() int64 {
-  classNameV := StringNameFromStr("AudioStreamMP3")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_beat_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamMP3.fnGetBeatCount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioStreamMP3) SetBarBeats(count int64, )  {
-  classNameV := StringNameFromStr("AudioStreamMP3")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_bar_beats")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&count) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamMP3.fnSetBarBeats), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioStreamMP3) GetBarBeats() int64 {
-  classNameV := StringNameFromStr("AudioStreamMP3")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_bar_beats")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamMP3.fnGetBarBeats), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

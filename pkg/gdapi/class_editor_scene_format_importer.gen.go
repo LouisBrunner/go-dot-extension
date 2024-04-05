@@ -14,6 +14,22 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorSceneFormatImporterList struct {
+  fnXGetImportFlags gdc.MethodBindPtr
+  fnXGetExtensions gdc.MethodBindPtr
+  fnXImportScene gdc.MethodBindPtr
+  fnXGetImportOptions gdc.MethodBindPtr
+  fnXGetOptionVisibility gdc.MethodBindPtr
+}
+
+var ptrsForEditorSceneFormatImporter ptrsForEditorSceneFormatImporterList
+
+func initEditorSceneFormatImporterPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorSceneFormatImporter")
+  defer className.Destroy()
+}
+
 type EditorSceneFormatImporter struct {
   RefCounted
 }

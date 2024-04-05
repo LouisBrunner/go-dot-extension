@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCanvasGroupList struct {
+  fnSetFitMargin gdc.MethodBindPtr
+  fnGetFitMargin gdc.MethodBindPtr
+  fnSetClearMargin gdc.MethodBindPtr
+  fnGetClearMargin gdc.MethodBindPtr
+  fnSetUseMipmaps gdc.MethodBindPtr
+  fnIsUsingMipmaps gdc.MethodBindPtr
+}
+
+var ptrsForCanvasGroup ptrsForCanvasGroupList
+
+func initCanvasGroupPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CanvasGroup")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_fit_margin")
+    defer methodName.Destroy()
+    ptrsForCanvasGroup.fnSetFitMargin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_fit_margin")
+    defer methodName.Destroy()
+    ptrsForCanvasGroup.fnGetFitMargin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_clear_margin")
+    defer methodName.Destroy()
+    ptrsForCanvasGroup.fnSetClearMargin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_clear_margin")
+    defer methodName.Destroy()
+    ptrsForCanvasGroup.fnGetClearMargin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_use_mipmaps")
+    defer methodName.Destroy()
+    ptrsForCanvasGroup.fnSetUseMipmaps = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_using_mipmaps")
+    defer methodName.Destroy()
+    ptrsForCanvasGroup.fnIsUsingMipmaps = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type CanvasGroup struct {
   Node2D
 }
@@ -51,89 +98,59 @@ func (me *CanvasGroup) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *CanvasGroup) SetFitMargin(fit_margin float64, )  {
-  classNameV := StringNameFromStr("CanvasGroup")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_fit_margin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&fit_margin) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasGroup.fnSetFitMargin), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CanvasGroup) GetFitMargin() float64 {
-  classNameV := StringNameFromStr("CanvasGroup")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_fit_margin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasGroup.fnGetFitMargin), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *CanvasGroup) SetClearMargin(clear_margin float64, )  {
-  classNameV := StringNameFromStr("CanvasGroup")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_clear_margin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&clear_margin) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasGroup.fnSetClearMargin), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CanvasGroup) GetClearMargin() float64 {
-  classNameV := StringNameFromStr("CanvasGroup")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_clear_margin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasGroup.fnGetClearMargin), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *CanvasGroup) SetUseMipmaps(use_mipmaps bool, )  {
-  classNameV := StringNameFromStr("CanvasGroup")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_use_mipmaps")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&use_mipmaps) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasGroup.fnSetUseMipmaps), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CanvasGroup) IsUsingMipmaps() bool {
-  classNameV := StringNameFromStr("CanvasGroup")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_using_mipmaps")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasGroup.fnIsUsingMipmaps), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

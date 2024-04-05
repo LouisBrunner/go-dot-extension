@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeTexture2DArrayParameterList struct {
+}
+
+var ptrsForVisualShaderNodeTexture2DArrayParameter ptrsForVisualShaderNodeTexture2DArrayParameterList
+
+func initVisualShaderNodeTexture2DArrayParameterPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeTexture2DArrayParameter")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeTexture2DArrayParameter struct {
   VisualShaderNodeTextureParameter
 }

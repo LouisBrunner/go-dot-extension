@@ -14,6 +14,88 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorVCSInterfaceList struct {
+  fnXInitialize gdc.MethodBindPtr
+  fnXSetCredentials gdc.MethodBindPtr
+  fnXGetModifiedFilesData gdc.MethodBindPtr
+  fnXStageFile gdc.MethodBindPtr
+  fnXUnstageFile gdc.MethodBindPtr
+  fnXDiscardFile gdc.MethodBindPtr
+  fnXCommit gdc.MethodBindPtr
+  fnXGetDiff gdc.MethodBindPtr
+  fnXShutDown gdc.MethodBindPtr
+  fnXGetVcsName gdc.MethodBindPtr
+  fnXGetPreviousCommits gdc.MethodBindPtr
+  fnXGetBranchList gdc.MethodBindPtr
+  fnXGetRemotes gdc.MethodBindPtr
+  fnXCreateBranch gdc.MethodBindPtr
+  fnXRemoveBranch gdc.MethodBindPtr
+  fnXCreateRemote gdc.MethodBindPtr
+  fnXRemoveRemote gdc.MethodBindPtr
+  fnXGetCurrentBranchName gdc.MethodBindPtr
+  fnXCheckoutBranch gdc.MethodBindPtr
+  fnXPull gdc.MethodBindPtr
+  fnXPush gdc.MethodBindPtr
+  fnXFetch gdc.MethodBindPtr
+  fnXGetLineDiff gdc.MethodBindPtr
+  fnCreateDiffLine gdc.MethodBindPtr
+  fnCreateDiffHunk gdc.MethodBindPtr
+  fnCreateDiffFile gdc.MethodBindPtr
+  fnCreateCommit gdc.MethodBindPtr
+  fnCreateStatusFile gdc.MethodBindPtr
+  fnAddDiffHunksIntoDiffFile gdc.MethodBindPtr
+  fnAddLineDiffsIntoDiffHunk gdc.MethodBindPtr
+  fnPopupError gdc.MethodBindPtr
+}
+
+var ptrsForEditorVCSInterface ptrsForEditorVCSInterfaceList
+
+func initEditorVCSInterfacePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorVCSInterface")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("create_diff_line")
+    defer methodName.Destroy()
+    ptrsForEditorVCSInterface.fnCreateDiffLine = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2901184053))
+  }
+  {
+    methodName := StringNameFromStr("create_diff_hunk")
+    defer methodName.Destroy()
+    ptrsForEditorVCSInterface.fnCreateDiffHunk = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3784842090))
+  }
+  {
+    methodName := StringNameFromStr("create_diff_file")
+    defer methodName.Destroy()
+    ptrsForEditorVCSInterface.fnCreateDiffFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2723227684))
+  }
+  {
+    methodName := StringNameFromStr("create_commit")
+    defer methodName.Destroy()
+    ptrsForEditorVCSInterface.fnCreateCommit = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1075983584))
+  }
+  {
+    methodName := StringNameFromStr("create_status_file")
+    defer methodName.Destroy()
+    ptrsForEditorVCSInterface.fnCreateStatusFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1083471673))
+  }
+  {
+    methodName := StringNameFromStr("add_diff_hunks_into_diff_file")
+    defer methodName.Destroy()
+    ptrsForEditorVCSInterface.fnAddDiffHunksIntoDiffFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4015243225))
+  }
+  {
+    methodName := StringNameFromStr("add_line_diffs_into_diff_hunk")
+    defer methodName.Destroy()
+    ptrsForEditorVCSInterface.fnAddLineDiffsIntoDiffHunk = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4015243225))
+  }
+  {
+    methodName := StringNameFromStr("popup_error")
+    defer methodName.Destroy()
+    ptrsForEditorVCSInterface.fnPopupError = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+}
+
 type EditorVCSInterface struct {
   Object
 }
@@ -68,11 +150,6 @@ func (me *EditorVCSInterface) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *EditorVCSInterface) CreateDiffLine(new_line_no int64, old_line_no int64, content String, status String, ) Dictionary {
-  classNameV := StringNameFromStr("EditorVCSInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("create_diff_line")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2901184053) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&new_line_no) , gdc.ConstTypePtr(&old_line_no) , content.AsCTypePtr(), status.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -80,16 +157,11 @@ func  (me *EditorVCSInterface) CreateDiffLine(new_line_no int64, old_line_no int
   pinner.Pin(&new_line_no)
   pinner.Pin(&old_line_no)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorVCSInterface.fnCreateDiffLine), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorVCSInterface) CreateDiffHunk(old_start int64, new_start int64, old_lines int64, new_lines int64, ) Dictionary {
-  classNameV := StringNameFromStr("EditorVCSInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("create_diff_hunk")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3784842090) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&old_start) , gdc.ConstTypePtr(&new_start) , gdc.ConstTypePtr(&old_lines) , gdc.ConstTypePtr(&new_lines) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -99,31 +171,21 @@ func  (me *EditorVCSInterface) CreateDiffHunk(old_start int64, new_start int64, 
   pinner.Pin(&old_lines)
   pinner.Pin(&new_lines)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorVCSInterface.fnCreateDiffHunk), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorVCSInterface) CreateDiffFile(new_file String, old_file String, ) Dictionary {
-  classNameV := StringNameFromStr("EditorVCSInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("create_diff_file")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2723227684) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{new_file.AsCTypePtr(), old_file.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewDictionary()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorVCSInterface.fnCreateDiffFile), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorVCSInterface) CreateCommit(msg String, author String, id String, unix_timestamp int64, offset_minutes int64, ) Dictionary {
-  classNameV := StringNameFromStr("EditorVCSInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("create_commit")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1075983584) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{msg.AsCTypePtr(), author.AsCTypePtr(), id.AsCTypePtr(), gdc.ConstTypePtr(&unix_timestamp) , gdc.ConstTypePtr(&offset_minutes) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -131,16 +193,11 @@ func  (me *EditorVCSInterface) CreateCommit(msg String, author String, id String
   pinner.Pin(&unix_timestamp)
   pinner.Pin(&offset_minutes)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorVCSInterface.fnCreateCommit), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorVCSInterface) CreateStatusFile(file_path String, change_type EditorVCSInterfaceChangeType, area EditorVCSInterfaceTreeArea, ) Dictionary {
-  classNameV := StringNameFromStr("EditorVCSInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("create_status_file")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1083471673) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{file_path.AsCTypePtr(), gdc.ConstTypePtr(&change_type) , gdc.ConstTypePtr(&area) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -148,53 +205,38 @@ func  (me *EditorVCSInterface) CreateStatusFile(file_path String, change_type Ed
   pinner.Pin(&change_type)
   pinner.Pin(&area)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorVCSInterface.fnCreateStatusFile), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorVCSInterface) AddDiffHunksIntoDiffFile(diff_file Dictionary, diff_hunks []Dictionary, ) Dictionary {
-  classNameV := StringNameFromStr("EditorVCSInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_diff_hunks_into_diff_file")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4015243225) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{diff_file.AsCTypePtr(), gdc.ConstTypePtr(&diff_hunks) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewDictionary()
   pinner.Pin(&diff_hunks)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorVCSInterface.fnAddDiffHunksIntoDiffFile), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorVCSInterface) AddLineDiffsIntoDiffHunk(diff_hunk Dictionary, line_diffs []Dictionary, ) Dictionary {
-  classNameV := StringNameFromStr("EditorVCSInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_line_diffs_into_diff_hunk")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4015243225) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{diff_hunk.AsCTypePtr(), gdc.ConstTypePtr(&line_diffs) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewDictionary()
   pinner.Pin(&line_diffs)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorVCSInterface.fnAddLineDiffsIntoDiffHunk), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorVCSInterface) PopupError(msg String, )  {
-  classNameV := StringNameFromStr("EditorVCSInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("popup_error")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{msg.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorVCSInterface.fnPopupError), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

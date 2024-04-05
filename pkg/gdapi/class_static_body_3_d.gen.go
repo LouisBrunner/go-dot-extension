@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForStaticBody3DList struct {
+  fnSetConstantLinearVelocity gdc.MethodBindPtr
+  fnSetConstantAngularVelocity gdc.MethodBindPtr
+  fnGetConstantLinearVelocity gdc.MethodBindPtr
+  fnGetConstantAngularVelocity gdc.MethodBindPtr
+  fnSetPhysicsMaterialOverride gdc.MethodBindPtr
+  fnGetPhysicsMaterialOverride gdc.MethodBindPtr
+}
+
+var ptrsForStaticBody3D ptrsForStaticBody3DList
+
+func initStaticBody3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("StaticBody3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_constant_linear_velocity")
+    defer methodName.Destroy()
+    ptrsForStaticBody3D.fnSetConstantLinearVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("set_constant_angular_velocity")
+    defer methodName.Destroy()
+    ptrsForStaticBody3D.fnSetConstantAngularVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("get_constant_linear_velocity")
+    defer methodName.Destroy()
+    ptrsForStaticBody3D.fnGetConstantLinearVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("get_constant_angular_velocity")
+    defer methodName.Destroy()
+    ptrsForStaticBody3D.fnGetConstantAngularVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("set_physics_material_override")
+    defer methodName.Destroy()
+    ptrsForStaticBody3D.fnSetPhysicsMaterialOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1784508650))
+  }
+  {
+    methodName := StringNameFromStr("get_physics_material_override")
+    defer methodName.Destroy()
+    ptrsForStaticBody3D.fnGetPhysicsMaterialOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2521850424))
+  }
+}
+
 type StaticBody3D struct {
   PhysicsBody3D
 }
@@ -51,89 +98,59 @@ func (me *StaticBody3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *StaticBody3D) SetConstantLinearVelocity(vel Vector3, )  {
-  classNameV := StringNameFromStr("StaticBody3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_constant_linear_velocity")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{vel.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStaticBody3D.fnSetConstantLinearVelocity), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *StaticBody3D) SetConstantAngularVelocity(vel Vector3, )  {
-  classNameV := StringNameFromStr("StaticBody3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_constant_angular_velocity")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{vel.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStaticBody3D.fnSetConstantAngularVelocity), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *StaticBody3D) GetConstantLinearVelocity() Vector3 {
-  classNameV := StringNameFromStr("StaticBody3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_constant_linear_velocity")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStaticBody3D.fnGetConstantLinearVelocity), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *StaticBody3D) GetConstantAngularVelocity() Vector3 {
-  classNameV := StringNameFromStr("StaticBody3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_constant_angular_velocity")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStaticBody3D.fnGetConstantAngularVelocity), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *StaticBody3D) SetPhysicsMaterialOverride(physics_material_override PhysicsMaterial, )  {
-  classNameV := StringNameFromStr("StaticBody3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_physics_material_override")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1784508650) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{physics_material_override.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStaticBody3D.fnSetPhysicsMaterialOverride), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *StaticBody3D) GetPhysicsMaterialOverride() PhysicsMaterial {
-  classNameV := StringNameFromStr("StaticBody3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_physics_material_override")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2521850424) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPhysicsMaterial()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStaticBody3D.fnGetPhysicsMaterialOverride), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

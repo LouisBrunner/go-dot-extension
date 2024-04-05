@@ -14,6 +14,131 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForScrollContainerList struct {
+  fnSetHScroll gdc.MethodBindPtr
+  fnGetHScroll gdc.MethodBindPtr
+  fnSetVScroll gdc.MethodBindPtr
+  fnGetVScroll gdc.MethodBindPtr
+  fnSetHorizontalCustomStep gdc.MethodBindPtr
+  fnGetHorizontalCustomStep gdc.MethodBindPtr
+  fnSetVerticalCustomStep gdc.MethodBindPtr
+  fnGetVerticalCustomStep gdc.MethodBindPtr
+  fnSetHorizontalScrollMode gdc.MethodBindPtr
+  fnGetHorizontalScrollMode gdc.MethodBindPtr
+  fnSetVerticalScrollMode gdc.MethodBindPtr
+  fnGetVerticalScrollMode gdc.MethodBindPtr
+  fnSetDeadzone gdc.MethodBindPtr
+  fnGetDeadzone gdc.MethodBindPtr
+  fnSetFollowFocus gdc.MethodBindPtr
+  fnIsFollowingFocus gdc.MethodBindPtr
+  fnGetHScrollBar gdc.MethodBindPtr
+  fnGetVScrollBar gdc.MethodBindPtr
+  fnEnsureControlVisible gdc.MethodBindPtr
+}
+
+var ptrsForScrollContainer ptrsForScrollContainerList
+
+func initScrollContainerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ScrollContainer")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_h_scroll")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnSetHScroll = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_h_scroll")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnGetHScroll = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_v_scroll")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnSetVScroll = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_v_scroll")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnGetVScroll = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_horizontal_custom_step")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnSetHorizontalCustomStep = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_horizontal_custom_step")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnGetHorizontalCustomStep = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_vertical_custom_step")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnSetVerticalCustomStep = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_vertical_custom_step")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnGetVerticalCustomStep = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_horizontal_scroll_mode")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnSetHorizontalScrollMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2750506364))
+  }
+  {
+    methodName := StringNameFromStr("get_horizontal_scroll_mode")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnGetHorizontalScrollMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3987985145))
+  }
+  {
+    methodName := StringNameFromStr("set_vertical_scroll_mode")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnSetVerticalScrollMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2750506364))
+  }
+  {
+    methodName := StringNameFromStr("get_vertical_scroll_mode")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnGetVerticalScrollMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3987985145))
+  }
+  {
+    methodName := StringNameFromStr("set_deadzone")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnSetDeadzone = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_deadzone")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnGetDeadzone = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_follow_focus")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnSetFollowFocus = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_following_focus")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnIsFollowingFocus = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_h_scroll_bar")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnGetHScrollBar = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4004517983))
+  }
+  {
+    methodName := StringNameFromStr("get_v_scroll_bar")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnGetVScrollBar = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2630340773))
+  }
+  {
+    methodName := StringNameFromStr("ensure_control_visible")
+    defer methodName.Destroy()
+    ptrsForScrollContainer.fnEnsureControlVisible = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1496901182))
+  }
+}
+
 type ScrollContainer struct {
   Container
 }
@@ -59,278 +184,183 @@ func (me *ScrollContainer) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ScrollContainer) SetHScroll(value int64, )  {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_h_scroll")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnSetHScroll), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ScrollContainer) GetHScroll() int64 {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_h_scroll")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnGetHScroll), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ScrollContainer) SetVScroll(value int64, )  {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_v_scroll")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnSetVScroll), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ScrollContainer) GetVScroll() int64 {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_v_scroll")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnGetVScroll), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ScrollContainer) SetHorizontalCustomStep(value float64, )  {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_horizontal_custom_step")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnSetHorizontalCustomStep), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ScrollContainer) GetHorizontalCustomStep() float64 {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_horizontal_custom_step")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnGetHorizontalCustomStep), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ScrollContainer) SetVerticalCustomStep(value float64, )  {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_vertical_custom_step")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&value) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnSetVerticalCustomStep), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ScrollContainer) GetVerticalCustomStep() float64 {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_vertical_custom_step")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnGetVerticalCustomStep), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ScrollContainer) SetHorizontalScrollMode(enable ScrollContainerScrollMode, )  {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_horizontal_scroll_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2750506364) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnSetHorizontalScrollMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ScrollContainer) GetHorizontalScrollMode() ScrollContainerScrollMode {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_horizontal_scroll_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3987985145) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ScrollContainerScrollMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnGetHorizontalScrollMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *ScrollContainer) SetVerticalScrollMode(enable ScrollContainerScrollMode, )  {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_vertical_scroll_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2750506364) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnSetVerticalScrollMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ScrollContainer) GetVerticalScrollMode() ScrollContainerScrollMode {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_vertical_scroll_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3987985145) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ScrollContainerScrollMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnGetVerticalScrollMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *ScrollContainer) SetDeadzone(deadzone int64, )  {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_deadzone")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&deadzone) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnSetDeadzone), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ScrollContainer) GetDeadzone() int64 {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_deadzone")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnGetDeadzone), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ScrollContainer) SetFollowFocus(enabled bool, )  {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_follow_focus")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnSetFollowFocus), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ScrollContainer) IsFollowingFocus() bool {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_following_focus")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnIsFollowingFocus), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ScrollContainer) GetHScrollBar() HScrollBar {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_h_scroll_bar")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4004517983) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewHScrollBar()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnGetHScrollBar), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ScrollContainer) GetVScrollBar() VScrollBar {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_v_scroll_bar")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2630340773) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVScrollBar()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnGetVScrollBar), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ScrollContainer) EnsureControlVisible(control Control, )  {
-  classNameV := StringNameFromStr("ScrollContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("ensure_control_visible")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1496901182) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{control.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollContainer.fnEnsureControlVisible), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

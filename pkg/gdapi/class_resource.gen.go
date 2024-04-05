@@ -14,6 +14,90 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForResourceList struct {
+  fnXSetupLocalToScene gdc.MethodBindPtr
+  fnSetPath gdc.MethodBindPtr
+  fnTakeOverPath gdc.MethodBindPtr
+  fnGetPath gdc.MethodBindPtr
+  fnSetName gdc.MethodBindPtr
+  fnGetName gdc.MethodBindPtr
+  fnGetRid gdc.MethodBindPtr
+  fnSetLocalToScene gdc.MethodBindPtr
+  fnIsLocalToScene gdc.MethodBindPtr
+  fnGetLocalScene gdc.MethodBindPtr
+  fnSetupLocalToScene gdc.MethodBindPtr
+  fnEmitChanged gdc.MethodBindPtr
+  fnDuplicate gdc.MethodBindPtr
+}
+
+var ptrsForResource ptrsForResourceList
+
+func initResourcePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Resource")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_path")
+    defer methodName.Destroy()
+    ptrsForResource.fnSetPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("take_over_path")
+    defer methodName.Destroy()
+    ptrsForResource.fnTakeOverPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_path")
+    defer methodName.Destroy()
+    ptrsForResource.fnGetPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("set_name")
+    defer methodName.Destroy()
+    ptrsForResource.fnSetName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_name")
+    defer methodName.Destroy()
+    ptrsForResource.fnGetName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("get_rid")
+    defer methodName.Destroy()
+    ptrsForResource.fnGetRid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
+  }
+  {
+    methodName := StringNameFromStr("set_local_to_scene")
+    defer methodName.Destroy()
+    ptrsForResource.fnSetLocalToScene = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_local_to_scene")
+    defer methodName.Destroy()
+    ptrsForResource.fnIsLocalToScene = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_local_scene")
+    defer methodName.Destroy()
+    ptrsForResource.fnGetLocalScene = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3160264692))
+  }
+  {
+    methodName := StringNameFromStr("setup_local_to_scene")
+    defer methodName.Destroy()
+    ptrsForResource.fnSetupLocalToScene = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("emit_changed")
+    defer methodName.Destroy()
+    ptrsForResource.fnEmitChanged = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("duplicate")
+    defer methodName.Destroy()
+    ptrsForResource.fnDuplicate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 482882304))
+  }
+}
+
 type Resource struct {
   RefCounted
 }
@@ -51,177 +135,117 @@ func (me *Resource) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Resource) SetPath(path String, )  {
-  classNameV := StringNameFromStr("Resource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResource.fnSetPath), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Resource) TakeOverPath(path String, )  {
-  classNameV := StringNameFromStr("Resource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("take_over_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResource.fnTakeOverPath), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Resource) GetPath() String {
-  classNameV := StringNameFromStr("Resource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResource.fnGetPath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Resource) SetName(name String, )  {
-  classNameV := StringNameFromStr("Resource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResource.fnSetName), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Resource) GetName() String {
-  classNameV := StringNameFromStr("Resource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResource.fnGetName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Resource) GetRid() RID {
-  classNameV := StringNameFromStr("Resource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_rid")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRID()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResource.fnGetRid), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Resource) SetLocalToScene(enable bool, )  {
-  classNameV := StringNameFromStr("Resource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_local_to_scene")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResource.fnSetLocalToScene), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Resource) IsLocalToScene() bool {
-  classNameV := StringNameFromStr("Resource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_local_to_scene")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResource.fnIsLocalToScene), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Resource) GetLocalScene() Node {
-  classNameV := StringNameFromStr("Resource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_local_scene")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3160264692) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNode()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResource.fnGetLocalScene), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Resource) SetupLocalToScene()  {
-  classNameV := StringNameFromStr("Resource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("setup_local_to_scene")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResource.fnSetupLocalToScene), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Resource) EmitChanged()  {
-  classNameV := StringNameFromStr("Resource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("emit_changed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResource.fnEmitChanged), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Resource) Duplicate(subresources bool, ) Resource {
-  classNameV := StringNameFromStr("Resource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("duplicate")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 482882304) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&subresources) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewResource()
   pinner.Pin(&subresources)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResource.fnDuplicate), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

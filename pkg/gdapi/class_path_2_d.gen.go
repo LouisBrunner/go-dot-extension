@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPath2DList struct {
+  fnSetCurve gdc.MethodBindPtr
+  fnGetCurve gdc.MethodBindPtr
+}
+
+var ptrsForPath2D ptrsForPath2DList
+
+func initPath2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Path2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_curve")
+    defer methodName.Destroy()
+    ptrsForPath2D.fnSetCurve = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 659985499))
+  }
+  {
+    methodName := StringNameFromStr("get_curve")
+    defer methodName.Destroy()
+    ptrsForPath2D.fnGetCurve = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 660369445))
+  }
+}
+
 type Path2D struct {
   Node2D
 }
@@ -51,31 +74,21 @@ func (me *Path2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Path2D) SetCurve(curve Curve2D, )  {
-  classNameV := StringNameFromStr("Path2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_curve")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 659985499) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{curve.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPath2D.fnSetCurve), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Path2D) GetCurve() Curve2D {
-  classNameV := StringNameFromStr("Path2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_curve")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 660369445) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewCurve2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPath2D.fnGetCurve), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

@@ -14,6 +14,47 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForFlowContainerList struct {
+  fnGetLineCount gdc.MethodBindPtr
+  fnSetAlignment gdc.MethodBindPtr
+  fnGetAlignment gdc.MethodBindPtr
+  fnSetVertical gdc.MethodBindPtr
+  fnIsVertical gdc.MethodBindPtr
+}
+
+var ptrsForFlowContainer ptrsForFlowContainerList
+
+func initFlowContainerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("FlowContainer")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_line_count")
+    defer methodName.Destroy()
+    ptrsForFlowContainer.fnGetLineCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_alignment")
+    defer methodName.Destroy()
+    ptrsForFlowContainer.fnSetAlignment = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 575250951))
+  }
+  {
+    methodName := StringNameFromStr("get_alignment")
+    defer methodName.Destroy()
+    ptrsForFlowContainer.fnGetAlignment = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3749743559))
+  }
+  {
+    methodName := StringNameFromStr("set_vertical")
+    defer methodName.Destroy()
+    ptrsForFlowContainer.fnSetVertical = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_vertical")
+    defer methodName.Destroy()
+    ptrsForFlowContainer.fnIsVertical = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type FlowContainer struct {
   Container
 }
@@ -58,75 +99,50 @@ func (me *FlowContainer) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *FlowContainer) GetLineCount() int64 {
-  classNameV := StringNameFromStr("FlowContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_line_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFlowContainer.fnGetLineCount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *FlowContainer) SetAlignment(alignment FlowContainerAlignmentMode, )  {
-  classNameV := StringNameFromStr("FlowContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_alignment")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 575250951) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&alignment) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFlowContainer.fnSetAlignment), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FlowContainer) GetAlignment() FlowContainerAlignmentMode {
-  classNameV := StringNameFromStr("FlowContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_alignment")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3749743559) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret FlowContainerAlignmentMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFlowContainer.fnGetAlignment), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *FlowContainer) SetVertical(vertical bool, )  {
-  classNameV := StringNameFromStr("FlowContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_vertical")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&vertical) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFlowContainer.fnSetVertical), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FlowContainer) IsVertical() bool {
-  classNameV := StringNameFromStr("FlowContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_vertical")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFlowContainer.fnIsVertical), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

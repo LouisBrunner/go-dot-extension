@@ -14,6 +14,65 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForJavaScriptBridgeList struct {
+  fnEval gdc.MethodBindPtr
+  fnGetInterface gdc.MethodBindPtr
+  fnCreateCallback gdc.MethodBindPtr
+  fnCreateObject gdc.MethodBindPtr
+  fnDownloadBuffer gdc.MethodBindPtr
+  fnPwaNeedsUpdate gdc.MethodBindPtr
+  fnPwaUpdate gdc.MethodBindPtr
+  fnForceFsSync gdc.MethodBindPtr
+}
+
+var ptrsForJavaScriptBridge ptrsForJavaScriptBridgeList
+
+func initJavaScriptBridgePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("JavaScriptBridge")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("eval")
+    defer methodName.Destroy()
+    ptrsForJavaScriptBridge.fnEval = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 218087648))
+  }
+  {
+    methodName := StringNameFromStr("get_interface")
+    defer methodName.Destroy()
+    ptrsForJavaScriptBridge.fnGetInterface = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1355533281))
+  }
+  {
+    methodName := StringNameFromStr("create_callback")
+    defer methodName.Destroy()
+    ptrsForJavaScriptBridge.fnCreateCallback = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 422818440))
+  }
+  {
+    methodName := StringNameFromStr("create_object")
+    defer methodName.Destroy()
+    ptrsForJavaScriptBridge.fnCreateObject = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3093893586))
+  }
+  {
+    methodName := StringNameFromStr("download_buffer")
+    defer methodName.Destroy()
+    ptrsForJavaScriptBridge.fnDownloadBuffer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3352272093))
+  }
+  {
+    methodName := StringNameFromStr("pwa_needs_update")
+    defer methodName.Destroy()
+    ptrsForJavaScriptBridge.fnPwaNeedsUpdate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("pwa_update")
+    defer methodName.Destroy()
+    ptrsForJavaScriptBridge.fnPwaUpdate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 166280745))
+  }
+  {
+    methodName := StringNameFromStr("force_fs_sync")
+    defer methodName.Destroy()
+    ptrsForJavaScriptBridge.fnForceFsSync = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+}
+
 type JavaScriptBridge struct {
   Object
 }
@@ -51,57 +110,37 @@ func (me *JavaScriptBridge) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *JavaScriptBridge) Eval(code String, use_global_execution_context bool, ) Variant {
-  classNameV := StringNameFromStr("JavaScriptBridge")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("eval")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 218087648) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{code.AsCTypePtr(), gdc.ConstTypePtr(&use_global_execution_context) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVariant()
   pinner.Pin(&use_global_execution_context)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJavaScriptBridge.fnEval), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *JavaScriptBridge) GetInterface(interface_ String, ) JavaScriptObject {
-  classNameV := StringNameFromStr("JavaScriptBridge")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_interface")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1355533281) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{interface_.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewJavaScriptObject()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJavaScriptBridge.fnGetInterface), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *JavaScriptBridge) CreateCallback(callable Callable, ) JavaScriptObject {
-  classNameV := StringNameFromStr("JavaScriptBridge")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("create_callback")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 422818440) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{callable.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewJavaScriptObject()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJavaScriptBridge.fnCreateCallback), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *JavaScriptBridge) CreateObject(object String, varargs ...Variant) Variant {
-  classNameV := StringNameFromStr("JavaScriptBridge")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("create_object")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3093893586) // FIXME: should cache?
   cargs := make([]gdc.ConstVariantPtr, 0, 1 + len(varargs))
   var0 := object.AsVariant()
   defer var0.Destroy()
@@ -111,7 +150,7 @@ func  (me *JavaScriptBridge) CreateObject(object String, varargs ...Variant) Var
   }
   ret := NewVariant()
   cerr := &gdc.CallError{}
-  giface.ObjectMethodBindCall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
+  giface.ObjectMethodBindCall(ensurePtr(ptrsForJavaScriptBridge.fnCreateObject), me.obj, unsafe.SliceData(cargs), gdc.Int(len(cargs)), ret.asUninitialized(), cerr)
   if cerr.Error != gdc.CallOk {
     log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
     return *ret
@@ -120,60 +159,40 @@ func  (me *JavaScriptBridge) CreateObject(object String, varargs ...Variant) Var
 }
 
 func  (me *JavaScriptBridge) DownloadBuffer(buffer PackedByteArray, name String, mime String, )  {
-  classNameV := StringNameFromStr("JavaScriptBridge")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("download_buffer")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3352272093) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{buffer.AsCTypePtr(), name.AsCTypePtr(), mime.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJavaScriptBridge.fnDownloadBuffer), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *JavaScriptBridge) PwaNeedsUpdate() bool {
-  classNameV := StringNameFromStr("JavaScriptBridge")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("pwa_needs_update")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJavaScriptBridge.fnPwaNeedsUpdate), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *JavaScriptBridge) PwaUpdate() Error {
-  classNameV := StringNameFromStr("JavaScriptBridge")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("pwa_update")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166280745) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJavaScriptBridge.fnPwaUpdate), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *JavaScriptBridge) ForceFsSync()  {
-  classNameV := StringNameFromStr("JavaScriptBridge")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("force_fs_sync")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJavaScriptBridge.fnForceFsSync), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

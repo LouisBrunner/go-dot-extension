@@ -14,6 +14,23 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForRenderSceneBuffersList struct {
+  fnConfigure gdc.MethodBindPtr
+}
+
+var ptrsForRenderSceneBuffers ptrsForRenderSceneBuffersList
+
+func initRenderSceneBuffersPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("RenderSceneBuffers")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("configure")
+    defer methodName.Destroy()
+    ptrsForRenderSceneBuffers.fnConfigure = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3072623270))
+  }
+}
+
 type RenderSceneBuffers struct {
   RefCounted
 }
@@ -51,16 +68,11 @@ func (me *RenderSceneBuffers) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *RenderSceneBuffers) Configure(config RenderSceneBuffersConfiguration, )  {
-  classNameV := StringNameFromStr("RenderSceneBuffers")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("configure")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3072623270) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{config.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderSceneBuffers.fnConfigure), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

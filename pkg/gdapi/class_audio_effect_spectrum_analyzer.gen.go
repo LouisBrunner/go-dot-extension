@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioEffectSpectrumAnalyzerList struct {
+  fnSetBufferLength gdc.MethodBindPtr
+  fnGetBufferLength gdc.MethodBindPtr
+  fnSetTapBackPos gdc.MethodBindPtr
+  fnGetTapBackPos gdc.MethodBindPtr
+  fnSetFftSize gdc.MethodBindPtr
+  fnGetFftSize gdc.MethodBindPtr
+}
+
+var ptrsForAudioEffectSpectrumAnalyzer ptrsForAudioEffectSpectrumAnalyzerList
+
+func initAudioEffectSpectrumAnalyzerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioEffectSpectrumAnalyzer")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_buffer_length")
+    defer methodName.Destroy()
+    ptrsForAudioEffectSpectrumAnalyzer.fnSetBufferLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_buffer_length")
+    defer methodName.Destroy()
+    ptrsForAudioEffectSpectrumAnalyzer.fnGetBufferLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_tap_back_pos")
+    defer methodName.Destroy()
+    ptrsForAudioEffectSpectrumAnalyzer.fnSetTapBackPos = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_tap_back_pos")
+    defer methodName.Destroy()
+    ptrsForAudioEffectSpectrumAnalyzer.fnGetTapBackPos = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_fft_size")
+    defer methodName.Destroy()
+    ptrsForAudioEffectSpectrumAnalyzer.fnSetFftSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1202879215))
+  }
+  {
+    methodName := StringNameFromStr("get_fft_size")
+    defer methodName.Destroy()
+    ptrsForAudioEffectSpectrumAnalyzer.fnGetFftSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3925405343))
+  }
+}
+
 type AudioEffectSpectrumAnalyzer struct {
   AudioEffect
 }
@@ -61,89 +108,59 @@ func (me *AudioEffectSpectrumAnalyzer) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AudioEffectSpectrumAnalyzer) SetBufferLength(seconds float64, )  {
-  classNameV := StringNameFromStr("AudioEffectSpectrumAnalyzer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_buffer_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&seconds) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectSpectrumAnalyzer.fnSetBufferLength), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectSpectrumAnalyzer) GetBufferLength() float64 {
-  classNameV := StringNameFromStr("AudioEffectSpectrumAnalyzer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_buffer_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectSpectrumAnalyzer.fnGetBufferLength), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioEffectSpectrumAnalyzer) SetTapBackPos(seconds float64, )  {
-  classNameV := StringNameFromStr("AudioEffectSpectrumAnalyzer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_tap_back_pos")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&seconds) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectSpectrumAnalyzer.fnSetTapBackPos), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectSpectrumAnalyzer) GetTapBackPos() float64 {
-  classNameV := StringNameFromStr("AudioEffectSpectrumAnalyzer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_tap_back_pos")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectSpectrumAnalyzer.fnGetTapBackPos), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioEffectSpectrumAnalyzer) SetFftSize(size AudioEffectSpectrumAnalyzerFFTSize, )  {
-  classNameV := StringNameFromStr("AudioEffectSpectrumAnalyzer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_fft_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1202879215) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectSpectrumAnalyzer.fnSetFftSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectSpectrumAnalyzer) GetFftSize() AudioEffectSpectrumAnalyzerFFTSize {
-  classNameV := StringNameFromStr("AudioEffectSpectrumAnalyzer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_fft_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3925405343) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret AudioEffectSpectrumAnalyzerFFTSize
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectSpectrumAnalyzer.fnGetFftSize), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

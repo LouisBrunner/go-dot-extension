@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForGLTFAnimationList struct {
+  fnGetLoop gdc.MethodBindPtr
+  fnSetLoop gdc.MethodBindPtr
+}
+
+var ptrsForGLTFAnimation ptrsForGLTFAnimationList
+
+func initGLTFAnimationPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("GLTFAnimation")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_loop")
+    defer methodName.Destroy()
+    ptrsForGLTFAnimation.fnGetLoop = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_loop")
+    defer methodName.Destroy()
+    ptrsForGLTFAnimation.fnSetLoop = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+}
+
 type GLTFAnimation struct {
   Resource
 }
@@ -51,31 +74,21 @@ func (me *GLTFAnimation) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *GLTFAnimation) GetLoop() bool {
-  classNameV := StringNameFromStr("GLTFAnimation")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_loop")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFAnimation.fnGetLoop), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *GLTFAnimation) SetLoop(loop bool, )  {
-  classNameV := StringNameFromStr("GLTFAnimation")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_loop")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&loop) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFAnimation.fnSetLoop), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

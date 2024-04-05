@@ -88,22 +88,24 @@ func (me *extension) Initialize(rInitialization *gdc.InitializationRaw, init gdc
 }
 
 func (me *extension) onInit(level gdc.InitializationLevel) error {
-	if level != gdc.InitializationScene {
-		return nil
-	}
-	gdapi.InitializeGlobals(me.iface)
-	for _, entry := range me.registered {
-		me.registerClass(entry)
+	switch level {
+	case gdc.InitializationScene:
+		gdapi.InitializeSingletons(me.iface)
+		for _, entry := range me.registered {
+			me.registerClass(entry)
+		}
+	case gdc.InitializationEditor:
+		gdapi.InitializeClasses(me.iface)
 	}
 	return nil
 }
 
 func (me *extension) onFini(level gdc.InitializationLevel) error {
-	if level != gdc.InitializationScene {
-		return nil
-	}
-	for _, entry := range me.registered {
-		me.unregisterClass(entry)
+	switch level {
+	case gdc.InitializationScene:
+		for _, entry := range me.registered {
+			me.unregisterClass(entry)
+		}
 	}
 	return nil
 }

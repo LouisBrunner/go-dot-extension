@@ -14,6 +14,35 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisibleOnScreenNotifier2DList struct {
+  fnSetRect gdc.MethodBindPtr
+  fnGetRect gdc.MethodBindPtr
+  fnIsOnScreen gdc.MethodBindPtr
+}
+
+var ptrsForVisibleOnScreenNotifier2D ptrsForVisibleOnScreenNotifier2DList
+
+func initVisibleOnScreenNotifier2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisibleOnScreenNotifier2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_rect")
+    defer methodName.Destroy()
+    ptrsForVisibleOnScreenNotifier2D.fnSetRect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2046264180))
+  }
+  {
+    methodName := StringNameFromStr("get_rect")
+    defer methodName.Destroy()
+    ptrsForVisibleOnScreenNotifier2D.fnGetRect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1639390495))
+  }
+  {
+    methodName := StringNameFromStr("is_on_screen")
+    defer methodName.Destroy()
+    ptrsForVisibleOnScreenNotifier2D.fnIsOnScreen = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type VisibleOnScreenNotifier2D struct {
   Node2D
 }
@@ -51,46 +80,31 @@ func (me *VisibleOnScreenNotifier2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisibleOnScreenNotifier2D) SetRect(rect Rect2, )  {
-  classNameV := StringNameFromStr("VisibleOnScreenNotifier2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_rect")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2046264180) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{rect.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisibleOnScreenNotifier2D.fnSetRect), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisibleOnScreenNotifier2D) GetRect() Rect2 {
-  classNameV := StringNameFromStr("VisibleOnScreenNotifier2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_rect")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1639390495) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRect2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisibleOnScreenNotifier2D.fnGetRect), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *VisibleOnScreenNotifier2D) IsOnScreen() bool {
-  classNameV := StringNameFromStr("VisibleOnScreenNotifier2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_on_screen")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisibleOnScreenNotifier2D.fnIsOnScreen), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

@@ -14,6 +14,665 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForViewportList struct {
+  fnSetWorld2D gdc.MethodBindPtr
+  fnGetWorld2D gdc.MethodBindPtr
+  fnFindWorld2D gdc.MethodBindPtr
+  fnSetCanvasTransform gdc.MethodBindPtr
+  fnGetCanvasTransform gdc.MethodBindPtr
+  fnSetGlobalCanvasTransform gdc.MethodBindPtr
+  fnGetGlobalCanvasTransform gdc.MethodBindPtr
+  fnGetFinalTransform gdc.MethodBindPtr
+  fnGetScreenTransform gdc.MethodBindPtr
+  fnGetVisibleRect gdc.MethodBindPtr
+  fnSetTransparentBackground gdc.MethodBindPtr
+  fnHasTransparentBackground gdc.MethodBindPtr
+  fnSetUseHdr2D gdc.MethodBindPtr
+  fnIsUsingHdr2D gdc.MethodBindPtr
+  fnSetMsaa2D gdc.MethodBindPtr
+  fnGetMsaa2D gdc.MethodBindPtr
+  fnSetMsaa3D gdc.MethodBindPtr
+  fnGetMsaa3D gdc.MethodBindPtr
+  fnSetScreenSpaceAa gdc.MethodBindPtr
+  fnGetScreenSpaceAa gdc.MethodBindPtr
+  fnSetUseTaa gdc.MethodBindPtr
+  fnIsUsingTaa gdc.MethodBindPtr
+  fnSetUseDebanding gdc.MethodBindPtr
+  fnIsUsingDebanding gdc.MethodBindPtr
+  fnSetUseOcclusionCulling gdc.MethodBindPtr
+  fnIsUsingOcclusionCulling gdc.MethodBindPtr
+  fnSetDebugDraw gdc.MethodBindPtr
+  fnGetDebugDraw gdc.MethodBindPtr
+  fnGetRenderInfo gdc.MethodBindPtr
+  fnGetTexture gdc.MethodBindPtr
+  fnSetPhysicsObjectPicking gdc.MethodBindPtr
+  fnGetPhysicsObjectPicking gdc.MethodBindPtr
+  fnSetPhysicsObjectPickingSort gdc.MethodBindPtr
+  fnGetPhysicsObjectPickingSort gdc.MethodBindPtr
+  fnGetViewportRid gdc.MethodBindPtr
+  fnPushTextInput gdc.MethodBindPtr
+  fnPushInput gdc.MethodBindPtr
+  fnPushUnhandledInput gdc.MethodBindPtr
+  fnGetCamera2D gdc.MethodBindPtr
+  fnSetAsAudioListener2D gdc.MethodBindPtr
+  fnIsAudioListener2D gdc.MethodBindPtr
+  fnGetMousePosition gdc.MethodBindPtr
+  fnWarpMouse gdc.MethodBindPtr
+  fnUpdateMouseCursorState gdc.MethodBindPtr
+  fnGuiGetDragData gdc.MethodBindPtr
+  fnGuiIsDragging gdc.MethodBindPtr
+  fnGuiIsDragSuccessful gdc.MethodBindPtr
+  fnGuiReleaseFocus gdc.MethodBindPtr
+  fnGuiGetFocusOwner gdc.MethodBindPtr
+  fnSetDisableInput gdc.MethodBindPtr
+  fnIsInputDisabled gdc.MethodBindPtr
+  fnSetPositionalShadowAtlasSize gdc.MethodBindPtr
+  fnGetPositionalShadowAtlasSize gdc.MethodBindPtr
+  fnSetPositionalShadowAtlas16Bits gdc.MethodBindPtr
+  fnGetPositionalShadowAtlas16Bits gdc.MethodBindPtr
+  fnSetSnapControlsToPixels gdc.MethodBindPtr
+  fnIsSnapControlsToPixelsEnabled gdc.MethodBindPtr
+  fnSetSnap2DTransformsToPixel gdc.MethodBindPtr
+  fnIsSnap2DTransformsToPixelEnabled gdc.MethodBindPtr
+  fnSetSnap2DVerticesToPixel gdc.MethodBindPtr
+  fnIsSnap2DVerticesToPixelEnabled gdc.MethodBindPtr
+  fnSetPositionalShadowAtlasQuadrantSubdiv gdc.MethodBindPtr
+  fnGetPositionalShadowAtlasQuadrantSubdiv gdc.MethodBindPtr
+  fnSetInputAsHandled gdc.MethodBindPtr
+  fnIsInputHandled gdc.MethodBindPtr
+  fnSetHandleInputLocally gdc.MethodBindPtr
+  fnIsHandlingInputLocally gdc.MethodBindPtr
+  fnSetDefaultCanvasItemTextureFilter gdc.MethodBindPtr
+  fnGetDefaultCanvasItemTextureFilter gdc.MethodBindPtr
+  fnSetEmbeddingSubwindows gdc.MethodBindPtr
+  fnIsEmbeddingSubwindows gdc.MethodBindPtr
+  fnGetEmbeddedSubwindows gdc.MethodBindPtr
+  fnSetCanvasCullMask gdc.MethodBindPtr
+  fnGetCanvasCullMask gdc.MethodBindPtr
+  fnSetCanvasCullMaskBit gdc.MethodBindPtr
+  fnGetCanvasCullMaskBit gdc.MethodBindPtr
+  fnSetDefaultCanvasItemTextureRepeat gdc.MethodBindPtr
+  fnGetDefaultCanvasItemTextureRepeat gdc.MethodBindPtr
+  fnSetSdfOversize gdc.MethodBindPtr
+  fnGetSdfOversize gdc.MethodBindPtr
+  fnSetSdfScale gdc.MethodBindPtr
+  fnGetSdfScale gdc.MethodBindPtr
+  fnSetMeshLodThreshold gdc.MethodBindPtr
+  fnGetMeshLodThreshold gdc.MethodBindPtr
+  fnSetWorld3D gdc.MethodBindPtr
+  fnGetWorld3D gdc.MethodBindPtr
+  fnFindWorld3D gdc.MethodBindPtr
+  fnSetUseOwnWorld3D gdc.MethodBindPtr
+  fnIsUsingOwnWorld3D gdc.MethodBindPtr
+  fnGetCamera3D gdc.MethodBindPtr
+  fnSetAsAudioListener3D gdc.MethodBindPtr
+  fnIsAudioListener3D gdc.MethodBindPtr
+  fnSetDisable3D gdc.MethodBindPtr
+  fnIs3DDisabled gdc.MethodBindPtr
+  fnSetUseXr gdc.MethodBindPtr
+  fnIsUsingXr gdc.MethodBindPtr
+  fnSetScaling3DMode gdc.MethodBindPtr
+  fnGetScaling3DMode gdc.MethodBindPtr
+  fnSetScaling3DScale gdc.MethodBindPtr
+  fnGetScaling3DScale gdc.MethodBindPtr
+  fnSetFsrSharpness gdc.MethodBindPtr
+  fnGetFsrSharpness gdc.MethodBindPtr
+  fnSetTextureMipmapBias gdc.MethodBindPtr
+  fnGetTextureMipmapBias gdc.MethodBindPtr
+  fnSetVrsMode gdc.MethodBindPtr
+  fnGetVrsMode gdc.MethodBindPtr
+  fnSetVrsTexture gdc.MethodBindPtr
+  fnGetVrsTexture gdc.MethodBindPtr
+}
+
+var ptrsForViewport ptrsForViewportList
+
+func initViewportPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Viewport")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_world_2d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetWorld2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2736080068))
+  }
+  {
+    methodName := StringNameFromStr("get_world_2d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetWorld2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2339128592))
+  }
+  {
+    methodName := StringNameFromStr("find_world_2d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnFindWorld2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2339128592))
+  }
+  {
+    methodName := StringNameFromStr("set_canvas_transform")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetCanvasTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2761652528))
+  }
+  {
+    methodName := StringNameFromStr("get_canvas_transform")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetCanvasTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3814499831))
+  }
+  {
+    methodName := StringNameFromStr("set_global_canvas_transform")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetGlobalCanvasTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2761652528))
+  }
+  {
+    methodName := StringNameFromStr("get_global_canvas_transform")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetGlobalCanvasTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3814499831))
+  }
+  {
+    methodName := StringNameFromStr("get_final_transform")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetFinalTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3814499831))
+  }
+  {
+    methodName := StringNameFromStr("get_screen_transform")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetScreenTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3814499831))
+  }
+  {
+    methodName := StringNameFromStr("get_visible_rect")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetVisibleRect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1639390495))
+  }
+  {
+    methodName := StringNameFromStr("set_transparent_background")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetTransparentBackground = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("has_transparent_background")
+    defer methodName.Destroy()
+    ptrsForViewport.fnHasTransparentBackground = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_use_hdr_2d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetUseHdr2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_using_hdr_2d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnIsUsingHdr2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_msaa_2d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetMsaa2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3330258708))
+  }
+  {
+    methodName := StringNameFromStr("get_msaa_2d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetMsaa2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2542055527))
+  }
+  {
+    methodName := StringNameFromStr("set_msaa_3d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetMsaa3D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3330258708))
+  }
+  {
+    methodName := StringNameFromStr("get_msaa_3d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetMsaa3D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2542055527))
+  }
+  {
+    methodName := StringNameFromStr("set_screen_space_aa")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetScreenSpaceAa = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3544169389))
+  }
+  {
+    methodName := StringNameFromStr("get_screen_space_aa")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetScreenSpaceAa = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1390814124))
+  }
+  {
+    methodName := StringNameFromStr("set_use_taa")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetUseTaa = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_using_taa")
+    defer methodName.Destroy()
+    ptrsForViewport.fnIsUsingTaa = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_use_debanding")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetUseDebanding = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_using_debanding")
+    defer methodName.Destroy()
+    ptrsForViewport.fnIsUsingDebanding = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_use_occlusion_culling")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetUseOcclusionCulling = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_using_occlusion_culling")
+    defer methodName.Destroy()
+    ptrsForViewport.fnIsUsingOcclusionCulling = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_debug_draw")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetDebugDraw = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1970246205))
+  }
+  {
+    methodName := StringNameFromStr("get_debug_draw")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetDebugDraw = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 579191299))
+  }
+  {
+    methodName := StringNameFromStr("get_render_info")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetRenderInfo = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 481977019))
+  }
+  {
+    methodName := StringNameFromStr("get_texture")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1746695840))
+  }
+  {
+    methodName := StringNameFromStr("set_physics_object_picking")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetPhysicsObjectPicking = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_physics_object_picking")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetPhysicsObjectPicking = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("set_physics_object_picking_sort")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetPhysicsObjectPickingSort = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_physics_object_picking_sort")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetPhysicsObjectPickingSort = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("get_viewport_rid")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetViewportRid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
+  }
+  {
+    methodName := StringNameFromStr("push_text_input")
+    defer methodName.Destroy()
+    ptrsForViewport.fnPushTextInput = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("push_input")
+    defer methodName.Destroy()
+    ptrsForViewport.fnPushInput = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3644664830))
+  }
+  {
+    methodName := StringNameFromStr("push_unhandled_input")
+    defer methodName.Destroy()
+    ptrsForViewport.fnPushUnhandledInput = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3644664830))
+  }
+  {
+    methodName := StringNameFromStr("get_camera_2d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetCamera2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3551466917))
+  }
+  {
+    methodName := StringNameFromStr("set_as_audio_listener_2d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetAsAudioListener2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_audio_listener_2d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnIsAudioListener2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_mouse_position")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetMousePosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+  {
+    methodName := StringNameFromStr("warp_mouse")
+    defer methodName.Destroy()
+    ptrsForViewport.fnWarpMouse = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("update_mouse_cursor_state")
+    defer methodName.Destroy()
+    ptrsForViewport.fnUpdateMouseCursorState = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("gui_get_drag_data")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGuiGetDragData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1214101251))
+  }
+  {
+    methodName := StringNameFromStr("gui_is_dragging")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGuiIsDragging = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("gui_is_drag_successful")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGuiIsDragSuccessful = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("gui_release_focus")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGuiReleaseFocus = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("gui_get_focus_owner")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGuiGetFocusOwner = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2783021301))
+  }
+  {
+    methodName := StringNameFromStr("set_disable_input")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetDisableInput = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_input_disabled")
+    defer methodName.Destroy()
+    ptrsForViewport.fnIsInputDisabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_positional_shadow_atlas_size")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetPositionalShadowAtlasSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_positional_shadow_atlas_size")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetPositionalShadowAtlasSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_positional_shadow_atlas_16_bits")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetPositionalShadowAtlas16Bits = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_positional_shadow_atlas_16_bits")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetPositionalShadowAtlas16Bits = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_snap_controls_to_pixels")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetSnapControlsToPixels = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_snap_controls_to_pixels_enabled")
+    defer methodName.Destroy()
+    ptrsForViewport.fnIsSnapControlsToPixelsEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_snap_2d_transforms_to_pixel")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetSnap2DTransformsToPixel = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_snap_2d_transforms_to_pixel_enabled")
+    defer methodName.Destroy()
+    ptrsForViewport.fnIsSnap2DTransformsToPixelEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_snap_2d_vertices_to_pixel")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetSnap2DVerticesToPixel = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_snap_2d_vertices_to_pixel_enabled")
+    defer methodName.Destroy()
+    ptrsForViewport.fnIsSnap2DVerticesToPixelEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_positional_shadow_atlas_quadrant_subdiv")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetPositionalShadowAtlasQuadrantSubdiv = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2596956071))
+  }
+  {
+    methodName := StringNameFromStr("get_positional_shadow_atlas_quadrant_subdiv")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetPositionalShadowAtlasQuadrantSubdiv = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2676778355))
+  }
+  {
+    methodName := StringNameFromStr("set_input_as_handled")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetInputAsHandled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("is_input_handled")
+    defer methodName.Destroy()
+    ptrsForViewport.fnIsInputHandled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_handle_input_locally")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetHandleInputLocally = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_handling_input_locally")
+    defer methodName.Destroy()
+    ptrsForViewport.fnIsHandlingInputLocally = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_default_canvas_item_texture_filter")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetDefaultCanvasItemTextureFilter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2815160100))
+  }
+  {
+    methodName := StringNameFromStr("get_default_canvas_item_texture_filter")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetDefaultCanvasItemTextureFilter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 896601198))
+  }
+  {
+    methodName := StringNameFromStr("set_embedding_subwindows")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetEmbeddingSubwindows = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_embedding_subwindows")
+    defer methodName.Destroy()
+    ptrsForViewport.fnIsEmbeddingSubwindows = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_embedded_subwindows")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetEmbeddedSubwindows = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+  }
+  {
+    methodName := StringNameFromStr("set_canvas_cull_mask")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetCanvasCullMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_canvas_cull_mask")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetCanvasCullMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_canvas_cull_mask_bit")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetCanvasCullMaskBit = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 300928843))
+  }
+  {
+    methodName := StringNameFromStr("get_canvas_cull_mask_bit")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetCanvasCullMaskBit = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
+  }
+  {
+    methodName := StringNameFromStr("set_default_canvas_item_texture_repeat")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetDefaultCanvasItemTextureRepeat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1658513413))
+  }
+  {
+    methodName := StringNameFromStr("get_default_canvas_item_texture_repeat")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetDefaultCanvasItemTextureRepeat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4049774160))
+  }
+  {
+    methodName := StringNameFromStr("set_sdf_oversize")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetSdfOversize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2574159017))
+  }
+  {
+    methodName := StringNameFromStr("get_sdf_oversize")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetSdfOversize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2631427510))
+  }
+  {
+    methodName := StringNameFromStr("set_sdf_scale")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetSdfScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1402773951))
+  }
+  {
+    methodName := StringNameFromStr("get_sdf_scale")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetSdfScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3162688184))
+  }
+  {
+    methodName := StringNameFromStr("set_mesh_lod_threshold")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetMeshLodThreshold = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_mesh_lod_threshold")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetMeshLodThreshold = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_world_3d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetWorld3D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1400875337))
+  }
+  {
+    methodName := StringNameFromStr("get_world_3d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetWorld3D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 317588385))
+  }
+  {
+    methodName := StringNameFromStr("find_world_3d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnFindWorld3D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 317588385))
+  }
+  {
+    methodName := StringNameFromStr("set_use_own_world_3d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetUseOwnWorld3D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_using_own_world_3d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnIsUsingOwnWorld3D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_camera_3d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetCamera3D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2285090890))
+  }
+  {
+    methodName := StringNameFromStr("set_as_audio_listener_3d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetAsAudioListener3D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_audio_listener_3d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnIsAudioListener3D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_disable_3d")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetDisable3D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_3d_disabled")
+    defer methodName.Destroy()
+    ptrsForViewport.fnIs3DDisabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_use_xr")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetUseXr = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_using_xr")
+    defer methodName.Destroy()
+    ptrsForViewport.fnIsUsingXr = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("set_scaling_3d_mode")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetScaling3DMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1531597597))
+  }
+  {
+    methodName := StringNameFromStr("get_scaling_3d_mode")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetScaling3DMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2597660574))
+  }
+  {
+    methodName := StringNameFromStr("set_scaling_3d_scale")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetScaling3DScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_scaling_3d_scale")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetScaling3DScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_fsr_sharpness")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetFsrSharpness = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_fsr_sharpness")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetFsrSharpness = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_texture_mipmap_bias")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetTextureMipmapBias = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_texture_mipmap_bias")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetTextureMipmapBias = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_vrs_mode")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetVrsMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2749867817))
+  }
+  {
+    methodName := StringNameFromStr("get_vrs_mode")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetVrsMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 349660525))
+  }
+  {
+    methodName := StringNameFromStr("set_vrs_texture")
+    defer methodName.Destroy()
+    ptrsForViewport.fnSetVrsTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4051416890))
+  }
+  {
+    methodName := StringNameFromStr("get_vrs_texture")
+    defer methodName.Destroy()
+    ptrsForViewport.fnGetVrsTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
+  }
+}
+
 type Viewport struct {
   Node
 }
@@ -175,419 +834,274 @@ func (me *Viewport) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Viewport) SetWorld2D(world_2d World2D, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_world_2d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2736080068) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{world_2d.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetWorld2D), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetWorld2D() World2D {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_world_2d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2339128592) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewWorld2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetWorld2D), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Viewport) FindWorld2D() World2D {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("find_world_2d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2339128592) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewWorld2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnFindWorld2D), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Viewport) SetCanvasTransform(xform Transform2D, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_canvas_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2761652528) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{xform.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetCanvasTransform), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetCanvasTransform() Transform2D {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_canvas_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814499831) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTransform2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetCanvasTransform), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Viewport) SetGlobalCanvasTransform(xform Transform2D, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_global_canvas_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2761652528) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{xform.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetGlobalCanvasTransform), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetGlobalCanvasTransform() Transform2D {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_global_canvas_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814499831) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTransform2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetGlobalCanvasTransform), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Viewport) GetFinalTransform() Transform2D {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_final_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814499831) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTransform2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetFinalTransform), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Viewport) GetScreenTransform() Transform2D {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_screen_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814499831) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTransform2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetScreenTransform), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Viewport) GetVisibleRect() Rect2 {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_visible_rect")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1639390495) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRect2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetVisibleRect), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Viewport) SetTransparentBackground(enable bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_transparent_background")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetTransparentBackground), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) HasTransparentBackground() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_transparent_background")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnHasTransparentBackground), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetUseHdr2D(enable bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_use_hdr_2d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetUseHdr2D), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) IsUsingHdr2D() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_using_hdr_2d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnIsUsingHdr2D), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetMsaa2D(msaa ViewportMSAA, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_msaa_2d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3330258708) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&msaa) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetMsaa2D), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetMsaa2D() ViewportMSAA {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_msaa_2d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2542055527) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ViewportMSAA
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetMsaa2D), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Viewport) SetMsaa3D(msaa ViewportMSAA, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_msaa_3d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3330258708) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&msaa) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetMsaa3D), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetMsaa3D() ViewportMSAA {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_msaa_3d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2542055527) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ViewportMSAA
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetMsaa3D), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Viewport) SetScreenSpaceAa(screen_space_aa ViewportScreenSpaceAA, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_screen_space_aa")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3544169389) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen_space_aa) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetScreenSpaceAa), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetScreenSpaceAa() ViewportScreenSpaceAA {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_screen_space_aa")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1390814124) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ViewportScreenSpaceAA
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetScreenSpaceAa), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Viewport) SetUseTaa(enable bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_use_taa")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetUseTaa), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) IsUsingTaa() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_using_taa")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnIsUsingTaa), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetUseDebanding(enable bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_use_debanding")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetUseDebanding), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) IsUsingDebanding() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_using_debanding")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnIsUsingDebanding), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetUseOcclusionCulling(enable bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_use_occlusion_culling")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetUseOcclusionCulling), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) IsUsingOcclusionCulling() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_using_occlusion_culling")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnIsUsingOcclusionCulling), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetDebugDraw(debug_draw ViewportDebugDraw, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_debug_draw")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1970246205) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&debug_draw) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetDebugDraw), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetDebugDraw() ViewportDebugDraw {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_debug_draw")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 579191299) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ViewportDebugDraw
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetDebugDraw), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Viewport) GetRenderInfo(type_ ViewportRenderInfoType, info ViewportRenderInfo, ) int64 {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_render_info")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 481977019) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , gdc.ConstTypePtr(&info) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -595,634 +1109,419 @@ func  (me *Viewport) GetRenderInfo(type_ ViewportRenderInfoType, info ViewportRe
   pinner.Pin(&type_)
   pinner.Pin(&info)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetRenderInfo), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) GetTexture() ViewportTexture {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1746695840) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewViewportTexture()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetTexture), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Viewport) SetPhysicsObjectPicking(enable bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_physics_object_picking")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetPhysicsObjectPicking), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetPhysicsObjectPicking() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_physics_object_picking")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetPhysicsObjectPicking), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetPhysicsObjectPickingSort(enable bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_physics_object_picking_sort")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetPhysicsObjectPickingSort), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetPhysicsObjectPickingSort() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_physics_object_picking_sort")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetPhysicsObjectPickingSort), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) GetViewportRid() RID {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_viewport_rid")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRID()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetViewportRid), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Viewport) PushTextInput(text String, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("push_text_input")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{text.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnPushTextInput), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) PushInput(event InputEvent, in_local_coords bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("push_input")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3644664830) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{event.AsCTypePtr(), gdc.ConstTypePtr(&in_local_coords) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnPushInput), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) PushUnhandledInput(event InputEvent, in_local_coords bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("push_unhandled_input")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3644664830) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{event.AsCTypePtr(), gdc.ConstTypePtr(&in_local_coords) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnPushUnhandledInput), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetCamera2D() Camera2D {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_camera_2d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3551466917) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewCamera2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetCamera2D), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Viewport) SetAsAudioListener2D(enable bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_as_audio_listener_2d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetAsAudioListener2D), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) IsAudioListener2D() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_audio_listener_2d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnIsAudioListener2D), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) GetMousePosition() Vector2 {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_mouse_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetMousePosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Viewport) WarpMouse(position Vector2, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("warp_mouse")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnWarpMouse), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) UpdateMouseCursorState()  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("update_mouse_cursor_state")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnUpdateMouseCursorState), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GuiGetDragData() Variant {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("gui_get_drag_data")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1214101251) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVariant()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGuiGetDragData), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Viewport) GuiIsDragging() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("gui_is_dragging")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGuiIsDragging), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) GuiIsDragSuccessful() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("gui_is_drag_successful")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGuiIsDragSuccessful), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) GuiReleaseFocus()  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("gui_release_focus")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGuiReleaseFocus), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GuiGetFocusOwner() Control {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("gui_get_focus_owner")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2783021301) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewControl()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGuiGetFocusOwner), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Viewport) SetDisableInput(disable bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_disable_input")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&disable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetDisableInput), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) IsInputDisabled() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_input_disabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnIsInputDisabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetPositionalShadowAtlasSize(size int64, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_positional_shadow_atlas_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetPositionalShadowAtlasSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetPositionalShadowAtlasSize() int64 {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_positional_shadow_atlas_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetPositionalShadowAtlasSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetPositionalShadowAtlas16Bits(enable bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_positional_shadow_atlas_16_bits")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetPositionalShadowAtlas16Bits), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetPositionalShadowAtlas16Bits() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_positional_shadow_atlas_16_bits")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetPositionalShadowAtlas16Bits), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetSnapControlsToPixels(enabled bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_snap_controls_to_pixels")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetSnapControlsToPixels), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) IsSnapControlsToPixelsEnabled() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_snap_controls_to_pixels_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnIsSnapControlsToPixelsEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetSnap2DTransformsToPixel(enabled bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_snap_2d_transforms_to_pixel")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetSnap2DTransformsToPixel), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) IsSnap2DTransformsToPixelEnabled() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_snap_2d_transforms_to_pixel_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnIsSnap2DTransformsToPixelEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetSnap2DVerticesToPixel(enabled bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_snap_2d_vertices_to_pixel")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetSnap2DVerticesToPixel), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) IsSnap2DVerticesToPixelEnabled() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_snap_2d_vertices_to_pixel_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnIsSnap2DVerticesToPixelEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetPositionalShadowAtlasQuadrantSubdiv(quadrant int64, subdiv ViewportPositionalShadowAtlasQuadrantSubdiv, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_positional_shadow_atlas_quadrant_subdiv")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2596956071) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&quadrant) , gdc.ConstTypePtr(&subdiv) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetPositionalShadowAtlasQuadrantSubdiv), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetPositionalShadowAtlasQuadrantSubdiv(quadrant int64, ) ViewportPositionalShadowAtlasQuadrantSubdiv {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_positional_shadow_atlas_quadrant_subdiv")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2676778355) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&quadrant) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ViewportPositionalShadowAtlasQuadrantSubdiv
   pinner.Pin(&quadrant)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetPositionalShadowAtlasQuadrantSubdiv), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Viewport) SetInputAsHandled()  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_input_as_handled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetInputAsHandled), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) IsInputHandled() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_input_handled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnIsInputHandled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetHandleInputLocally(enable bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_handle_input_locally")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetHandleInputLocally), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) IsHandlingInputLocally() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_handling_input_locally")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnIsHandlingInputLocally), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetDefaultCanvasItemTextureFilter(mode ViewportDefaultCanvasItemTextureFilter, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_default_canvas_item_texture_filter")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2815160100) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetDefaultCanvasItemTextureFilter), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetDefaultCanvasItemTextureFilter() ViewportDefaultCanvasItemTextureFilter {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_default_canvas_item_texture_filter")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 896601198) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ViewportDefaultCanvasItemTextureFilter
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetDefaultCanvasItemTextureFilter), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Viewport) SetEmbeddingSubwindows(enable bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_embedding_subwindows")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetEmbeddingSubwindows), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) IsEmbeddingSubwindows() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_embedding_subwindows")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnIsEmbeddingSubwindows), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) GetEmbeddedSubwindows() []Window {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_embedded_subwindows")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetEmbeddedSubwindows), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[Window](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -1232,526 +1531,346 @@ return sliceRet
 }
 
 func  (me *Viewport) SetCanvasCullMask(mask int64, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_canvas_cull_mask")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetCanvasCullMask), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetCanvasCullMask() int64 {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_canvas_cull_mask")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetCanvasCullMask), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetCanvasCullMaskBit(layer int64, enable bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_canvas_cull_mask_bit")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer) , gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetCanvasCullMaskBit), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetCanvasCullMaskBit(layer int64, ) bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_canvas_cull_mask_bit")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
   pinner.Pin(&layer)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetCanvasCullMaskBit), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetDefaultCanvasItemTextureRepeat(mode ViewportDefaultCanvasItemTextureRepeat, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_default_canvas_item_texture_repeat")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1658513413) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetDefaultCanvasItemTextureRepeat), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetDefaultCanvasItemTextureRepeat() ViewportDefaultCanvasItemTextureRepeat {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_default_canvas_item_texture_repeat")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4049774160) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ViewportDefaultCanvasItemTextureRepeat
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetDefaultCanvasItemTextureRepeat), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Viewport) SetSdfOversize(oversize ViewportSDFOversize, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_sdf_oversize")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2574159017) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&oversize) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetSdfOversize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetSdfOversize() ViewportSDFOversize {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_sdf_oversize")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2631427510) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ViewportSDFOversize
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetSdfOversize), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Viewport) SetSdfScale(scale ViewportSDFScale, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_sdf_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1402773951) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&scale) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetSdfScale), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetSdfScale() ViewportSDFScale {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_sdf_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3162688184) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ViewportSDFScale
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetSdfScale), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Viewport) SetMeshLodThreshold(pixels float64, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_mesh_lod_threshold")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pixels) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetMeshLodThreshold), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetMeshLodThreshold() float64 {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_mesh_lod_threshold")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetMeshLodThreshold), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetWorld3D(world_3d World3D, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_world_3d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1400875337) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{world_3d.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetWorld3D), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetWorld3D() World3D {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_world_3d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 317588385) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewWorld3D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetWorld3D), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Viewport) FindWorld3D() World3D {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("find_world_3d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 317588385) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewWorld3D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnFindWorld3D), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Viewport) SetUseOwnWorld3D(enable bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_use_own_world_3d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetUseOwnWorld3D), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) IsUsingOwnWorld3D() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_using_own_world_3d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnIsUsingOwnWorld3D), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) GetCamera3D() Camera3D {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_camera_3d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2285090890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewCamera3D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetCamera3D), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Viewport) SetAsAudioListener3D(enable bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_as_audio_listener_3d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetAsAudioListener3D), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) IsAudioListener3D() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_audio_listener_3d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnIsAudioListener3D), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetDisable3D(disable bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_disable_3d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&disable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetDisable3D), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) Is3DDisabled() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_3d_disabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnIs3DDisabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetUseXr(use bool, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_use_xr")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&use) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetUseXr), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) IsUsingXr() bool {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_using_xr")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnIsUsingXr), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetScaling3DMode(scaling_3d_mode ViewportScaling3DMode, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_scaling_3d_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1531597597) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&scaling_3d_mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetScaling3DMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetScaling3DMode() ViewportScaling3DMode {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_scaling_3d_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2597660574) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ViewportScaling3DMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetScaling3DMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Viewport) SetScaling3DScale(scale float64, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_scaling_3d_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&scale) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetScaling3DScale), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetScaling3DScale() float64 {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_scaling_3d_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetScaling3DScale), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetFsrSharpness(fsr_sharpness float64, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_fsr_sharpness")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&fsr_sharpness) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetFsrSharpness), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetFsrSharpness() float64 {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_fsr_sharpness")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetFsrSharpness), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetTextureMipmapBias(texture_mipmap_bias float64, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_texture_mipmap_bias")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&texture_mipmap_bias) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetTextureMipmapBias), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetTextureMipmapBias() float64 {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture_mipmap_bias")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetTextureMipmapBias), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Viewport) SetVrsMode(mode ViewportVRSMode, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_vrs_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2749867817) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetVrsMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetVrsMode() ViewportVRSMode {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_vrs_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 349660525) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ViewportVRSMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetVrsMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Viewport) SetVrsTexture(texture Texture2D, )  {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_vrs_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{texture.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetVrsTexture), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Viewport) GetVrsTexture() Texture2D {
-  classNameV := StringNameFromStr("Viewport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_vrs_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetVrsTexture), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

@@ -14,6 +14,101 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForTimerList struct {
+  fnSetWaitTime gdc.MethodBindPtr
+  fnGetWaitTime gdc.MethodBindPtr
+  fnSetOneShot gdc.MethodBindPtr
+  fnIsOneShot gdc.MethodBindPtr
+  fnSetAutostart gdc.MethodBindPtr
+  fnHasAutostart gdc.MethodBindPtr
+  fnStart gdc.MethodBindPtr
+  fnStop gdc.MethodBindPtr
+  fnSetPaused gdc.MethodBindPtr
+  fnIsPaused gdc.MethodBindPtr
+  fnIsStopped gdc.MethodBindPtr
+  fnGetTimeLeft gdc.MethodBindPtr
+  fnSetTimerProcessCallback gdc.MethodBindPtr
+  fnGetTimerProcessCallback gdc.MethodBindPtr
+}
+
+var ptrsForTimer ptrsForTimerList
+
+func initTimerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Timer")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_wait_time")
+    defer methodName.Destroy()
+    ptrsForTimer.fnSetWaitTime = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_wait_time")
+    defer methodName.Destroy()
+    ptrsForTimer.fnGetWaitTime = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_one_shot")
+    defer methodName.Destroy()
+    ptrsForTimer.fnSetOneShot = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_one_shot")
+    defer methodName.Destroy()
+    ptrsForTimer.fnIsOneShot = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_autostart")
+    defer methodName.Destroy()
+    ptrsForTimer.fnSetAutostart = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("has_autostart")
+    defer methodName.Destroy()
+    ptrsForTimer.fnHasAutostart = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("start")
+    defer methodName.Destroy()
+    ptrsForTimer.fnStart = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1392008558))
+  }
+  {
+    methodName := StringNameFromStr("stop")
+    defer methodName.Destroy()
+    ptrsForTimer.fnStop = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("set_paused")
+    defer methodName.Destroy()
+    ptrsForTimer.fnSetPaused = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_paused")
+    defer methodName.Destroy()
+    ptrsForTimer.fnIsPaused = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("is_stopped")
+    defer methodName.Destroy()
+    ptrsForTimer.fnIsStopped = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_time_left")
+    defer methodName.Destroy()
+    ptrsForTimer.fnGetTimeLeft = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_timer_process_callback")
+    defer methodName.Destroy()
+    ptrsForTimer.fnSetTimerProcessCallback = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3469495063))
+  }
+  {
+    methodName := StringNameFromStr("get_timer_process_callback")
+    defer methodName.Destroy()
+    ptrsForTimer.fnGetTimerProcessCallback = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2672570227))
+  }
+}
+
 type Timer struct {
   Node
 }
@@ -57,205 +152,135 @@ func (me *Timer) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Timer) SetWaitTime(time_sec float64, )  {
-  classNameV := StringNameFromStr("Timer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_wait_time")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time_sec) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTimer.fnSetWaitTime), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Timer) GetWaitTime() float64 {
-  classNameV := StringNameFromStr("Timer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_wait_time")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTimer.fnGetWaitTime), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Timer) SetOneShot(enable bool, )  {
-  classNameV := StringNameFromStr("Timer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_one_shot")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTimer.fnSetOneShot), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Timer) IsOneShot() bool {
-  classNameV := StringNameFromStr("Timer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_one_shot")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTimer.fnIsOneShot), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Timer) SetAutostart(enable bool, )  {
-  classNameV := StringNameFromStr("Timer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_autostart")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTimer.fnSetAutostart), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Timer) HasAutostart() bool {
-  classNameV := StringNameFromStr("Timer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_autostart")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTimer.fnHasAutostart), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Timer) Start(time_sec float64, )  {
-  classNameV := StringNameFromStr("Timer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("start")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1392008558) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time_sec) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTimer.fnStart), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Timer) Stop()  {
-  classNameV := StringNameFromStr("Timer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("stop")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTimer.fnStop), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Timer) SetPaused(paused bool, )  {
-  classNameV := StringNameFromStr("Timer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_paused")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&paused) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTimer.fnSetPaused), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Timer) IsPaused() bool {
-  classNameV := StringNameFromStr("Timer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_paused")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTimer.fnIsPaused), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Timer) IsStopped() bool {
-  classNameV := StringNameFromStr("Timer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_stopped")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTimer.fnIsStopped), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Timer) GetTimeLeft() float64 {
-  classNameV := StringNameFromStr("Timer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_time_left")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTimer.fnGetTimeLeft), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Timer) SetTimerProcessCallback(callback TimerTimerProcessCallback, )  {
-  classNameV := StringNameFromStr("Timer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_timer_process_callback")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3469495063) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&callback) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTimer.fnSetTimerProcessCallback), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Timer) GetTimerProcessCallback() TimerTimerProcessCallback {
-  classNameV := StringNameFromStr("Timer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_timer_process_callback")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2672570227) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret TimerTimerProcessCallback
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTimer.fnGetTimerProcessCallback), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

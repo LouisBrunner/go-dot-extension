@@ -14,6 +14,47 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioEffectRecordList struct {
+  fnSetRecordingActive gdc.MethodBindPtr
+  fnIsRecordingActive gdc.MethodBindPtr
+  fnSetFormat gdc.MethodBindPtr
+  fnGetFormat gdc.MethodBindPtr
+  fnGetRecording gdc.MethodBindPtr
+}
+
+var ptrsForAudioEffectRecord ptrsForAudioEffectRecordList
+
+func initAudioEffectRecordPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioEffectRecord")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_recording_active")
+    defer methodName.Destroy()
+    ptrsForAudioEffectRecord.fnSetRecordingActive = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_recording_active")
+    defer methodName.Destroy()
+    ptrsForAudioEffectRecord.fnIsRecordingActive = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_format")
+    defer methodName.Destroy()
+    ptrsForAudioEffectRecord.fnSetFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 60648488))
+  }
+  {
+    methodName := StringNameFromStr("get_format")
+    defer methodName.Destroy()
+    ptrsForAudioEffectRecord.fnGetFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3151724922))
+  }
+  {
+    methodName := StringNameFromStr("get_recording")
+    defer methodName.Destroy()
+    ptrsForAudioEffectRecord.fnGetRecording = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2964110865))
+  }
+}
+
 type AudioEffectRecord struct {
   AudioEffect
 }
@@ -51,75 +92,50 @@ func (me *AudioEffectRecord) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AudioEffectRecord) SetRecordingActive(record bool, )  {
-  classNameV := StringNameFromStr("AudioEffectRecord")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_recording_active")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&record) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectRecord.fnSetRecordingActive), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectRecord) IsRecordingActive() bool {
-  classNameV := StringNameFromStr("AudioEffectRecord")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_recording_active")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectRecord.fnIsRecordingActive), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioEffectRecord) SetFormat(format AudioStreamWAVFormat, )  {
-  classNameV := StringNameFromStr("AudioEffectRecord")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_format")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 60648488) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&format) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectRecord.fnSetFormat), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectRecord) GetFormat() AudioStreamWAVFormat {
-  classNameV := StringNameFromStr("AudioEffectRecord")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_format")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3151724922) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret AudioStreamWAVFormat
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectRecord.fnGetFormat), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *AudioEffectRecord) GetRecording() AudioStreamWAV {
-  classNameV := StringNameFromStr("AudioEffectRecord")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_recording")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2964110865) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewAudioStreamWAV()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectRecord.fnGetRecording), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

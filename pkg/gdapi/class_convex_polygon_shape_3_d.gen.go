@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForConvexPolygonShape3DList struct {
+  fnSetPoints gdc.MethodBindPtr
+  fnGetPoints gdc.MethodBindPtr
+}
+
+var ptrsForConvexPolygonShape3D ptrsForConvexPolygonShape3DList
+
+func initConvexPolygonShape3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ConvexPolygonShape3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_points")
+    defer methodName.Destroy()
+    ptrsForConvexPolygonShape3D.fnSetPoints = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 334873810))
+  }
+  {
+    methodName := StringNameFromStr("get_points")
+    defer methodName.Destroy()
+    ptrsForConvexPolygonShape3D.fnGetPoints = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 497664490))
+  }
+}
+
 type ConvexPolygonShape3D struct {
   Shape3D
 }
@@ -51,31 +74,21 @@ func (me *ConvexPolygonShape3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ConvexPolygonShape3D) SetPoints(points PackedVector3Array, )  {
-  classNameV := StringNameFromStr("ConvexPolygonShape3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_points")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 334873810) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{points.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForConvexPolygonShape3D.fnSetPoints), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ConvexPolygonShape3D) GetPoints() PackedVector3Array {
-  classNameV := StringNameFromStr("ConvexPolygonShape3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_points")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 497664490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedVector3Array()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForConvexPolygonShape3D.fnGetPoints), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

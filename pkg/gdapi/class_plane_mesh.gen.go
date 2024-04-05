@@ -14,6 +14,77 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPlaneMeshList struct {
+  fnSetSize gdc.MethodBindPtr
+  fnGetSize gdc.MethodBindPtr
+  fnSetSubdivideWidth gdc.MethodBindPtr
+  fnGetSubdivideWidth gdc.MethodBindPtr
+  fnSetSubdivideDepth gdc.MethodBindPtr
+  fnGetSubdivideDepth gdc.MethodBindPtr
+  fnSetCenterOffset gdc.MethodBindPtr
+  fnGetCenterOffset gdc.MethodBindPtr
+  fnSetOrientation gdc.MethodBindPtr
+  fnGetOrientation gdc.MethodBindPtr
+}
+
+var ptrsForPlaneMesh ptrsForPlaneMeshList
+
+func initPlaneMeshPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PlaneMesh")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_size")
+    defer methodName.Destroy()
+    ptrsForPlaneMesh.fnSetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_size")
+    defer methodName.Destroy()
+    ptrsForPlaneMesh.fnGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+  {
+    methodName := StringNameFromStr("set_subdivide_width")
+    defer methodName.Destroy()
+    ptrsForPlaneMesh.fnSetSubdivideWidth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_subdivide_width")
+    defer methodName.Destroy()
+    ptrsForPlaneMesh.fnGetSubdivideWidth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_subdivide_depth")
+    defer methodName.Destroy()
+    ptrsForPlaneMesh.fnSetSubdivideDepth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_subdivide_depth")
+    defer methodName.Destroy()
+    ptrsForPlaneMesh.fnGetSubdivideDepth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_center_offset")
+    defer methodName.Destroy()
+    ptrsForPlaneMesh.fnSetCenterOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("get_center_offset")
+    defer methodName.Destroy()
+    ptrsForPlaneMesh.fnGetCenterOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("set_orientation")
+    defer methodName.Destroy()
+    ptrsForPlaneMesh.fnSetOrientation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2751399687))
+  }
+  {
+    methodName := StringNameFromStr("get_orientation")
+    defer methodName.Destroy()
+    ptrsForPlaneMesh.fnGetOrientation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3227599250))
+  }
+}
+
 type PlaneMesh struct {
   PrimitiveMesh
 }
@@ -58,147 +129,97 @@ func (me *PlaneMesh) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PlaneMesh) SetSize(size Vector2, )  {
-  classNameV := StringNameFromStr("PlaneMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{size.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPlaneMesh.fnSetSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PlaneMesh) GetSize() Vector2 {
-  classNameV := StringNameFromStr("PlaneMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPlaneMesh.fnGetSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PlaneMesh) SetSubdivideWidth(subdivide int64, )  {
-  classNameV := StringNameFromStr("PlaneMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_subdivide_width")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&subdivide) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPlaneMesh.fnSetSubdivideWidth), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PlaneMesh) GetSubdivideWidth() int64 {
-  classNameV := StringNameFromStr("PlaneMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_subdivide_width")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPlaneMesh.fnGetSubdivideWidth), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *PlaneMesh) SetSubdivideDepth(subdivide int64, )  {
-  classNameV := StringNameFromStr("PlaneMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_subdivide_depth")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&subdivide) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPlaneMesh.fnSetSubdivideDepth), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PlaneMesh) GetSubdivideDepth() int64 {
-  classNameV := StringNameFromStr("PlaneMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_subdivide_depth")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPlaneMesh.fnGetSubdivideDepth), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *PlaneMesh) SetCenterOffset(offset Vector3, )  {
-  classNameV := StringNameFromStr("PlaneMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_center_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPlaneMesh.fnSetCenterOffset), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PlaneMesh) GetCenterOffset() Vector3 {
-  classNameV := StringNameFromStr("PlaneMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_center_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPlaneMesh.fnGetCenterOffset), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PlaneMesh) SetOrientation(orientation PlaneMeshOrientation, )  {
-  classNameV := StringNameFromStr("PlaneMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_orientation")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2751399687) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&orientation) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPlaneMesh.fnSetOrientation), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PlaneMesh) GetOrientation() PlaneMeshOrientation {
-  classNameV := StringNameFromStr("PlaneMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_orientation")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3227599250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret PlaneMeshOrientation
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPlaneMesh.fnGetOrientation), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

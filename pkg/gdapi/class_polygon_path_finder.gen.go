@@ -14,6 +14,65 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPolygonPathFinderList struct {
+  fnSetup gdc.MethodBindPtr
+  fnFindPath gdc.MethodBindPtr
+  fnGetIntersections gdc.MethodBindPtr
+  fnGetClosestPoint gdc.MethodBindPtr
+  fnIsPointInside gdc.MethodBindPtr
+  fnSetPointPenalty gdc.MethodBindPtr
+  fnGetPointPenalty gdc.MethodBindPtr
+  fnGetBounds gdc.MethodBindPtr
+}
+
+var ptrsForPolygonPathFinder ptrsForPolygonPathFinderList
+
+func initPolygonPathFinderPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PolygonPathFinder")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("setup")
+    defer methodName.Destroy()
+    ptrsForPolygonPathFinder.fnSetup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3251786936))
+  }
+  {
+    methodName := StringNameFromStr("find_path")
+    defer methodName.Destroy()
+    ptrsForPolygonPathFinder.fnFindPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1562168077))
+  }
+  {
+    methodName := StringNameFromStr("get_intersections")
+    defer methodName.Destroy()
+    ptrsForPolygonPathFinder.fnGetIntersections = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3932192302))
+  }
+  {
+    methodName := StringNameFromStr("get_closest_point")
+    defer methodName.Destroy()
+    ptrsForPolygonPathFinder.fnGetClosestPoint = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2656412154))
+  }
+  {
+    methodName := StringNameFromStr("is_point_inside")
+    defer methodName.Destroy()
+    ptrsForPolygonPathFinder.fnIsPointInside = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 556197845))
+  }
+  {
+    methodName := StringNameFromStr("set_point_penalty")
+    defer methodName.Destroy()
+    ptrsForPolygonPathFinder.fnSetPointPenalty = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1602489585))
+  }
+  {
+    methodName := StringNameFromStr("get_point_penalty")
+    defer methodName.Destroy()
+    ptrsForPolygonPathFinder.fnGetPointPenalty = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2339986948))
+  }
+  {
+    methodName := StringNameFromStr("get_bounds")
+    defer methodName.Destroy()
+    ptrsForPolygonPathFinder.fnGetBounds = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1639390495))
+  }
+}
+
 type PolygonPathFinder struct {
   Resource
 }
@@ -51,121 +110,81 @@ func (me *PolygonPathFinder) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PolygonPathFinder) Setup(points PackedVector2Array, connections PackedInt32Array, )  {
-  classNameV := StringNameFromStr("PolygonPathFinder")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("setup")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3251786936) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{points.AsCTypePtr(), connections.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPolygonPathFinder.fnSetup), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PolygonPathFinder) FindPath(from Vector2, to Vector2, ) PackedVector2Array {
-  classNameV := StringNameFromStr("PolygonPathFinder")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("find_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1562168077) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{from.AsCTypePtr(), to.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedVector2Array()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPolygonPathFinder.fnFindPath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PolygonPathFinder) GetIntersections(from Vector2, to Vector2, ) PackedVector2Array {
-  classNameV := StringNameFromStr("PolygonPathFinder")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_intersections")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3932192302) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{from.AsCTypePtr(), to.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedVector2Array()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPolygonPathFinder.fnGetIntersections), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PolygonPathFinder) GetClosestPoint(point Vector2, ) Vector2 {
-  classNameV := StringNameFromStr("PolygonPathFinder")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_closest_point")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2656412154) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{point.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPolygonPathFinder.fnGetClosestPoint), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PolygonPathFinder) IsPointInside(point Vector2, ) bool {
-  classNameV := StringNameFromStr("PolygonPathFinder")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_point_inside")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 556197845) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{point.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPolygonPathFinder.fnIsPointInside), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *PolygonPathFinder) SetPointPenalty(idx int64, penalty float64, )  {
-  classNameV := StringNameFromStr("PolygonPathFinder")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_point_penalty")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1602489585) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , gdc.ConstTypePtr(&penalty) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPolygonPathFinder.fnSetPointPenalty), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PolygonPathFinder) GetPointPenalty(idx int64, ) float64 {
-  classNameV := StringNameFromStr("PolygonPathFinder")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_point_penalty")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2339986948) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&idx) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
   pinner.Pin(&idx)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPolygonPathFinder.fnGetPointPenalty), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *PolygonPathFinder) GetBounds() Rect2 {
-  classNameV := StringNameFromStr("PolygonPathFinder")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_bounds")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1639390495) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRect2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPolygonPathFinder.fnGetBounds), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

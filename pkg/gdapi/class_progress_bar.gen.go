@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForProgressBarList struct {
+  fnSetFillMode gdc.MethodBindPtr
+  fnGetFillMode gdc.MethodBindPtr
+  fnSetShowPercentage gdc.MethodBindPtr
+  fnIsPercentageShown gdc.MethodBindPtr
+}
+
+var ptrsForProgressBar ptrsForProgressBarList
+
+func initProgressBarPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ProgressBar")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_fill_mode")
+    defer methodName.Destroy()
+    ptrsForProgressBar.fnSetFillMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_fill_mode")
+    defer methodName.Destroy()
+    ptrsForProgressBar.fnGetFillMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2455072627))
+  }
+  {
+    methodName := StringNameFromStr("set_show_percentage")
+    defer methodName.Destroy()
+    ptrsForProgressBar.fnSetShowPercentage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_percentage_shown")
+    defer methodName.Destroy()
+    ptrsForProgressBar.fnIsPercentageShown = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type ProgressBar struct {
   Range
 }
@@ -59,60 +94,40 @@ func (me *ProgressBar) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ProgressBar) SetFillMode(mode int64, )  {
-  classNameV := StringNameFromStr("ProgressBar")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_fill_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForProgressBar.fnSetFillMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ProgressBar) GetFillMode() int64 {
-  classNameV := StringNameFromStr("ProgressBar")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_fill_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForProgressBar.fnGetFillMode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ProgressBar) SetShowPercentage(visible bool, )  {
-  classNameV := StringNameFromStr("ProgressBar")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_show_percentage")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&visible) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForProgressBar.fnSetShowPercentage), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ProgressBar) IsPercentageShown() bool {
-  classNameV := StringNameFromStr("ProgressBar")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_percentage_shown")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForProgressBar.fnIsPercentageShown), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAnimationNodeAdd2List struct {
+}
+
+var ptrsForAnimationNodeAdd2 ptrsForAnimationNodeAdd2List
+
+func initAnimationNodeAdd2Ptrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AnimationNodeAdd2")
+  defer className.Destroy()
+}
+
 type AnimationNodeAdd2 struct {
   AnimationNodeSync
 }

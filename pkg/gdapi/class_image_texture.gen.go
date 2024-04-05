@@ -14,6 +14,47 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForImageTextureList struct {
+  fnCreateFromImage gdc.MethodBindPtr
+  fnGetFormat gdc.MethodBindPtr
+  fnSetImage gdc.MethodBindPtr
+  fnUpdate gdc.MethodBindPtr
+  fnSetSizeOverride gdc.MethodBindPtr
+}
+
+var ptrsForImageTexture ptrsForImageTextureList
+
+func initImageTexturePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ImageTexture")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("create_from_image")
+    defer methodName.Destroy()
+    ptrsForImageTexture.fnCreateFromImage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2775144163))
+  }
+  {
+    methodName := StringNameFromStr("get_format")
+    defer methodName.Destroy()
+    ptrsForImageTexture.fnGetFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3847873762))
+  }
+  {
+    methodName := StringNameFromStr("set_image")
+    defer methodName.Destroy()
+    ptrsForImageTexture.fnSetImage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 532598488))
+  }
+  {
+    methodName := StringNameFromStr("update")
+    defer methodName.Destroy()
+    ptrsForImageTexture.fnUpdate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 532598488))
+  }
+  {
+    methodName := StringNameFromStr("set_size_override")
+    defer methodName.Destroy()
+    ptrsForImageTexture.fnSetSizeOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1130785943))
+  }
+}
+
 type ImageTexture struct {
   Texture2D
 }
@@ -51,74 +92,49 @@ func (me *ImageTexture) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  ImageTextureCreateFromImage(image Image, ) ImageTexture {
-  classNameV := StringNameFromStr("ImageTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("create_from_image")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2775144163) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{image.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewImageTexture()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImageTexture.fnCreateFromImage), nil, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ImageTexture) GetFormat() ImageFormat {
-  classNameV := StringNameFromStr("ImageTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_format")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3847873762) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ImageFormat
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImageTexture.fnGetFormat), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *ImageTexture) SetImage(image Image, )  {
-  classNameV := StringNameFromStr("ImageTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_image")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 532598488) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{image.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImageTexture.fnSetImage), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ImageTexture) Update(image Image, )  {
-  classNameV := StringNameFromStr("ImageTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("update")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 532598488) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{image.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImageTexture.fnUpdate), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ImageTexture) SetSizeOverride(size Vector2i, )  {
-  classNameV := StringNameFromStr("ImageTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_size_override")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1130785943) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{size.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImageTexture.fnSetSizeOverride), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

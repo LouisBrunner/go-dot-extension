@@ -14,6 +14,101 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSprite3DList struct {
+  fnSetTexture gdc.MethodBindPtr
+  fnGetTexture gdc.MethodBindPtr
+  fnSetRegionEnabled gdc.MethodBindPtr
+  fnIsRegionEnabled gdc.MethodBindPtr
+  fnSetRegionRect gdc.MethodBindPtr
+  fnGetRegionRect gdc.MethodBindPtr
+  fnSetFrame gdc.MethodBindPtr
+  fnGetFrame gdc.MethodBindPtr
+  fnSetFrameCoords gdc.MethodBindPtr
+  fnGetFrameCoords gdc.MethodBindPtr
+  fnSetVframes gdc.MethodBindPtr
+  fnGetVframes gdc.MethodBindPtr
+  fnSetHframes gdc.MethodBindPtr
+  fnGetHframes gdc.MethodBindPtr
+}
+
+var ptrsForSprite3D ptrsForSprite3DList
+
+func initSprite3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Sprite3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_texture")
+    defer methodName.Destroy()
+    ptrsForSprite3D.fnSetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4051416890))
+  }
+  {
+    methodName := StringNameFromStr("get_texture")
+    defer methodName.Destroy()
+    ptrsForSprite3D.fnGetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
+  }
+  {
+    methodName := StringNameFromStr("set_region_enabled")
+    defer methodName.Destroy()
+    ptrsForSprite3D.fnSetRegionEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_region_enabled")
+    defer methodName.Destroy()
+    ptrsForSprite3D.fnIsRegionEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_region_rect")
+    defer methodName.Destroy()
+    ptrsForSprite3D.fnSetRegionRect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2046264180))
+  }
+  {
+    methodName := StringNameFromStr("get_region_rect")
+    defer methodName.Destroy()
+    ptrsForSprite3D.fnGetRegionRect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1639390495))
+  }
+  {
+    methodName := StringNameFromStr("set_frame")
+    defer methodName.Destroy()
+    ptrsForSprite3D.fnSetFrame = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_frame")
+    defer methodName.Destroy()
+    ptrsForSprite3D.fnGetFrame = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_frame_coords")
+    defer methodName.Destroy()
+    ptrsForSprite3D.fnSetFrameCoords = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1130785943))
+  }
+  {
+    methodName := StringNameFromStr("get_frame_coords")
+    defer methodName.Destroy()
+    ptrsForSprite3D.fnGetFrameCoords = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3690982128))
+  }
+  {
+    methodName := StringNameFromStr("set_vframes")
+    defer methodName.Destroy()
+    ptrsForSprite3D.fnSetVframes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_vframes")
+    defer methodName.Destroy()
+    ptrsForSprite3D.fnGetVframes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_hframes")
+    defer methodName.Destroy()
+    ptrsForSprite3D.fnSetHframes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_hframes")
+    defer methodName.Destroy()
+    ptrsForSprite3D.fnGetHframes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+}
+
 type Sprite3D struct {
   SpriteBase3D
 }
@@ -51,205 +146,135 @@ func (me *Sprite3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Sprite3D) SetTexture(texture Texture2D, )  {
-  classNameV := StringNameFromStr("Sprite3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{texture.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSprite3D.fnSetTexture), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Sprite3D) GetTexture() Texture2D {
-  classNameV := StringNameFromStr("Sprite3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSprite3D.fnGetTexture), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Sprite3D) SetRegionEnabled(enabled bool, )  {
-  classNameV := StringNameFromStr("Sprite3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_region_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSprite3D.fnSetRegionEnabled), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Sprite3D) IsRegionEnabled() bool {
-  classNameV := StringNameFromStr("Sprite3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_region_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSprite3D.fnIsRegionEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Sprite3D) SetRegionRect(rect Rect2, )  {
-  classNameV := StringNameFromStr("Sprite3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_region_rect")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2046264180) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{rect.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSprite3D.fnSetRegionRect), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Sprite3D) GetRegionRect() Rect2 {
-  classNameV := StringNameFromStr("Sprite3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_region_rect")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1639390495) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRect2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSprite3D.fnGetRegionRect), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Sprite3D) SetFrame(frame int64, )  {
-  classNameV := StringNameFromStr("Sprite3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_frame")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&frame) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSprite3D.fnSetFrame), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Sprite3D) GetFrame() int64 {
-  classNameV := StringNameFromStr("Sprite3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_frame")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSprite3D.fnGetFrame), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Sprite3D) SetFrameCoords(coords Vector2i, )  {
-  classNameV := StringNameFromStr("Sprite3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_frame_coords")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1130785943) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{coords.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSprite3D.fnSetFrameCoords), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Sprite3D) GetFrameCoords() Vector2i {
-  classNameV := StringNameFromStr("Sprite3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_frame_coords")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3690982128) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2i()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSprite3D.fnGetFrameCoords), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Sprite3D) SetVframes(vframes int64, )  {
-  classNameV := StringNameFromStr("Sprite3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_vframes")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&vframes) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSprite3D.fnSetVframes), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Sprite3D) GetVframes() int64 {
-  classNameV := StringNameFromStr("Sprite3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_vframes")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSprite3D.fnGetVframes), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Sprite3D) SetHframes(hframes int64, )  {
-  classNameV := StringNameFromStr("Sprite3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_hframes")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hframes) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSprite3D.fnSetHframes), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Sprite3D) GetHframes() int64 {
-  classNameV := StringNameFromStr("Sprite3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_hframes")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSprite3D.fnGetHframes), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

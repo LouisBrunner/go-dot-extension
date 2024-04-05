@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioEffectStereoEnhanceList struct {
+  fnSetPanPullout gdc.MethodBindPtr
+  fnGetPanPullout gdc.MethodBindPtr
+  fnSetTimePullout gdc.MethodBindPtr
+  fnGetTimePullout gdc.MethodBindPtr
+  fnSetSurround gdc.MethodBindPtr
+  fnGetSurround gdc.MethodBindPtr
+}
+
+var ptrsForAudioEffectStereoEnhance ptrsForAudioEffectStereoEnhanceList
+
+func initAudioEffectStereoEnhancePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioEffectStereoEnhance")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_pan_pullout")
+    defer methodName.Destroy()
+    ptrsForAudioEffectStereoEnhance.fnSetPanPullout = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_pan_pullout")
+    defer methodName.Destroy()
+    ptrsForAudioEffectStereoEnhance.fnGetPanPullout = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_time_pullout")
+    defer methodName.Destroy()
+    ptrsForAudioEffectStereoEnhance.fnSetTimePullout = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_time_pullout")
+    defer methodName.Destroy()
+    ptrsForAudioEffectStereoEnhance.fnGetTimePullout = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_surround")
+    defer methodName.Destroy()
+    ptrsForAudioEffectStereoEnhance.fnSetSurround = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_surround")
+    defer methodName.Destroy()
+    ptrsForAudioEffectStereoEnhance.fnGetSurround = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type AudioEffectStereoEnhance struct {
   AudioEffect
 }
@@ -51,89 +98,59 @@ func (me *AudioEffectStereoEnhance) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AudioEffectStereoEnhance) SetPanPullout(amount float64, )  {
-  classNameV := StringNameFromStr("AudioEffectStereoEnhance")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_pan_pullout")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectStereoEnhance.fnSetPanPullout), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectStereoEnhance) GetPanPullout() float64 {
-  classNameV := StringNameFromStr("AudioEffectStereoEnhance")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_pan_pullout")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectStereoEnhance.fnGetPanPullout), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioEffectStereoEnhance) SetTimePullout(amount float64, )  {
-  classNameV := StringNameFromStr("AudioEffectStereoEnhance")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_time_pullout")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectStereoEnhance.fnSetTimePullout), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectStereoEnhance) GetTimePullout() float64 {
-  classNameV := StringNameFromStr("AudioEffectStereoEnhance")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_time_pullout")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectStereoEnhance.fnGetTimePullout), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioEffectStereoEnhance) SetSurround(amount float64, )  {
-  classNameV := StringNameFromStr("AudioEffectStereoEnhance")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_surround")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectStereoEnhance.fnSetSurround), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectStereoEnhance) GetSurround() float64 {
-  classNameV := StringNameFromStr("AudioEffectStereoEnhance")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_surround")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectStereoEnhance.fnGetSurround), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

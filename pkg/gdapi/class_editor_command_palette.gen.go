@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorCommandPaletteList struct {
+  fnAddCommand gdc.MethodBindPtr
+  fnRemoveCommand gdc.MethodBindPtr
+}
+
+var ptrsForEditorCommandPalette ptrsForEditorCommandPaletteList
+
+func initEditorCommandPalettePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorCommandPalette")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("add_command")
+    defer methodName.Destroy()
+    ptrsForEditorCommandPalette.fnAddCommand = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 864043298))
+  }
+  {
+    methodName := StringNameFromStr("remove_command")
+    defer methodName.Destroy()
+    ptrsForEditorCommandPalette.fnRemoveCommand = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+}
+
 type EditorCommandPalette struct {
   ConfirmationDialog
 }
@@ -51,30 +74,20 @@ func (me *EditorCommandPalette) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *EditorCommandPalette) AddCommand(command_name String, key_name String, binded_callable Callable, shortcut_text String, )  {
-  classNameV := StringNameFromStr("EditorCommandPalette")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_command")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 864043298) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{command_name.AsCTypePtr(), key_name.AsCTypePtr(), binded_callable.AsCTypePtr(), shortcut_text.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorCommandPalette.fnAddCommand), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorCommandPalette) RemoveCommand(key_name String, )  {
-  classNameV := StringNameFromStr("EditorCommandPalette")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_command")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{key_name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorCommandPalette.fnRemoveCommand), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

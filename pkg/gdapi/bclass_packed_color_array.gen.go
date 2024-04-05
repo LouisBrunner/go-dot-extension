@@ -9,6 +9,167 @@ import (
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
+// FIXME: avoid unused imports
+var _ = fmt.Sprintf("")
+
+type ptrsForPackedColorArrayList struct {
+  ctrFn gdc.PtrConstructor
+  ctrFromPackedColorArrayFn gdc.PtrConstructor
+  ctrFromArrayFn gdc.PtrConstructor
+  destructorFn gdc.PtrDestructor
+  methodSizeFn gdc.PtrBuiltInMethod
+  methodIsEmptyFn gdc.PtrBuiltInMethod
+  methodSetFn gdc.PtrBuiltInMethod
+  methodPushBackFn gdc.PtrBuiltInMethod
+  methodAppendFn gdc.PtrBuiltInMethod
+  methodAppendArrayFn gdc.PtrBuiltInMethod
+  methodRemoveAtFn gdc.PtrBuiltInMethod
+  methodInsertFn gdc.PtrBuiltInMethod
+  methodFillFn gdc.PtrBuiltInMethod
+  methodResizeFn gdc.PtrBuiltInMethod
+  methodClearFn gdc.PtrBuiltInMethod
+  methodHasFn gdc.PtrBuiltInMethod
+  methodReverseFn gdc.PtrBuiltInMethod
+  methodSliceFn gdc.PtrBuiltInMethod
+  methodToByteArrayFn gdc.PtrBuiltInMethod
+  methodSortFn gdc.PtrBuiltInMethod
+  methodBsearchFn gdc.PtrBuiltInMethod
+  methodDuplicateFn gdc.PtrBuiltInMethod
+  methodFindFn gdc.PtrBuiltInMethod
+  methodRfindFn gdc.PtrBuiltInMethod
+  methodCountFn gdc.PtrBuiltInMethod
+  operatorNotFn gdc.PtrOperatorEvaluator
+  operatorInDictionaryFn gdc.PtrOperatorEvaluator
+  operatorInArrayFn gdc.PtrOperatorEvaluator
+  operatorEqualPackedColorArrayFn gdc.PtrOperatorEvaluator
+  operatorNotEqualPackedColorArrayFn gdc.PtrOperatorEvaluator
+  operatorAddPackedColorArrayFn gdc.PtrOperatorEvaluator
+  toVariantFn gdc.TypeFromVariantConstructorFunc
+  fromVariantFn gdc.VariantFromTypeConstructorFunc
+}
+
+var ptrsForPackedColorArray ptrsForPackedColorArrayList
+
+func initPackedColorArrayPtrs(iface gdc.Interface) {
+  ptrsForPackedColorArray.ctrFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypePackedColorArray, 0))
+  ptrsForPackedColorArray.ctrFromPackedColorArrayFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypePackedColorArray, 1))
+  ptrsForPackedColorArray.ctrFromArrayFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypePackedColorArray, 2))
+  ptrsForPackedColorArray.destructorFn = ensurePtr(iface.VariantGetPtrDestructor(gdc.VariantTypePackedColorArray))
+  {
+    methodName := StringNameFromStr("size")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodSizeFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 3173160232))
+  }
+  {
+    methodName := StringNameFromStr("is_empty")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodIsEmptyFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 3918633141))
+  }
+  {
+    methodName := StringNameFromStr("set")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodSetFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 1444096570))
+  }
+  {
+    methodName := StringNameFromStr("push_back")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodPushBackFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 1007858200))
+  }
+  {
+    methodName := StringNameFromStr("append")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodAppendFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 1007858200))
+  }
+  {
+    methodName := StringNameFromStr("append_array")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodAppendArrayFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 798822497))
+  }
+  {
+    methodName := StringNameFromStr("remove_at")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodRemoveAtFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 2823966027))
+  }
+  {
+    methodName := StringNameFromStr("insert")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodInsertFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 785289703))
+  }
+  {
+    methodName := StringNameFromStr("fill")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodFillFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 3730314301))
+  }
+  {
+    methodName := StringNameFromStr("resize")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodResizeFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 848867239))
+  }
+  {
+    methodName := StringNameFromStr("clear")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodClearFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("has")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodHasFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 3167426256))
+  }
+  {
+    methodName := StringNameFromStr("reverse")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodReverseFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("slice")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodSliceFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 2451797139))
+  }
+  {
+    methodName := StringNameFromStr("to_byte_array")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodToByteArrayFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 247621236))
+  }
+  {
+    methodName := StringNameFromStr("sort")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodSortFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("bsearch")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodBsearchFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 314143821))
+  }
+  {
+    methodName := StringNameFromStr("duplicate")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodDuplicateFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 1011903421))
+  }
+  {
+    methodName := StringNameFromStr("find")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodFindFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 3156095363))
+  }
+  {
+    methodName := StringNameFromStr("rfind")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodRfindFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 3156095363))
+  }
+  {
+    methodName := StringNameFromStr("count")
+    defer methodName.Destroy()
+    ptrsForPackedColorArray.methodCountFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, methodName.AsCPtr(), 1682108616))
+  }
+  ptrsForPackedColorArray.operatorNotFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, gdc.VariantTypePackedColorArray, gdc.VariantTypeNil))
+  ptrsForPackedColorArray.operatorInDictionaryFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, gdc.VariantTypePackedColorArray, gdc.VariantTypeDictionary))
+  ptrsForPackedColorArray.operatorInArrayFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, gdc.VariantTypePackedColorArray, gdc.VariantTypeArray))
+  ptrsForPackedColorArray.operatorEqualPackedColorArrayFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, gdc.VariantTypePackedColorArray, gdc.VariantTypePackedColorArray))
+  ptrsForPackedColorArray.operatorNotEqualPackedColorArrayFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, gdc.VariantTypePackedColorArray, gdc.VariantTypePackedColorArray))
+  ptrsForPackedColorArray.operatorAddPackedColorArrayFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAdd, gdc.VariantTypePackedColorArray, gdc.VariantTypePackedColorArray))
+  ptrsForPackedColorArray.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypePackedColorArray))
+  ptrsForPackedColorArray.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypePackedColorArray))
+}
+
 type PackedColorArray struct {
   data   *[classSizePackedColorArray]byte
   iface  gdc.Interface
@@ -32,8 +193,7 @@ func NewPackedColorArray() *PackedColorArray {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newPackedColorArray()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypePackedColorArray, 0) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForPackedColorArray.ctrFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
   return me
 }
 
@@ -41,8 +201,7 @@ func NewPackedColorArrayFromPackedColorArray(from PackedColorArray, ) *PackedCol
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newPackedColorArray()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypePackedColorArray, 1) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForPackedColorArray.ctrFromPackedColorArrayFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
   return me
 }
 
@@ -50,15 +209,13 @@ func NewPackedColorArrayFromArray(from Array, ) *PackedColorArray {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newPackedColorArray()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypePackedColorArray, 2) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForPackedColorArray.ctrFromArrayFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
   return me
 }
 
 // Destructor
 func (me *PackedColorArray) Destroy() {
-  dtr := me.iface.VariantGetPtrDestructor(gdc.VariantTypePackedColorArray)
-	me.iface.CallPtrDestructor(dtr, me.AsTypePtr())
+	me.iface.CallPtrDestructor(ensurePtr(ptrsForPackedColorArray.destructorFn), me.AsTypePtr())
   me.pinner.Unpin()
 }
 
@@ -68,16 +225,14 @@ func (me *Variant) AsPackedColorArray() (*PackedColorArray, error) {
 		return nil, fmt.Errorf("variant is not a PackedColorArray")
 	}
   bclass := newPackedColorArray()
-	fn := me.iface.GetVariantToTypeConstructor(me.Type())
-	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	me.iface.CallTypeFromVariantConstructorFunc(ensurePtr(ptrsForPackedColorArray.toVariantFn), bclass.asUninitialized(), me.AsPtr())
 	return bclass, nil
 }
 
 func (me *PackedColorArray) AsVariant() *Variant {
   va := newVariant()
   va.inner = me
-  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
-  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  me.iface.CallVariantFromTypeConstructorFunc(ensurePtr(ptrsForPackedColorArray.fromVariantFn), va.asUninitialized(), me.AsTypePtr())
   return va
 }
 
@@ -107,107 +262,75 @@ func (me *PackedColorArray) asUninitialized() gdc.UninitializedTypePtr {
 // Methods
 
 func (me *PackedColorArray) Size() int64 {
-  name := StringNameFromStr("size")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 3173160232) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodSizeFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *PackedColorArray) IsEmpty() bool {
-  name := StringNameFromStr("is_empty")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 3918633141) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodIsEmptyFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *PackedColorArray) Set(index int64, value Color, )  {
-  name := StringNameFromStr("set")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 1444096570) // FIXME: should cache?
-
   varg0 := NewIntFromInt(index)
   defer varg0.Destroy()
 
   args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), value.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodSetFn), me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
 func (me *PackedColorArray) PushBack(value Color, ) bool {
-  name := StringNameFromStr("push_back")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 1007858200) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
 
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodPushBackFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *PackedColorArray) Append(value Color, ) bool {
-  name := StringNameFromStr("append")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 1007858200) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
 
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodAppendFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *PackedColorArray) AppendArray(array PackedColorArray, )  {
-  name := StringNameFromStr("append_array")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 798822497) // FIXME: should cache?
-
 
   args := []gdc.ConstTypePtr{array.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodAppendArrayFn), me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
 func (me *PackedColorArray) RemoveAt(index int64, )  {
-  name := StringNameFromStr("remove_at")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 2823966027) // FIXME: should cache?
-
   varg0 := NewIntFromInt(index)
   defer varg0.Destroy()
   args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodRemoveAtFn), me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
 func (me *PackedColorArray) Insert(at_index int64, value Color, ) int64 {
-  name := StringNameFromStr("insert")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 785289703) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   varg0 := NewIntFromInt(at_index)
@@ -216,27 +339,19 @@ func (me *PackedColorArray) Insert(at_index int64, value Color, ) int64 {
   args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), value.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodInsertFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *PackedColorArray) Fill(value Color, )  {
-  name := StringNameFromStr("fill")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 3730314301) // FIXME: should cache?
-
 
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodFillFn), me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
 func (me *PackedColorArray) Resize(new_size int64, ) int64 {
-  name := StringNameFromStr("resize")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 848867239) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   varg0 := NewIntFromInt(new_size)
@@ -244,52 +359,36 @@ func (me *PackedColorArray) Resize(new_size int64, ) int64 {
   args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodResizeFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *PackedColorArray) Clear()  {
-  name := StringNameFromStr("clear")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 3218959716) // FIXME: should cache?
-
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodClearFn), me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
 func (me *PackedColorArray) Has(value Color, ) bool {
-  name := StringNameFromStr("has")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 3167426256) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
 
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodHasFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *PackedColorArray) Reverse()  {
-  name := StringNameFromStr("reverse")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 3218959716) // FIXME: should cache?
-
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodReverseFn), me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
 func (me *PackedColorArray) Slice(begin int64, end int64, ) PackedColorArray {
-  name := StringNameFromStr("slice")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 2451797139) // FIXME: should cache?
-
   ret := NewPackedColorArray()
 
   varg0 := NewIntFromInt(begin)
@@ -299,40 +398,28 @@ func (me *PackedColorArray) Slice(begin int64, end int64, ) PackedColorArray {
   args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodSliceFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *PackedColorArray) ToByteArray() PackedByteArray {
-  name := StringNameFromStr("to_byte_array")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 247621236) // FIXME: should cache?
-
   ret := NewPackedByteArray()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodToByteArrayFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *PackedColorArray) Sort()  {
-  name := StringNameFromStr("sort")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 3218959716) // FIXME: should cache?
-
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodSortFn), me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
 func (me *PackedColorArray) Bsearch(value Color, before bool, ) int64 {
-  name := StringNameFromStr("bsearch")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 314143821) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
 
@@ -341,29 +428,21 @@ func (me *PackedColorArray) Bsearch(value Color, before bool, ) int64 {
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), varg1.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodBsearchFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *PackedColorArray) Duplicate() PackedColorArray {
-  name := StringNameFromStr("duplicate")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 1011903421) // FIXME: should cache?
-
   ret := NewPackedColorArray()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodDuplicateFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *PackedColorArray) Find(value Color, from int64, ) int64 {
-  name := StringNameFromStr("find")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 3156095363) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
 
@@ -372,15 +451,11 @@ func (me *PackedColorArray) Find(value Color, from int64, ) int64 {
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), varg1.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodFindFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *PackedColorArray) Rfind(value Color, from int64, ) int64 {
-  name := StringNameFromStr("rfind")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 3156095363) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
 
@@ -389,80 +464,76 @@ func (me *PackedColorArray) Rfind(value Color, from int64, ) int64 {
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), varg1.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodRfindFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *PackedColorArray) Count(value Color, ) int64 {
-  name := StringNameFromStr("count")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypePackedColorArray, name.AsCPtr(), 1682108616) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
 
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForPackedColorArray.methodCountFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 // Operators
 
 func (me *PackedColorArray) EqualVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *PackedColorArray) NotEqualVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *PackedColorArray) Not() bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, me.Type(), gdc.VariantTypeNil) // FIXME: cache
+  opPtr := ptrsForPackedColorArray.operatorNotFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), nil, ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *PackedColorArray) InDictionary(right Dictionary) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForPackedColorArray.operatorInDictionaryFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *PackedColorArray) InArray(right Array) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForPackedColorArray.operatorInArrayFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *PackedColorArray) EqualPackedColorArray(right PackedColorArray) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForPackedColorArray.operatorEqualPackedColorArrayFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *PackedColorArray) NotEqualPackedColorArray(right PackedColorArray) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForPackedColorArray.operatorNotEqualPackedColorArrayFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *PackedColorArray) AddPackedColorArray(right PackedColorArray) PackedColorArray {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAdd, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForPackedColorArray.operatorAddPackedColorArrayFn
   ret := NewPackedColorArray()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 

@@ -14,6 +14,31 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForImageFormatLoaderExtensionList struct {
+  fnXGetRecognizedExtensions gdc.MethodBindPtr
+  fnXLoadImage gdc.MethodBindPtr
+  fnAddFormatLoader gdc.MethodBindPtr
+  fnRemoveFormatLoader gdc.MethodBindPtr
+}
+
+var ptrsForImageFormatLoaderExtension ptrsForImageFormatLoaderExtensionList
+
+func initImageFormatLoaderExtensionPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ImageFormatLoaderExtension")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("add_format_loader")
+    defer methodName.Destroy()
+    ptrsForImageFormatLoaderExtension.fnAddFormatLoader = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("remove_format_loader")
+    defer methodName.Destroy()
+    ptrsForImageFormatLoaderExtension.fnRemoveFormatLoader = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+}
+
 type ImageFormatLoaderExtension struct {
   ImageFormatLoader
 }
@@ -51,30 +76,20 @@ func (me *ImageFormatLoaderExtension) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ImageFormatLoaderExtension) AddFormatLoader()  {
-  classNameV := StringNameFromStr("ImageFormatLoaderExtension")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_format_loader")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImageFormatLoaderExtension.fnAddFormatLoader), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ImageFormatLoaderExtension) RemoveFormatLoader()  {
-  classNameV := StringNameFromStr("ImageFormatLoaderExtension")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_format_loader")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImageFormatLoaderExtension.fnRemoveFormatLoader), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

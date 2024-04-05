@@ -14,6 +14,437 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForNode3DList struct {
+  fnSetTransform gdc.MethodBindPtr
+  fnGetTransform gdc.MethodBindPtr
+  fnSetPosition gdc.MethodBindPtr
+  fnGetPosition gdc.MethodBindPtr
+  fnSetRotation gdc.MethodBindPtr
+  fnGetRotation gdc.MethodBindPtr
+  fnSetRotationDegrees gdc.MethodBindPtr
+  fnGetRotationDegrees gdc.MethodBindPtr
+  fnSetRotationOrder gdc.MethodBindPtr
+  fnGetRotationOrder gdc.MethodBindPtr
+  fnSetRotationEditMode gdc.MethodBindPtr
+  fnGetRotationEditMode gdc.MethodBindPtr
+  fnSetScale gdc.MethodBindPtr
+  fnGetScale gdc.MethodBindPtr
+  fnSetQuaternion gdc.MethodBindPtr
+  fnGetQuaternion gdc.MethodBindPtr
+  fnSetBasis gdc.MethodBindPtr
+  fnGetBasis gdc.MethodBindPtr
+  fnSetGlobalTransform gdc.MethodBindPtr
+  fnGetGlobalTransform gdc.MethodBindPtr
+  fnSetGlobalPosition gdc.MethodBindPtr
+  fnGetGlobalPosition gdc.MethodBindPtr
+  fnSetGlobalBasis gdc.MethodBindPtr
+  fnGetGlobalBasis gdc.MethodBindPtr
+  fnSetGlobalRotation gdc.MethodBindPtr
+  fnGetGlobalRotation gdc.MethodBindPtr
+  fnSetGlobalRotationDegrees gdc.MethodBindPtr
+  fnGetGlobalRotationDegrees gdc.MethodBindPtr
+  fnGetParentNode3D gdc.MethodBindPtr
+  fnSetIgnoreTransformNotification gdc.MethodBindPtr
+  fnSetAsTopLevel gdc.MethodBindPtr
+  fnIsSetAsTopLevel gdc.MethodBindPtr
+  fnSetDisableScale gdc.MethodBindPtr
+  fnIsScaleDisabled gdc.MethodBindPtr
+  fnGetWorld3D gdc.MethodBindPtr
+  fnForceUpdateTransform gdc.MethodBindPtr
+  fnSetVisibilityParent gdc.MethodBindPtr
+  fnGetVisibilityParent gdc.MethodBindPtr
+  fnUpdateGizmos gdc.MethodBindPtr
+  fnAddGizmo gdc.MethodBindPtr
+  fnGetGizmos gdc.MethodBindPtr
+  fnClearGizmos gdc.MethodBindPtr
+  fnSetSubgizmoSelection gdc.MethodBindPtr
+  fnClearSubgizmoSelection gdc.MethodBindPtr
+  fnSetVisible gdc.MethodBindPtr
+  fnIsVisible gdc.MethodBindPtr
+  fnIsVisibleInTree gdc.MethodBindPtr
+  fnShow gdc.MethodBindPtr
+  fnHide gdc.MethodBindPtr
+  fnSetNotifyLocalTransform gdc.MethodBindPtr
+  fnIsLocalTransformNotificationEnabled gdc.MethodBindPtr
+  fnSetNotifyTransform gdc.MethodBindPtr
+  fnIsTransformNotificationEnabled gdc.MethodBindPtr
+  fnRotate gdc.MethodBindPtr
+  fnGlobalRotate gdc.MethodBindPtr
+  fnGlobalScale gdc.MethodBindPtr
+  fnGlobalTranslate gdc.MethodBindPtr
+  fnRotateObjectLocal gdc.MethodBindPtr
+  fnScaleObjectLocal gdc.MethodBindPtr
+  fnTranslateObjectLocal gdc.MethodBindPtr
+  fnRotateX gdc.MethodBindPtr
+  fnRotateY gdc.MethodBindPtr
+  fnRotateZ gdc.MethodBindPtr
+  fnTranslate gdc.MethodBindPtr
+  fnOrthonormalize gdc.MethodBindPtr
+  fnSetIdentity gdc.MethodBindPtr
+  fnLookAt gdc.MethodBindPtr
+  fnLookAtFromPosition gdc.MethodBindPtr
+  fnToLocal gdc.MethodBindPtr
+  fnToGlobal gdc.MethodBindPtr
+}
+
+var ptrsForNode3D ptrsForNode3DList
+
+func initNode3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Node3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_transform")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2952846383))
+  }
+  {
+    methodName := StringNameFromStr("get_transform")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGetTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3229777777))
+  }
+  {
+    methodName := StringNameFromStr("set_position")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("get_position")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGetPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("set_rotation")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetRotation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("get_rotation")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGetRotation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("set_rotation_degrees")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetRotationDegrees = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("get_rotation_degrees")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGetRotationDegrees = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("set_rotation_order")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetRotationOrder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1820889989))
+  }
+  {
+    methodName := StringNameFromStr("get_rotation_order")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGetRotationOrder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 916939469))
+  }
+  {
+    methodName := StringNameFromStr("set_rotation_edit_mode")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetRotationEditMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 141483330))
+  }
+  {
+    methodName := StringNameFromStr("get_rotation_edit_mode")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGetRotationEditMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1572188370))
+  }
+  {
+    methodName := StringNameFromStr("set_scale")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("get_scale")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGetScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("set_quaternion")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetQuaternion = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1727505552))
+  }
+  {
+    methodName := StringNameFromStr("get_quaternion")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGetQuaternion = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1222331677))
+  }
+  {
+    methodName := StringNameFromStr("set_basis")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetBasis = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1055510324))
+  }
+  {
+    methodName := StringNameFromStr("get_basis")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGetBasis = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2716978435))
+  }
+  {
+    methodName := StringNameFromStr("set_global_transform")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetGlobalTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2952846383))
+  }
+  {
+    methodName := StringNameFromStr("get_global_transform")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGetGlobalTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3229777777))
+  }
+  {
+    methodName := StringNameFromStr("set_global_position")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetGlobalPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("get_global_position")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGetGlobalPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("set_global_basis")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetGlobalBasis = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1055510324))
+  }
+  {
+    methodName := StringNameFromStr("get_global_basis")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGetGlobalBasis = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2716978435))
+  }
+  {
+    methodName := StringNameFromStr("set_global_rotation")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetGlobalRotation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("get_global_rotation")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGetGlobalRotation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("set_global_rotation_degrees")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetGlobalRotationDegrees = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("get_global_rotation_degrees")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGetGlobalRotationDegrees = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("get_parent_node_3d")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGetParentNode3D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 151077316))
+  }
+  {
+    methodName := StringNameFromStr("set_ignore_transform_notification")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetIgnoreTransformNotification = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("set_as_top_level")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetAsTopLevel = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_set_as_top_level")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnIsSetAsTopLevel = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_disable_scale")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetDisableScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_scale_disabled")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnIsScaleDisabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_world_3d")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGetWorld3D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 317588385))
+  }
+  {
+    methodName := StringNameFromStr("force_update_transform")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnForceUpdateTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("set_visibility_parent")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetVisibilityParent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1348162250))
+  }
+  {
+    methodName := StringNameFromStr("get_visibility_parent")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGetVisibilityParent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4075236667))
+  }
+  {
+    methodName := StringNameFromStr("update_gizmos")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnUpdateGizmos = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("add_gizmo")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnAddGizmo = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1544533845))
+  }
+  {
+    methodName := StringNameFromStr("get_gizmos")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGetGizmos = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+  }
+  {
+    methodName := StringNameFromStr("clear_gizmos")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnClearGizmos = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("set_subgizmo_selection")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetSubgizmoSelection = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3317607635))
+  }
+  {
+    methodName := StringNameFromStr("clear_subgizmo_selection")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnClearSubgizmoSelection = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("set_visible")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetVisible = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_visible")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnIsVisible = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("is_visible_in_tree")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnIsVisibleInTree = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("show")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnShow = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("hide")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnHide = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("set_notify_local_transform")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetNotifyLocalTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_local_transform_notification_enabled")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnIsLocalTransformNotificationEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_notify_transform")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetNotifyTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_transform_notification_enabled")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnIsTransformNotificationEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("rotate")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnRotate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3436291937))
+  }
+  {
+    methodName := StringNameFromStr("global_rotate")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGlobalRotate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3436291937))
+  }
+  {
+    methodName := StringNameFromStr("global_scale")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGlobalScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("global_translate")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnGlobalTranslate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("rotate_object_local")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnRotateObjectLocal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3436291937))
+  }
+  {
+    methodName := StringNameFromStr("scale_object_local")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnScaleObjectLocal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("translate_object_local")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnTranslateObjectLocal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("rotate_x")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnRotateX = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("rotate_y")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnRotateY = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("rotate_z")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnRotateZ = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("translate")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnTranslate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("orthonormalize")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnOrthonormalize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("set_identity")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnSetIdentity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("look_at")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnLookAt = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2882425029))
+  }
+  {
+    methodName := StringNameFromStr("look_at_from_position")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnLookAtFromPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2086826090))
+  }
+  {
+    methodName := StringNameFromStr("to_local")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnToLocal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 192990374))
+  }
+  {
+    methodName := StringNameFromStr("to_global")
+    defer methodName.Destroy()
+    ptrsForNode3D.fnToGlobal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 192990374))
+  }
+}
+
 type Node3D struct {
   Node
 }
@@ -68,597 +499,392 @@ func (me *Node3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Node3D) SetTransform(local Transform3D, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2952846383) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{local.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetTransform), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GetTransform() Transform3D {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3229777777) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTransform3D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGetTransform), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node3D) SetPosition(position Vector3, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetPosition), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GetPosition() Vector3 {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGetPosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node3D) SetRotation(euler_radians Vector3, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_rotation")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{euler_radians.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetRotation), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GetRotation() Vector3 {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_rotation")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGetRotation), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node3D) SetRotationDegrees(euler_degrees Vector3, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_rotation_degrees")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{euler_degrees.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetRotationDegrees), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GetRotationDegrees() Vector3 {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_rotation_degrees")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGetRotationDegrees), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node3D) SetRotationOrder(order EulerOrder, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_rotation_order")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1820889989) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&order) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetRotationOrder), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GetRotationOrder() EulerOrder {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_rotation_order")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 916939469) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret EulerOrder
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGetRotationOrder), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Node3D) SetRotationEditMode(edit_mode Node3DRotationEditMode, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_rotation_edit_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 141483330) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&edit_mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetRotationEditMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GetRotationEditMode() Node3DRotationEditMode {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_rotation_edit_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1572188370) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Node3DRotationEditMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGetRotationEditMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Node3D) SetScale(scale Vector3, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{scale.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetScale), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GetScale() Vector3 {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGetScale), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node3D) SetQuaternion(quaternion Quaternion, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_quaternion")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1727505552) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{quaternion.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetQuaternion), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GetQuaternion() Quaternion {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_quaternion")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1222331677) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewQuaternion()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGetQuaternion), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node3D) SetBasis(basis Basis, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_basis")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1055510324) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{basis.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetBasis), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GetBasis() Basis {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_basis")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2716978435) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBasis()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGetBasis), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node3D) SetGlobalTransform(global Transform3D, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_global_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2952846383) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{global.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetGlobalTransform), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GetGlobalTransform() Transform3D {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_global_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3229777777) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTransform3D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGetGlobalTransform), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node3D) SetGlobalPosition(position Vector3, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_global_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetGlobalPosition), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GetGlobalPosition() Vector3 {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_global_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGetGlobalPosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node3D) SetGlobalBasis(basis Basis, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_global_basis")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1055510324) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{basis.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetGlobalBasis), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GetGlobalBasis() Basis {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_global_basis")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2716978435) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBasis()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGetGlobalBasis), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node3D) SetGlobalRotation(euler_radians Vector3, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_global_rotation")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{euler_radians.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetGlobalRotation), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GetGlobalRotation() Vector3 {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_global_rotation")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGetGlobalRotation), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node3D) SetGlobalRotationDegrees(euler_degrees Vector3, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_global_rotation_degrees")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{euler_degrees.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetGlobalRotationDegrees), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GetGlobalRotationDegrees() Vector3 {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_global_rotation_degrees")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGetGlobalRotationDegrees), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node3D) GetParentNode3D() Node3D {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_parent_node_3d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 151077316) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNode3D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGetParentNode3D), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node3D) SetIgnoreTransformNotification(enabled bool, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_ignore_transform_notification")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetIgnoreTransformNotification), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) SetAsTopLevel(enable bool, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_as_top_level")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetAsTopLevel), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) IsSetAsTopLevel() bool {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_set_as_top_level")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnIsSetAsTopLevel), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node3D) SetDisableScale(disable bool, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_disable_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&disable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetDisableScale), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) IsScaleDisabled() bool {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_scale_disabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnIsScaleDisabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node3D) GetWorld3D() World3D {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_world_3d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 317588385) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewWorld3D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGetWorld3D), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node3D) ForceUpdateTransform()  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("force_update_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnForceUpdateTransform), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) SetVisibilityParent(path NodePath, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_visibility_parent")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetVisibilityParent), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GetVisibilityParent() NodePath {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_visibility_parent")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNodePath()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGetVisibilityParent), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node3D) UpdateGizmos()  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("update_gizmos")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnUpdateGizmos), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) AddGizmo(gizmo Node3DGizmo, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_gizmo")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1544533845) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gizmo.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnAddGizmo), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GetGizmos() []Node3DGizmo {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_gizmos")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGetGizmos), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[Node3DGizmo](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -668,414 +894,269 @@ return sliceRet
 }
 
 func  (me *Node3D) ClearGizmos()  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("clear_gizmos")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnClearGizmos), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) SetSubgizmoSelection(gizmo Node3DGizmo, id int64, transform Transform3D, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_subgizmo_selection")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3317607635) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gizmo.AsCTypePtr(), gdc.ConstTypePtr(&id) , transform.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetSubgizmoSelection), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) ClearSubgizmoSelection()  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("clear_subgizmo_selection")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnClearSubgizmoSelection), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) SetVisible(visible bool, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_visible")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&visible) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetVisible), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) IsVisible() bool {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_visible")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnIsVisible), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node3D) IsVisibleInTree() bool {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_visible_in_tree")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnIsVisibleInTree), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node3D) Show()  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("show")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnShow), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) Hide()  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("hide")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnHide), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) SetNotifyLocalTransform(enable bool, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_notify_local_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetNotifyLocalTransform), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) IsLocalTransformNotificationEnabled() bool {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_local_transform_notification_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnIsLocalTransformNotificationEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node3D) SetNotifyTransform(enable bool, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_notify_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetNotifyTransform), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) IsTransformNotificationEnabled() bool {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_transform_notification_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnIsTransformNotificationEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Node3D) Rotate(axis Vector3, angle float64, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("rotate")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3436291937) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{axis.AsCTypePtr(), gdc.ConstTypePtr(&angle) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnRotate), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GlobalRotate(axis Vector3, angle float64, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("global_rotate")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3436291937) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{axis.AsCTypePtr(), gdc.ConstTypePtr(&angle) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGlobalRotate), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GlobalScale(scale Vector3, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("global_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{scale.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGlobalScale), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) GlobalTranslate(offset Vector3, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("global_translate")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnGlobalTranslate), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) RotateObjectLocal(axis Vector3, angle float64, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("rotate_object_local")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3436291937) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{axis.AsCTypePtr(), gdc.ConstTypePtr(&angle) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnRotateObjectLocal), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) ScaleObjectLocal(scale Vector3, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("scale_object_local")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{scale.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnScaleObjectLocal), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) TranslateObjectLocal(offset Vector3, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("translate_object_local")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnTranslateObjectLocal), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) RotateX(angle float64, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("rotate_x")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnRotateX), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) RotateY(angle float64, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("rotate_y")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnRotateY), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) RotateZ(angle float64, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("rotate_z")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnRotateZ), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) Translate(offset Vector3, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("translate")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnTranslate), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) Orthonormalize()  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("orthonormalize")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnOrthonormalize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) SetIdentity()  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_identity")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnSetIdentity), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) LookAt(target Vector3, up Vector3, use_model_front bool, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("look_at")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2882425029) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{target.AsCTypePtr(), up.AsCTypePtr(), gdc.ConstTypePtr(&use_model_front) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnLookAt), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) LookAtFromPosition(position Vector3, target Vector3, up Vector3, use_model_front bool, )  {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("look_at_from_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2086826090) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), target.AsCTypePtr(), up.AsCTypePtr(), gdc.ConstTypePtr(&use_model_front) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnLookAtFromPosition), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Node3D) ToLocal(global_point Vector3, ) Vector3 {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("to_local")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 192990374) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{global_point.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnToLocal), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Node3D) ToGlobal(local_point Vector3, ) Vector3 {
-  classNameV := StringNameFromStr("Node3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("to_global")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 192990374) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{local_point.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode3D.fnToGlobal), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

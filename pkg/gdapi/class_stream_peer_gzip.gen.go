@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForStreamPeerGZIPList struct {
+  fnStartCompression gdc.MethodBindPtr
+  fnStartDecompression gdc.MethodBindPtr
+  fnFinish gdc.MethodBindPtr
+  fnClear gdc.MethodBindPtr
+}
+
+var ptrsForStreamPeerGZIP ptrsForStreamPeerGZIPList
+
+func initStreamPeerGZIPPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("StreamPeerGZIP")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("start_compression")
+    defer methodName.Destroy()
+    ptrsForStreamPeerGZIP.fnStartCompression = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 781582770))
+  }
+  {
+    methodName := StringNameFromStr("start_decompression")
+    defer methodName.Destroy()
+    ptrsForStreamPeerGZIP.fnStartDecompression = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 781582770))
+  }
+  {
+    methodName := StringNameFromStr("finish")
+    defer methodName.Destroy()
+    ptrsForStreamPeerGZIP.fnFinish = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 166280745))
+  }
+  {
+    methodName := StringNameFromStr("clear")
+    defer methodName.Destroy()
+    ptrsForStreamPeerGZIP.fnClear = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+}
+
 type StreamPeerGZIP struct {
   StreamPeer
 }
@@ -51,11 +86,6 @@ func (me *StreamPeerGZIP) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *StreamPeerGZIP) StartCompression(use_deflate bool, buffer_size int64, ) Error {
-  classNameV := StringNameFromStr("StreamPeerGZIP")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("start_compression")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 781582770) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&use_deflate) , gdc.ConstTypePtr(&buffer_size) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -63,16 +93,11 @@ func  (me *StreamPeerGZIP) StartCompression(use_deflate bool, buffer_size int64,
   pinner.Pin(&use_deflate)
   pinner.Pin(&buffer_size)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStreamPeerGZIP.fnStartCompression), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *StreamPeerGZIP) StartDecompression(use_deflate bool, buffer_size int64, ) Error {
-  classNameV := StringNameFromStr("StreamPeerGZIP")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("start_decompression")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 781582770) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&use_deflate) , gdc.ConstTypePtr(&buffer_size) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -80,36 +105,26 @@ func  (me *StreamPeerGZIP) StartDecompression(use_deflate bool, buffer_size int6
   pinner.Pin(&use_deflate)
   pinner.Pin(&buffer_size)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStreamPeerGZIP.fnStartDecompression), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *StreamPeerGZIP) Finish() Error {
-  classNameV := StringNameFromStr("StreamPeerGZIP")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("finish")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166280745) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStreamPeerGZIP.fnFinish), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *StreamPeerGZIP) Clear()  {
-  classNameV := StringNameFromStr("StreamPeerGZIP")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("clear")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStreamPeerGZIP.fnClear), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

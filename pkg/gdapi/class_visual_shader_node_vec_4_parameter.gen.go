@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeVec4ParameterList struct {
+  fnSetDefaultValueEnabled gdc.MethodBindPtr
+  fnIsDefaultValueEnabled gdc.MethodBindPtr
+  fnSetDefaultValue gdc.MethodBindPtr
+  fnGetDefaultValue gdc.MethodBindPtr
+}
+
+var ptrsForVisualShaderNodeVec4Parameter ptrsForVisualShaderNodeVec4ParameterList
+
+func initVisualShaderNodeVec4ParameterPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeVec4Parameter")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_default_value_enabled")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeVec4Parameter.fnSetDefaultValueEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_default_value_enabled")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeVec4Parameter.fnIsDefaultValueEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_default_value")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeVec4Parameter.fnSetDefaultValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 643568085))
+  }
+  {
+    methodName := StringNameFromStr("get_default_value")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeVec4Parameter.fnGetDefaultValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2435802345))
+  }
+}
+
 type VisualShaderNodeVec4Parameter struct {
   VisualShaderNodeParameter
 }
@@ -51,60 +86,40 @@ func (me *VisualShaderNodeVec4Parameter) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisualShaderNodeVec4Parameter) SetDefaultValueEnabled(enabled bool, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeVec4Parameter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_default_value_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeVec4Parameter.fnSetDefaultValueEnabled), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeVec4Parameter) IsDefaultValueEnabled() bool {
-  classNameV := StringNameFromStr("VisualShaderNodeVec4Parameter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_default_value_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeVec4Parameter.fnIsDefaultValueEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *VisualShaderNodeVec4Parameter) SetDefaultValue(value Vector4, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeVec4Parameter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_default_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 643568085) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{value.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeVec4Parameter.fnSetDefaultValue), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeVec4Parameter) GetDefaultValue() Vector4 {
-  classNameV := StringNameFromStr("VisualShaderNodeVec4Parameter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_default_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2435802345) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector4()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeVec4Parameter.fnGetDefaultValue), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

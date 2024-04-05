@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForColorRectList struct {
+  fnSetColor gdc.MethodBindPtr
+  fnGetColor gdc.MethodBindPtr
+}
+
+var ptrsForColorRect ptrsForColorRectList
+
+func initColorRectPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ColorRect")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_color")
+    defer methodName.Destroy()
+    ptrsForColorRect.fnSetColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2920490490))
+  }
+  {
+    methodName := StringNameFromStr("get_color")
+    defer methodName.Destroy()
+    ptrsForColorRect.fnGetColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3444240500))
+  }
+}
+
 type ColorRect struct {
   Control
 }
@@ -51,31 +74,21 @@ func (me *ColorRect) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ColorRect) SetColor(color Color, )  {
-  classNameV := StringNameFromStr("ColorRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_color")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{color.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForColorRect.fnSetColor), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ColorRect) GetColor() Color {
-  classNameV := StringNameFromStr("ColorRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_color")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewColor()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForColorRect.fnGetColor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

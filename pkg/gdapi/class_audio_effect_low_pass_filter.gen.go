@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioEffectLowPassFilterList struct {
+}
+
+var ptrsForAudioEffectLowPassFilter ptrsForAudioEffectLowPassFilterList
+
+func initAudioEffectLowPassFilterPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioEffectLowPassFilter")
+  defer className.Destroy()
+}
+
 type AudioEffectLowPassFilter struct {
   AudioEffectFilter
 }

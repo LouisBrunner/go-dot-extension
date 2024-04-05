@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForResourceImporterImageFontList struct {
+}
+
+var ptrsForResourceImporterImageFont ptrsForResourceImporterImageFontList
+
+func initResourceImporterImageFontPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ResourceImporterImageFont")
+  defer className.Destroy()
+}
+
 type ResourceImporterImageFont struct {
   ResourceImporter
 }

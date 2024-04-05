@@ -14,6 +14,137 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForTextureButtonList struct {
+  fnSetTextureNormal gdc.MethodBindPtr
+  fnSetTexturePressed gdc.MethodBindPtr
+  fnSetTextureHover gdc.MethodBindPtr
+  fnSetTextureDisabled gdc.MethodBindPtr
+  fnSetTextureFocused gdc.MethodBindPtr
+  fnSetClickMask gdc.MethodBindPtr
+  fnSetIgnoreTextureSize gdc.MethodBindPtr
+  fnSetStretchMode gdc.MethodBindPtr
+  fnSetFlipH gdc.MethodBindPtr
+  fnIsFlippedH gdc.MethodBindPtr
+  fnSetFlipV gdc.MethodBindPtr
+  fnIsFlippedV gdc.MethodBindPtr
+  fnGetTextureNormal gdc.MethodBindPtr
+  fnGetTexturePressed gdc.MethodBindPtr
+  fnGetTextureHover gdc.MethodBindPtr
+  fnGetTextureDisabled gdc.MethodBindPtr
+  fnGetTextureFocused gdc.MethodBindPtr
+  fnGetClickMask gdc.MethodBindPtr
+  fnGetIgnoreTextureSize gdc.MethodBindPtr
+  fnGetStretchMode gdc.MethodBindPtr
+}
+
+var ptrsForTextureButton ptrsForTextureButtonList
+
+func initTextureButtonPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("TextureButton")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_texture_normal")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnSetTextureNormal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4051416890))
+  }
+  {
+    methodName := StringNameFromStr("set_texture_pressed")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnSetTexturePressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4051416890))
+  }
+  {
+    methodName := StringNameFromStr("set_texture_hover")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnSetTextureHover = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4051416890))
+  }
+  {
+    methodName := StringNameFromStr("set_texture_disabled")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnSetTextureDisabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4051416890))
+  }
+  {
+    methodName := StringNameFromStr("set_texture_focused")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnSetTextureFocused = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4051416890))
+  }
+  {
+    methodName := StringNameFromStr("set_click_mask")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnSetClickMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 698588216))
+  }
+  {
+    methodName := StringNameFromStr("set_ignore_texture_size")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnSetIgnoreTextureSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("set_stretch_mode")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnSetStretchMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 252530840))
+  }
+  {
+    methodName := StringNameFromStr("set_flip_h")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnSetFlipH = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_flipped_h")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnIsFlippedH = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_flip_v")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnSetFlipV = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_flipped_v")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnIsFlippedV = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_texture_normal")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnGetTextureNormal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
+  }
+  {
+    methodName := StringNameFromStr("get_texture_pressed")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnGetTexturePressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
+  }
+  {
+    methodName := StringNameFromStr("get_texture_hover")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnGetTextureHover = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
+  }
+  {
+    methodName := StringNameFromStr("get_texture_disabled")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnGetTextureDisabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
+  }
+  {
+    methodName := StringNameFromStr("get_texture_focused")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnGetTextureFocused = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
+  }
+  {
+    methodName := StringNameFromStr("get_click_mask")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnGetClickMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2459671998))
+  }
+  {
+    methodName := StringNameFromStr("get_ignore_texture_size")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnGetIgnoreTextureSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_stretch_mode")
+    defer methodName.Destroy()
+    ptrsForTextureButton.fnGetStretchMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 33815122))
+  }
+}
+
 type TextureButton struct {
   BaseButton
 }
@@ -62,292 +193,192 @@ func (me *TextureButton) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *TextureButton) SetTextureNormal(texture Texture2D, )  {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_texture_normal")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{texture.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnSetTextureNormal), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TextureButton) SetTexturePressed(texture Texture2D, )  {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_texture_pressed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{texture.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnSetTexturePressed), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TextureButton) SetTextureHover(texture Texture2D, )  {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_texture_hover")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{texture.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnSetTextureHover), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TextureButton) SetTextureDisabled(texture Texture2D, )  {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_texture_disabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{texture.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnSetTextureDisabled), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TextureButton) SetTextureFocused(texture Texture2D, )  {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_texture_focused")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{texture.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnSetTextureFocused), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TextureButton) SetClickMask(mask BitMap, )  {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_click_mask")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 698588216) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{mask.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnSetClickMask), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TextureButton) SetIgnoreTextureSize(ignore bool, )  {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_ignore_texture_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ignore) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnSetIgnoreTextureSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TextureButton) SetStretchMode(mode TextureButtonStretchMode, )  {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_stretch_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 252530840) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnSetStretchMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TextureButton) SetFlipH(enable bool, )  {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_flip_h")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnSetFlipH), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TextureButton) IsFlippedH() bool {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_flipped_h")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnIsFlippedH), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *TextureButton) SetFlipV(enable bool, )  {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_flip_v")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnSetFlipV), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TextureButton) IsFlippedV() bool {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_flipped_v")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnIsFlippedV), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *TextureButton) GetTextureNormal() Texture2D {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture_normal")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnGetTextureNormal), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *TextureButton) GetTexturePressed() Texture2D {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture_pressed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnGetTexturePressed), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *TextureButton) GetTextureHover() Texture2D {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture_hover")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnGetTextureHover), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *TextureButton) GetTextureDisabled() Texture2D {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture_disabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnGetTextureDisabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *TextureButton) GetTextureFocused() Texture2D {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture_focused")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnGetTextureFocused), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *TextureButton) GetClickMask() BitMap {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_click_mask")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2459671998) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBitMap()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnGetClickMask), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *TextureButton) GetIgnoreTextureSize() bool {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_ignore_texture_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnGetIgnoreTextureSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *TextureButton) GetStretchMode() TextureButtonStretchMode {
-  classNameV := StringNameFromStr("TextureButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_stretch_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 33815122) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret TextureButtonStretchMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureButton.fnGetStretchMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

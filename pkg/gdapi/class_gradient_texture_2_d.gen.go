@@ -14,6 +14,101 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForGradientTexture2DList struct {
+  fnSetGradient gdc.MethodBindPtr
+  fnGetGradient gdc.MethodBindPtr
+  fnSetWidth gdc.MethodBindPtr
+  fnSetHeight gdc.MethodBindPtr
+  fnSetUseHdr gdc.MethodBindPtr
+  fnIsUsingHdr gdc.MethodBindPtr
+  fnSetFill gdc.MethodBindPtr
+  fnGetFill gdc.MethodBindPtr
+  fnSetFillFrom gdc.MethodBindPtr
+  fnGetFillFrom gdc.MethodBindPtr
+  fnSetFillTo gdc.MethodBindPtr
+  fnGetFillTo gdc.MethodBindPtr
+  fnSetRepeat gdc.MethodBindPtr
+  fnGetRepeat gdc.MethodBindPtr
+}
+
+var ptrsForGradientTexture2D ptrsForGradientTexture2DList
+
+func initGradientTexture2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("GradientTexture2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_gradient")
+    defer methodName.Destroy()
+    ptrsForGradientTexture2D.fnSetGradient = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2756054477))
+  }
+  {
+    methodName := StringNameFromStr("get_gradient")
+    defer methodName.Destroy()
+    ptrsForGradientTexture2D.fnGetGradient = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 132272999))
+  }
+  {
+    methodName := StringNameFromStr("set_width")
+    defer methodName.Destroy()
+    ptrsForGradientTexture2D.fnSetWidth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("set_height")
+    defer methodName.Destroy()
+    ptrsForGradientTexture2D.fnSetHeight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("set_use_hdr")
+    defer methodName.Destroy()
+    ptrsForGradientTexture2D.fnSetUseHdr = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_using_hdr")
+    defer methodName.Destroy()
+    ptrsForGradientTexture2D.fnIsUsingHdr = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_fill")
+    defer methodName.Destroy()
+    ptrsForGradientTexture2D.fnSetFill = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3623927636))
+  }
+  {
+    methodName := StringNameFromStr("get_fill")
+    defer methodName.Destroy()
+    ptrsForGradientTexture2D.fnGetFill = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1876227217))
+  }
+  {
+    methodName := StringNameFromStr("set_fill_from")
+    defer methodName.Destroy()
+    ptrsForGradientTexture2D.fnSetFillFrom = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_fill_from")
+    defer methodName.Destroy()
+    ptrsForGradientTexture2D.fnGetFillFrom = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+  {
+    methodName := StringNameFromStr("set_fill_to")
+    defer methodName.Destroy()
+    ptrsForGradientTexture2D.fnSetFillTo = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_fill_to")
+    defer methodName.Destroy()
+    ptrsForGradientTexture2D.fnGetFillTo = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+  {
+    methodName := StringNameFromStr("set_repeat")
+    defer methodName.Destroy()
+    ptrsForGradientTexture2D.fnSetRepeat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1357597002))
+  }
+  {
+    methodName := StringNameFromStr("get_repeat")
+    defer methodName.Destroy()
+    ptrsForGradientTexture2D.fnGetRepeat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3351758665))
+  }
+}
+
 type GradientTexture2D struct {
   Texture2D
 }
@@ -65,204 +160,134 @@ func (me *GradientTexture2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *GradientTexture2D) SetGradient(gradient Gradient, )  {
-  classNameV := StringNameFromStr("GradientTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_gradient")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2756054477) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gradient.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGradientTexture2D.fnSetGradient), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GradientTexture2D) GetGradient() Gradient {
-  classNameV := StringNameFromStr("GradientTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_gradient")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 132272999) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewGradient()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGradientTexture2D.fnGetGradient), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *GradientTexture2D) SetWidth(width int64, )  {
-  classNameV := StringNameFromStr("GradientTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_width")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGradientTexture2D.fnSetWidth), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GradientTexture2D) SetHeight(height int64, )  {
-  classNameV := StringNameFromStr("GradientTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_height")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&height) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGradientTexture2D.fnSetHeight), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GradientTexture2D) SetUseHdr(enabled bool, )  {
-  classNameV := StringNameFromStr("GradientTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_use_hdr")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGradientTexture2D.fnSetUseHdr), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GradientTexture2D) IsUsingHdr() bool {
-  classNameV := StringNameFromStr("GradientTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_using_hdr")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGradientTexture2D.fnIsUsingHdr), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *GradientTexture2D) SetFill(fill GradientTexture2DFill, )  {
-  classNameV := StringNameFromStr("GradientTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_fill")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3623927636) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&fill) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGradientTexture2D.fnSetFill), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GradientTexture2D) GetFill() GradientTexture2DFill {
-  classNameV := StringNameFromStr("GradientTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_fill")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1876227217) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret GradientTexture2DFill
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGradientTexture2D.fnGetFill), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *GradientTexture2D) SetFillFrom(fill_from Vector2, )  {
-  classNameV := StringNameFromStr("GradientTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_fill_from")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{fill_from.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGradientTexture2D.fnSetFillFrom), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GradientTexture2D) GetFillFrom() Vector2 {
-  classNameV := StringNameFromStr("GradientTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_fill_from")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGradientTexture2D.fnGetFillFrom), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *GradientTexture2D) SetFillTo(fill_to Vector2, )  {
-  classNameV := StringNameFromStr("GradientTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_fill_to")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{fill_to.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGradientTexture2D.fnSetFillTo), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GradientTexture2D) GetFillTo() Vector2 {
-  classNameV := StringNameFromStr("GradientTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_fill_to")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGradientTexture2D.fnGetFillTo), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *GradientTexture2D) SetRepeat(repeat GradientTexture2DRepeat, )  {
-  classNameV := StringNameFromStr("GradientTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_repeat")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1357597002) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&repeat) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGradientTexture2D.fnSetRepeat), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GradientTexture2D) GetRepeat() GradientTexture2DRepeat {
-  classNameV := StringNameFromStr("GradientTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_repeat")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3351758665) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret GradientTexture2DRepeat
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGradientTexture2D.fnGetRepeat), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

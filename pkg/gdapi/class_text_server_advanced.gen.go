@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForTextServerAdvancedList struct {
+}
+
+var ptrsForTextServerAdvanced ptrsForTextServerAdvancedList
+
+func initTextServerAdvancedPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("TextServerAdvanced")
+  defer className.Destroy()
+}
+
 type TextServerAdvanced struct {
   TextServerExtension
 }

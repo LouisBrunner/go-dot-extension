@@ -14,13 +14,12 @@ type MyNode2D struct {
 	Speed  int
 	secret string
 
-	SecretPrinted gdapi.Signal
+	SecretPrinted gde.Signal
 	subs          gdapi.SignalSubscribers
 }
 
 func (n *MyNode2D) Move(vec gdapi.Vector2) {
 	n.Node2D.SetPosition(vec.MultiplyInt(int64(n.Speed)))
-	n.printSecret()
 }
 
 func (n *MyNode2D) X_Ready() {
@@ -35,6 +34,7 @@ func (n *MyNode2D) Monitor(other gdapi.CanvasItem) {
 	sub = func() {
 		fmt.Println("Other has been drawn")
 		other.DisconnectDraw(n.subs, sub)
+		n.printSecret()
 	}
 	other.ConnectDraw(n.subs, sub)
 }
@@ -49,8 +49,6 @@ type receivedData struct {
 }
 
 func (n *MyNode2D) Report(data gdapi.Dictionary) {
-	fmt.Printf("Received data: %v\n", data)
-
 	var receivedMap map[string]interface{}
 	err := gde.UnmarshalDict(data, &receivedMap)
 	if err != nil {
@@ -66,6 +64,8 @@ func (n *MyNode2D) Report(data gdapi.Dictionary) {
 		return
 	}
 	fmt.Printf("Received data (struct): %v\n", received)
+
+	n.printSecret()
 }
 
 type secretData struct {

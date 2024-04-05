@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPopupList struct {
+}
+
+var ptrsForPopup ptrsForPopupList
+
+func initPopupPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Popup")
+  defer className.Destroy()
+}
+
 type Popup struct {
   Window
 }

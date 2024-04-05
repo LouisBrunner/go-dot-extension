@@ -14,6 +14,65 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForJSONList struct {
+  fnStringify gdc.MethodBindPtr
+  fnParseString gdc.MethodBindPtr
+  fnParse gdc.MethodBindPtr
+  fnGetData gdc.MethodBindPtr
+  fnSetData gdc.MethodBindPtr
+  fnGetParsedText gdc.MethodBindPtr
+  fnGetErrorLine gdc.MethodBindPtr
+  fnGetErrorMessage gdc.MethodBindPtr
+}
+
+var ptrsForJSON ptrsForJSONList
+
+func initJSONPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("JSON")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("stringify")
+    defer methodName.Destroy()
+    ptrsForJSON.fnStringify = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 462733549))
+  }
+  {
+    methodName := StringNameFromStr("parse_string")
+    defer methodName.Destroy()
+    ptrsForJSON.fnParseString = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 309047738))
+  }
+  {
+    methodName := StringNameFromStr("parse")
+    defer methodName.Destroy()
+    ptrsForJSON.fnParse = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 885841341))
+  }
+  {
+    methodName := StringNameFromStr("get_data")
+    defer methodName.Destroy()
+    ptrsForJSON.fnGetData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1214101251))
+  }
+  {
+    methodName := StringNameFromStr("set_data")
+    defer methodName.Destroy()
+    ptrsForJSON.fnSetData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1114965689))
+  }
+  {
+    methodName := StringNameFromStr("get_parsed_text")
+    defer methodName.Destroy()
+    ptrsForJSON.fnGetParsedText = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("get_error_line")
+    defer methodName.Destroy()
+    ptrsForJSON.fnGetErrorLine = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("get_error_message")
+    defer methodName.Destroy()
+    ptrsForJSON.fnGetErrorMessage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+}
+
 type JSON struct {
   Resource
 }
@@ -51,11 +110,6 @@ func (me *JSON) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  JSONStringify(data Variant, indent String, sort_keys bool, full_precision bool, ) String {
-  classNameV := StringNameFromStr("JSON")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("stringify")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 462733549) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{data.AsCTypePtr(), indent.AsCTypePtr(), gdc.ConstTypePtr(&sort_keys) , gdc.ConstTypePtr(&full_precision) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -63,112 +117,77 @@ func  JSONStringify(data Variant, indent String, sort_keys bool, full_precision 
   pinner.Pin(&sort_keys)
   pinner.Pin(&full_precision)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJSON.fnStringify), nil, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  JSONParseString(json_string String, ) Variant {
-  classNameV := StringNameFromStr("JSON")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("parse_string")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 309047738) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{json_string.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVariant()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJSON.fnParseString), nil, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *JSON) Parse(json_text String, keep_text bool, ) Error {
-  classNameV := StringNameFromStr("JSON")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("parse")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 885841341) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{json_text.AsCTypePtr(), gdc.ConstTypePtr(&keep_text) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
   pinner.Pin(&keep_text)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJSON.fnParse), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *JSON) GetData() Variant {
-  classNameV := StringNameFromStr("JSON")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_data")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1214101251) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVariant()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJSON.fnGetData), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *JSON) SetData(data Variant, )  {
-  classNameV := StringNameFromStr("JSON")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_data")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1114965689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{data.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJSON.fnSetData), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *JSON) GetParsedText() String {
-  classNameV := StringNameFromStr("JSON")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_parsed_text")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJSON.fnGetParsedText), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *JSON) GetErrorLine() int64 {
-  classNameV := StringNameFromStr("JSON")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_error_line")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJSON.fnGetErrorLine), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *JSON) GetErrorMessage() String {
-  classNameV := StringNameFromStr("JSON")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_error_message")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForJSON.fnGetErrorMessage), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

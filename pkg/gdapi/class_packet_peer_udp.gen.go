@@ -14,6 +14,95 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPacketPeerUDPList struct {
+  fnBind gdc.MethodBindPtr
+  fnClose gdc.MethodBindPtr
+  fnWait gdc.MethodBindPtr
+  fnIsBound gdc.MethodBindPtr
+  fnConnectToHost gdc.MethodBindPtr
+  fnIsSocketConnected gdc.MethodBindPtr
+  fnGetPacketIp gdc.MethodBindPtr
+  fnGetPacketPort gdc.MethodBindPtr
+  fnGetLocalPort gdc.MethodBindPtr
+  fnSetDestAddress gdc.MethodBindPtr
+  fnSetBroadcastEnabled gdc.MethodBindPtr
+  fnJoinMulticastGroup gdc.MethodBindPtr
+  fnLeaveMulticastGroup gdc.MethodBindPtr
+}
+
+var ptrsForPacketPeerUDP ptrsForPacketPeerUDPList
+
+func initPacketPeerUDPPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PacketPeerUDP")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("bind")
+    defer methodName.Destroy()
+    ptrsForPacketPeerUDP.fnBind = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4051239242))
+  }
+  {
+    methodName := StringNameFromStr("close")
+    defer methodName.Destroy()
+    ptrsForPacketPeerUDP.fnClose = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("wait")
+    defer methodName.Destroy()
+    ptrsForPacketPeerUDP.fnWait = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 166280745))
+  }
+  {
+    methodName := StringNameFromStr("is_bound")
+    defer methodName.Destroy()
+    ptrsForPacketPeerUDP.fnIsBound = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("connect_to_host")
+    defer methodName.Destroy()
+    ptrsForPacketPeerUDP.fnConnectToHost = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 993915709))
+  }
+  {
+    methodName := StringNameFromStr("is_socket_connected")
+    defer methodName.Destroy()
+    ptrsForPacketPeerUDP.fnIsSocketConnected = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_packet_ip")
+    defer methodName.Destroy()
+    ptrsForPacketPeerUDP.fnGetPacketIp = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("get_packet_port")
+    defer methodName.Destroy()
+    ptrsForPacketPeerUDP.fnGetPacketPort = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("get_local_port")
+    defer methodName.Destroy()
+    ptrsForPacketPeerUDP.fnGetLocalPort = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_dest_address")
+    defer methodName.Destroy()
+    ptrsForPacketPeerUDP.fnSetDestAddress = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 993915709))
+  }
+  {
+    methodName := StringNameFromStr("set_broadcast_enabled")
+    defer methodName.Destroy()
+    ptrsForPacketPeerUDP.fnSetBroadcastEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("join_multicast_group")
+    defer methodName.Destroy()
+    ptrsForPacketPeerUDP.fnJoinMulticastGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 852856452))
+  }
+  {
+    methodName := StringNameFromStr("leave_multicast_group")
+    defer methodName.Destroy()
+    ptrsForPacketPeerUDP.fnLeaveMulticastGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 852856452))
+  }
+}
+
 type PacketPeerUDP struct {
   PacketPeer
 }
@@ -51,11 +140,6 @@ func (me *PacketPeerUDP) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PacketPeerUDP) Bind(port int64, bind_address String, recv_buf_size int64, ) Error {
-  classNameV := StringNameFromStr("PacketPeerUDP")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("bind")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051239242) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port) , bind_address.AsCTypePtr(), gdc.ConstTypePtr(&recv_buf_size) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -63,187 +147,127 @@ func  (me *PacketPeerUDP) Bind(port int64, bind_address String, recv_buf_size in
   pinner.Pin(&port)
   pinner.Pin(&recv_buf_size)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPacketPeerUDP.fnBind), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *PacketPeerUDP) Close()  {
-  classNameV := StringNameFromStr("PacketPeerUDP")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("close")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPacketPeerUDP.fnClose), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PacketPeerUDP) Wait() Error {
-  classNameV := StringNameFromStr("PacketPeerUDP")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("wait")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166280745) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPacketPeerUDP.fnWait), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *PacketPeerUDP) IsBound() bool {
-  classNameV := StringNameFromStr("PacketPeerUDP")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_bound")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPacketPeerUDP.fnIsBound), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *PacketPeerUDP) ConnectToHost(host String, port int64, ) Error {
-  classNameV := StringNameFromStr("PacketPeerUDP")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("connect_to_host")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 993915709) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{host.AsCTypePtr(), gdc.ConstTypePtr(&port) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
   pinner.Pin(&port)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPacketPeerUDP.fnConnectToHost), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *PacketPeerUDP) IsSocketConnected() bool {
-  classNameV := StringNameFromStr("PacketPeerUDP")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_socket_connected")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPacketPeerUDP.fnIsSocketConnected), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *PacketPeerUDP) GetPacketIp() String {
-  classNameV := StringNameFromStr("PacketPeerUDP")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_packet_ip")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPacketPeerUDP.fnGetPacketIp), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PacketPeerUDP) GetPacketPort() int64 {
-  classNameV := StringNameFromStr("PacketPeerUDP")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_packet_port")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPacketPeerUDP.fnGetPacketPort), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *PacketPeerUDP) GetLocalPort() int64 {
-  classNameV := StringNameFromStr("PacketPeerUDP")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_local_port")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPacketPeerUDP.fnGetLocalPort), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *PacketPeerUDP) SetDestAddress(host String, port int64, ) Error {
-  classNameV := StringNameFromStr("PacketPeerUDP")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_dest_address")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 993915709) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{host.AsCTypePtr(), gdc.ConstTypePtr(&port) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
   pinner.Pin(&port)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPacketPeerUDP.fnSetDestAddress), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *PacketPeerUDP) SetBroadcastEnabled(enabled bool, )  {
-  classNameV := StringNameFromStr("PacketPeerUDP")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_broadcast_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPacketPeerUDP.fnSetBroadcastEnabled), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PacketPeerUDP) JoinMulticastGroup(multicast_address String, interface_name String, ) Error {
-  classNameV := StringNameFromStr("PacketPeerUDP")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("join_multicast_group")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 852856452) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{multicast_address.AsCTypePtr(), interface_name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPacketPeerUDP.fnJoinMulticastGroup), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *PacketPeerUDP) LeaveMulticastGroup(multicast_address String, interface_name String, ) Error {
-  classNameV := StringNameFromStr("PacketPeerUDP")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("leave_multicast_group")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 852856452) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{multicast_address.AsCTypePtr(), interface_name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPacketPeerUDP.fnLeaveMulticastGroup), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 

@@ -14,6 +14,23 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorExportPlatformList struct {
+  fnGetOsName gdc.MethodBindPtr
+}
+
+var ptrsForEditorExportPlatform ptrsForEditorExportPlatformList
+
+func initEditorExportPlatformPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorExportPlatform")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_os_name")
+    defer methodName.Destroy()
+    ptrsForEditorExportPlatform.fnGetOsName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+}
+
 type EditorExportPlatform struct {
   RefCounted
 }
@@ -51,17 +68,12 @@ func (me *EditorExportPlatform) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *EditorExportPlatform) GetOsName() String {
-  classNameV := StringNameFromStr("EditorExportPlatform")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_os_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorExportPlatform.fnGetOsName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

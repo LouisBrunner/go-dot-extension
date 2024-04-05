@@ -14,6 +14,71 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeList struct {
+  fnGetDefaultInputPort gdc.MethodBindPtr
+  fnSetOutputPortForPreview gdc.MethodBindPtr
+  fnGetOutputPortForPreview gdc.MethodBindPtr
+  fnSetInputPortDefaultValue gdc.MethodBindPtr
+  fnGetInputPortDefaultValue gdc.MethodBindPtr
+  fnRemoveInputPortDefaultValue gdc.MethodBindPtr
+  fnClearDefaultInputValues gdc.MethodBindPtr
+  fnSetDefaultInputValues gdc.MethodBindPtr
+  fnGetDefaultInputValues gdc.MethodBindPtr
+}
+
+var ptrsForVisualShaderNode ptrsForVisualShaderNodeList
+
+func initVisualShaderNodePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNode")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_default_input_port")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNode.fnGetDefaultInputPort = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1894493699))
+  }
+  {
+    methodName := StringNameFromStr("set_output_port_for_preview")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNode.fnSetOutputPortForPreview = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_output_port_for_preview")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNode.fnGetOutputPortForPreview = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_input_port_default_value")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNode.fnSetInputPortDefaultValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 150923387))
+  }
+  {
+    methodName := StringNameFromStr("get_input_port_default_value")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNode.fnGetInputPortDefaultValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4227898402))
+  }
+  {
+    methodName := StringNameFromStr("remove_input_port_default_value")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNode.fnRemoveInputPortDefaultValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("clear_default_input_values")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNode.fnClearDefaultInputValues = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("set_default_input_values")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNode.fnSetDefaultInputValues = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 381264803))
+  }
+  {
+    methodName := StringNameFromStr("get_default_input_values")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNode.fnGetDefaultInputValues = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+  }
+}
+
 type VisualShaderNode struct {
   Resource
 }
@@ -65,134 +130,89 @@ func (me *VisualShaderNode) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisualShaderNode) GetDefaultInputPort(type_ VisualShaderNodePortType, ) int64 {
-  classNameV := StringNameFromStr("VisualShaderNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_default_input_port")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1894493699) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
   pinner.Pin(&type_)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNode.fnGetDefaultInputPort), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *VisualShaderNode) SetOutputPortForPreview(port int64, )  {
-  classNameV := StringNameFromStr("VisualShaderNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_output_port_for_preview")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNode.fnSetOutputPortForPreview), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNode) GetOutputPortForPreview() int64 {
-  classNameV := StringNameFromStr("VisualShaderNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_output_port_for_preview")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNode.fnGetOutputPortForPreview), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *VisualShaderNode) SetInputPortDefaultValue(port int64, value Variant, prev_value Variant, )  {
-  classNameV := StringNameFromStr("VisualShaderNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_input_port_default_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 150923387) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port) , value.AsCTypePtr(), prev_value.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNode.fnSetInputPortDefaultValue), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNode) GetInputPortDefaultValue(port int64, ) Variant {
-  classNameV := StringNameFromStr("VisualShaderNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_input_port_default_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4227898402) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVariant()
   pinner.Pin(&port)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNode.fnGetInputPortDefaultValue), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *VisualShaderNode) RemoveInputPortDefaultValue(port int64, )  {
-  classNameV := StringNameFromStr("VisualShaderNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_input_port_default_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&port) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNode.fnRemoveInputPortDefaultValue), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNode) ClearDefaultInputValues()  {
-  classNameV := StringNameFromStr("VisualShaderNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("clear_default_input_values")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNode.fnClearDefaultInputValues), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNode) SetDefaultInputValues(values Array, )  {
-  classNameV := StringNameFromStr("VisualShaderNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_default_input_values")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{values.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNode.fnSetDefaultInputValues), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNode) GetDefaultInputValues() Array {
-  classNameV := StringNameFromStr("VisualShaderNode")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_default_input_values")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNode.fnGetDefaultInputValues), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

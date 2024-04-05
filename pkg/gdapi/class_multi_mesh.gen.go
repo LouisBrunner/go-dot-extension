@@ -14,6 +14,155 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForMultiMeshList struct {
+  fnSetMesh gdc.MethodBindPtr
+  fnGetMesh gdc.MethodBindPtr
+  fnSetUseColors gdc.MethodBindPtr
+  fnIsUsingColors gdc.MethodBindPtr
+  fnSetUseCustomData gdc.MethodBindPtr
+  fnIsUsingCustomData gdc.MethodBindPtr
+  fnSetTransformFormat gdc.MethodBindPtr
+  fnGetTransformFormat gdc.MethodBindPtr
+  fnSetInstanceCount gdc.MethodBindPtr
+  fnGetInstanceCount gdc.MethodBindPtr
+  fnSetVisibleInstanceCount gdc.MethodBindPtr
+  fnGetVisibleInstanceCount gdc.MethodBindPtr
+  fnSetInstanceTransform gdc.MethodBindPtr
+  fnSetInstanceTransform2D gdc.MethodBindPtr
+  fnGetInstanceTransform gdc.MethodBindPtr
+  fnGetInstanceTransform2D gdc.MethodBindPtr
+  fnSetInstanceColor gdc.MethodBindPtr
+  fnGetInstanceColor gdc.MethodBindPtr
+  fnSetInstanceCustomData gdc.MethodBindPtr
+  fnGetInstanceCustomData gdc.MethodBindPtr
+  fnGetAabb gdc.MethodBindPtr
+  fnGetBuffer gdc.MethodBindPtr
+  fnSetBuffer gdc.MethodBindPtr
+}
+
+var ptrsForMultiMesh ptrsForMultiMeshList
+
+func initMultiMeshPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("MultiMesh")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_mesh")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnSetMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 194775623))
+  }
+  {
+    methodName := StringNameFromStr("get_mesh")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnGetMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1808005922))
+  }
+  {
+    methodName := StringNameFromStr("set_use_colors")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnSetUseColors = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_using_colors")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnIsUsingColors = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_use_custom_data")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnSetUseCustomData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_using_custom_data")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnIsUsingCustomData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_transform_format")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnSetTransformFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2404750322))
+  }
+  {
+    methodName := StringNameFromStr("get_transform_format")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnGetTransformFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2444156481))
+  }
+  {
+    methodName := StringNameFromStr("set_instance_count")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnSetInstanceCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_instance_count")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnGetInstanceCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_visible_instance_count")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnSetVisibleInstanceCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_visible_instance_count")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnGetVisibleInstanceCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_instance_transform")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnSetInstanceTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3616898986))
+  }
+  {
+    methodName := StringNameFromStr("set_instance_transform_2d")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnSetInstanceTransform2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 30160968))
+  }
+  {
+    methodName := StringNameFromStr("get_instance_transform")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnGetInstanceTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1965739696))
+  }
+  {
+    methodName := StringNameFromStr("get_instance_transform_2d")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnGetInstanceTransform2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3836996910))
+  }
+  {
+    methodName := StringNameFromStr("set_instance_color")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnSetInstanceColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2878471219))
+  }
+  {
+    methodName := StringNameFromStr("get_instance_color")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnGetInstanceColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3457211756))
+  }
+  {
+    methodName := StringNameFromStr("set_instance_custom_data")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnSetInstanceCustomData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2878471219))
+  }
+  {
+    methodName := StringNameFromStr("get_instance_custom_data")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnGetInstanceCustomData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3457211756))
+  }
+  {
+    methodName := StringNameFromStr("get_aabb")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnGetAabb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1068685055))
+  }
+  {
+    methodName := StringNameFromStr("get_buffer")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnGetBuffer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 675695659))
+  }
+  {
+    methodName := StringNameFromStr("set_buffer")
+    defer methodName.Destroy()
+    ptrsForMultiMesh.fnSetBuffer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2899603908))
+  }
+}
+
 type MultiMesh struct {
   Resource
 }
@@ -57,340 +206,225 @@ func (me *MultiMesh) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *MultiMesh) SetMesh(mesh Mesh, )  {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_mesh")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 194775623) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{mesh.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnSetMesh), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiMesh) GetMesh() Mesh {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_mesh")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1808005922) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewMesh()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnGetMesh), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *MultiMesh) SetUseColors(enable bool, )  {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_use_colors")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnSetUseColors), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiMesh) IsUsingColors() bool {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_using_colors")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnIsUsingColors), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *MultiMesh) SetUseCustomData(enable bool, )  {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_use_custom_data")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnSetUseCustomData), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiMesh) IsUsingCustomData() bool {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_using_custom_data")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnIsUsingCustomData), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *MultiMesh) SetTransformFormat(format MultiMeshTransformFormat, )  {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_transform_format")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2404750322) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&format) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnSetTransformFormat), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiMesh) GetTransformFormat() MultiMeshTransformFormat {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_transform_format")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2444156481) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret MultiMeshTransformFormat
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnGetTransformFormat), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *MultiMesh) SetInstanceCount(count int64, )  {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_instance_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&count) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnSetInstanceCount), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiMesh) GetInstanceCount() int64 {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_instance_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnGetInstanceCount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *MultiMesh) SetVisibleInstanceCount(count int64, )  {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_visible_instance_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&count) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnSetVisibleInstanceCount), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiMesh) GetVisibleInstanceCount() int64 {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_visible_instance_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnGetVisibleInstanceCount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *MultiMesh) SetInstanceTransform(instance int64, transform Transform3D, )  {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_instance_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3616898986) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&instance) , transform.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnSetInstanceTransform), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiMesh) SetInstanceTransform2D(instance int64, transform Transform2D, )  {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_instance_transform_2d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 30160968) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&instance) , transform.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnSetInstanceTransform2D), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiMesh) GetInstanceTransform(instance int64, ) Transform3D {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_instance_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1965739696) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&instance) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTransform3D()
   pinner.Pin(&instance)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnGetInstanceTransform), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *MultiMesh) GetInstanceTransform2D(instance int64, ) Transform2D {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_instance_transform_2d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3836996910) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&instance) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTransform2D()
   pinner.Pin(&instance)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnGetInstanceTransform2D), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *MultiMesh) SetInstanceColor(instance int64, color Color, )  {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_instance_color")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2878471219) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&instance) , color.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnSetInstanceColor), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiMesh) GetInstanceColor(instance int64, ) Color {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_instance_color")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3457211756) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&instance) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewColor()
   pinner.Pin(&instance)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnGetInstanceColor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *MultiMesh) SetInstanceCustomData(instance int64, custom_data Color, )  {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_instance_custom_data")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2878471219) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&instance) , custom_data.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnSetInstanceCustomData), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiMesh) GetInstanceCustomData(instance int64, ) Color {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_instance_custom_data")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3457211756) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&instance) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewColor()
   pinner.Pin(&instance)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnGetInstanceCustomData), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *MultiMesh) GetAabb() AABB {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_aabb")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1068685055) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewAABB()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnGetAabb), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *MultiMesh) GetBuffer() PackedFloat32Array {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_buffer")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 675695659) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedFloat32Array()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnGetBuffer), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *MultiMesh) SetBuffer(buffer PackedFloat32Array, )  {
-  classNameV := StringNameFromStr("MultiMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_buffer")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2899603908) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{buffer.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnSetBuffer), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

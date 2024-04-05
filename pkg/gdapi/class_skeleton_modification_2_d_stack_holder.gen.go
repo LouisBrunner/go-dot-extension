@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSkeletonModification2DStackHolderList struct {
+  fnSetHeldModificationStack gdc.MethodBindPtr
+  fnGetHeldModificationStack gdc.MethodBindPtr
+}
+
+var ptrsForSkeletonModification2DStackHolder ptrsForSkeletonModification2DStackHolderList
+
+func initSkeletonModification2DStackHolderPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("SkeletonModification2DStackHolder")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_held_modification_stack")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2DStackHolder.fnSetHeldModificationStack = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3907307132))
+  }
+  {
+    methodName := StringNameFromStr("get_held_modification_stack")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2DStackHolder.fnGetHeldModificationStack = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2107508396))
+  }
+}
+
 type SkeletonModification2DStackHolder struct {
   SkeletonModification2D
 }
@@ -51,31 +74,21 @@ func (me *SkeletonModification2DStackHolder) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *SkeletonModification2DStackHolder) SetHeldModificationStack(held_modification_stack SkeletonModificationStack2D, )  {
-  classNameV := StringNameFromStr("SkeletonModification2DStackHolder")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_held_modification_stack")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3907307132) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{held_modification_stack.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2DStackHolder.fnSetHeldModificationStack), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SkeletonModification2DStackHolder) GetHeldModificationStack() SkeletonModificationStack2D {
-  classNameV := StringNameFromStr("SkeletonModification2DStackHolder")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_held_modification_stack")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2107508396) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewSkeletonModificationStack2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2DStackHolder.fnGetHeldModificationStack), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

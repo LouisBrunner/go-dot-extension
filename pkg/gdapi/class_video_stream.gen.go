@@ -14,6 +14,30 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVideoStreamList struct {
+  fnXInstantiatePlayback gdc.MethodBindPtr
+  fnSetFile gdc.MethodBindPtr
+  fnGetFile gdc.MethodBindPtr
+}
+
+var ptrsForVideoStream ptrsForVideoStreamList
+
+func initVideoStreamPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VideoStream")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_file")
+    defer methodName.Destroy()
+    ptrsForVideoStream.fnSetFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_file")
+    defer methodName.Destroy()
+    ptrsForVideoStream.fnGetFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2841200299))
+  }
+}
+
 type VideoStream struct {
   Resource
 }
@@ -51,31 +75,21 @@ func (me *VideoStream) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VideoStream) SetFile(file String, )  {
-  classNameV := StringNameFromStr("VideoStream")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_file")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{file.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStream.fnSetFile), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VideoStream) GetFile() String {
-  classNameV := StringNameFromStr("VideoStream")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_file")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2841200299) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStream.fnGetFile), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

@@ -9,6 +9,213 @@ import (
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
+// FIXME: avoid unused imports
+var _ = fmt.Sprintf("")
+
+type ptrsForAABBList struct {
+  ctrFn gdc.PtrConstructor
+  ctrFromAABBFn gdc.PtrConstructor
+  ctrFromVector3Vector3Fn gdc.PtrConstructor
+  methodAbsFn gdc.PtrBuiltInMethod
+  methodGetCenterFn gdc.PtrBuiltInMethod
+  methodGetVolumeFn gdc.PtrBuiltInMethod
+  methodHasVolumeFn gdc.PtrBuiltInMethod
+  methodHasSurfaceFn gdc.PtrBuiltInMethod
+  methodHasPointFn gdc.PtrBuiltInMethod
+  methodIsEqualApproxFn gdc.PtrBuiltInMethod
+  methodIsFiniteFn gdc.PtrBuiltInMethod
+  methodIntersectsFn gdc.PtrBuiltInMethod
+  methodEnclosesFn gdc.PtrBuiltInMethod
+  methodIntersectsPlaneFn gdc.PtrBuiltInMethod
+  methodIntersectionFn gdc.PtrBuiltInMethod
+  methodMergeFn gdc.PtrBuiltInMethod
+  methodExpandFn gdc.PtrBuiltInMethod
+  methodGrowFn gdc.PtrBuiltInMethod
+  methodGetSupportFn gdc.PtrBuiltInMethod
+  methodGetLongestAxisFn gdc.PtrBuiltInMethod
+  methodGetLongestAxisIndexFn gdc.PtrBuiltInMethod
+  methodGetLongestAxisSizeFn gdc.PtrBuiltInMethod
+  methodGetShortestAxisFn gdc.PtrBuiltInMethod
+  methodGetShortestAxisIndexFn gdc.PtrBuiltInMethod
+  methodGetShortestAxisSizeFn gdc.PtrBuiltInMethod
+  methodGetEndpointFn gdc.PtrBuiltInMethod
+  methodIntersectsSegmentFn gdc.PtrBuiltInMethod
+  methodIntersectsRayFn gdc.PtrBuiltInMethod
+  operatorNotFn gdc.PtrOperatorEvaluator
+  operatorEqualAABBFn gdc.PtrOperatorEvaluator
+  operatorNotEqualAABBFn gdc.PtrOperatorEvaluator
+  operatorMultiplyTransform3DFn gdc.PtrOperatorEvaluator
+  operatorInDictionaryFn gdc.PtrOperatorEvaluator
+  operatorInArrayFn gdc.PtrOperatorEvaluator
+  memberpositionGetterFn gdc.PtrGetter
+  memberpositionSetterFn gdc.PtrSetter
+  membersizeGetterFn gdc.PtrGetter
+  membersizeSetterFn gdc.PtrSetter
+  memberendGetterFn gdc.PtrGetter
+  memberendSetterFn gdc.PtrSetter
+  toVariantFn gdc.TypeFromVariantConstructorFunc
+  fromVariantFn gdc.VariantFromTypeConstructorFunc
+}
+
+var ptrsForAABB ptrsForAABBList
+
+func initAABBPtrs(iface gdc.Interface) {
+  ptrsForAABB.ctrFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeAABB, 0))
+  ptrsForAABB.ctrFromAABBFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeAABB, 1))
+  ptrsForAABB.ctrFromVector3Vector3Fn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeAABB, 2))
+  {
+    methodName := StringNameFromStr("abs")
+    defer methodName.Destroy()
+    ptrsForAABB.methodAbsFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 1576868580))
+  }
+  {
+    methodName := StringNameFromStr("get_center")
+    defer methodName.Destroy()
+    ptrsForAABB.methodGetCenterFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 1776574132))
+  }
+  {
+    methodName := StringNameFromStr("get_volume")
+    defer methodName.Destroy()
+    ptrsForAABB.methodGetVolumeFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 466405837))
+  }
+  {
+    methodName := StringNameFromStr("has_volume")
+    defer methodName.Destroy()
+    ptrsForAABB.methodHasVolumeFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 3918633141))
+  }
+  {
+    methodName := StringNameFromStr("has_surface")
+    defer methodName.Destroy()
+    ptrsForAABB.methodHasSurfaceFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 3918633141))
+  }
+  {
+    methodName := StringNameFromStr("has_point")
+    defer methodName.Destroy()
+    ptrsForAABB.methodHasPointFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 1749054343))
+  }
+  {
+    methodName := StringNameFromStr("is_equal_approx")
+    defer methodName.Destroy()
+    ptrsForAABB.methodIsEqualApproxFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 299946684))
+  }
+  {
+    methodName := StringNameFromStr("is_finite")
+    defer methodName.Destroy()
+    ptrsForAABB.methodIsFiniteFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 3918633141))
+  }
+  {
+    methodName := StringNameFromStr("intersects")
+    defer methodName.Destroy()
+    ptrsForAABB.methodIntersectsFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 299946684))
+  }
+  {
+    methodName := StringNameFromStr("encloses")
+    defer methodName.Destroy()
+    ptrsForAABB.methodEnclosesFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 299946684))
+  }
+  {
+    methodName := StringNameFromStr("intersects_plane")
+    defer methodName.Destroy()
+    ptrsForAABB.methodIntersectsPlaneFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 1150170233))
+  }
+  {
+    methodName := StringNameFromStr("intersection")
+    defer methodName.Destroy()
+    ptrsForAABB.methodIntersectionFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 1271470306))
+  }
+  {
+    methodName := StringNameFromStr("merge")
+    defer methodName.Destroy()
+    ptrsForAABB.methodMergeFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 1271470306))
+  }
+  {
+    methodName := StringNameFromStr("expand")
+    defer methodName.Destroy()
+    ptrsForAABB.methodExpandFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 2851643018))
+  }
+  {
+    methodName := StringNameFromStr("grow")
+    defer methodName.Destroy()
+    ptrsForAABB.methodGrowFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 239217291))
+  }
+  {
+    methodName := StringNameFromStr("get_support")
+    defer methodName.Destroy()
+    ptrsForAABB.methodGetSupportFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 2923479887))
+  }
+  {
+    methodName := StringNameFromStr("get_longest_axis")
+    defer methodName.Destroy()
+    ptrsForAABB.methodGetLongestAxisFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 1776574132))
+  }
+  {
+    methodName := StringNameFromStr("get_longest_axis_index")
+    defer methodName.Destroy()
+    ptrsForAABB.methodGetLongestAxisIndexFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 3173160232))
+  }
+  {
+    methodName := StringNameFromStr("get_longest_axis_size")
+    defer methodName.Destroy()
+    ptrsForAABB.methodGetLongestAxisSizeFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 466405837))
+  }
+  {
+    methodName := StringNameFromStr("get_shortest_axis")
+    defer methodName.Destroy()
+    ptrsForAABB.methodGetShortestAxisFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 1776574132))
+  }
+  {
+    methodName := StringNameFromStr("get_shortest_axis_index")
+    defer methodName.Destroy()
+    ptrsForAABB.methodGetShortestAxisIndexFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 3173160232))
+  }
+  {
+    methodName := StringNameFromStr("get_shortest_axis_size")
+    defer methodName.Destroy()
+    ptrsForAABB.methodGetShortestAxisSizeFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 466405837))
+  }
+  {
+    methodName := StringNameFromStr("get_endpoint")
+    defer methodName.Destroy()
+    ptrsForAABB.methodGetEndpointFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 1394941017))
+  }
+  {
+    methodName := StringNameFromStr("intersects_segment")
+    defer methodName.Destroy()
+    ptrsForAABB.methodIntersectsSegmentFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 2048133369))
+  }
+  {
+    methodName := StringNameFromStr("intersects_ray")
+    defer methodName.Destroy()
+    ptrsForAABB.methodIntersectsRayFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, methodName.AsCPtr(), 2048133369))
+  }
+  ptrsForAABB.operatorNotFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, gdc.VariantTypeAABB, gdc.VariantTypeNil))
+  ptrsForAABB.operatorEqualAABBFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, gdc.VariantTypeAABB, gdc.VariantTypeAABB))
+  ptrsForAABB.operatorNotEqualAABBFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, gdc.VariantTypeAABB, gdc.VariantTypeAABB))
+  ptrsForAABB.operatorMultiplyTransform3DFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeAABB, gdc.VariantTypeTransform3D))
+  ptrsForAABB.operatorInDictionaryFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, gdc.VariantTypeAABB, gdc.VariantTypeDictionary))
+  ptrsForAABB.operatorInArrayFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, gdc.VariantTypeAABB, gdc.VariantTypeArray))
+  {
+    memberName := StringNameFromStr("position")
+    defer memberName.Destroy()
+    ptrsForAABB.memberpositionGetterFn = ensurePtr(iface.VariantGetPtrGetter(gdc.VariantTypeAABB, memberName.AsCPtr()))
+    ptrsForAABB.memberpositionSetterFn = ensurePtr(iface.VariantGetPtrSetter(gdc.VariantTypeAABB, memberName.AsCPtr()))
+  }
+  {
+    memberName := StringNameFromStr("size")
+    defer memberName.Destroy()
+    ptrsForAABB.membersizeGetterFn = ensurePtr(iface.VariantGetPtrGetter(gdc.VariantTypeAABB, memberName.AsCPtr()))
+    ptrsForAABB.membersizeSetterFn = ensurePtr(iface.VariantGetPtrSetter(gdc.VariantTypeAABB, memberName.AsCPtr()))
+  }
+  {
+    memberName := StringNameFromStr("end")
+    defer memberName.Destroy()
+    ptrsForAABB.memberendGetterFn = ensurePtr(iface.VariantGetPtrGetter(gdc.VariantTypeAABB, memberName.AsCPtr()))
+    ptrsForAABB.memberendSetterFn = ensurePtr(iface.VariantGetPtrSetter(gdc.VariantTypeAABB, memberName.AsCPtr()))
+  }
+  ptrsForAABB.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypeAABB))
+  ptrsForAABB.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypeAABB))
+}
+
 type AABB struct {
   data   *[classSizeAABB]byte
   iface  gdc.Interface
@@ -32,8 +239,7 @@ func NewAABB() *AABB {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newAABB()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeAABB, 0) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForAABB.ctrFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
   return me
 }
 
@@ -41,8 +247,7 @@ func NewAABBFromAABB(from AABB, ) *AABB {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newAABB()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeAABB, 1) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForAABB.ctrFromAABBFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
   return me
 }
 
@@ -50,8 +255,7 @@ func NewAABBFromVector3Vector3(position Vector3, size Vector3, ) *AABB {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newAABB()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeAABB, 2) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{position.AsCTypePtr(), size.AsCTypePtr(), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForAABB.ctrFromVector3Vector3Fn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{position.AsCTypePtr(), size.AsCTypePtr(), }))
   return me
 }
 
@@ -66,16 +270,14 @@ func (me *Variant) AsAABB() (*AABB, error) {
 		return nil, fmt.Errorf("variant is not a AABB")
 	}
   bclass := newAABB()
-	fn := me.iface.GetVariantToTypeConstructor(me.Type())
-	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	me.iface.CallTypeFromVariantConstructorFunc(ensurePtr(ptrsForAABB.toVariantFn), bclass.asUninitialized(), me.AsPtr())
 	return bclass, nil
 }
 
 func (me *AABB) AsVariant() *Variant {
   va := newVariant()
   va.inner = me
-  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
-  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  me.iface.CallVariantFromTypeConstructorFunc(ensurePtr(ptrsForAABB.fromVariantFn), va.asUninitialized(), me.AsTypePtr())
   return va
 }
 
@@ -105,214 +307,154 @@ func (me *AABB) asUninitialized() gdc.UninitializedTypePtr {
 // Methods
 
 func (me *AABB) Abs() AABB {
-  name := StringNameFromStr("abs")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1576868580) // FIXME: should cache?
-
   ret := NewAABB()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodAbsFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *AABB) GetCenter() Vector3 {
-  name := StringNameFromStr("get_center")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1776574132) // FIXME: should cache?
-
   ret := NewVector3()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodGetCenterFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *AABB) GetVolume() float64 {
-  name := StringNameFromStr("get_volume")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 466405837) // FIXME: should cache?
-
   ret := NewFloat()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodGetVolumeFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *AABB) HasVolume() bool {
-  name := StringNameFromStr("has_volume")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 3918633141) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodHasVolumeFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *AABB) HasSurface() bool {
-  name := StringNameFromStr("has_surface")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 3918633141) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodHasSurfaceFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *AABB) HasPoint(point Vector3, ) bool {
-  name := StringNameFromStr("has_point")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1749054343) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
 
   args := []gdc.ConstTypePtr{point.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodHasPointFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *AABB) IsEqualApprox(aabb AABB, ) bool {
-  name := StringNameFromStr("is_equal_approx")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 299946684) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
 
   args := []gdc.ConstTypePtr{aabb.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodIsEqualApproxFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *AABB) IsFinite() bool {
-  name := StringNameFromStr("is_finite")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 3918633141) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodIsFiniteFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *AABB) Intersects(with AABB, ) bool {
-  name := StringNameFromStr("intersects")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 299946684) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
 
   args := []gdc.ConstTypePtr{with.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodIntersectsFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *AABB) Encloses(with AABB, ) bool {
-  name := StringNameFromStr("encloses")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 299946684) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
 
   args := []gdc.ConstTypePtr{with.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodEnclosesFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *AABB) IntersectsPlane(plane Plane, ) bool {
-  name := StringNameFromStr("intersects_plane")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1150170233) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
 
   args := []gdc.ConstTypePtr{plane.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodIntersectsPlaneFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *AABB) Intersection(with AABB, ) AABB {
-  name := StringNameFromStr("intersection")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1271470306) // FIXME: should cache?
-
   ret := NewAABB()
 
 
   args := []gdc.ConstTypePtr{with.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodIntersectionFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *AABB) Merge(with AABB, ) AABB {
-  name := StringNameFromStr("merge")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1271470306) // FIXME: should cache?
-
   ret := NewAABB()
 
 
   args := []gdc.ConstTypePtr{with.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodMergeFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *AABB) Expand(to_point Vector3, ) AABB {
-  name := StringNameFromStr("expand")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 2851643018) // FIXME: should cache?
-
   ret := NewAABB()
 
 
   args := []gdc.ConstTypePtr{to_point.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodExpandFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *AABB) Grow(by float64, ) AABB {
-  name := StringNameFromStr("grow")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 239217291) // FIXME: should cache?
-
   ret := NewAABB()
 
   varg0 := NewFloatFromFloat32(by)
@@ -320,114 +462,82 @@ func (me *AABB) Grow(by float64, ) AABB {
   args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodGrowFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *AABB) GetSupport(dir Vector3, ) Vector3 {
-  name := StringNameFromStr("get_support")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 2923479887) // FIXME: should cache?
-
   ret := NewVector3()
 
 
   args := []gdc.ConstTypePtr{dir.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodGetSupportFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *AABB) GetLongestAxis() Vector3 {
-  name := StringNameFromStr("get_longest_axis")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1776574132) // FIXME: should cache?
-
   ret := NewVector3()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodGetLongestAxisFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *AABB) GetLongestAxisIndex() int64 {
-  name := StringNameFromStr("get_longest_axis_index")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 3173160232) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodGetLongestAxisIndexFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *AABB) GetLongestAxisSize() float64 {
-  name := StringNameFromStr("get_longest_axis_size")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 466405837) // FIXME: should cache?
-
   ret := NewFloat()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodGetLongestAxisSizeFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *AABB) GetShortestAxis() Vector3 {
-  name := StringNameFromStr("get_shortest_axis")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1776574132) // FIXME: should cache?
-
   ret := NewVector3()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodGetShortestAxisFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *AABB) GetShortestAxisIndex() int64 {
-  name := StringNameFromStr("get_shortest_axis_index")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 3173160232) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodGetShortestAxisIndexFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *AABB) GetShortestAxisSize() float64 {
-  name := StringNameFromStr("get_shortest_axis_size")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 466405837) // FIXME: should cache?
-
   ret := NewFloat()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodGetShortestAxisSizeFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *AABB) GetEndpoint(idx int64, ) Vector3 {
-  name := StringNameFromStr("get_endpoint")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 1394941017) // FIXME: should cache?
-
   ret := NewVector3()
 
   varg0 := NewIntFromInt(idx)
@@ -435,15 +545,11 @@ func (me *AABB) GetEndpoint(idx int64, ) Vector3 {
   args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodGetEndpointFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *AABB) IntersectsSegment(from Vector3, to Vector3, ) Variant {
-  name := StringNameFromStr("intersects_segment")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 2048133369) // FIXME: should cache?
-
   ret := NewVariant()
 
 
@@ -451,15 +557,11 @@ func (me *AABB) IntersectsSegment(from Vector3, to Vector3, ) Variant {
   args := []gdc.ConstTypePtr{from.AsCTypePtr(), to.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodIntersectsSegmentFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *AABB) IntersectsRay(from Vector3, dir Vector3, ) Variant {
-  name := StringNameFromStr("intersects_ray")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeAABB, name.AsCPtr(), 2048133369) // FIXME: should cache?
-
   ret := NewVariant()
 
 
@@ -467,123 +569,99 @@ func (me *AABB) IntersectsRay(from Vector3, dir Vector3, ) Variant {
   args := []gdc.ConstTypePtr{from.AsCTypePtr(), dir.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForAABB.methodIntersectsRayFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 // Operators
 
 func (me *AABB) EqualVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *AABB) NotEqualVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *AABB) Not() bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, me.Type(), gdc.VariantTypeNil) // FIXME: cache
+  opPtr := ptrsForAABB.operatorNotFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), nil, ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *AABB) EqualAABB(right AABB) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForAABB.operatorEqualAABBFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *AABB) NotEqualAABB(right AABB) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForAABB.operatorNotEqualAABBFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *AABB) MultiplyTransform3D(right Transform3D) AABB {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForAABB.operatorMultiplyTransform3DFn
   ret := NewAABB()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
 func (me *AABB) InDictionary(right Dictionary) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForAABB.operatorInDictionaryFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *AABB) InArray(right Array) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForAABB.operatorInArrayFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 // Members
 
 func (me *AABB) Position() Vector3 {
-  name := StringNameFromStr("position")
-  defer name.Destroy()
-
-  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
   ret := NewVector3()
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrGetter(ensurePtr(ptrsForAABB.memberpositionGetterFn), me.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
 func (me *AABB) SetPosition(value Vector3) {
-  name := StringNameFromStr("position")
-  defer name.Destroy()
   valueV := value
-
-  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
+  me.iface.CallPtrSetter(ensurePtr(ptrsForAABB.memberpositionSetterFn), me.AsTypePtr(), valueV.AsCTypePtr())
 }
 
 func (me *AABB) Size() Vector3 {
-  name := StringNameFromStr("size")
-  defer name.Destroy()
-
-  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
   ret := NewVector3()
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrGetter(ensurePtr(ptrsForAABB.membersizeGetterFn), me.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
 func (me *AABB) SetSize(value Vector3) {
-  name := StringNameFromStr("size")
-  defer name.Destroy()
   valueV := value
-
-  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
+  me.iface.CallPtrSetter(ensurePtr(ptrsForAABB.membersizeSetterFn), me.AsTypePtr(), valueV.AsCTypePtr())
 }
 
 func (me *AABB) End() Vector3 {
-  name := StringNameFromStr("end")
-  defer name.Destroy()
-
-  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
   ret := NewVector3()
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrGetter(ensurePtr(ptrsForAABB.memberendGetterFn), me.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
 func (me *AABB) SetEnd(value Vector3) {
-  name := StringNameFromStr("end")
-  defer name.Destroy()
   valueV := value
-
-  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
+  me.iface.CallPtrSetter(ensurePtr(ptrsForAABB.memberendSetterFn), me.AsTypePtr(), valueV.AsCTypePtr())
 }

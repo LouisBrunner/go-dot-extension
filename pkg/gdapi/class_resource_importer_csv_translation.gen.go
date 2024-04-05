@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForResourceImporterCSVTranslationList struct {
+}
+
+var ptrsForResourceImporterCSVTranslation ptrsForResourceImporterCSVTranslationList
+
+func initResourceImporterCSVTranslationPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ResourceImporterCSVTranslation")
+  defer className.Destroy()
+}
+
 type ResourceImporterCSVTranslation struct {
   ResourceImporter
 }

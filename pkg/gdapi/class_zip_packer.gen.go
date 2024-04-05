@@ -14,6 +14,47 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForZIPPackerList struct {
+  fnOpen gdc.MethodBindPtr
+  fnStartFile gdc.MethodBindPtr
+  fnWriteFile gdc.MethodBindPtr
+  fnCloseFile gdc.MethodBindPtr
+  fnClose gdc.MethodBindPtr
+}
+
+var ptrsForZIPPacker ptrsForZIPPackerList
+
+func initZIPPackerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ZIPPacker")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("open")
+    defer methodName.Destroy()
+    ptrsForZIPPacker.fnOpen = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1936816515))
+  }
+  {
+    methodName := StringNameFromStr("start_file")
+    defer methodName.Destroy()
+    ptrsForZIPPacker.fnStartFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 166001499))
+  }
+  {
+    methodName := StringNameFromStr("write_file")
+    defer methodName.Destroy()
+    ptrsForZIPPacker.fnWriteFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 680677267))
+  }
+  {
+    methodName := StringNameFromStr("close_file")
+    defer methodName.Destroy()
+    ptrsForZIPPacker.fnCloseFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 166280745))
+  }
+  {
+    methodName := StringNameFromStr("close")
+    defer methodName.Destroy()
+    ptrsForZIPPacker.fnClose = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 166280745))
+  }
+}
+
 type ZIPPacker struct {
   RefCounted
 }
@@ -58,78 +99,53 @@ func (me *ZIPPacker) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ZIPPacker) Open(path String, append ZIPPackerZipAppend, ) Error {
-  classNameV := StringNameFromStr("ZIPPacker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("open")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1936816515) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), gdc.ConstTypePtr(&append) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
   pinner.Pin(&append)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForZIPPacker.fnOpen), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *ZIPPacker) StartFile(path String, ) Error {
-  classNameV := StringNameFromStr("ZIPPacker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("start_file")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166001499) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForZIPPacker.fnStartFile), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *ZIPPacker) WriteFile(data PackedByteArray, ) Error {
-  classNameV := StringNameFromStr("ZIPPacker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("write_file")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 680677267) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{data.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForZIPPacker.fnWriteFile), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *ZIPPacker) CloseFile() Error {
-  classNameV := StringNameFromStr("ZIPPacker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("close_file")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166280745) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForZIPPacker.fnCloseFile), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *ZIPPacker) Close() Error {
-  classNameV := StringNameFromStr("ZIPPacker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("close")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166280745) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForZIPPacker.fnClose), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 

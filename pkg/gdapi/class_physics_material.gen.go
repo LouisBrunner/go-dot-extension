@@ -14,6 +14,65 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPhysicsMaterialList struct {
+  fnSetFriction gdc.MethodBindPtr
+  fnGetFriction gdc.MethodBindPtr
+  fnSetRough gdc.MethodBindPtr
+  fnIsRough gdc.MethodBindPtr
+  fnSetBounce gdc.MethodBindPtr
+  fnGetBounce gdc.MethodBindPtr
+  fnSetAbsorbent gdc.MethodBindPtr
+  fnIsAbsorbent gdc.MethodBindPtr
+}
+
+var ptrsForPhysicsMaterial ptrsForPhysicsMaterialList
+
+func initPhysicsMaterialPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PhysicsMaterial")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_friction")
+    defer methodName.Destroy()
+    ptrsForPhysicsMaterial.fnSetFriction = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_friction")
+    defer methodName.Destroy()
+    ptrsForPhysicsMaterial.fnGetFriction = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_rough")
+    defer methodName.Destroy()
+    ptrsForPhysicsMaterial.fnSetRough = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_rough")
+    defer methodName.Destroy()
+    ptrsForPhysicsMaterial.fnIsRough = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_bounce")
+    defer methodName.Destroy()
+    ptrsForPhysicsMaterial.fnSetBounce = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_bounce")
+    defer methodName.Destroy()
+    ptrsForPhysicsMaterial.fnGetBounce = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_absorbent")
+    defer methodName.Destroy()
+    ptrsForPhysicsMaterial.fnSetAbsorbent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_absorbent")
+    defer methodName.Destroy()
+    ptrsForPhysicsMaterial.fnIsAbsorbent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type PhysicsMaterial struct {
   Resource
 }
@@ -51,118 +110,78 @@ func (me *PhysicsMaterial) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PhysicsMaterial) SetFriction(friction float64, )  {
-  classNameV := StringNameFromStr("PhysicsMaterial")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_friction")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&friction) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsMaterial.fnSetFriction), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PhysicsMaterial) GetFriction() float64 {
-  classNameV := StringNameFromStr("PhysicsMaterial")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_friction")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsMaterial.fnGetFriction), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *PhysicsMaterial) SetRough(rough bool, )  {
-  classNameV := StringNameFromStr("PhysicsMaterial")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_rough")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&rough) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsMaterial.fnSetRough), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PhysicsMaterial) IsRough() bool {
-  classNameV := StringNameFromStr("PhysicsMaterial")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_rough")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsMaterial.fnIsRough), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *PhysicsMaterial) SetBounce(bounce float64, )  {
-  classNameV := StringNameFromStr("PhysicsMaterial")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_bounce")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bounce) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsMaterial.fnSetBounce), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PhysicsMaterial) GetBounce() float64 {
-  classNameV := StringNameFromStr("PhysicsMaterial")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_bounce")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsMaterial.fnGetBounce), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *PhysicsMaterial) SetAbsorbent(absorbent bool, )  {
-  classNameV := StringNameFromStr("PhysicsMaterial")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_absorbent")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&absorbent) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsMaterial.fnSetAbsorbent), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PhysicsMaterial) IsAbsorbent() bool {
-  classNameV := StringNameFromStr("PhysicsMaterial")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_absorbent")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsMaterial.fnIsAbsorbent), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

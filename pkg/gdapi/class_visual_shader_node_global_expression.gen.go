@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeGlobalExpressionList struct {
+}
+
+var ptrsForVisualShaderNodeGlobalExpression ptrsForVisualShaderNodeGlobalExpressionList
+
+func initVisualShaderNodeGlobalExpressionPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeGlobalExpression")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeGlobalExpression struct {
   VisualShaderNodeExpression
 }

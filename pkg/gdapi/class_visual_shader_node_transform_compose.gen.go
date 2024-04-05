@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeTransformComposeList struct {
+}
+
+var ptrsForVisualShaderNodeTransformCompose ptrsForVisualShaderNodeTransformComposeList
+
+func initVisualShaderNodeTransformComposePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeTransformCompose")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeTransformCompose struct {
   VisualShaderNode
 }

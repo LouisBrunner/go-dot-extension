@@ -14,6 +14,65 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForStreamPeerBufferList struct {
+  fnSeek gdc.MethodBindPtr
+  fnGetSize gdc.MethodBindPtr
+  fnGetPosition gdc.MethodBindPtr
+  fnResize gdc.MethodBindPtr
+  fnSetDataArray gdc.MethodBindPtr
+  fnGetDataArray gdc.MethodBindPtr
+  fnClear gdc.MethodBindPtr
+  fnDuplicate gdc.MethodBindPtr
+}
+
+var ptrsForStreamPeerBuffer ptrsForStreamPeerBufferList
+
+func initStreamPeerBufferPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("StreamPeerBuffer")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("seek")
+    defer methodName.Destroy()
+    ptrsForStreamPeerBuffer.fnSeek = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_size")
+    defer methodName.Destroy()
+    ptrsForStreamPeerBuffer.fnGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("get_position")
+    defer methodName.Destroy()
+    ptrsForStreamPeerBuffer.fnGetPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("resize")
+    defer methodName.Destroy()
+    ptrsForStreamPeerBuffer.fnResize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("set_data_array")
+    defer methodName.Destroy()
+    ptrsForStreamPeerBuffer.fnSetDataArray = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2971499966))
+  }
+  {
+    methodName := StringNameFromStr("get_data_array")
+    defer methodName.Destroy()
+    ptrsForStreamPeerBuffer.fnGetDataArray = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2362200018))
+  }
+  {
+    methodName := StringNameFromStr("clear")
+    defer methodName.Destroy()
+    ptrsForStreamPeerBuffer.fnClear = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("duplicate")
+    defer methodName.Destroy()
+    ptrsForStreamPeerBuffer.fnDuplicate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2474064677))
+  }
+}
+
 type StreamPeerBuffer struct {
   StreamPeer
 }
@@ -51,118 +110,78 @@ func (me *StreamPeerBuffer) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *StreamPeerBuffer) Seek(position int64, )  {
-  classNameV := StringNameFromStr("StreamPeerBuffer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("seek")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&position) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStreamPeerBuffer.fnSeek), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *StreamPeerBuffer) GetSize() int64 {
-  classNameV := StringNameFromStr("StreamPeerBuffer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStreamPeerBuffer.fnGetSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *StreamPeerBuffer) GetPosition() int64 {
-  classNameV := StringNameFromStr("StreamPeerBuffer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStreamPeerBuffer.fnGetPosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *StreamPeerBuffer) Resize(size int64, )  {
-  classNameV := StringNameFromStr("StreamPeerBuffer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("resize")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStreamPeerBuffer.fnResize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *StreamPeerBuffer) SetDataArray(data PackedByteArray, )  {
-  classNameV := StringNameFromStr("StreamPeerBuffer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_data_array")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2971499966) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{data.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStreamPeerBuffer.fnSetDataArray), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *StreamPeerBuffer) GetDataArray() PackedByteArray {
-  classNameV := StringNameFromStr("StreamPeerBuffer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_data_array")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2362200018) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedByteArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStreamPeerBuffer.fnGetDataArray), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *StreamPeerBuffer) Clear()  {
-  classNameV := StringNameFromStr("StreamPeerBuffer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("clear")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStreamPeerBuffer.fnClear), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *StreamPeerBuffer) Duplicate() StreamPeerBuffer {
-  classNameV := StringNameFromStr("StreamPeerBuffer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("duplicate")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2474064677) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewStreamPeerBuffer()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStreamPeerBuffer.fnDuplicate), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

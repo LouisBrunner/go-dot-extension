@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForStyleBoxEmptyList struct {
+}
+
+var ptrsForStyleBoxEmpty ptrsForStyleBoxEmptyList
+
+func initStyleBoxEmptyPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("StyleBoxEmpty")
+  defer className.Destroy()
+}
+
 type StyleBoxEmpty struct {
   StyleBox
 }

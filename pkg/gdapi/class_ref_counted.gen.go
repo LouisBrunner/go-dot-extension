@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForRefCountedList struct {
+  fnInitRef gdc.MethodBindPtr
+  fnReference gdc.MethodBindPtr
+  fnUnreference gdc.MethodBindPtr
+  fnGetReferenceCount gdc.MethodBindPtr
+}
+
+var ptrsForRefCounted ptrsForRefCountedList
+
+func initRefCountedPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("RefCounted")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("init_ref")
+    defer methodName.Destroy()
+    ptrsForRefCounted.fnInitRef = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("reference")
+    defer methodName.Destroy()
+    ptrsForRefCounted.fnReference = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("unreference")
+    defer methodName.Destroy()
+    ptrsForRefCounted.fnUnreference = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("get_reference_count")
+    defer methodName.Destroy()
+    ptrsForRefCounted.fnGetReferenceCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+}
+
 type RefCounted struct {
   Object
 }
@@ -51,62 +86,42 @@ func (me *RefCounted) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *RefCounted) InitRef() bool {
-  classNameV := StringNameFromStr("RefCounted")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("init_ref")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRefCounted.fnInitRef), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RefCounted) Reference() bool {
-  classNameV := StringNameFromStr("RefCounted")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("reference")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRefCounted.fnReference), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RefCounted) Unreference() bool {
-  classNameV := StringNameFromStr("RefCounted")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("unreference")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRefCounted.fnUnreference), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RefCounted) GetReferenceCount() int64 {
-  classNameV := StringNameFromStr("RefCounted")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_reference_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRefCounted.fnGetReferenceCount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 

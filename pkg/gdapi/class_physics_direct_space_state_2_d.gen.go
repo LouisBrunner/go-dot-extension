@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPhysicsDirectSpaceState2DList struct {
+  fnIntersectPoint gdc.MethodBindPtr
+  fnIntersectRay gdc.MethodBindPtr
+  fnIntersectShape gdc.MethodBindPtr
+  fnCastMotion gdc.MethodBindPtr
+  fnCollideShape gdc.MethodBindPtr
+  fnGetRestInfo gdc.MethodBindPtr
+}
+
+var ptrsForPhysicsDirectSpaceState2D ptrsForPhysicsDirectSpaceState2DList
+
+func initPhysicsDirectSpaceState2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PhysicsDirectSpaceState2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("intersect_point")
+    defer methodName.Destroy()
+    ptrsForPhysicsDirectSpaceState2D.fnIntersectPoint = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2118456068))
+  }
+  {
+    methodName := StringNameFromStr("intersect_ray")
+    defer methodName.Destroy()
+    ptrsForPhysicsDirectSpaceState2D.fnIntersectRay = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1590275562))
+  }
+  {
+    methodName := StringNameFromStr("intersect_shape")
+    defer methodName.Destroy()
+    ptrsForPhysicsDirectSpaceState2D.fnIntersectShape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2488867228))
+  }
+  {
+    methodName := StringNameFromStr("cast_motion")
+    defer methodName.Destroy()
+    ptrsForPhysicsDirectSpaceState2D.fnCastMotion = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 711275086))
+  }
+  {
+    methodName := StringNameFromStr("collide_shape")
+    defer methodName.Destroy()
+    ptrsForPhysicsDirectSpaceState2D.fnCollideShape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2488867228))
+  }
+  {
+    methodName := StringNameFromStr("get_rest_info")
+    defer methodName.Destroy()
+    ptrsForPhysicsDirectSpaceState2D.fnGetRestInfo = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2803666496))
+  }
+}
+
 type PhysicsDirectSpaceState2D struct {
   Object
 }
@@ -51,11 +98,6 @@ func (me *PhysicsDirectSpaceState2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PhysicsDirectSpaceState2D) IntersectPoint(parameters PhysicsPointQueryParameters2D, max_results int64, ) []Dictionary {
-  classNameV := StringNameFromStr("PhysicsDirectSpaceState2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("intersect_point")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2118456068) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{parameters.AsCTypePtr(), gdc.ConstTypePtr(&max_results) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -63,7 +105,7 @@ func  (me *PhysicsDirectSpaceState2D) IntersectPoint(parameters PhysicsPointQuer
   defer ret.Destroy()
   pinner.Pin(&max_results)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsDirectSpaceState2D.fnIntersectPoint), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -73,26 +115,16 @@ return sliceRet
 }
 
 func  (me *PhysicsDirectSpaceState2D) IntersectRay(parameters PhysicsRayQueryParameters2D, ) Dictionary {
-  classNameV := StringNameFromStr("PhysicsDirectSpaceState2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("intersect_ray")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1590275562) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{parameters.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewDictionary()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsDirectSpaceState2D.fnIntersectRay), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PhysicsDirectSpaceState2D) IntersectShape(parameters PhysicsShapeQueryParameters2D, max_results int64, ) []Dictionary {
-  classNameV := StringNameFromStr("PhysicsDirectSpaceState2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("intersect_shape")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2488867228) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{parameters.AsCTypePtr(), gdc.ConstTypePtr(&max_results) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -100,7 +132,7 @@ func  (me *PhysicsDirectSpaceState2D) IntersectShape(parameters PhysicsShapeQuer
   defer ret.Destroy()
   pinner.Pin(&max_results)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsDirectSpaceState2D.fnIntersectShape), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -110,26 +142,16 @@ return sliceRet
 }
 
 func  (me *PhysicsDirectSpaceState2D) CastMotion(parameters PhysicsShapeQueryParameters2D, ) PackedFloat32Array {
-  classNameV := StringNameFromStr("PhysicsDirectSpaceState2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("cast_motion")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 711275086) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{parameters.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedFloat32Array()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsDirectSpaceState2D.fnCastMotion), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PhysicsDirectSpaceState2D) CollideShape(parameters PhysicsShapeQueryParameters2D, max_results int64, ) []Vector2 {
-  classNameV := StringNameFromStr("PhysicsDirectSpaceState2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("collide_shape")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2488867228) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{parameters.AsCTypePtr(), gdc.ConstTypePtr(&max_results) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -137,7 +159,7 @@ func  (me *PhysicsDirectSpaceState2D) CollideShape(parameters PhysicsShapeQueryP
   defer ret.Destroy()
   pinner.Pin(&max_results)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsDirectSpaceState2D.fnCollideShape), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[Vector2](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -147,17 +169,12 @@ return sliceRet
 }
 
 func  (me *PhysicsDirectSpaceState2D) GetRestInfo(parameters PhysicsShapeQueryParameters2D, ) Dictionary {
-  classNameV := StringNameFromStr("PhysicsDirectSpaceState2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_rest_info")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2803666496) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{parameters.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewDictionary()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsDirectSpaceState2D.fnGetRestInfo), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

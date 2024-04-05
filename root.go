@@ -13,3 +13,4 @@ var MarshalDict = gdextension.MarshalDict
 var UnmarshalDict = gdextension.UnmarshalDict
 
 type Class = gdextension.Class
+type Signal = gdextension.Signal

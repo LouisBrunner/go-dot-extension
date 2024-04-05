@@ -14,6 +14,77 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForGraphElementList struct {
+  fnSetResizable gdc.MethodBindPtr
+  fnIsResizable gdc.MethodBindPtr
+  fnSetDraggable gdc.MethodBindPtr
+  fnIsDraggable gdc.MethodBindPtr
+  fnSetSelectable gdc.MethodBindPtr
+  fnIsSelectable gdc.MethodBindPtr
+  fnSetSelected gdc.MethodBindPtr
+  fnIsSelected gdc.MethodBindPtr
+  fnSetPositionOffset gdc.MethodBindPtr
+  fnGetPositionOffset gdc.MethodBindPtr
+}
+
+var ptrsForGraphElement ptrsForGraphElementList
+
+func initGraphElementPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("GraphElement")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_resizable")
+    defer methodName.Destroy()
+    ptrsForGraphElement.fnSetResizable = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_resizable")
+    defer methodName.Destroy()
+    ptrsForGraphElement.fnIsResizable = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_draggable")
+    defer methodName.Destroy()
+    ptrsForGraphElement.fnSetDraggable = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_draggable")
+    defer methodName.Destroy()
+    ptrsForGraphElement.fnIsDraggable = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("set_selectable")
+    defer methodName.Destroy()
+    ptrsForGraphElement.fnSetSelectable = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_selectable")
+    defer methodName.Destroy()
+    ptrsForGraphElement.fnIsSelectable = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("set_selected")
+    defer methodName.Destroy()
+    ptrsForGraphElement.fnSetSelected = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_selected")
+    defer methodName.Destroy()
+    ptrsForGraphElement.fnIsSelected = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("set_position_offset")
+    defer methodName.Destroy()
+    ptrsForGraphElement.fnSetPositionOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_position_offset")
+    defer methodName.Destroy()
+    ptrsForGraphElement.fnGetPositionOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+}
+
 type GraphElement struct {
   Container
 }
@@ -51,147 +122,97 @@ func (me *GraphElement) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *GraphElement) SetResizable(resizable bool, )  {
-  classNameV := StringNameFromStr("GraphElement")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_resizable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&resizable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphElement.fnSetResizable), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GraphElement) IsResizable() bool {
-  classNameV := StringNameFromStr("GraphElement")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_resizable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphElement.fnIsResizable), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *GraphElement) SetDraggable(draggable bool, )  {
-  classNameV := StringNameFromStr("GraphElement")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_draggable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&draggable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphElement.fnSetDraggable), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GraphElement) IsDraggable() bool {
-  classNameV := StringNameFromStr("GraphElement")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_draggable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphElement.fnIsDraggable), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *GraphElement) SetSelectable(selectable bool, )  {
-  classNameV := StringNameFromStr("GraphElement")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_selectable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&selectable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphElement.fnSetSelectable), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GraphElement) IsSelectable() bool {
-  classNameV := StringNameFromStr("GraphElement")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_selectable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphElement.fnIsSelectable), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *GraphElement) SetSelected(selected bool, )  {
-  classNameV := StringNameFromStr("GraphElement")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_selected")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&selected) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphElement.fnSetSelected), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GraphElement) IsSelected() bool {
-  classNameV := StringNameFromStr("GraphElement")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_selected")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphElement.fnIsSelected), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *GraphElement) SetPositionOffset(offset Vector2, )  {
-  classNameV := StringNameFromStr("GraphElement")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_position_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphElement.fnSetPositionOffset), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GraphElement) GetPositionOffset() Vector2 {
-  classNameV := StringNameFromStr("GraphElement")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_position_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphElement.fnGetPositionOffset), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

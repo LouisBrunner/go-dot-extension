@@ -1257,6 +1257,9 @@ func (me *interfaceImpl) GetVariantFromTypeConstructor(pType VariantType, ) Vari
 
 func (me *interfaceImpl) CallVariantFromTypeConstructorFunc(ptrToCall VariantFromTypeConstructorFunc, arg0 UninitializedVariantPtr, arg1 TypePtr, )  {
 
+  if ptrToCall == nil {
+    panic("ptrToCall is nil for CallVariantFromTypeConstructorFunc") // TODO: better error handling
+  }
   C.callCallVariantFromTypeConstructorFunc(ptrToCall, C.GDExtensionUninitializedVariantPtr(arg0), C.GDExtensionTypePtr(arg1),)
 }
 
@@ -1268,6 +1271,9 @@ func (me *interfaceImpl) GetVariantToTypeConstructor(pType VariantType, ) TypeFr
 
 func (me *interfaceImpl) CallTypeFromVariantConstructorFunc(ptrToCall TypeFromVariantConstructorFunc, arg0 UninitializedTypePtr, arg1 VariantPtr, )  {
 
+  if ptrToCall == nil {
+    panic("ptrToCall is nil for CallTypeFromVariantConstructorFunc") // TODO: better error handling
+  }
   C.callCallTypeFromVariantConstructorFunc(ptrToCall, C.GDExtensionUninitializedTypePtr(arg0), C.GDExtensionVariantPtr(arg1),)
 }
 
@@ -1823,6 +1829,9 @@ func (me *interfaceImpl) VariantGetPtrBuiltinMethod(pType VariantType, pMethod C
 
 func (me *interfaceImpl) CallPtrBuiltInMethod(ptrToCall PtrBuiltInMethod, pBase TypePtr, pArgs *ConstTypePtr, rReturn TypePtr, pArgumentCount int, )  {
 
+  if ptrToCall == nil {
+    panic("ptrToCall is nil for CallPtrBuiltInMethod") // TODO: better error handling
+  }
   C.callCallPtrBuiltInMethod(ptrToCall, C.GDExtensionTypePtr(pBase), *(**C.GDExtensionConstTypePtr)(unsafe.Pointer(&pArgs)), C.GDExtensionTypePtr(rReturn), C.int(pArgumentCount),)
 }
 
@@ -1834,6 +1843,9 @@ func (me *interfaceImpl) VariantGetPtrConstructor(pType VariantType, pConstructo
 
 func (me *interfaceImpl) CallPtrConstructor(ptrToCall PtrConstructor, pBase UninitializedTypePtr, pArgs *ConstTypePtr, )  {
 
+  if ptrToCall == nil {
+    panic("ptrToCall is nil for CallPtrConstructor") // TODO: better error handling
+  }
   C.callCallPtrConstructor(ptrToCall, C.GDExtensionUninitializedTypePtr(pBase), *(**C.GDExtensionConstTypePtr)(unsafe.Pointer(&pArgs)),)
 }
 
@@ -1845,6 +1857,9 @@ func (me *interfaceImpl) VariantGetPtrDestructor(pType VariantType, ) PtrDestruc
 
 func (me *interfaceImpl) CallPtrDestructor(ptrToCall PtrDestructor, pBase TypePtr, )  {
 
+  if ptrToCall == nil {
+    panic("ptrToCall is nil for CallPtrDestructor") // TODO: better error handling
+  }
   C.callCallPtrDestructor(ptrToCall, C.GDExtensionTypePtr(pBase),)
 }
 
@@ -1856,6 +1871,9 @@ func (me *interfaceImpl) VariantGetPtrGetter(pType VariantType, pMember ConstStr
 
 func (me *interfaceImpl) CallPtrGetter(ptrToCall PtrGetter, pBase ConstTypePtr, rValue TypePtr, )  {
 
+  if ptrToCall == nil {
+    panic("ptrToCall is nil for CallPtrGetter") // TODO: better error handling
+  }
   C.callCallPtrGetter(ptrToCall, C.GDExtensionConstTypePtr(pBase), C.GDExtensionTypePtr(rValue),)
 }
 
@@ -1867,6 +1885,9 @@ func (me *interfaceImpl) VariantGetPtrIndexedGetter(pType VariantType, ) PtrInde
 
 func (me *interfaceImpl) CallPtrIndexedGetter(ptrToCall PtrIndexedGetter, pBase ConstTypePtr, pIndex Int, rValue TypePtr, )  {
 
+  if ptrToCall == nil {
+    panic("ptrToCall is nil for CallPtrIndexedGetter") // TODO: better error handling
+  }
   C.callCallPtrIndexedGetter(ptrToCall, C.GDExtensionConstTypePtr(pBase), C.GDExtensionInt(pIndex), C.GDExtensionTypePtr(rValue),)
 }
 
@@ -1878,6 +1899,9 @@ func (me *interfaceImpl) VariantGetPtrIndexedSetter(pType VariantType, ) PtrInde
 
 func (me *interfaceImpl) CallPtrIndexedSetter(ptrToCall PtrIndexedSetter, pBase TypePtr, pIndex Int, pValue ConstTypePtr, )  {
 
+  if ptrToCall == nil {
+    panic("ptrToCall is nil for CallPtrIndexedSetter") // TODO: better error handling
+  }
   C.callCallPtrIndexedSetter(ptrToCall, C.GDExtensionTypePtr(pBase), C.GDExtensionInt(pIndex), C.GDExtensionConstTypePtr(pValue),)
 }
 
@@ -1889,6 +1913,9 @@ func (me *interfaceImpl) VariantGetPtrKeyedChecker(pType VariantType, ) PtrKeyed
 
 func (me *interfaceImpl) CallPtrKeyedChecker(ptrToCall PtrKeyedChecker, pBase ConstVariantPtr, pKey ConstVariantPtr, ) uint {
 
+  if ptrToCall == nil {
+    panic("ptrToCall is nil for CallPtrKeyedChecker") // TODO: better error handling
+  }
   ret := C.callCallPtrKeyedChecker(ptrToCall, C.GDExtensionConstVariantPtr(pBase), C.GDExtensionConstVariantPtr(pKey),)
   return uint(ret)
 }
@@ -1901,6 +1928,9 @@ func (me *interfaceImpl) VariantGetPtrKeyedGetter(pType VariantType, ) PtrKeyedG
 
 func (me *interfaceImpl) CallPtrKeyedGetter(ptrToCall PtrKeyedGetter, pBase ConstTypePtr, pKey ConstTypePtr, rValue TypePtr, )  {
 
+  if ptrToCall == nil {
+    panic("ptrToCall is nil for CallPtrKeyedGetter") // TODO: better error handling
+  }
   C.callCallPtrKeyedGetter(ptrToCall, C.GDExtensionConstTypePtr(pBase), C.GDExtensionConstTypePtr(pKey), C.GDExtensionTypePtr(rValue),)
 }
 
@@ -1912,6 +1942,9 @@ func (me *interfaceImpl) VariantGetPtrKeyedSetter(pType VariantType, ) PtrKeyedS
 
 func (me *interfaceImpl) CallPtrKeyedSetter(ptrToCall PtrKeyedSetter, pBase TypePtr, pKey ConstTypePtr, pValue ConstTypePtr, )  {
 
+  if ptrToCall == nil {
+    panic("ptrToCall is nil for CallPtrKeyedSetter") // TODO: better error handling
+  }
   C.callCallPtrKeyedSetter(ptrToCall, C.GDExtensionTypePtr(pBase), C.GDExtensionConstTypePtr(pKey), C.GDExtensionConstTypePtr(pValue),)
 }
 
@@ -1923,6 +1956,9 @@ func (me *interfaceImpl) VariantGetPtrOperatorEvaluator(pOperator VariantOperato
 
 func (me *interfaceImpl) CallPtrOperatorEvaluator(ptrToCall PtrOperatorEvaluator, pLeft ConstTypePtr, pRight ConstTypePtr, rResult TypePtr, )  {
 
+  if ptrToCall == nil {
+    panic("ptrToCall is nil for CallPtrOperatorEvaluator") // TODO: better error handling
+  }
   C.callCallPtrOperatorEvaluator(ptrToCall, C.GDExtensionConstTypePtr(pLeft), C.GDExtensionConstTypePtr(pRight), C.GDExtensionTypePtr(rResult),)
 }
 
@@ -1934,6 +1970,9 @@ func (me *interfaceImpl) VariantGetPtrSetter(pType VariantType, pMember ConstStr
 
 func (me *interfaceImpl) CallPtrSetter(ptrToCall PtrSetter, pBase TypePtr, pValue ConstTypePtr, )  {
 
+  if ptrToCall == nil {
+    panic("ptrToCall is nil for CallPtrSetter") // TODO: better error handling
+  }
   C.callCallPtrSetter(ptrToCall, C.GDExtensionTypePtr(pBase), C.GDExtensionConstTypePtr(pValue),)
 }
 
@@ -1945,6 +1984,9 @@ func (me *interfaceImpl) VariantGetPtrUtilityFunction(pFunction ConstStringNameP
 
 func (me *interfaceImpl) CallPtrUtilityFunction(ptrToCall PtrUtilityFunction, rReturn TypePtr, pArgs *ConstTypePtr, pArgumentCount int, )  {
 
+  if ptrToCall == nil {
+    panic("ptrToCall is nil for CallPtrUtilityFunction") // TODO: better error handling
+  }
   C.callCallPtrUtilityFunction(ptrToCall, C.GDExtensionTypePtr(rReturn), *(**C.GDExtensionConstTypePtr)(unsafe.Pointer(&pArgs)), C.int(pArgumentCount),)
 }
 

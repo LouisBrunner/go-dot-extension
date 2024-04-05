@@ -14,6 +14,167 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForArrayMeshList struct {
+  fnAddBlendShape gdc.MethodBindPtr
+  fnGetBlendShapeCount gdc.MethodBindPtr
+  fnGetBlendShapeName gdc.MethodBindPtr
+  fnSetBlendShapeName gdc.MethodBindPtr
+  fnClearBlendShapes gdc.MethodBindPtr
+  fnSetBlendShapeMode gdc.MethodBindPtr
+  fnGetBlendShapeMode gdc.MethodBindPtr
+  fnAddSurfaceFromArrays gdc.MethodBindPtr
+  fnClearSurfaces gdc.MethodBindPtr
+  fnSurfaceUpdateVertexRegion gdc.MethodBindPtr
+  fnSurfaceUpdateAttributeRegion gdc.MethodBindPtr
+  fnSurfaceUpdateSkinRegion gdc.MethodBindPtr
+  fnSurfaceGetArrayLen gdc.MethodBindPtr
+  fnSurfaceGetArrayIndexLen gdc.MethodBindPtr
+  fnSurfaceGetFormat gdc.MethodBindPtr
+  fnSurfaceGetPrimitiveType gdc.MethodBindPtr
+  fnSurfaceFindByName gdc.MethodBindPtr
+  fnSurfaceSetName gdc.MethodBindPtr
+  fnSurfaceGetName gdc.MethodBindPtr
+  fnRegenNormalMaps gdc.MethodBindPtr
+  fnLightmapUnwrap gdc.MethodBindPtr
+  fnSetCustomAabb gdc.MethodBindPtr
+  fnGetCustomAabb gdc.MethodBindPtr
+  fnSetShadowMesh gdc.MethodBindPtr
+  fnGetShadowMesh gdc.MethodBindPtr
+}
+
+var ptrsForArrayMesh ptrsForArrayMeshList
+
+func initArrayMeshPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ArrayMesh")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("add_blend_shape")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnAddBlendShape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3304788590))
+  }
+  {
+    methodName := StringNameFromStr("get_blend_shape_count")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnGetBlendShapeCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("get_blend_shape_name")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnGetBlendShapeName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 659327637))
+  }
+  {
+    methodName := StringNameFromStr("set_blend_shape_name")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnSetBlendShapeName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3780747571))
+  }
+  {
+    methodName := StringNameFromStr("clear_blend_shapes")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnClearBlendShapes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("set_blend_shape_mode")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnSetBlendShapeMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 227983991))
+  }
+  {
+    methodName := StringNameFromStr("get_blend_shape_mode")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnGetBlendShapeMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 836485024))
+  }
+  {
+    methodName := StringNameFromStr("add_surface_from_arrays")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnAddSurfaceFromArrays = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1796411378))
+  }
+  {
+    methodName := StringNameFromStr("clear_surfaces")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnClearSurfaces = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("surface_update_vertex_region")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnSurfaceUpdateVertexRegion = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3837166854))
+  }
+  {
+    methodName := StringNameFromStr("surface_update_attribute_region")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnSurfaceUpdateAttributeRegion = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3837166854))
+  }
+  {
+    methodName := StringNameFromStr("surface_update_skin_region")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnSurfaceUpdateSkinRegion = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3837166854))
+  }
+  {
+    methodName := StringNameFromStr("surface_get_array_len")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnSurfaceGetArrayLen = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 923996154))
+  }
+  {
+    methodName := StringNameFromStr("surface_get_array_index_len")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnSurfaceGetArrayIndexLen = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 923996154))
+  }
+  {
+    methodName := StringNameFromStr("surface_get_format")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnSurfaceGetFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3718287884))
+  }
+  {
+    methodName := StringNameFromStr("surface_get_primitive_type")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnSurfaceGetPrimitiveType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4141943888))
+  }
+  {
+    methodName := StringNameFromStr("surface_find_by_name")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnSurfaceFindByName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1321353865))
+  }
+  {
+    methodName := StringNameFromStr("surface_set_name")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnSurfaceSetName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 501894301))
+  }
+  {
+    methodName := StringNameFromStr("surface_get_name")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnSurfaceGetName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 844755477))
+  }
+  {
+    methodName := StringNameFromStr("regen_normal_maps")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnRegenNormalMaps = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("lightmap_unwrap")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnLightmapUnwrap = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1476641071))
+  }
+  {
+    methodName := StringNameFromStr("set_custom_aabb")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnSetCustomAabb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 259215842))
+  }
+  {
+    methodName := StringNameFromStr("get_custom_aabb")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnGetCustomAabb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1068685055))
+  }
+  {
+    methodName := StringNameFromStr("set_shadow_mesh")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnSetShadowMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3377897901))
+  }
+  {
+    methodName := StringNameFromStr("get_shadow_mesh")
+    defer methodName.Destroy()
+    ptrsForArrayMesh.fnGetShadowMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3206942465))
+  }
+}
+
 type ArrayMesh struct {
   Mesh
 }
@@ -51,371 +212,246 @@ func (me *ArrayMesh) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ArrayMesh) AddBlendShape(name StringName, )  {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_blend_shape")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnAddBlendShape), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ArrayMesh) GetBlendShapeCount() int64 {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_blend_shape_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnGetBlendShapeCount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ArrayMesh) GetBlendShapeName(index int64, ) StringName {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_blend_shape_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 659327637) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewStringName()
   pinner.Pin(&index)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnGetBlendShapeName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ArrayMesh) SetBlendShapeName(index int64, name StringName, )  {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_blend_shape_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3780747571) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index) , name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnSetBlendShapeName), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ArrayMesh) ClearBlendShapes()  {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("clear_blend_shapes")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnClearBlendShapes), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ArrayMesh) SetBlendShapeMode(mode MeshBlendShapeMode, )  {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_blend_shape_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 227983991) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnSetBlendShapeMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ArrayMesh) GetBlendShapeMode() MeshBlendShapeMode {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_blend_shape_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 836485024) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret MeshBlendShapeMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnGetBlendShapeMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *ArrayMesh) AddSurfaceFromArrays(primitive MeshPrimitiveType, arrays Array, blend_shapes []Array, lods Dictionary, flags MeshArrayFormat, )  {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_surface_from_arrays")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1796411378) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&primitive) , arrays.AsCTypePtr(), gdc.ConstTypePtr(&blend_shapes) , lods.AsCTypePtr(), gdc.ConstTypePtr(&flags) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnAddSurfaceFromArrays), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ArrayMesh) ClearSurfaces()  {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("clear_surfaces")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnClearSurfaces), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ArrayMesh) SurfaceUpdateVertexRegion(surf_idx int64, offset int64, data PackedByteArray, )  {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_update_vertex_region")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3837166854) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surf_idx) , gdc.ConstTypePtr(&offset) , data.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnSurfaceUpdateVertexRegion), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ArrayMesh) SurfaceUpdateAttributeRegion(surf_idx int64, offset int64, data PackedByteArray, )  {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_update_attribute_region")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3837166854) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surf_idx) , gdc.ConstTypePtr(&offset) , data.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnSurfaceUpdateAttributeRegion), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ArrayMesh) SurfaceUpdateSkinRegion(surf_idx int64, offset int64, data PackedByteArray, )  {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_update_skin_region")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3837166854) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surf_idx) , gdc.ConstTypePtr(&offset) , data.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnSurfaceUpdateSkinRegion), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ArrayMesh) SurfaceGetArrayLen(surf_idx int64, ) int64 {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_get_array_len")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surf_idx) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
   pinner.Pin(&surf_idx)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnSurfaceGetArrayLen), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ArrayMesh) SurfaceGetArrayIndexLen(surf_idx int64, ) int64 {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_get_array_index_len")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 923996154) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surf_idx) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
   pinner.Pin(&surf_idx)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnSurfaceGetArrayIndexLen), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ArrayMesh) SurfaceGetFormat(surf_idx int64, ) MeshArrayFormat {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_get_format")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3718287884) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surf_idx) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret MeshArrayFormat
   pinner.Pin(&surf_idx)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnSurfaceGetFormat), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *ArrayMesh) SurfaceGetPrimitiveType(surf_idx int64, ) MeshPrimitiveType {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_get_primitive_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4141943888) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surf_idx) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret MeshPrimitiveType
   pinner.Pin(&surf_idx)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnSurfaceGetPrimitiveType), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *ArrayMesh) SurfaceFindByName(name String, ) int64 {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_find_by_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1321353865) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnSurfaceFindByName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ArrayMesh) SurfaceSetName(surf_idx int64, name String, )  {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_set_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 501894301) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surf_idx) , name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnSurfaceSetName), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ArrayMesh) SurfaceGetName(surf_idx int64, ) String {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_get_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 844755477) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&surf_idx) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
   pinner.Pin(&surf_idx)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnSurfaceGetName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ArrayMesh) RegenNormalMaps()  {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("regen_normal_maps")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnRegenNormalMaps), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ArrayMesh) LightmapUnwrap(transform Transform3D, texel_size float64, ) Error {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("lightmap_unwrap")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1476641071) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{transform.AsCTypePtr(), gdc.ConstTypePtr(&texel_size) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
   pinner.Pin(&texel_size)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnLightmapUnwrap), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *ArrayMesh) SetCustomAabb(aabb AABB, )  {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_custom_aabb")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 259215842) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{aabb.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnSetCustomAabb), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ArrayMesh) GetCustomAabb() AABB {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_custom_aabb")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1068685055) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewAABB()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnGetCustomAabb), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ArrayMesh) SetShadowMesh(mesh ArrayMesh, )  {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_shadow_mesh")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3377897901) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{mesh.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnSetShadowMesh), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ArrayMesh) GetShadowMesh() ArrayMesh {
-  classNameV := StringNameFromStr("ArrayMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_shadow_mesh")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3206942465) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArrayMesh()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayMesh.fnGetShadowMesh), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

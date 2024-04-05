@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForInputEventMouseList struct {
+  fnSetButtonMask gdc.MethodBindPtr
+  fnGetButtonMask gdc.MethodBindPtr
+  fnSetPosition gdc.MethodBindPtr
+  fnGetPosition gdc.MethodBindPtr
+  fnSetGlobalPosition gdc.MethodBindPtr
+  fnGetGlobalPosition gdc.MethodBindPtr
+}
+
+var ptrsForInputEventMouse ptrsForInputEventMouseList
+
+func initInputEventMousePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("InputEventMouse")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_button_mask")
+    defer methodName.Destroy()
+    ptrsForInputEventMouse.fnSetButtonMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3950145251))
+  }
+  {
+    methodName := StringNameFromStr("get_button_mask")
+    defer methodName.Destroy()
+    ptrsForInputEventMouse.fnGetButtonMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2512161324))
+  }
+  {
+    methodName := StringNameFromStr("set_position")
+    defer methodName.Destroy()
+    ptrsForInputEventMouse.fnSetPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_position")
+    defer methodName.Destroy()
+    ptrsForInputEventMouse.fnGetPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+  {
+    methodName := StringNameFromStr("set_global_position")
+    defer methodName.Destroy()
+    ptrsForInputEventMouse.fnSetGlobalPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_global_position")
+    defer methodName.Destroy()
+    ptrsForInputEventMouse.fnGetGlobalPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+}
+
 type InputEventMouse struct {
   InputEventWithModifiers
 }
@@ -51,89 +98,59 @@ func (me *InputEventMouse) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *InputEventMouse) SetButtonMask(button_mask MouseButtonMask, )  {
-  classNameV := StringNameFromStr("InputEventMouse")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_button_mask")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3950145251) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&button_mask) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventMouse.fnSetButtonMask), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventMouse) GetButtonMask() MouseButtonMask {
-  classNameV := StringNameFromStr("InputEventMouse")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_button_mask")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2512161324) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret MouseButtonMask
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventMouse.fnGetButtonMask), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *InputEventMouse) SetPosition(position Vector2, )  {
-  classNameV := StringNameFromStr("InputEventMouse")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventMouse.fnSetPosition), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventMouse) GetPosition() Vector2 {
-  classNameV := StringNameFromStr("InputEventMouse")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventMouse.fnGetPosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *InputEventMouse) SetGlobalPosition(global_position Vector2, )  {
-  classNameV := StringNameFromStr("InputEventMouse")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_global_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{global_position.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventMouse.fnSetGlobalPosition), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventMouse) GetGlobalPosition() Vector2 {
-  classNameV := StringNameFromStr("InputEventMouse")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_global_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventMouse.fnGetGlobalPosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

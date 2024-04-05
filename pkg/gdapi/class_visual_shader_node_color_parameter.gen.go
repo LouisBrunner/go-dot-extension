@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeColorParameterList struct {
+  fnSetDefaultValueEnabled gdc.MethodBindPtr
+  fnIsDefaultValueEnabled gdc.MethodBindPtr
+  fnSetDefaultValue gdc.MethodBindPtr
+  fnGetDefaultValue gdc.MethodBindPtr
+}
+
+var ptrsForVisualShaderNodeColorParameter ptrsForVisualShaderNodeColorParameterList
+
+func initVisualShaderNodeColorParameterPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeColorParameter")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_default_value_enabled")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeColorParameter.fnSetDefaultValueEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_default_value_enabled")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeColorParameter.fnIsDefaultValueEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_default_value")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeColorParameter.fnSetDefaultValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2920490490))
+  }
+  {
+    methodName := StringNameFromStr("get_default_value")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeColorParameter.fnGetDefaultValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3444240500))
+  }
+}
+
 type VisualShaderNodeColorParameter struct {
   VisualShaderNodeParameter
 }
@@ -51,60 +86,40 @@ func (me *VisualShaderNodeColorParameter) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisualShaderNodeColorParameter) SetDefaultValueEnabled(enabled bool, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeColorParameter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_default_value_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeColorParameter.fnSetDefaultValueEnabled), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeColorParameter) IsDefaultValueEnabled() bool {
-  classNameV := StringNameFromStr("VisualShaderNodeColorParameter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_default_value_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeColorParameter.fnIsDefaultValueEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *VisualShaderNodeColorParameter) SetDefaultValue(value Color, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeColorParameter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_default_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{value.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeColorParameter.fnSetDefaultValue), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeColorParameter) GetDefaultValue() Color {
-  classNameV := StringNameFromStr("VisualShaderNodeColorParameter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_default_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewColor()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeColorParameter.fnGetDefaultValue), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

@@ -14,6 +14,71 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPortableCompressedTexture2DList struct {
+  fnCreateFromImage gdc.MethodBindPtr
+  fnGetFormat gdc.MethodBindPtr
+  fnGetCompressionMode gdc.MethodBindPtr
+  fnSetSizeOverride gdc.MethodBindPtr
+  fnGetSizeOverride gdc.MethodBindPtr
+  fnSetKeepCompressedBuffer gdc.MethodBindPtr
+  fnIsKeepingCompressedBuffer gdc.MethodBindPtr
+  fnSetKeepAllCompressedBuffers gdc.MethodBindPtr
+  fnIsKeepingAllCompressedBuffers gdc.MethodBindPtr
+}
+
+var ptrsForPortableCompressedTexture2D ptrsForPortableCompressedTexture2DList
+
+func initPortableCompressedTexture2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PortableCompressedTexture2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("create_from_image")
+    defer methodName.Destroy()
+    ptrsForPortableCompressedTexture2D.fnCreateFromImage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3679243433))
+  }
+  {
+    methodName := StringNameFromStr("get_format")
+    defer methodName.Destroy()
+    ptrsForPortableCompressedTexture2D.fnGetFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3847873762))
+  }
+  {
+    methodName := StringNameFromStr("get_compression_mode")
+    defer methodName.Destroy()
+    ptrsForPortableCompressedTexture2D.fnGetCompressionMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3265612739))
+  }
+  {
+    methodName := StringNameFromStr("set_size_override")
+    defer methodName.Destroy()
+    ptrsForPortableCompressedTexture2D.fnSetSizeOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_size_override")
+    defer methodName.Destroy()
+    ptrsForPortableCompressedTexture2D.fnGetSizeOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+  {
+    methodName := StringNameFromStr("set_keep_compressed_buffer")
+    defer methodName.Destroy()
+    ptrsForPortableCompressedTexture2D.fnSetKeepCompressedBuffer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_keeping_compressed_buffer")
+    defer methodName.Destroy()
+    ptrsForPortableCompressedTexture2D.fnIsKeepingCompressedBuffer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_keep_all_compressed_buffers")
+    defer methodName.Destroy()
+    ptrsForPortableCompressedTexture2D.fnSetKeepAllCompressedBuffers = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_keeping_all_compressed_buffers")
+    defer methodName.Destroy()
+    ptrsForPortableCompressedTexture2D.fnIsKeepingAllCompressedBuffers = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+}
+
 type PortableCompressedTexture2D struct {
   Texture2D
 }
@@ -61,133 +126,88 @@ func (me *PortableCompressedTexture2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PortableCompressedTexture2D) CreateFromImage(image Image, compression_mode PortableCompressedTexture2DCompressionMode, normal_map bool, lossy_quality float64, )  {
-  classNameV := StringNameFromStr("PortableCompressedTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("create_from_image")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3679243433) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{image.AsCTypePtr(), gdc.ConstTypePtr(&compression_mode) , gdc.ConstTypePtr(&normal_map) , gdc.ConstTypePtr(&lossy_quality) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPortableCompressedTexture2D.fnCreateFromImage), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PortableCompressedTexture2D) GetFormat() ImageFormat {
-  classNameV := StringNameFromStr("PortableCompressedTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_format")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3847873762) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ImageFormat
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPortableCompressedTexture2D.fnGetFormat), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *PortableCompressedTexture2D) GetCompressionMode() PortableCompressedTexture2DCompressionMode {
-  classNameV := StringNameFromStr("PortableCompressedTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_compression_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3265612739) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret PortableCompressedTexture2DCompressionMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPortableCompressedTexture2D.fnGetCompressionMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *PortableCompressedTexture2D) SetSizeOverride(size Vector2, )  {
-  classNameV := StringNameFromStr("PortableCompressedTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_size_override")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{size.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPortableCompressedTexture2D.fnSetSizeOverride), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PortableCompressedTexture2D) GetSizeOverride() Vector2 {
-  classNameV := StringNameFromStr("PortableCompressedTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_size_override")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPortableCompressedTexture2D.fnGetSizeOverride), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PortableCompressedTexture2D) SetKeepCompressedBuffer(keep bool, )  {
-  classNameV := StringNameFromStr("PortableCompressedTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_keep_compressed_buffer")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&keep) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPortableCompressedTexture2D.fnSetKeepCompressedBuffer), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PortableCompressedTexture2D) IsKeepingCompressedBuffer() bool {
-  classNameV := StringNameFromStr("PortableCompressedTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_keeping_compressed_buffer")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPortableCompressedTexture2D.fnIsKeepingCompressedBuffer), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  PortableCompressedTexture2DSetKeepAllCompressedBuffers(keep bool, )  {
-  classNameV := StringNameFromStr("PortableCompressedTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_keep_all_compressed_buffers")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&keep) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPortableCompressedTexture2D.fnSetKeepAllCompressedBuffers), nil, unsafe.SliceData(cargs), nil)
 
 }
 
 func  PortableCompressedTexture2DIsKeepingAllCompressedBuffers() bool {
-  classNameV := StringNameFromStr("PortableCompressedTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_keeping_all_compressed_buffers")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPortableCompressedTexture2D.fnIsKeepingAllCompressedBuffers), nil, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

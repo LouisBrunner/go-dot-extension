@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCheckBoxList struct {
+}
+
+var ptrsForCheckBox ptrsForCheckBoxList
+
+func initCheckBoxPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CheckBox")
+  defer className.Destroy()
+}
+
 type CheckBox struct {
   Button
 }

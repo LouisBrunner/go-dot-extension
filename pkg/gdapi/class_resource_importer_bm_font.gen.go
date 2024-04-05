@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForResourceImporterBMFontList struct {
+}
+
+var ptrsForResourceImporterBMFont ptrsForResourceImporterBMFontList
+
+func initResourceImporterBMFontPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ResourceImporterBMFont")
+  defer className.Destroy()
+}
+
 type ResourceImporterBMFont struct {
   ResourceImporter
 }

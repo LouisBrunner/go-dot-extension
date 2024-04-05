@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioEffectPitchShiftList struct {
+  fnSetPitchScale gdc.MethodBindPtr
+  fnGetPitchScale gdc.MethodBindPtr
+  fnSetOversampling gdc.MethodBindPtr
+  fnGetOversampling gdc.MethodBindPtr
+  fnSetFftSize gdc.MethodBindPtr
+  fnGetFftSize gdc.MethodBindPtr
+}
+
+var ptrsForAudioEffectPitchShift ptrsForAudioEffectPitchShiftList
+
+func initAudioEffectPitchShiftPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioEffectPitchShift")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_pitch_scale")
+    defer methodName.Destroy()
+    ptrsForAudioEffectPitchShift.fnSetPitchScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_pitch_scale")
+    defer methodName.Destroy()
+    ptrsForAudioEffectPitchShift.fnGetPitchScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_oversampling")
+    defer methodName.Destroy()
+    ptrsForAudioEffectPitchShift.fnSetOversampling = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_oversampling")
+    defer methodName.Destroy()
+    ptrsForAudioEffectPitchShift.fnGetOversampling = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_fft_size")
+    defer methodName.Destroy()
+    ptrsForAudioEffectPitchShift.fnSetFftSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2323518741))
+  }
+  {
+    methodName := StringNameFromStr("get_fft_size")
+    defer methodName.Destroy()
+    ptrsForAudioEffectPitchShift.fnGetFftSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2361246789))
+  }
+}
+
 type AudioEffectPitchShift struct {
   AudioEffect
 }
@@ -61,89 +108,59 @@ func (me *AudioEffectPitchShift) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AudioEffectPitchShift) SetPitchScale(rate float64, )  {
-  classNameV := StringNameFromStr("AudioEffectPitchShift")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_pitch_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&rate) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectPitchShift.fnSetPitchScale), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectPitchShift) GetPitchScale() float64 {
-  classNameV := StringNameFromStr("AudioEffectPitchShift")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_pitch_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectPitchShift.fnGetPitchScale), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioEffectPitchShift) SetOversampling(amount int64, )  {
-  classNameV := StringNameFromStr("AudioEffectPitchShift")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_oversampling")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectPitchShift.fnSetOversampling), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectPitchShift) GetOversampling() int64 {
-  classNameV := StringNameFromStr("AudioEffectPitchShift")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_oversampling")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectPitchShift.fnGetOversampling), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioEffectPitchShift) SetFftSize(size AudioEffectPitchShiftFFTSize, )  {
-  classNameV := StringNameFromStr("AudioEffectPitchShift")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_fft_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2323518741) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectPitchShift.fnSetFftSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectPitchShift) GetFftSize() AudioEffectPitchShiftFFTSize {
-  classNameV := StringNameFromStr("AudioEffectPitchShift")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_fft_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2361246789) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret AudioEffectPitchShiftFFTSize
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectPitchShift.fnGetFftSize), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

@@ -14,6 +14,40 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForMultiplayerPeerExtensionList struct {
+  fnXGetPacket gdc.MethodBindPtr
+  fnXPutPacket gdc.MethodBindPtr
+  fnXGetAvailablePacketCount gdc.MethodBindPtr
+  fnXGetMaxPacketSize gdc.MethodBindPtr
+  fnXGetPacketScript gdc.MethodBindPtr
+  fnXPutPacketScript gdc.MethodBindPtr
+  fnXGetPacketChannel gdc.MethodBindPtr
+  fnXGetPacketMode gdc.MethodBindPtr
+  fnXSetTransferChannel gdc.MethodBindPtr
+  fnXGetTransferChannel gdc.MethodBindPtr
+  fnXSetTransferMode gdc.MethodBindPtr
+  fnXGetTransferMode gdc.MethodBindPtr
+  fnXSetTargetPeer gdc.MethodBindPtr
+  fnXGetPacketPeer gdc.MethodBindPtr
+  fnXIsServer gdc.MethodBindPtr
+  fnXPoll gdc.MethodBindPtr
+  fnXClose gdc.MethodBindPtr
+  fnXDisconnectPeer gdc.MethodBindPtr
+  fnXGetUniqueId gdc.MethodBindPtr
+  fnXSetRefuseNewConnections gdc.MethodBindPtr
+  fnXIsRefusingNewConnections gdc.MethodBindPtr
+  fnXIsServerRelaySupported gdc.MethodBindPtr
+  fnXGetConnectionStatus gdc.MethodBindPtr
+}
+
+var ptrsForMultiplayerPeerExtension ptrsForMultiplayerPeerExtensionList
+
+func initMultiplayerPeerExtensionPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("MultiplayerPeerExtension")
+  defer className.Destroy()
+}
+
 type MultiplayerPeerExtension struct {
   MultiplayerPeer
 }

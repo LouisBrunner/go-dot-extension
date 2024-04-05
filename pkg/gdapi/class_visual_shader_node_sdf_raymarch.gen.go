@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeSDFRaymarchList struct {
+}
+
+var ptrsForVisualShaderNodeSDFRaymarch ptrsForVisualShaderNodeSDFRaymarchList
+
+func initVisualShaderNodeSDFRaymarchPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeSDFRaymarch")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeSDFRaymarch struct {
   VisualShaderNode
 }

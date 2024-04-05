@@ -14,6 +14,59 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCurveXYZTextureList struct {
+  fnSetWidth gdc.MethodBindPtr
+  fnSetCurveX gdc.MethodBindPtr
+  fnGetCurveX gdc.MethodBindPtr
+  fnSetCurveY gdc.MethodBindPtr
+  fnGetCurveY gdc.MethodBindPtr
+  fnSetCurveZ gdc.MethodBindPtr
+  fnGetCurveZ gdc.MethodBindPtr
+}
+
+var ptrsForCurveXYZTexture ptrsForCurveXYZTextureList
+
+func initCurveXYZTexturePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CurveXYZTexture")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_width")
+    defer methodName.Destroy()
+    ptrsForCurveXYZTexture.fnSetWidth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("set_curve_x")
+    defer methodName.Destroy()
+    ptrsForCurveXYZTexture.fnSetCurveX = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 270443179))
+  }
+  {
+    methodName := StringNameFromStr("get_curve_x")
+    defer methodName.Destroy()
+    ptrsForCurveXYZTexture.fnGetCurveX = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2460114913))
+  }
+  {
+    methodName := StringNameFromStr("set_curve_y")
+    defer methodName.Destroy()
+    ptrsForCurveXYZTexture.fnSetCurveY = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 270443179))
+  }
+  {
+    methodName := StringNameFromStr("get_curve_y")
+    defer methodName.Destroy()
+    ptrsForCurveXYZTexture.fnGetCurveY = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2460114913))
+  }
+  {
+    methodName := StringNameFromStr("set_curve_z")
+    defer methodName.Destroy()
+    ptrsForCurveXYZTexture.fnSetCurveZ = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 270443179))
+  }
+  {
+    methodName := StringNameFromStr("get_curve_z")
+    defer methodName.Destroy()
+    ptrsForCurveXYZTexture.fnGetCurveZ = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2460114913))
+  }
+}
+
 type CurveXYZTexture struct {
   Texture2D
 }
@@ -51,103 +104,68 @@ func (me *CurveXYZTexture) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *CurveXYZTexture) SetWidth(width int64, )  {
-  classNameV := StringNameFromStr("CurveXYZTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_width")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCurveXYZTexture.fnSetWidth), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CurveXYZTexture) SetCurveX(curve Curve, )  {
-  classNameV := StringNameFromStr("CurveXYZTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_curve_x")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{curve.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCurveXYZTexture.fnSetCurveX), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CurveXYZTexture) GetCurveX() Curve {
-  classNameV := StringNameFromStr("CurveXYZTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_curve_x")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewCurve()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCurveXYZTexture.fnGetCurveX), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *CurveXYZTexture) SetCurveY(curve Curve, )  {
-  classNameV := StringNameFromStr("CurveXYZTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_curve_y")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{curve.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCurveXYZTexture.fnSetCurveY), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CurveXYZTexture) GetCurveY() Curve {
-  classNameV := StringNameFromStr("CurveXYZTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_curve_y")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewCurve()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCurveXYZTexture.fnGetCurveY), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *CurveXYZTexture) SetCurveZ(curve Curve, )  {
-  classNameV := StringNameFromStr("CurveXYZTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_curve_z")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{curve.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCurveXYZTexture.fnSetCurveZ), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CurveXYZTexture) GetCurveZ() Curve {
-  classNameV := StringNameFromStr("CurveXYZTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_curve_z")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewCurve()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCurveXYZTexture.fnGetCurveZ), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

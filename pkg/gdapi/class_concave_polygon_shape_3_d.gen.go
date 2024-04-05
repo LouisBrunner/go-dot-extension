@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForConcavePolygonShape3DList struct {
+  fnSetFaces gdc.MethodBindPtr
+  fnGetFaces gdc.MethodBindPtr
+  fnSetBackfaceCollisionEnabled gdc.MethodBindPtr
+  fnIsBackfaceCollisionEnabled gdc.MethodBindPtr
+}
+
+var ptrsForConcavePolygonShape3D ptrsForConcavePolygonShape3DList
+
+func initConcavePolygonShape3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ConcavePolygonShape3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_faces")
+    defer methodName.Destroy()
+    ptrsForConcavePolygonShape3D.fnSetFaces = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 334873810))
+  }
+  {
+    methodName := StringNameFromStr("get_faces")
+    defer methodName.Destroy()
+    ptrsForConcavePolygonShape3D.fnGetFaces = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 497664490))
+  }
+  {
+    methodName := StringNameFromStr("set_backface_collision_enabled")
+    defer methodName.Destroy()
+    ptrsForConcavePolygonShape3D.fnSetBackfaceCollisionEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_backface_collision_enabled")
+    defer methodName.Destroy()
+    ptrsForConcavePolygonShape3D.fnIsBackfaceCollisionEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type ConcavePolygonShape3D struct {
   Shape3D
 }
@@ -51,60 +86,40 @@ func (me *ConcavePolygonShape3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ConcavePolygonShape3D) SetFaces(faces PackedVector3Array, )  {
-  classNameV := StringNameFromStr("ConcavePolygonShape3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_faces")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 334873810) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{faces.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForConcavePolygonShape3D.fnSetFaces), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ConcavePolygonShape3D) GetFaces() PackedVector3Array {
-  classNameV := StringNameFromStr("ConcavePolygonShape3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_faces")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 497664490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedVector3Array()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForConcavePolygonShape3D.fnGetFaces), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ConcavePolygonShape3D) SetBackfaceCollisionEnabled(enabled bool, )  {
-  classNameV := StringNameFromStr("ConcavePolygonShape3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_backface_collision_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForConcavePolygonShape3D.fnSetBackfaceCollisionEnabled), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ConcavePolygonShape3D) IsBackfaceCollisionEnabled() bool {
-  classNameV := StringNameFromStr("ConcavePolygonShape3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_backface_collision_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForConcavePolygonShape3D.fnIsBackfaceCollisionEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

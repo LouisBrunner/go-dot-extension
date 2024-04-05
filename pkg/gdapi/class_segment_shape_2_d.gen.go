@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSegmentShape2DList struct {
+  fnSetA gdc.MethodBindPtr
+  fnGetA gdc.MethodBindPtr
+  fnSetB gdc.MethodBindPtr
+  fnGetB gdc.MethodBindPtr
+}
+
+var ptrsForSegmentShape2D ptrsForSegmentShape2DList
+
+func initSegmentShape2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("SegmentShape2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_a")
+    defer methodName.Destroy()
+    ptrsForSegmentShape2D.fnSetA = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_a")
+    defer methodName.Destroy()
+    ptrsForSegmentShape2D.fnGetA = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+  {
+    methodName := StringNameFromStr("set_b")
+    defer methodName.Destroy()
+    ptrsForSegmentShape2D.fnSetB = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_b")
+    defer methodName.Destroy()
+    ptrsForSegmentShape2D.fnGetB = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+}
+
 type SegmentShape2D struct {
   Shape2D
 }
@@ -51,60 +86,40 @@ func (me *SegmentShape2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *SegmentShape2D) SetA(a Vector2, )  {
-  classNameV := StringNameFromStr("SegmentShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_a")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{a.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSegmentShape2D.fnSetA), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SegmentShape2D) GetA() Vector2 {
-  classNameV := StringNameFromStr("SegmentShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_a")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSegmentShape2D.fnGetA), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *SegmentShape2D) SetB(b Vector2, )  {
-  classNameV := StringNameFromStr("SegmentShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_b")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{b.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSegmentShape2D.fnSetB), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SegmentShape2D) GetB() Vector2 {
-  classNameV := StringNameFromStr("SegmentShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_b")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSegmentShape2D.fnGetB), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

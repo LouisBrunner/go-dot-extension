@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForInputEventMagnifyGestureList struct {
+  fnSetFactor gdc.MethodBindPtr
+  fnGetFactor gdc.MethodBindPtr
+}
+
+var ptrsForInputEventMagnifyGesture ptrsForInputEventMagnifyGestureList
+
+func initInputEventMagnifyGesturePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("InputEventMagnifyGesture")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_factor")
+    defer methodName.Destroy()
+    ptrsForInputEventMagnifyGesture.fnSetFactor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_factor")
+    defer methodName.Destroy()
+    ptrsForInputEventMagnifyGesture.fnGetFactor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type InputEventMagnifyGesture struct {
   InputEventGesture
 }
@@ -51,31 +74,21 @@ func (me *InputEventMagnifyGesture) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *InputEventMagnifyGesture) SetFactor(factor float64, )  {
-  classNameV := StringNameFromStr("InputEventMagnifyGesture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_factor")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&factor) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventMagnifyGesture.fnSetFactor), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventMagnifyGesture) GetFactor() float64 {
-  classNameV := StringNameFromStr("InputEventMagnifyGesture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_factor")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventMagnifyGesture.fnGetFactor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

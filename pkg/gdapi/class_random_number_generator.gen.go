@@ -14,6 +14,77 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForRandomNumberGeneratorList struct {
+  fnSetSeed gdc.MethodBindPtr
+  fnGetSeed gdc.MethodBindPtr
+  fnSetState gdc.MethodBindPtr
+  fnGetState gdc.MethodBindPtr
+  fnRandi gdc.MethodBindPtr
+  fnRandf gdc.MethodBindPtr
+  fnRandfn gdc.MethodBindPtr
+  fnRandfRange gdc.MethodBindPtr
+  fnRandiRange gdc.MethodBindPtr
+  fnRandomize gdc.MethodBindPtr
+}
+
+var ptrsForRandomNumberGenerator ptrsForRandomNumberGeneratorList
+
+func initRandomNumberGeneratorPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("RandomNumberGenerator")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_seed")
+    defer methodName.Destroy()
+    ptrsForRandomNumberGenerator.fnSetSeed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_seed")
+    defer methodName.Destroy()
+    ptrsForRandomNumberGenerator.fnGetSeed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2455072627))
+  }
+  {
+    methodName := StringNameFromStr("set_state")
+    defer methodName.Destroy()
+    ptrsForRandomNumberGenerator.fnSetState = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_state")
+    defer methodName.Destroy()
+    ptrsForRandomNumberGenerator.fnGetState = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("randi")
+    defer methodName.Destroy()
+    ptrsForRandomNumberGenerator.fnRandi = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2455072627))
+  }
+  {
+    methodName := StringNameFromStr("randf")
+    defer methodName.Destroy()
+    ptrsForRandomNumberGenerator.fnRandf = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 191475506))
+  }
+  {
+    methodName := StringNameFromStr("randfn")
+    defer methodName.Destroy()
+    ptrsForRandomNumberGenerator.fnRandfn = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 837325100))
+  }
+  {
+    methodName := StringNameFromStr("randf_range")
+    defer methodName.Destroy()
+    ptrsForRandomNumberGenerator.fnRandfRange = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4269894367))
+  }
+  {
+    methodName := StringNameFromStr("randi_range")
+    defer methodName.Destroy()
+    ptrsForRandomNumberGenerator.fnRandiRange = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 50157827))
+  }
+  {
+    methodName := StringNameFromStr("randomize")
+    defer methodName.Destroy()
+    ptrsForRandomNumberGenerator.fnRandomize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+}
+
 type RandomNumberGenerator struct {
   RefCounted
 }
@@ -51,99 +122,64 @@ func (me *RandomNumberGenerator) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *RandomNumberGenerator) SetSeed(seed int64, )  {
-  classNameV := StringNameFromStr("RandomNumberGenerator")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_seed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&seed) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRandomNumberGenerator.fnSetSeed), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RandomNumberGenerator) GetSeed() int64 {
-  classNameV := StringNameFromStr("RandomNumberGenerator")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_seed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRandomNumberGenerator.fnGetSeed), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RandomNumberGenerator) SetState(state int64, )  {
-  classNameV := StringNameFromStr("RandomNumberGenerator")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_state")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&state) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRandomNumberGenerator.fnSetState), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RandomNumberGenerator) GetState() int64 {
-  classNameV := StringNameFromStr("RandomNumberGenerator")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_state")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRandomNumberGenerator.fnGetState), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RandomNumberGenerator) Randi() int64 {
-  classNameV := StringNameFromStr("RandomNumberGenerator")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("randi")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRandomNumberGenerator.fnRandi), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RandomNumberGenerator) Randf() float64 {
-  classNameV := StringNameFromStr("RandomNumberGenerator")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("randf")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 191475506) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRandomNumberGenerator.fnRandf), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RandomNumberGenerator) Randfn(mean float64, deviation float64, ) float64 {
-  classNameV := StringNameFromStr("RandomNumberGenerator")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("randfn")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 837325100) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mean) , gdc.ConstTypePtr(&deviation) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -151,16 +187,11 @@ func  (me *RandomNumberGenerator) Randfn(mean float64, deviation float64, ) floa
   pinner.Pin(&mean)
   pinner.Pin(&deviation)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRandomNumberGenerator.fnRandfn), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RandomNumberGenerator) RandfRange(from float64, to float64, ) float64 {
-  classNameV := StringNameFromStr("RandomNumberGenerator")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("randf_range")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4269894367) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from) , gdc.ConstTypePtr(&to) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -168,16 +199,11 @@ func  (me *RandomNumberGenerator) RandfRange(from float64, to float64, ) float64
   pinner.Pin(&from)
   pinner.Pin(&to)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRandomNumberGenerator.fnRandfRange), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RandomNumberGenerator) RandiRange(from int64, to int64, ) int64 {
-  classNameV := StringNameFromStr("RandomNumberGenerator")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("randi_range")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 50157827) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from) , gdc.ConstTypePtr(&to) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -185,21 +211,16 @@ func  (me *RandomNumberGenerator) RandiRange(from int64, to int64, ) int64 {
   pinner.Pin(&from)
   pinner.Pin(&to)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRandomNumberGenerator.fnRandiRange), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RandomNumberGenerator) Randomize()  {
-  classNameV := StringNameFromStr("RandomNumberGenerator")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("randomize")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRandomNumberGenerator.fnRandomize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForShaderGlobalsOverrideList struct {
+}
+
+var ptrsForShaderGlobalsOverride ptrsForShaderGlobalsOverrideList
+
+func initShaderGlobalsOverridePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ShaderGlobalsOverride")
+  defer className.Destroy()
+}
+
 type ShaderGlobalsOverride struct {
   Node
 }

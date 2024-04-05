@@ -14,6 +14,35 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForTLSOptionsList struct {
+  fnClient gdc.MethodBindPtr
+  fnClientUnsafe gdc.MethodBindPtr
+  fnServer gdc.MethodBindPtr
+}
+
+var ptrsForTLSOptions ptrsForTLSOptionsList
+
+func initTLSOptionsPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("TLSOptions")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("client")
+    defer methodName.Destroy()
+    ptrsForTLSOptions.fnClient = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3565000357))
+  }
+  {
+    methodName := StringNameFromStr("client_unsafe")
+    defer methodName.Destroy()
+    ptrsForTLSOptions.fnClientUnsafe = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2090251749))
+  }
+  {
+    methodName := StringNameFromStr("server")
+    defer methodName.Destroy()
+    ptrsForTLSOptions.fnServer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36969539))
+  }
+}
+
 type TLSOptions struct {
   RefCounted
 }
@@ -51,47 +80,32 @@ func (me *TLSOptions) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  TLSOptionsClient(trusted_chain X509Certificate, common_name_override String, ) TLSOptions {
-  classNameV := StringNameFromStr("TLSOptions")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("client")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3565000357) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{trusted_chain.AsCTypePtr(), common_name_override.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTLSOptions()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTLSOptions.fnClient), nil, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  TLSOptionsClientUnsafe(trusted_chain X509Certificate, ) TLSOptions {
-  classNameV := StringNameFromStr("TLSOptions")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("client_unsafe")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2090251749) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{trusted_chain.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTLSOptions()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTLSOptions.fnClientUnsafe), nil, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  TLSOptionsServer(key CryptoKey, certificate X509Certificate, ) TLSOptions {
-  classNameV := StringNameFromStr("TLSOptions")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("server")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36969539) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{key.AsCTypePtr(), certificate.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTLSOptions()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTLSOptions.fnServer), nil, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

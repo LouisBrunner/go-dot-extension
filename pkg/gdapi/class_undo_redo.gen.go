@@ -14,6 +14,143 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForUndoRedoList struct {
+  fnCreateAction gdc.MethodBindPtr
+  fnCommitAction gdc.MethodBindPtr
+  fnIsCommittingAction gdc.MethodBindPtr
+  fnAddDoMethod gdc.MethodBindPtr
+  fnAddUndoMethod gdc.MethodBindPtr
+  fnAddDoProperty gdc.MethodBindPtr
+  fnAddUndoProperty gdc.MethodBindPtr
+  fnAddDoReference gdc.MethodBindPtr
+  fnAddUndoReference gdc.MethodBindPtr
+  fnStartForceKeepInMergeEnds gdc.MethodBindPtr
+  fnEndForceKeepInMergeEnds gdc.MethodBindPtr
+  fnGetHistoryCount gdc.MethodBindPtr
+  fnGetCurrentAction gdc.MethodBindPtr
+  fnGetActionName gdc.MethodBindPtr
+  fnClearHistory gdc.MethodBindPtr
+  fnGetCurrentActionName gdc.MethodBindPtr
+  fnHasUndo gdc.MethodBindPtr
+  fnHasRedo gdc.MethodBindPtr
+  fnGetVersion gdc.MethodBindPtr
+  fnRedo gdc.MethodBindPtr
+  fnUndo gdc.MethodBindPtr
+}
+
+var ptrsForUndoRedo ptrsForUndoRedoList
+
+func initUndoRedoPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("UndoRedo")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("create_action")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnCreateAction = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3171901514))
+  }
+  {
+    methodName := StringNameFromStr("commit_action")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnCommitAction = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3216645846))
+  }
+  {
+    methodName := StringNameFromStr("is_committing_action")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnIsCommittingAction = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("add_do_method")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnAddDoMethod = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1611583062))
+  }
+  {
+    methodName := StringNameFromStr("add_undo_method")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnAddUndoMethod = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1611583062))
+  }
+  {
+    methodName := StringNameFromStr("add_do_property")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnAddDoProperty = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1017172818))
+  }
+  {
+    methodName := StringNameFromStr("add_undo_property")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnAddUndoProperty = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1017172818))
+  }
+  {
+    methodName := StringNameFromStr("add_do_reference")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnAddDoReference = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3975164845))
+  }
+  {
+    methodName := StringNameFromStr("add_undo_reference")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnAddUndoReference = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3975164845))
+  }
+  {
+    methodName := StringNameFromStr("start_force_keep_in_merge_ends")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnStartForceKeepInMergeEnds = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("end_force_keep_in_merge_ends")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnEndForceKeepInMergeEnds = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("get_history_count")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnGetHistoryCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2455072627))
+  }
+  {
+    methodName := StringNameFromStr("get_current_action")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnGetCurrentAction = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2455072627))
+  }
+  {
+    methodName := StringNameFromStr("get_action_name")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnGetActionName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 990163283))
+  }
+  {
+    methodName := StringNameFromStr("clear_history")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnClearHistory = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3216645846))
+  }
+  {
+    methodName := StringNameFromStr("get_current_action_name")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnGetCurrentActionName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("has_undo")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnHasUndo = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("has_redo")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnHasRedo = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_version")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnGetVersion = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("redo")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnRedo = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("undo")
+    defer methodName.Destroy()
+    ptrsForUndoRedo.fnUndo = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+}
+
 type UndoRedo struct {
   Object
 }
@@ -58,307 +195,202 @@ func (me *UndoRedo) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *UndoRedo) CreateAction(name String, merge_mode UndoRedoMergeMode, backward_undo_ops bool, )  {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("create_action")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3171901514) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), gdc.ConstTypePtr(&merge_mode) , gdc.ConstTypePtr(&backward_undo_ops) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnCreateAction), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *UndoRedo) CommitAction(execute bool, )  {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("commit_action")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3216645846) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&execute) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnCommitAction), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *UndoRedo) IsCommittingAction() bool {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_committing_action")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnIsCommittingAction), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *UndoRedo) AddDoMethod(callable Callable, )  {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_do_method")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1611583062) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{callable.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnAddDoMethod), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *UndoRedo) AddUndoMethod(callable Callable, )  {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_undo_method")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1611583062) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{callable.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnAddUndoMethod), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *UndoRedo) AddDoProperty(object Object, property StringName, value Variant, )  {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_do_property")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1017172818) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{object.AsCTypePtr(), property.AsCTypePtr(), value.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnAddDoProperty), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *UndoRedo) AddUndoProperty(object Object, property StringName, value Variant, )  {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_undo_property")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1017172818) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{object.AsCTypePtr(), property.AsCTypePtr(), value.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnAddUndoProperty), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *UndoRedo) AddDoReference(object Object, )  {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_do_reference")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3975164845) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{object.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnAddDoReference), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *UndoRedo) AddUndoReference(object Object, )  {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_undo_reference")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3975164845) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{object.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnAddUndoReference), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *UndoRedo) StartForceKeepInMergeEnds()  {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("start_force_keep_in_merge_ends")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnStartForceKeepInMergeEnds), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *UndoRedo) EndForceKeepInMergeEnds()  {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("end_force_keep_in_merge_ends")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnEndForceKeepInMergeEnds), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *UndoRedo) GetHistoryCount() int64 {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_history_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnGetHistoryCount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *UndoRedo) GetCurrentAction() int64 {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_current_action")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2455072627) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnGetCurrentAction), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *UndoRedo) GetActionName(id int64, ) String {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_action_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 990163283) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
   pinner.Pin(&id)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnGetActionName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *UndoRedo) ClearHistory(increase_version bool, )  {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("clear_history")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3216645846) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&increase_version) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnClearHistory), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *UndoRedo) GetCurrentActionName() String {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_current_action_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnGetCurrentActionName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *UndoRedo) HasUndo() bool {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_undo")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnHasUndo), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *UndoRedo) HasRedo() bool {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_redo")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnHasRedo), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *UndoRedo) GetVersion() int64 {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_version")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnGetVersion), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *UndoRedo) Redo() bool {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("redo")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnRedo), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *UndoRedo) Undo() bool {
-  classNameV := StringNameFromStr("UndoRedo")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("undo")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnUndo), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 

@@ -9,6 +9,93 @@ import (
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
+// FIXME: avoid unused imports
+var _ = fmt.Sprintf("")
+
+type ptrsForSignalList struct {
+  ctrFn gdc.PtrConstructor
+  ctrFromSignalFn gdc.PtrConstructor
+  ctrFromObjectStringNameFn gdc.PtrConstructor
+  destructorFn gdc.PtrDestructor
+  methodIsNullFn gdc.PtrBuiltInMethod
+  methodGetObjectFn gdc.PtrBuiltInMethod
+  methodGetObjectIdFn gdc.PtrBuiltInMethod
+  methodGetNameFn gdc.PtrBuiltInMethod
+  methodConnectFn gdc.PtrBuiltInMethod
+  methodDisconnectFn gdc.PtrBuiltInMethod
+  methodIsConnectedFn gdc.PtrBuiltInMethod
+  methodGetConnectionsFn gdc.PtrBuiltInMethod
+  methodEmitFn gdc.PtrBuiltInMethod
+  operatorNotFn gdc.PtrOperatorEvaluator
+  operatorEqualSignalFn gdc.PtrOperatorEvaluator
+  operatorNotEqualSignalFn gdc.PtrOperatorEvaluator
+  operatorInDictionaryFn gdc.PtrOperatorEvaluator
+  operatorInArrayFn gdc.PtrOperatorEvaluator
+  toVariantFn gdc.TypeFromVariantConstructorFunc
+  fromVariantFn gdc.VariantFromTypeConstructorFunc
+}
+
+var ptrsForSignal ptrsForSignalList
+
+func initSignalPtrs(iface gdc.Interface) {
+  ptrsForSignal.ctrFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeSignal, 0))
+  ptrsForSignal.ctrFromSignalFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeSignal, 1))
+  ptrsForSignal.ctrFromObjectStringNameFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeSignal, 2))
+  ptrsForSignal.destructorFn = ensurePtr(iface.VariantGetPtrDestructor(gdc.VariantTypeSignal))
+  {
+    methodName := StringNameFromStr("is_null")
+    defer methodName.Destroy()
+    ptrsForSignal.methodIsNullFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, methodName.AsCPtr(), 3918633141))
+  }
+  {
+    methodName := StringNameFromStr("get_object")
+    defer methodName.Destroy()
+    ptrsForSignal.methodGetObjectFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, methodName.AsCPtr(), 4008621732))
+  }
+  {
+    methodName := StringNameFromStr("get_object_id")
+    defer methodName.Destroy()
+    ptrsForSignal.methodGetObjectIdFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, methodName.AsCPtr(), 3173160232))
+  }
+  {
+    methodName := StringNameFromStr("get_name")
+    defer methodName.Destroy()
+    ptrsForSignal.methodGetNameFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, methodName.AsCPtr(), 1825232092))
+  }
+  {
+    methodName := StringNameFromStr("connect")
+    defer methodName.Destroy()
+    ptrsForSignal.methodConnectFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, methodName.AsCPtr(), 979702392))
+  }
+  {
+    methodName := StringNameFromStr("disconnect")
+    defer methodName.Destroy()
+    ptrsForSignal.methodDisconnectFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, methodName.AsCPtr(), 3470848906))
+  }
+  {
+    methodName := StringNameFromStr("is_connected")
+    defer methodName.Destroy()
+    ptrsForSignal.methodIsConnectedFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, methodName.AsCPtr(), 4129521963))
+  }
+  {
+    methodName := StringNameFromStr("get_connections")
+    defer methodName.Destroy()
+    ptrsForSignal.methodGetConnectionsFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, methodName.AsCPtr(), 4144163970))
+  }
+  {
+    methodName := StringNameFromStr("emit")
+    defer methodName.Destroy()
+    ptrsForSignal.methodEmitFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, methodName.AsCPtr(), 3286317445))
+  }
+  ptrsForSignal.operatorNotFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, gdc.VariantTypeSignal, gdc.VariantTypeNil))
+  ptrsForSignal.operatorEqualSignalFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, gdc.VariantTypeSignal, gdc.VariantTypeSignal))
+  ptrsForSignal.operatorNotEqualSignalFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, gdc.VariantTypeSignal, gdc.VariantTypeSignal))
+  ptrsForSignal.operatorInDictionaryFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, gdc.VariantTypeSignal, gdc.VariantTypeDictionary))
+  ptrsForSignal.operatorInArrayFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, gdc.VariantTypeSignal, gdc.VariantTypeArray))
+  ptrsForSignal.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypeSignal))
+  ptrsForSignal.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypeSignal))
+}
+
 type Signal struct {
   data   *[classSizeSignal]byte
   iface  gdc.Interface
@@ -32,8 +119,7 @@ func NewSignal() *Signal {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newSignal()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeSignal, 0) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForSignal.ctrFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
   return me
 }
 
@@ -41,8 +127,7 @@ func NewSignalFromSignal(from Signal, ) *Signal {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newSignal()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeSignal, 1) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForSignal.ctrFromSignalFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
   return me
 }
 
@@ -50,15 +135,13 @@ func NewSignalFromObjectStringName(object Object, signal StringName, ) *Signal {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newSignal()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeSignal, 2) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{object.AsCTypePtr(), signal.AsCTypePtr(), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForSignal.ctrFromObjectStringNameFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{object.AsCTypePtr(), signal.AsCTypePtr(), }))
   return me
 }
 
 // Destructor
 func (me *Signal) Destroy() {
-  dtr := me.iface.VariantGetPtrDestructor(gdc.VariantTypeSignal)
-	me.iface.CallPtrDestructor(dtr, me.AsTypePtr())
+	me.iface.CallPtrDestructor(ensurePtr(ptrsForSignal.destructorFn), me.AsTypePtr())
   me.pinner.Unpin()
 }
 
@@ -68,16 +151,14 @@ func (me *Variant) AsSignal() (*Signal, error) {
 		return nil, fmt.Errorf("variant is not a Signal")
 	}
   bclass := newSignal()
-	fn := me.iface.GetVariantToTypeConstructor(me.Type())
-	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	me.iface.CallTypeFromVariantConstructorFunc(ensurePtr(ptrsForSignal.toVariantFn), bclass.asUninitialized(), me.AsPtr())
 	return bclass, nil
 }
 
 func (me *Signal) AsVariant() *Variant {
   va := newVariant()
   va.inner = me
-  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
-  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  me.iface.CallVariantFromTypeConstructorFunc(ensurePtr(ptrsForSignal.fromVariantFn), va.asUninitialized(), me.AsTypePtr())
   return va
 }
 
@@ -107,66 +188,46 @@ func (me *Signal) asUninitialized() gdc.UninitializedTypePtr {
 // Methods
 
 func (me *Signal) IsNull() bool {
-  name := StringNameFromStr("is_null")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, name.AsCPtr(), 3918633141) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForSignal.methodIsNullFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Signal) GetObject() Object {
-  name := StringNameFromStr("get_object")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, name.AsCPtr(), 4008621732) // FIXME: should cache?
-
   ret := NewObject()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForSignal.methodGetObjectFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Signal) GetObjectId() int64 {
-  name := StringNameFromStr("get_object_id")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, name.AsCPtr(), 3173160232) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForSignal.methodGetObjectIdFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Signal) GetName() StringName {
-  name := StringNameFromStr("get_name")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, name.AsCPtr(), 1825232092) // FIXME: should cache?
-
   ret := NewStringName()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForSignal.methodGetNameFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Signal) Connect(callable Callable, flags int64, ) int64 {
-  name := StringNameFromStr("connect")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, name.AsCPtr(), 979702392) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
 
@@ -175,112 +236,96 @@ func (me *Signal) Connect(callable Callable, flags int64, ) int64 {
   args := []gdc.ConstTypePtr{callable.AsCTypePtr(), varg1.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForSignal.methodConnectFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Signal) Disconnect(callable Callable, )  {
-  name := StringNameFromStr("disconnect")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, name.AsCPtr(), 3470848906) // FIXME: should cache?
-
 
   args := []gdc.ConstTypePtr{callable.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForSignal.methodDisconnectFn), me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
 func (me *Signal) IsConnected(callable Callable, ) bool {
-  name := StringNameFromStr("is_connected")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, name.AsCPtr(), 4129521963) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
 
   args := []gdc.ConstTypePtr{callable.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForSignal.methodIsConnectedFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Signal) GetConnections() Array {
-  name := StringNameFromStr("get_connections")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, name.AsCPtr(), 4144163970) // FIXME: should cache?
-
   ret := NewArray()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForSignal.methodGetConnectionsFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Signal) Emit(varargs ...Variant)  {
-  name := StringNameFromStr("emit")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeSignal, name.AsCPtr(), 3286317445) // FIXME: should cache?
-
   args := []gdc.ConstTypePtr{}
   for _, arg := range varargs {
     args = append(args, arg.AsCTypePtr())
   }
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForSignal.methodEmitFn), me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
 // Operators
 
 func (me *Signal) EqualVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Signal) NotEqualVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Signal) Not() bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, me.Type(), gdc.VariantTypeNil) // FIXME: cache
+  opPtr := ptrsForSignal.operatorNotFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), nil, ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Signal) EqualSignal(right Signal) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForSignal.operatorEqualSignalFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Signal) NotEqualSignal(right Signal) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForSignal.operatorNotEqualSignalFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Signal) InDictionary(right Dictionary) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForSignal.operatorInDictionaryFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Signal) InArray(right Array) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForSignal.operatorInArrayFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 

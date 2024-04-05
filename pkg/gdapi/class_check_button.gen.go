@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCheckButtonList struct {
+}
+
+var ptrsForCheckButton ptrsForCheckButtonList
+
+func initCheckButtonPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CheckButton")
+  defer className.Destroy()
+}
+
 type CheckButton struct {
   Button
 }

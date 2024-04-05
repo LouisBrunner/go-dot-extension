@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAnimatableBody3DList struct {
+  fnSetSyncToPhysics gdc.MethodBindPtr
+  fnIsSyncToPhysicsEnabled gdc.MethodBindPtr
+}
+
+var ptrsForAnimatableBody3D ptrsForAnimatableBody3DList
+
+func initAnimatableBody3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AnimatableBody3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_sync_to_physics")
+    defer methodName.Destroy()
+    ptrsForAnimatableBody3D.fnSetSyncToPhysics = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_sync_to_physics_enabled")
+    defer methodName.Destroy()
+    ptrsForAnimatableBody3D.fnIsSyncToPhysicsEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type AnimatableBody3D struct {
   StaticBody3D
 }
@@ -51,31 +74,21 @@ func (me *AnimatableBody3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AnimatableBody3D) SetSyncToPhysics(enable bool, )  {
-  classNameV := StringNameFromStr("AnimatableBody3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_sync_to_physics")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatableBody3D.fnSetSyncToPhysics), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimatableBody3D) IsSyncToPhysicsEnabled() bool {
-  classNameV := StringNameFromStr("AnimatableBody3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_sync_to_physics_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatableBody3D.fnIsSyncToPhysicsEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

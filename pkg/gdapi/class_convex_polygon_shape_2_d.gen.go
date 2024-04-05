@@ -14,6 +14,35 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForConvexPolygonShape2DList struct {
+  fnSetPointCloud gdc.MethodBindPtr
+  fnSetPoints gdc.MethodBindPtr
+  fnGetPoints gdc.MethodBindPtr
+}
+
+var ptrsForConvexPolygonShape2D ptrsForConvexPolygonShape2DList
+
+func initConvexPolygonShape2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ConvexPolygonShape2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_point_cloud")
+    defer methodName.Destroy()
+    ptrsForConvexPolygonShape2D.fnSetPointCloud = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1509147220))
+  }
+  {
+    methodName := StringNameFromStr("set_points")
+    defer methodName.Destroy()
+    ptrsForConvexPolygonShape2D.fnSetPoints = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1509147220))
+  }
+  {
+    methodName := StringNameFromStr("get_points")
+    defer methodName.Destroy()
+    ptrsForConvexPolygonShape2D.fnGetPoints = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2961356807))
+  }
+}
+
 type ConvexPolygonShape2D struct {
   Shape2D
 }
@@ -51,45 +80,30 @@ func (me *ConvexPolygonShape2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ConvexPolygonShape2D) SetPointCloud(point_cloud PackedVector2Array, )  {
-  classNameV := StringNameFromStr("ConvexPolygonShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_point_cloud")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1509147220) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{point_cloud.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForConvexPolygonShape2D.fnSetPointCloud), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ConvexPolygonShape2D) SetPoints(points PackedVector2Array, )  {
-  classNameV := StringNameFromStr("ConvexPolygonShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_points")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1509147220) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{points.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForConvexPolygonShape2D.fnSetPoints), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ConvexPolygonShape2D) GetPoints() PackedVector2Array {
-  classNameV := StringNameFromStr("ConvexPolygonShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_points")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2961356807) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedVector2Array()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForConvexPolygonShape2D.fnGetPoints), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

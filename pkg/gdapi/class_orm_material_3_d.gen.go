@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForORMMaterial3DList struct {
+}
+
+var ptrsForORMMaterial3D ptrsForORMMaterial3DList
+
+func initORMMaterial3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ORMMaterial3D")
+  defer className.Destroy()
+}
+
 type ORMMaterial3D struct {
   BaseMaterial3D
 }

@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeColorConstantList struct {
+  fnSetConstant gdc.MethodBindPtr
+  fnGetConstant gdc.MethodBindPtr
+}
+
+var ptrsForVisualShaderNodeColorConstant ptrsForVisualShaderNodeColorConstantList
+
+func initVisualShaderNodeColorConstantPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeColorConstant")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_constant")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeColorConstant.fnSetConstant = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2920490490))
+  }
+  {
+    methodName := StringNameFromStr("get_constant")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeColorConstant.fnGetConstant = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3444240500))
+  }
+}
+
 type VisualShaderNodeColorConstant struct {
   VisualShaderNodeConstant
 }
@@ -51,31 +74,21 @@ func (me *VisualShaderNodeColorConstant) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisualShaderNodeColorConstant) SetConstant(constant Color, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeColorConstant")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_constant")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{constant.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeColorConstant.fnSetConstant), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeColorConstant) GetConstant() Color {
-  classNameV := StringNameFromStr("VisualShaderNodeColorConstant")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_constant")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewColor()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeColorConstant.fnGetConstant), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

@@ -14,6 +14,47 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForXRController3DList struct {
+  fnIsButtonPressed gdc.MethodBindPtr
+  fnGetInput gdc.MethodBindPtr
+  fnGetFloat gdc.MethodBindPtr
+  fnGetVector2 gdc.MethodBindPtr
+  fnGetTrackerHand gdc.MethodBindPtr
+}
+
+var ptrsForXRController3D ptrsForXRController3DList
+
+func initXRController3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("XRController3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("is_button_pressed")
+    defer methodName.Destroy()
+    ptrsForXRController3D.fnIsButtonPressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2619796661))
+  }
+  {
+    methodName := StringNameFromStr("get_input")
+    defer methodName.Destroy()
+    ptrsForXRController3D.fnGetInput = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2760726917))
+  }
+  {
+    methodName := StringNameFromStr("get_float")
+    defer methodName.Destroy()
+    ptrsForXRController3D.fnGetFloat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2349060816))
+  }
+  {
+    methodName := StringNameFromStr("get_vector2")
+    defer methodName.Destroy()
+    ptrsForXRController3D.fnGetVector2 = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3100822709))
+  }
+  {
+    methodName := StringNameFromStr("get_tracker_hand")
+    defer methodName.Destroy()
+    ptrsForXRController3D.fnGetTrackerHand = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4181770860))
+  }
+}
+
 type XRController3D struct {
   XRNode3D
 }
@@ -51,77 +92,52 @@ func (me *XRController3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *XRController3D) IsButtonPressed(name StringName, ) bool {
-  classNameV := StringNameFromStr("XRController3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_button_pressed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRController3D.fnIsButtonPressed), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *XRController3D) GetInput(name StringName, ) Variant {
-  classNameV := StringNameFromStr("XRController3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_input")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2760726917) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVariant()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRController3D.fnGetInput), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRController3D) GetFloat(name StringName, ) float64 {
-  classNameV := StringNameFromStr("XRController3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_float")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2349060816) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRController3D.fnGetFloat), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *XRController3D) GetVector2(name StringName, ) Vector2 {
-  classNameV := StringNameFromStr("XRController3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_vector2")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3100822709) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRController3D.fnGetVector2), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRController3D) GetTrackerHand() XRPositionalTrackerTrackerHand {
-  classNameV := StringNameFromStr("XRController3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_tracker_hand")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4181770860) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret XRPositionalTrackerTrackerHand
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRController3D.fnGetTrackerHand), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 

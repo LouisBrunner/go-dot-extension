@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeCubemapParameterList struct {
+}
+
+var ptrsForVisualShaderNodeCubemapParameter ptrsForVisualShaderNodeCubemapParameterList
+
+func initVisualShaderNodeCubemapParameterPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeCubemapParameter")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeCubemapParameter struct {
   VisualShaderNodeTextureParameter
 }

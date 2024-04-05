@@ -14,6 +14,28 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 {{$Class := mapClass .Name -}}
+type ptrsFor{{$Class}}List struct {
+{{- range .Methods}}
+  fn{{mapMethod .Name}} gdc.MethodBindPtr
+{{- end}}
+}
+
+var ptrsFor{{$Class}} ptrsFor{{$Class}}List
+
+func init{{$Class}}Ptrs(iface gdc.Interface) {
+{{if eq .Name "GDExtension"}}  return {{/* TODO: why can't I load their methods??? */}}
+{{end}}
+  className := StringNameFromStr("{{.Name}}")
+  defer className.Destroy()
+{{- range .Methods}}{{if not .IsVirtual}}
+  {
+    methodName := StringNameFromStr("{{.Name}}")
+    defer methodName.Destroy()
+    ptrsFor{{$Class}}.fn{{mapMethod .Name}} = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), {{.Hash}}))
+  }
+{{- end}}{{end}}
+}
+
 type {{$Class}} struct {
   {{if .Inherits -}}
     {{mapClass .Inherits}}
@@ -62,11 +84,6 @@ func {{if .IsStatic }} {{$Class}}{{else}} (me *{{$Class}}) {{end }}{{mapMethod .
 ({{range .Arguments}}{{mapName .Name}} {{mapWideType .Type}}, {{end}}
 {{- if .IsVarArg}}varargs ...Variant{{end -}}
 ) {{if .ReturnValue}}{{mapWideType .ReturnValue.Type}}{{end}} {
-  classNameV := StringNameFromStr("{{$.Name}}")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("{{.Name}}")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), {{.Hash}}) // FIXME: should cache?
 {{- if .IsVarArg}}
   cargs := make([]gdc.ConstVariantPtr, 0, {{len .Arguments}} + len(varargs)){{range $i, $e := .Arguments}}
 {{if eq (mapWideType .Type) "Variant"}}
@@ -89,7 +106,7 @@ func {{if .IsStatic }} {{$Class}}{{else}} (me *{{$Class}}) {{end }}{{mapMethod .
   defer ret.Destroy()
 {{- end}}{{end}}
   cerr := &gdc.CallError{}
-  giface.ObjectMethodBindCall(methodPtr, {{if .IsStatic}}nil{{else}}me.obj{{end}}, unsafe.SliceData(cargs), gdc.Int(len(cargs)), {{if .ReturnValue}}ret.asUninitialized(){{else}}nil{{end}}, cerr)
+  giface.ObjectMethodBindCall(ensurePtr(ptrsFor{{$Class}}.fn{{mapMethod .Name}}), {{if .IsStatic}}nil{{else}}me.obj{{end}}, unsafe.SliceData(cargs), gdc.Int(len(cargs)), {{if .ReturnValue}}ret.asUninitialized(){{else}}nil{{end}}, cerr)
   if cerr.Error != gdc.CallOk {
     log.Printf("Error calling method: %v", cerr) // FIXME: bad logging
     return{{if .ReturnValue}} {{if or (startsWith .ReturnValue.Type "enum::") (startsWith .ReturnValue.Type "bitfield::") -}}
@@ -138,7 +155,7 @@ ret := New{{mapClass .ReturnValue.Type}}()
 {{- end -}}
 {{- end}}
 {{end}}
-  giface.ObjectMethodBindPtrcall(methodPtr, {{if .IsStatic}}nil{{else}}me.obj{{end}}, unsafe.SliceData(cargs), {{if .ReturnValue -}}
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsFor{{$Class}}.fn{{mapMethod .Name}}), {{if .IsStatic}}nil{{else}}me.obj{{end}}, unsafe.SliceData(cargs), {{if .ReturnValue -}}
 {{- if or (startsWith .ReturnValue.Type "enum::") (startsWith .ReturnValue.Type "bitfield::") -}}
 gdc.TypePtr(unsafe.Pointer(&ret))
 {{- else -}}

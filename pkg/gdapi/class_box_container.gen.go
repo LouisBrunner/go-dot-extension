@@ -14,6 +14,47 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForBoxContainerList struct {
+  fnAddSpacer gdc.MethodBindPtr
+  fnSetAlignment gdc.MethodBindPtr
+  fnGetAlignment gdc.MethodBindPtr
+  fnSetVertical gdc.MethodBindPtr
+  fnIsVertical gdc.MethodBindPtr
+}
+
+var ptrsForBoxContainer ptrsForBoxContainerList
+
+func initBoxContainerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("BoxContainer")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("add_spacer")
+    defer methodName.Destroy()
+    ptrsForBoxContainer.fnAddSpacer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1326660695))
+  }
+  {
+    methodName := StringNameFromStr("set_alignment")
+    defer methodName.Destroy()
+    ptrsForBoxContainer.fnSetAlignment = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2456745134))
+  }
+  {
+    methodName := StringNameFromStr("get_alignment")
+    defer methodName.Destroy()
+    ptrsForBoxContainer.fnGetAlignment = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1915476527))
+  }
+  {
+    methodName := StringNameFromStr("set_vertical")
+    defer methodName.Destroy()
+    ptrsForBoxContainer.fnSetVertical = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_vertical")
+    defer methodName.Destroy()
+    ptrsForBoxContainer.fnIsVertical = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type BoxContainer struct {
   Container
 }
@@ -58,76 +99,51 @@ func (me *BoxContainer) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *BoxContainer) AddSpacer(begin bool, ) Control {
-  classNameV := StringNameFromStr("BoxContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_spacer")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1326660695) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&begin) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewControl()
   pinner.Pin(&begin)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoxContainer.fnAddSpacer), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *BoxContainer) SetAlignment(alignment BoxContainerAlignmentMode, )  {
-  classNameV := StringNameFromStr("BoxContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_alignment")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2456745134) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&alignment) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoxContainer.fnSetAlignment), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BoxContainer) GetAlignment() BoxContainerAlignmentMode {
-  classNameV := StringNameFromStr("BoxContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_alignment")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1915476527) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret BoxContainerAlignmentMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoxContainer.fnGetAlignment), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *BoxContainer) SetVertical(vertical bool, )  {
-  classNameV := StringNameFromStr("BoxContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_vertical")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&vertical) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoxContainer.fnSetVertical), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BoxContainer) IsVertical() bool {
-  classNameV := StringNameFromStr("BoxContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_vertical")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoxContainer.fnIsVertical), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

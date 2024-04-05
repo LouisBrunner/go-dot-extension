@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVScrollBarList struct {
+}
+
+var ptrsForVScrollBar ptrsForVScrollBarList
+
+func initVScrollBarPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VScrollBar")
+  defer className.Destroy()
+}
+
 type VScrollBar struct {
   ScrollBar
 }

@@ -14,6 +14,77 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForImmediateMeshList struct {
+  fnSurfaceBegin gdc.MethodBindPtr
+  fnSurfaceSetColor gdc.MethodBindPtr
+  fnSurfaceSetNormal gdc.MethodBindPtr
+  fnSurfaceSetTangent gdc.MethodBindPtr
+  fnSurfaceSetUv gdc.MethodBindPtr
+  fnSurfaceSetUv2 gdc.MethodBindPtr
+  fnSurfaceAddVertex gdc.MethodBindPtr
+  fnSurfaceAddVertex2D gdc.MethodBindPtr
+  fnSurfaceEnd gdc.MethodBindPtr
+  fnClearSurfaces gdc.MethodBindPtr
+}
+
+var ptrsForImmediateMesh ptrsForImmediateMeshList
+
+func initImmediateMeshPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ImmediateMesh")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("surface_begin")
+    defer methodName.Destroy()
+    ptrsForImmediateMesh.fnSurfaceBegin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2794442543))
+  }
+  {
+    methodName := StringNameFromStr("surface_set_color")
+    defer methodName.Destroy()
+    ptrsForImmediateMesh.fnSurfaceSetColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2920490490))
+  }
+  {
+    methodName := StringNameFromStr("surface_set_normal")
+    defer methodName.Destroy()
+    ptrsForImmediateMesh.fnSurfaceSetNormal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("surface_set_tangent")
+    defer methodName.Destroy()
+    ptrsForImmediateMesh.fnSurfaceSetTangent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3505987427))
+  }
+  {
+    methodName := StringNameFromStr("surface_set_uv")
+    defer methodName.Destroy()
+    ptrsForImmediateMesh.fnSurfaceSetUv = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("surface_set_uv2")
+    defer methodName.Destroy()
+    ptrsForImmediateMesh.fnSurfaceSetUv2 = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("surface_add_vertex")
+    defer methodName.Destroy()
+    ptrsForImmediateMesh.fnSurfaceAddVertex = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("surface_add_vertex_2d")
+    defer methodName.Destroy()
+    ptrsForImmediateMesh.fnSurfaceAddVertex2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("surface_end")
+    defer methodName.Destroy()
+    ptrsForImmediateMesh.fnSurfaceEnd = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("clear_surfaces")
+    defer methodName.Destroy()
+    ptrsForImmediateMesh.fnClearSurfaces = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+}
+
 type ImmediateMesh struct {
   Mesh
 }
@@ -51,142 +122,92 @@ func (me *ImmediateMesh) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ImmediateMesh) SurfaceBegin(primitive MeshPrimitiveType, material Material, )  {
-  classNameV := StringNameFromStr("ImmediateMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_begin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2794442543) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&primitive) , material.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImmediateMesh.fnSurfaceBegin), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ImmediateMesh) SurfaceSetColor(color Color, )  {
-  classNameV := StringNameFromStr("ImmediateMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_set_color")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{color.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImmediateMesh.fnSurfaceSetColor), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ImmediateMesh) SurfaceSetNormal(normal Vector3, )  {
-  classNameV := StringNameFromStr("ImmediateMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_set_normal")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{normal.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImmediateMesh.fnSurfaceSetNormal), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ImmediateMesh) SurfaceSetTangent(tangent Plane, )  {
-  classNameV := StringNameFromStr("ImmediateMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_set_tangent")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3505987427) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{tangent.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImmediateMesh.fnSurfaceSetTangent), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ImmediateMesh) SurfaceSetUv(uv Vector2, )  {
-  classNameV := StringNameFromStr("ImmediateMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_set_uv")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{uv.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImmediateMesh.fnSurfaceSetUv), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ImmediateMesh) SurfaceSetUv2(uv2 Vector2, )  {
-  classNameV := StringNameFromStr("ImmediateMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_set_uv2")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{uv2.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImmediateMesh.fnSurfaceSetUv2), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ImmediateMesh) SurfaceAddVertex(vertex Vector3, )  {
-  classNameV := StringNameFromStr("ImmediateMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_add_vertex")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{vertex.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImmediateMesh.fnSurfaceAddVertex), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ImmediateMesh) SurfaceAddVertex2D(vertex Vector2, )  {
-  classNameV := StringNameFromStr("ImmediateMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_add_vertex_2d")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{vertex.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImmediateMesh.fnSurfaceAddVertex2D), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ImmediateMesh) SurfaceEnd()  {
-  classNameV := StringNameFromStr("ImmediateMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("surface_end")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImmediateMesh.fnSurfaceEnd), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ImmediateMesh) ClearSurfaces()  {
-  classNameV := StringNameFromStr("ImmediateMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("clear_surfaces")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForImmediateMesh.fnClearSurfaces), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

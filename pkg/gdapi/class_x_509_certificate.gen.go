@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForX509CertificateList struct {
+  fnSave gdc.MethodBindPtr
+  fnLoad gdc.MethodBindPtr
+  fnSaveToString gdc.MethodBindPtr
+  fnLoadFromString gdc.MethodBindPtr
+}
+
+var ptrsForX509Certificate ptrsForX509CertificateList
+
+func initX509CertificatePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("X509Certificate")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("save")
+    defer methodName.Destroy()
+    ptrsForX509Certificate.fnSave = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 166001499))
+  }
+  {
+    methodName := StringNameFromStr("load")
+    defer methodName.Destroy()
+    ptrsForX509Certificate.fnLoad = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 166001499))
+  }
+  {
+    methodName := StringNameFromStr("save_to_string")
+    defer methodName.Destroy()
+    ptrsForX509Certificate.fnSaveToString = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2841200299))
+  }
+  {
+    methodName := StringNameFromStr("load_from_string")
+    defer methodName.Destroy()
+    ptrsForX509Certificate.fnLoadFromString = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 166001499))
+  }
+}
+
 type X509Certificate struct {
   Resource
 }
@@ -51,62 +86,42 @@ func (me *X509Certificate) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *X509Certificate) Save(path String, ) Error {
-  classNameV := StringNameFromStr("X509Certificate")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("save")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166001499) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForX509Certificate.fnSave), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *X509Certificate) Load(path String, ) Error {
-  classNameV := StringNameFromStr("X509Certificate")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("load")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166001499) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForX509Certificate.fnLoad), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *X509Certificate) SaveToString() String {
-  classNameV := StringNameFromStr("X509Certificate")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("save_to_string")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2841200299) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForX509Certificate.fnSaveToString), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *X509Certificate) LoadFromString(string_ String, ) Error {
-  classNameV := StringNameFromStr("X509Certificate")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("load_from_string")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166001499) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{string_.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForX509Certificate.fnLoadFromString), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 

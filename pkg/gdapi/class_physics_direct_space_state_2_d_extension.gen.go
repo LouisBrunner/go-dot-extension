@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPhysicsDirectSpaceState2DExtensionList struct {
+  fnXIntersectRay gdc.MethodBindPtr
+  fnXIntersectPoint gdc.MethodBindPtr
+  fnXIntersectShape gdc.MethodBindPtr
+  fnXCastMotion gdc.MethodBindPtr
+  fnXCollideShape gdc.MethodBindPtr
+  fnXRestInfo gdc.MethodBindPtr
+  fnIsBodyExcludedFromQuery gdc.MethodBindPtr
+}
+
+var ptrsForPhysicsDirectSpaceState2DExtension ptrsForPhysicsDirectSpaceState2DExtensionList
+
+func initPhysicsDirectSpaceState2DExtensionPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PhysicsDirectSpaceState2DExtension")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("is_body_excluded_from_query")
+    defer methodName.Destroy()
+    ptrsForPhysicsDirectSpaceState2DExtension.fnIsBodyExcludedFromQuery = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4155700596))
+  }
+}
+
 type PhysicsDirectSpaceState2DExtension struct {
   PhysicsDirectSpaceState2D
 }
@@ -51,17 +74,12 @@ func (me *PhysicsDirectSpaceState2DExtension) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PhysicsDirectSpaceState2DExtension) IsBodyExcludedFromQuery(body RID, ) bool {
-  classNameV := StringNameFromStr("PhysicsDirectSpaceState2DExtension")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_body_excluded_from_query")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155700596) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{body.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsDirectSpaceState2DExtension.fnIsBodyExcludedFromQuery), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 

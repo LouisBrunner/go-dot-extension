@@ -14,6 +14,77 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioEffectPhaserList struct {
+  fnSetRangeMinHz gdc.MethodBindPtr
+  fnGetRangeMinHz gdc.MethodBindPtr
+  fnSetRangeMaxHz gdc.MethodBindPtr
+  fnGetRangeMaxHz gdc.MethodBindPtr
+  fnSetRateHz gdc.MethodBindPtr
+  fnGetRateHz gdc.MethodBindPtr
+  fnSetFeedback gdc.MethodBindPtr
+  fnGetFeedback gdc.MethodBindPtr
+  fnSetDepth gdc.MethodBindPtr
+  fnGetDepth gdc.MethodBindPtr
+}
+
+var ptrsForAudioEffectPhaser ptrsForAudioEffectPhaserList
+
+func initAudioEffectPhaserPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioEffectPhaser")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_range_min_hz")
+    defer methodName.Destroy()
+    ptrsForAudioEffectPhaser.fnSetRangeMinHz = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_range_min_hz")
+    defer methodName.Destroy()
+    ptrsForAudioEffectPhaser.fnGetRangeMinHz = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_range_max_hz")
+    defer methodName.Destroy()
+    ptrsForAudioEffectPhaser.fnSetRangeMaxHz = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_range_max_hz")
+    defer methodName.Destroy()
+    ptrsForAudioEffectPhaser.fnGetRangeMaxHz = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_rate_hz")
+    defer methodName.Destroy()
+    ptrsForAudioEffectPhaser.fnSetRateHz = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_rate_hz")
+    defer methodName.Destroy()
+    ptrsForAudioEffectPhaser.fnGetRateHz = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_feedback")
+    defer methodName.Destroy()
+    ptrsForAudioEffectPhaser.fnSetFeedback = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_feedback")
+    defer methodName.Destroy()
+    ptrsForAudioEffectPhaser.fnGetFeedback = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_depth")
+    defer methodName.Destroy()
+    ptrsForAudioEffectPhaser.fnSetDepth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_depth")
+    defer methodName.Destroy()
+    ptrsForAudioEffectPhaser.fnGetDepth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type AudioEffectPhaser struct {
   AudioEffect
 }
@@ -51,147 +122,97 @@ func (me *AudioEffectPhaser) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AudioEffectPhaser) SetRangeMinHz(hz float64, )  {
-  classNameV := StringNameFromStr("AudioEffectPhaser")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_range_min_hz")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hz) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectPhaser.fnSetRangeMinHz), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectPhaser) GetRangeMinHz() float64 {
-  classNameV := StringNameFromStr("AudioEffectPhaser")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_range_min_hz")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectPhaser.fnGetRangeMinHz), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioEffectPhaser) SetRangeMaxHz(hz float64, )  {
-  classNameV := StringNameFromStr("AudioEffectPhaser")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_range_max_hz")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hz) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectPhaser.fnSetRangeMaxHz), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectPhaser) GetRangeMaxHz() float64 {
-  classNameV := StringNameFromStr("AudioEffectPhaser")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_range_max_hz")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectPhaser.fnGetRangeMaxHz), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioEffectPhaser) SetRateHz(hz float64, )  {
-  classNameV := StringNameFromStr("AudioEffectPhaser")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_rate_hz")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hz) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectPhaser.fnSetRateHz), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectPhaser) GetRateHz() float64 {
-  classNameV := StringNameFromStr("AudioEffectPhaser")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_rate_hz")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectPhaser.fnGetRateHz), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioEffectPhaser) SetFeedback(fbk float64, )  {
-  classNameV := StringNameFromStr("AudioEffectPhaser")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_feedback")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&fbk) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectPhaser.fnSetFeedback), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectPhaser) GetFeedback() float64 {
-  classNameV := StringNameFromStr("AudioEffectPhaser")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_feedback")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectPhaser.fnGetFeedback), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioEffectPhaser) SetDepth(depth float64, )  {
-  classNameV := StringNameFromStr("AudioEffectPhaser")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_depth")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&depth) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectPhaser.fnSetDepth), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectPhaser) GetDepth() float64 {
-  classNameV := StringNameFromStr("AudioEffectPhaser")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_depth")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectPhaser.fnGetDepth), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

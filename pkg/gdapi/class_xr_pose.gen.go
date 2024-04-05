@@ -14,6 +14,95 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForXRPoseList struct {
+  fnSetHasTrackingData gdc.MethodBindPtr
+  fnGetHasTrackingData gdc.MethodBindPtr
+  fnSetName gdc.MethodBindPtr
+  fnGetName gdc.MethodBindPtr
+  fnSetTransform gdc.MethodBindPtr
+  fnGetTransform gdc.MethodBindPtr
+  fnGetAdjustedTransform gdc.MethodBindPtr
+  fnSetLinearVelocity gdc.MethodBindPtr
+  fnGetLinearVelocity gdc.MethodBindPtr
+  fnSetAngularVelocity gdc.MethodBindPtr
+  fnGetAngularVelocity gdc.MethodBindPtr
+  fnSetTrackingConfidence gdc.MethodBindPtr
+  fnGetTrackingConfidence gdc.MethodBindPtr
+}
+
+var ptrsForXRPose ptrsForXRPoseList
+
+func initXRPosePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("XRPose")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_has_tracking_data")
+    defer methodName.Destroy()
+    ptrsForXRPose.fnSetHasTrackingData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_has_tracking_data")
+    defer methodName.Destroy()
+    ptrsForXRPose.fnGetHasTrackingData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_name")
+    defer methodName.Destroy()
+    ptrsForXRPose.fnSetName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3304788590))
+  }
+  {
+    methodName := StringNameFromStr("get_name")
+    defer methodName.Destroy()
+    ptrsForXRPose.fnGetName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2002593661))
+  }
+  {
+    methodName := StringNameFromStr("set_transform")
+    defer methodName.Destroy()
+    ptrsForXRPose.fnSetTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2952846383))
+  }
+  {
+    methodName := StringNameFromStr("get_transform")
+    defer methodName.Destroy()
+    ptrsForXRPose.fnGetTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3229777777))
+  }
+  {
+    methodName := StringNameFromStr("get_adjusted_transform")
+    defer methodName.Destroy()
+    ptrsForXRPose.fnGetAdjustedTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3229777777))
+  }
+  {
+    methodName := StringNameFromStr("set_linear_velocity")
+    defer methodName.Destroy()
+    ptrsForXRPose.fnSetLinearVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("get_linear_velocity")
+    defer methodName.Destroy()
+    ptrsForXRPose.fnGetLinearVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("set_angular_velocity")
+    defer methodName.Destroy()
+    ptrsForXRPose.fnSetAngularVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("get_angular_velocity")
+    defer methodName.Destroy()
+    ptrsForXRPose.fnGetAngularVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("set_tracking_confidence")
+    defer methodName.Destroy()
+    ptrsForXRPose.fnSetTrackingConfidence = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4171656666))
+  }
+  {
+    methodName := StringNameFromStr("get_tracking_confidence")
+    defer methodName.Destroy()
+    ptrsForXRPose.fnGetTrackingConfidence = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2064923680))
+  }
+}
+
 type XRPose struct {
   RefCounted
 }
@@ -58,191 +147,126 @@ func (me *XRPose) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *XRPose) SetHasTrackingData(has_tracking_data bool, )  {
-  classNameV := StringNameFromStr("XRPose")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_has_tracking_data")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&has_tracking_data) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPose.fnSetHasTrackingData), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRPose) GetHasTrackingData() bool {
-  classNameV := StringNameFromStr("XRPose")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_has_tracking_data")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPose.fnGetHasTrackingData), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *XRPose) SetName(name StringName, )  {
-  classNameV := StringNameFromStr("XRPose")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPose.fnSetName), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRPose) GetName() StringName {
-  classNameV := StringNameFromStr("XRPose")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewStringName()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPose.fnGetName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRPose) SetTransform(transform Transform3D, )  {
-  classNameV := StringNameFromStr("XRPose")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2952846383) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{transform.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPose.fnSetTransform), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRPose) GetTransform() Transform3D {
-  classNameV := StringNameFromStr("XRPose")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3229777777) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTransform3D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPose.fnGetTransform), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRPose) GetAdjustedTransform() Transform3D {
-  classNameV := StringNameFromStr("XRPose")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_adjusted_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3229777777) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTransform3D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPose.fnGetAdjustedTransform), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRPose) SetLinearVelocity(velocity Vector3, )  {
-  classNameV := StringNameFromStr("XRPose")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_linear_velocity")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{velocity.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPose.fnSetLinearVelocity), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRPose) GetLinearVelocity() Vector3 {
-  classNameV := StringNameFromStr("XRPose")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_linear_velocity")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPose.fnGetLinearVelocity), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRPose) SetAngularVelocity(velocity Vector3, )  {
-  classNameV := StringNameFromStr("XRPose")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_angular_velocity")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{velocity.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPose.fnSetAngularVelocity), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRPose) GetAngularVelocity() Vector3 {
-  classNameV := StringNameFromStr("XRPose")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_angular_velocity")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPose.fnGetAngularVelocity), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRPose) SetTrackingConfidence(tracking_confidence XRPoseTrackingConfidence, )  {
-  classNameV := StringNameFromStr("XRPose")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_tracking_confidence")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4171656666) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tracking_confidence) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPose.fnSetTrackingConfidence), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRPose) GetTrackingConfidence() XRPoseTrackingConfidence {
-  classNameV := StringNameFromStr("XRPose")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_tracking_confidence")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2064923680) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret XRPoseTrackingConfidence
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPose.fnGetTrackingConfidence), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

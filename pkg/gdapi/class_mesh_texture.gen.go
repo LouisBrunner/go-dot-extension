@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForMeshTextureList struct {
+  fnSetMesh gdc.MethodBindPtr
+  fnGetMesh gdc.MethodBindPtr
+  fnSetImageSize gdc.MethodBindPtr
+  fnGetImageSize gdc.MethodBindPtr
+  fnSetBaseTexture gdc.MethodBindPtr
+  fnGetBaseTexture gdc.MethodBindPtr
+}
+
+var ptrsForMeshTexture ptrsForMeshTextureList
+
+func initMeshTexturePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("MeshTexture")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_mesh")
+    defer methodName.Destroy()
+    ptrsForMeshTexture.fnSetMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 194775623))
+  }
+  {
+    methodName := StringNameFromStr("get_mesh")
+    defer methodName.Destroy()
+    ptrsForMeshTexture.fnGetMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1808005922))
+  }
+  {
+    methodName := StringNameFromStr("set_image_size")
+    defer methodName.Destroy()
+    ptrsForMeshTexture.fnSetImageSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_image_size")
+    defer methodName.Destroy()
+    ptrsForMeshTexture.fnGetImageSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+  {
+    methodName := StringNameFromStr("set_base_texture")
+    defer methodName.Destroy()
+    ptrsForMeshTexture.fnSetBaseTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4051416890))
+  }
+  {
+    methodName := StringNameFromStr("get_base_texture")
+    defer methodName.Destroy()
+    ptrsForMeshTexture.fnGetBaseTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
+  }
+}
+
 type MeshTexture struct {
   Texture2D
 }
@@ -51,89 +98,59 @@ func (me *MeshTexture) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *MeshTexture) SetMesh(mesh Mesh, )  {
-  classNameV := StringNameFromStr("MeshTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_mesh")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 194775623) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{mesh.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMeshTexture.fnSetMesh), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MeshTexture) GetMesh() Mesh {
-  classNameV := StringNameFromStr("MeshTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_mesh")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1808005922) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewMesh()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMeshTexture.fnGetMesh), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *MeshTexture) SetImageSize(size Vector2, )  {
-  classNameV := StringNameFromStr("MeshTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_image_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{size.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMeshTexture.fnSetImageSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MeshTexture) GetImageSize() Vector2 {
-  classNameV := StringNameFromStr("MeshTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_image_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMeshTexture.fnGetImageSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *MeshTexture) SetBaseTexture(texture Texture2D, )  {
-  classNameV := StringNameFromStr("MeshTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_base_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{texture.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMeshTexture.fnSetBaseTexture), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MeshTexture) GetBaseTexture() Texture2D {
-  classNameV := StringNameFromStr("MeshTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_base_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMeshTexture.fnGetBaseTexture), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

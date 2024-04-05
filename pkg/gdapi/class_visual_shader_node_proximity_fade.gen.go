@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeProximityFadeList struct {
+}
+
+var ptrsForVisualShaderNodeProximityFade ptrsForVisualShaderNodeProximityFadeList
+
+func initVisualShaderNodeProximityFadePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeProximityFade")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeProximityFade struct {
   VisualShaderNode
 }

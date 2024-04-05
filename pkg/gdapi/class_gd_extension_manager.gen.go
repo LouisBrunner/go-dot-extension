@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForGDExtensionManagerList struct {
+  fnLoadExtension gdc.MethodBindPtr
+  fnReloadExtension gdc.MethodBindPtr
+  fnUnloadExtension gdc.MethodBindPtr
+  fnIsExtensionLoaded gdc.MethodBindPtr
+  fnGetLoadedExtensions gdc.MethodBindPtr
+  fnGetExtension gdc.MethodBindPtr
+}
+
+var ptrsForGDExtensionManager ptrsForGDExtensionManagerList
+
+func initGDExtensionManagerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("GDExtensionManager")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("load_extension")
+    defer methodName.Destroy()
+    ptrsForGDExtensionManager.fnLoadExtension = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4024158731))
+  }
+  {
+    methodName := StringNameFromStr("reload_extension")
+    defer methodName.Destroy()
+    ptrsForGDExtensionManager.fnReloadExtension = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4024158731))
+  }
+  {
+    methodName := StringNameFromStr("unload_extension")
+    defer methodName.Destroy()
+    ptrsForGDExtensionManager.fnUnloadExtension = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4024158731))
+  }
+  {
+    methodName := StringNameFromStr("is_extension_loaded")
+    defer methodName.Destroy()
+    ptrsForGDExtensionManager.fnIsExtensionLoaded = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3927539163))
+  }
+  {
+    methodName := StringNameFromStr("get_loaded_extensions")
+    defer methodName.Destroy()
+    ptrsForGDExtensionManager.fnGetLoadedExtensions = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1139954409))
+  }
+  {
+    methodName := StringNameFromStr("get_extension")
+    defer methodName.Destroy()
+    ptrsForGDExtensionManager.fnGetExtension = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 49743343))
+  }
+}
+
 type GDExtensionManager struct {
   Object
 }
@@ -60,92 +107,62 @@ func (me *GDExtensionManager) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *GDExtensionManager) LoadExtension(path String, ) GDExtensionManagerLoadStatus {
-  classNameV := StringNameFromStr("GDExtensionManager")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("load_extension")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4024158731) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret GDExtensionManagerLoadStatus
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGDExtensionManager.fnLoadExtension), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *GDExtensionManager) ReloadExtension(path String, ) GDExtensionManagerLoadStatus {
-  classNameV := StringNameFromStr("GDExtensionManager")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("reload_extension")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4024158731) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret GDExtensionManagerLoadStatus
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGDExtensionManager.fnReloadExtension), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *GDExtensionManager) UnloadExtension(path String, ) GDExtensionManagerLoadStatus {
-  classNameV := StringNameFromStr("GDExtensionManager")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("unload_extension")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4024158731) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret GDExtensionManagerLoadStatus
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGDExtensionManager.fnUnloadExtension), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *GDExtensionManager) IsExtensionLoaded(path String, ) bool {
-  classNameV := StringNameFromStr("GDExtensionManager")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_extension_loaded")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGDExtensionManager.fnIsExtensionLoaded), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *GDExtensionManager) GetLoadedExtensions() PackedStringArray {
-  classNameV := StringNameFromStr("GDExtensionManager")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_loaded_extensions")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedStringArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGDExtensionManager.fnGetLoadedExtensions), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *GDExtensionManager) GetExtension(path String, ) GDExtension {
-  classNameV := StringNameFromStr("GDExtensionManager")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_extension")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 49743343) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewGDExtension()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGDExtensionManager.fnGetExtension), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

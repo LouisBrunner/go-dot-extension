@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSpotLight3DList struct {
+}
+
+var ptrsForSpotLight3D ptrsForSpotLight3DList
+
+func initSpotLight3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("SpotLight3D")
+  defer className.Destroy()
+}
+
 type SpotLight3D struct {
   Light3D
 }

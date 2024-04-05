@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeCompareList struct {
+  fnSetComparisonType gdc.MethodBindPtr
+  fnGetComparisonType gdc.MethodBindPtr
+  fnSetFunction gdc.MethodBindPtr
+  fnGetFunction gdc.MethodBindPtr
+  fnSetCondition gdc.MethodBindPtr
+  fnGetCondition gdc.MethodBindPtr
+}
+
+var ptrsForVisualShaderNodeCompare ptrsForVisualShaderNodeCompareList
+
+func initVisualShaderNodeComparePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeCompare")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_comparison_type")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeCompare.fnSetComparisonType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 516558320))
+  }
+  {
+    methodName := StringNameFromStr("get_comparison_type")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeCompare.fnGetComparisonType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3495315961))
+  }
+  {
+    methodName := StringNameFromStr("set_function")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeCompare.fnSetFunction = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2370951349))
+  }
+  {
+    methodName := StringNameFromStr("get_function")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeCompare.fnGetFunction = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4089164265))
+  }
+  {
+    methodName := StringNameFromStr("set_condition")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeCompare.fnSetCondition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 918742392))
+  }
+  {
+    methodName := StringNameFromStr("get_condition")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeCompare.fnGetCondition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3281078941))
+  }
+}
+
 type VisualShaderNodeCompare struct {
   VisualShaderNode
 }
@@ -82,89 +129,59 @@ func (me *VisualShaderNodeCompare) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisualShaderNodeCompare) SetComparisonType(type_ VisualShaderNodeCompareComparisonType, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeCompare")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_comparison_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 516558320) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeCompare.fnSetComparisonType), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeCompare) GetComparisonType() VisualShaderNodeCompareComparisonType {
-  classNameV := StringNameFromStr("VisualShaderNodeCompare")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_comparison_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3495315961) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret VisualShaderNodeCompareComparisonType
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeCompare.fnGetComparisonType), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *VisualShaderNodeCompare) SetFunction(func_ VisualShaderNodeCompareFunction, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeCompare")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_function")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2370951349) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&func_) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeCompare.fnSetFunction), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeCompare) GetFunction() VisualShaderNodeCompareFunction {
-  classNameV := StringNameFromStr("VisualShaderNodeCompare")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_function")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4089164265) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret VisualShaderNodeCompareFunction
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeCompare.fnGetFunction), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *VisualShaderNodeCompare) SetCondition(condition VisualShaderNodeCompareCondition, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeCompare")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_condition")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 918742392) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&condition) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeCompare.fnSetCondition), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeCompare) GetCondition() VisualShaderNodeCompareCondition {
-  classNameV := StringNameFromStr("VisualShaderNodeCompare")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_condition")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3281078941) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret VisualShaderNodeCompareCondition
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeCompare.fnGetCondition), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

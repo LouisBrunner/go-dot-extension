@@ -7,6 +7,7 @@ import (
 
 	"github.com/LouisBrunner/go-dot-extension/pkg/generators/gencommon"
 	"github.com/iancoleman/strcase"
+	"golang.org/x/exp/slices"
 )
 
 //go:embed templates/*
@@ -73,12 +74,51 @@ type lookups struct {
 	Classes []string
 }
 
+var forbiddenClasses = []string{
+	// these singletons are unavailable and we can't load their methods, so let's just drop them
+	"JavaClassWrapper",
+	"JavaScriptBridge",
+	"DisplayServer",
+	"RenderingServer",
+	"AudioServer",
+	"PhysicsServer2D",
+	"PhysicsServer3D",
+	"NavigationServer2D",
+	"NavigationServer3D",
+	"XRServer",
+	"CameraServer",
+}
+
+var forbiddenSingletons = []string{
+	"EditorInterface", // unavailable outside of the editor
+	// all of those fail for some reasons, they do seem to be included in a "servers" file in Godot
+	"JavaClassWrapper",
+	"JavaScriptBridge",
+	"DisplayServer",
+	"RenderingServer",
+	"AudioServer",
+	"PhysicsServer2D",
+	"PhysicsServer3D",
+	"NavigationServer2D",
+	"NavigationServer3D",
+	"XRServer",
+	"CameraServer",
+}
+
 func output(api *gencommon.ExtensionAPI, outputDir string) error {
 	config := fmt.Sprintf("float_%d", bitsPerWord)
 	classSizes, ok := getBuiltinClassSize(api.BuiltinClassSizes, config)
 	if !ok {
 		return fmt.Errorf("no class size for %s", config)
 	}
+
+	// filter out things which don't work through the extension but are somehow included in the JSON
+	api.Classes = slices.DeleteFunc(api.Classes, func(e gencommon.ExtensionClass) bool {
+		return slices.Contains(forbiddenClasses, e.Name)
+	})
+	api.Singletons = slices.DeleteFunc(api.Singletons, func(e gencommon.ExtensionNameType) bool {
+		return slices.Contains(forbiddenSingletons, e.Name)
+	})
 
 	classes := make([]string, 0, len(api.Classes))
 	for _, class := range api.Classes {
@@ -123,6 +163,14 @@ func output(api *gencommon.ExtensionAPI, outputDir string) error {
 	}
 
 	err = renderFile("utilities", "utilities", api.UtilityFunctions, outputDir)
+	if err != nil {
+		return fmt.Errorf("error rendering utilities: %w", err)
+	}
+
+	err = renderFile("class_inits", "class_inits", map[string]interface{}{
+		"Classes":  api.Classes,
+		"BClasses": api.BuiltinClasses,
+	}, outputDir)
 	if err != nil {
 		return fmt.Errorf("error rendering utilities: %w", err)
 	}

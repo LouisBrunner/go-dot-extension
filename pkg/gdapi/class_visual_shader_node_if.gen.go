@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeIfList struct {
+}
+
+var ptrsForVisualShaderNodeIf ptrsForVisualShaderNodeIfList
+
+func initVisualShaderNodeIfPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeIf")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeIf struct {
   VisualShaderNode
 }

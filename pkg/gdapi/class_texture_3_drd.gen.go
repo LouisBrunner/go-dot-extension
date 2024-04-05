@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForTexture3DRDList struct {
+  fnSetTextureRdRid gdc.MethodBindPtr
+  fnGetTextureRdRid gdc.MethodBindPtr
+}
+
+var ptrsForTexture3DRD ptrsForTexture3DRDList
+
+func initTexture3DRDPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Texture3DRD")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_texture_rd_rid")
+    defer methodName.Destroy()
+    ptrsForTexture3DRD.fnSetTextureRdRid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2722037293))
+  }
+  {
+    methodName := StringNameFromStr("get_texture_rd_rid")
+    defer methodName.Destroy()
+    ptrsForTexture3DRD.fnGetTextureRdRid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
+  }
+}
+
 type Texture3DRD struct {
   Texture3D
 }
@@ -51,31 +74,21 @@ func (me *Texture3DRD) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Texture3DRD) SetTextureRdRid(texture_rd_rid RID, )  {
-  classNameV := StringNameFromStr("Texture3DRD")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_texture_rd_rid")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{texture_rd_rid.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTexture3DRD.fnSetTextureRdRid), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Texture3DRD) GetTextureRdRid() RID {
-  classNameV := StringNameFromStr("Texture3DRD")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture_rd_rid")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRID()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTexture3DRD.fnGetTextureRdRid), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

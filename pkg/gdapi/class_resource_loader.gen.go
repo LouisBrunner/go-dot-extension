@@ -14,6 +14,89 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForResourceLoaderList struct {
+  fnLoadThreadedRequest gdc.MethodBindPtr
+  fnLoadThreadedGetStatus gdc.MethodBindPtr
+  fnLoadThreadedGet gdc.MethodBindPtr
+  fnLoad gdc.MethodBindPtr
+  fnGetRecognizedExtensionsForType gdc.MethodBindPtr
+  fnAddResourceFormatLoader gdc.MethodBindPtr
+  fnRemoveResourceFormatLoader gdc.MethodBindPtr
+  fnSetAbortOnMissingResources gdc.MethodBindPtr
+  fnGetDependencies gdc.MethodBindPtr
+  fnHasCached gdc.MethodBindPtr
+  fnExists gdc.MethodBindPtr
+  fnGetResourceUid gdc.MethodBindPtr
+}
+
+var ptrsForResourceLoader ptrsForResourceLoaderList
+
+func initResourceLoaderPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ResourceLoader")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("load_threaded_request")
+    defer methodName.Destroy()
+    ptrsForResourceLoader.fnLoadThreadedRequest = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3614384323))
+  }
+  {
+    methodName := StringNameFromStr("load_threaded_get_status")
+    defer methodName.Destroy()
+    ptrsForResourceLoader.fnLoadThreadedGetStatus = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4137685479))
+  }
+  {
+    methodName := StringNameFromStr("load_threaded_get")
+    defer methodName.Destroy()
+    ptrsForResourceLoader.fnLoadThreadedGet = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1748875256))
+  }
+  {
+    methodName := StringNameFromStr("load")
+    defer methodName.Destroy()
+    ptrsForResourceLoader.fnLoad = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3358495409))
+  }
+  {
+    methodName := StringNameFromStr("get_recognized_extensions_for_type")
+    defer methodName.Destroy()
+    ptrsForResourceLoader.fnGetRecognizedExtensionsForType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3538744774))
+  }
+  {
+    methodName := StringNameFromStr("add_resource_format_loader")
+    defer methodName.Destroy()
+    ptrsForResourceLoader.fnAddResourceFormatLoader = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2896595483))
+  }
+  {
+    methodName := StringNameFromStr("remove_resource_format_loader")
+    defer methodName.Destroy()
+    ptrsForResourceLoader.fnRemoveResourceFormatLoader = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 405397102))
+  }
+  {
+    methodName := StringNameFromStr("set_abort_on_missing_resources")
+    defer methodName.Destroy()
+    ptrsForResourceLoader.fnSetAbortOnMissingResources = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_dependencies")
+    defer methodName.Destroy()
+    ptrsForResourceLoader.fnGetDependencies = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3538744774))
+  }
+  {
+    methodName := StringNameFromStr("has_cached")
+    defer methodName.Destroy()
+    ptrsForResourceLoader.fnHasCached = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2323990056))
+  }
+  {
+    methodName := StringNameFromStr("exists")
+    defer methodName.Destroy()
+    ptrsForResourceLoader.fnExists = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4185558881))
+  }
+  {
+    methodName := StringNameFromStr("get_resource_uid")
+    defer methodName.Destroy()
+    ptrsForResourceLoader.fnGetResourceUid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1597066294))
+  }
+}
+
 type ResourceLoader struct {
   Object
 }
@@ -66,11 +149,6 @@ func (me *ResourceLoader) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ResourceLoader) LoadThreadedRequest(path String, type_hint String, use_sub_threads bool, cache_mode ResourceLoaderCacheMode, ) Error {
-  classNameV := StringNameFromStr("ResourceLoader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("load_threaded_request")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614384323) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), type_hint.AsCTypePtr(), gdc.ConstTypePtr(&use_sub_threads) , gdc.ConstTypePtr(&cache_mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -78,170 +156,115 @@ func  (me *ResourceLoader) LoadThreadedRequest(path String, type_hint String, us
   pinner.Pin(&use_sub_threads)
   pinner.Pin(&cache_mode)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourceLoader.fnLoadThreadedRequest), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *ResourceLoader) LoadThreadedGetStatus(path String, progress Array, ) ResourceLoaderThreadLoadStatus {
-  classNameV := StringNameFromStr("ResourceLoader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("load_threaded_get_status")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4137685479) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), progress.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ResourceLoaderThreadLoadStatus
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourceLoader.fnLoadThreadedGetStatus), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *ResourceLoader) LoadThreadedGet(path String, ) Resource {
-  classNameV := StringNameFromStr("ResourceLoader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("load_threaded_get")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1748875256) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewResource()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourceLoader.fnLoadThreadedGet), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ResourceLoader) Load(path String, type_hint String, cache_mode ResourceLoaderCacheMode, ) Resource {
-  classNameV := StringNameFromStr("ResourceLoader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("load")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3358495409) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), type_hint.AsCTypePtr(), gdc.ConstTypePtr(&cache_mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewResource()
   pinner.Pin(&cache_mode)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourceLoader.fnLoad), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ResourceLoader) GetRecognizedExtensionsForType(type_ String, ) PackedStringArray {
-  classNameV := StringNameFromStr("ResourceLoader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_recognized_extensions_for_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3538744774) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{type_.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedStringArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourceLoader.fnGetRecognizedExtensionsForType), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ResourceLoader) AddResourceFormatLoader(format_loader ResourceFormatLoader, at_front bool, )  {
-  classNameV := StringNameFromStr("ResourceLoader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_resource_format_loader")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2896595483) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{format_loader.AsCTypePtr(), gdc.ConstTypePtr(&at_front) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourceLoader.fnAddResourceFormatLoader), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ResourceLoader) RemoveResourceFormatLoader(format_loader ResourceFormatLoader, )  {
-  classNameV := StringNameFromStr("ResourceLoader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_resource_format_loader")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 405397102) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{format_loader.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourceLoader.fnRemoveResourceFormatLoader), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ResourceLoader) SetAbortOnMissingResources(abort bool, )  {
-  classNameV := StringNameFromStr("ResourceLoader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_abort_on_missing_resources")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&abort) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourceLoader.fnSetAbortOnMissingResources), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ResourceLoader) GetDependencies(path String, ) PackedStringArray {
-  classNameV := StringNameFromStr("ResourceLoader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_dependencies")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3538744774) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedStringArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourceLoader.fnGetDependencies), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ResourceLoader) HasCached(path String, ) bool {
-  classNameV := StringNameFromStr("ResourceLoader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_cached")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2323990056) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourceLoader.fnHasCached), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ResourceLoader) Exists(path String, type_hint String, ) bool {
-  classNameV := StringNameFromStr("ResourceLoader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("exists")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4185558881) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), type_hint.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourceLoader.fnExists), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ResourceLoader) GetResourceUid(path String, ) int64 {
-  classNameV := StringNameFromStr("ResourceLoader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_resource_uid")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1597066294) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourceLoader.fnGetResourceUid), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 

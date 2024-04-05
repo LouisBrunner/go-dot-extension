@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeTextureParameterTriplanarList struct {
+}
+
+var ptrsForVisualShaderNodeTextureParameterTriplanar ptrsForVisualShaderNodeTextureParameterTriplanarList
+
+func initVisualShaderNodeTextureParameterTriplanarPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeTextureParameterTriplanar")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeTextureParameterTriplanar struct {
   VisualShaderNodeTextureParameter
 }

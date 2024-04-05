@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForGLTFMeshList struct {
+  fnGetMesh gdc.MethodBindPtr
+  fnSetMesh gdc.MethodBindPtr
+  fnGetBlendWeights gdc.MethodBindPtr
+  fnSetBlendWeights gdc.MethodBindPtr
+  fnGetInstanceMaterials gdc.MethodBindPtr
+  fnSetInstanceMaterials gdc.MethodBindPtr
+}
+
+var ptrsForGLTFMesh ptrsForGLTFMeshList
+
+func initGLTFMeshPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("GLTFMesh")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_mesh")
+    defer methodName.Destroy()
+    ptrsForGLTFMesh.fnGetMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3754628756))
+  }
+  {
+    methodName := StringNameFromStr("set_mesh")
+    defer methodName.Destroy()
+    ptrsForGLTFMesh.fnSetMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2255166972))
+  }
+  {
+    methodName := StringNameFromStr("get_blend_weights")
+    defer methodName.Destroy()
+    ptrsForGLTFMesh.fnGetBlendWeights = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2445143706))
+  }
+  {
+    methodName := StringNameFromStr("set_blend_weights")
+    defer methodName.Destroy()
+    ptrsForGLTFMesh.fnSetBlendWeights = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2899603908))
+  }
+  {
+    methodName := StringNameFromStr("get_instance_materials")
+    defer methodName.Destroy()
+    ptrsForGLTFMesh.fnGetInstanceMaterials = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2915620761))
+  }
+  {
+    methodName := StringNameFromStr("set_instance_materials")
+    defer methodName.Destroy()
+    ptrsForGLTFMesh.fnSetInstanceMaterials = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 381264803))
+  }
+}
+
 type GLTFMesh struct {
   Resource
 }
@@ -51,76 +98,51 @@ func (me *GLTFMesh) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *GLTFMesh) GetMesh() ImporterMesh {
-  classNameV := StringNameFromStr("GLTFMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_mesh")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3754628756) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewImporterMesh()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFMesh.fnGetMesh), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *GLTFMesh) SetMesh(mesh ImporterMesh, )  {
-  classNameV := StringNameFromStr("GLTFMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_mesh")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2255166972) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{mesh.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFMesh.fnSetMesh), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GLTFMesh) GetBlendWeights() PackedFloat32Array {
-  classNameV := StringNameFromStr("GLTFMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_blend_weights")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2445143706) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedFloat32Array()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFMesh.fnGetBlendWeights), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *GLTFMesh) SetBlendWeights(blend_weights PackedFloat32Array, )  {
-  classNameV := StringNameFromStr("GLTFMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_blend_weights")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2899603908) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{blend_weights.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFMesh.fnSetBlendWeights), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GLTFMesh) GetInstanceMaterials() []Material {
-  classNameV := StringNameFromStr("GLTFMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_instance_materials")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFMesh.fnGetInstanceMaterials), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[Material](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -130,16 +152,11 @@ return sliceRet
 }
 
 func  (me *GLTFMesh) SetInstanceMaterials(instance_materials []Material, )  {
-  classNameV := StringNameFromStr("GLTFMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_instance_materials")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&instance_materials) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFMesh.fnSetInstanceMaterials), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

@@ -14,7 +14,7 @@ type MyNode2D struct {
 	Speed  int
 	secret string
 
-	SecretPrinted gdapi.Signal
+	SecretPrinted gde.Signal
 	subs          gdapi.SignalSubscribers
 }
 
@@ -32,6 +32,7 @@ func (n *MyNode2D) Monitor(other gdapi.Node2D) {
 	sub = func() {
 		fmt.Println("Other has been drawn")
 		other.DisconnectDraw(n.subs, sub)
+		n.printSecret()
 	}
 	other.ConnectDraw(n.subs, sub)
 }

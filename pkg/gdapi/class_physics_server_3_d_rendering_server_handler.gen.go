@@ -14,6 +14,38 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPhysicsServer3DRenderingServerHandlerList struct {
+  fnXSetVertex gdc.MethodBindPtr
+  fnXSetNormal gdc.MethodBindPtr
+  fnXSetAabb gdc.MethodBindPtr
+  fnSetVertex gdc.MethodBindPtr
+  fnSetNormal gdc.MethodBindPtr
+  fnSetAabb gdc.MethodBindPtr
+}
+
+var ptrsForPhysicsServer3DRenderingServerHandler ptrsForPhysicsServer3DRenderingServerHandlerList
+
+func initPhysicsServer3DRenderingServerHandlerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PhysicsServer3DRenderingServerHandler")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_vertex")
+    defer methodName.Destroy()
+    ptrsForPhysicsServer3DRenderingServerHandler.fnSetVertex = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1530502735))
+  }
+  {
+    methodName := StringNameFromStr("set_normal")
+    defer methodName.Destroy()
+    ptrsForPhysicsServer3DRenderingServerHandler.fnSetNormal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1530502735))
+  }
+  {
+    methodName := StringNameFromStr("set_aabb")
+    defer methodName.Destroy()
+    ptrsForPhysicsServer3DRenderingServerHandler.fnSetAabb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 259215842))
+  }
+}
+
 type PhysicsServer3DRenderingServerHandler struct {
   Object
 }
@@ -51,44 +83,29 @@ func (me *PhysicsServer3DRenderingServerHandler) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PhysicsServer3DRenderingServerHandler) SetVertex(vertex_id int64, vertex Vector3, )  {
-  classNameV := StringNameFromStr("PhysicsServer3DRenderingServerHandler")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_vertex")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1530502735) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&vertex_id) , vertex.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsServer3DRenderingServerHandler.fnSetVertex), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PhysicsServer3DRenderingServerHandler) SetNormal(vertex_id int64, normal Vector3, )  {
-  classNameV := StringNameFromStr("PhysicsServer3DRenderingServerHandler")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_normal")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1530502735) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&vertex_id) , normal.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsServer3DRenderingServerHandler.fnSetNormal), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PhysicsServer3DRenderingServerHandler) SetAabb(aabb AABB, )  {
-  classNameV := StringNameFromStr("PhysicsServer3DRenderingServerHandler")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_aabb")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 259215842) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{aabb.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsServer3DRenderingServerHandler.fnSetAabb), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

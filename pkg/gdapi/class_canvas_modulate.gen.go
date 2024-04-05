@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCanvasModulateList struct {
+  fnSetColor gdc.MethodBindPtr
+  fnGetColor gdc.MethodBindPtr
+}
+
+var ptrsForCanvasModulate ptrsForCanvasModulateList
+
+func initCanvasModulatePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CanvasModulate")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_color")
+    defer methodName.Destroy()
+    ptrsForCanvasModulate.fnSetColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2920490490))
+  }
+  {
+    methodName := StringNameFromStr("get_color")
+    defer methodName.Destroy()
+    ptrsForCanvasModulate.fnGetColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3444240500))
+  }
+}
+
 type CanvasModulate struct {
   Node2D
 }
@@ -51,31 +74,21 @@ func (me *CanvasModulate) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *CanvasModulate) SetColor(color Color, )  {
-  classNameV := StringNameFromStr("CanvasModulate")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_color")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{color.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasModulate.fnSetColor), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CanvasModulate) GetColor() Color {
-  classNameV := StringNameFromStr("CanvasModulate")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_color")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewColor()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasModulate.fnGetColor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

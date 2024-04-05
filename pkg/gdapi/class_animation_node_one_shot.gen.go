@@ -14,6 +14,113 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAnimationNodeOneShotList struct {
+  fnSetFadeinTime gdc.MethodBindPtr
+  fnGetFadeinTime gdc.MethodBindPtr
+  fnSetFadeinCurve gdc.MethodBindPtr
+  fnGetFadeinCurve gdc.MethodBindPtr
+  fnSetFadeoutTime gdc.MethodBindPtr
+  fnGetFadeoutTime gdc.MethodBindPtr
+  fnSetFadeoutCurve gdc.MethodBindPtr
+  fnGetFadeoutCurve gdc.MethodBindPtr
+  fnSetAutorestart gdc.MethodBindPtr
+  fnHasAutorestart gdc.MethodBindPtr
+  fnSetAutorestartDelay gdc.MethodBindPtr
+  fnGetAutorestartDelay gdc.MethodBindPtr
+  fnSetAutorestartRandomDelay gdc.MethodBindPtr
+  fnGetAutorestartRandomDelay gdc.MethodBindPtr
+  fnSetMixMode gdc.MethodBindPtr
+  fnGetMixMode gdc.MethodBindPtr
+}
+
+var ptrsForAnimationNodeOneShot ptrsForAnimationNodeOneShotList
+
+func initAnimationNodeOneShotPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AnimationNodeOneShot")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_fadein_time")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeOneShot.fnSetFadeinTime = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_fadein_time")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeOneShot.fnGetFadeinTime = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_fadein_curve")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeOneShot.fnSetFadeinCurve = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 270443179))
+  }
+  {
+    methodName := StringNameFromStr("get_fadein_curve")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeOneShot.fnGetFadeinCurve = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2460114913))
+  }
+  {
+    methodName := StringNameFromStr("set_fadeout_time")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeOneShot.fnSetFadeoutTime = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_fadeout_time")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeOneShot.fnGetFadeoutTime = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_fadeout_curve")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeOneShot.fnSetFadeoutCurve = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 270443179))
+  }
+  {
+    methodName := StringNameFromStr("get_fadeout_curve")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeOneShot.fnGetFadeoutCurve = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2460114913))
+  }
+  {
+    methodName := StringNameFromStr("set_autorestart")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeOneShot.fnSetAutorestart = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("has_autorestart")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeOneShot.fnHasAutorestart = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_autorestart_delay")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeOneShot.fnSetAutorestartDelay = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_autorestart_delay")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeOneShot.fnGetAutorestartDelay = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_autorestart_random_delay")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeOneShot.fnSetAutorestartRandomDelay = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_autorestart_random_delay")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeOneShot.fnGetAutorestartRandomDelay = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_mix_mode")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeOneShot.fnSetMixMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1018899799))
+  }
+  {
+    methodName := StringNameFromStr("get_mix_mode")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeOneShot.fnGetMixMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3076550526))
+  }
+}
+
 type AnimationNodeOneShot struct {
   AnimationNodeSync
 }
@@ -65,234 +172,154 @@ func (me *AnimationNodeOneShot) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AnimationNodeOneShot) SetFadeinTime(time float64, )  {
-  classNameV := StringNameFromStr("AnimationNodeOneShot")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_fadein_time")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnSetFadeinTime), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeOneShot) GetFadeinTime() float64 {
-  classNameV := StringNameFromStr("AnimationNodeOneShot")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_fadein_time")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnGetFadeinTime), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AnimationNodeOneShot) SetFadeinCurve(curve Curve, )  {
-  classNameV := StringNameFromStr("AnimationNodeOneShot")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_fadein_curve")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{curve.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnSetFadeinCurve), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeOneShot) GetFadeinCurve() Curve {
-  classNameV := StringNameFromStr("AnimationNodeOneShot")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_fadein_curve")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewCurve()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnGetFadeinCurve), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AnimationNodeOneShot) SetFadeoutTime(time float64, )  {
-  classNameV := StringNameFromStr("AnimationNodeOneShot")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_fadeout_time")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnSetFadeoutTime), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeOneShot) GetFadeoutTime() float64 {
-  classNameV := StringNameFromStr("AnimationNodeOneShot")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_fadeout_time")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnGetFadeoutTime), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AnimationNodeOneShot) SetFadeoutCurve(curve Curve, )  {
-  classNameV := StringNameFromStr("AnimationNodeOneShot")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_fadeout_curve")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{curve.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnSetFadeoutCurve), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeOneShot) GetFadeoutCurve() Curve {
-  classNameV := StringNameFromStr("AnimationNodeOneShot")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_fadeout_curve")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewCurve()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnGetFadeoutCurve), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AnimationNodeOneShot) SetAutorestart(active bool, )  {
-  classNameV := StringNameFromStr("AnimationNodeOneShot")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_autorestart")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&active) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnSetAutorestart), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeOneShot) HasAutorestart() bool {
-  classNameV := StringNameFromStr("AnimationNodeOneShot")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_autorestart")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnHasAutorestart), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AnimationNodeOneShot) SetAutorestartDelay(time float64, )  {
-  classNameV := StringNameFromStr("AnimationNodeOneShot")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_autorestart_delay")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnSetAutorestartDelay), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeOneShot) GetAutorestartDelay() float64 {
-  classNameV := StringNameFromStr("AnimationNodeOneShot")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_autorestart_delay")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnGetAutorestartDelay), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AnimationNodeOneShot) SetAutorestartRandomDelay(time float64, )  {
-  classNameV := StringNameFromStr("AnimationNodeOneShot")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_autorestart_random_delay")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnSetAutorestartRandomDelay), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeOneShot) GetAutorestartRandomDelay() float64 {
-  classNameV := StringNameFromStr("AnimationNodeOneShot")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_autorestart_random_delay")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnGetAutorestartRandomDelay), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AnimationNodeOneShot) SetMixMode(mode AnimationNodeOneShotMixMode, )  {
-  classNameV := StringNameFromStr("AnimationNodeOneShot")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_mix_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1018899799) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnSetMixMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeOneShot) GetMixMode() AnimationNodeOneShotMixMode {
-  classNameV := StringNameFromStr("AnimationNodeOneShot")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_mix_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3076550526) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret AnimationNodeOneShotMixMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnGetMixMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

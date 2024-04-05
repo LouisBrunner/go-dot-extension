@@ -14,6 +14,179 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAnimatedSprite2DList struct {
+  fnSetSpriteFrames gdc.MethodBindPtr
+  fnGetSpriteFrames gdc.MethodBindPtr
+  fnSetAnimation gdc.MethodBindPtr
+  fnGetAnimation gdc.MethodBindPtr
+  fnSetAutoplay gdc.MethodBindPtr
+  fnGetAutoplay gdc.MethodBindPtr
+  fnIsPlaying gdc.MethodBindPtr
+  fnPlay gdc.MethodBindPtr
+  fnPlayBackwards gdc.MethodBindPtr
+  fnPause gdc.MethodBindPtr
+  fnStop gdc.MethodBindPtr
+  fnSetCentered gdc.MethodBindPtr
+  fnIsCentered gdc.MethodBindPtr
+  fnSetOffset gdc.MethodBindPtr
+  fnGetOffset gdc.MethodBindPtr
+  fnSetFlipH gdc.MethodBindPtr
+  fnIsFlippedH gdc.MethodBindPtr
+  fnSetFlipV gdc.MethodBindPtr
+  fnIsFlippedV gdc.MethodBindPtr
+  fnSetFrame gdc.MethodBindPtr
+  fnGetFrame gdc.MethodBindPtr
+  fnSetFrameProgress gdc.MethodBindPtr
+  fnGetFrameProgress gdc.MethodBindPtr
+  fnSetFrameAndProgress gdc.MethodBindPtr
+  fnSetSpeedScale gdc.MethodBindPtr
+  fnGetSpeedScale gdc.MethodBindPtr
+  fnGetPlayingSpeed gdc.MethodBindPtr
+}
+
+var ptrsForAnimatedSprite2D ptrsForAnimatedSprite2DList
+
+func initAnimatedSprite2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AnimatedSprite2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_sprite_frames")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnSetSpriteFrames = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 905781144))
+  }
+  {
+    methodName := StringNameFromStr("get_sprite_frames")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnGetSpriteFrames = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3804851214))
+  }
+  {
+    methodName := StringNameFromStr("set_animation")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnSetAnimation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3304788590))
+  }
+  {
+    methodName := StringNameFromStr("get_animation")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnGetAnimation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2002593661))
+  }
+  {
+    methodName := StringNameFromStr("set_autoplay")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnSetAutoplay = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_autoplay")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnGetAutoplay = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("is_playing")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnIsPlaying = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("play")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnPlay = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2372066587))
+  }
+  {
+    methodName := StringNameFromStr("play_backwards")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnPlayBackwards = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1421762485))
+  }
+  {
+    methodName := StringNameFromStr("pause")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnPause = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("stop")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnStop = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("set_centered")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnSetCentered = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_centered")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnIsCentered = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_offset")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnSetOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_offset")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnGetOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+  {
+    methodName := StringNameFromStr("set_flip_h")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnSetFlipH = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_flipped_h")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnIsFlippedH = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_flip_v")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnSetFlipV = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_flipped_v")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnIsFlippedV = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_frame")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnSetFrame = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_frame")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnGetFrame = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_frame_progress")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnSetFrameProgress = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_frame_progress")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnGetFrameProgress = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_frame_and_progress")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnSetFrameAndProgress = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1602489585))
+  }
+  {
+    methodName := StringNameFromStr("set_speed_scale")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnSetSpeedScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_speed_scale")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnGetSpeedScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("get_playing_speed")
+    defer methodName.Destroy()
+    ptrsForAnimatedSprite2D.fnGetPlayingSpeed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type AnimatedSprite2D struct {
   Node2D
 }
@@ -51,392 +224,257 @@ func (me *AnimatedSprite2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AnimatedSprite2D) SetSpriteFrames(sprite_frames SpriteFrames, )  {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_sprite_frames")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 905781144) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{sprite_frames.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnSetSpriteFrames), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimatedSprite2D) GetSpriteFrames() SpriteFrames {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_sprite_frames")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3804851214) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewSpriteFrames()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnGetSpriteFrames), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AnimatedSprite2D) SetAnimation(name StringName, )  {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_animation")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnSetAnimation), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimatedSprite2D) GetAnimation() StringName {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_animation")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewStringName()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnGetAnimation), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AnimatedSprite2D) SetAutoplay(name String, )  {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_autoplay")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnSetAutoplay), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimatedSprite2D) GetAutoplay() String {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_autoplay")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnGetAutoplay), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AnimatedSprite2D) IsPlaying() bool {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_playing")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnIsPlaying), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AnimatedSprite2D) Play(name StringName, custom_speed float64, from_end bool, )  {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("play")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2372066587) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), gdc.ConstTypePtr(&custom_speed) , gdc.ConstTypePtr(&from_end) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnPlay), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimatedSprite2D) PlayBackwards(name StringName, )  {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("play_backwards")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1421762485) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnPlayBackwards), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimatedSprite2D) Pause()  {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("pause")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnPause), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimatedSprite2D) Stop()  {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("stop")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnStop), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimatedSprite2D) SetCentered(centered bool, )  {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_centered")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&centered) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnSetCentered), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimatedSprite2D) IsCentered() bool {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_centered")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnIsCentered), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AnimatedSprite2D) SetOffset(offset Vector2, )  {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnSetOffset), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimatedSprite2D) GetOffset() Vector2 {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnGetOffset), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AnimatedSprite2D) SetFlipH(flip_h bool, )  {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_flip_h")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flip_h) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnSetFlipH), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimatedSprite2D) IsFlippedH() bool {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_flipped_h")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnIsFlippedH), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AnimatedSprite2D) SetFlipV(flip_v bool, )  {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_flip_v")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flip_v) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnSetFlipV), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimatedSprite2D) IsFlippedV() bool {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_flipped_v")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnIsFlippedV), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AnimatedSprite2D) SetFrame(frame int64, )  {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_frame")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&frame) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnSetFrame), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimatedSprite2D) GetFrame() int64 {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_frame")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnGetFrame), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AnimatedSprite2D) SetFrameProgress(progress float64, )  {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_frame_progress")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&progress) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnSetFrameProgress), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimatedSprite2D) GetFrameProgress() float64 {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_frame_progress")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnGetFrameProgress), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AnimatedSprite2D) SetFrameAndProgress(frame int64, progress float64, )  {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_frame_and_progress")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1602489585) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&frame) , gdc.ConstTypePtr(&progress) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnSetFrameAndProgress), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimatedSprite2D) SetSpeedScale(speed_scale float64, )  {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_speed_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&speed_scale) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnSetSpeedScale), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimatedSprite2D) GetSpeedScale() float64 {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_speed_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnGetSpeedScale), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AnimatedSprite2D) GetPlayingSpeed() float64 {
-  classNameV := StringNameFromStr("AnimatedSprite2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_playing_speed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimatedSprite2D.fnGetPlayingSpeed), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

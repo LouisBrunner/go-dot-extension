@@ -14,6 +14,23 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPlaceholderTexture2DList struct {
+  fnSetSize gdc.MethodBindPtr
+}
+
+var ptrsForPlaceholderTexture2D ptrsForPlaceholderTexture2DList
+
+func initPlaceholderTexture2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PlaceholderTexture2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_size")
+    defer methodName.Destroy()
+    ptrsForPlaceholderTexture2D.fnSetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+}
+
 type PlaceholderTexture2D struct {
   Texture2D
 }
@@ -51,16 +68,11 @@ func (me *PlaceholderTexture2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PlaceholderTexture2D) SetSize(size Vector2, )  {
-  classNameV := StringNameFromStr("PlaceholderTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{size.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPlaceholderTexture2D.fnSetSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

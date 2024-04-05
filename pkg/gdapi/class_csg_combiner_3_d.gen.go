@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCSGCombiner3DList struct {
+}
+
+var ptrsForCSGCombiner3D ptrsForCSGCombiner3DList
+
+func initCSGCombiner3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CSGCombiner3D")
+  defer className.Destroy()
+}
+
 type CSGCombiner3D struct {
   CSGShape3D
 }

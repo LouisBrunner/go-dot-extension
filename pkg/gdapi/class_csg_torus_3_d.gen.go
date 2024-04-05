@@ -14,6 +14,89 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCSGTorus3DList struct {
+  fnSetInnerRadius gdc.MethodBindPtr
+  fnGetInnerRadius gdc.MethodBindPtr
+  fnSetOuterRadius gdc.MethodBindPtr
+  fnGetOuterRadius gdc.MethodBindPtr
+  fnSetSides gdc.MethodBindPtr
+  fnGetSides gdc.MethodBindPtr
+  fnSetRingSides gdc.MethodBindPtr
+  fnGetRingSides gdc.MethodBindPtr
+  fnSetMaterial gdc.MethodBindPtr
+  fnGetMaterial gdc.MethodBindPtr
+  fnSetSmoothFaces gdc.MethodBindPtr
+  fnGetSmoothFaces gdc.MethodBindPtr
+}
+
+var ptrsForCSGTorus3D ptrsForCSGTorus3DList
+
+func initCSGTorus3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CSGTorus3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_inner_radius")
+    defer methodName.Destroy()
+    ptrsForCSGTorus3D.fnSetInnerRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_inner_radius")
+    defer methodName.Destroy()
+    ptrsForCSGTorus3D.fnGetInnerRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_outer_radius")
+    defer methodName.Destroy()
+    ptrsForCSGTorus3D.fnSetOuterRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_outer_radius")
+    defer methodName.Destroy()
+    ptrsForCSGTorus3D.fnGetOuterRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_sides")
+    defer methodName.Destroy()
+    ptrsForCSGTorus3D.fnSetSides = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_sides")
+    defer methodName.Destroy()
+    ptrsForCSGTorus3D.fnGetSides = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_ring_sides")
+    defer methodName.Destroy()
+    ptrsForCSGTorus3D.fnSetRingSides = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_ring_sides")
+    defer methodName.Destroy()
+    ptrsForCSGTorus3D.fnGetRingSides = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_material")
+    defer methodName.Destroy()
+    ptrsForCSGTorus3D.fnSetMaterial = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2757459619))
+  }
+  {
+    methodName := StringNameFromStr("get_material")
+    defer methodName.Destroy()
+    ptrsForCSGTorus3D.fnGetMaterial = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 5934680))
+  }
+  {
+    methodName := StringNameFromStr("set_smooth_faces")
+    defer methodName.Destroy()
+    ptrsForCSGTorus3D.fnSetSmoothFaces = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_smooth_faces")
+    defer methodName.Destroy()
+    ptrsForCSGTorus3D.fnGetSmoothFaces = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type CSGTorus3D struct {
   CSGPrimitive3D
 }
@@ -51,176 +134,116 @@ func (me *CSGTorus3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *CSGTorus3D) SetInnerRadius(radius float64, )  {
-  classNameV := StringNameFromStr("CSGTorus3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_inner_radius")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radius) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCSGTorus3D.fnSetInnerRadius), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CSGTorus3D) GetInnerRadius() float64 {
-  classNameV := StringNameFromStr("CSGTorus3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_inner_radius")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCSGTorus3D.fnGetInnerRadius), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *CSGTorus3D) SetOuterRadius(radius float64, )  {
-  classNameV := StringNameFromStr("CSGTorus3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_outer_radius")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radius) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCSGTorus3D.fnSetOuterRadius), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CSGTorus3D) GetOuterRadius() float64 {
-  classNameV := StringNameFromStr("CSGTorus3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_outer_radius")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCSGTorus3D.fnGetOuterRadius), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *CSGTorus3D) SetSides(sides int64, )  {
-  classNameV := StringNameFromStr("CSGTorus3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_sides")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&sides) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCSGTorus3D.fnSetSides), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CSGTorus3D) GetSides() int64 {
-  classNameV := StringNameFromStr("CSGTorus3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_sides")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCSGTorus3D.fnGetSides), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *CSGTorus3D) SetRingSides(sides int64, )  {
-  classNameV := StringNameFromStr("CSGTorus3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_ring_sides")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&sides) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCSGTorus3D.fnSetRingSides), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CSGTorus3D) GetRingSides() int64 {
-  classNameV := StringNameFromStr("CSGTorus3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_ring_sides")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCSGTorus3D.fnGetRingSides), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *CSGTorus3D) SetMaterial(material Material, )  {
-  classNameV := StringNameFromStr("CSGTorus3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_material")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2757459619) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{material.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCSGTorus3D.fnSetMaterial), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CSGTorus3D) GetMaterial() Material {
-  classNameV := StringNameFromStr("CSGTorus3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_material")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 5934680) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewMaterial()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCSGTorus3D.fnGetMaterial), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *CSGTorus3D) SetSmoothFaces(smooth_faces bool, )  {
-  classNameV := StringNameFromStr("CSGTorus3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_smooth_faces")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&smooth_faces) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCSGTorus3D.fnSetSmoothFaces), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CSGTorus3D) GetSmoothFaces() bool {
-  classNameV := StringNameFromStr("CSGTorus3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_smooth_faces")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCSGTorus3D.fnGetSmoothFaces), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

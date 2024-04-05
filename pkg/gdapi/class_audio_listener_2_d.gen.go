@@ -14,6 +14,35 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioListener2DList struct {
+  fnMakeCurrent gdc.MethodBindPtr
+  fnClearCurrent gdc.MethodBindPtr
+  fnIsCurrent gdc.MethodBindPtr
+}
+
+var ptrsForAudioListener2D ptrsForAudioListener2DList
+
+func initAudioListener2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioListener2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("make_current")
+    defer methodName.Destroy()
+    ptrsForAudioListener2D.fnMakeCurrent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("clear_current")
+    defer methodName.Destroy()
+    ptrsForAudioListener2D.fnClearCurrent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("is_current")
+    defer methodName.Destroy()
+    ptrsForAudioListener2D.fnIsCurrent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type AudioListener2D struct {
   Node2D
 }
@@ -51,45 +80,30 @@ func (me *AudioListener2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AudioListener2D) MakeCurrent()  {
-  classNameV := StringNameFromStr("AudioListener2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("make_current")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioListener2D.fnMakeCurrent), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioListener2D) ClearCurrent()  {
-  classNameV := StringNameFromStr("AudioListener2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("clear_current")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioListener2D.fnClearCurrent), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioListener2D) IsCurrent() bool {
-  classNameV := StringNameFromStr("AudioListener2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_current")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioListener2D.fnIsCurrent), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 

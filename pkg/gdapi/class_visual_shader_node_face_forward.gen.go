@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeFaceForwardList struct {
+}
+
+var ptrsForVisualShaderNodeFaceForward ptrsForVisualShaderNodeFaceForwardList
+
+func initVisualShaderNodeFaceForwardPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeFaceForward")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeFaceForward struct {
   VisualShaderNodeVectorBase
 }

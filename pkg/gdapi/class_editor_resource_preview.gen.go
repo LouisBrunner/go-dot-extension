@@ -14,6 +14,47 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorResourcePreviewList struct {
+  fnQueueResourcePreview gdc.MethodBindPtr
+  fnQueueEditedResourcePreview gdc.MethodBindPtr
+  fnAddPreviewGenerator gdc.MethodBindPtr
+  fnRemovePreviewGenerator gdc.MethodBindPtr
+  fnCheckForInvalidation gdc.MethodBindPtr
+}
+
+var ptrsForEditorResourcePreview ptrsForEditorResourcePreviewList
+
+func initEditorResourcePreviewPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorResourcePreview")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("queue_resource_preview")
+    defer methodName.Destroy()
+    ptrsForEditorResourcePreview.fnQueueResourcePreview = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 233177534))
+  }
+  {
+    methodName := StringNameFromStr("queue_edited_resource_preview")
+    defer methodName.Destroy()
+    ptrsForEditorResourcePreview.fnQueueEditedResourcePreview = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1608376650))
+  }
+  {
+    methodName := StringNameFromStr("add_preview_generator")
+    defer methodName.Destroy()
+    ptrsForEditorResourcePreview.fnAddPreviewGenerator = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 332288124))
+  }
+  {
+    methodName := StringNameFromStr("remove_preview_generator")
+    defer methodName.Destroy()
+    ptrsForEditorResourcePreview.fnRemovePreviewGenerator = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 332288124))
+  }
+  {
+    methodName := StringNameFromStr("check_for_invalidation")
+    defer methodName.Destroy()
+    ptrsForEditorResourcePreview.fnCheckForInvalidation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+}
+
 type EditorResourcePreview struct {
   Node
 }
@@ -51,72 +92,47 @@ func (me *EditorResourcePreview) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *EditorResourcePreview) QueueResourcePreview(path String, receiver Object, receiver_func StringName, userdata Variant, )  {
-  classNameV := StringNameFromStr("EditorResourcePreview")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("queue_resource_preview")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 233177534) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), receiver.AsCTypePtr(), receiver_func.AsCTypePtr(), userdata.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorResourcePreview.fnQueueResourcePreview), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorResourcePreview) QueueEditedResourcePreview(resource Resource, receiver Object, receiver_func StringName, userdata Variant, )  {
-  classNameV := StringNameFromStr("EditorResourcePreview")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("queue_edited_resource_preview")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1608376650) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{resource.AsCTypePtr(), receiver.AsCTypePtr(), receiver_func.AsCTypePtr(), userdata.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorResourcePreview.fnQueueEditedResourcePreview), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorResourcePreview) AddPreviewGenerator(generator EditorResourcePreviewGenerator, )  {
-  classNameV := StringNameFromStr("EditorResourcePreview")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_preview_generator")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 332288124) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{generator.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorResourcePreview.fnAddPreviewGenerator), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorResourcePreview) RemovePreviewGenerator(generator EditorResourcePreviewGenerator, )  {
-  classNameV := StringNameFromStr("EditorResourcePreview")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_preview_generator")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 332288124) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{generator.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorResourcePreview.fnRemovePreviewGenerator), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorResourcePreview) CheckForInvalidation(path String, )  {
-  classNameV := StringNameFromStr("EditorResourcePreview")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("check_for_invalidation")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorResourcePreview.fnCheckForInvalidation), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

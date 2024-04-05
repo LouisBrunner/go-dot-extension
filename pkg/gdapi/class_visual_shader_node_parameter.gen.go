@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeParameterList struct {
+  fnSetParameterName gdc.MethodBindPtr
+  fnGetParameterName gdc.MethodBindPtr
+  fnSetQualifier gdc.MethodBindPtr
+  fnGetQualifier gdc.MethodBindPtr
+}
+
+var ptrsForVisualShaderNodeParameter ptrsForVisualShaderNodeParameterList
+
+func initVisualShaderNodeParameterPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeParameter")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_parameter_name")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeParameter.fnSetParameterName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_parameter_name")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeParameter.fnGetParameterName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("set_qualifier")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeParameter.fnSetQualifier = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1276489447))
+  }
+  {
+    methodName := StringNameFromStr("get_qualifier")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeParameter.fnGetQualifier = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3558406205))
+  }
+}
+
 type VisualShaderNodeParameter struct {
   VisualShaderNode
 }
@@ -59,60 +94,40 @@ func (me *VisualShaderNodeParameter) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisualShaderNodeParameter) SetParameterName(name String, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeParameter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_parameter_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeParameter.fnSetParameterName), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeParameter) GetParameterName() String {
-  classNameV := StringNameFromStr("VisualShaderNodeParameter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_parameter_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeParameter.fnGetParameterName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *VisualShaderNodeParameter) SetQualifier(qualifier VisualShaderNodeParameterQualifier, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeParameter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_qualifier")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1276489447) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&qualifier) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeParameter.fnSetQualifier), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeParameter) GetQualifier() VisualShaderNodeParameterQualifier {
-  classNameV := StringNameFromStr("VisualShaderNodeParameter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_qualifier")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3558406205) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret VisualShaderNodeParameterQualifier
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeParameter.fnGetQualifier), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

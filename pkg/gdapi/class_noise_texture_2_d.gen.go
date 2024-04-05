@@ -14,6 +14,149 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForNoiseTexture2DList struct {
+  fnSetWidth gdc.MethodBindPtr
+  fnSetHeight gdc.MethodBindPtr
+  fnSetInvert gdc.MethodBindPtr
+  fnGetInvert gdc.MethodBindPtr
+  fnSetIn3DSpace gdc.MethodBindPtr
+  fnIsIn3DSpace gdc.MethodBindPtr
+  fnSetGenerateMipmaps gdc.MethodBindPtr
+  fnIsGeneratingMipmaps gdc.MethodBindPtr
+  fnSetSeamless gdc.MethodBindPtr
+  fnGetSeamless gdc.MethodBindPtr
+  fnSetSeamlessBlendSkirt gdc.MethodBindPtr
+  fnGetSeamlessBlendSkirt gdc.MethodBindPtr
+  fnSetAsNormalMap gdc.MethodBindPtr
+  fnIsNormalMap gdc.MethodBindPtr
+  fnSetBumpStrength gdc.MethodBindPtr
+  fnGetBumpStrength gdc.MethodBindPtr
+  fnSetNormalize gdc.MethodBindPtr
+  fnIsNormalized gdc.MethodBindPtr
+  fnSetColorRamp gdc.MethodBindPtr
+  fnGetColorRamp gdc.MethodBindPtr
+  fnSetNoise gdc.MethodBindPtr
+  fnGetNoise gdc.MethodBindPtr
+}
+
+var ptrsForNoiseTexture2D ptrsForNoiseTexture2DList
+
+func initNoiseTexture2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("NoiseTexture2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_width")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnSetWidth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("set_height")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnSetHeight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("set_invert")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnSetInvert = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_invert")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnGetInvert = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_in_3d_space")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnSetIn3DSpace = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_in_3d_space")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnIsIn3DSpace = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_generate_mipmaps")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnSetGenerateMipmaps = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_generating_mipmaps")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnIsGeneratingMipmaps = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_seamless")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnSetSeamless = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_seamless")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnGetSeamless = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("set_seamless_blend_skirt")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnSetSeamlessBlendSkirt = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_seamless_blend_skirt")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnGetSeamlessBlendSkirt = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 191475506))
+  }
+  {
+    methodName := StringNameFromStr("set_as_normal_map")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnSetAsNormalMap = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_normal_map")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnIsNormalMap = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("set_bump_strength")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnSetBumpStrength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_bump_strength")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnGetBumpStrength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 191475506))
+  }
+  {
+    methodName := StringNameFromStr("set_normalize")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnSetNormalize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_normalized")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnIsNormalized = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_color_ramp")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnSetColorRamp = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2756054477))
+  }
+  {
+    methodName := StringNameFromStr("get_color_ramp")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnGetColorRamp = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 132272999))
+  }
+  {
+    methodName := StringNameFromStr("set_noise")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnSetNoise = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4135492439))
+  }
+  {
+    methodName := StringNameFromStr("get_noise")
+    defer methodName.Destroy()
+    ptrsForNoiseTexture2D.fnGetNoise = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 185851837))
+  }
+}
+
 type NoiseTexture2D struct {
   Texture2D
 }
@@ -51,320 +194,210 @@ func (me *NoiseTexture2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *NoiseTexture2D) SetWidth(width int64, )  {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_width")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&width) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnSetWidth), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NoiseTexture2D) SetHeight(height int64, )  {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_height")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&height) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnSetHeight), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NoiseTexture2D) SetInvert(invert bool, )  {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_invert")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&invert) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnSetInvert), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NoiseTexture2D) GetInvert() bool {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_invert")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnGetInvert), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NoiseTexture2D) SetIn3DSpace(enable bool, )  {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_in_3d_space")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnSetIn3DSpace), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NoiseTexture2D) IsIn3DSpace() bool {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_in_3d_space")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnIsIn3DSpace), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NoiseTexture2D) SetGenerateMipmaps(invert bool, )  {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_generate_mipmaps")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&invert) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnSetGenerateMipmaps), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NoiseTexture2D) IsGeneratingMipmaps() bool {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_generating_mipmaps")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnIsGeneratingMipmaps), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NoiseTexture2D) SetSeamless(seamless bool, )  {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_seamless")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&seamless) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnSetSeamless), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NoiseTexture2D) GetSeamless() bool {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_seamless")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnGetSeamless), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NoiseTexture2D) SetSeamlessBlendSkirt(seamless_blend_skirt float64, )  {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_seamless_blend_skirt")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&seamless_blend_skirt) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnSetSeamlessBlendSkirt), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NoiseTexture2D) GetSeamlessBlendSkirt() float64 {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_seamless_blend_skirt")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 191475506) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnGetSeamlessBlendSkirt), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NoiseTexture2D) SetAsNormalMap(as_normal_map bool, )  {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_as_normal_map")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&as_normal_map) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnSetAsNormalMap), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NoiseTexture2D) IsNormalMap() bool {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_normal_map")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnIsNormalMap), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NoiseTexture2D) SetBumpStrength(bump_strength float64, )  {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_bump_strength")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bump_strength) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnSetBumpStrength), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NoiseTexture2D) GetBumpStrength() float64 {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_bump_strength")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 191475506) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnGetBumpStrength), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NoiseTexture2D) SetNormalize(normalize bool, )  {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_normalize")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&normalize) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnSetNormalize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NoiseTexture2D) IsNormalized() bool {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_normalized")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnIsNormalized), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NoiseTexture2D) SetColorRamp(gradient Gradient, )  {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_color_ramp")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2756054477) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gradient.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnSetColorRamp), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NoiseTexture2D) GetColorRamp() Gradient {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_color_ramp")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 132272999) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewGradient()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnGetColorRamp), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *NoiseTexture2D) SetNoise(noise Noise, )  {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_noise")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4135492439) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{noise.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnSetNoise), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NoiseTexture2D) GetNoise() Noise {
-  classNameV := StringNameFromStr("NoiseTexture2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_noise")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 185851837) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNoise()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNoiseTexture2D.fnGetNoise), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

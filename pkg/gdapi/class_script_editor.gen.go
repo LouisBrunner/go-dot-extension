@@ -14,6 +14,65 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForScriptEditorList struct {
+  fnGetCurrentEditor gdc.MethodBindPtr
+  fnGetOpenScriptEditors gdc.MethodBindPtr
+  fnRegisterSyntaxHighlighter gdc.MethodBindPtr
+  fnUnregisterSyntaxHighlighter gdc.MethodBindPtr
+  fnGotoLine gdc.MethodBindPtr
+  fnGetCurrentScript gdc.MethodBindPtr
+  fnGetOpenScripts gdc.MethodBindPtr
+  fnOpenScriptCreateDialog gdc.MethodBindPtr
+}
+
+var ptrsForScriptEditor ptrsForScriptEditorList
+
+func initScriptEditorPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ScriptEditor")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_current_editor")
+    defer methodName.Destroy()
+    ptrsForScriptEditor.fnGetCurrentEditor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1906266726))
+  }
+  {
+    methodName := StringNameFromStr("get_open_script_editors")
+    defer methodName.Destroy()
+    ptrsForScriptEditor.fnGetOpenScriptEditors = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+  }
+  {
+    methodName := StringNameFromStr("register_syntax_highlighter")
+    defer methodName.Destroy()
+    ptrsForScriptEditor.fnRegisterSyntaxHighlighter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1092774468))
+  }
+  {
+    methodName := StringNameFromStr("unregister_syntax_highlighter")
+    defer methodName.Destroy()
+    ptrsForScriptEditor.fnUnregisterSyntaxHighlighter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1092774468))
+  }
+  {
+    methodName := StringNameFromStr("goto_line")
+    defer methodName.Destroy()
+    ptrsForScriptEditor.fnGotoLine = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_current_script")
+    defer methodName.Destroy()
+    ptrsForScriptEditor.fnGetCurrentScript = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2146468882))
+  }
+  {
+    methodName := StringNameFromStr("get_open_scripts")
+    defer methodName.Destroy()
+    ptrsForScriptEditor.fnGetOpenScripts = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+  }
+  {
+    methodName := StringNameFromStr("open_script_create_dialog")
+    defer methodName.Destroy()
+    ptrsForScriptEditor.fnOpenScriptCreateDialog = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3186203200))
+  }
+}
+
 type ScriptEditor struct {
   PanelContainer
 }
@@ -51,33 +110,23 @@ func (me *ScriptEditor) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ScriptEditor) GetCurrentEditor() ScriptEditorBase {
-  classNameV := StringNameFromStr("ScriptEditor")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_current_editor")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1906266726) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewScriptEditorBase()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScriptEditor.fnGetCurrentEditor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ScriptEditor) GetOpenScriptEditors() []ScriptEditorBase {
-  classNameV := StringNameFromStr("ScriptEditor")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_open_script_editors")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScriptEditor.fnGetOpenScriptEditors), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[ScriptEditorBase](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -87,75 +136,50 @@ return sliceRet
 }
 
 func  (me *ScriptEditor) RegisterSyntaxHighlighter(syntax_highlighter EditorSyntaxHighlighter, )  {
-  classNameV := StringNameFromStr("ScriptEditor")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("register_syntax_highlighter")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1092774468) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{syntax_highlighter.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScriptEditor.fnRegisterSyntaxHighlighter), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ScriptEditor) UnregisterSyntaxHighlighter(syntax_highlighter EditorSyntaxHighlighter, )  {
-  classNameV := StringNameFromStr("ScriptEditor")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("unregister_syntax_highlighter")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1092774468) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{syntax_highlighter.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScriptEditor.fnUnregisterSyntaxHighlighter), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ScriptEditor) GotoLine(line_number int64, )  {
-  classNameV := StringNameFromStr("ScriptEditor")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("goto_line")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&line_number) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScriptEditor.fnGotoLine), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ScriptEditor) GetCurrentScript() Script {
-  classNameV := StringNameFromStr("ScriptEditor")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_current_script")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2146468882) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewScript()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScriptEditor.fnGetCurrentScript), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ScriptEditor) GetOpenScripts() []Script {
-  classNameV := StringNameFromStr("ScriptEditor")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_open_scripts")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScriptEditor.fnGetOpenScripts), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[Script](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -165,16 +189,11 @@ return sliceRet
 }
 
 func  (me *ScriptEditor) OpenScriptCreateDialog(base_name String, base_path String, )  {
-  classNameV := StringNameFromStr("ScriptEditor")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("open_script_create_dialog")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3186203200) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{base_name.AsCTypePtr(), base_path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScriptEditor.fnOpenScriptCreateDialog), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisibleOnScreenNotifier3DList struct {
+  fnSetAabb gdc.MethodBindPtr
+  fnIsOnScreen gdc.MethodBindPtr
+}
+
+var ptrsForVisibleOnScreenNotifier3D ptrsForVisibleOnScreenNotifier3DList
+
+func initVisibleOnScreenNotifier3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisibleOnScreenNotifier3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_aabb")
+    defer methodName.Destroy()
+    ptrsForVisibleOnScreenNotifier3D.fnSetAabb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 259215842))
+  }
+  {
+    methodName := StringNameFromStr("is_on_screen")
+    defer methodName.Destroy()
+    ptrsForVisibleOnScreenNotifier3D.fnIsOnScreen = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type VisibleOnScreenNotifier3D struct {
   VisualInstance3D
 }
@@ -51,31 +74,21 @@ func (me *VisibleOnScreenNotifier3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisibleOnScreenNotifier3D) SetAabb(rect AABB, )  {
-  classNameV := StringNameFromStr("VisibleOnScreenNotifier3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_aabb")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 259215842) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{rect.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisibleOnScreenNotifier3D.fnSetAabb), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisibleOnScreenNotifier3D) IsOnScreen() bool {
-  classNameV := StringNameFromStr("VisibleOnScreenNotifier3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_on_screen")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisibleOnScreenNotifier3D.fnIsOnScreen), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

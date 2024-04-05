@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForXROrigin3DList struct {
+  fnSetWorldScale gdc.MethodBindPtr
+  fnGetWorldScale gdc.MethodBindPtr
+  fnSetCurrent gdc.MethodBindPtr
+  fnIsCurrent gdc.MethodBindPtr
+}
+
+var ptrsForXROrigin3D ptrsForXROrigin3DList
+
+func initXROrigin3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("XROrigin3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_world_scale")
+    defer methodName.Destroy()
+    ptrsForXROrigin3D.fnSetWorldScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_world_scale")
+    defer methodName.Destroy()
+    ptrsForXROrigin3D.fnGetWorldScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_current")
+    defer methodName.Destroy()
+    ptrsForXROrigin3D.fnSetCurrent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_current")
+    defer methodName.Destroy()
+    ptrsForXROrigin3D.fnIsCurrent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type XROrigin3D struct {
   Node3D
 }
@@ -51,60 +86,40 @@ func (me *XROrigin3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *XROrigin3D) SetWorldScale(world_scale float64, )  {
-  classNameV := StringNameFromStr("XROrigin3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_world_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&world_scale) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXROrigin3D.fnSetWorldScale), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XROrigin3D) GetWorldScale() float64 {
-  classNameV := StringNameFromStr("XROrigin3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_world_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXROrigin3D.fnGetWorldScale), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *XROrigin3D) SetCurrent(enabled bool, )  {
-  classNameV := StringNameFromStr("XROrigin3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_current")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXROrigin3D.fnSetCurrent), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XROrigin3D) IsCurrent() bool {
-  classNameV := StringNameFromStr("XROrigin3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_current")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXROrigin3D.fnIsCurrent), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

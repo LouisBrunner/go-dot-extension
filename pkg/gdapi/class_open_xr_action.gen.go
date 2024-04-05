@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForOpenXRActionList struct {
+  fnSetLocalizedName gdc.MethodBindPtr
+  fnGetLocalizedName gdc.MethodBindPtr
+  fnSetActionType gdc.MethodBindPtr
+  fnGetActionType gdc.MethodBindPtr
+  fnSetToplevelPaths gdc.MethodBindPtr
+  fnGetToplevelPaths gdc.MethodBindPtr
+}
+
+var ptrsForOpenXRAction ptrsForOpenXRActionList
+
+func initOpenXRActionPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("OpenXRAction")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_localized_name")
+    defer methodName.Destroy()
+    ptrsForOpenXRAction.fnSetLocalizedName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_localized_name")
+    defer methodName.Destroy()
+    ptrsForOpenXRAction.fnGetLocalizedName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("set_action_type")
+    defer methodName.Destroy()
+    ptrsForOpenXRAction.fnSetActionType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1675238366))
+  }
+  {
+    methodName := StringNameFromStr("get_action_type")
+    defer methodName.Destroy()
+    ptrsForOpenXRAction.fnGetActionType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3536542431))
+  }
+  {
+    methodName := StringNameFromStr("set_toplevel_paths")
+    defer methodName.Destroy()
+    ptrsForOpenXRAction.fnSetToplevelPaths = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4015028928))
+  }
+  {
+    methodName := StringNameFromStr("get_toplevel_paths")
+    defer methodName.Destroy()
+    ptrsForOpenXRAction.fnGetToplevelPaths = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1139954409))
+  }
+}
+
 type OpenXRAction struct {
   Resource
 }
@@ -59,89 +106,59 @@ func (me *OpenXRAction) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *OpenXRAction) SetLocalizedName(localized_name String, )  {
-  classNameV := StringNameFromStr("OpenXRAction")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_localized_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{localized_name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRAction.fnSetLocalizedName), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *OpenXRAction) GetLocalizedName() String {
-  classNameV := StringNameFromStr("OpenXRAction")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_localized_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRAction.fnGetLocalizedName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *OpenXRAction) SetActionType(action_type OpenXRActionActionType, )  {
-  classNameV := StringNameFromStr("OpenXRAction")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_action_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1675238366) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&action_type) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRAction.fnSetActionType), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *OpenXRAction) GetActionType() OpenXRActionActionType {
-  classNameV := StringNameFromStr("OpenXRAction")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_action_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3536542431) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret OpenXRActionActionType
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRAction.fnGetActionType), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *OpenXRAction) SetToplevelPaths(toplevel_paths PackedStringArray, )  {
-  classNameV := StringNameFromStr("OpenXRAction")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_toplevel_paths")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4015028928) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{toplevel_paths.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRAction.fnSetToplevelPaths), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *OpenXRAction) GetToplevelPaths() PackedStringArray {
-  classNameV := StringNameFromStr("OpenXRAction")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_toplevel_paths")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedStringArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRAction.fnGetToplevelPaths), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeDeterminantList struct {
+}
+
+var ptrsForVisualShaderNodeDeterminant ptrsForVisualShaderNodeDeterminantList
+
+func initVisualShaderNodeDeterminantPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeDeterminant")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeDeterminant struct {
   VisualShaderNode
 }

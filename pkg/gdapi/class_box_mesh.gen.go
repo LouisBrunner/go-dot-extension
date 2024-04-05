@@ -14,6 +14,65 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForBoxMeshList struct {
+  fnSetSize gdc.MethodBindPtr
+  fnGetSize gdc.MethodBindPtr
+  fnSetSubdivideWidth gdc.MethodBindPtr
+  fnGetSubdivideWidth gdc.MethodBindPtr
+  fnSetSubdivideHeight gdc.MethodBindPtr
+  fnGetSubdivideHeight gdc.MethodBindPtr
+  fnSetSubdivideDepth gdc.MethodBindPtr
+  fnGetSubdivideDepth gdc.MethodBindPtr
+}
+
+var ptrsForBoxMesh ptrsForBoxMeshList
+
+func initBoxMeshPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("BoxMesh")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_size")
+    defer methodName.Destroy()
+    ptrsForBoxMesh.fnSetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("get_size")
+    defer methodName.Destroy()
+    ptrsForBoxMesh.fnGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("set_subdivide_width")
+    defer methodName.Destroy()
+    ptrsForBoxMesh.fnSetSubdivideWidth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_subdivide_width")
+    defer methodName.Destroy()
+    ptrsForBoxMesh.fnGetSubdivideWidth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_subdivide_height")
+    defer methodName.Destroy()
+    ptrsForBoxMesh.fnSetSubdivideHeight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_subdivide_height")
+    defer methodName.Destroy()
+    ptrsForBoxMesh.fnGetSubdivideHeight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_subdivide_depth")
+    defer methodName.Destroy()
+    ptrsForBoxMesh.fnSetSubdivideDepth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_subdivide_depth")
+    defer methodName.Destroy()
+    ptrsForBoxMesh.fnGetSubdivideDepth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+}
+
 type BoxMesh struct {
   PrimitiveMesh
 }
@@ -51,118 +110,78 @@ func (me *BoxMesh) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *BoxMesh) SetSize(size Vector3, )  {
-  classNameV := StringNameFromStr("BoxMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{size.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoxMesh.fnSetSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BoxMesh) GetSize() Vector3 {
-  classNameV := StringNameFromStr("BoxMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoxMesh.fnGetSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *BoxMesh) SetSubdivideWidth(subdivide int64, )  {
-  classNameV := StringNameFromStr("BoxMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_subdivide_width")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&subdivide) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoxMesh.fnSetSubdivideWidth), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BoxMesh) GetSubdivideWidth() int64 {
-  classNameV := StringNameFromStr("BoxMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_subdivide_width")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoxMesh.fnGetSubdivideWidth), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *BoxMesh) SetSubdivideHeight(divisions int64, )  {
-  classNameV := StringNameFromStr("BoxMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_subdivide_height")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&divisions) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoxMesh.fnSetSubdivideHeight), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BoxMesh) GetSubdivideHeight() int64 {
-  classNameV := StringNameFromStr("BoxMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_subdivide_height")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoxMesh.fnGetSubdivideHeight), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *BoxMesh) SetSubdivideDepth(divisions int64, )  {
-  classNameV := StringNameFromStr("BoxMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_subdivide_depth")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&divisions) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoxMesh.fnSetSubdivideDepth), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BoxMesh) GetSubdivideDepth() int64 {
-  classNameV := StringNameFromStr("BoxMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_subdivide_depth")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoxMesh.fnGetSubdivideDepth), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

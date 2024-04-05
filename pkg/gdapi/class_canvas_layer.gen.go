@@ -14,6 +14,149 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCanvasLayerList struct {
+  fnSetLayer gdc.MethodBindPtr
+  fnGetLayer gdc.MethodBindPtr
+  fnSetVisible gdc.MethodBindPtr
+  fnIsVisible gdc.MethodBindPtr
+  fnShow gdc.MethodBindPtr
+  fnHide gdc.MethodBindPtr
+  fnSetTransform gdc.MethodBindPtr
+  fnGetTransform gdc.MethodBindPtr
+  fnGetFinalTransform gdc.MethodBindPtr
+  fnSetOffset gdc.MethodBindPtr
+  fnGetOffset gdc.MethodBindPtr
+  fnSetRotation gdc.MethodBindPtr
+  fnGetRotation gdc.MethodBindPtr
+  fnSetScale gdc.MethodBindPtr
+  fnGetScale gdc.MethodBindPtr
+  fnSetFollowViewport gdc.MethodBindPtr
+  fnIsFollowingViewport gdc.MethodBindPtr
+  fnSetFollowViewportScale gdc.MethodBindPtr
+  fnGetFollowViewportScale gdc.MethodBindPtr
+  fnSetCustomViewport gdc.MethodBindPtr
+  fnGetCustomViewport gdc.MethodBindPtr
+  fnGetCanvas gdc.MethodBindPtr
+}
+
+var ptrsForCanvasLayer ptrsForCanvasLayerList
+
+func initCanvasLayerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CanvasLayer")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_layer")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnSetLayer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_layer")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnGetLayer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_visible")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnSetVisible = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_visible")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnIsVisible = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("show")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnShow = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("hide")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnHide = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("set_transform")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnSetTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2761652528))
+  }
+  {
+    methodName := StringNameFromStr("get_transform")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnGetTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3814499831))
+  }
+  {
+    methodName := StringNameFromStr("get_final_transform")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnGetFinalTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3814499831))
+  }
+  {
+    methodName := StringNameFromStr("set_offset")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnSetOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_offset")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnGetOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+  {
+    methodName := StringNameFromStr("set_rotation")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnSetRotation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_rotation")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnGetRotation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_scale")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnSetScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_scale")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnGetScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+  {
+    methodName := StringNameFromStr("set_follow_viewport")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnSetFollowViewport = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_following_viewport")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnIsFollowingViewport = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_follow_viewport_scale")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnSetFollowViewportScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_follow_viewport_scale")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnGetFollowViewportScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_custom_viewport")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnSetCustomViewport = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1078189570))
+  }
+  {
+    methodName := StringNameFromStr("get_custom_viewport")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnGetCustomViewport = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3160264692))
+  }
+  {
+    methodName := StringNameFromStr("get_canvas")
+    defer methodName.Destroy()
+    ptrsForCanvasLayer.fnGetCanvas = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
+  }
+}
+
 type CanvasLayer struct {
   Node
 }
@@ -51,321 +194,211 @@ func (me *CanvasLayer) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *CanvasLayer) SetLayer(layer int64, )  {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_layer")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnSetLayer), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CanvasLayer) GetLayer() int64 {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_layer")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnGetLayer), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *CanvasLayer) SetVisible(visible bool, )  {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_visible")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&visible) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnSetVisible), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CanvasLayer) IsVisible() bool {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_visible")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnIsVisible), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *CanvasLayer) Show()  {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("show")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnShow), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CanvasLayer) Hide()  {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("hide")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnHide), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CanvasLayer) SetTransform(transform Transform2D, )  {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2761652528) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{transform.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnSetTransform), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CanvasLayer) GetTransform() Transform2D {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814499831) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTransform2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnGetTransform), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *CanvasLayer) GetFinalTransform() Transform2D {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_final_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814499831) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTransform2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnGetFinalTransform), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *CanvasLayer) SetOffset(offset Vector2, )  {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{offset.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnSetOffset), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CanvasLayer) GetOffset() Vector2 {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_offset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnGetOffset), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *CanvasLayer) SetRotation(radians float64, )  {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_rotation")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radians) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnSetRotation), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CanvasLayer) GetRotation() float64 {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_rotation")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnGetRotation), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *CanvasLayer) SetScale(scale Vector2, )  {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{scale.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnSetScale), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CanvasLayer) GetScale() Vector2 {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnGetScale), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *CanvasLayer) SetFollowViewport(enable bool, )  {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_follow_viewport")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnSetFollowViewport), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CanvasLayer) IsFollowingViewport() bool {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_following_viewport")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnIsFollowingViewport), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *CanvasLayer) SetFollowViewportScale(scale float64, )  {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_follow_viewport_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&scale) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnSetFollowViewportScale), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CanvasLayer) GetFollowViewportScale() float64 {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_follow_viewport_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnGetFollowViewportScale), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *CanvasLayer) SetCustomViewport(viewport Node, )  {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_custom_viewport")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{viewport.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnSetCustomViewport), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CanvasLayer) GetCustomViewport() Node {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_custom_viewport")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3160264692) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNode()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnGetCustomViewport), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *CanvasLayer) GetCanvas() RID {
-  classNameV := StringNameFromStr("CanvasLayer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_canvas")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRID()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasLayer.fnGetCanvas), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

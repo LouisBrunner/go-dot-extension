@@ -14,6 +14,113 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAcceptDialogList struct {
+  fnGetOkButton gdc.MethodBindPtr
+  fnGetLabel gdc.MethodBindPtr
+  fnSetHideOnOk gdc.MethodBindPtr
+  fnGetHideOnOk gdc.MethodBindPtr
+  fnSetCloseOnEscape gdc.MethodBindPtr
+  fnGetCloseOnEscape gdc.MethodBindPtr
+  fnAddButton gdc.MethodBindPtr
+  fnAddCancelButton gdc.MethodBindPtr
+  fnRemoveButton gdc.MethodBindPtr
+  fnRegisterTextEnter gdc.MethodBindPtr
+  fnSetText gdc.MethodBindPtr
+  fnGetText gdc.MethodBindPtr
+  fnSetAutowrap gdc.MethodBindPtr
+  fnHasAutowrap gdc.MethodBindPtr
+  fnSetOkButtonText gdc.MethodBindPtr
+  fnGetOkButtonText gdc.MethodBindPtr
+}
+
+var ptrsForAcceptDialog ptrsForAcceptDialogList
+
+func initAcceptDialogPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AcceptDialog")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_ok_button")
+    defer methodName.Destroy()
+    ptrsForAcceptDialog.fnGetOkButton = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1856205918))
+  }
+  {
+    methodName := StringNameFromStr("get_label")
+    defer methodName.Destroy()
+    ptrsForAcceptDialog.fnGetLabel = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 566733104))
+  }
+  {
+    methodName := StringNameFromStr("set_hide_on_ok")
+    defer methodName.Destroy()
+    ptrsForAcceptDialog.fnSetHideOnOk = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_hide_on_ok")
+    defer methodName.Destroy()
+    ptrsForAcceptDialog.fnGetHideOnOk = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_close_on_escape")
+    defer methodName.Destroy()
+    ptrsForAcceptDialog.fnSetCloseOnEscape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_close_on_escape")
+    defer methodName.Destroy()
+    ptrsForAcceptDialog.fnGetCloseOnEscape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("add_button")
+    defer methodName.Destroy()
+    ptrsForAcceptDialog.fnAddButton = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3328440682))
+  }
+  {
+    methodName := StringNameFromStr("add_cancel_button")
+    defer methodName.Destroy()
+    ptrsForAcceptDialog.fnAddCancelButton = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 242045556))
+  }
+  {
+    methodName := StringNameFromStr("remove_button")
+    defer methodName.Destroy()
+    ptrsForAcceptDialog.fnRemoveButton = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1496901182))
+  }
+  {
+    methodName := StringNameFromStr("register_text_enter")
+    defer methodName.Destroy()
+    ptrsForAcceptDialog.fnRegisterTextEnter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1496901182))
+  }
+  {
+    methodName := StringNameFromStr("set_text")
+    defer methodName.Destroy()
+    ptrsForAcceptDialog.fnSetText = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_text")
+    defer methodName.Destroy()
+    ptrsForAcceptDialog.fnGetText = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("set_autowrap")
+    defer methodName.Destroy()
+    ptrsForAcceptDialog.fnSetAutowrap = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("has_autowrap")
+    defer methodName.Destroy()
+    ptrsForAcceptDialog.fnHasAutowrap = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("set_ok_button_text")
+    defer methodName.Destroy()
+    ptrsForAcceptDialog.fnSetOkButtonText = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_ok_button_text")
+    defer methodName.Destroy()
+    ptrsForAcceptDialog.fnGetOkButtonText = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+}
+
 type AcceptDialog struct {
   Window
 }
@@ -51,236 +158,156 @@ func (me *AcceptDialog) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AcceptDialog) GetOkButton() Button {
-  classNameV := StringNameFromStr("AcceptDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_ok_button")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1856205918) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewButton()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAcceptDialog.fnGetOkButton), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AcceptDialog) GetLabel() Label {
-  classNameV := StringNameFromStr("AcceptDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_label")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 566733104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewLabel()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAcceptDialog.fnGetLabel), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AcceptDialog) SetHideOnOk(enabled bool, )  {
-  classNameV := StringNameFromStr("AcceptDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_hide_on_ok")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAcceptDialog.fnSetHideOnOk), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AcceptDialog) GetHideOnOk() bool {
-  classNameV := StringNameFromStr("AcceptDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_hide_on_ok")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAcceptDialog.fnGetHideOnOk), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AcceptDialog) SetCloseOnEscape(enabled bool, )  {
-  classNameV := StringNameFromStr("AcceptDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_close_on_escape")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAcceptDialog.fnSetCloseOnEscape), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AcceptDialog) GetCloseOnEscape() bool {
-  classNameV := StringNameFromStr("AcceptDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_close_on_escape")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAcceptDialog.fnGetCloseOnEscape), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AcceptDialog) AddButton(text String, right bool, action String, ) Button {
-  classNameV := StringNameFromStr("AcceptDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_button")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3328440682) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{text.AsCTypePtr(), gdc.ConstTypePtr(&right) , action.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewButton()
   pinner.Pin(&right)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAcceptDialog.fnAddButton), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AcceptDialog) AddCancelButton(name String, ) Button {
-  classNameV := StringNameFromStr("AcceptDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_cancel_button")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 242045556) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewButton()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAcceptDialog.fnAddCancelButton), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AcceptDialog) RemoveButton(button Control, )  {
-  classNameV := StringNameFromStr("AcceptDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_button")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1496901182) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{button.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAcceptDialog.fnRemoveButton), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AcceptDialog) RegisterTextEnter(line_edit Control, )  {
-  classNameV := StringNameFromStr("AcceptDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("register_text_enter")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1496901182) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{line_edit.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAcceptDialog.fnRegisterTextEnter), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AcceptDialog) SetText(text String, )  {
-  classNameV := StringNameFromStr("AcceptDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_text")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{text.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAcceptDialog.fnSetText), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AcceptDialog) GetText() String {
-  classNameV := StringNameFromStr("AcceptDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_text")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAcceptDialog.fnGetText), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AcceptDialog) SetAutowrap(autowrap bool, )  {
-  classNameV := StringNameFromStr("AcceptDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_autowrap")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&autowrap) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAcceptDialog.fnSetAutowrap), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AcceptDialog) HasAutowrap() bool {
-  classNameV := StringNameFromStr("AcceptDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_autowrap")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAcceptDialog.fnHasAutowrap), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AcceptDialog) SetOkButtonText(text String, )  {
-  classNameV := StringNameFromStr("AcceptDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_ok_button_text")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{text.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAcceptDialog.fnSetOkButtonText), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AcceptDialog) GetOkButtonText() String {
-  classNameV := StringNameFromStr("AcceptDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_ok_button_text")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAcceptDialog.fnGetOkButtonText), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForScrollBarList struct {
+  fnSetCustomStep gdc.MethodBindPtr
+  fnGetCustomStep gdc.MethodBindPtr
+}
+
+var ptrsForScrollBar ptrsForScrollBarList
+
+func initScrollBarPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ScrollBar")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_custom_step")
+    defer methodName.Destroy()
+    ptrsForScrollBar.fnSetCustomStep = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_custom_step")
+    defer methodName.Destroy()
+    ptrsForScrollBar.fnGetCustomStep = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type ScrollBar struct {
   Range
 }
@@ -51,31 +74,21 @@ func (me *ScrollBar) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ScrollBar) SetCustomStep(step float64, )  {
-  classNameV := StringNameFromStr("ScrollBar")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_custom_step")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&step) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollBar.fnSetCustomStep), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ScrollBar) GetCustomStep() float64 {
-  classNameV := StringNameFromStr("ScrollBar")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_custom_step")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScrollBar.fnGetCustomStep), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

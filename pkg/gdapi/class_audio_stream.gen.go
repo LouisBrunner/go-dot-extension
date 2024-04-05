@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioStreamList struct {
+  fnXInstantiatePlayback gdc.MethodBindPtr
+  fnXGetStreamName gdc.MethodBindPtr
+  fnXGetLength gdc.MethodBindPtr
+  fnXIsMonophonic gdc.MethodBindPtr
+  fnXGetBpm gdc.MethodBindPtr
+  fnXGetBeatCount gdc.MethodBindPtr
+  fnGetLength gdc.MethodBindPtr
+  fnIsMonophonic gdc.MethodBindPtr
+  fnInstantiatePlayback gdc.MethodBindPtr
+}
+
+var ptrsForAudioStream ptrsForAudioStreamList
+
+func initAudioStreamPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioStream")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_length")
+    defer methodName.Destroy()
+    ptrsForAudioStream.fnGetLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("is_monophonic")
+    defer methodName.Destroy()
+    ptrsForAudioStream.fnIsMonophonic = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("instantiate_playback")
+    defer methodName.Destroy()
+    ptrsForAudioStream.fnInstantiatePlayback = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 210135309))
+  }
+}
+
 type AudioStream struct {
   Resource
 }
@@ -51,47 +86,32 @@ func (me *AudioStream) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AudioStream) GetLength() float64 {
-  classNameV := StringNameFromStr("AudioStream")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStream.fnGetLength), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioStream) IsMonophonic() bool {
-  classNameV := StringNameFromStr("AudioStream")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_monophonic")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStream.fnIsMonophonic), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioStream) InstantiatePlayback() AudioStreamPlayback {
-  classNameV := StringNameFromStr("AudioStream")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("instantiate_playback")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 210135309) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewAudioStreamPlayback()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStream.fnInstantiatePlayback), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

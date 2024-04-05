@@ -14,6 +14,23 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForOptimizedTranslationList struct {
+  fnGenerate gdc.MethodBindPtr
+}
+
+var ptrsForOptimizedTranslation ptrsForOptimizedTranslationList
+
+func initOptimizedTranslationPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("OptimizedTranslation")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("generate")
+    defer methodName.Destroy()
+    ptrsForOptimizedTranslation.fnGenerate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1466479800))
+  }
+}
+
 type OptimizedTranslation struct {
   Translation
 }
@@ -51,16 +68,11 @@ func (me *OptimizedTranslation) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *OptimizedTranslation) Generate(from Translation, )  {
-  classNameV := StringNameFromStr("OptimizedTranslation")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("generate")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1466479800) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{from.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOptimizedTranslation.fnGenerate), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForWorldBoundaryShape2DList struct {
+  fnSetNormal gdc.MethodBindPtr
+  fnGetNormal gdc.MethodBindPtr
+  fnSetDistance gdc.MethodBindPtr
+  fnGetDistance gdc.MethodBindPtr
+}
+
+var ptrsForWorldBoundaryShape2D ptrsForWorldBoundaryShape2DList
+
+func initWorldBoundaryShape2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("WorldBoundaryShape2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_normal")
+    defer methodName.Destroy()
+    ptrsForWorldBoundaryShape2D.fnSetNormal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_normal")
+    defer methodName.Destroy()
+    ptrsForWorldBoundaryShape2D.fnGetNormal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+  {
+    methodName := StringNameFromStr("set_distance")
+    defer methodName.Destroy()
+    ptrsForWorldBoundaryShape2D.fnSetDistance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_distance")
+    defer methodName.Destroy()
+    ptrsForWorldBoundaryShape2D.fnGetDistance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type WorldBoundaryShape2D struct {
   Shape2D
 }
@@ -51,60 +86,40 @@ func (me *WorldBoundaryShape2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *WorldBoundaryShape2D) SetNormal(normal Vector2, )  {
-  classNameV := StringNameFromStr("WorldBoundaryShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_normal")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{normal.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWorldBoundaryShape2D.fnSetNormal), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *WorldBoundaryShape2D) GetNormal() Vector2 {
-  classNameV := StringNameFromStr("WorldBoundaryShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_normal")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWorldBoundaryShape2D.fnGetNormal), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *WorldBoundaryShape2D) SetDistance(distance float64, )  {
-  classNameV := StringNameFromStr("WorldBoundaryShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_distance")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&distance) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWorldBoundaryShape2D.fnSetDistance), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *WorldBoundaryShape2D) GetDistance() float64 {
-  classNameV := StringNameFromStr("WorldBoundaryShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_distance")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWorldBoundaryShape2D.fnGetDistance), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

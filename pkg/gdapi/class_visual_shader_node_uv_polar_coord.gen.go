@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeUVPolarCoordList struct {
+}
+
+var ptrsForVisualShaderNodeUVPolarCoord ptrsForVisualShaderNodeUVPolarCoordList
+
+func initVisualShaderNodeUVPolarCoordPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeUVPolarCoord")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeUVPolarCoord struct {
   VisualShaderNode
 }

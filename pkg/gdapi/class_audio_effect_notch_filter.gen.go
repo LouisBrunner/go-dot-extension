@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioEffectNotchFilterList struct {
+}
+
+var ptrsForAudioEffectNotchFilter ptrsForAudioEffectNotchFilterList
+
+func initAudioEffectNotchFilterPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioEffectNotchFilter")
+  defer className.Destroy()
+}
+
 type AudioEffectNotchFilter struct {
   AudioEffectFilter
 }

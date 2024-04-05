@@ -14,6 +14,28 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForResourceFormatLoaderList struct {
+  fnXGetRecognizedExtensions gdc.MethodBindPtr
+  fnXRecognizePath gdc.MethodBindPtr
+  fnXHandlesType gdc.MethodBindPtr
+  fnXGetResourceType gdc.MethodBindPtr
+  fnXGetResourceScriptClass gdc.MethodBindPtr
+  fnXGetResourceUid gdc.MethodBindPtr
+  fnXGetDependencies gdc.MethodBindPtr
+  fnXRenameDependencies gdc.MethodBindPtr
+  fnXExists gdc.MethodBindPtr
+  fnXGetClassesUsed gdc.MethodBindPtr
+  fnXLoad gdc.MethodBindPtr
+}
+
+var ptrsForResourceFormatLoader ptrsForResourceFormatLoaderList
+
+func initResourceFormatLoaderPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ResourceFormatLoader")
+  defer className.Destroy()
+}
+
 type ResourceFormatLoader struct {
   RefCounted
 }

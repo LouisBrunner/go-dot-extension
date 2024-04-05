@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPlaceholderCubemapList struct {
+}
+
+var ptrsForPlaceholderCubemap ptrsForPlaceholderCubemapList
+
+func initPlaceholderCubemapPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PlaceholderCubemap")
+  defer className.Destroy()
+}
+
 type PlaceholderCubemap struct {
   PlaceholderTextureLayered
 }

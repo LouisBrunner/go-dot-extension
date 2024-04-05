@@ -14,6 +14,47 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorSelectionList struct {
+  fnClear gdc.MethodBindPtr
+  fnAddNode gdc.MethodBindPtr
+  fnRemoveNode gdc.MethodBindPtr
+  fnGetSelectedNodes gdc.MethodBindPtr
+  fnGetTransformableSelectedNodes gdc.MethodBindPtr
+}
+
+var ptrsForEditorSelection ptrsForEditorSelectionList
+
+func initEditorSelectionPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorSelection")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("clear")
+    defer methodName.Destroy()
+    ptrsForEditorSelection.fnClear = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("add_node")
+    defer methodName.Destroy()
+    ptrsForEditorSelection.fnAddNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1078189570))
+  }
+  {
+    methodName := StringNameFromStr("remove_node")
+    defer methodName.Destroy()
+    ptrsForEditorSelection.fnRemoveNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1078189570))
+  }
+  {
+    methodName := StringNameFromStr("get_selected_nodes")
+    defer methodName.Destroy()
+    ptrsForEditorSelection.fnGetSelectedNodes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2915620761))
+  }
+  {
+    methodName := StringNameFromStr("get_transformable_selected_nodes")
+    defer methodName.Destroy()
+    ptrsForEditorSelection.fnGetTransformableSelectedNodes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2915620761))
+  }
+}
+
 type EditorSelection struct {
   Object
 }
@@ -51,60 +92,40 @@ func (me *EditorSelection) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *EditorSelection) Clear()  {
-  classNameV := StringNameFromStr("EditorSelection")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("clear")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSelection.fnClear), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorSelection) AddNode(node Node, )  {
-  classNameV := StringNameFromStr("EditorSelection")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{node.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSelection.fnAddNode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorSelection) RemoveNode(node Node, )  {
-  classNameV := StringNameFromStr("EditorSelection")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{node.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSelection.fnRemoveNode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorSelection) GetSelectedNodes() []Node {
-  classNameV := StringNameFromStr("EditorSelection")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_selected_nodes")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSelection.fnGetSelectedNodes), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[Node](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -114,18 +135,13 @@ return sliceRet
 }
 
 func  (me *EditorSelection) GetTransformableSelectedNodes() []Node {
-  classNameV := StringNameFromStr("EditorSelection")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_transformable_selected_nodes")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSelection.fnGetTransformableSelectedNodes), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[Node](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging

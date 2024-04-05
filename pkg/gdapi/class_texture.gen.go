@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForTextureList struct {
+}
+
+var ptrsForTexture ptrsForTextureList
+
+func initTexturePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Texture")
+  defer className.Destroy()
+}
+
 type Texture struct {
   Resource
 }

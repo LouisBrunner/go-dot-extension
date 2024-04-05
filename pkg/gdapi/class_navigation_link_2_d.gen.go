@@ -14,6 +14,137 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForNavigationLink2DList struct {
+  fnSetEnabled gdc.MethodBindPtr
+  fnIsEnabled gdc.MethodBindPtr
+  fnSetBidirectional gdc.MethodBindPtr
+  fnIsBidirectional gdc.MethodBindPtr
+  fnSetNavigationLayers gdc.MethodBindPtr
+  fnGetNavigationLayers gdc.MethodBindPtr
+  fnSetNavigationLayerValue gdc.MethodBindPtr
+  fnGetNavigationLayerValue gdc.MethodBindPtr
+  fnSetStartPosition gdc.MethodBindPtr
+  fnGetStartPosition gdc.MethodBindPtr
+  fnSetEndPosition gdc.MethodBindPtr
+  fnGetEndPosition gdc.MethodBindPtr
+  fnSetGlobalStartPosition gdc.MethodBindPtr
+  fnGetGlobalStartPosition gdc.MethodBindPtr
+  fnSetGlobalEndPosition gdc.MethodBindPtr
+  fnGetGlobalEndPosition gdc.MethodBindPtr
+  fnSetEnterCost gdc.MethodBindPtr
+  fnGetEnterCost gdc.MethodBindPtr
+  fnSetTravelCost gdc.MethodBindPtr
+  fnGetTravelCost gdc.MethodBindPtr
+}
+
+var ptrsForNavigationLink2D ptrsForNavigationLink2DList
+
+func initNavigationLink2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("NavigationLink2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_enabled")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnSetEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_enabled")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnIsEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_bidirectional")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnSetBidirectional = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_bidirectional")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnIsBidirectional = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_navigation_layers")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnSetNavigationLayers = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_navigation_layers")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnGetNavigationLayers = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_navigation_layer_value")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnSetNavigationLayerValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 300928843))
+  }
+  {
+    methodName := StringNameFromStr("get_navigation_layer_value")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnGetNavigationLayerValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
+  }
+  {
+    methodName := StringNameFromStr("set_start_position")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnSetStartPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_start_position")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnGetStartPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+  {
+    methodName := StringNameFromStr("set_end_position")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnSetEndPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_end_position")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnGetEndPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+  {
+    methodName := StringNameFromStr("set_global_start_position")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnSetGlobalStartPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_global_start_position")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnGetGlobalStartPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+  {
+    methodName := StringNameFromStr("set_global_end_position")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnSetGlobalEndPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_global_end_position")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnGetGlobalEndPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+  {
+    methodName := StringNameFromStr("set_enter_cost")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnSetEnterCost = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_enter_cost")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnGetEnterCost = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_travel_cost")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnSetTravelCost = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_travel_cost")
+    defer methodName.Destroy()
+    ptrsForNavigationLink2D.fnGetTravelCost = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type NavigationLink2D struct {
   Node2D
 }
@@ -51,293 +182,193 @@ func (me *NavigationLink2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *NavigationLink2D) SetEnabled(enabled bool, )  {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnSetEnabled), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationLink2D) IsEnabled() bool {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnIsEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NavigationLink2D) SetBidirectional(bidirectional bool, )  {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_bidirectional")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bidirectional) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnSetBidirectional), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationLink2D) IsBidirectional() bool {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_bidirectional")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnIsBidirectional), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NavigationLink2D) SetNavigationLayers(navigation_layers int64, )  {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_navigation_layers")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&navigation_layers) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnSetNavigationLayers), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationLink2D) GetNavigationLayers() int64 {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_navigation_layers")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnGetNavigationLayers), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NavigationLink2D) SetNavigationLayerValue(layer_number int64, value bool, )  {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_navigation_layer_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number) , gdc.ConstTypePtr(&value) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnSetNavigationLayerValue), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationLink2D) GetNavigationLayerValue(layer_number int64, ) bool {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_navigation_layer_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
   pinner.Pin(&layer_number)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnGetNavigationLayerValue), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NavigationLink2D) SetStartPosition(position Vector2, )  {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_start_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnSetStartPosition), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationLink2D) GetStartPosition() Vector2 {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_start_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnGetStartPosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *NavigationLink2D) SetEndPosition(position Vector2, )  {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_end_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnSetEndPosition), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationLink2D) GetEndPosition() Vector2 {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_end_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnGetEndPosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *NavigationLink2D) SetGlobalStartPosition(position Vector2, )  {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_global_start_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnSetGlobalStartPosition), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationLink2D) GetGlobalStartPosition() Vector2 {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_global_start_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnGetGlobalStartPosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *NavigationLink2D) SetGlobalEndPosition(position Vector2, )  {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_global_end_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnSetGlobalEndPosition), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationLink2D) GetGlobalEndPosition() Vector2 {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_global_end_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnGetGlobalEndPosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *NavigationLink2D) SetEnterCost(enter_cost float64, )  {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_enter_cost")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enter_cost) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnSetEnterCost), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationLink2D) GetEnterCost() float64 {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_enter_cost")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnGetEnterCost), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *NavigationLink2D) SetTravelCost(travel_cost float64, )  {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_travel_cost")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&travel_cost) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnSetTravelCost), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *NavigationLink2D) GetTravelCost() float64 {
-  classNameV := StringNameFromStr("NavigationLink2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_travel_cost")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnGetTravelCost), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

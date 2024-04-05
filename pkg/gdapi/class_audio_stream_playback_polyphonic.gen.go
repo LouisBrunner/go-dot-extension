@@ -14,6 +14,47 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioStreamPlaybackPolyphonicList struct {
+  fnPlayStream gdc.MethodBindPtr
+  fnSetStreamVolume gdc.MethodBindPtr
+  fnSetStreamPitchScale gdc.MethodBindPtr
+  fnIsStreamPlaying gdc.MethodBindPtr
+  fnStopStream gdc.MethodBindPtr
+}
+
+var ptrsForAudioStreamPlaybackPolyphonic ptrsForAudioStreamPlaybackPolyphonicList
+
+func initAudioStreamPlaybackPolyphonicPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioStreamPlaybackPolyphonic")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("play_stream")
+    defer methodName.Destroy()
+    ptrsForAudioStreamPlaybackPolyphonic.fnPlayStream = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 604492179))
+  }
+  {
+    methodName := StringNameFromStr("set_stream_volume")
+    defer methodName.Destroy()
+    ptrsForAudioStreamPlaybackPolyphonic.fnSetStreamVolume = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1602489585))
+  }
+  {
+    methodName := StringNameFromStr("set_stream_pitch_scale")
+    defer methodName.Destroy()
+    ptrsForAudioStreamPlaybackPolyphonic.fnSetStreamPitchScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1602489585))
+  }
+  {
+    methodName := StringNameFromStr("is_stream_playing")
+    defer methodName.Destroy()
+    ptrsForAudioStreamPlaybackPolyphonic.fnIsStreamPlaying = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
+  }
+  {
+    methodName := StringNameFromStr("stop_stream")
+    defer methodName.Destroy()
+    ptrsForAudioStreamPlaybackPolyphonic.fnStopStream = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+}
+
 type AudioStreamPlaybackPolyphonic struct {
   AudioStreamPlayback
 }
@@ -57,11 +98,6 @@ func (me *AudioStreamPlaybackPolyphonic) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AudioStreamPlaybackPolyphonic) PlayStream(stream AudioStream, from_offset float64, volume_db float64, pitch_scale float64, ) int64 {
-  classNameV := StringNameFromStr("AudioStreamPlaybackPolyphonic")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("play_stream")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 604492179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{stream.AsCTypePtr(), gdc.ConstTypePtr(&from_offset) , gdc.ConstTypePtr(&volume_db) , gdc.ConstTypePtr(&pitch_scale) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -70,65 +106,45 @@ func  (me *AudioStreamPlaybackPolyphonic) PlayStream(stream AudioStream, from_of
   pinner.Pin(&volume_db)
   pinner.Pin(&pitch_scale)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamPlaybackPolyphonic.fnPlayStream), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioStreamPlaybackPolyphonic) SetStreamVolume(stream int64, volume_db float64, )  {
-  classNameV := StringNameFromStr("AudioStreamPlaybackPolyphonic")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_stream_volume")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1602489585) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stream) , gdc.ConstTypePtr(&volume_db) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamPlaybackPolyphonic.fnSetStreamVolume), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioStreamPlaybackPolyphonic) SetStreamPitchScale(stream int64, pitch_scale float64, )  {
-  classNameV := StringNameFromStr("AudioStreamPlaybackPolyphonic")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_stream_pitch_scale")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1602489585) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stream) , gdc.ConstTypePtr(&pitch_scale) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamPlaybackPolyphonic.fnSetStreamPitchScale), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioStreamPlaybackPolyphonic) IsStreamPlaying(stream int64, ) bool {
-  classNameV := StringNameFromStr("AudioStreamPlaybackPolyphonic")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_stream_playing")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stream) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
   pinner.Pin(&stream)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamPlaybackPolyphonic.fnIsStreamPlaying), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioStreamPlaybackPolyphonic) StopStream(stream int64, )  {
-  classNameV := StringNameFromStr("AudioStreamPlaybackPolyphonic")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("stop_stream")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stream) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamPlaybackPolyphonic.fnStopStream), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

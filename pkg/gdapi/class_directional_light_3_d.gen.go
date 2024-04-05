@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForDirectionalLight3DList struct {
+  fnSetShadowMode gdc.MethodBindPtr
+  fnGetShadowMode gdc.MethodBindPtr
+  fnSetBlendSplits gdc.MethodBindPtr
+  fnIsBlendSplitsEnabled gdc.MethodBindPtr
+  fnSetSkyMode gdc.MethodBindPtr
+  fnGetSkyMode gdc.MethodBindPtr
+}
+
+var ptrsForDirectionalLight3D ptrsForDirectionalLight3DList
+
+func initDirectionalLight3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("DirectionalLight3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_shadow_mode")
+    defer methodName.Destroy()
+    ptrsForDirectionalLight3D.fnSetShadowMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1261211726))
+  }
+  {
+    methodName := StringNameFromStr("get_shadow_mode")
+    defer methodName.Destroy()
+    ptrsForDirectionalLight3D.fnGetShadowMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2765228544))
+  }
+  {
+    methodName := StringNameFromStr("set_blend_splits")
+    defer methodName.Destroy()
+    ptrsForDirectionalLight3D.fnSetBlendSplits = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_blend_splits_enabled")
+    defer methodName.Destroy()
+    ptrsForDirectionalLight3D.fnIsBlendSplitsEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_sky_mode")
+    defer methodName.Destroy()
+    ptrsForDirectionalLight3D.fnSetSkyMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2691194817))
+  }
+  {
+    methodName := StringNameFromStr("get_sky_mode")
+    defer methodName.Destroy()
+    ptrsForDirectionalLight3D.fnGetSkyMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3819982774))
+  }
+}
+
 type DirectionalLight3D struct {
   Light3D
 }
@@ -65,89 +112,59 @@ func (me *DirectionalLight3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *DirectionalLight3D) SetShadowMode(mode DirectionalLight3DShadowMode, )  {
-  classNameV := StringNameFromStr("DirectionalLight3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_shadow_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1261211726) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForDirectionalLight3D.fnSetShadowMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *DirectionalLight3D) GetShadowMode() DirectionalLight3DShadowMode {
-  classNameV := StringNameFromStr("DirectionalLight3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_shadow_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2765228544) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret DirectionalLight3DShadowMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForDirectionalLight3D.fnGetShadowMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *DirectionalLight3D) SetBlendSplits(enabled bool, )  {
-  classNameV := StringNameFromStr("DirectionalLight3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_blend_splits")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForDirectionalLight3D.fnSetBlendSplits), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *DirectionalLight3D) IsBlendSplitsEnabled() bool {
-  classNameV := StringNameFromStr("DirectionalLight3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_blend_splits_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForDirectionalLight3D.fnIsBlendSplitsEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *DirectionalLight3D) SetSkyMode(mode DirectionalLight3DSkyMode, )  {
-  classNameV := StringNameFromStr("DirectionalLight3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_sky_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2691194817) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForDirectionalLight3D.fnSetSkyMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *DirectionalLight3D) GetSkyMode() DirectionalLight3DSkyMode {
-  classNameV := StringNameFromStr("DirectionalLight3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_sky_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3819982774) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret DirectionalLight3DSkyMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForDirectionalLight3D.fnGetSkyMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCompressedTexture2DArrayList struct {
+}
+
+var ptrsForCompressedTexture2DArray ptrsForCompressedTexture2DArrayList
+
+func initCompressedTexture2DArrayPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CompressedTexture2DArray")
+  defer className.Destroy()
+}
+
 type CompressedTexture2DArray struct {
   CompressedTextureLayered
 }

@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForOggPacketSequencePlaybackList struct {
+}
+
+var ptrsForOggPacketSequencePlayback ptrsForOggPacketSequencePlaybackList
+
+func initOggPacketSequencePlaybackPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("OggPacketSequencePlayback")
+  defer className.Destroy()
+}
+
 type OggPacketSequencePlayback struct {
   RefCounted
 }

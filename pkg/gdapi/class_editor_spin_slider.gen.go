@@ -14,6 +14,77 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorSpinSliderList struct {
+  fnSetLabel gdc.MethodBindPtr
+  fnGetLabel gdc.MethodBindPtr
+  fnSetSuffix gdc.MethodBindPtr
+  fnGetSuffix gdc.MethodBindPtr
+  fnSetReadOnly gdc.MethodBindPtr
+  fnIsReadOnly gdc.MethodBindPtr
+  fnSetFlat gdc.MethodBindPtr
+  fnIsFlat gdc.MethodBindPtr
+  fnSetHideSlider gdc.MethodBindPtr
+  fnIsHidingSlider gdc.MethodBindPtr
+}
+
+var ptrsForEditorSpinSlider ptrsForEditorSpinSliderList
+
+func initEditorSpinSliderPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorSpinSlider")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_label")
+    defer methodName.Destroy()
+    ptrsForEditorSpinSlider.fnSetLabel = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_label")
+    defer methodName.Destroy()
+    ptrsForEditorSpinSlider.fnGetLabel = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("set_suffix")
+    defer methodName.Destroy()
+    ptrsForEditorSpinSlider.fnSetSuffix = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_suffix")
+    defer methodName.Destroy()
+    ptrsForEditorSpinSlider.fnGetSuffix = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("set_read_only")
+    defer methodName.Destroy()
+    ptrsForEditorSpinSlider.fnSetReadOnly = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_read_only")
+    defer methodName.Destroy()
+    ptrsForEditorSpinSlider.fnIsReadOnly = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_flat")
+    defer methodName.Destroy()
+    ptrsForEditorSpinSlider.fnSetFlat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_flat")
+    defer methodName.Destroy()
+    ptrsForEditorSpinSlider.fnIsFlat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_hide_slider")
+    defer methodName.Destroy()
+    ptrsForEditorSpinSlider.fnSetHideSlider = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_hiding_slider")
+    defer methodName.Destroy()
+    ptrsForEditorSpinSlider.fnIsHidingSlider = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type EditorSpinSlider struct {
   Range
 }
@@ -51,147 +122,97 @@ func (me *EditorSpinSlider) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *EditorSpinSlider) SetLabel(label String, )  {
-  classNameV := StringNameFromStr("EditorSpinSlider")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_label")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{label.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSpinSlider.fnSetLabel), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorSpinSlider) GetLabel() String {
-  classNameV := StringNameFromStr("EditorSpinSlider")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_label")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSpinSlider.fnGetLabel), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorSpinSlider) SetSuffix(suffix String, )  {
-  classNameV := StringNameFromStr("EditorSpinSlider")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_suffix")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{suffix.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSpinSlider.fnSetSuffix), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorSpinSlider) GetSuffix() String {
-  classNameV := StringNameFromStr("EditorSpinSlider")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_suffix")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSpinSlider.fnGetSuffix), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorSpinSlider) SetReadOnly(read_only bool, )  {
-  classNameV := StringNameFromStr("EditorSpinSlider")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_read_only")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&read_only) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSpinSlider.fnSetReadOnly), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorSpinSlider) IsReadOnly() bool {
-  classNameV := StringNameFromStr("EditorSpinSlider")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_read_only")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSpinSlider.fnIsReadOnly), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *EditorSpinSlider) SetFlat(flat bool, )  {
-  classNameV := StringNameFromStr("EditorSpinSlider")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_flat")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flat) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSpinSlider.fnSetFlat), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorSpinSlider) IsFlat() bool {
-  classNameV := StringNameFromStr("EditorSpinSlider")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_flat")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSpinSlider.fnIsFlat), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *EditorSpinSlider) SetHideSlider(hide_slider bool, )  {
-  classNameV := StringNameFromStr("EditorSpinSlider")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_hide_slider")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hide_slider) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSpinSlider.fnSetHideSlider), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorSpinSlider) IsHidingSlider() bool {
-  classNameV := StringNameFromStr("EditorSpinSlider")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_hiding_slider")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSpinSlider.fnIsHidingSlider), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

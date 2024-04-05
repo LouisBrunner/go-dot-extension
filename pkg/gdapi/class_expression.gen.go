@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForExpressionList struct {
+  fnParse gdc.MethodBindPtr
+  fnExecute gdc.MethodBindPtr
+  fnHasExecuteFailed gdc.MethodBindPtr
+  fnGetErrorText gdc.MethodBindPtr
+}
+
+var ptrsForExpression ptrsForExpressionList
+
+func initExpressionPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Expression")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("parse")
+    defer methodName.Destroy()
+    ptrsForExpression.fnParse = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3069722906))
+  }
+  {
+    methodName := StringNameFromStr("execute")
+    defer methodName.Destroy()
+    ptrsForExpression.fnExecute = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3712471238))
+  }
+  {
+    methodName := StringNameFromStr("has_execute_failed")
+    defer methodName.Destroy()
+    ptrsForExpression.fnHasExecuteFailed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_error_text")
+    defer methodName.Destroy()
+    ptrsForExpression.fnGetErrorText = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+}
+
 type Expression struct {
   RefCounted
 }
@@ -51,26 +86,16 @@ func (me *Expression) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Expression) Parse(expression String, input_names PackedStringArray, ) Error {
-  classNameV := StringNameFromStr("Expression")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("parse")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3069722906) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{expression.AsCTypePtr(), input_names.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForExpression.fnParse), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Expression) Execute(inputs Array, base_instance Object, show_error bool, const_calls_only bool, ) Variant {
-  classNameV := StringNameFromStr("Expression")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("execute")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3712471238) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{inputs.AsCTypePtr(), base_instance.AsCTypePtr(), gdc.ConstTypePtr(&show_error) , gdc.ConstTypePtr(&const_calls_only) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -78,37 +103,27 @@ func  (me *Expression) Execute(inputs Array, base_instance Object, show_error bo
   pinner.Pin(&show_error)
   pinner.Pin(&const_calls_only)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForExpression.fnExecute), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Expression) HasExecuteFailed() bool {
-  classNameV := StringNameFromStr("Expression")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_execute_failed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForExpression.fnHasExecuteFailed), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Expression) GetErrorText() String {
-  classNameV := StringNameFromStr("Expression")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_error_text")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForExpression.fnGetErrorText), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

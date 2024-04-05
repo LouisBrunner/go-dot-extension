@@ -14,6 +14,83 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAnimationNodeTransitionList struct {
+  fnSetInputCount gdc.MethodBindPtr
+  fnSetInputAsAutoAdvance gdc.MethodBindPtr
+  fnIsInputSetAsAutoAdvance gdc.MethodBindPtr
+  fnSetInputReset gdc.MethodBindPtr
+  fnIsInputReset gdc.MethodBindPtr
+  fnSetXfadeTime gdc.MethodBindPtr
+  fnGetXfadeTime gdc.MethodBindPtr
+  fnSetXfadeCurve gdc.MethodBindPtr
+  fnGetXfadeCurve gdc.MethodBindPtr
+  fnSetAllowTransitionToSelf gdc.MethodBindPtr
+  fnIsAllowTransitionToSelf gdc.MethodBindPtr
+}
+
+var ptrsForAnimationNodeTransition ptrsForAnimationNodeTransitionList
+
+func initAnimationNodeTransitionPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AnimationNodeTransition")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_input_count")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeTransition.fnSetInputCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("set_input_as_auto_advance")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeTransition.fnSetInputAsAutoAdvance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 300928843))
+  }
+  {
+    methodName := StringNameFromStr("is_input_set_as_auto_advance")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeTransition.fnIsInputSetAsAutoAdvance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
+  }
+  {
+    methodName := StringNameFromStr("set_input_reset")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeTransition.fnSetInputReset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 300928843))
+  }
+  {
+    methodName := StringNameFromStr("is_input_reset")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeTransition.fnIsInputReset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
+  }
+  {
+    methodName := StringNameFromStr("set_xfade_time")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeTransition.fnSetXfadeTime = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_xfade_time")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeTransition.fnGetXfadeTime = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_xfade_curve")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeTransition.fnSetXfadeCurve = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 270443179))
+  }
+  {
+    methodName := StringNameFromStr("get_xfade_curve")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeTransition.fnGetXfadeCurve = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2460114913))
+  }
+  {
+    methodName := StringNameFromStr("set_allow_transition_to_self")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeTransition.fnSetAllowTransitionToSelf = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_allow_transition_to_self")
+    defer methodName.Destroy()
+    ptrsForAnimationNodeTransition.fnIsAllowTransitionToSelf = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type AnimationNodeTransition struct {
   AnimationNodeSync
 }
@@ -51,163 +128,108 @@ func (me *AnimationNodeTransition) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AnimationNodeTransition) SetInputCount(input_count int64, )  {
-  classNameV := StringNameFromStr("AnimationNodeTransition")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_input_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input_count) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeTransition.fnSetInputCount), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeTransition) SetInputAsAutoAdvance(input int64, enable bool, )  {
-  classNameV := StringNameFromStr("AnimationNodeTransition")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_input_as_auto_advance")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input) , gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeTransition.fnSetInputAsAutoAdvance), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeTransition) IsInputSetAsAutoAdvance(input int64, ) bool {
-  classNameV := StringNameFromStr("AnimationNodeTransition")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_input_set_as_auto_advance")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
   pinner.Pin(&input)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeTransition.fnIsInputSetAsAutoAdvance), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AnimationNodeTransition) SetInputReset(input int64, enable bool, )  {
-  classNameV := StringNameFromStr("AnimationNodeTransition")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_input_reset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input) , gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeTransition.fnSetInputReset), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeTransition) IsInputReset(input int64, ) bool {
-  classNameV := StringNameFromStr("AnimationNodeTransition")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_input_reset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
   pinner.Pin(&input)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeTransition.fnIsInputReset), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AnimationNodeTransition) SetXfadeTime(time float64, )  {
-  classNameV := StringNameFromStr("AnimationNodeTransition")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_xfade_time")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeTransition.fnSetXfadeTime), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeTransition) GetXfadeTime() float64 {
-  classNameV := StringNameFromStr("AnimationNodeTransition")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_xfade_time")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeTransition.fnGetXfadeTime), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AnimationNodeTransition) SetXfadeCurve(curve Curve, )  {
-  classNameV := StringNameFromStr("AnimationNodeTransition")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_xfade_curve")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 270443179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{curve.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeTransition.fnSetXfadeCurve), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeTransition) GetXfadeCurve() Curve {
-  classNameV := StringNameFromStr("AnimationNodeTransition")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_xfade_curve")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2460114913) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewCurve()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeTransition.fnGetXfadeCurve), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *AnimationNodeTransition) SetAllowTransitionToSelf(enable bool, )  {
-  classNameV := StringNameFromStr("AnimationNodeTransition")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_allow_transition_to_self")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeTransition.fnSetAllowTransitionToSelf), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AnimationNodeTransition) IsAllowTransitionToSelf() bool {
-  classNameV := StringNameFromStr("AnimationNodeTransition")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_allow_transition_to_self")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeTransition.fnIsAllowTransitionToSelf), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

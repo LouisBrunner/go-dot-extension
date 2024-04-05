@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForResourceImporterOggVorbisList struct {
+  fnLoadFromBuffer gdc.MethodBindPtr
+  fnLoadFromFile gdc.MethodBindPtr
+}
+
+var ptrsForResourceImporterOggVorbis ptrsForResourceImporterOggVorbisList
+
+func initResourceImporterOggVorbisPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ResourceImporterOggVorbis")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("load_from_buffer")
+    defer methodName.Destroy()
+    ptrsForResourceImporterOggVorbis.fnLoadFromBuffer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 354904730))
+  }
+  {
+    methodName := StringNameFromStr("load_from_file")
+    defer methodName.Destroy()
+    ptrsForResourceImporterOggVorbis.fnLoadFromFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 797568536))
+  }
+}
+
 type ResourceImporterOggVorbis struct {
   ResourceImporter
 }
@@ -51,32 +74,22 @@ func (me *ResourceImporterOggVorbis) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  ResourceImporterOggVorbisLoadFromBuffer(buffer PackedByteArray, ) AudioStreamOggVorbis {
-  classNameV := StringNameFromStr("ResourceImporterOggVorbis")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("load_from_buffer")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 354904730) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{buffer.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewAudioStreamOggVorbis()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourceImporterOggVorbis.fnLoadFromBuffer), nil, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  ResourceImporterOggVorbisLoadFromFile(path String, ) AudioStreamOggVorbis {
-  classNameV := StringNameFromStr("ResourceImporterOggVorbis")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("load_from_file")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 797568536) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewAudioStreamOggVorbis()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourceImporterOggVorbis.fnLoadFromFile), nil, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSliderJoint3DList struct {
+  fnSetParam gdc.MethodBindPtr
+  fnGetParam gdc.MethodBindPtr
+}
+
+var ptrsForSliderJoint3D ptrsForSliderJoint3DList
+
+func initSliderJoint3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("SliderJoint3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_param")
+    defer methodName.Destroy()
+    ptrsForSliderJoint3D.fnSetParam = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 918243683))
+  }
+  {
+    methodName := StringNameFromStr("get_param")
+    defer methodName.Destroy()
+    ptrsForSliderJoint3D.fnGetParam = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 959925627))
+  }
+}
+
 type SliderJoint3D struct {
   Joint3D
 }
@@ -78,32 +101,22 @@ func (me *SliderJoint3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *SliderJoint3D) SetParam(param SliderJoint3DParam, value float64, )  {
-  classNameV := StringNameFromStr("SliderJoint3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_param")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 918243683) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param) , gdc.ConstTypePtr(&value) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSliderJoint3D.fnSetParam), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SliderJoint3D) GetParam(param SliderJoint3DParam, ) float64 {
-  classNameV := StringNameFromStr("SliderJoint3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_param")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 959925627) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
   pinner.Pin(&param)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSliderJoint3D.fnGetParam), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 

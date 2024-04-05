@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioEffectEQ21List struct {
+}
+
+var ptrsForAudioEffectEQ21 ptrsForAudioEffectEQ21List
+
+func initAudioEffectEQ21Ptrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioEffectEQ21")
+  defer className.Destroy()
+}
+
 type AudioEffectEQ21 struct {
   AudioEffectEQ
 }

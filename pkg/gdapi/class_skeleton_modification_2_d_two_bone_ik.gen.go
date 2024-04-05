@@ -14,6 +14,113 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSkeletonModification2DTwoBoneIKList struct {
+  fnSetTargetNode gdc.MethodBindPtr
+  fnGetTargetNode gdc.MethodBindPtr
+  fnSetTargetMinimumDistance gdc.MethodBindPtr
+  fnGetTargetMinimumDistance gdc.MethodBindPtr
+  fnSetTargetMaximumDistance gdc.MethodBindPtr
+  fnGetTargetMaximumDistance gdc.MethodBindPtr
+  fnSetFlipBendDirection gdc.MethodBindPtr
+  fnGetFlipBendDirection gdc.MethodBindPtr
+  fnSetJointOneBone2DNode gdc.MethodBindPtr
+  fnGetJointOneBone2DNode gdc.MethodBindPtr
+  fnSetJointOneBoneIdx gdc.MethodBindPtr
+  fnGetJointOneBoneIdx gdc.MethodBindPtr
+  fnSetJointTwoBone2DNode gdc.MethodBindPtr
+  fnGetJointTwoBone2DNode gdc.MethodBindPtr
+  fnSetJointTwoBoneIdx gdc.MethodBindPtr
+  fnGetJointTwoBoneIdx gdc.MethodBindPtr
+}
+
+var ptrsForSkeletonModification2DTwoBoneIK ptrsForSkeletonModification2DTwoBoneIKList
+
+func initSkeletonModification2DTwoBoneIKPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("SkeletonModification2DTwoBoneIK")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_target_node")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2DTwoBoneIK.fnSetTargetNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1348162250))
+  }
+  {
+    methodName := StringNameFromStr("get_target_node")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2DTwoBoneIK.fnGetTargetNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4075236667))
+  }
+  {
+    methodName := StringNameFromStr("set_target_minimum_distance")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2DTwoBoneIK.fnSetTargetMinimumDistance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_target_minimum_distance")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2DTwoBoneIK.fnGetTargetMinimumDistance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_target_maximum_distance")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2DTwoBoneIK.fnSetTargetMaximumDistance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_target_maximum_distance")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2DTwoBoneIK.fnGetTargetMaximumDistance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_flip_bend_direction")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2DTwoBoneIK.fnSetFlipBendDirection = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_flip_bend_direction")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2DTwoBoneIK.fnGetFlipBendDirection = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_joint_one_bone2d_node")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2DTwoBoneIK.fnSetJointOneBone2DNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1348162250))
+  }
+  {
+    methodName := StringNameFromStr("get_joint_one_bone2d_node")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2DTwoBoneIK.fnGetJointOneBone2DNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4075236667))
+  }
+  {
+    methodName := StringNameFromStr("set_joint_one_bone_idx")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2DTwoBoneIK.fnSetJointOneBoneIdx = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_joint_one_bone_idx")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2DTwoBoneIK.fnGetJointOneBoneIdx = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_joint_two_bone2d_node")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2DTwoBoneIK.fnSetJointTwoBone2DNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1348162250))
+  }
+  {
+    methodName := StringNameFromStr("get_joint_two_bone2d_node")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2DTwoBoneIK.fnGetJointTwoBone2DNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4075236667))
+  }
+  {
+    methodName := StringNameFromStr("set_joint_two_bone_idx")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2DTwoBoneIK.fnSetJointTwoBoneIdx = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_joint_two_bone_idx")
+    defer methodName.Destroy()
+    ptrsForSkeletonModification2DTwoBoneIK.fnGetJointTwoBoneIdx = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+}
+
 type SkeletonModification2DTwoBoneIK struct {
   SkeletonModification2D
 }
@@ -51,234 +158,154 @@ func (me *SkeletonModification2DTwoBoneIK) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *SkeletonModification2DTwoBoneIK) SetTargetNode(target_nodepath NodePath, )  {
-  classNameV := StringNameFromStr("SkeletonModification2DTwoBoneIK")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_target_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{target_nodepath.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2DTwoBoneIK.fnSetTargetNode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SkeletonModification2DTwoBoneIK) GetTargetNode() NodePath {
-  classNameV := StringNameFromStr("SkeletonModification2DTwoBoneIK")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_target_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNodePath()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2DTwoBoneIK.fnGetTargetNode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *SkeletonModification2DTwoBoneIK) SetTargetMinimumDistance(minimum_distance float64, )  {
-  classNameV := StringNameFromStr("SkeletonModification2DTwoBoneIK")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_target_minimum_distance")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&minimum_distance) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2DTwoBoneIK.fnSetTargetMinimumDistance), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SkeletonModification2DTwoBoneIK) GetTargetMinimumDistance() float64 {
-  classNameV := StringNameFromStr("SkeletonModification2DTwoBoneIK")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_target_minimum_distance")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2DTwoBoneIK.fnGetTargetMinimumDistance), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *SkeletonModification2DTwoBoneIK) SetTargetMaximumDistance(maximum_distance float64, )  {
-  classNameV := StringNameFromStr("SkeletonModification2DTwoBoneIK")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_target_maximum_distance")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&maximum_distance) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2DTwoBoneIK.fnSetTargetMaximumDistance), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SkeletonModification2DTwoBoneIK) GetTargetMaximumDistance() float64 {
-  classNameV := StringNameFromStr("SkeletonModification2DTwoBoneIK")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_target_maximum_distance")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2DTwoBoneIK.fnGetTargetMaximumDistance), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *SkeletonModification2DTwoBoneIK) SetFlipBendDirection(flip_direction bool, )  {
-  classNameV := StringNameFromStr("SkeletonModification2DTwoBoneIK")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_flip_bend_direction")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flip_direction) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2DTwoBoneIK.fnSetFlipBendDirection), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SkeletonModification2DTwoBoneIK) GetFlipBendDirection() bool {
-  classNameV := StringNameFromStr("SkeletonModification2DTwoBoneIK")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_flip_bend_direction")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2DTwoBoneIK.fnGetFlipBendDirection), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *SkeletonModification2DTwoBoneIK) SetJointOneBone2DNode(bone2d_node NodePath, )  {
-  classNameV := StringNameFromStr("SkeletonModification2DTwoBoneIK")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_joint_one_bone2d_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{bone2d_node.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2DTwoBoneIK.fnSetJointOneBone2DNode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SkeletonModification2DTwoBoneIK) GetJointOneBone2DNode() NodePath {
-  classNameV := StringNameFromStr("SkeletonModification2DTwoBoneIK")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_joint_one_bone2d_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNodePath()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2DTwoBoneIK.fnGetJointOneBone2DNode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *SkeletonModification2DTwoBoneIK) SetJointOneBoneIdx(bone_idx int64, )  {
-  classNameV := StringNameFromStr("SkeletonModification2DTwoBoneIK")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_joint_one_bone_idx")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2DTwoBoneIK.fnSetJointOneBoneIdx), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SkeletonModification2DTwoBoneIK) GetJointOneBoneIdx() int64 {
-  classNameV := StringNameFromStr("SkeletonModification2DTwoBoneIK")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_joint_one_bone_idx")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2DTwoBoneIK.fnGetJointOneBoneIdx), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *SkeletonModification2DTwoBoneIK) SetJointTwoBone2DNode(bone2d_node NodePath, )  {
-  classNameV := StringNameFromStr("SkeletonModification2DTwoBoneIK")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_joint_two_bone2d_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{bone2d_node.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2DTwoBoneIK.fnSetJointTwoBone2DNode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SkeletonModification2DTwoBoneIK) GetJointTwoBone2DNode() NodePath {
-  classNameV := StringNameFromStr("SkeletonModification2DTwoBoneIK")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_joint_two_bone2d_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNodePath()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2DTwoBoneIK.fnGetJointTwoBone2DNode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *SkeletonModification2DTwoBoneIK) SetJointTwoBoneIdx(bone_idx int64, )  {
-  classNameV := StringNameFromStr("SkeletonModification2DTwoBoneIK")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_joint_two_bone_idx")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2DTwoBoneIK.fnSetJointTwoBoneIdx), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SkeletonModification2DTwoBoneIK) GetJointTwoBoneIdx() int64 {
-  classNameV := StringNameFromStr("SkeletonModification2DTwoBoneIK")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_joint_two_bone_idx")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonModification2DTwoBoneIK.fnGetJointTwoBoneIdx), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

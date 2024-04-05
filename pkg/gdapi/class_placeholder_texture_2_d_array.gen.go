@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPlaceholderTexture2DArrayList struct {
+}
+
+var ptrsForPlaceholderTexture2DArray ptrsForPlaceholderTexture2DArrayList
+
+func initPlaceholderTexture2DArrayPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PlaceholderTexture2DArray")
+  defer className.Destroy()
+}
+
 type PlaceholderTexture2DArray struct {
   PlaceholderTextureLayered
 }

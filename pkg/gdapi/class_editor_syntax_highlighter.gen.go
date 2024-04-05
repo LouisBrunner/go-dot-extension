@@ -14,6 +14,19 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorSyntaxHighlighterList struct {
+  fnXGetName gdc.MethodBindPtr
+  fnXGetSupportedLanguages gdc.MethodBindPtr
+}
+
+var ptrsForEditorSyntaxHighlighter ptrsForEditorSyntaxHighlighterList
+
+func initEditorSyntaxHighlighterPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorSyntaxHighlighter")
+  defer className.Destroy()
+}
+
 type EditorSyntaxHighlighter struct {
   SyntaxHighlighter
 }

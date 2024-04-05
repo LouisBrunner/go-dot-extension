@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForJavaScriptObjectList struct {
+}
+
+var ptrsForJavaScriptObject ptrsForJavaScriptObjectList
+
+func initJavaScriptObjectPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("JavaScriptObject")
+  defer className.Destroy()
+}
+
 type JavaScriptObject struct {
   RefCounted
 }

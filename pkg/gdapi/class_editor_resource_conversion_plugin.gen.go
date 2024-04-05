@@ -14,6 +14,20 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorResourceConversionPluginList struct {
+  fnXConvertsTo gdc.MethodBindPtr
+  fnXHandles gdc.MethodBindPtr
+  fnXConvert gdc.MethodBindPtr
+}
+
+var ptrsForEditorResourceConversionPlugin ptrsForEditorResourceConversionPluginList
+
+func initEditorResourceConversionPluginPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorResourceConversionPlugin")
+  defer className.Destroy()
+}
+
 type EditorResourceConversionPlugin struct {
   RefCounted
 }

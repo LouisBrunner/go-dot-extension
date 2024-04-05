@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForMultiMeshInstance2DList struct {
+  fnSetMultimesh gdc.MethodBindPtr
+  fnGetMultimesh gdc.MethodBindPtr
+  fnSetTexture gdc.MethodBindPtr
+  fnGetTexture gdc.MethodBindPtr
+}
+
+var ptrsForMultiMeshInstance2D ptrsForMultiMeshInstance2DList
+
+func initMultiMeshInstance2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("MultiMeshInstance2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_multimesh")
+    defer methodName.Destroy()
+    ptrsForMultiMeshInstance2D.fnSetMultimesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2246127404))
+  }
+  {
+    methodName := StringNameFromStr("get_multimesh")
+    defer methodName.Destroy()
+    ptrsForMultiMeshInstance2D.fnGetMultimesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1385450523))
+  }
+  {
+    methodName := StringNameFromStr("set_texture")
+    defer methodName.Destroy()
+    ptrsForMultiMeshInstance2D.fnSetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4051416890))
+  }
+  {
+    methodName := StringNameFromStr("get_texture")
+    defer methodName.Destroy()
+    ptrsForMultiMeshInstance2D.fnGetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
+  }
+}
+
 type MultiMeshInstance2D struct {
   Node2D
 }
@@ -51,60 +86,40 @@ func (me *MultiMeshInstance2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *MultiMeshInstance2D) SetMultimesh(multimesh MultiMesh, )  {
-  classNameV := StringNameFromStr("MultiMeshInstance2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_multimesh")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2246127404) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{multimesh.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMeshInstance2D.fnSetMultimesh), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiMeshInstance2D) GetMultimesh() MultiMesh {
-  classNameV := StringNameFromStr("MultiMeshInstance2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_multimesh")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1385450523) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewMultiMesh()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMeshInstance2D.fnGetMultimesh), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *MultiMeshInstance2D) SetTexture(texture Texture2D, )  {
-  classNameV := StringNameFromStr("MultiMeshInstance2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{texture.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMeshInstance2D.fnSetTexture), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiMeshInstance2D) GetTexture() Texture2D {
-  classNameV := StringNameFromStr("MultiMeshInstance2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMeshInstance2D.fnGetTexture), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

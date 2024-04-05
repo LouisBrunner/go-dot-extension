@@ -14,6 +14,83 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForBone2DList struct {
+  fnSetRest gdc.MethodBindPtr
+  fnGetRest gdc.MethodBindPtr
+  fnApplyRest gdc.MethodBindPtr
+  fnGetSkeletonRest gdc.MethodBindPtr
+  fnGetIndexInSkeleton gdc.MethodBindPtr
+  fnSetAutocalculateLengthAndAngle gdc.MethodBindPtr
+  fnGetAutocalculateLengthAndAngle gdc.MethodBindPtr
+  fnSetLength gdc.MethodBindPtr
+  fnGetLength gdc.MethodBindPtr
+  fnSetBoneAngle gdc.MethodBindPtr
+  fnGetBoneAngle gdc.MethodBindPtr
+}
+
+var ptrsForBone2D ptrsForBone2DList
+
+func initBone2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Bone2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_rest")
+    defer methodName.Destroy()
+    ptrsForBone2D.fnSetRest = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2761652528))
+  }
+  {
+    methodName := StringNameFromStr("get_rest")
+    defer methodName.Destroy()
+    ptrsForBone2D.fnGetRest = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3814499831))
+  }
+  {
+    methodName := StringNameFromStr("apply_rest")
+    defer methodName.Destroy()
+    ptrsForBone2D.fnApplyRest = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("get_skeleton_rest")
+    defer methodName.Destroy()
+    ptrsForBone2D.fnGetSkeletonRest = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3814499831))
+  }
+  {
+    methodName := StringNameFromStr("get_index_in_skeleton")
+    defer methodName.Destroy()
+    ptrsForBone2D.fnGetIndexInSkeleton = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_autocalculate_length_and_angle")
+    defer methodName.Destroy()
+    ptrsForBone2D.fnSetAutocalculateLengthAndAngle = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_autocalculate_length_and_angle")
+    defer methodName.Destroy()
+    ptrsForBone2D.fnGetAutocalculateLengthAndAngle = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_length")
+    defer methodName.Destroy()
+    ptrsForBone2D.fnSetLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_length")
+    defer methodName.Destroy()
+    ptrsForBone2D.fnGetLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_bone_angle")
+    defer methodName.Destroy()
+    ptrsForBone2D.fnSetBoneAngle = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_bone_angle")
+    defer methodName.Destroy()
+    ptrsForBone2D.fnGetBoneAngle = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type Bone2D struct {
   Node2D
 }
@@ -51,162 +128,107 @@ func (me *Bone2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Bone2D) SetRest(rest Transform2D, )  {
-  classNameV := StringNameFromStr("Bone2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_rest")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2761652528) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{rest.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBone2D.fnSetRest), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Bone2D) GetRest() Transform2D {
-  classNameV := StringNameFromStr("Bone2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_rest")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814499831) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTransform2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBone2D.fnGetRest), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Bone2D) ApplyRest()  {
-  classNameV := StringNameFromStr("Bone2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("apply_rest")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBone2D.fnApplyRest), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Bone2D) GetSkeletonRest() Transform2D {
-  classNameV := StringNameFromStr("Bone2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_skeleton_rest")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814499831) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTransform2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBone2D.fnGetSkeletonRest), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Bone2D) GetIndexInSkeleton() int64 {
-  classNameV := StringNameFromStr("Bone2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_index_in_skeleton")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBone2D.fnGetIndexInSkeleton), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Bone2D) SetAutocalculateLengthAndAngle(auto_calculate bool, )  {
-  classNameV := StringNameFromStr("Bone2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_autocalculate_length_and_angle")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&auto_calculate) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBone2D.fnSetAutocalculateLengthAndAngle), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Bone2D) GetAutocalculateLengthAndAngle() bool {
-  classNameV := StringNameFromStr("Bone2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_autocalculate_length_and_angle")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBone2D.fnGetAutocalculateLengthAndAngle), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Bone2D) SetLength(length float64, )  {
-  classNameV := StringNameFromStr("Bone2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&length) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBone2D.fnSetLength), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Bone2D) GetLength() float64 {
-  classNameV := StringNameFromStr("Bone2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBone2D.fnGetLength), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Bone2D) SetBoneAngle(angle float64, )  {
-  classNameV := StringNameFromStr("Bone2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_bone_angle")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&angle) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBone2D.fnSetBoneAngle), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Bone2D) GetBoneAngle() float64 {
-  classNameV := StringNameFromStr("Bone2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_bone_angle")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBone2D.fnGetBoneAngle), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

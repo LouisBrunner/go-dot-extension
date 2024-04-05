@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeFresnelList struct {
+}
+
+var ptrsForVisualShaderNodeFresnel ptrsForVisualShaderNodeFresnelList
+
+func initVisualShaderNodeFresnelPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeFresnel")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeFresnel struct {
   VisualShaderNode
 }

@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForResourceImporterTextureAtlasList struct {
+}
+
+var ptrsForResourceImporterTextureAtlas ptrsForResourceImporterTextureAtlasList
+
+func initResourceImporterTextureAtlasPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ResourceImporterTextureAtlas")
+  defer className.Destroy()
+}
+
 type ResourceImporterTextureAtlas struct {
   ResourceImporter
 }

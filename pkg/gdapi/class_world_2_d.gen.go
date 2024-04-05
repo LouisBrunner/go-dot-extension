@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForWorld2DList struct {
+  fnGetCanvas gdc.MethodBindPtr
+  fnGetSpace gdc.MethodBindPtr
+  fnGetNavigationMap gdc.MethodBindPtr
+  fnGetDirectSpaceState gdc.MethodBindPtr
+}
+
+var ptrsForWorld2D ptrsForWorld2DList
+
+func initWorld2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("World2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_canvas")
+    defer methodName.Destroy()
+    ptrsForWorld2D.fnGetCanvas = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
+  }
+  {
+    methodName := StringNameFromStr("get_space")
+    defer methodName.Destroy()
+    ptrsForWorld2D.fnGetSpace = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
+  }
+  {
+    methodName := StringNameFromStr("get_navigation_map")
+    defer methodName.Destroy()
+    ptrsForWorld2D.fnGetNavigationMap = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
+  }
+  {
+    methodName := StringNameFromStr("get_direct_space_state")
+    defer methodName.Destroy()
+    ptrsForWorld2D.fnGetDirectSpaceState = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2506717822))
+  }
+}
+
 type World2D struct {
   Resource
 }
@@ -51,62 +86,42 @@ func (me *World2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *World2D) GetCanvas() RID {
-  classNameV := StringNameFromStr("World2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_canvas")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRID()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWorld2D.fnGetCanvas), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *World2D) GetSpace() RID {
-  classNameV := StringNameFromStr("World2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_space")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRID()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWorld2D.fnGetSpace), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *World2D) GetNavigationMap() RID {
-  classNameV := StringNameFromStr("World2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_navigation_map")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRID()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWorld2D.fnGetNavigationMap), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *World2D) GetDirectSpaceState() PhysicsDirectSpaceState2D {
-  classNameV := StringNameFromStr("World2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_direct_space_state")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2506717822) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPhysicsDirectSpaceState2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWorld2D.fnGetDirectSpaceState), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

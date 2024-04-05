@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForOfflineMultiplayerPeerList struct {
+}
+
+var ptrsForOfflineMultiplayerPeer ptrsForOfflineMultiplayerPeerList
+
+func initOfflineMultiplayerPeerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("OfflineMultiplayerPeer")
+  defer className.Destroy()
+}
+
 type OfflineMultiplayerPeer struct {
   MultiplayerPeer
 }

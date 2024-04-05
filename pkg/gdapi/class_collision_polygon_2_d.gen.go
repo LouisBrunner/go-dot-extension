@@ -14,6 +14,77 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCollisionPolygon2DList struct {
+  fnSetPolygon gdc.MethodBindPtr
+  fnGetPolygon gdc.MethodBindPtr
+  fnSetBuildMode gdc.MethodBindPtr
+  fnGetBuildMode gdc.MethodBindPtr
+  fnSetDisabled gdc.MethodBindPtr
+  fnIsDisabled gdc.MethodBindPtr
+  fnSetOneWayCollision gdc.MethodBindPtr
+  fnIsOneWayCollisionEnabled gdc.MethodBindPtr
+  fnSetOneWayCollisionMargin gdc.MethodBindPtr
+  fnGetOneWayCollisionMargin gdc.MethodBindPtr
+}
+
+var ptrsForCollisionPolygon2D ptrsForCollisionPolygon2DList
+
+func initCollisionPolygon2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CollisionPolygon2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_polygon")
+    defer methodName.Destroy()
+    ptrsForCollisionPolygon2D.fnSetPolygon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1509147220))
+  }
+  {
+    methodName := StringNameFromStr("get_polygon")
+    defer methodName.Destroy()
+    ptrsForCollisionPolygon2D.fnGetPolygon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2961356807))
+  }
+  {
+    methodName := StringNameFromStr("set_build_mode")
+    defer methodName.Destroy()
+    ptrsForCollisionPolygon2D.fnSetBuildMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2780803135))
+  }
+  {
+    methodName := StringNameFromStr("get_build_mode")
+    defer methodName.Destroy()
+    ptrsForCollisionPolygon2D.fnGetBuildMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3044948800))
+  }
+  {
+    methodName := StringNameFromStr("set_disabled")
+    defer methodName.Destroy()
+    ptrsForCollisionPolygon2D.fnSetDisabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_disabled")
+    defer methodName.Destroy()
+    ptrsForCollisionPolygon2D.fnIsDisabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_one_way_collision")
+    defer methodName.Destroy()
+    ptrsForCollisionPolygon2D.fnSetOneWayCollision = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_one_way_collision_enabled")
+    defer methodName.Destroy()
+    ptrsForCollisionPolygon2D.fnIsOneWayCollisionEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_one_way_collision_margin")
+    defer methodName.Destroy()
+    ptrsForCollisionPolygon2D.fnSetOneWayCollisionMargin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_one_way_collision_margin")
+    defer methodName.Destroy()
+    ptrsForCollisionPolygon2D.fnGetOneWayCollisionMargin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type CollisionPolygon2D struct {
   Node2D
 }
@@ -57,147 +128,97 @@ func (me *CollisionPolygon2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *CollisionPolygon2D) SetPolygon(polygon PackedVector2Array, )  {
-  classNameV := StringNameFromStr("CollisionPolygon2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_polygon")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1509147220) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{polygon.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionPolygon2D.fnSetPolygon), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CollisionPolygon2D) GetPolygon() PackedVector2Array {
-  classNameV := StringNameFromStr("CollisionPolygon2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_polygon")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2961356807) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedVector2Array()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionPolygon2D.fnGetPolygon), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *CollisionPolygon2D) SetBuildMode(build_mode CollisionPolygon2DBuildMode, )  {
-  classNameV := StringNameFromStr("CollisionPolygon2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_build_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2780803135) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&build_mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionPolygon2D.fnSetBuildMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CollisionPolygon2D) GetBuildMode() CollisionPolygon2DBuildMode {
-  classNameV := StringNameFromStr("CollisionPolygon2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_build_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3044948800) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret CollisionPolygon2DBuildMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionPolygon2D.fnGetBuildMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *CollisionPolygon2D) SetDisabled(disabled bool, )  {
-  classNameV := StringNameFromStr("CollisionPolygon2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_disabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&disabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionPolygon2D.fnSetDisabled), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CollisionPolygon2D) IsDisabled() bool {
-  classNameV := StringNameFromStr("CollisionPolygon2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_disabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionPolygon2D.fnIsDisabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *CollisionPolygon2D) SetOneWayCollision(enabled bool, )  {
-  classNameV := StringNameFromStr("CollisionPolygon2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_one_way_collision")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionPolygon2D.fnSetOneWayCollision), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CollisionPolygon2D) IsOneWayCollisionEnabled() bool {
-  classNameV := StringNameFromStr("CollisionPolygon2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_one_way_collision_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionPolygon2D.fnIsOneWayCollisionEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *CollisionPolygon2D) SetOneWayCollisionMargin(margin float64, )  {
-  classNameV := StringNameFromStr("CollisionPolygon2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_one_way_collision_margin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&margin) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionPolygon2D.fnSetOneWayCollisionMargin), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CollisionPolygon2D) GetOneWayCollisionMargin() float64 {
-  classNameV := StringNameFromStr("CollisionPolygon2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_one_way_collision_margin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionPolygon2D.fnGetOneWayCollisionMargin), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

@@ -21,7 +21,7 @@ func newUtilities(iface gdc.Interface) UtilityFunctions {
 {{range .}}  str{{.Name}} := StringNameFromStr("{{.Name}}")
   defer str{{.Name}}.Destroy()
 {{end}}  return &utilities{
-{{range .}}    ptr{{.Name}}: iface.VariantGetPtrUtilityFunction(str{{.Name}}.AsCPtr(), {{.Hash}}),
+{{range .}}    ptr{{.Name}}: ensurePtr(iface.VariantGetPtrUtilityFunction(str{{.Name}}.AsCPtr(), {{.Hash}})),
 {{end}}  }
 }
 

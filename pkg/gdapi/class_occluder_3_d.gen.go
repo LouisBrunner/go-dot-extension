@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForOccluder3DList struct {
+  fnGetVertices gdc.MethodBindPtr
+  fnGetIndices gdc.MethodBindPtr
+}
+
+var ptrsForOccluder3D ptrsForOccluder3DList
+
+func initOccluder3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Occluder3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_vertices")
+    defer methodName.Destroy()
+    ptrsForOccluder3D.fnGetVertices = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 497664490))
+  }
+  {
+    methodName := StringNameFromStr("get_indices")
+    defer methodName.Destroy()
+    ptrsForOccluder3D.fnGetIndices = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1930428628))
+  }
+}
+
 type Occluder3D struct {
   Resource
 }
@@ -51,32 +74,22 @@ func (me *Occluder3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Occluder3D) GetVertices() PackedVector3Array {
-  classNameV := StringNameFromStr("Occluder3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_vertices")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 497664490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedVector3Array()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOccluder3D.fnGetVertices), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Occluder3D) GetIndices() PackedInt32Array {
-  classNameV := StringNameFromStr("Occluder3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_indices")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1930428628) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedInt32Array()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOccluder3D.fnGetIndices), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

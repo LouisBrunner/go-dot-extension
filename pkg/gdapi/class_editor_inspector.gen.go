@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorInspectorList struct {
+  fnGetSelectedPath gdc.MethodBindPtr
+  fnGetEditedObject gdc.MethodBindPtr
+}
+
+var ptrsForEditorInspector ptrsForEditorInspectorList
+
+func initEditorInspectorPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorInspector")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_selected_path")
+    defer methodName.Destroy()
+    ptrsForEditorInspector.fnGetSelectedPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("get_edited_object")
+    defer methodName.Destroy()
+    ptrsForEditorInspector.fnGetEditedObject = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2050059866))
+  }
+}
+
 type EditorInspector struct {
   ScrollContainer
 }
@@ -51,32 +74,22 @@ func (me *EditorInspector) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *EditorInspector) GetSelectedPath() String {
-  classNameV := StringNameFromStr("EditorInspector")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_selected_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorInspector.fnGetSelectedPath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorInspector) GetEditedObject() Object {
-  classNameV := StringNameFromStr("EditorInspector")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_edited_object")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2050059866) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewObject()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorInspector.fnGetEditedObject), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

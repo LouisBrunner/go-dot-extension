@@ -10,12 +10,18 @@ var Singletons *singletons
 var Utilities UtilityFunctions
 
 // FIXME: don't like this but it's the only way I found
+// without requiring the user to pass the extension to EVERYTHING
 
 func Initialize(iface gdc.Interface) {
 	giface = iface
+	initBClasses(iface)
+	Utilities = newUtilities(iface)
 }
 
-func InitializeGlobals(iface gdc.Interface) {
+func InitializeSingletons(iface gdc.Interface) {
 	Singletons = newSingletons(iface)
-	Utilities = newUtilities(iface)
+}
+
+func InitializeClasses(iface gdc.Interface) {
+	initClasses(iface)
 }

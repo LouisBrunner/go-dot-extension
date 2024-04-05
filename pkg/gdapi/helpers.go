@@ -7,8 +7,18 @@ import (
 )
 import (
 	"fmt"
+	"reflect"
 	"unsafe"
 )
+
+// Generic
+
+func ensurePtr[T any](ptr T) T {
+	if reflect.ValueOf(ptr).IsNil() {
+		panic("provided pointer is nil") // TODO: ugh, should be proper error handling
+	}
+	return ptr
+}
 
 // BClass
 
@@ -60,9 +70,12 @@ func DObjectFromPtr(className string, ptr gdc.ObjectPtr) (interface{}, error) {
 
 func (me *Object) AsVariant() *Variant {
 	va := newVariant()
-	fn := giface.GetVariantFromTypeConstructor(me.Type())
-	giface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+	va.iface.CallVariantFromTypeConstructorFunc(ensurePtr(ptrsForVariant.fromObjectFn), va.asUninitialized(), me.AsTypePtr())
 	return va
+}
+
+func (me *Object) AsPtr() gdc.ObjectPtr {
+	return me.obj
 }
 
 // Array
@@ -75,8 +88,7 @@ func (me *Array) Get(i int64) Variant {
 
 func (me *Array) Set(i int64, value Variant) {
 	varPtr := me.iface.ArrayOperatorIndex(me.AsTypePtr(), gdc.Int(i))
-	va := NewVariantWith(varPtr)
-	va.Assign(value)
+	AssignVariant(varPtr, value)
 }
 
 func ConvertArrayToSlice[T any](array *Array) ([]T, error) {
@@ -135,15 +147,14 @@ func (me *Dictionary) SetStringKey(key string, value Variant) {
 
 func (me *Dictionary) Set(key, value Variant) {
 	varPtr := me.iface.DictionaryOperatorIndex(me.AsTypePtr(), key.AsCPtr())
-	va := NewVariantWith(varPtr)
-	va.Assign(value)
+	AssignVariant(varPtr, value)
 }
 
 // String
 
 func StringFromStr(str string) *String {
 	me := newString()
-	giface.StringNewWithUtf8CharsAndLen(gdc.UninitializedStringPtr(me.asUninitialized()), str, gdc.Int(len(str)))
+	me.iface.StringNewWithUtf8CharsAndLen(gdc.UninitializedStringPtr(me.asUninitialized()), str, gdc.Int(len(str)))
 	return me
 }
 
@@ -188,4 +199,14 @@ func (me *StringName) AsPtr() gdc.StringNamePtr {
 
 func (me *StringName) AsCPtr() gdc.ConstStringNamePtr {
 	return gdc.ConstStringNamePtr(me.AsPtr())
+}
+
+// Error
+
+func (me Error) Error() string {
+	// FIXME: this is not working for some reason
+	// varStr := Utilities.ErrorString(int64(me))
+	// defer varStr.Destroy()
+	// return fmt.Sprintf("godot error %d: %s", me, varStr.String())
+	return fmt.Sprintf("godot error %d", me)
 }

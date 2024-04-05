@@ -14,6 +14,35 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForHashingContextList struct {
+  fnStart gdc.MethodBindPtr
+  fnUpdate gdc.MethodBindPtr
+  fnFinish gdc.MethodBindPtr
+}
+
+var ptrsForHashingContext ptrsForHashingContextList
+
+func initHashingContextPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("HashingContext")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("start")
+    defer methodName.Destroy()
+    ptrsForHashingContext.fnStart = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3940338335))
+  }
+  {
+    methodName := StringNameFromStr("update")
+    defer methodName.Destroy()
+    ptrsForHashingContext.fnUpdate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 680677267))
+  }
+  {
+    methodName := StringNameFromStr("finish")
+    defer methodName.Destroy()
+    ptrsForHashingContext.fnFinish = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2115431945))
+  }
+}
+
 type HashingContext struct {
   RefCounted
 }
@@ -58,48 +87,33 @@ func (me *HashingContext) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *HashingContext) Start(type_ HashingContextHashType, ) Error {
-  classNameV := StringNameFromStr("HashingContext")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("start")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3940338335) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
   pinner.Pin(&type_)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHashingContext.fnStart), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *HashingContext) Update(chunk PackedByteArray, ) Error {
-  classNameV := StringNameFromStr("HashingContext")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("update")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 680677267) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{chunk.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHashingContext.fnUpdate), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *HashingContext) Finish() PackedByteArray {
-  classNameV := StringNameFromStr("HashingContext")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("finish")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2115431945) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedByteArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHashingContext.fnFinish), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

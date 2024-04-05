@@ -1,0 +1,26 @@
+{{template "preamble"}}
+
+import (
+  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+)
+
+func initBClasses(iface gdc.Interface) {
+  // first because everything else needs it init'd
+  ptrsForString.destructorFn = iface.VariantGetPtrDestructor(gdc.VariantTypeString)
+  ptrsForStringName.ctrFromStringFn = iface.VariantGetPtrConstructor(gdc.VariantTypeStringName, 2)
+  ptrsForStringName.destructorFn = iface.VariantGetPtrDestructor(gdc.VariantTypeStringName)
+
+  // bclass
+{{- range .BClasses}}
+  init{{mapClass .Name}}Ptrs(iface)
+{{- end}}
+
+  // variant
+  initVariantPtrs(iface)
+}
+
+func initClasses(iface gdc.Interface) {
+{{- range .Classes}}
+  init{{mapClass .Name}}Ptrs(iface)
+{{- end}}
+}

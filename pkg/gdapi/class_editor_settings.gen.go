@@ -14,6 +14,113 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorSettingsList struct {
+  fnHasSetting gdc.MethodBindPtr
+  fnSetSetting gdc.MethodBindPtr
+  fnGetSetting gdc.MethodBindPtr
+  fnErase gdc.MethodBindPtr
+  fnSetInitialValue gdc.MethodBindPtr
+  fnAddPropertyInfo gdc.MethodBindPtr
+  fnSetProjectMetadata gdc.MethodBindPtr
+  fnGetProjectMetadata gdc.MethodBindPtr
+  fnSetFavorites gdc.MethodBindPtr
+  fnGetFavorites gdc.MethodBindPtr
+  fnSetRecentDirs gdc.MethodBindPtr
+  fnGetRecentDirs gdc.MethodBindPtr
+  fnSetBuiltinActionOverride gdc.MethodBindPtr
+  fnCheckChangedSettingsInGroup gdc.MethodBindPtr
+  fnGetChangedSettings gdc.MethodBindPtr
+  fnMarkSettingChanged gdc.MethodBindPtr
+}
+
+var ptrsForEditorSettings ptrsForEditorSettingsList
+
+func initEditorSettingsPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorSettings")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("has_setting")
+    defer methodName.Destroy()
+    ptrsForEditorSettings.fnHasSetting = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3927539163))
+  }
+  {
+    methodName := StringNameFromStr("set_setting")
+    defer methodName.Destroy()
+    ptrsForEditorSettings.fnSetSetting = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 402577236))
+  }
+  {
+    methodName := StringNameFromStr("get_setting")
+    defer methodName.Destroy()
+    ptrsForEditorSettings.fnGetSetting = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1868160156))
+  }
+  {
+    methodName := StringNameFromStr("erase")
+    defer methodName.Destroy()
+    ptrsForEditorSettings.fnErase = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("set_initial_value")
+    defer methodName.Destroy()
+    ptrsForEditorSettings.fnSetInitialValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1529169264))
+  }
+  {
+    methodName := StringNameFromStr("add_property_info")
+    defer methodName.Destroy()
+    ptrsForEditorSettings.fnAddPropertyInfo = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4155329257))
+  }
+  {
+    methodName := StringNameFromStr("set_project_metadata")
+    defer methodName.Destroy()
+    ptrsForEditorSettings.fnSetProjectMetadata = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2504492430))
+  }
+  {
+    methodName := StringNameFromStr("get_project_metadata")
+    defer methodName.Destroy()
+    ptrsForEditorSettings.fnGetProjectMetadata = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 89809366))
+  }
+  {
+    methodName := StringNameFromStr("set_favorites")
+    defer methodName.Destroy()
+    ptrsForEditorSettings.fnSetFavorites = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4015028928))
+  }
+  {
+    methodName := StringNameFromStr("get_favorites")
+    defer methodName.Destroy()
+    ptrsForEditorSettings.fnGetFavorites = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1139954409))
+  }
+  {
+    methodName := StringNameFromStr("set_recent_dirs")
+    defer methodName.Destroy()
+    ptrsForEditorSettings.fnSetRecentDirs = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4015028928))
+  }
+  {
+    methodName := StringNameFromStr("get_recent_dirs")
+    defer methodName.Destroy()
+    ptrsForEditorSettings.fnGetRecentDirs = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1139954409))
+  }
+  {
+    methodName := StringNameFromStr("set_builtin_action_override")
+    defer methodName.Destroy()
+    ptrsForEditorSettings.fnSetBuiltinActionOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1209351045))
+  }
+  {
+    methodName := StringNameFromStr("check_changed_settings_in_group")
+    defer methodName.Destroy()
+    ptrsForEditorSettings.fnCheckChangedSettingsInGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3927539163))
+  }
+  {
+    methodName := StringNameFromStr("get_changed_settings")
+    defer methodName.Destroy()
+    ptrsForEditorSettings.fnGetChangedSettings = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1139954409))
+  }
+  {
+    methodName := StringNameFromStr("mark_setting_changed")
+    defer methodName.Destroy()
+    ptrsForEditorSettings.fnMarkSettingChanged = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+}
+
 type EditorSettings struct {
   Resource
 }
@@ -57,233 +164,153 @@ func (me *EditorSettings) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *EditorSettings) HasSetting(name String, ) bool {
-  classNameV := StringNameFromStr("EditorSettings")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_setting")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSettings.fnHasSetting), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *EditorSettings) SetSetting(name String, value Variant, )  {
-  classNameV := StringNameFromStr("EditorSettings")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_setting")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 402577236) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), value.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSettings.fnSetSetting), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorSettings) GetSetting(name String, ) Variant {
-  classNameV := StringNameFromStr("EditorSettings")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_setting")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1868160156) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVariant()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSettings.fnGetSetting), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorSettings) Erase(property String, )  {
-  classNameV := StringNameFromStr("EditorSettings")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("erase")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{property.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSettings.fnErase), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorSettings) SetInitialValue(name StringName, value Variant, update_current bool, )  {
-  classNameV := StringNameFromStr("EditorSettings")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_initial_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1529169264) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), value.AsCTypePtr(), gdc.ConstTypePtr(&update_current) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSettings.fnSetInitialValue), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorSettings) AddPropertyInfo(info Dictionary, )  {
-  classNameV := StringNameFromStr("EditorSettings")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_property_info")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4155329257) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{info.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSettings.fnAddPropertyInfo), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorSettings) SetProjectMetadata(section String, key String, data Variant, )  {
-  classNameV := StringNameFromStr("EditorSettings")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_project_metadata")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2504492430) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{section.AsCTypePtr(), key.AsCTypePtr(), data.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSettings.fnSetProjectMetadata), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorSettings) GetProjectMetadata(section String, key String, default_ Variant, ) Variant {
-  classNameV := StringNameFromStr("EditorSettings")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_project_metadata")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 89809366) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{section.AsCTypePtr(), key.AsCTypePtr(), default_.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVariant()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSettings.fnGetProjectMetadata), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorSettings) SetFavorites(dirs PackedStringArray, )  {
-  classNameV := StringNameFromStr("EditorSettings")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_favorites")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4015028928) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{dirs.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSettings.fnSetFavorites), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorSettings) GetFavorites() PackedStringArray {
-  classNameV := StringNameFromStr("EditorSettings")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_favorites")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedStringArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSettings.fnGetFavorites), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorSettings) SetRecentDirs(dirs PackedStringArray, )  {
-  classNameV := StringNameFromStr("EditorSettings")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_recent_dirs")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4015028928) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{dirs.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSettings.fnSetRecentDirs), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorSettings) GetRecentDirs() PackedStringArray {
-  classNameV := StringNameFromStr("EditorSettings")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_recent_dirs")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedStringArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSettings.fnGetRecentDirs), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorSettings) SetBuiltinActionOverride(name String, actions_list []InputEvent, )  {
-  classNameV := StringNameFromStr("EditorSettings")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_builtin_action_override")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1209351045) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), gdc.ConstTypePtr(&actions_list) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSettings.fnSetBuiltinActionOverride), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorSettings) CheckChangedSettingsInGroup(setting_prefix String, ) bool {
-  classNameV := StringNameFromStr("EditorSettings")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("check_changed_settings_in_group")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{setting_prefix.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSettings.fnCheckChangedSettingsInGroup), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *EditorSettings) GetChangedSettings() PackedStringArray {
-  classNameV := StringNameFromStr("EditorSettings")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_changed_settings")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedStringArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSettings.fnGetChangedSettings), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorSettings) MarkSettingChanged(setting String, )  {
-  classNameV := StringNameFromStr("EditorSettings")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("mark_setting_changed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{setting.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorSettings.fnMarkSettingChanged), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

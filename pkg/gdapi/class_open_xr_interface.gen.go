@@ -14,6 +14,155 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForOpenXRInterfaceList struct {
+  fnGetDisplayRefreshRate gdc.MethodBindPtr
+  fnSetDisplayRefreshRate gdc.MethodBindPtr
+  fnGetRenderTargetSizeMultiplier gdc.MethodBindPtr
+  fnSetRenderTargetSizeMultiplier gdc.MethodBindPtr
+  fnIsFoveationSupported gdc.MethodBindPtr
+  fnGetFoveationLevel gdc.MethodBindPtr
+  fnSetFoveationLevel gdc.MethodBindPtr
+  fnGetFoveationDynamic gdc.MethodBindPtr
+  fnSetFoveationDynamic gdc.MethodBindPtr
+  fnIsActionSetActive gdc.MethodBindPtr
+  fnSetActionSetActive gdc.MethodBindPtr
+  fnGetActionSets gdc.MethodBindPtr
+  fnGetAvailableDisplayRefreshRates gdc.MethodBindPtr
+  fnSetMotionRange gdc.MethodBindPtr
+  fnGetMotionRange gdc.MethodBindPtr
+  fnGetHandJointFlags gdc.MethodBindPtr
+  fnGetHandJointRotation gdc.MethodBindPtr
+  fnGetHandJointPosition gdc.MethodBindPtr
+  fnGetHandJointRadius gdc.MethodBindPtr
+  fnGetHandJointLinearVelocity gdc.MethodBindPtr
+  fnGetHandJointAngularVelocity gdc.MethodBindPtr
+  fnIsHandTrackingSupported gdc.MethodBindPtr
+  fnIsEyeGazeInteractionSupported gdc.MethodBindPtr
+}
+
+var ptrsForOpenXRInterface ptrsForOpenXRInterfaceList
+
+func initOpenXRInterfacePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("OpenXRInterface")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_display_refresh_rate")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnGetDisplayRefreshRate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_display_refresh_rate")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnSetDisplayRefreshRate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_render_target_size_multiplier")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnGetRenderTargetSizeMultiplier = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_render_target_size_multiplier")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnSetRenderTargetSizeMultiplier = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("is_foveation_supported")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnIsFoveationSupported = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_foveation_level")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnGetFoveationLevel = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_foveation_level")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnSetFoveationLevel = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_foveation_dynamic")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnGetFoveationDynamic = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_foveation_dynamic")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnSetFoveationDynamic = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_action_set_active")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnIsActionSetActive = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3927539163))
+  }
+  {
+    methodName := StringNameFromStr("set_action_set_active")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnSetActionSetActive = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2678287736))
+  }
+  {
+    methodName := StringNameFromStr("get_action_sets")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnGetActionSets = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+  }
+  {
+    methodName := StringNameFromStr("get_available_display_refresh_rates")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnGetAvailableDisplayRefreshRates = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+  }
+  {
+    methodName := StringNameFromStr("set_motion_range")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnSetMotionRange = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 855158159))
+  }
+  {
+    methodName := StringNameFromStr("get_motion_range")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnGetMotionRange = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3955838114))
+  }
+  {
+    methodName := StringNameFromStr("get_hand_joint_flags")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnGetHandJointFlags = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 720567706))
+  }
+  {
+    methodName := StringNameFromStr("get_hand_joint_rotation")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnGetHandJointRotation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1974618321))
+  }
+  {
+    methodName := StringNameFromStr("get_hand_joint_position")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnGetHandJointPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3529194242))
+  }
+  {
+    methodName := StringNameFromStr("get_hand_joint_radius")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnGetHandJointRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 901522724))
+  }
+  {
+    methodName := StringNameFromStr("get_hand_joint_linear_velocity")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnGetHandJointLinearVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3529194242))
+  }
+  {
+    methodName := StringNameFromStr("get_hand_joint_angular_velocity")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnGetHandJointAngularVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3529194242))
+  }
+  {
+    methodName := StringNameFromStr("is_hand_tracking_supported")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnIsHandTrackingSupported = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("is_eye_gaze_interaction_supported")
+    defer methodName.Destroy()
+    ptrsForOpenXRInterface.fnIsEyeGazeInteractionSupported = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+}
+
 type OpenXRInterface struct {
   XRInterface
 }
@@ -107,231 +256,151 @@ func (me *OpenXRInterface) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *OpenXRInterface) GetDisplayRefreshRate() float64 {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_display_refresh_rate")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnGetDisplayRefreshRate), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *OpenXRInterface) SetDisplayRefreshRate(refresh_rate float64, )  {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_display_refresh_rate")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&refresh_rate) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnSetDisplayRefreshRate), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *OpenXRInterface) GetRenderTargetSizeMultiplier() float64 {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_render_target_size_multiplier")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnGetRenderTargetSizeMultiplier), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *OpenXRInterface) SetRenderTargetSizeMultiplier(multiplier float64, )  {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_render_target_size_multiplier")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&multiplier) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnSetRenderTargetSizeMultiplier), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *OpenXRInterface) IsFoveationSupported() bool {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_foveation_supported")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnIsFoveationSupported), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *OpenXRInterface) GetFoveationLevel() int64 {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_foveation_level")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnGetFoveationLevel), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *OpenXRInterface) SetFoveationLevel(foveation_level int64, )  {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_foveation_level")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&foveation_level) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnSetFoveationLevel), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *OpenXRInterface) GetFoveationDynamic() bool {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_foveation_dynamic")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnGetFoveationDynamic), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *OpenXRInterface) SetFoveationDynamic(foveation_dynamic bool, )  {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_foveation_dynamic")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&foveation_dynamic) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnSetFoveationDynamic), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *OpenXRInterface) IsActionSetActive(name String, ) bool {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_action_set_active")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3927539163) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnIsActionSetActive), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *OpenXRInterface) SetActionSetActive(name String, active bool, )  {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_action_set_active")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2678287736) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), gdc.ConstTypePtr(&active) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnSetActionSetActive), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *OpenXRInterface) GetActionSets() Array {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_action_sets")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnGetActionSets), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *OpenXRInterface) GetAvailableDisplayRefreshRates() Array {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_available_display_refresh_rates")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnGetAvailableDisplayRefreshRates), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *OpenXRInterface) SetMotionRange(hand OpenXRInterfaceHand, motion_range OpenXRInterfaceHandMotionRange, )  {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_motion_range")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 855158159) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hand) , gdc.ConstTypePtr(&motion_range) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnSetMotionRange), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *OpenXRInterface) GetMotionRange(hand OpenXRInterfaceHand, ) OpenXRInterfaceHandMotionRange {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_motion_range")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3955838114) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hand) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret OpenXRInterfaceHandMotionRange
   pinner.Pin(&hand)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnGetMotionRange), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *OpenXRInterface) GetHandJointFlags(hand OpenXRInterfaceHand, joint OpenXRInterfaceHandJoints, ) OpenXRInterfaceHandJointFlags {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_hand_joint_flags")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 720567706) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hand) , gdc.ConstTypePtr(&joint) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -339,16 +408,11 @@ func  (me *OpenXRInterface) GetHandJointFlags(hand OpenXRInterfaceHand, joint Op
   pinner.Pin(&hand)
   pinner.Pin(&joint)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnGetHandJointFlags), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *OpenXRInterface) GetHandJointRotation(hand OpenXRInterfaceHand, joint OpenXRInterfaceHandJoints, ) Quaternion {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_hand_joint_rotation")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1974618321) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hand) , gdc.ConstTypePtr(&joint) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -356,16 +420,11 @@ func  (me *OpenXRInterface) GetHandJointRotation(hand OpenXRInterfaceHand, joint
   pinner.Pin(&hand)
   pinner.Pin(&joint)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnGetHandJointRotation), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *OpenXRInterface) GetHandJointPosition(hand OpenXRInterfaceHand, joint OpenXRInterfaceHandJoints, ) Vector3 {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_hand_joint_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3529194242) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hand) , gdc.ConstTypePtr(&joint) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -373,16 +432,11 @@ func  (me *OpenXRInterface) GetHandJointPosition(hand OpenXRInterfaceHand, joint
   pinner.Pin(&hand)
   pinner.Pin(&joint)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnGetHandJointPosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *OpenXRInterface) GetHandJointRadius(hand OpenXRInterfaceHand, joint OpenXRInterfaceHandJoints, ) float64 {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_hand_joint_radius")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 901522724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hand) , gdc.ConstTypePtr(&joint) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -390,16 +444,11 @@ func  (me *OpenXRInterface) GetHandJointRadius(hand OpenXRInterfaceHand, joint O
   pinner.Pin(&hand)
   pinner.Pin(&joint)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnGetHandJointRadius), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *OpenXRInterface) GetHandJointLinearVelocity(hand OpenXRInterfaceHand, joint OpenXRInterfaceHandJoints, ) Vector3 {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_hand_joint_linear_velocity")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3529194242) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hand) , gdc.ConstTypePtr(&joint) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -407,16 +456,11 @@ func  (me *OpenXRInterface) GetHandJointLinearVelocity(hand OpenXRInterfaceHand,
   pinner.Pin(&hand)
   pinner.Pin(&joint)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnGetHandJointLinearVelocity), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *OpenXRInterface) GetHandJointAngularVelocity(hand OpenXRInterfaceHand, joint OpenXRInterfaceHandJoints, ) Vector3 {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_hand_joint_angular_velocity")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3529194242) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hand) , gdc.ConstTypePtr(&joint) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -424,37 +468,27 @@ func  (me *OpenXRInterface) GetHandJointAngularVelocity(hand OpenXRInterfaceHand
   pinner.Pin(&hand)
   pinner.Pin(&joint)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnGetHandJointAngularVelocity), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *OpenXRInterface) IsHandTrackingSupported() bool {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_hand_tracking_supported")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnIsHandTrackingSupported), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *OpenXRInterface) IsEyeGazeInteractionSupported() bool {
-  classNameV := StringNameFromStr("OpenXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_eye_gaze_interaction_supported")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnIsEyeGazeInteractionSupported), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

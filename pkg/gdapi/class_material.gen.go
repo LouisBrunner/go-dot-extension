@@ -14,6 +14,57 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForMaterialList struct {
+  fnXGetShaderRid gdc.MethodBindPtr
+  fnXGetShaderMode gdc.MethodBindPtr
+  fnXCanDoNextPass gdc.MethodBindPtr
+  fnXCanUseRenderPriority gdc.MethodBindPtr
+  fnSetNextPass gdc.MethodBindPtr
+  fnGetNextPass gdc.MethodBindPtr
+  fnSetRenderPriority gdc.MethodBindPtr
+  fnGetRenderPriority gdc.MethodBindPtr
+  fnInspectNativeShaderCode gdc.MethodBindPtr
+  fnCreatePlaceholder gdc.MethodBindPtr
+}
+
+var ptrsForMaterial ptrsForMaterialList
+
+func initMaterialPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Material")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_next_pass")
+    defer methodName.Destroy()
+    ptrsForMaterial.fnSetNextPass = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2757459619))
+  }
+  {
+    methodName := StringNameFromStr("get_next_pass")
+    defer methodName.Destroy()
+    ptrsForMaterial.fnGetNextPass = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 5934680))
+  }
+  {
+    methodName := StringNameFromStr("set_render_priority")
+    defer methodName.Destroy()
+    ptrsForMaterial.fnSetRenderPriority = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_render_priority")
+    defer methodName.Destroy()
+    ptrsForMaterial.fnGetRenderPriority = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("inspect_native_shader_code")
+    defer methodName.Destroy()
+    ptrsForMaterial.fnInspectNativeShaderCode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("create_placeholder")
+    defer methodName.Destroy()
+    ptrsForMaterial.fnCreatePlaceholder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 121922552))
+  }
+}
+
 type Material struct {
   Resource
 }
@@ -58,89 +109,59 @@ func (me *Material) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Material) SetNextPass(next_pass Material, )  {
-  classNameV := StringNameFromStr("Material")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_next_pass")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2757459619) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{next_pass.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMaterial.fnSetNextPass), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Material) GetNextPass() Material {
-  classNameV := StringNameFromStr("Material")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_next_pass")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 5934680) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewMaterial()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMaterial.fnGetNextPass), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Material) SetRenderPriority(priority int64, )  {
-  classNameV := StringNameFromStr("Material")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_render_priority")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&priority) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMaterial.fnSetRenderPriority), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Material) GetRenderPriority() int64 {
-  classNameV := StringNameFromStr("Material")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_render_priority")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMaterial.fnGetRenderPriority), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Material) InspectNativeShaderCode()  {
-  classNameV := StringNameFromStr("Material")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("inspect_native_shader_code")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMaterial.fnInspectNativeShaderCode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Material) CreatePlaceholder() Resource {
-  classNameV := StringNameFromStr("Material")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("create_placeholder")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 121922552) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewResource()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMaterial.fnCreatePlaceholder), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

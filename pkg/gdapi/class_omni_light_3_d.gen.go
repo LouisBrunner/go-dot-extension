@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForOmniLight3DList struct {
+  fnSetShadowMode gdc.MethodBindPtr
+  fnGetShadowMode gdc.MethodBindPtr
+}
+
+var ptrsForOmniLight3D ptrsForOmniLight3DList
+
+func initOmniLight3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("OmniLight3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_shadow_mode")
+    defer methodName.Destroy()
+    ptrsForOmniLight3D.fnSetShadowMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 121862228))
+  }
+  {
+    methodName := StringNameFromStr("get_shadow_mode")
+    defer methodName.Destroy()
+    ptrsForOmniLight3D.fnGetShadowMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4181586331))
+  }
+}
+
 type OmniLight3D struct {
   Light3D
 }
@@ -57,31 +80,21 @@ func (me *OmniLight3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *OmniLight3D) SetShadowMode(mode OmniLight3DShadowMode, )  {
-  classNameV := StringNameFromStr("OmniLight3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_shadow_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 121862228) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOmniLight3D.fnSetShadowMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *OmniLight3D) GetShadowMode() OmniLight3DShadowMode {
-  classNameV := StringNameFromStr("OmniLight3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_shadow_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4181586331) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret OmniLight3DShadowMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOmniLight3D.fnGetShadowMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

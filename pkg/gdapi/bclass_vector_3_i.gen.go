@@ -9,6 +9,143 @@ import (
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
+// FIXME: avoid unused imports
+var _ = fmt.Sprintf("")
+
+type ptrsForVector3iList struct {
+  ctrFn gdc.PtrConstructor
+  ctrFromVector3IFn gdc.PtrConstructor
+  ctrFromVector3Fn gdc.PtrConstructor
+  ctrFromIntIntIntFn gdc.PtrConstructor
+  methodMinAxisIndexFn gdc.PtrBuiltInMethod
+  methodMaxAxisIndexFn gdc.PtrBuiltInMethod
+  methodLengthFn gdc.PtrBuiltInMethod
+  methodLengthSquaredFn gdc.PtrBuiltInMethod
+  methodSignFn gdc.PtrBuiltInMethod
+  methodAbsFn gdc.PtrBuiltInMethod
+  methodClampFn gdc.PtrBuiltInMethod
+  methodSnappedFn gdc.PtrBuiltInMethod
+  operatorNegateFn gdc.PtrOperatorEvaluator
+  operatorPositiveFn gdc.PtrOperatorEvaluator
+  operatorNotFn gdc.PtrOperatorEvaluator
+  operatorMultiplyIntFn gdc.PtrOperatorEvaluator
+  operatorDivideIntFn gdc.PtrOperatorEvaluator
+  operatorModuleIntFn gdc.PtrOperatorEvaluator
+  operatorMultiplyFloat32Fn gdc.PtrOperatorEvaluator
+  operatorDivideFloat32Fn gdc.PtrOperatorEvaluator
+  operatorEqualVector3IFn gdc.PtrOperatorEvaluator
+  operatorNotEqualVector3IFn gdc.PtrOperatorEvaluator
+  operatorLessVector3IFn gdc.PtrOperatorEvaluator
+  operatorLessEqualVector3IFn gdc.PtrOperatorEvaluator
+  operatorGreaterVector3IFn gdc.PtrOperatorEvaluator
+  operatorGreaterEqualVector3IFn gdc.PtrOperatorEvaluator
+  operatorAddVector3IFn gdc.PtrOperatorEvaluator
+  operatorSubtractVector3IFn gdc.PtrOperatorEvaluator
+  operatorMultiplyVector3IFn gdc.PtrOperatorEvaluator
+  operatorDivideVector3IFn gdc.PtrOperatorEvaluator
+  operatorModuleVector3IFn gdc.PtrOperatorEvaluator
+  operatorInDictionaryFn gdc.PtrOperatorEvaluator
+  operatorInArrayFn gdc.PtrOperatorEvaluator
+  memberxGetterFn gdc.PtrGetter
+  memberxSetterFn gdc.PtrSetter
+  memberyGetterFn gdc.PtrGetter
+  memberySetterFn gdc.PtrSetter
+  memberzGetterFn gdc.PtrGetter
+  memberzSetterFn gdc.PtrSetter
+  toVariantFn gdc.TypeFromVariantConstructorFunc
+  fromVariantFn gdc.VariantFromTypeConstructorFunc
+}
+
+var ptrsForVector3i ptrsForVector3iList
+
+func initVector3iPtrs(iface gdc.Interface) {
+  ptrsForVector3i.ctrFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeVector3I, 0))
+  ptrsForVector3i.ctrFromVector3IFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeVector3I, 1))
+  ptrsForVector3i.ctrFromVector3Fn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeVector3I, 2))
+  ptrsForVector3i.ctrFromIntIntIntFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeVector3I, 3))
+  {
+    methodName := StringNameFromStr("min_axis_index")
+    defer methodName.Destroy()
+    ptrsForVector3i.methodMinAxisIndexFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, methodName.AsCPtr(), 3173160232))
+  }
+  {
+    methodName := StringNameFromStr("max_axis_index")
+    defer methodName.Destroy()
+    ptrsForVector3i.methodMaxAxisIndexFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, methodName.AsCPtr(), 3173160232))
+  }
+  {
+    methodName := StringNameFromStr("length")
+    defer methodName.Destroy()
+    ptrsForVector3i.methodLengthFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, methodName.AsCPtr(), 466405837))
+  }
+  {
+    methodName := StringNameFromStr("length_squared")
+    defer methodName.Destroy()
+    ptrsForVector3i.methodLengthSquaredFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, methodName.AsCPtr(), 3173160232))
+  }
+  {
+    methodName := StringNameFromStr("sign")
+    defer methodName.Destroy()
+    ptrsForVector3i.methodSignFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, methodName.AsCPtr(), 3729604559))
+  }
+  {
+    methodName := StringNameFromStr("abs")
+    defer methodName.Destroy()
+    ptrsForVector3i.methodAbsFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, methodName.AsCPtr(), 3729604559))
+  }
+  {
+    methodName := StringNameFromStr("clamp")
+    defer methodName.Destroy()
+    ptrsForVector3i.methodClampFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, methodName.AsCPtr(), 1086892323))
+  }
+  {
+    methodName := StringNameFromStr("snapped")
+    defer methodName.Destroy()
+    ptrsForVector3i.methodSnappedFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, methodName.AsCPtr(), 1989319750))
+  }
+  ptrsForVector3i.operatorNegateFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNegate, gdc.VariantTypeVector3I, gdc.VariantTypeNil))
+  ptrsForVector3i.operatorPositiveFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpPositive, gdc.VariantTypeVector3I, gdc.VariantTypeNil))
+  ptrsForVector3i.operatorNotFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, gdc.VariantTypeVector3I, gdc.VariantTypeNil))
+  ptrsForVector3i.operatorMultiplyIntFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeVector3I, gdc.VariantTypeInt))
+  ptrsForVector3i.operatorDivideIntFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, gdc.VariantTypeVector3I, gdc.VariantTypeInt))
+  ptrsForVector3i.operatorModuleIntFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpModule, gdc.VariantTypeVector3I, gdc.VariantTypeInt))
+  ptrsForVector3i.operatorMultiplyFloat32Fn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeVector3I, gdc.VariantTypeFloat))
+  ptrsForVector3i.operatorDivideFloat32Fn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, gdc.VariantTypeVector3I, gdc.VariantTypeFloat))
+  ptrsForVector3i.operatorEqualVector3IFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, gdc.VariantTypeVector3I, gdc.VariantTypeVector3I))
+  ptrsForVector3i.operatorNotEqualVector3IFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, gdc.VariantTypeVector3I, gdc.VariantTypeVector3I))
+  ptrsForVector3i.operatorLessVector3IFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpLess, gdc.VariantTypeVector3I, gdc.VariantTypeVector3I))
+  ptrsForVector3i.operatorLessEqualVector3IFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpLessEqual, gdc.VariantTypeVector3I, gdc.VariantTypeVector3I))
+  ptrsForVector3i.operatorGreaterVector3IFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpGreater, gdc.VariantTypeVector3I, gdc.VariantTypeVector3I))
+  ptrsForVector3i.operatorGreaterEqualVector3IFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpGreaterEqual, gdc.VariantTypeVector3I, gdc.VariantTypeVector3I))
+  ptrsForVector3i.operatorAddVector3IFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAdd, gdc.VariantTypeVector3I, gdc.VariantTypeVector3I))
+  ptrsForVector3i.operatorSubtractVector3IFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpSubtract, gdc.VariantTypeVector3I, gdc.VariantTypeVector3I))
+  ptrsForVector3i.operatorMultiplyVector3IFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeVector3I, gdc.VariantTypeVector3I))
+  ptrsForVector3i.operatorDivideVector3IFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, gdc.VariantTypeVector3I, gdc.VariantTypeVector3I))
+  ptrsForVector3i.operatorModuleVector3IFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpModule, gdc.VariantTypeVector3I, gdc.VariantTypeVector3I))
+  ptrsForVector3i.operatorInDictionaryFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, gdc.VariantTypeVector3I, gdc.VariantTypeDictionary))
+  ptrsForVector3i.operatorInArrayFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, gdc.VariantTypeVector3I, gdc.VariantTypeArray))
+  {
+    memberName := StringNameFromStr("x")
+    defer memberName.Destroy()
+    ptrsForVector3i.memberxGetterFn = ensurePtr(iface.VariantGetPtrGetter(gdc.VariantTypeVector3I, memberName.AsCPtr()))
+    ptrsForVector3i.memberxSetterFn = ensurePtr(iface.VariantGetPtrSetter(gdc.VariantTypeVector3I, memberName.AsCPtr()))
+  }
+  {
+    memberName := StringNameFromStr("y")
+    defer memberName.Destroy()
+    ptrsForVector3i.memberyGetterFn = ensurePtr(iface.VariantGetPtrGetter(gdc.VariantTypeVector3I, memberName.AsCPtr()))
+    ptrsForVector3i.memberySetterFn = ensurePtr(iface.VariantGetPtrSetter(gdc.VariantTypeVector3I, memberName.AsCPtr()))
+  }
+  {
+    memberName := StringNameFromStr("z")
+    defer memberName.Destroy()
+    ptrsForVector3i.memberzGetterFn = ensurePtr(iface.VariantGetPtrGetter(gdc.VariantTypeVector3I, memberName.AsCPtr()))
+    ptrsForVector3i.memberzSetterFn = ensurePtr(iface.VariantGetPtrSetter(gdc.VariantTypeVector3I, memberName.AsCPtr()))
+  }
+  ptrsForVector3i.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypeVector3I))
+  ptrsForVector3i.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypeVector3I))
+}
+
 type Vector3i struct {
   data   *[classSizeVector3i]byte
   iface  gdc.Interface
@@ -54,8 +191,7 @@ func NewVector3i() *Vector3i {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newVector3i()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeVector3I, 0) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForVector3i.ctrFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
   return me
 }
 
@@ -63,8 +199,7 @@ func NewVector3iFromVector3I(from Vector3i, ) *Vector3i {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newVector3i()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeVector3I, 1) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForVector3i.ctrFromVector3IFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
   return me
 }
 
@@ -72,8 +207,7 @@ func NewVector3iFromVector3(from Vector3, ) *Vector3i {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newVector3i()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeVector3I, 2) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForVector3i.ctrFromVector3Fn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
   return me
 }
 
@@ -84,8 +218,7 @@ func NewVector3iFromIntIntInt(x int64, y int64, z int64, ) *Vector3i {
   pinner.Pin(&y)
   pinner.Pin(&z)
   me := newVector3i()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeVector3I, 3) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&x), gdc.ConstTypePtr(&y), gdc.ConstTypePtr(&z), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForVector3i.ctrFromIntIntIntFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&x), gdc.ConstTypePtr(&y), gdc.ConstTypePtr(&z), }))
   return me
 }
 
@@ -100,16 +233,14 @@ func (me *Variant) AsVector3i() (*Vector3i, error) {
 		return nil, fmt.Errorf("variant is not a Vector3i")
 	}
   bclass := newVector3i()
-	fn := me.iface.GetVariantToTypeConstructor(me.Type())
-	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	me.iface.CallTypeFromVariantConstructorFunc(ensurePtr(ptrsForVector3i.toVariantFn), bclass.asUninitialized(), me.AsPtr())
 	return bclass, nil
 }
 
 func (me *Vector3i) AsVariant() *Variant {
   va := newVariant()
   va.inner = me
-  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
-  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  me.iface.CallVariantFromTypeConstructorFunc(ensurePtr(ptrsForVector3i.fromVariantFn), va.asUninitialized(), me.AsTypePtr())
   return va
 }
 
@@ -139,94 +270,66 @@ func (me *Vector3i) asUninitialized() gdc.UninitializedTypePtr {
 // Methods
 
 func (me *Vector3i) MinAxisIndex() int64 {
-  name := StringNameFromStr("min_axis_index")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, name.AsCPtr(), 3173160232) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForVector3i.methodMinAxisIndexFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Vector3i) MaxAxisIndex() int64 {
-  name := StringNameFromStr("max_axis_index")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, name.AsCPtr(), 3173160232) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForVector3i.methodMaxAxisIndexFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Vector3i) Length() float64 {
-  name := StringNameFromStr("length")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, name.AsCPtr(), 466405837) // FIXME: should cache?
-
   ret := NewFloat()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForVector3i.methodLengthFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Vector3i) LengthSquared() int64 {
-  name := StringNameFromStr("length_squared")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, name.AsCPtr(), 3173160232) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForVector3i.methodLengthSquaredFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Vector3i) Sign() Vector3i {
-  name := StringNameFromStr("sign")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, name.AsCPtr(), 3729604559) // FIXME: should cache?
-
   ret := NewVector3i()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForVector3i.methodSignFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Vector3i) Abs() Vector3i {
-  name := StringNameFromStr("abs")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, name.AsCPtr(), 3729604559) // FIXME: should cache?
-
   ret := NewVector3i()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForVector3i.methodAbsFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Vector3i) Clamp(min Vector3i, max Vector3i, ) Vector3i {
-  name := StringNameFromStr("clamp")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, name.AsCPtr(), 1086892323) // FIXME: should cache?
-
   ret := NewVector3i()
 
 
@@ -234,59 +337,55 @@ func (me *Vector3i) Clamp(min Vector3i, max Vector3i, ) Vector3i {
   args := []gdc.ConstTypePtr{min.AsCTypePtr(), max.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForVector3i.methodClampFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Vector3i) Snapped(step Vector3i, ) Vector3i {
-  name := StringNameFromStr("snapped")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector3I, name.AsCPtr(), 1989319750) // FIXME: should cache?
-
   ret := NewVector3i()
 
 
   args := []gdc.ConstTypePtr{step.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForVector3i.methodSnappedFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 // Operators
 
 func (me *Vector3i) EqualVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Vector3i) NotEqualVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Vector3i) Negate() Vector3i {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNegate, me.Type(), gdc.VariantTypeNil) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorNegateFn
   ret := NewVector3i()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), nil, ret.AsTypePtr())
   return *ret
 }
 
 func (me *Vector3i) Positive() Vector3i {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpPositive, me.Type(), gdc.VariantTypeNil) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorPositiveFn
   ret := NewVector3i()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), nil, ret.AsTypePtr())
   return *ret
 }
 
 func (me *Vector3i) Not() bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, me.Type(), gdc.VariantTypeNil) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorNotFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), nil, ret.AsTypePtr())
   return ret.Get()
 }
 
@@ -294,9 +393,9 @@ func (me *Vector3i) MultiplyInt(rightArg int64) Vector3i {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorMultiplyIntFn
   ret := NewVector3i()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
@@ -304,9 +403,9 @@ func (me *Vector3i) DivideInt(rightArg int64) Vector3i {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorDivideIntFn
   ret := NewVector3i()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
@@ -314,9 +413,9 @@ func (me *Vector3i) ModuleInt(rightArg int64) Vector3i {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpModule, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorModuleIntFn
   ret := NewVector3i()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
@@ -324,9 +423,9 @@ func (me *Vector3i) MultiplyFloat32(rightArg float64) Vector3 {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorMultiplyFloat32Fn
   ret := NewVector3()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
@@ -334,161 +433,137 @@ func (me *Vector3i) DivideFloat32(rightArg float64) Vector3 {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorDivideFloat32Fn
   ret := NewVector3()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
 func (me *Vector3i) EqualVector3I(right Vector3i) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorEqualVector3IFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Vector3i) NotEqualVector3I(right Vector3i) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorNotEqualVector3IFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Vector3i) LessVector3I(right Vector3i) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpLess, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorLessVector3IFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Vector3i) LessEqualVector3I(right Vector3i) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpLessEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorLessEqualVector3IFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Vector3i) GreaterVector3I(right Vector3i) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpGreater, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorGreaterVector3IFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Vector3i) GreaterEqualVector3I(right Vector3i) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpGreaterEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorGreaterEqualVector3IFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Vector3i) AddVector3I(right Vector3i) Vector3i {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAdd, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorAddVector3IFn
   ret := NewVector3i()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
 func (me *Vector3i) SubtractVector3I(right Vector3i) Vector3i {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpSubtract, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorSubtractVector3IFn
   ret := NewVector3i()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
 func (me *Vector3i) MultiplyVector3I(right Vector3i) Vector3i {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorMultiplyVector3IFn
   ret := NewVector3i()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
 func (me *Vector3i) DivideVector3I(right Vector3i) Vector3i {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorDivideVector3IFn
   ret := NewVector3i()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
 func (me *Vector3i) ModuleVector3I(right Vector3i) Vector3i {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpModule, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorModuleVector3IFn
   ret := NewVector3i()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
 func (me *Vector3i) InDictionary(right Dictionary) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorInDictionaryFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Vector3i) InArray(right Array) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForVector3i.operatorInArrayFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 // Members
 
 func (me *Vector3i) X() int64 {
-  name := StringNameFromStr("x")
-  defer name.Destroy()
-
-  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
   ret := NewInt()
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrGetter(ensurePtr(ptrsForVector3i.memberxGetterFn), me.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Vector3i) SetX(value int64) {
-  name := StringNameFromStr("x")
-  defer name.Destroy()
   valueV := NewIntFromInt(value)
   defer valueV.Destroy()
-
-  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
+  me.iface.CallPtrSetter(ensurePtr(ptrsForVector3i.memberxSetterFn), me.AsTypePtr(), valueV.AsCTypePtr())
 }
 
 func (me *Vector3i) Y() int64 {
-  name := StringNameFromStr("y")
-  defer name.Destroy()
-
-  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
   ret := NewInt()
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrGetter(ensurePtr(ptrsForVector3i.memberyGetterFn), me.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Vector3i) SetY(value int64) {
-  name := StringNameFromStr("y")
-  defer name.Destroy()
   valueV := NewIntFromInt(value)
   defer valueV.Destroy()
-
-  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
+  me.iface.CallPtrSetter(ensurePtr(ptrsForVector3i.memberySetterFn), me.AsTypePtr(), valueV.AsCTypePtr())
 }
 
 func (me *Vector3i) Z() int64 {
-  name := StringNameFromStr("z")
-  defer name.Destroy()
-
-  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
   ret := NewInt()
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrGetter(ensurePtr(ptrsForVector3i.memberzGetterFn), me.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Vector3i) SetZ(value int64) {
-  name := StringNameFromStr("z")
-  defer name.Destroy()
   valueV := NewIntFromInt(value)
   defer valueV.Destroy()
-
-  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
+  me.iface.CallPtrSetter(ensurePtr(ptrsForVector3i.memberzSetterFn), me.AsTypePtr(), valueV.AsCTypePtr())
 }

@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForHingeJoint3DList struct {
+  fnSetParam gdc.MethodBindPtr
+  fnGetParam gdc.MethodBindPtr
+  fnSetFlag gdc.MethodBindPtr
+  fnGetFlag gdc.MethodBindPtr
+}
+
+var ptrsForHingeJoint3D ptrsForHingeJoint3DList
+
+func initHingeJoint3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("HingeJoint3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_param")
+    defer methodName.Destroy()
+    ptrsForHingeJoint3D.fnSetParam = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3082977519))
+  }
+  {
+    methodName := StringNameFromStr("get_param")
+    defer methodName.Destroy()
+    ptrsForHingeJoint3D.fnGetParam = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4066002676))
+  }
+  {
+    methodName := StringNameFromStr("set_flag")
+    defer methodName.Destroy()
+    ptrsForHingeJoint3D.fnSetFlag = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1083494620))
+  }
+  {
+    methodName := StringNameFromStr("get_flag")
+    defer methodName.Destroy()
+    ptrsForHingeJoint3D.fnGetFlag = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2841369610))
+  }
+}
+
 type HingeJoint3D struct {
   Joint3D
 }
@@ -71,62 +106,42 @@ func (me *HingeJoint3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *HingeJoint3D) SetParam(param HingeJoint3DParam, value float64, )  {
-  classNameV := StringNameFromStr("HingeJoint3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_param")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3082977519) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param) , gdc.ConstTypePtr(&value) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHingeJoint3D.fnSetParam), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *HingeJoint3D) GetParam(param HingeJoint3DParam, ) float64 {
-  classNameV := StringNameFromStr("HingeJoint3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_param")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4066002676) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
   pinner.Pin(&param)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHingeJoint3D.fnGetParam), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *HingeJoint3D) SetFlag(flag HingeJoint3DFlag, enabled bool, )  {
-  classNameV := StringNameFromStr("HingeJoint3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_flag")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1083494620) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flag) , gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHingeJoint3D.fnSetFlag), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *HingeJoint3D) GetFlag(flag HingeJoint3DFlag, ) bool {
-  classNameV := StringNameFromStr("HingeJoint3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_flag")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2841369610) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flag) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
   pinner.Pin(&flag)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHingeJoint3D.fnGetFlag), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 

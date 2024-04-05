@@ -14,6 +14,77 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForTileMapPatternList struct {
+  fnSetCell gdc.MethodBindPtr
+  fnHasCell gdc.MethodBindPtr
+  fnRemoveCell gdc.MethodBindPtr
+  fnGetCellSourceId gdc.MethodBindPtr
+  fnGetCellAtlasCoords gdc.MethodBindPtr
+  fnGetCellAlternativeTile gdc.MethodBindPtr
+  fnGetUsedCells gdc.MethodBindPtr
+  fnGetSize gdc.MethodBindPtr
+  fnSetSize gdc.MethodBindPtr
+  fnIsEmpty gdc.MethodBindPtr
+}
+
+var ptrsForTileMapPattern ptrsForTileMapPatternList
+
+func initTileMapPatternPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("TileMapPattern")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_cell")
+    defer methodName.Destroy()
+    ptrsForTileMapPattern.fnSetCell = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2224802556))
+  }
+  {
+    methodName := StringNameFromStr("has_cell")
+    defer methodName.Destroy()
+    ptrsForTileMapPattern.fnHasCell = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3900751641))
+  }
+  {
+    methodName := StringNameFromStr("remove_cell")
+    defer methodName.Destroy()
+    ptrsForTileMapPattern.fnRemoveCell = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4153096796))
+  }
+  {
+    methodName := StringNameFromStr("get_cell_source_id")
+    defer methodName.Destroy()
+    ptrsForTileMapPattern.fnGetCellSourceId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2485466453))
+  }
+  {
+    methodName := StringNameFromStr("get_cell_atlas_coords")
+    defer methodName.Destroy()
+    ptrsForTileMapPattern.fnGetCellAtlasCoords = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3050897911))
+  }
+  {
+    methodName := StringNameFromStr("get_cell_alternative_tile")
+    defer methodName.Destroy()
+    ptrsForTileMapPattern.fnGetCellAlternativeTile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2485466453))
+  }
+  {
+    methodName := StringNameFromStr("get_used_cells")
+    defer methodName.Destroy()
+    ptrsForTileMapPattern.fnGetUsedCells = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+  }
+  {
+    methodName := StringNameFromStr("get_size")
+    defer methodName.Destroy()
+    ptrsForTileMapPattern.fnGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3690982128))
+  }
+  {
+    methodName := StringNameFromStr("set_size")
+    defer methodName.Destroy()
+    ptrsForTileMapPattern.fnSetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1130785943))
+  }
+  {
+    methodName := StringNameFromStr("is_empty")
+    defer methodName.Destroy()
+    ptrsForTileMapPattern.fnIsEmpty = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type TileMapPattern struct {
   Resource
 }
@@ -51,106 +122,71 @@ func (me *TileMapPattern) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *TileMapPattern) SetCell(coords Vector2i, source_id int64, atlas_coords Vector2i, alternative_tile int64, )  {
-  classNameV := StringNameFromStr("TileMapPattern")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_cell")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2224802556) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{coords.AsCTypePtr(), gdc.ConstTypePtr(&source_id) , atlas_coords.AsCTypePtr(), gdc.ConstTypePtr(&alternative_tile) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTileMapPattern.fnSetCell), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TileMapPattern) HasCell(coords Vector2i, ) bool {
-  classNameV := StringNameFromStr("TileMapPattern")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_cell")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3900751641) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{coords.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTileMapPattern.fnHasCell), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *TileMapPattern) RemoveCell(coords Vector2i, update_size bool, )  {
-  classNameV := StringNameFromStr("TileMapPattern")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_cell")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4153096796) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{coords.AsCTypePtr(), gdc.ConstTypePtr(&update_size) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTileMapPattern.fnRemoveCell), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TileMapPattern) GetCellSourceId(coords Vector2i, ) int64 {
-  classNameV := StringNameFromStr("TileMapPattern")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_cell_source_id")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2485466453) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{coords.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTileMapPattern.fnGetCellSourceId), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *TileMapPattern) GetCellAtlasCoords(coords Vector2i, ) Vector2i {
-  classNameV := StringNameFromStr("TileMapPattern")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_cell_atlas_coords")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3050897911) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{coords.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2i()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTileMapPattern.fnGetCellAtlasCoords), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *TileMapPattern) GetCellAlternativeTile(coords Vector2i, ) int64 {
-  classNameV := StringNameFromStr("TileMapPattern")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_cell_alternative_tile")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2485466453) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{coords.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTileMapPattern.fnGetCellAlternativeTile), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *TileMapPattern) GetUsedCells() []Vector2i {
-  classNameV := StringNameFromStr("TileMapPattern")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_used_cells")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTileMapPattern.fnGetUsedCells), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[Vector2i](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -160,46 +196,31 @@ return sliceRet
 }
 
 func  (me *TileMapPattern) GetSize() Vector2i {
-  classNameV := StringNameFromStr("TileMapPattern")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3690982128) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2i()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTileMapPattern.fnGetSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *TileMapPattern) SetSize(size Vector2i, )  {
-  classNameV := StringNameFromStr("TileMapPattern")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1130785943) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{size.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTileMapPattern.fnSetSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TileMapPattern) IsEmpty() bool {
-  classNameV := StringNameFromStr("TileMapPattern")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_empty")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTileMapPattern.fnIsEmpty), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 

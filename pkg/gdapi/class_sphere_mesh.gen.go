@@ -14,6 +14,77 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSphereMeshList struct {
+  fnSetRadius gdc.MethodBindPtr
+  fnGetRadius gdc.MethodBindPtr
+  fnSetHeight gdc.MethodBindPtr
+  fnGetHeight gdc.MethodBindPtr
+  fnSetRadialSegments gdc.MethodBindPtr
+  fnGetRadialSegments gdc.MethodBindPtr
+  fnSetRings gdc.MethodBindPtr
+  fnGetRings gdc.MethodBindPtr
+  fnSetIsHemisphere gdc.MethodBindPtr
+  fnGetIsHemisphere gdc.MethodBindPtr
+}
+
+var ptrsForSphereMesh ptrsForSphereMeshList
+
+func initSphereMeshPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("SphereMesh")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_radius")
+    defer methodName.Destroy()
+    ptrsForSphereMesh.fnSetRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_radius")
+    defer methodName.Destroy()
+    ptrsForSphereMesh.fnGetRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_height")
+    defer methodName.Destroy()
+    ptrsForSphereMesh.fnSetHeight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_height")
+    defer methodName.Destroy()
+    ptrsForSphereMesh.fnGetHeight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_radial_segments")
+    defer methodName.Destroy()
+    ptrsForSphereMesh.fnSetRadialSegments = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_radial_segments")
+    defer methodName.Destroy()
+    ptrsForSphereMesh.fnGetRadialSegments = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_rings")
+    defer methodName.Destroy()
+    ptrsForSphereMesh.fnSetRings = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_rings")
+    defer methodName.Destroy()
+    ptrsForSphereMesh.fnGetRings = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_is_hemisphere")
+    defer methodName.Destroy()
+    ptrsForSphereMesh.fnSetIsHemisphere = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_is_hemisphere")
+    defer methodName.Destroy()
+    ptrsForSphereMesh.fnGetIsHemisphere = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type SphereMesh struct {
   PrimitiveMesh
 }
@@ -51,147 +122,97 @@ func (me *SphereMesh) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *SphereMesh) SetRadius(radius float64, )  {
-  classNameV := StringNameFromStr("SphereMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_radius")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radius) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSphereMesh.fnSetRadius), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SphereMesh) GetRadius() float64 {
-  classNameV := StringNameFromStr("SphereMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_radius")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSphereMesh.fnGetRadius), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *SphereMesh) SetHeight(height float64, )  {
-  classNameV := StringNameFromStr("SphereMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_height")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&height) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSphereMesh.fnSetHeight), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SphereMesh) GetHeight() float64 {
-  classNameV := StringNameFromStr("SphereMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_height")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSphereMesh.fnGetHeight), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *SphereMesh) SetRadialSegments(radial_segments int64, )  {
-  classNameV := StringNameFromStr("SphereMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_radial_segments")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radial_segments) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSphereMesh.fnSetRadialSegments), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SphereMesh) GetRadialSegments() int64 {
-  classNameV := StringNameFromStr("SphereMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_radial_segments")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSphereMesh.fnGetRadialSegments), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *SphereMesh) SetRings(rings int64, )  {
-  classNameV := StringNameFromStr("SphereMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_rings")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&rings) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSphereMesh.fnSetRings), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SphereMesh) GetRings() int64 {
-  classNameV := StringNameFromStr("SphereMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_rings")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSphereMesh.fnGetRings), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *SphereMesh) SetIsHemisphere(is_hemisphere bool, )  {
-  classNameV := StringNameFromStr("SphereMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_is_hemisphere")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&is_hemisphere) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSphereMesh.fnSetIsHemisphere), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SphereMesh) GetIsHemisphere() bool {
-  classNameV := StringNameFromStr("SphereMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_is_hemisphere")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSphereMesh.fnGetIsHemisphere), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

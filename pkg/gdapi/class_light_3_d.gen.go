@@ -14,6 +14,191 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForLight3DList struct {
+  fnSetEditorOnly gdc.MethodBindPtr
+  fnIsEditorOnly gdc.MethodBindPtr
+  fnSetParam gdc.MethodBindPtr
+  fnGetParam gdc.MethodBindPtr
+  fnSetShadow gdc.MethodBindPtr
+  fnHasShadow gdc.MethodBindPtr
+  fnSetNegative gdc.MethodBindPtr
+  fnIsNegative gdc.MethodBindPtr
+  fnSetCullMask gdc.MethodBindPtr
+  fnGetCullMask gdc.MethodBindPtr
+  fnSetEnableDistanceFade gdc.MethodBindPtr
+  fnIsDistanceFadeEnabled gdc.MethodBindPtr
+  fnSetDistanceFadeBegin gdc.MethodBindPtr
+  fnGetDistanceFadeBegin gdc.MethodBindPtr
+  fnSetDistanceFadeShadow gdc.MethodBindPtr
+  fnGetDistanceFadeShadow gdc.MethodBindPtr
+  fnSetDistanceFadeLength gdc.MethodBindPtr
+  fnGetDistanceFadeLength gdc.MethodBindPtr
+  fnSetColor gdc.MethodBindPtr
+  fnGetColor gdc.MethodBindPtr
+  fnSetShadowReverseCullFace gdc.MethodBindPtr
+  fnGetShadowReverseCullFace gdc.MethodBindPtr
+  fnSetBakeMode gdc.MethodBindPtr
+  fnGetBakeMode gdc.MethodBindPtr
+  fnSetProjector gdc.MethodBindPtr
+  fnGetProjector gdc.MethodBindPtr
+  fnSetTemperature gdc.MethodBindPtr
+  fnGetTemperature gdc.MethodBindPtr
+  fnGetCorrelatedColor gdc.MethodBindPtr
+}
+
+var ptrsForLight3D ptrsForLight3DList
+
+func initLight3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Light3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_editor_only")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnSetEditorOnly = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_editor_only")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnIsEditorOnly = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_param")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnSetParam = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1722734213))
+  }
+  {
+    methodName := StringNameFromStr("get_param")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnGetParam = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1844084987))
+  }
+  {
+    methodName := StringNameFromStr("set_shadow")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnSetShadow = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("has_shadow")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnHasShadow = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_negative")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnSetNegative = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_negative")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnIsNegative = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_cull_mask")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnSetCullMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_cull_mask")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnGetCullMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_enable_distance_fade")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnSetEnableDistanceFade = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_distance_fade_enabled")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnIsDistanceFadeEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_distance_fade_begin")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnSetDistanceFadeBegin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_distance_fade_begin")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnGetDistanceFadeBegin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_distance_fade_shadow")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnSetDistanceFadeShadow = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_distance_fade_shadow")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnGetDistanceFadeShadow = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_distance_fade_length")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnSetDistanceFadeLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_distance_fade_length")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnGetDistanceFadeLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_color")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnSetColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2920490490))
+  }
+  {
+    methodName := StringNameFromStr("get_color")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnGetColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3444240500))
+  }
+  {
+    methodName := StringNameFromStr("set_shadow_reverse_cull_face")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnSetShadowReverseCullFace = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_shadow_reverse_cull_face")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnGetShadowReverseCullFace = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_bake_mode")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnSetBakeMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 37739303))
+  }
+  {
+    methodName := StringNameFromStr("get_bake_mode")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnGetBakeMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 371737608))
+  }
+  {
+    methodName := StringNameFromStr("set_projector")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnSetProjector = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4051416890))
+  }
+  {
+    methodName := StringNameFromStr("get_projector")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnGetProjector = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
+  }
+  {
+    methodName := StringNameFromStr("set_temperature")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnSetTemperature = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_temperature")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnGetTemperature = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("get_correlated_color")
+    defer methodName.Destroy()
+    ptrsForLight3D.fnGetCorrelatedColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3444240500))
+  }
+}
+
 type Light3D struct {
   VisualInstance3D
 }
@@ -84,424 +269,279 @@ func (me *Light3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Light3D) SetEditorOnly(editor_only bool, )  {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_editor_only")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&editor_only) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnSetEditorOnly), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Light3D) IsEditorOnly() bool {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_editor_only")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnIsEditorOnly), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Light3D) SetParam(param Light3DParam, value float64, )  {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_param")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1722734213) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param) , gdc.ConstTypePtr(&value) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnSetParam), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Light3D) GetParam(param Light3DParam, ) float64 {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_param")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1844084987) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
   pinner.Pin(&param)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnGetParam), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Light3D) SetShadow(enabled bool, )  {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_shadow")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnSetShadow), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Light3D) HasShadow() bool {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_shadow")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnHasShadow), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Light3D) SetNegative(enabled bool, )  {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_negative")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnSetNegative), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Light3D) IsNegative() bool {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_negative")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnIsNegative), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Light3D) SetCullMask(cull_mask int64, )  {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_cull_mask")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&cull_mask) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnSetCullMask), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Light3D) GetCullMask() int64 {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_cull_mask")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnGetCullMask), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Light3D) SetEnableDistanceFade(enable bool, )  {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_enable_distance_fade")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnSetEnableDistanceFade), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Light3D) IsDistanceFadeEnabled() bool {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_distance_fade_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnIsDistanceFadeEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Light3D) SetDistanceFadeBegin(distance float64, )  {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_distance_fade_begin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&distance) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnSetDistanceFadeBegin), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Light3D) GetDistanceFadeBegin() float64 {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_distance_fade_begin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnGetDistanceFadeBegin), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Light3D) SetDistanceFadeShadow(distance float64, )  {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_distance_fade_shadow")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&distance) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnSetDistanceFadeShadow), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Light3D) GetDistanceFadeShadow() float64 {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_distance_fade_shadow")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnGetDistanceFadeShadow), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Light3D) SetDistanceFadeLength(distance float64, )  {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_distance_fade_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&distance) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnSetDistanceFadeLength), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Light3D) GetDistanceFadeLength() float64 {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_distance_fade_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnGetDistanceFadeLength), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Light3D) SetColor(color Color, )  {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_color")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{color.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnSetColor), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Light3D) GetColor() Color {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_color")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewColor()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnGetColor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Light3D) SetShadowReverseCullFace(enable bool, )  {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_shadow_reverse_cull_face")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnSetShadowReverseCullFace), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Light3D) GetShadowReverseCullFace() bool {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_shadow_reverse_cull_face")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnGetShadowReverseCullFace), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Light3D) SetBakeMode(bake_mode Light3DBakeMode, )  {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_bake_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 37739303) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bake_mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnSetBakeMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Light3D) GetBakeMode() Light3DBakeMode {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_bake_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 371737608) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Light3DBakeMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnGetBakeMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Light3D) SetProjector(projector Texture2D, )  {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_projector")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{projector.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnSetProjector), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Light3D) GetProjector() Texture2D {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_projector")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnGetProjector), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *Light3D) SetTemperature(temperature float64, )  {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_temperature")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&temperature) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnSetTemperature), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Light3D) GetTemperature() float64 {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_temperature")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnGetTemperature), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *Light3D) GetCorrelatedColor() Color {
-  classNameV := StringNameFromStr("Light3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_correlated_color")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewColor()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLight3D.fnGetCorrelatedColor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

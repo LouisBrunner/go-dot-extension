@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCircleShape2DList struct {
+  fnSetRadius gdc.MethodBindPtr
+  fnGetRadius gdc.MethodBindPtr
+}
+
+var ptrsForCircleShape2D ptrsForCircleShape2DList
+
+func initCircleShape2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CircleShape2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_radius")
+    defer methodName.Destroy()
+    ptrsForCircleShape2D.fnSetRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_radius")
+    defer methodName.Destroy()
+    ptrsForCircleShape2D.fnGetRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type CircleShape2D struct {
   Shape2D
 }
@@ -51,31 +74,21 @@ func (me *CircleShape2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *CircleShape2D) SetRadius(radius float64, )  {
-  classNameV := StringNameFromStr("CircleShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_radius")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&radius) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCircleShape2D.fnSetRadius), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CircleShape2D) GetRadius() float64 {
-  classNameV := StringNameFromStr("CircleShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_radius")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCircleShape2D.fnGetRadius), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

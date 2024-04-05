@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeParticleRandomnessList struct {
+  fnSetOpType gdc.MethodBindPtr
+  fnGetOpType gdc.MethodBindPtr
+}
+
+var ptrsForVisualShaderNodeParticleRandomness ptrsForVisualShaderNodeParticleRandomnessList
+
+func initVisualShaderNodeParticleRandomnessPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeParticleRandomness")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_op_type")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeParticleRandomness.fnSetOpType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2060089061))
+  }
+  {
+    methodName := StringNameFromStr("get_op_type")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeParticleRandomness.fnGetOpType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3597061078))
+  }
+}
+
 type VisualShaderNodeParticleRandomness struct {
   VisualShaderNode
 }
@@ -60,31 +83,21 @@ func (me *VisualShaderNodeParticleRandomness) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisualShaderNodeParticleRandomness) SetOpType(type_ VisualShaderNodeParticleRandomnessOpType, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeParticleRandomness")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_op_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2060089061) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeParticleRandomness.fnSetOpType), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeParticleRandomness) GetOpType() VisualShaderNodeParticleRandomnessOpType {
-  classNameV := StringNameFromStr("VisualShaderNodeParticleRandomness")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_op_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3597061078) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret VisualShaderNodeParticleRandomnessOpType
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeParticleRandomness.fnGetOpType), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

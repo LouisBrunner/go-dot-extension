@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeExpressionList struct {
+  fnSetExpression gdc.MethodBindPtr
+  fnGetExpression gdc.MethodBindPtr
+}
+
+var ptrsForVisualShaderNodeExpression ptrsForVisualShaderNodeExpressionList
+
+func initVisualShaderNodeExpressionPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeExpression")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_expression")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeExpression.fnSetExpression = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_expression")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeExpression.fnGetExpression = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+}
+
 type VisualShaderNodeExpression struct {
   VisualShaderNodeGroupBase
 }
@@ -51,31 +74,21 @@ func (me *VisualShaderNodeExpression) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisualShaderNodeExpression) SetExpression(expression String, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeExpression")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_expression")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{expression.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeExpression.fnSetExpression), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeExpression) GetExpression() String {
-  classNameV := StringNameFromStr("VisualShaderNodeExpression")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_expression")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeExpression.fnGetExpression), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

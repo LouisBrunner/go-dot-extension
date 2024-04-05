@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForStreamPeerTLSList struct {
+  fnPoll gdc.MethodBindPtr
+  fnAcceptStream gdc.MethodBindPtr
+  fnConnectToStream gdc.MethodBindPtr
+  fnGetStatus gdc.MethodBindPtr
+  fnGetStream gdc.MethodBindPtr
+  fnDisconnectFromStream gdc.MethodBindPtr
+}
+
+var ptrsForStreamPeerTLS ptrsForStreamPeerTLSList
+
+func initStreamPeerTLSPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("StreamPeerTLS")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("poll")
+    defer methodName.Destroy()
+    ptrsForStreamPeerTLS.fnPoll = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("accept_stream")
+    defer methodName.Destroy()
+    ptrsForStreamPeerTLS.fnAcceptStream = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4292689651))
+  }
+  {
+    methodName := StringNameFromStr("connect_to_stream")
+    defer methodName.Destroy()
+    ptrsForStreamPeerTLS.fnConnectToStream = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 57169517))
+  }
+  {
+    methodName := StringNameFromStr("get_status")
+    defer methodName.Destroy()
+    ptrsForStreamPeerTLS.fnGetStatus = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1128380576))
+  }
+  {
+    methodName := StringNameFromStr("get_stream")
+    defer methodName.Destroy()
+    ptrsForStreamPeerTLS.fnGetStream = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2741655269))
+  }
+  {
+    methodName := StringNameFromStr("disconnect_from_stream")
+    defer methodName.Destroy()
+    ptrsForStreamPeerTLS.fnDisconnectFromStream = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+}
+
 type StreamPeerTLS struct {
   StreamPeer
 }
@@ -60,90 +107,60 @@ func (me *StreamPeerTLS) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *StreamPeerTLS) Poll()  {
-  classNameV := StringNameFromStr("StreamPeerTLS")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("poll")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStreamPeerTLS.fnPoll), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *StreamPeerTLS) AcceptStream(stream StreamPeer, server_options TLSOptions, ) Error {
-  classNameV := StringNameFromStr("StreamPeerTLS")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("accept_stream")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4292689651) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{stream.AsCTypePtr(), server_options.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStreamPeerTLS.fnAcceptStream), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *StreamPeerTLS) ConnectToStream(stream StreamPeer, common_name String, client_options TLSOptions, ) Error {
-  classNameV := StringNameFromStr("StreamPeerTLS")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("connect_to_stream")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 57169517) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{stream.AsCTypePtr(), common_name.AsCTypePtr(), client_options.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStreamPeerTLS.fnConnectToStream), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *StreamPeerTLS) GetStatus() StreamPeerTLSStatus {
-  classNameV := StringNameFromStr("StreamPeerTLS")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_status")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1128380576) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret StreamPeerTLSStatus
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStreamPeerTLS.fnGetStatus), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *StreamPeerTLS) GetStream() StreamPeer {
-  classNameV := StringNameFromStr("StreamPeerTLS")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_stream")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2741655269) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewStreamPeer()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStreamPeerTLS.fnGetStream), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *StreamPeerTLS) DisconnectFromStream()  {
-  classNameV := StringNameFromStr("StreamPeerTLS")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("disconnect_from_stream")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForStreamPeerTLS.fnDisconnectFromStream), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

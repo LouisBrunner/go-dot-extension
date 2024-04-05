@@ -14,6 +14,24 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorScenePostImportList struct {
+  fnXPostImport gdc.MethodBindPtr
+  fnGetSourceFile gdc.MethodBindPtr
+}
+
+var ptrsForEditorScenePostImport ptrsForEditorScenePostImportList
+
+func initEditorScenePostImportPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorScenePostImport")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_source_file")
+    defer methodName.Destroy()
+    ptrsForEditorScenePostImport.fnGetSourceFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+}
+
 type EditorScenePostImport struct {
   RefCounted
 }
@@ -51,17 +69,12 @@ func (me *EditorScenePostImport) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *EditorScenePostImport) GetSourceFile() String {
-  classNameV := StringNameFromStr("EditorScenePostImport")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_source_file")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorScenePostImport.fnGetSourceFile), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

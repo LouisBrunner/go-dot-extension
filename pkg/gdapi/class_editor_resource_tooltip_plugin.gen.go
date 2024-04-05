@@ -14,6 +14,25 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorResourceTooltipPluginList struct {
+  fnXHandles gdc.MethodBindPtr
+  fnXMakeTooltipForPath gdc.MethodBindPtr
+  fnRequestThumbnail gdc.MethodBindPtr
+}
+
+var ptrsForEditorResourceTooltipPlugin ptrsForEditorResourceTooltipPluginList
+
+func initEditorResourceTooltipPluginPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorResourceTooltipPlugin")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("request_thumbnail")
+    defer methodName.Destroy()
+    ptrsForEditorResourceTooltipPlugin.fnRequestThumbnail = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3245519720))
+  }
+}
+
 type EditorResourceTooltipPlugin struct {
   RefCounted
 }
@@ -51,16 +70,11 @@ func (me *EditorResourceTooltipPlugin) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *EditorResourceTooltipPlugin) RequestThumbnail(path String, control TextureRect, )  {
-  classNameV := StringNameFromStr("EditorResourceTooltipPlugin")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("request_thumbnail")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3245519720) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), control.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorResourceTooltipPlugin.fnRequestThumbnail), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

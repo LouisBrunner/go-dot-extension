@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeVectorOpList struct {
+  fnSetOperator gdc.MethodBindPtr
+  fnGetOperator gdc.MethodBindPtr
+}
+
+var ptrsForVisualShaderNodeVectorOp ptrsForVisualShaderNodeVectorOpList
+
+func initVisualShaderNodeVectorOpPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeVectorOp")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_operator")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeVectorOp.fnSetOperator = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3371507302))
+  }
+  {
+    methodName := StringNameFromStr("get_operator")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeVectorOp.fnGetOperator = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 11793929))
+  }
+}
+
 type VisualShaderNodeVectorOp struct {
   VisualShaderNodeVectorBase
 }
@@ -68,31 +91,21 @@ func (me *VisualShaderNodeVectorOp) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisualShaderNodeVectorOp) SetOperator(op VisualShaderNodeVectorOpOperator, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeVectorOp")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_operator")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3371507302) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&op) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeVectorOp.fnSetOperator), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeVectorOp) GetOperator() VisualShaderNodeVectorOpOperator {
-  classNameV := StringNameFromStr("VisualShaderNodeVectorOp")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_operator")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 11793929) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret VisualShaderNodeVectorOpOperator
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeVectorOp.fnGetOperator), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

@@ -14,6 +14,35 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForInstancePlaceholderList struct {
+  fnGetStoredValues gdc.MethodBindPtr
+  fnCreateInstance gdc.MethodBindPtr
+  fnGetInstancePath gdc.MethodBindPtr
+}
+
+var ptrsForInstancePlaceholder ptrsForInstancePlaceholderList
+
+func initInstancePlaceholderPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("InstancePlaceholder")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_stored_values")
+    defer methodName.Destroy()
+    ptrsForInstancePlaceholder.fnGetStoredValues = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2230153369))
+  }
+  {
+    methodName := StringNameFromStr("create_instance")
+    defer methodName.Destroy()
+    ptrsForInstancePlaceholder.fnCreateInstance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3794612210))
+  }
+  {
+    methodName := StringNameFromStr("get_instance_path")
+    defer methodName.Destroy()
+    ptrsForInstancePlaceholder.fnGetInstancePath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+}
+
 type InstancePlaceholder struct {
   Node
 }
@@ -51,49 +80,34 @@ func (me *InstancePlaceholder) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *InstancePlaceholder) GetStoredValues(with_order bool, ) Dictionary {
-  classNameV := StringNameFromStr("InstancePlaceholder")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_stored_values")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2230153369) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&with_order) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewDictionary()
   pinner.Pin(&with_order)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInstancePlaceholder.fnGetStoredValues), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *InstancePlaceholder) CreateInstance(replace bool, custom_scene PackedScene, ) Node {
-  classNameV := StringNameFromStr("InstancePlaceholder")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("create_instance")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3794612210) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&replace) , custom_scene.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNode()
   pinner.Pin(&replace)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInstancePlaceholder.fnCreateInstance), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *InstancePlaceholder) GetInstancePath() String {
-  classNameV := StringNameFromStr("InstancePlaceholder")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_instance_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInstancePlaceholder.fnGetInstancePath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

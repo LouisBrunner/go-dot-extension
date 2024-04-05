@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForMarker3DList struct {
+  fnSetGizmoExtents gdc.MethodBindPtr
+  fnGetGizmoExtents gdc.MethodBindPtr
+}
+
+var ptrsForMarker3D ptrsForMarker3DList
+
+func initMarker3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Marker3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_gizmo_extents")
+    defer methodName.Destroy()
+    ptrsForMarker3D.fnSetGizmoExtents = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_gizmo_extents")
+    defer methodName.Destroy()
+    ptrsForMarker3D.fnGetGizmoExtents = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type Marker3D struct {
   Node3D
 }
@@ -51,31 +74,21 @@ func (me *Marker3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Marker3D) SetGizmoExtents(extents float64, )  {
-  classNameV := StringNameFromStr("Marker3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_gizmo_extents")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&extents) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMarker3D.fnSetGizmoExtents), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Marker3D) GetGizmoExtents() float64 {
-  classNameV := StringNameFromStr("Marker3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_gizmo_extents")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMarker3D.fnGetGizmoExtents), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

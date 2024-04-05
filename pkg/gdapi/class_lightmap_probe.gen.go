@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForLightmapProbeList struct {
+}
+
+var ptrsForLightmapProbe ptrsForLightmapProbeList
+
+func initLightmapProbePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("LightmapProbe")
+  defer className.Destroy()
+}
+
 type LightmapProbe struct {
   Node3D
 }

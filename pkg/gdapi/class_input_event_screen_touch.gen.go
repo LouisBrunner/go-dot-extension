@@ -14,6 +14,65 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForInputEventScreenTouchList struct {
+  fnSetIndex gdc.MethodBindPtr
+  fnGetIndex gdc.MethodBindPtr
+  fnSetPosition gdc.MethodBindPtr
+  fnGetPosition gdc.MethodBindPtr
+  fnSetPressed gdc.MethodBindPtr
+  fnSetCanceled gdc.MethodBindPtr
+  fnSetDoubleTap gdc.MethodBindPtr
+  fnIsDoubleTap gdc.MethodBindPtr
+}
+
+var ptrsForInputEventScreenTouch ptrsForInputEventScreenTouchList
+
+func initInputEventScreenTouchPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("InputEventScreenTouch")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_index")
+    defer methodName.Destroy()
+    ptrsForInputEventScreenTouch.fnSetIndex = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_index")
+    defer methodName.Destroy()
+    ptrsForInputEventScreenTouch.fnGetIndex = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_position")
+    defer methodName.Destroy()
+    ptrsForInputEventScreenTouch.fnSetPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_position")
+    defer methodName.Destroy()
+    ptrsForInputEventScreenTouch.fnGetPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+  {
+    methodName := StringNameFromStr("set_pressed")
+    defer methodName.Destroy()
+    ptrsForInputEventScreenTouch.fnSetPressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("set_canceled")
+    defer methodName.Destroy()
+    ptrsForInputEventScreenTouch.fnSetCanceled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("set_double_tap")
+    defer methodName.Destroy()
+    ptrsForInputEventScreenTouch.fnSetDoubleTap = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_double_tap")
+    defer methodName.Destroy()
+    ptrsForInputEventScreenTouch.fnIsDoubleTap = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type InputEventScreenTouch struct {
   InputEventFromWindow
 }
@@ -51,117 +110,77 @@ func (me *InputEventScreenTouch) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *InputEventScreenTouch) SetIndex(index int64, )  {
-  classNameV := StringNameFromStr("InputEventScreenTouch")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_index")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventScreenTouch.fnSetIndex), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventScreenTouch) GetIndex() int64 {
-  classNameV := StringNameFromStr("InputEventScreenTouch")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_index")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventScreenTouch.fnGetIndex), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *InputEventScreenTouch) SetPosition(position Vector2, )  {
-  classNameV := StringNameFromStr("InputEventScreenTouch")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{position.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventScreenTouch.fnSetPosition), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventScreenTouch) GetPosition() Vector2 {
-  classNameV := StringNameFromStr("InputEventScreenTouch")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_position")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventScreenTouch.fnGetPosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *InputEventScreenTouch) SetPressed(pressed bool, )  {
-  classNameV := StringNameFromStr("InputEventScreenTouch")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_pressed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pressed) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventScreenTouch.fnSetPressed), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventScreenTouch) SetCanceled(canceled bool, )  {
-  classNameV := StringNameFromStr("InputEventScreenTouch")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_canceled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&canceled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventScreenTouch.fnSetCanceled), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventScreenTouch) SetDoubleTap(double_tap bool, )  {
-  classNameV := StringNameFromStr("InputEventScreenTouch")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_double_tap")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&double_tap) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventScreenTouch.fnSetDoubleTap), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventScreenTouch) IsDoubleTap() bool {
-  classNameV := StringNameFromStr("InputEventScreenTouch")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_double_tap")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventScreenTouch.fnIsDoubleTap), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

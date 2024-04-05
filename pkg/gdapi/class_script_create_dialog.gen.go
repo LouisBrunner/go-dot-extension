@@ -14,6 +14,23 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForScriptCreateDialogList struct {
+  fnConfig gdc.MethodBindPtr
+}
+
+var ptrsForScriptCreateDialog ptrsForScriptCreateDialogList
+
+func initScriptCreateDialogPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ScriptCreateDialog")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("config")
+    defer methodName.Destroy()
+    ptrsForScriptCreateDialog.fnConfig = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 869314288))
+  }
+}
+
 type ScriptCreateDialog struct {
   ConfirmationDialog
 }
@@ -51,16 +68,11 @@ func (me *ScriptCreateDialog) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ScriptCreateDialog) Config(inherits String, path String, built_in_enabled bool, load_enabled bool, )  {
-  classNameV := StringNameFromStr("ScriptCreateDialog")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("config")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 869314288) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{inherits.AsCTypePtr(), path.AsCTypePtr(), gdc.ConstTypePtr(&built_in_enabled) , gdc.ConstTypePtr(&load_enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScriptCreateDialog.fnConfig), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

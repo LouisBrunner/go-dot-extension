@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeParticleOutputList struct {
+}
+
+var ptrsForVisualShaderNodeParticleOutput ptrsForVisualShaderNodeParticleOutputList
+
+func initVisualShaderNodeParticleOutputPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeParticleOutput")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeParticleOutput struct {
   VisualShaderNodeOutput
 }

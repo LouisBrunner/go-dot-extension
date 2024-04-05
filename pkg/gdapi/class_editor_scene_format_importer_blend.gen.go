@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorSceneFormatImporterBlendList struct {
+}
+
+var ptrsForEditorSceneFormatImporterBlend ptrsForEditorSceneFormatImporterBlendList
+
+func initEditorSceneFormatImporterBlendPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorSceneFormatImporterBlend")
+  defer className.Destroy()
+}
+
 type EditorSceneFormatImporterBlend struct {
   EditorSceneFormatImporter
 }

@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForLightmapperRDList struct {
+}
+
+var ptrsForLightmapperRD ptrsForLightmapperRDList
+
+func initLightmapperRDPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("LightmapperRD")
+  defer className.Destroy()
+}
+
 type LightmapperRD struct {
   Lightmapper
 }

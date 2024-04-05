@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForOpenXRInteractionProfileList struct {
+  fnSetInteractionProfilePath gdc.MethodBindPtr
+  fnGetInteractionProfilePath gdc.MethodBindPtr
+  fnGetBindingCount gdc.MethodBindPtr
+  fnGetBinding gdc.MethodBindPtr
+  fnSetBindings gdc.MethodBindPtr
+  fnGetBindings gdc.MethodBindPtr
+}
+
+var ptrsForOpenXRInteractionProfile ptrsForOpenXRInteractionProfileList
+
+func initOpenXRInteractionProfilePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("OpenXRInteractionProfile")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_interaction_profile_path")
+    defer methodName.Destroy()
+    ptrsForOpenXRInteractionProfile.fnSetInteractionProfilePath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_interaction_profile_path")
+    defer methodName.Destroy()
+    ptrsForOpenXRInteractionProfile.fnGetInteractionProfilePath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("get_binding_count")
+    defer methodName.Destroy()
+    ptrsForOpenXRInteractionProfile.fnGetBindingCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("get_binding")
+    defer methodName.Destroy()
+    ptrsForOpenXRInteractionProfile.fnGetBinding = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3934429652))
+  }
+  {
+    methodName := StringNameFromStr("set_bindings")
+    defer methodName.Destroy()
+    ptrsForOpenXRInteractionProfile.fnSetBindings = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 381264803))
+  }
+  {
+    methodName := StringNameFromStr("get_bindings")
+    defer methodName.Destroy()
+    ptrsForOpenXRInteractionProfile.fnGetBindings = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+  }
+}
+
 type OpenXRInteractionProfile struct {
   Resource
 }
@@ -51,91 +98,61 @@ func (me *OpenXRInteractionProfile) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *OpenXRInteractionProfile) SetInteractionProfilePath(interaction_profile_path String, )  {
-  classNameV := StringNameFromStr("OpenXRInteractionProfile")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_interaction_profile_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{interaction_profile_path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInteractionProfile.fnSetInteractionProfilePath), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *OpenXRInteractionProfile) GetInteractionProfilePath() String {
-  classNameV := StringNameFromStr("OpenXRInteractionProfile")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_interaction_profile_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInteractionProfile.fnGetInteractionProfilePath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *OpenXRInteractionProfile) GetBindingCount() int64 {
-  classNameV := StringNameFromStr("OpenXRInteractionProfile")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_binding_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInteractionProfile.fnGetBindingCount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *OpenXRInteractionProfile) GetBinding(index int64, ) OpenXRIPBinding {
-  classNameV := StringNameFromStr("OpenXRInteractionProfile")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_binding")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3934429652) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewOpenXRIPBinding()
   pinner.Pin(&index)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInteractionProfile.fnGetBinding), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *OpenXRInteractionProfile) SetBindings(bindings Array, )  {
-  classNameV := StringNameFromStr("OpenXRInteractionProfile")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_bindings")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{bindings.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInteractionProfile.fnSetBindings), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *OpenXRInteractionProfile) GetBindings() Array {
-  classNameV := StringNameFromStr("OpenXRInteractionProfile")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_bindings")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInteractionProfile.fnGetBindings), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

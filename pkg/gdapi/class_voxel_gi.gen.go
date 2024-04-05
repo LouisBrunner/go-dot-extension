@@ -14,6 +14,77 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVoxelGIList struct {
+  fnSetProbeData gdc.MethodBindPtr
+  fnGetProbeData gdc.MethodBindPtr
+  fnSetSubdiv gdc.MethodBindPtr
+  fnGetSubdiv gdc.MethodBindPtr
+  fnSetSize gdc.MethodBindPtr
+  fnGetSize gdc.MethodBindPtr
+  fnSetCameraAttributes gdc.MethodBindPtr
+  fnGetCameraAttributes gdc.MethodBindPtr
+  fnBake gdc.MethodBindPtr
+  fnDebugBake gdc.MethodBindPtr
+}
+
+var ptrsForVoxelGI ptrsForVoxelGIList
+
+func initVoxelGIPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VoxelGI")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_probe_data")
+    defer methodName.Destroy()
+    ptrsForVoxelGI.fnSetProbeData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1637849675))
+  }
+  {
+    methodName := StringNameFromStr("get_probe_data")
+    defer methodName.Destroy()
+    ptrsForVoxelGI.fnGetProbeData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1730645405))
+  }
+  {
+    methodName := StringNameFromStr("set_subdiv")
+    defer methodName.Destroy()
+    ptrsForVoxelGI.fnSetSubdiv = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240898472))
+  }
+  {
+    methodName := StringNameFromStr("get_subdiv")
+    defer methodName.Destroy()
+    ptrsForVoxelGI.fnGetSubdiv = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4261647950))
+  }
+  {
+    methodName := StringNameFromStr("set_size")
+    defer methodName.Destroy()
+    ptrsForVoxelGI.fnSetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+  }
+  {
+    methodName := StringNameFromStr("get_size")
+    defer methodName.Destroy()
+    ptrsForVoxelGI.fnGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+  }
+  {
+    methodName := StringNameFromStr("set_camera_attributes")
+    defer methodName.Destroy()
+    ptrsForVoxelGI.fnSetCameraAttributes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2817810567))
+  }
+  {
+    methodName := StringNameFromStr("get_camera_attributes")
+    defer methodName.Destroy()
+    ptrsForVoxelGI.fnGetCameraAttributes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3921283215))
+  }
+  {
+    methodName := StringNameFromStr("bake")
+    defer methodName.Destroy()
+    ptrsForVoxelGI.fnBake = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2781551026))
+  }
+  {
+    methodName := StringNameFromStr("debug_bake")
+    defer methodName.Destroy()
+    ptrsForVoxelGI.fnDebugBake = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+}
+
 type VoxelGI struct {
   VisualInstance3D
 }
@@ -60,146 +131,96 @@ func (me *VoxelGI) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VoxelGI) SetProbeData(data VoxelGIData, )  {
-  classNameV := StringNameFromStr("VoxelGI")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_probe_data")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1637849675) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{data.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVoxelGI.fnSetProbeData), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VoxelGI) GetProbeData() VoxelGIData {
-  classNameV := StringNameFromStr("VoxelGI")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_probe_data")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1730645405) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVoxelGIData()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVoxelGI.fnGetProbeData), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *VoxelGI) SetSubdiv(subdiv VoxelGISubdiv, )  {
-  classNameV := StringNameFromStr("VoxelGI")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_subdiv")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240898472) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&subdiv) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVoxelGI.fnSetSubdiv), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VoxelGI) GetSubdiv() VoxelGISubdiv {
-  classNameV := StringNameFromStr("VoxelGI")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_subdiv")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4261647950) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret VoxelGISubdiv
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVoxelGI.fnGetSubdiv), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *VoxelGI) SetSize(size Vector3, )  {
-  classNameV := StringNameFromStr("VoxelGI")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3460891852) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{size.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVoxelGI.fnSetSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VoxelGI) GetSize() Vector3 {
-  classNameV := StringNameFromStr("VoxelGI")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3360562783) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector3()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVoxelGI.fnGetSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *VoxelGI) SetCameraAttributes(camera_attributes CameraAttributes, )  {
-  classNameV := StringNameFromStr("VoxelGI")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_camera_attributes")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2817810567) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{camera_attributes.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVoxelGI.fnSetCameraAttributes), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VoxelGI) GetCameraAttributes() CameraAttributes {
-  classNameV := StringNameFromStr("VoxelGI")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_camera_attributes")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3921283215) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewCameraAttributes()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVoxelGI.fnGetCameraAttributes), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *VoxelGI) Bake(from_node Node, create_visual_debug bool, )  {
-  classNameV := StringNameFromStr("VoxelGI")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("bake")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2781551026) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{from_node.AsCTypePtr(), gdc.ConstTypePtr(&create_visual_debug) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVoxelGI.fnBake), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VoxelGI) DebugBake()  {
-  classNameV := StringNameFromStr("VoxelGI")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("debug_bake")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVoxelGI.fnDebugBake), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

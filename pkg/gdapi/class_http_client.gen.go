@@ -14,6 +14,149 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForHTTPClientList struct {
+  fnConnectToHost gdc.MethodBindPtr
+  fnSetConnection gdc.MethodBindPtr
+  fnGetConnection gdc.MethodBindPtr
+  fnRequestRaw gdc.MethodBindPtr
+  fnRequest gdc.MethodBindPtr
+  fnClose gdc.MethodBindPtr
+  fnHasResponse gdc.MethodBindPtr
+  fnIsResponseChunked gdc.MethodBindPtr
+  fnGetResponseCode gdc.MethodBindPtr
+  fnGetResponseHeaders gdc.MethodBindPtr
+  fnGetResponseHeadersAsDictionary gdc.MethodBindPtr
+  fnGetResponseBodyLength gdc.MethodBindPtr
+  fnReadResponseBodyChunk gdc.MethodBindPtr
+  fnSetReadChunkSize gdc.MethodBindPtr
+  fnGetReadChunkSize gdc.MethodBindPtr
+  fnSetBlockingMode gdc.MethodBindPtr
+  fnIsBlockingModeEnabled gdc.MethodBindPtr
+  fnGetStatus gdc.MethodBindPtr
+  fnPoll gdc.MethodBindPtr
+  fnSetHttpProxy gdc.MethodBindPtr
+  fnSetHttpsProxy gdc.MethodBindPtr
+  fnQueryStringFromDict gdc.MethodBindPtr
+}
+
+var ptrsForHTTPClient ptrsForHTTPClientList
+
+func initHTTPClientPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("HTTPClient")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("connect_to_host")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnConnectToHost = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 504540374))
+  }
+  {
+    methodName := StringNameFromStr("set_connection")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnSetConnection = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3281897016))
+  }
+  {
+    methodName := StringNameFromStr("get_connection")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnGetConnection = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2741655269))
+  }
+  {
+    methodName := StringNameFromStr("request_raw")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnRequestRaw = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 540161961))
+  }
+  {
+    methodName := StringNameFromStr("request")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnRequest = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3778990155))
+  }
+  {
+    methodName := StringNameFromStr("close")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnClose = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("has_response")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnHasResponse = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("is_response_chunked")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnIsResponseChunked = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_response_code")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnGetResponseCode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("get_response_headers")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnGetResponseHeaders = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2981934095))
+  }
+  {
+    methodName := StringNameFromStr("get_response_headers_as_dictionary")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnGetResponseHeadersAsDictionary = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2382534195))
+  }
+  {
+    methodName := StringNameFromStr("get_response_body_length")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnGetResponseBodyLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("read_response_body_chunk")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnReadResponseBodyChunk = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2115431945))
+  }
+  {
+    methodName := StringNameFromStr("set_read_chunk_size")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnSetReadChunkSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_read_chunk_size")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnGetReadChunkSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_blocking_mode")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnSetBlockingMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_blocking_mode_enabled")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnIsBlockingModeEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_status")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnGetStatus = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1426656811))
+  }
+  {
+    methodName := StringNameFromStr("poll")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnPoll = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 166280745))
+  }
+  {
+    methodName := StringNameFromStr("set_http_proxy")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnSetHttpProxy = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2956805083))
+  }
+  {
+    methodName := StringNameFromStr("set_https_proxy")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnSetHttpsProxy = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2956805083))
+  }
+  {
+    methodName := StringNameFromStr("query_string_from_dict")
+    defer methodName.Destroy()
+    ptrsForHTTPClient.fnQueryStringFromDict = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2538086567))
+  }
+}
+
 type HTTPClient struct {
   RefCounted
 }
@@ -144,329 +287,219 @@ func (me *HTTPClient) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *HTTPClient) ConnectToHost(host String, port int64, tls_options TLSOptions, ) Error {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("connect_to_host")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 504540374) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{host.AsCTypePtr(), gdc.ConstTypePtr(&port) , tls_options.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
   pinner.Pin(&port)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnConnectToHost), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *HTTPClient) SetConnection(connection StreamPeer, )  {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_connection")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3281897016) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{connection.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnSetConnection), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *HTTPClient) GetConnection() StreamPeer {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_connection")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2741655269) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewStreamPeer()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnGetConnection), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *HTTPClient) RequestRaw(method HTTPClientMethod, url String, headers PackedStringArray, body PackedByteArray, ) Error {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("request_raw")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 540161961) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&method) , url.AsCTypePtr(), headers.AsCTypePtr(), body.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
   pinner.Pin(&method)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnRequestRaw), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *HTTPClient) Request(method HTTPClientMethod, url String, headers PackedStringArray, body String, ) Error {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("request")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3778990155) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&method) , url.AsCTypePtr(), headers.AsCTypePtr(), body.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
   pinner.Pin(&method)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnRequest), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *HTTPClient) Close()  {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("close")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnClose), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *HTTPClient) HasResponse() bool {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_response")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnHasResponse), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *HTTPClient) IsResponseChunked() bool {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_response_chunked")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnIsResponseChunked), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *HTTPClient) GetResponseCode() int64 {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_response_code")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnGetResponseCode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *HTTPClient) GetResponseHeaders() PackedStringArray {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_response_headers")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2981934095) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedStringArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnGetResponseHeaders), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *HTTPClient) GetResponseHeadersAsDictionary() Dictionary {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_response_headers_as_dictionary")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2382534195) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewDictionary()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnGetResponseHeadersAsDictionary), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *HTTPClient) GetResponseBodyLength() int64 {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_response_body_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnGetResponseBodyLength), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *HTTPClient) ReadResponseBodyChunk() PackedByteArray {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("read_response_body_chunk")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2115431945) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedByteArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnReadResponseBodyChunk), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *HTTPClient) SetReadChunkSize(bytes int64, )  {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_read_chunk_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bytes) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnSetReadChunkSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *HTTPClient) GetReadChunkSize() int64 {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_read_chunk_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnGetReadChunkSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *HTTPClient) SetBlockingMode(enabled bool, )  {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_blocking_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnSetBlockingMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *HTTPClient) IsBlockingModeEnabled() bool {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_blocking_mode_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnIsBlockingModeEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *HTTPClient) GetStatus() HTTPClientStatus {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_status")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1426656811) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret HTTPClientStatus
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnGetStatus), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *HTTPClient) Poll() Error {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("poll")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 166280745) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnPoll), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *HTTPClient) SetHttpProxy(host String, port int64, )  {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_http_proxy")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2956805083) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{host.AsCTypePtr(), gdc.ConstTypePtr(&port) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnSetHttpProxy), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *HTTPClient) SetHttpsProxy(host String, port int64, )  {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_https_proxy")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2956805083) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{host.AsCTypePtr(), gdc.ConstTypePtr(&port) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnSetHttpsProxy), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *HTTPClient) QueryStringFromDict(fields Dictionary, ) String {
-  classNameV := StringNameFromStr("HTTPClient")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("query_string_from_dict")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2538086567) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{fields.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHTTPClient.fnQueryStringFromDict), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

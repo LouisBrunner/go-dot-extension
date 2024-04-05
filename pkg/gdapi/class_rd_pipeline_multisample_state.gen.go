@@ -14,6 +14,89 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForRDPipelineMultisampleStateList struct {
+  fnSetSampleCount gdc.MethodBindPtr
+  fnGetSampleCount gdc.MethodBindPtr
+  fnSetEnableSampleShading gdc.MethodBindPtr
+  fnGetEnableSampleShading gdc.MethodBindPtr
+  fnSetMinSampleShading gdc.MethodBindPtr
+  fnGetMinSampleShading gdc.MethodBindPtr
+  fnSetEnableAlphaToCoverage gdc.MethodBindPtr
+  fnGetEnableAlphaToCoverage gdc.MethodBindPtr
+  fnSetEnableAlphaToOne gdc.MethodBindPtr
+  fnGetEnableAlphaToOne gdc.MethodBindPtr
+  fnSetSampleMasks gdc.MethodBindPtr
+  fnGetSampleMasks gdc.MethodBindPtr
+}
+
+var ptrsForRDPipelineMultisampleState ptrsForRDPipelineMultisampleStateList
+
+func initRDPipelineMultisampleStatePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("RDPipelineMultisampleState")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_sample_count")
+    defer methodName.Destroy()
+    ptrsForRDPipelineMultisampleState.fnSetSampleCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3774171498))
+  }
+  {
+    methodName := StringNameFromStr("get_sample_count")
+    defer methodName.Destroy()
+    ptrsForRDPipelineMultisampleState.fnGetSampleCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 407791724))
+  }
+  {
+    methodName := StringNameFromStr("set_enable_sample_shading")
+    defer methodName.Destroy()
+    ptrsForRDPipelineMultisampleState.fnSetEnableSampleShading = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_enable_sample_shading")
+    defer methodName.Destroy()
+    ptrsForRDPipelineMultisampleState.fnGetEnableSampleShading = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_min_sample_shading")
+    defer methodName.Destroy()
+    ptrsForRDPipelineMultisampleState.fnSetMinSampleShading = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_min_sample_shading")
+    defer methodName.Destroy()
+    ptrsForRDPipelineMultisampleState.fnGetMinSampleShading = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_enable_alpha_to_coverage")
+    defer methodName.Destroy()
+    ptrsForRDPipelineMultisampleState.fnSetEnableAlphaToCoverage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_enable_alpha_to_coverage")
+    defer methodName.Destroy()
+    ptrsForRDPipelineMultisampleState.fnGetEnableAlphaToCoverage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_enable_alpha_to_one")
+    defer methodName.Destroy()
+    ptrsForRDPipelineMultisampleState.fnSetEnableAlphaToOne = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_enable_alpha_to_one")
+    defer methodName.Destroy()
+    ptrsForRDPipelineMultisampleState.fnGetEnableAlphaToOne = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_sample_masks")
+    defer methodName.Destroy()
+    ptrsForRDPipelineMultisampleState.fnSetSampleMasks = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 381264803))
+  }
+  {
+    methodName := StringNameFromStr("get_sample_masks")
+    defer methodName.Destroy()
+    ptrsForRDPipelineMultisampleState.fnGetSampleMasks = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+  }
+}
+
 type RDPipelineMultisampleState struct {
   RefCounted
 }
@@ -51,177 +134,117 @@ func (me *RDPipelineMultisampleState) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *RDPipelineMultisampleState) SetSampleCount(p_member RenderingDeviceTextureSamples, )  {
-  classNameV := StringNameFromStr("RDPipelineMultisampleState")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_sample_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3774171498) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDPipelineMultisampleState.fnSetSampleCount), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDPipelineMultisampleState) GetSampleCount() RenderingDeviceTextureSamples {
-  classNameV := StringNameFromStr("RDPipelineMultisampleState")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_sample_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 407791724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret RenderingDeviceTextureSamples
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDPipelineMultisampleState.fnGetSampleCount), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *RDPipelineMultisampleState) SetEnableSampleShading(p_member bool, )  {
-  classNameV := StringNameFromStr("RDPipelineMultisampleState")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_enable_sample_shading")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDPipelineMultisampleState.fnSetEnableSampleShading), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDPipelineMultisampleState) GetEnableSampleShading() bool {
-  classNameV := StringNameFromStr("RDPipelineMultisampleState")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_enable_sample_shading")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDPipelineMultisampleState.fnGetEnableSampleShading), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RDPipelineMultisampleState) SetMinSampleShading(p_member float64, )  {
-  classNameV := StringNameFromStr("RDPipelineMultisampleState")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_min_sample_shading")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDPipelineMultisampleState.fnSetMinSampleShading), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDPipelineMultisampleState) GetMinSampleShading() float64 {
-  classNameV := StringNameFromStr("RDPipelineMultisampleState")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_min_sample_shading")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDPipelineMultisampleState.fnGetMinSampleShading), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RDPipelineMultisampleState) SetEnableAlphaToCoverage(p_member bool, )  {
-  classNameV := StringNameFromStr("RDPipelineMultisampleState")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_enable_alpha_to_coverage")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDPipelineMultisampleState.fnSetEnableAlphaToCoverage), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDPipelineMultisampleState) GetEnableAlphaToCoverage() bool {
-  classNameV := StringNameFromStr("RDPipelineMultisampleState")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_enable_alpha_to_coverage")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDPipelineMultisampleState.fnGetEnableAlphaToCoverage), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RDPipelineMultisampleState) SetEnableAlphaToOne(p_member bool, )  {
-  classNameV := StringNameFromStr("RDPipelineMultisampleState")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_enable_alpha_to_one")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDPipelineMultisampleState.fnSetEnableAlphaToOne), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDPipelineMultisampleState) GetEnableAlphaToOne() bool {
-  classNameV := StringNameFromStr("RDPipelineMultisampleState")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_enable_alpha_to_one")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDPipelineMultisampleState.fnGetEnableAlphaToOne), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RDPipelineMultisampleState) SetSampleMasks(masks []int, )  {
-  classNameV := StringNameFromStr("RDPipelineMultisampleState")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_sample_masks")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&masks) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDPipelineMultisampleState.fnSetSampleMasks), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDPipelineMultisampleState) GetSampleMasks() []int {
-  classNameV := StringNameFromStr("RDPipelineMultisampleState")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_sample_masks")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDPipelineMultisampleState.fnGetSampleMasks), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[int](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging

@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForQuadMeshList struct {
+}
+
+var ptrsForQuadMesh ptrsForQuadMeshList
+
+func initQuadMeshPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("QuadMesh")
+  defer className.Destroy()
+}
+
 type QuadMesh struct {
   PlaneMesh
 }

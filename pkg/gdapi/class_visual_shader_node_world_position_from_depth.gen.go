@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeWorldPositionFromDepthList struct {
+}
+
+var ptrsForVisualShaderNodeWorldPositionFromDepth ptrsForVisualShaderNodeWorldPositionFromDepthList
+
+func initVisualShaderNodeWorldPositionFromDepthPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeWorldPositionFromDepth")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeWorldPositionFromDepth struct {
   VisualShaderNode
 }

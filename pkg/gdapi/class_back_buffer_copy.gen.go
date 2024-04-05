@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForBackBufferCopyList struct {
+  fnSetRect gdc.MethodBindPtr
+  fnGetRect gdc.MethodBindPtr
+  fnSetCopyMode gdc.MethodBindPtr
+  fnGetCopyMode gdc.MethodBindPtr
+}
+
+var ptrsForBackBufferCopy ptrsForBackBufferCopyList
+
+func initBackBufferCopyPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("BackBufferCopy")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_rect")
+    defer methodName.Destroy()
+    ptrsForBackBufferCopy.fnSetRect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2046264180))
+  }
+  {
+    methodName := StringNameFromStr("get_rect")
+    defer methodName.Destroy()
+    ptrsForBackBufferCopy.fnGetRect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1639390495))
+  }
+  {
+    methodName := StringNameFromStr("set_copy_mode")
+    defer methodName.Destroy()
+    ptrsForBackBufferCopy.fnSetCopyMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1713538590))
+  }
+  {
+    methodName := StringNameFromStr("get_copy_mode")
+    defer methodName.Destroy()
+    ptrsForBackBufferCopy.fnGetCopyMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3271169440))
+  }
+}
+
 type BackBufferCopy struct {
   Node2D
 }
@@ -58,60 +93,40 @@ func (me *BackBufferCopy) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *BackBufferCopy) SetRect(rect Rect2, )  {
-  classNameV := StringNameFromStr("BackBufferCopy")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_rect")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2046264180) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{rect.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBackBufferCopy.fnSetRect), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BackBufferCopy) GetRect() Rect2 {
-  classNameV := StringNameFromStr("BackBufferCopy")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_rect")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1639390495) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRect2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBackBufferCopy.fnGetRect), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *BackBufferCopy) SetCopyMode(copy_mode BackBufferCopyCopyMode, )  {
-  classNameV := StringNameFromStr("BackBufferCopy")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_copy_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1713538590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&copy_mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBackBufferCopy.fnSetCopyMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *BackBufferCopy) GetCopyMode() BackBufferCopyCopyMode {
-  classNameV := StringNameFromStr("BackBufferCopy")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_copy_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3271169440) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret BackBufferCopyCopyMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBackBufferCopy.fnGetCopyMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

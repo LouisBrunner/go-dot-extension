@@ -14,6 +14,26 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForMultiplayerAPIExtensionList struct {
+  fnXPoll gdc.MethodBindPtr
+  fnXSetMultiplayerPeer gdc.MethodBindPtr
+  fnXGetMultiplayerPeer gdc.MethodBindPtr
+  fnXGetUniqueId gdc.MethodBindPtr
+  fnXGetPeerIds gdc.MethodBindPtr
+  fnXRpc gdc.MethodBindPtr
+  fnXGetRemoteSenderId gdc.MethodBindPtr
+  fnXObjectConfigurationAdd gdc.MethodBindPtr
+  fnXObjectConfigurationRemove gdc.MethodBindPtr
+}
+
+var ptrsForMultiplayerAPIExtension ptrsForMultiplayerAPIExtensionList
+
+func initMultiplayerAPIExtensionPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("MultiplayerAPIExtension")
+  defer className.Destroy()
+}
+
 type MultiplayerAPIExtension struct {
   MultiplayerAPI
 }

@@ -14,6 +14,31 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForContainerList struct {
+  fnXGetAllowedSizeFlagsHorizontal gdc.MethodBindPtr
+  fnXGetAllowedSizeFlagsVertical gdc.MethodBindPtr
+  fnQueueSort gdc.MethodBindPtr
+  fnFitChildInRect gdc.MethodBindPtr
+}
+
+var ptrsForContainer ptrsForContainerList
+
+func initContainerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Container")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("queue_sort")
+    defer methodName.Destroy()
+    ptrsForContainer.fnQueueSort = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("fit_child_in_rect")
+    defer methodName.Destroy()
+    ptrsForContainer.fnFitChildInRect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1993438598))
+  }
+}
+
 type Container struct {
   Control
 }
@@ -58,30 +83,20 @@ func (me *Container) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Container) QueueSort()  {
-  classNameV := StringNameFromStr("Container")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("queue_sort")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForContainer.fnQueueSort), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Container) FitChildInRect(child Control, rect Rect2, )  {
-  classNameV := StringNameFromStr("Container")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("fit_child_in_rect")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1993438598) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{child.AsCTypePtr(), rect.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForContainer.fnFitChildInRect), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

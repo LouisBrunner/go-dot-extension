@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForTextServerDummyList struct {
+}
+
+var ptrsForTextServerDummy ptrsForTextServerDummyList
+
+func initTextServerDummyPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("TextServerDummy")
+  defer className.Destroy()
+}
+
 type TextServerDummy struct {
   TextServerExtension
 }

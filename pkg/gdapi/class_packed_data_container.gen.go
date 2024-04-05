@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPackedDataContainerList struct {
+  fnPack gdc.MethodBindPtr
+  fnSize gdc.MethodBindPtr
+}
+
+var ptrsForPackedDataContainer ptrsForPackedDataContainerList
+
+func initPackedDataContainerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PackedDataContainer")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("pack")
+    defer methodName.Destroy()
+    ptrsForPackedDataContainer.fnPack = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 966674026))
+  }
+  {
+    methodName := StringNameFromStr("size")
+    defer methodName.Destroy()
+    ptrsForPackedDataContainer.fnSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+}
+
 type PackedDataContainer struct {
   Resource
 }
@@ -51,32 +74,22 @@ func (me *PackedDataContainer) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PackedDataContainer) Pack(value Variant, ) Error {
-  classNameV := StringNameFromStr("PackedDataContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("pack")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 966674026) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{value.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPackedDataContainer.fnPack), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *PackedDataContainer) Size() int64 {
-  classNameV := StringNameFromStr("PackedDataContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPackedDataContainer.fnSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 

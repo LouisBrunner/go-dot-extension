@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForColorPickerButtonList struct {
+  fnSetPickColor gdc.MethodBindPtr
+  fnGetPickColor gdc.MethodBindPtr
+  fnGetPicker gdc.MethodBindPtr
+  fnGetPopup gdc.MethodBindPtr
+  fnSetEditAlpha gdc.MethodBindPtr
+  fnIsEditingAlpha gdc.MethodBindPtr
+}
+
+var ptrsForColorPickerButton ptrsForColorPickerButtonList
+
+func initColorPickerButtonPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ColorPickerButton")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_pick_color")
+    defer methodName.Destroy()
+    ptrsForColorPickerButton.fnSetPickColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2920490490))
+  }
+  {
+    methodName := StringNameFromStr("get_pick_color")
+    defer methodName.Destroy()
+    ptrsForColorPickerButton.fnGetPickColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3444240500))
+  }
+  {
+    methodName := StringNameFromStr("get_picker")
+    defer methodName.Destroy()
+    ptrsForColorPickerButton.fnGetPicker = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 331835996))
+  }
+  {
+    methodName := StringNameFromStr("get_popup")
+    defer methodName.Destroy()
+    ptrsForColorPickerButton.fnGetPopup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1322440207))
+  }
+  {
+    methodName := StringNameFromStr("set_edit_alpha")
+    defer methodName.Destroy()
+    ptrsForColorPickerButton.fnSetEditAlpha = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_editing_alpha")
+    defer methodName.Destroy()
+    ptrsForColorPickerButton.fnIsEditingAlpha = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type ColorPickerButton struct {
   Button
 }
@@ -51,90 +98,60 @@ func (me *ColorPickerButton) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ColorPickerButton) SetPickColor(color Color, )  {
-  classNameV := StringNameFromStr("ColorPickerButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_pick_color")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{color.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForColorPickerButton.fnSetPickColor), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ColorPickerButton) GetPickColor() Color {
-  classNameV := StringNameFromStr("ColorPickerButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_pick_color")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewColor()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForColorPickerButton.fnGetPickColor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ColorPickerButton) GetPicker() ColorPicker {
-  classNameV := StringNameFromStr("ColorPickerButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_picker")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 331835996) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewColorPicker()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForColorPickerButton.fnGetPicker), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ColorPickerButton) GetPopup() PopupPanel {
-  classNameV := StringNameFromStr("ColorPickerButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_popup")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1322440207) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPopupPanel()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForColorPickerButton.fnGetPopup), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ColorPickerButton) SetEditAlpha(show bool, )  {
-  classNameV := StringNameFromStr("ColorPickerButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_edit_alpha")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&show) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForColorPickerButton.fnSetEditAlpha), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ColorPickerButton) IsEditingAlpha() bool {
-  classNameV := StringNameFromStr("ColorPickerButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_editing_alpha")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForColorPickerButton.fnIsEditingAlpha), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

@@ -14,6 +14,35 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForFileSystemDockList struct {
+  fnNavigateToPath gdc.MethodBindPtr
+  fnAddResourceTooltipPlugin gdc.MethodBindPtr
+  fnRemoveResourceTooltipPlugin gdc.MethodBindPtr
+}
+
+var ptrsForFileSystemDock ptrsForFileSystemDockList
+
+func initFileSystemDockPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("FileSystemDock")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("navigate_to_path")
+    defer methodName.Destroy()
+    ptrsForFileSystemDock.fnNavigateToPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("add_resource_tooltip_plugin")
+    defer methodName.Destroy()
+    ptrsForFileSystemDock.fnAddResourceTooltipPlugin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2258356838))
+  }
+  {
+    methodName := StringNameFromStr("remove_resource_tooltip_plugin")
+    defer methodName.Destroy()
+    ptrsForFileSystemDock.fnRemoveResourceTooltipPlugin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2258356838))
+  }
+}
+
 type FileSystemDock struct {
   VBoxContainer
 }
@@ -51,44 +80,29 @@ func (me *FileSystemDock) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *FileSystemDock) NavigateToPath(path String, )  {
-  classNameV := StringNameFromStr("FileSystemDock")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("navigate_to_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileSystemDock.fnNavigateToPath), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FileSystemDock) AddResourceTooltipPlugin(plugin EditorResourceTooltipPlugin, )  {
-  classNameV := StringNameFromStr("FileSystemDock")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_resource_tooltip_plugin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2258356838) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{plugin.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileSystemDock.fnAddResourceTooltipPlugin), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *FileSystemDock) RemoveResourceTooltipPlugin(plugin EditorResourceTooltipPlugin, )  {
-  classNameV := StringNameFromStr("FileSystemDock")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_resource_tooltip_plugin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2258356838) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{plugin.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFileSystemDock.fnRemoveResourceTooltipPlugin), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

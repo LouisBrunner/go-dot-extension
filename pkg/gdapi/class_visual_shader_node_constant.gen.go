@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeConstantList struct {
+}
+
+var ptrsForVisualShaderNodeConstant ptrsForVisualShaderNodeConstantList
+
+func initVisualShaderNodeConstantPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeConstant")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeConstant struct {
   VisualShaderNode
 }

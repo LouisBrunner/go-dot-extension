@@ -14,6 +14,65 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAspectRatioContainerList struct {
+  fnSetRatio gdc.MethodBindPtr
+  fnGetRatio gdc.MethodBindPtr
+  fnSetStretchMode gdc.MethodBindPtr
+  fnGetStretchMode gdc.MethodBindPtr
+  fnSetAlignmentHorizontal gdc.MethodBindPtr
+  fnGetAlignmentHorizontal gdc.MethodBindPtr
+  fnSetAlignmentVertical gdc.MethodBindPtr
+  fnGetAlignmentVertical gdc.MethodBindPtr
+}
+
+var ptrsForAspectRatioContainer ptrsForAspectRatioContainerList
+
+func initAspectRatioContainerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AspectRatioContainer")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_ratio")
+    defer methodName.Destroy()
+    ptrsForAspectRatioContainer.fnSetRatio = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_ratio")
+    defer methodName.Destroy()
+    ptrsForAspectRatioContainer.fnGetRatio = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_stretch_mode")
+    defer methodName.Destroy()
+    ptrsForAspectRatioContainer.fnSetStretchMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1876743467))
+  }
+  {
+    methodName := StringNameFromStr("get_stretch_mode")
+    defer methodName.Destroy()
+    ptrsForAspectRatioContainer.fnGetStretchMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3416449033))
+  }
+  {
+    methodName := StringNameFromStr("set_alignment_horizontal")
+    defer methodName.Destroy()
+    ptrsForAspectRatioContainer.fnSetAlignmentHorizontal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2147829016))
+  }
+  {
+    methodName := StringNameFromStr("get_alignment_horizontal")
+    defer methodName.Destroy()
+    ptrsForAspectRatioContainer.fnGetAlignmentHorizontal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3838875429))
+  }
+  {
+    methodName := StringNameFromStr("set_alignment_vertical")
+    defer methodName.Destroy()
+    ptrsForAspectRatioContainer.fnSetAlignmentVertical = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2147829016))
+  }
+  {
+    methodName := StringNameFromStr("get_alignment_vertical")
+    defer methodName.Destroy()
+    ptrsForAspectRatioContainer.fnGetAlignmentVertical = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3838875429))
+  }
+}
+
 type AspectRatioContainer struct {
   Container
 }
@@ -66,118 +125,78 @@ func (me *AspectRatioContainer) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AspectRatioContainer) SetRatio(ratio float64, )  {
-  classNameV := StringNameFromStr("AspectRatioContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_ratio")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ratio) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAspectRatioContainer.fnSetRatio), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AspectRatioContainer) GetRatio() float64 {
-  classNameV := StringNameFromStr("AspectRatioContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_ratio")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAspectRatioContainer.fnGetRatio), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AspectRatioContainer) SetStretchMode(stretch_mode AspectRatioContainerStretchMode, )  {
-  classNameV := StringNameFromStr("AspectRatioContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_stretch_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1876743467) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stretch_mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAspectRatioContainer.fnSetStretchMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AspectRatioContainer) GetStretchMode() AspectRatioContainerStretchMode {
-  classNameV := StringNameFromStr("AspectRatioContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_stretch_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3416449033) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret AspectRatioContainerStretchMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAspectRatioContainer.fnGetStretchMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *AspectRatioContainer) SetAlignmentHorizontal(alignment_horizontal AspectRatioContainerAlignmentMode, )  {
-  classNameV := StringNameFromStr("AspectRatioContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_alignment_horizontal")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2147829016) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&alignment_horizontal) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAspectRatioContainer.fnSetAlignmentHorizontal), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AspectRatioContainer) GetAlignmentHorizontal() AspectRatioContainerAlignmentMode {
-  classNameV := StringNameFromStr("AspectRatioContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_alignment_horizontal")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3838875429) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret AspectRatioContainerAlignmentMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAspectRatioContainer.fnGetAlignmentHorizontal), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *AspectRatioContainer) SetAlignmentVertical(alignment_vertical AspectRatioContainerAlignmentMode, )  {
-  classNameV := StringNameFromStr("AspectRatioContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_alignment_vertical")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2147829016) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&alignment_vertical) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAspectRatioContainer.fnSetAlignmentVertical), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AspectRatioContainer) GetAlignmentVertical() AspectRatioContainerAlignmentMode {
-  classNameV := StringNameFromStr("AspectRatioContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_alignment_vertical")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3838875429) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret AspectRatioContainerAlignmentMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAspectRatioContainer.fnGetAlignmentVertical), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

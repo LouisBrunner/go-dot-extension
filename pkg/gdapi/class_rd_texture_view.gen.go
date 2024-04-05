@@ -14,6 +14,77 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForRDTextureViewList struct {
+  fnSetFormatOverride gdc.MethodBindPtr
+  fnGetFormatOverride gdc.MethodBindPtr
+  fnSetSwizzleR gdc.MethodBindPtr
+  fnGetSwizzleR gdc.MethodBindPtr
+  fnSetSwizzleG gdc.MethodBindPtr
+  fnGetSwizzleG gdc.MethodBindPtr
+  fnSetSwizzleB gdc.MethodBindPtr
+  fnGetSwizzleB gdc.MethodBindPtr
+  fnSetSwizzleA gdc.MethodBindPtr
+  fnGetSwizzleA gdc.MethodBindPtr
+}
+
+var ptrsForRDTextureView ptrsForRDTextureViewList
+
+func initRDTextureViewPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("RDTextureView")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_format_override")
+    defer methodName.Destroy()
+    ptrsForRDTextureView.fnSetFormatOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 565531219))
+  }
+  {
+    methodName := StringNameFromStr("get_format_override")
+    defer methodName.Destroy()
+    ptrsForRDTextureView.fnGetFormatOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2235804183))
+  }
+  {
+    methodName := StringNameFromStr("set_swizzle_r")
+    defer methodName.Destroy()
+    ptrsForRDTextureView.fnSetSwizzleR = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3833362581))
+  }
+  {
+    methodName := StringNameFromStr("get_swizzle_r")
+    defer methodName.Destroy()
+    ptrsForRDTextureView.fnGetSwizzleR = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4150792614))
+  }
+  {
+    methodName := StringNameFromStr("set_swizzle_g")
+    defer methodName.Destroy()
+    ptrsForRDTextureView.fnSetSwizzleG = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3833362581))
+  }
+  {
+    methodName := StringNameFromStr("get_swizzle_g")
+    defer methodName.Destroy()
+    ptrsForRDTextureView.fnGetSwizzleG = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4150792614))
+  }
+  {
+    methodName := StringNameFromStr("set_swizzle_b")
+    defer methodName.Destroy()
+    ptrsForRDTextureView.fnSetSwizzleB = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3833362581))
+  }
+  {
+    methodName := StringNameFromStr("get_swizzle_b")
+    defer methodName.Destroy()
+    ptrsForRDTextureView.fnGetSwizzleB = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4150792614))
+  }
+  {
+    methodName := StringNameFromStr("set_swizzle_a")
+    defer methodName.Destroy()
+    ptrsForRDTextureView.fnSetSwizzleA = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3833362581))
+  }
+  {
+    methodName := StringNameFromStr("get_swizzle_a")
+    defer methodName.Destroy()
+    ptrsForRDTextureView.fnGetSwizzleA = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4150792614))
+  }
+}
+
 type RDTextureView struct {
   RefCounted
 }
@@ -51,147 +122,97 @@ func (me *RDTextureView) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *RDTextureView) SetFormatOverride(p_member RenderingDeviceDataFormat, )  {
-  classNameV := StringNameFromStr("RDTextureView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_format_override")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 565531219) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureView.fnSetFormatOverride), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDTextureView) GetFormatOverride() RenderingDeviceDataFormat {
-  classNameV := StringNameFromStr("RDTextureView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_format_override")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2235804183) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret RenderingDeviceDataFormat
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureView.fnGetFormatOverride), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *RDTextureView) SetSwizzleR(p_member RenderingDeviceTextureSwizzle, )  {
-  classNameV := StringNameFromStr("RDTextureView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_swizzle_r")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3833362581) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureView.fnSetSwizzleR), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDTextureView) GetSwizzleR() RenderingDeviceTextureSwizzle {
-  classNameV := StringNameFromStr("RDTextureView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_swizzle_r")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4150792614) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret RenderingDeviceTextureSwizzle
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureView.fnGetSwizzleR), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *RDTextureView) SetSwizzleG(p_member RenderingDeviceTextureSwizzle, )  {
-  classNameV := StringNameFromStr("RDTextureView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_swizzle_g")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3833362581) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureView.fnSetSwizzleG), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDTextureView) GetSwizzleG() RenderingDeviceTextureSwizzle {
-  classNameV := StringNameFromStr("RDTextureView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_swizzle_g")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4150792614) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret RenderingDeviceTextureSwizzle
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureView.fnGetSwizzleG), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *RDTextureView) SetSwizzleB(p_member RenderingDeviceTextureSwizzle, )  {
-  classNameV := StringNameFromStr("RDTextureView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_swizzle_b")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3833362581) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureView.fnSetSwizzleB), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDTextureView) GetSwizzleB() RenderingDeviceTextureSwizzle {
-  classNameV := StringNameFromStr("RDTextureView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_swizzle_b")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4150792614) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret RenderingDeviceTextureSwizzle
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureView.fnGetSwizzleB), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *RDTextureView) SetSwizzleA(p_member RenderingDeviceTextureSwizzle, )  {
-  classNameV := StringNameFromStr("RDTextureView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_swizzle_a")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3833362581) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&p_member) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureView.fnSetSwizzleA), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDTextureView) GetSwizzleA() RenderingDeviceTextureSwizzle {
-  classNameV := StringNameFromStr("RDTextureView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_swizzle_a")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4150792614) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret RenderingDeviceTextureSwizzle
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDTextureView.fnGetSwizzleA), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

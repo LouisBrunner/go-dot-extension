@@ -14,6 +14,59 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForMenuButtonList struct {
+  fnGetPopup gdc.MethodBindPtr
+  fnShowPopup gdc.MethodBindPtr
+  fnSetSwitchOnHover gdc.MethodBindPtr
+  fnIsSwitchOnHover gdc.MethodBindPtr
+  fnSetDisableShortcuts gdc.MethodBindPtr
+  fnSetItemCount gdc.MethodBindPtr
+  fnGetItemCount gdc.MethodBindPtr
+}
+
+var ptrsForMenuButton ptrsForMenuButtonList
+
+func initMenuButtonPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("MenuButton")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_popup")
+    defer methodName.Destroy()
+    ptrsForMenuButton.fnGetPopup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 229722558))
+  }
+  {
+    methodName := StringNameFromStr("show_popup")
+    defer methodName.Destroy()
+    ptrsForMenuButton.fnShowPopup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("set_switch_on_hover")
+    defer methodName.Destroy()
+    ptrsForMenuButton.fnSetSwitchOnHover = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_switch_on_hover")
+    defer methodName.Destroy()
+    ptrsForMenuButton.fnIsSwitchOnHover = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+  }
+  {
+    methodName := StringNameFromStr("set_disable_shortcuts")
+    defer methodName.Destroy()
+    ptrsForMenuButton.fnSetDisableShortcuts = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("set_item_count")
+    defer methodName.Destroy()
+    ptrsForMenuButton.fnSetItemCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_item_count")
+    defer methodName.Destroy()
+    ptrsForMenuButton.fnGetItemCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+}
+
 type MenuButton struct {
   Button
 }
@@ -51,103 +104,68 @@ func (me *MenuButton) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *MenuButton) GetPopup() PopupMenu {
-  classNameV := StringNameFromStr("MenuButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_popup")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 229722558) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPopupMenu()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMenuButton.fnGetPopup), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *MenuButton) ShowPopup()  {
-  classNameV := StringNameFromStr("MenuButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("show_popup")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMenuButton.fnShowPopup), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MenuButton) SetSwitchOnHover(enable bool, )  {
-  classNameV := StringNameFromStr("MenuButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_switch_on_hover")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMenuButton.fnSetSwitchOnHover), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MenuButton) IsSwitchOnHover() bool {
-  classNameV := StringNameFromStr("MenuButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_switch_on_hover")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2240911060) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMenuButton.fnIsSwitchOnHover), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *MenuButton) SetDisableShortcuts(disabled bool, )  {
-  classNameV := StringNameFromStr("MenuButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_disable_shortcuts")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&disabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMenuButton.fnSetDisableShortcuts), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MenuButton) SetItemCount(count int64, )  {
-  classNameV := StringNameFromStr("MenuButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_item_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&count) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMenuButton.fnSetItemCount), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MenuButton) GetItemCount() int64 {
-  classNameV := StringNameFromStr("MenuButton")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_item_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMenuButton.fnGetItemCount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

@@ -14,6 +14,20 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorFileSystemImportFormatSupportQueryList struct {
+  fnXIsActive gdc.MethodBindPtr
+  fnXGetFileExtensions gdc.MethodBindPtr
+  fnXQuery gdc.MethodBindPtr
+}
+
+var ptrsForEditorFileSystemImportFormatSupportQuery ptrsForEditorFileSystemImportFormatSupportQueryList
+
+func initEditorFileSystemImportFormatSupportQueryPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorFileSystemImportFormatSupportQuery")
+  defer className.Destroy()
+}
+
 type EditorFileSystemImportFormatSupportQuery struct {
   RefCounted
 }

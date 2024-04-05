@@ -14,6 +14,119 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForMultiplayerSynchronizerList struct {
+  fnSetRootPath gdc.MethodBindPtr
+  fnGetRootPath gdc.MethodBindPtr
+  fnSetReplicationInterval gdc.MethodBindPtr
+  fnGetReplicationInterval gdc.MethodBindPtr
+  fnSetDeltaInterval gdc.MethodBindPtr
+  fnGetDeltaInterval gdc.MethodBindPtr
+  fnSetReplicationConfig gdc.MethodBindPtr
+  fnGetReplicationConfig gdc.MethodBindPtr
+  fnSetVisibilityUpdateMode gdc.MethodBindPtr
+  fnGetVisibilityUpdateMode gdc.MethodBindPtr
+  fnUpdateVisibility gdc.MethodBindPtr
+  fnSetVisibilityPublic gdc.MethodBindPtr
+  fnIsVisibilityPublic gdc.MethodBindPtr
+  fnAddVisibilityFilter gdc.MethodBindPtr
+  fnRemoveVisibilityFilter gdc.MethodBindPtr
+  fnSetVisibilityFor gdc.MethodBindPtr
+  fnGetVisibilityFor gdc.MethodBindPtr
+}
+
+var ptrsForMultiplayerSynchronizer ptrsForMultiplayerSynchronizerList
+
+func initMultiplayerSynchronizerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("MultiplayerSynchronizer")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_root_path")
+    defer methodName.Destroy()
+    ptrsForMultiplayerSynchronizer.fnSetRootPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1348162250))
+  }
+  {
+    methodName := StringNameFromStr("get_root_path")
+    defer methodName.Destroy()
+    ptrsForMultiplayerSynchronizer.fnGetRootPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4075236667))
+  }
+  {
+    methodName := StringNameFromStr("set_replication_interval")
+    defer methodName.Destroy()
+    ptrsForMultiplayerSynchronizer.fnSetReplicationInterval = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_replication_interval")
+    defer methodName.Destroy()
+    ptrsForMultiplayerSynchronizer.fnGetReplicationInterval = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_delta_interval")
+    defer methodName.Destroy()
+    ptrsForMultiplayerSynchronizer.fnSetDeltaInterval = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_delta_interval")
+    defer methodName.Destroy()
+    ptrsForMultiplayerSynchronizer.fnGetDeltaInterval = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_replication_config")
+    defer methodName.Destroy()
+    ptrsForMultiplayerSynchronizer.fnSetReplicationConfig = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3889206742))
+  }
+  {
+    methodName := StringNameFromStr("get_replication_config")
+    defer methodName.Destroy()
+    ptrsForMultiplayerSynchronizer.fnGetReplicationConfig = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3200254614))
+  }
+  {
+    methodName := StringNameFromStr("set_visibility_update_mode")
+    defer methodName.Destroy()
+    ptrsForMultiplayerSynchronizer.fnSetVisibilityUpdateMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3494860300))
+  }
+  {
+    methodName := StringNameFromStr("get_visibility_update_mode")
+    defer methodName.Destroy()
+    ptrsForMultiplayerSynchronizer.fnGetVisibilityUpdateMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3352241418))
+  }
+  {
+    methodName := StringNameFromStr("update_visibility")
+    defer methodName.Destroy()
+    ptrsForMultiplayerSynchronizer.fnUpdateVisibility = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1995695955))
+  }
+  {
+    methodName := StringNameFromStr("set_visibility_public")
+    defer methodName.Destroy()
+    ptrsForMultiplayerSynchronizer.fnSetVisibilityPublic = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_visibility_public")
+    defer methodName.Destroy()
+    ptrsForMultiplayerSynchronizer.fnIsVisibilityPublic = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("add_visibility_filter")
+    defer methodName.Destroy()
+    ptrsForMultiplayerSynchronizer.fnAddVisibilityFilter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1611583062))
+  }
+  {
+    methodName := StringNameFromStr("remove_visibility_filter")
+    defer methodName.Destroy()
+    ptrsForMultiplayerSynchronizer.fnRemoveVisibilityFilter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1611583062))
+  }
+  {
+    methodName := StringNameFromStr("set_visibility_for")
+    defer methodName.Destroy()
+    ptrsForMultiplayerSynchronizer.fnSetVisibilityFor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 300928843))
+  }
+  {
+    methodName := StringNameFromStr("get_visibility_for")
+    defer methodName.Destroy()
+    ptrsForMultiplayerSynchronizer.fnGetVisibilityFor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
+  }
+}
+
 type MultiplayerSynchronizer struct {
   Node
 }
@@ -58,248 +171,163 @@ func (me *MultiplayerSynchronizer) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *MultiplayerSynchronizer) SetRootPath(path NodePath, )  {
-  classNameV := StringNameFromStr("MultiplayerSynchronizer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_root_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiplayerSynchronizer.fnSetRootPath), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiplayerSynchronizer) GetRootPath() NodePath {
-  classNameV := StringNameFromStr("MultiplayerSynchronizer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_root_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNodePath()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiplayerSynchronizer.fnGetRootPath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *MultiplayerSynchronizer) SetReplicationInterval(milliseconds float64, )  {
-  classNameV := StringNameFromStr("MultiplayerSynchronizer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_replication_interval")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&milliseconds) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiplayerSynchronizer.fnSetReplicationInterval), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiplayerSynchronizer) GetReplicationInterval() float64 {
-  classNameV := StringNameFromStr("MultiplayerSynchronizer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_replication_interval")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiplayerSynchronizer.fnGetReplicationInterval), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *MultiplayerSynchronizer) SetDeltaInterval(milliseconds float64, )  {
-  classNameV := StringNameFromStr("MultiplayerSynchronizer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_delta_interval")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&milliseconds) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiplayerSynchronizer.fnSetDeltaInterval), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiplayerSynchronizer) GetDeltaInterval() float64 {
-  classNameV := StringNameFromStr("MultiplayerSynchronizer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_delta_interval")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiplayerSynchronizer.fnGetDeltaInterval), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *MultiplayerSynchronizer) SetReplicationConfig(config SceneReplicationConfig, )  {
-  classNameV := StringNameFromStr("MultiplayerSynchronizer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_replication_config")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3889206742) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{config.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiplayerSynchronizer.fnSetReplicationConfig), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiplayerSynchronizer) GetReplicationConfig() SceneReplicationConfig {
-  classNameV := StringNameFromStr("MultiplayerSynchronizer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_replication_config")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3200254614) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewSceneReplicationConfig()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiplayerSynchronizer.fnGetReplicationConfig), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *MultiplayerSynchronizer) SetVisibilityUpdateMode(mode MultiplayerSynchronizerVisibilityUpdateMode, )  {
-  classNameV := StringNameFromStr("MultiplayerSynchronizer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_visibility_update_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3494860300) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiplayerSynchronizer.fnSetVisibilityUpdateMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiplayerSynchronizer) GetVisibilityUpdateMode() MultiplayerSynchronizerVisibilityUpdateMode {
-  classNameV := StringNameFromStr("MultiplayerSynchronizer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_visibility_update_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3352241418) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret MultiplayerSynchronizerVisibilityUpdateMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiplayerSynchronizer.fnGetVisibilityUpdateMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *MultiplayerSynchronizer) UpdateVisibility(for_peer int64, )  {
-  classNameV := StringNameFromStr("MultiplayerSynchronizer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("update_visibility")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1995695955) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&for_peer) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiplayerSynchronizer.fnUpdateVisibility), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiplayerSynchronizer) SetVisibilityPublic(visible bool, )  {
-  classNameV := StringNameFromStr("MultiplayerSynchronizer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_visibility_public")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&visible) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiplayerSynchronizer.fnSetVisibilityPublic), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiplayerSynchronizer) IsVisibilityPublic() bool {
-  classNameV := StringNameFromStr("MultiplayerSynchronizer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_visibility_public")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiplayerSynchronizer.fnIsVisibilityPublic), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *MultiplayerSynchronizer) AddVisibilityFilter(filter Callable, )  {
-  classNameV := StringNameFromStr("MultiplayerSynchronizer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_visibility_filter")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1611583062) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{filter.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiplayerSynchronizer.fnAddVisibilityFilter), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiplayerSynchronizer) RemoveVisibilityFilter(filter Callable, )  {
-  classNameV := StringNameFromStr("MultiplayerSynchronizer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_visibility_filter")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1611583062) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{filter.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiplayerSynchronizer.fnRemoveVisibilityFilter), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiplayerSynchronizer) SetVisibilityFor(peer int64, visible bool, )  {
-  classNameV := StringNameFromStr("MultiplayerSynchronizer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_visibility_for")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 300928843) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peer) , gdc.ConstTypePtr(&visible) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiplayerSynchronizer.fnSetVisibilityFor), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiplayerSynchronizer) GetVisibilityFor(peer int64, ) bool {
-  classNameV := StringNameFromStr("MultiplayerSynchronizer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_visibility_for")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peer) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
   pinner.Pin(&peer)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiplayerSynchronizer.fnGetVisibilityFor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

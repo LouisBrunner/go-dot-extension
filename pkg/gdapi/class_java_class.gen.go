@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForJavaClassList struct {
+}
+
+var ptrsForJavaClass ptrsForJavaClassList
+
+func initJavaClassPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("JavaClass")
+  defer className.Destroy()
+}
+
 type JavaClass struct {
   RefCounted
 }

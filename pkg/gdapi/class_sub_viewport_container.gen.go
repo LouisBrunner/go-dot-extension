@@ -14,6 +14,42 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSubViewportContainerList struct {
+  fnXPropagateInputEvent gdc.MethodBindPtr
+  fnSetStretch gdc.MethodBindPtr
+  fnIsStretchEnabled gdc.MethodBindPtr
+  fnSetStretchShrink gdc.MethodBindPtr
+  fnGetStretchShrink gdc.MethodBindPtr
+}
+
+var ptrsForSubViewportContainer ptrsForSubViewportContainerList
+
+func initSubViewportContainerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("SubViewportContainer")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_stretch")
+    defer methodName.Destroy()
+    ptrsForSubViewportContainer.fnSetStretch = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_stretch_enabled")
+    defer methodName.Destroy()
+    ptrsForSubViewportContainer.fnIsStretchEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_stretch_shrink")
+    defer methodName.Destroy()
+    ptrsForSubViewportContainer.fnSetStretchShrink = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_stretch_shrink")
+    defer methodName.Destroy()
+    ptrsForSubViewportContainer.fnGetStretchShrink = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+}
+
 type SubViewportContainer struct {
   Container
 }
@@ -51,60 +87,40 @@ func (me *SubViewportContainer) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *SubViewportContainer) SetStretch(enable bool, )  {
-  classNameV := StringNameFromStr("SubViewportContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_stretch")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSubViewportContainer.fnSetStretch), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SubViewportContainer) IsStretchEnabled() bool {
-  classNameV := StringNameFromStr("SubViewportContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_stretch_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSubViewportContainer.fnIsStretchEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *SubViewportContainer) SetStretchShrink(amount int64, )  {
-  classNameV := StringNameFromStr("SubViewportContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_stretch_shrink")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSubViewportContainer.fnSetStretchShrink), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SubViewportContainer) GetStretchShrink() int64 {
-  classNameV := StringNameFromStr("SubViewportContainer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_stretch_shrink")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSubViewportContainer.fnGetStretchShrink), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

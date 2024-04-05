@@ -14,6 +14,35 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForArrayOccluder3DList struct {
+  fnSetArrays gdc.MethodBindPtr
+  fnSetVertices gdc.MethodBindPtr
+  fnSetIndices gdc.MethodBindPtr
+}
+
+var ptrsForArrayOccluder3D ptrsForArrayOccluder3DList
+
+func initArrayOccluder3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ArrayOccluder3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_arrays")
+    defer methodName.Destroy()
+    ptrsForArrayOccluder3D.fnSetArrays = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3233972621))
+  }
+  {
+    methodName := StringNameFromStr("set_vertices")
+    defer methodName.Destroy()
+    ptrsForArrayOccluder3D.fnSetVertices = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 334873810))
+  }
+  {
+    methodName := StringNameFromStr("set_indices")
+    defer methodName.Destroy()
+    ptrsForArrayOccluder3D.fnSetIndices = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3614634198))
+  }
+}
+
 type ArrayOccluder3D struct {
   Occluder3D
 }
@@ -51,44 +80,29 @@ func (me *ArrayOccluder3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ArrayOccluder3D) SetArrays(vertices PackedVector3Array, indices PackedInt32Array, )  {
-  classNameV := StringNameFromStr("ArrayOccluder3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_arrays")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3233972621) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{vertices.AsCTypePtr(), indices.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayOccluder3D.fnSetArrays), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ArrayOccluder3D) SetVertices(vertices PackedVector3Array, )  {
-  classNameV := StringNameFromStr("ArrayOccluder3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_vertices")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 334873810) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{vertices.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayOccluder3D.fnSetVertices), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ArrayOccluder3D) SetIndices(indices PackedInt32Array, )  {
-  classNameV := StringNameFromStr("ArrayOccluder3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_indices")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3614634198) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{indices.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForArrayOccluder3D.fnSetIndices), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

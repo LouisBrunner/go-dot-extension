@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeParticleRingEmitterList struct {
+}
+
+var ptrsForVisualShaderNodeParticleRingEmitter ptrsForVisualShaderNodeParticleRingEmitterList
+
+func initVisualShaderNodeParticleRingEmitterPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeParticleRingEmitter")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeParticleRingEmitter struct {
   VisualShaderNodeParticleEmitter
 }

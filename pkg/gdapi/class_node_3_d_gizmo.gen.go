@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForNode3DGizmoList struct {
+}
+
+var ptrsForNode3DGizmo ptrsForNode3DGizmoList
+
+func initNode3DGizmoPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Node3DGizmo")
+  defer className.Destroy()
+}
+
 type Node3DGizmo struct {
   RefCounted
 }

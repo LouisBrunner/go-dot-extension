@@ -14,6 +14,79 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorResourcePickerList struct {
+  fnXSetCreateOptions gdc.MethodBindPtr
+  fnXHandleMenuSelected gdc.MethodBindPtr
+  fnSetBaseType gdc.MethodBindPtr
+  fnGetBaseType gdc.MethodBindPtr
+  fnGetAllowedTypes gdc.MethodBindPtr
+  fnSetEditedResource gdc.MethodBindPtr
+  fnGetEditedResource gdc.MethodBindPtr
+  fnSetToggleMode gdc.MethodBindPtr
+  fnIsToggleMode gdc.MethodBindPtr
+  fnSetTogglePressed gdc.MethodBindPtr
+  fnSetEditable gdc.MethodBindPtr
+  fnIsEditable gdc.MethodBindPtr
+}
+
+var ptrsForEditorResourcePicker ptrsForEditorResourcePickerList
+
+func initEditorResourcePickerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorResourcePicker")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_base_type")
+    defer methodName.Destroy()
+    ptrsForEditorResourcePicker.fnSetBaseType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_base_type")
+    defer methodName.Destroy()
+    ptrsForEditorResourcePicker.fnGetBaseType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("get_allowed_types")
+    defer methodName.Destroy()
+    ptrsForEditorResourcePicker.fnGetAllowedTypes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1139954409))
+  }
+  {
+    methodName := StringNameFromStr("set_edited_resource")
+    defer methodName.Destroy()
+    ptrsForEditorResourcePicker.fnSetEditedResource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 968641751))
+  }
+  {
+    methodName := StringNameFromStr("get_edited_resource")
+    defer methodName.Destroy()
+    ptrsForEditorResourcePicker.fnGetEditedResource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2674603643))
+  }
+  {
+    methodName := StringNameFromStr("set_toggle_mode")
+    defer methodName.Destroy()
+    ptrsForEditorResourcePicker.fnSetToggleMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_toggle_mode")
+    defer methodName.Destroy()
+    ptrsForEditorResourcePicker.fnIsToggleMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_toggle_pressed")
+    defer methodName.Destroy()
+    ptrsForEditorResourcePicker.fnSetTogglePressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("set_editable")
+    defer methodName.Destroy()
+    ptrsForEditorResourcePicker.fnSetEditable = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_editable")
+    defer methodName.Destroy()
+    ptrsForEditorResourcePicker.fnIsEditable = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type EditorResourcePicker struct {
   HBoxContainer
 }
@@ -51,147 +124,97 @@ func (me *EditorResourcePicker) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *EditorResourcePicker) SetBaseType(base_type String, )  {
-  classNameV := StringNameFromStr("EditorResourcePicker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_base_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{base_type.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorResourcePicker.fnSetBaseType), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorResourcePicker) GetBaseType() String {
-  classNameV := StringNameFromStr("EditorResourcePicker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_base_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorResourcePicker.fnGetBaseType), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorResourcePicker) GetAllowedTypes() PackedStringArray {
-  classNameV := StringNameFromStr("EditorResourcePicker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_allowed_types")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedStringArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorResourcePicker.fnGetAllowedTypes), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorResourcePicker) SetEditedResource(resource Resource, )  {
-  classNameV := StringNameFromStr("EditorResourcePicker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_edited_resource")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 968641751) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{resource.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorResourcePicker.fnSetEditedResource), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorResourcePicker) GetEditedResource() Resource {
-  classNameV := StringNameFromStr("EditorResourcePicker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_edited_resource")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2674603643) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewResource()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorResourcePicker.fnGetEditedResource), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorResourcePicker) SetToggleMode(enable bool, )  {
-  classNameV := StringNameFromStr("EditorResourcePicker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_toggle_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorResourcePicker.fnSetToggleMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorResourcePicker) IsToggleMode() bool {
-  classNameV := StringNameFromStr("EditorResourcePicker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_toggle_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorResourcePicker.fnIsToggleMode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *EditorResourcePicker) SetTogglePressed(pressed bool, )  {
-  classNameV := StringNameFromStr("EditorResourcePicker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_toggle_pressed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pressed) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorResourcePicker.fnSetTogglePressed), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorResourcePicker) SetEditable(enable bool, )  {
-  classNameV := StringNameFromStr("EditorResourcePicker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_editable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorResourcePicker.fnSetEditable), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorResourcePicker) IsEditable() bool {
-  classNameV := StringNameFromStr("EditorResourcePicker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_editable")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorResourcePicker.fnIsEditable), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

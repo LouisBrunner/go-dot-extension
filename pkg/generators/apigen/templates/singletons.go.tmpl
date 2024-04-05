@@ -15,7 +15,7 @@ func newSingletons(iface gdc.Interface) *singletons {
 {{end}}  return &singletons{
 {{range .}}    {{.Name}}: {{.Name}}{
       Object: Object{
-        obj: iface.GlobalGetSingleton(str{{.Name}}.AsCPtr()),
+        obj: ensurePtr(iface.GlobalGetSingleton(str{{.Name}}.AsCPtr())),
       },
     },
 {{end -}}

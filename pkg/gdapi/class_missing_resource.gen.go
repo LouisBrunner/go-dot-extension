@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForMissingResourceList struct {
+  fnSetOriginalClass gdc.MethodBindPtr
+  fnGetOriginalClass gdc.MethodBindPtr
+  fnSetRecordingProperties gdc.MethodBindPtr
+  fnIsRecordingProperties gdc.MethodBindPtr
+}
+
+var ptrsForMissingResource ptrsForMissingResourceList
+
+func initMissingResourcePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("MissingResource")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_original_class")
+    defer methodName.Destroy()
+    ptrsForMissingResource.fnSetOriginalClass = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_original_class")
+    defer methodName.Destroy()
+    ptrsForMissingResource.fnGetOriginalClass = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("set_recording_properties")
+    defer methodName.Destroy()
+    ptrsForMissingResource.fnSetRecordingProperties = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_recording_properties")
+    defer methodName.Destroy()
+    ptrsForMissingResource.fnIsRecordingProperties = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type MissingResource struct {
   Resource
 }
@@ -51,60 +86,40 @@ func (me *MissingResource) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *MissingResource) SetOriginalClass(name String, )  {
-  classNameV := StringNameFromStr("MissingResource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_original_class")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMissingResource.fnSetOriginalClass), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MissingResource) GetOriginalClass() String {
-  classNameV := StringNameFromStr("MissingResource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_original_class")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMissingResource.fnGetOriginalClass), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *MissingResource) SetRecordingProperties(enable bool, )  {
-  classNameV := StringNameFromStr("MissingResource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_recording_properties")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMissingResource.fnSetRecordingProperties), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MissingResource) IsRecordingProperties() bool {
-  classNameV := StringNameFromStr("MissingResource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_recording_properties")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMissingResource.fnIsRecordingProperties), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

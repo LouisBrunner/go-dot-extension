@@ -14,6 +14,119 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForWebXRInterfaceList struct {
+  fnIsSessionSupported gdc.MethodBindPtr
+  fnSetSessionMode gdc.MethodBindPtr
+  fnGetSessionMode gdc.MethodBindPtr
+  fnSetRequiredFeatures gdc.MethodBindPtr
+  fnGetRequiredFeatures gdc.MethodBindPtr
+  fnSetOptionalFeatures gdc.MethodBindPtr
+  fnGetOptionalFeatures gdc.MethodBindPtr
+  fnGetReferenceSpaceType gdc.MethodBindPtr
+  fnSetRequestedReferenceSpaceTypes gdc.MethodBindPtr
+  fnGetRequestedReferenceSpaceTypes gdc.MethodBindPtr
+  fnIsInputSourceActive gdc.MethodBindPtr
+  fnGetInputSourceTracker gdc.MethodBindPtr
+  fnGetInputSourceTargetRayMode gdc.MethodBindPtr
+  fnGetVisibilityState gdc.MethodBindPtr
+  fnGetDisplayRefreshRate gdc.MethodBindPtr
+  fnSetDisplayRefreshRate gdc.MethodBindPtr
+  fnGetAvailableDisplayRefreshRates gdc.MethodBindPtr
+}
+
+var ptrsForWebXRInterface ptrsForWebXRInterfaceList
+
+func initWebXRInterfacePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("WebXRInterface")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("is_session_supported")
+    defer methodName.Destroy()
+    ptrsForWebXRInterface.fnIsSessionSupported = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("set_session_mode")
+    defer methodName.Destroy()
+    ptrsForWebXRInterface.fnSetSessionMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_session_mode")
+    defer methodName.Destroy()
+    ptrsForWebXRInterface.fnGetSessionMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("set_required_features")
+    defer methodName.Destroy()
+    ptrsForWebXRInterface.fnSetRequiredFeatures = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_required_features")
+    defer methodName.Destroy()
+    ptrsForWebXRInterface.fnGetRequiredFeatures = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("set_optional_features")
+    defer methodName.Destroy()
+    ptrsForWebXRInterface.fnSetOptionalFeatures = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_optional_features")
+    defer methodName.Destroy()
+    ptrsForWebXRInterface.fnGetOptionalFeatures = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("get_reference_space_type")
+    defer methodName.Destroy()
+    ptrsForWebXRInterface.fnGetReferenceSpaceType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("set_requested_reference_space_types")
+    defer methodName.Destroy()
+    ptrsForWebXRInterface.fnSetRequestedReferenceSpaceTypes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_requested_reference_space_types")
+    defer methodName.Destroy()
+    ptrsForWebXRInterface.fnGetRequestedReferenceSpaceTypes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("is_input_source_active")
+    defer methodName.Destroy()
+    ptrsForWebXRInterface.fnIsInputSourceActive = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
+  }
+  {
+    methodName := StringNameFromStr("get_input_source_tracker")
+    defer methodName.Destroy()
+    ptrsForWebXRInterface.fnGetInputSourceTracker = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 636011756))
+  }
+  {
+    methodName := StringNameFromStr("get_input_source_target_ray_mode")
+    defer methodName.Destroy()
+    ptrsForWebXRInterface.fnGetInputSourceTargetRayMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2852387453))
+  }
+  {
+    methodName := StringNameFromStr("get_visibility_state")
+    defer methodName.Destroy()
+    ptrsForWebXRInterface.fnGetVisibilityState = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("get_display_refresh_rate")
+    defer methodName.Destroy()
+    ptrsForWebXRInterface.fnGetDisplayRefreshRate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_display_refresh_rate")
+    defer methodName.Destroy()
+    ptrsForWebXRInterface.fnSetDisplayRefreshRate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_available_display_refresh_rates")
+    defer methodName.Destroy()
+    ptrsForWebXRInterface.fnGetAvailableDisplayRefreshRates = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+  }
+}
+
 type WebXRInterface struct {
   XRInterface
 }
@@ -59,254 +172,169 @@ func (me *WebXRInterface) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *WebXRInterface) IsSessionSupported(session_mode String, )  {
-  classNameV := StringNameFromStr("WebXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_session_supported")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{session_mode.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnIsSessionSupported), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *WebXRInterface) SetSessionMode(session_mode String, )  {
-  classNameV := StringNameFromStr("WebXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_session_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{session_mode.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnSetSessionMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *WebXRInterface) GetSessionMode() String {
-  classNameV := StringNameFromStr("WebXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_session_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnGetSessionMode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *WebXRInterface) SetRequiredFeatures(required_features String, )  {
-  classNameV := StringNameFromStr("WebXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_required_features")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{required_features.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnSetRequiredFeatures), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *WebXRInterface) GetRequiredFeatures() String {
-  classNameV := StringNameFromStr("WebXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_required_features")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnGetRequiredFeatures), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *WebXRInterface) SetOptionalFeatures(optional_features String, )  {
-  classNameV := StringNameFromStr("WebXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_optional_features")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{optional_features.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnSetOptionalFeatures), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *WebXRInterface) GetOptionalFeatures() String {
-  classNameV := StringNameFromStr("WebXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_optional_features")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnGetOptionalFeatures), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *WebXRInterface) GetReferenceSpaceType() String {
-  classNameV := StringNameFromStr("WebXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_reference_space_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnGetReferenceSpaceType), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *WebXRInterface) SetRequestedReferenceSpaceTypes(requested_reference_space_types String, )  {
-  classNameV := StringNameFromStr("WebXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_requested_reference_space_types")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{requested_reference_space_types.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnSetRequestedReferenceSpaceTypes), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *WebXRInterface) GetRequestedReferenceSpaceTypes() String {
-  classNameV := StringNameFromStr("WebXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_requested_reference_space_types")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnGetRequestedReferenceSpaceTypes), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *WebXRInterface) IsInputSourceActive(input_source_id int64, ) bool {
-  classNameV := StringNameFromStr("WebXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_input_source_active")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1116898809) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input_source_id) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
   pinner.Pin(&input_source_id)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnIsInputSourceActive), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *WebXRInterface) GetInputSourceTracker(input_source_id int64, ) XRPositionalTracker {
-  classNameV := StringNameFromStr("WebXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_input_source_tracker")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 636011756) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input_source_id) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewXRPositionalTracker()
   pinner.Pin(&input_source_id)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnGetInputSourceTracker), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *WebXRInterface) GetInputSourceTargetRayMode(input_source_id int64, ) WebXRInterfaceTargetRayMode {
-  classNameV := StringNameFromStr("WebXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_input_source_target_ray_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2852387453) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input_source_id) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret WebXRInterfaceTargetRayMode
   pinner.Pin(&input_source_id)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnGetInputSourceTargetRayMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *WebXRInterface) GetVisibilityState() String {
-  classNameV := StringNameFromStr("WebXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_visibility_state")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnGetVisibilityState), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *WebXRInterface) GetDisplayRefreshRate() float64 {
-  classNameV := StringNameFromStr("WebXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_display_refresh_rate")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnGetDisplayRefreshRate), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *WebXRInterface) SetDisplayRefreshRate(refresh_rate float64, )  {
-  classNameV := StringNameFromStr("WebXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_display_refresh_rate")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&refresh_rate) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnSetDisplayRefreshRate), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *WebXRInterface) GetAvailableDisplayRefreshRates() Array {
-  classNameV := StringNameFromStr("WebXRInterface")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_available_display_refresh_rates")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnGetAvailableDisplayRefreshRates), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

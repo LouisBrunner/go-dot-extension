@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForResourceImporterWAVList struct {
+}
+
+var ptrsForResourceImporterWAV ptrsForResourceImporterWAVList
+
+func initResourceImporterWAVPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ResourceImporterWAV")
+  defer className.Destroy()
+}
+
 type ResourceImporterWAV struct {
   ResourceImporter
 }

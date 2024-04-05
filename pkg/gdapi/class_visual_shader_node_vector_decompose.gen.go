@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeVectorDecomposeList struct {
+}
+
+var ptrsForVisualShaderNodeVectorDecompose ptrsForVisualShaderNodeVectorDecomposeList
+
+func initVisualShaderNodeVectorDecomposePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeVectorDecompose")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeVectorDecompose struct {
   VisualShaderNodeVectorBase
 }

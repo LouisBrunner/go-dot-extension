@@ -14,6 +14,36 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVideoStreamPlaybackList struct {
+  fnXStop gdc.MethodBindPtr
+  fnXPlay gdc.MethodBindPtr
+  fnXIsPlaying gdc.MethodBindPtr
+  fnXSetPaused gdc.MethodBindPtr
+  fnXIsPaused gdc.MethodBindPtr
+  fnXGetLength gdc.MethodBindPtr
+  fnXGetPlaybackPosition gdc.MethodBindPtr
+  fnXSeek gdc.MethodBindPtr
+  fnXSetAudioTrack gdc.MethodBindPtr
+  fnXGetTexture gdc.MethodBindPtr
+  fnXUpdate gdc.MethodBindPtr
+  fnXGetChannels gdc.MethodBindPtr
+  fnXGetMixRate gdc.MethodBindPtr
+  fnMixAudio gdc.MethodBindPtr
+}
+
+var ptrsForVideoStreamPlayback ptrsForVideoStreamPlaybackList
+
+func initVideoStreamPlaybackPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VideoStreamPlayback")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("mix_audio")
+    defer methodName.Destroy()
+    ptrsForVideoStreamPlayback.fnMixAudio = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 93876830))
+  }
+}
+
 type VideoStreamPlayback struct {
   Resource
 }
@@ -51,11 +81,6 @@ func (me *VideoStreamPlayback) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VideoStreamPlayback) MixAudio(num_frames int64, buffer PackedFloat32Array, offset int64, ) int64 {
-  classNameV := StringNameFromStr("VideoStreamPlayback")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("mix_audio")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 93876830) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&num_frames) , buffer.AsCTypePtr(), gdc.ConstTypePtr(&offset) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -63,7 +88,7 @@ func  (me *VideoStreamPlayback) MixAudio(num_frames int64, buffer PackedFloat32A
   pinner.Pin(&num_frames)
   pinner.Pin(&offset)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVideoStreamPlayback.fnMixAudio), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 

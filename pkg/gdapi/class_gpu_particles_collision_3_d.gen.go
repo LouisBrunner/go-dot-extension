@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForGPUParticlesCollision3DList struct {
+  fnSetCullMask gdc.MethodBindPtr
+  fnGetCullMask gdc.MethodBindPtr
+}
+
+var ptrsForGPUParticlesCollision3D ptrsForGPUParticlesCollision3DList
+
+func initGPUParticlesCollision3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("GPUParticlesCollision3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_cull_mask")
+    defer methodName.Destroy()
+    ptrsForGPUParticlesCollision3D.fnSetCullMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_cull_mask")
+    defer methodName.Destroy()
+    ptrsForGPUParticlesCollision3D.fnGetCullMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+}
+
 type GPUParticlesCollision3D struct {
   VisualInstance3D
 }
@@ -51,31 +74,21 @@ func (me *GPUParticlesCollision3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *GPUParticlesCollision3D) SetCullMask(mask int64, )  {
-  classNameV := StringNameFromStr("GPUParticlesCollision3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_cull_mask")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGPUParticlesCollision3D.fnSetCullMask), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GPUParticlesCollision3D) GetCullMask() int64 {
-  classNameV := StringNameFromStr("GPUParticlesCollision3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_cull_mask")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGPUParticlesCollision3D.fnGetCullMask), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

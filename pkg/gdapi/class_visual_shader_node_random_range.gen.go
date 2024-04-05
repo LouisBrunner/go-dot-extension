@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeRandomRangeList struct {
+}
+
+var ptrsForVisualShaderNodeRandomRange ptrsForVisualShaderNodeRandomRangeList
+
+func initVisualShaderNodeRandomRangePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeRandomRange")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeRandomRange struct {
   VisualShaderNode
 }

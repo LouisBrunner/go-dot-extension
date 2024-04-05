@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeRotationByAxisList struct {
+}
+
+var ptrsForVisualShaderNodeRotationByAxis ptrsForVisualShaderNodeRotationByAxisList
+
+func initVisualShaderNodeRotationByAxisPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeRotationByAxis")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeRotationByAxis struct {
   VisualShaderNode
 }

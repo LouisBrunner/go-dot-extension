@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioStreamPlaybackOggVorbisList struct {
+}
+
+var ptrsForAudioStreamPlaybackOggVorbis ptrsForAudioStreamPlaybackOggVorbisList
+
+func initAudioStreamPlaybackOggVorbisPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioStreamPlaybackOggVorbis")
+  defer className.Destroy()
+}
+
 type AudioStreamPlaybackOggVorbis struct {
   AudioStreamPlaybackResampled
 }

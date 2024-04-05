@@ -14,6 +14,32 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorDebuggerPluginList struct {
+  fnXSetupSession gdc.MethodBindPtr
+  fnXHasCapture gdc.MethodBindPtr
+  fnXCapture gdc.MethodBindPtr
+  fnGetSession gdc.MethodBindPtr
+  fnGetSessions gdc.MethodBindPtr
+}
+
+var ptrsForEditorDebuggerPlugin ptrsForEditorDebuggerPluginList
+
+func initEditorDebuggerPluginPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorDebuggerPlugin")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_session")
+    defer methodName.Destroy()
+    ptrsForEditorDebuggerPlugin.fnGetSession = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3061968499))
+  }
+  {
+    methodName := StringNameFromStr("get_sessions")
+    defer methodName.Destroy()
+    ptrsForEditorDebuggerPlugin.fnGetSessions = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2915620761))
+  }
+}
+
 type EditorDebuggerPlugin struct {
   RefCounted
 }
@@ -51,33 +77,23 @@ func (me *EditorDebuggerPlugin) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *EditorDebuggerPlugin) GetSession(id int64, ) EditorDebuggerSession {
-  classNameV := StringNameFromStr("EditorDebuggerPlugin")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_session")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3061968499) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&id) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewEditorDebuggerSession()
   pinner.Pin(&id)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorDebuggerPlugin.fnGetSession), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorDebuggerPlugin) GetSessions() Array {
-  classNameV := StringNameFromStr("EditorDebuggerPlugin")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_sessions")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2915620761) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorDebuggerPlugin.fnGetSessions), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

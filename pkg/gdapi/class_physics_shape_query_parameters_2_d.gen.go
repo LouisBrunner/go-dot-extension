@@ -14,6 +14,125 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPhysicsShapeQueryParameters2DList struct {
+  fnSetShape gdc.MethodBindPtr
+  fnGetShape gdc.MethodBindPtr
+  fnSetShapeRid gdc.MethodBindPtr
+  fnGetShapeRid gdc.MethodBindPtr
+  fnSetTransform gdc.MethodBindPtr
+  fnGetTransform gdc.MethodBindPtr
+  fnSetMotion gdc.MethodBindPtr
+  fnGetMotion gdc.MethodBindPtr
+  fnSetMargin gdc.MethodBindPtr
+  fnGetMargin gdc.MethodBindPtr
+  fnSetCollisionMask gdc.MethodBindPtr
+  fnGetCollisionMask gdc.MethodBindPtr
+  fnSetExclude gdc.MethodBindPtr
+  fnGetExclude gdc.MethodBindPtr
+  fnSetCollideWithBodies gdc.MethodBindPtr
+  fnIsCollideWithBodiesEnabled gdc.MethodBindPtr
+  fnSetCollideWithAreas gdc.MethodBindPtr
+  fnIsCollideWithAreasEnabled gdc.MethodBindPtr
+}
+
+var ptrsForPhysicsShapeQueryParameters2D ptrsForPhysicsShapeQueryParameters2DList
+
+func initPhysicsShapeQueryParameters2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PhysicsShapeQueryParameters2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_shape")
+    defer methodName.Destroy()
+    ptrsForPhysicsShapeQueryParameters2D.fnSetShape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 968641751))
+  }
+  {
+    methodName := StringNameFromStr("get_shape")
+    defer methodName.Destroy()
+    ptrsForPhysicsShapeQueryParameters2D.fnGetShape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 121922552))
+  }
+  {
+    methodName := StringNameFromStr("set_shape_rid")
+    defer methodName.Destroy()
+    ptrsForPhysicsShapeQueryParameters2D.fnSetShapeRid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2722037293))
+  }
+  {
+    methodName := StringNameFromStr("get_shape_rid")
+    defer methodName.Destroy()
+    ptrsForPhysicsShapeQueryParameters2D.fnGetShapeRid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
+  }
+  {
+    methodName := StringNameFromStr("set_transform")
+    defer methodName.Destroy()
+    ptrsForPhysicsShapeQueryParameters2D.fnSetTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2761652528))
+  }
+  {
+    methodName := StringNameFromStr("get_transform")
+    defer methodName.Destroy()
+    ptrsForPhysicsShapeQueryParameters2D.fnGetTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3814499831))
+  }
+  {
+    methodName := StringNameFromStr("set_motion")
+    defer methodName.Destroy()
+    ptrsForPhysicsShapeQueryParameters2D.fnSetMotion = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+  }
+  {
+    methodName := StringNameFromStr("get_motion")
+    defer methodName.Destroy()
+    ptrsForPhysicsShapeQueryParameters2D.fnGetMotion = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+  }
+  {
+    methodName := StringNameFromStr("set_margin")
+    defer methodName.Destroy()
+    ptrsForPhysicsShapeQueryParameters2D.fnSetMargin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_margin")
+    defer methodName.Destroy()
+    ptrsForPhysicsShapeQueryParameters2D.fnGetMargin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_collision_mask")
+    defer methodName.Destroy()
+    ptrsForPhysicsShapeQueryParameters2D.fnSetCollisionMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_collision_mask")
+    defer methodName.Destroy()
+    ptrsForPhysicsShapeQueryParameters2D.fnGetCollisionMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_exclude")
+    defer methodName.Destroy()
+    ptrsForPhysicsShapeQueryParameters2D.fnSetExclude = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 381264803))
+  }
+  {
+    methodName := StringNameFromStr("get_exclude")
+    defer methodName.Destroy()
+    ptrsForPhysicsShapeQueryParameters2D.fnGetExclude = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+  }
+  {
+    methodName := StringNameFromStr("set_collide_with_bodies")
+    defer methodName.Destroy()
+    ptrsForPhysicsShapeQueryParameters2D.fnSetCollideWithBodies = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_collide_with_bodies_enabled")
+    defer methodName.Destroy()
+    ptrsForPhysicsShapeQueryParameters2D.fnIsCollideWithBodiesEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_collide_with_areas")
+    defer methodName.Destroy()
+    ptrsForPhysicsShapeQueryParameters2D.fnSetCollideWithAreas = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_collide_with_areas_enabled")
+    defer methodName.Destroy()
+    ptrsForPhysicsShapeQueryParameters2D.fnIsCollideWithAreasEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type PhysicsShapeQueryParameters2D struct {
   RefCounted
 }
@@ -51,206 +170,136 @@ func (me *PhysicsShapeQueryParameters2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PhysicsShapeQueryParameters2D) SetShape(shape Resource, )  {
-  classNameV := StringNameFromStr("PhysicsShapeQueryParameters2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_shape")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 968641751) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{shape.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsShapeQueryParameters2D.fnSetShape), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PhysicsShapeQueryParameters2D) GetShape() Resource {
-  classNameV := StringNameFromStr("PhysicsShapeQueryParameters2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_shape")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 121922552) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewResource()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsShapeQueryParameters2D.fnGetShape), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PhysicsShapeQueryParameters2D) SetShapeRid(shape RID, )  {
-  classNameV := StringNameFromStr("PhysicsShapeQueryParameters2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_shape_rid")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2722037293) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{shape.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsShapeQueryParameters2D.fnSetShapeRid), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PhysicsShapeQueryParameters2D) GetShapeRid() RID {
-  classNameV := StringNameFromStr("PhysicsShapeQueryParameters2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_shape_rid")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRID()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsShapeQueryParameters2D.fnGetShapeRid), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PhysicsShapeQueryParameters2D) SetTransform(transform Transform2D, )  {
-  classNameV := StringNameFromStr("PhysicsShapeQueryParameters2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2761652528) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{transform.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsShapeQueryParameters2D.fnSetTransform), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PhysicsShapeQueryParameters2D) GetTransform() Transform2D {
-  classNameV := StringNameFromStr("PhysicsShapeQueryParameters2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_transform")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3814499831) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTransform2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsShapeQueryParameters2D.fnGetTransform), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PhysicsShapeQueryParameters2D) SetMotion(motion Vector2, )  {
-  classNameV := StringNameFromStr("PhysicsShapeQueryParameters2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_motion")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 743155724) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{motion.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsShapeQueryParameters2D.fnSetMotion), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PhysicsShapeQueryParameters2D) GetMotion() Vector2 {
-  classNameV := StringNameFromStr("PhysicsShapeQueryParameters2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_motion")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3341600327) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVector2()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsShapeQueryParameters2D.fnGetMotion), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PhysicsShapeQueryParameters2D) SetMargin(margin float64, )  {
-  classNameV := StringNameFromStr("PhysicsShapeQueryParameters2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_margin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&margin) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsShapeQueryParameters2D.fnSetMargin), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PhysicsShapeQueryParameters2D) GetMargin() float64 {
-  classNameV := StringNameFromStr("PhysicsShapeQueryParameters2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_margin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsShapeQueryParameters2D.fnGetMargin), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *PhysicsShapeQueryParameters2D) SetCollisionMask(collision_mask int64, )  {
-  classNameV := StringNameFromStr("PhysicsShapeQueryParameters2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_collision_mask")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&collision_mask) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsShapeQueryParameters2D.fnSetCollisionMask), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PhysicsShapeQueryParameters2D) GetCollisionMask() int64 {
-  classNameV := StringNameFromStr("PhysicsShapeQueryParameters2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_collision_mask")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsShapeQueryParameters2D.fnGetCollisionMask), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *PhysicsShapeQueryParameters2D) SetExclude(exclude []RID, )  {
-  classNameV := StringNameFromStr("PhysicsShapeQueryParameters2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_exclude")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 381264803) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&exclude) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsShapeQueryParameters2D.fnSetExclude), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PhysicsShapeQueryParameters2D) GetExclude() []RID {
-  classNameV := StringNameFromStr("PhysicsShapeQueryParameters2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_exclude")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3995934104) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewArray()
   defer ret.Destroy()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsShapeQueryParameters2D.fnGetExclude), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   sliceRet, err := ConvertArrayToSlice[RID](ret)
   if err != nil {
     log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -260,60 +309,40 @@ return sliceRet
 }
 
 func  (me *PhysicsShapeQueryParameters2D) SetCollideWithBodies(enable bool, )  {
-  classNameV := StringNameFromStr("PhysicsShapeQueryParameters2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_collide_with_bodies")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsShapeQueryParameters2D.fnSetCollideWithBodies), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PhysicsShapeQueryParameters2D) IsCollideWithBodiesEnabled() bool {
-  classNameV := StringNameFromStr("PhysicsShapeQueryParameters2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_collide_with_bodies_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsShapeQueryParameters2D.fnIsCollideWithBodiesEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *PhysicsShapeQueryParameters2D) SetCollideWithAreas(enable bool, )  {
-  classNameV := StringNameFromStr("PhysicsShapeQueryParameters2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_collide_with_areas")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsShapeQueryParameters2D.fnSetCollideWithAreas), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PhysicsShapeQueryParameters2D) IsCollideWithAreasEnabled() bool {
-  classNameV := StringNameFromStr("PhysicsShapeQueryParameters2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_collide_with_areas_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsShapeQueryParameters2D.fnIsCollideWithAreasEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

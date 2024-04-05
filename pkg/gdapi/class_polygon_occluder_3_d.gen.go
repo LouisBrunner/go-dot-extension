@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPolygonOccluder3DList struct {
+  fnSetPolygon gdc.MethodBindPtr
+  fnGetPolygon gdc.MethodBindPtr
+}
+
+var ptrsForPolygonOccluder3D ptrsForPolygonOccluder3DList
+
+func initPolygonOccluder3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PolygonOccluder3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_polygon")
+    defer methodName.Destroy()
+    ptrsForPolygonOccluder3D.fnSetPolygon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1509147220))
+  }
+  {
+    methodName := StringNameFromStr("get_polygon")
+    defer methodName.Destroy()
+    ptrsForPolygonOccluder3D.fnGetPolygon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2961356807))
+  }
+}
+
 type PolygonOccluder3D struct {
   Occluder3D
 }
@@ -51,31 +74,21 @@ func (me *PolygonOccluder3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PolygonOccluder3D) SetPolygon(polygon PackedVector2Array, )  {
-  classNameV := StringNameFromStr("PolygonOccluder3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_polygon")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1509147220) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{polygon.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPolygonOccluder3D.fnSetPolygon), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *PolygonOccluder3D) GetPolygon() PackedVector2Array {
-  classNameV := StringNameFromStr("PolygonOccluder3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_polygon")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2961356807) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedVector2Array()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPolygonOccluder3D.fnGetPolygon), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

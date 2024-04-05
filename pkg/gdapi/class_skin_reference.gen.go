@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSkinReferenceList struct {
+  fnGetSkeleton gdc.MethodBindPtr
+  fnGetSkin gdc.MethodBindPtr
+}
+
+var ptrsForSkinReference ptrsForSkinReferenceList
+
+func initSkinReferencePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("SkinReference")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_skeleton")
+    defer methodName.Destroy()
+    ptrsForSkinReference.fnGetSkeleton = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
+  }
+  {
+    methodName := StringNameFromStr("get_skin")
+    defer methodName.Destroy()
+    ptrsForSkinReference.fnGetSkin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2074563878))
+  }
+}
+
 type SkinReference struct {
   RefCounted
 }
@@ -51,32 +74,22 @@ func (me *SkinReference) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *SkinReference) GetSkeleton() RID {
-  classNameV := StringNameFromStr("SkinReference")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_skeleton")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2944877500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewRID()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkinReference.fnGetSkeleton), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *SkinReference) GetSkin() Skin {
-  classNameV := StringNameFromStr("SkinReference")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_skin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2074563878) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewSkin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkinReference.fnGetSkin), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

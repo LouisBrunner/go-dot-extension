@@ -54,7 +54,7 @@ func (me *classProperty) free(ext *extension, instance Class) {
 	if !is {
 		return
 	}
-	ext.iface.ObjectDestroy(gdc.ObjectPtr(obj.AsTypePtr())) // FIXME: silly cast
+	ext.iface.ObjectDestroy(obj.AsPtr())
 }
 
 func (me *classProperty) unregister(ext *extension, class *classEntry) {
@@ -110,7 +110,10 @@ func (me *classSignal) register(ext *extension, class *classEntry) {
 }
 
 func (me *classSignal) create(_ *extension, instance Class, obj gdc.ObjectPtr) {
-	reflectSetField(instance, me.name, *gdapi.NewSignalFromObjectStringName(*gdapi.ObjectFromPtr(obj), me.namePtr))
+	reflectSetField(instance, me.name, Signal{
+		obj:  *gdapi.ObjectFromPtr(obj),
+		name: me.namePtr,
+	})
 }
 
 func (me *classSignal) free(_ *extension, instance Class) {
@@ -141,7 +144,7 @@ func (me classSubscriber) free(ext *extension, instance Class) {
 	val := reflectGetFieldUnsafe(instance, string(me)).Interface()
 	subs, is := val.(gdapi.SignalSubscribers)
 	if !is {
-		ext.iface.ObjectDestroy(gdc.ObjectPtr(subs.AsTypePtr())) // FIXME: silly cast
+		ext.iface.ObjectDestroy(subs.AsPtr())
 	}
 }
 

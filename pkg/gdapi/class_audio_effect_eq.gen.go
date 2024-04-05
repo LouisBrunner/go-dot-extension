@@ -14,6 +14,35 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioEffectEQList struct {
+  fnSetBandGainDb gdc.MethodBindPtr
+  fnGetBandGainDb gdc.MethodBindPtr
+  fnGetBandCount gdc.MethodBindPtr
+}
+
+var ptrsForAudioEffectEQ ptrsForAudioEffectEQList
+
+func initAudioEffectEQPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioEffectEQ")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_band_gain_db")
+    defer methodName.Destroy()
+    ptrsForAudioEffectEQ.fnSetBandGainDb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1602489585))
+  }
+  {
+    methodName := StringNameFromStr("get_band_gain_db")
+    defer methodName.Destroy()
+    ptrsForAudioEffectEQ.fnGetBandGainDb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2339986948))
+  }
+  {
+    methodName := StringNameFromStr("get_band_count")
+    defer methodName.Destroy()
+    ptrsForAudioEffectEQ.fnGetBandCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+}
+
 type AudioEffectEQ struct {
   AudioEffect
 }
@@ -51,47 +80,32 @@ func (me *AudioEffectEQ) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AudioEffectEQ) SetBandGainDb(band_idx int64, volume_db float64, )  {
-  classNameV := StringNameFromStr("AudioEffectEQ")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_band_gain_db")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1602489585) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&band_idx) , gdc.ConstTypePtr(&volume_db) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectEQ.fnSetBandGainDb), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *AudioEffectEQ) GetBandGainDb(band_idx int64, ) float64 {
-  classNameV := StringNameFromStr("AudioEffectEQ")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_band_gain_db")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2339986948) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&band_idx) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
   pinner.Pin(&band_idx)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectEQ.fnGetBandGainDb), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *AudioEffectEQ) GetBandCount() int64 {
-  classNameV := StringNameFromStr("AudioEffectEQ")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_band_count")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioEffectEQ.fnGetBandCount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 

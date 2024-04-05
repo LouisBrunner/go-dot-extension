@@ -14,6 +14,21 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPacketPeerExtensionList struct {
+  fnXGetPacket gdc.MethodBindPtr
+  fnXPutPacket gdc.MethodBindPtr
+  fnXGetAvailablePacketCount gdc.MethodBindPtr
+  fnXGetMaxPacketSize gdc.MethodBindPtr
+}
+
+var ptrsForPacketPeerExtension ptrsForPacketPeerExtensionList
+
+func initPacketPeerExtensionPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PacketPeerExtension")
+  defer className.Destroy()
+}
+
 type PacketPeerExtension struct {
   PacketPeer
 }

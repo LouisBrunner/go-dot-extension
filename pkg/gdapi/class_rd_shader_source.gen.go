@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForRDShaderSourceList struct {
+  fnSetStageSource gdc.MethodBindPtr
+  fnGetStageSource gdc.MethodBindPtr
+  fnSetLanguage gdc.MethodBindPtr
+  fnGetLanguage gdc.MethodBindPtr
+}
+
+var ptrsForRDShaderSource ptrsForRDShaderSourceList
+
+func initRDShaderSourcePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("RDShaderSource")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_stage_source")
+    defer methodName.Destroy()
+    ptrsForRDShaderSource.fnSetStageSource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 620821314))
+  }
+  {
+    methodName := StringNameFromStr("get_stage_source")
+    defer methodName.Destroy()
+    ptrsForRDShaderSource.fnGetStageSource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3354920045))
+  }
+  {
+    methodName := StringNameFromStr("set_language")
+    defer methodName.Destroy()
+    ptrsForRDShaderSource.fnSetLanguage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3422186742))
+  }
+  {
+    methodName := StringNameFromStr("get_language")
+    defer methodName.Destroy()
+    ptrsForRDShaderSource.fnGetLanguage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1063538261))
+  }
+}
+
 type RDShaderSource struct {
   RefCounted
 }
@@ -51,61 +86,41 @@ func (me *RDShaderSource) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *RDShaderSource) SetStageSource(stage RenderingDeviceShaderStage, source String, )  {
-  classNameV := StringNameFromStr("RDShaderSource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_stage_source")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 620821314) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stage) , source.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDShaderSource.fnSetStageSource), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDShaderSource) GetStageSource(stage RenderingDeviceShaderStage, ) String {
-  classNameV := StringNameFromStr("RDShaderSource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_stage_source")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3354920045) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stage) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
   pinner.Pin(&stage)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDShaderSource.fnGetStageSource), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *RDShaderSource) SetLanguage(language RenderingDeviceShaderLanguage, )  {
-  classNameV := StringNameFromStr("RDShaderSource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_language")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3422186742) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&language) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDShaderSource.fnSetLanguage), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDShaderSource) GetLanguage() RenderingDeviceShaderLanguage {
-  classNameV := StringNameFromStr("RDShaderSource")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_language")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1063538261) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret RenderingDeviceShaderLanguage
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDShaderSource.fnGetLanguage), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

@@ -7,8 +7,8 @@ var time: float = 0
 @onready var my: MyNode2D = $MyNode2D
 
 func _ready() -> void:
-  my.monitor($ColorRect)
   my.secret_printed.connect(func(x): print(x))
+  my.monitor($ColorRect)
   my.report({ # non-string keys will be converted to strings
     "String Key": 5,
     4: [1, 2, 3],

@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSceneTreeTimerList struct {
+  fnSetTimeLeft gdc.MethodBindPtr
+  fnGetTimeLeft gdc.MethodBindPtr
+}
+
+var ptrsForSceneTreeTimer ptrsForSceneTreeTimerList
+
+func initSceneTreeTimerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("SceneTreeTimer")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_time_left")
+    defer methodName.Destroy()
+    ptrsForSceneTreeTimer.fnSetTimeLeft = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_time_left")
+    defer methodName.Destroy()
+    ptrsForSceneTreeTimer.fnGetTimeLeft = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type SceneTreeTimer struct {
   RefCounted
 }
@@ -51,31 +74,21 @@ func (me *SceneTreeTimer) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *SceneTreeTimer) SetTimeLeft(time float64, )  {
-  classNameV := StringNameFromStr("SceneTreeTimer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_time_left")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&time) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSceneTreeTimer.fnSetTimeLeft), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SceneTreeTimer) GetTimeLeft() float64 {
-  classNameV := StringNameFromStr("SceneTreeTimer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_time_left")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSceneTreeTimer.fnGetTimeLeft), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

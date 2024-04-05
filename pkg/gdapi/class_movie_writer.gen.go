@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForMovieWriterList struct {
+  fnXGetAudioMixRate gdc.MethodBindPtr
+  fnXGetAudioSpeakerMode gdc.MethodBindPtr
+  fnXHandlesFile gdc.MethodBindPtr
+  fnXWriteBegin gdc.MethodBindPtr
+  fnXWriteFrame gdc.MethodBindPtr
+  fnXWriteEnd gdc.MethodBindPtr
+  fnAddWriter gdc.MethodBindPtr
+}
+
+var ptrsForMovieWriter ptrsForMovieWriterList
+
+func initMovieWriterPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("MovieWriter")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("add_writer")
+    defer methodName.Destroy()
+    ptrsForMovieWriter.fnAddWriter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4023702871))
+  }
+}
+
 type MovieWriter struct {
   Object
 }
@@ -51,16 +74,11 @@ func (me *MovieWriter) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  MovieWriterAddWriter(writer MovieWriter, )  {
-  classNameV := StringNameFromStr("MovieWriter")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_writer")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4023702871) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{writer.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, nil, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMovieWriter.fnAddWriter), nil, unsafe.SliceData(cargs), nil)
 
 }
 

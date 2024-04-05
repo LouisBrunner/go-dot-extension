@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCSGMesh3DList struct {
+  fnSetMesh gdc.MethodBindPtr
+  fnGetMesh gdc.MethodBindPtr
+  fnSetMaterial gdc.MethodBindPtr
+  fnGetMaterial gdc.MethodBindPtr
+}
+
+var ptrsForCSGMesh3D ptrsForCSGMesh3DList
+
+func initCSGMesh3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CSGMesh3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_mesh")
+    defer methodName.Destroy()
+    ptrsForCSGMesh3D.fnSetMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 194775623))
+  }
+  {
+    methodName := StringNameFromStr("get_mesh")
+    defer methodName.Destroy()
+    ptrsForCSGMesh3D.fnGetMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4081188045))
+  }
+  {
+    methodName := StringNameFromStr("set_material")
+    defer methodName.Destroy()
+    ptrsForCSGMesh3D.fnSetMaterial = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2757459619))
+  }
+  {
+    methodName := StringNameFromStr("get_material")
+    defer methodName.Destroy()
+    ptrsForCSGMesh3D.fnGetMaterial = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 5934680))
+  }
+}
+
 type CSGMesh3D struct {
   CSGPrimitive3D
 }
@@ -51,60 +86,40 @@ func (me *CSGMesh3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *CSGMesh3D) SetMesh(mesh Mesh, )  {
-  classNameV := StringNameFromStr("CSGMesh3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_mesh")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 194775623) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{mesh.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCSGMesh3D.fnSetMesh), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CSGMesh3D) GetMesh() Mesh {
-  classNameV := StringNameFromStr("CSGMesh3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_mesh")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4081188045) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewMesh()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCSGMesh3D.fnGetMesh), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *CSGMesh3D) SetMaterial(material Material, )  {
-  classNameV := StringNameFromStr("CSGMesh3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_material")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2757459619) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{material.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCSGMesh3D.fnSetMaterial), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CSGMesh3D) GetMaterial() Material {
-  classNameV := StringNameFromStr("CSGMesh3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_material")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 5934680) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewMaterial()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCSGMesh3D.fnGetMaterial), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

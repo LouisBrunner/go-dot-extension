@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForTextureCubemapArrayRDList struct {
+}
+
+var ptrsForTextureCubemapArrayRD ptrsForTextureCubemapArrayRDList
+
+func initTextureCubemapArrayRDPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("TextureCubemapArrayRD")
+  defer className.Destroy()
+}
+
 type TextureCubemapArrayRD struct {
   TextureLayeredRD
 }

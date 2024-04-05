@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSkyList struct {
+  fnSetRadianceSize gdc.MethodBindPtr
+  fnGetRadianceSize gdc.MethodBindPtr
+  fnSetProcessMode gdc.MethodBindPtr
+  fnGetProcessMode gdc.MethodBindPtr
+  fnSetMaterial gdc.MethodBindPtr
+  fnGetMaterial gdc.MethodBindPtr
+}
+
+var ptrsForSky ptrsForSkyList
+
+func initSkyPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Sky")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_radiance_size")
+    defer methodName.Destroy()
+    ptrsForSky.fnSetRadianceSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1512957179))
+  }
+  {
+    methodName := StringNameFromStr("get_radiance_size")
+    defer methodName.Destroy()
+    ptrsForSky.fnGetRadianceSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2708733976))
+  }
+  {
+    methodName := StringNameFromStr("set_process_mode")
+    defer methodName.Destroy()
+    ptrsForSky.fnSetProcessMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 875986769))
+  }
+  {
+    methodName := StringNameFromStr("get_process_mode")
+    defer methodName.Destroy()
+    ptrsForSky.fnGetProcessMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 731245043))
+  }
+  {
+    methodName := StringNameFromStr("set_material")
+    defer methodName.Destroy()
+    ptrsForSky.fnSetMaterial = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2757459619))
+  }
+  {
+    methodName := StringNameFromStr("get_material")
+    defer methodName.Destroy()
+    ptrsForSky.fnGetMaterial = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 5934680))
+  }
+}
+
 type Sky struct {
   Resource
 }
@@ -71,89 +118,59 @@ func (me *Sky) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *Sky) SetRadianceSize(size SkyRadianceSize, )  {
-  classNameV := StringNameFromStr("Sky")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_radiance_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1512957179) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSky.fnSetRadianceSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Sky) GetRadianceSize() SkyRadianceSize {
-  classNameV := StringNameFromStr("Sky")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_radiance_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2708733976) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret SkyRadianceSize
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSky.fnGetRadianceSize), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Sky) SetProcessMode(mode SkyProcessMode, )  {
-  classNameV := StringNameFromStr("Sky")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_process_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 875986769) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSky.fnSetProcessMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Sky) GetProcessMode() SkyProcessMode {
-  classNameV := StringNameFromStr("Sky")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_process_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 731245043) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret SkyProcessMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSky.fnGetProcessMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *Sky) SetMaterial(material Material, )  {
-  classNameV := StringNameFromStr("Sky")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_material")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2757459619) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{material.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSky.fnSetMaterial), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *Sky) GetMaterial() Material {
-  classNameV := StringNameFromStr("Sky")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_material")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 5934680) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewMaterial()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSky.fnGetMaterial), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

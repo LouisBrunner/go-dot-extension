@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeParticleAcceleratorList struct {
+  fnSetMode gdc.MethodBindPtr
+  fnGetMode gdc.MethodBindPtr
+}
+
+var ptrsForVisualShaderNodeParticleAccelerator ptrsForVisualShaderNodeParticleAcceleratorList
+
+func initVisualShaderNodeParticleAcceleratorPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeParticleAccelerator")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_mode")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeParticleAccelerator.fnSetMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3457585749))
+  }
+  {
+    methodName := StringNameFromStr("get_mode")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeParticleAccelerator.fnGetMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2660365633))
+  }
+}
+
 type VisualShaderNodeParticleAccelerator struct {
   VisualShaderNode
 }
@@ -59,31 +82,21 @@ func (me *VisualShaderNodeParticleAccelerator) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisualShaderNodeParticleAccelerator) SetMode(mode VisualShaderNodeParticleAcceleratorMode, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeParticleAccelerator")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3457585749) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeParticleAccelerator.fnSetMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeParticleAccelerator) GetMode() VisualShaderNodeParticleAcceleratorMode {
-  classNameV := StringNameFromStr("VisualShaderNodeParticleAccelerator")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2660365633) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret VisualShaderNodeParticleAcceleratorMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeParticleAccelerator.fnGetMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

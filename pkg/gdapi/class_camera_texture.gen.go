@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCameraTextureList struct {
+  fnSetCameraFeedId gdc.MethodBindPtr
+  fnGetCameraFeedId gdc.MethodBindPtr
+  fnSetWhichFeed gdc.MethodBindPtr
+  fnGetWhichFeed gdc.MethodBindPtr
+  fnSetCameraActive gdc.MethodBindPtr
+  fnGetCameraActive gdc.MethodBindPtr
+}
+
+var ptrsForCameraTexture ptrsForCameraTextureList
+
+func initCameraTexturePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CameraTexture")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_camera_feed_id")
+    defer methodName.Destroy()
+    ptrsForCameraTexture.fnSetCameraFeedId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_camera_feed_id")
+    defer methodName.Destroy()
+    ptrsForCameraTexture.fnGetCameraFeedId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_which_feed")
+    defer methodName.Destroy()
+    ptrsForCameraTexture.fnSetWhichFeed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1595299230))
+  }
+  {
+    methodName := StringNameFromStr("get_which_feed")
+    defer methodName.Destroy()
+    ptrsForCameraTexture.fnGetWhichFeed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 91039457))
+  }
+  {
+    methodName := StringNameFromStr("set_camera_active")
+    defer methodName.Destroy()
+    ptrsForCameraTexture.fnSetCameraActive = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_camera_active")
+    defer methodName.Destroy()
+    ptrsForCameraTexture.fnGetCameraActive = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type CameraTexture struct {
   Texture2D
 }
@@ -51,89 +98,59 @@ func (me *CameraTexture) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *CameraTexture) SetCameraFeedId(feed_id int64, )  {
-  classNameV := StringNameFromStr("CameraTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_camera_feed_id")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&feed_id) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCameraTexture.fnSetCameraFeedId), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CameraTexture) GetCameraFeedId() int64 {
-  classNameV := StringNameFromStr("CameraTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_camera_feed_id")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCameraTexture.fnGetCameraFeedId), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *CameraTexture) SetWhichFeed(which_feed CameraServerFeedImage, )  {
-  classNameV := StringNameFromStr("CameraTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_which_feed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1595299230) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&which_feed) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCameraTexture.fnSetWhichFeed), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CameraTexture) GetWhichFeed() CameraServerFeedImage {
-  classNameV := StringNameFromStr("CameraTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_which_feed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 91039457) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret CameraServerFeedImage
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCameraTexture.fnGetWhichFeed), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *CameraTexture) SetCameraActive(active bool, )  {
-  classNameV := StringNameFromStr("CameraTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_camera_active")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&active) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCameraTexture.fnSetCameraActive), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CameraTexture) GetCameraActive() bool {
-  classNameV := StringNameFromStr("CameraTexture")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_camera_active")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCameraTexture.fnGetCameraActive), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

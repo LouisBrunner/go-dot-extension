@@ -14,6 +14,43 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorScenePostImportPluginList struct {
+  fnXGetInternalImportOptions gdc.MethodBindPtr
+  fnXGetInternalOptionVisibility gdc.MethodBindPtr
+  fnXGetInternalOptionUpdateViewRequired gdc.MethodBindPtr
+  fnXInternalProcess gdc.MethodBindPtr
+  fnXGetImportOptions gdc.MethodBindPtr
+  fnXGetOptionVisibility gdc.MethodBindPtr
+  fnXPreProcess gdc.MethodBindPtr
+  fnXPostProcess gdc.MethodBindPtr
+  fnGetOptionValue gdc.MethodBindPtr
+  fnAddImportOption gdc.MethodBindPtr
+  fnAddImportOptionAdvanced gdc.MethodBindPtr
+}
+
+var ptrsForEditorScenePostImportPlugin ptrsForEditorScenePostImportPluginList
+
+func initEditorScenePostImportPluginPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorScenePostImportPlugin")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_option_value")
+    defer methodName.Destroy()
+    ptrsForEditorScenePostImportPlugin.fnGetOptionValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2760726917))
+  }
+  {
+    methodName := StringNameFromStr("add_import_option")
+    defer methodName.Destroy()
+    ptrsForEditorScenePostImportPlugin.fnAddImportOption = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 402577236))
+  }
+  {
+    methodName := StringNameFromStr("add_import_option_advanced")
+    defer methodName.Destroy()
+    ptrsForEditorScenePostImportPlugin.fnAddImportOptionAdvanced = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3674075649))
+  }
+}
+
 type EditorScenePostImportPlugin struct {
   RefCounted
 }
@@ -63,45 +100,30 @@ func (me *EditorScenePostImportPlugin) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *EditorScenePostImportPlugin) GetOptionValue(name StringName, ) Variant {
-  classNameV := StringNameFromStr("EditorScenePostImportPlugin")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_option_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2760726917) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVariant()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorScenePostImportPlugin.fnGetOptionValue), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorScenePostImportPlugin) AddImportOption(name String, value Variant, )  {
-  classNameV := StringNameFromStr("EditorScenePostImportPlugin")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_import_option")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 402577236) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), value.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorScenePostImportPlugin.fnAddImportOption), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorScenePostImportPlugin) AddImportOptionAdvanced(type_ VariantType, name String, default_value Variant, hint PropertyHint, hint_string String, usage_flags int64, )  {
-  classNameV := StringNameFromStr("EditorScenePostImportPlugin")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_import_option_advanced")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3674075649) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , name.AsCTypePtr(), default_value.AsCTypePtr(), gdc.ConstTypePtr(&hint) , hint_string.AsCTypePtr(), gdc.ConstTypePtr(&usage_flags) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorScenePostImportPlugin.fnAddImportOptionAdvanced), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

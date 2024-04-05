@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSeparatorList struct {
+}
+
+var ptrsForSeparator ptrsForSeparatorList
+
+func initSeparatorPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Separator")
+  defer className.Destroy()
+}
+
 type Separator struct {
   Control
 }

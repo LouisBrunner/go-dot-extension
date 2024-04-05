@@ -14,6 +14,36 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorScriptList struct {
+  fnXRun gdc.MethodBindPtr
+  fnAddRootNode gdc.MethodBindPtr
+  fnGetScene gdc.MethodBindPtr
+  fnGetEditorInterface gdc.MethodBindPtr
+}
+
+var ptrsForEditorScript ptrsForEditorScriptList
+
+func initEditorScriptPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorScript")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("add_root_node")
+    defer methodName.Destroy()
+    ptrsForEditorScript.fnAddRootNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1078189570))
+  }
+  {
+    methodName := StringNameFromStr("get_scene")
+    defer methodName.Destroy()
+    ptrsForEditorScript.fnGetScene = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3160264692))
+  }
+  {
+    methodName := StringNameFromStr("get_editor_interface")
+    defer methodName.Destroy()
+    ptrsForEditorScript.fnGetEditorInterface = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1976662476))
+  }
+}
+
 type EditorScript struct {
   RefCounted
 }
@@ -51,46 +81,31 @@ func (me *EditorScript) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *EditorScript) AddRootNode(node Node, )  {
-  classNameV := StringNameFromStr("EditorScript")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_root_node")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1078189570) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{node.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorScript.fnAddRootNode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorScript) GetScene() Node {
-  classNameV := StringNameFromStr("EditorScript")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_scene")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3160264692) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNode()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorScript.fnGetScene), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorScript) GetEditorInterface() EditorInterface {
-  classNameV := StringNameFromStr("EditorScript")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_editor_interface")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1976662476) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewEditorInterface()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorScript.fnGetEditorInterface), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

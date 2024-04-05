@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVSliderList struct {
+}
+
+var ptrsForVSlider ptrsForVSliderList
+
+func initVSliderPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VSlider")
+  defer className.Destroy()
+}
+
 type VSlider struct {
   Slider
 }

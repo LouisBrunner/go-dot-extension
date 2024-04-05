@@ -9,6 +9,305 @@ import (
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
+// FIXME: avoid unused imports
+var _ = fmt.Sprintf("")
+
+type ptrsForColorList struct {
+  ctrFn gdc.PtrConstructor
+  ctrFromColorFn gdc.PtrConstructor
+  ctrFromColorFloat32Fn gdc.PtrConstructor
+  ctrFromFloat32Float32Float32Fn gdc.PtrConstructor
+  ctrFromFloat32Float32Float32Float32Fn gdc.PtrConstructor
+  ctrFromStringFn gdc.PtrConstructor
+  ctrFromStringFloat32Fn gdc.PtrConstructor
+  methodToArgb32Fn gdc.PtrBuiltInMethod
+  methodToAbgr32Fn gdc.PtrBuiltInMethod
+  methodToRgba32Fn gdc.PtrBuiltInMethod
+  methodToArgb64Fn gdc.PtrBuiltInMethod
+  methodToAbgr64Fn gdc.PtrBuiltInMethod
+  methodToRgba64Fn gdc.PtrBuiltInMethod
+  methodToHtmlFn gdc.PtrBuiltInMethod
+  methodClampFn gdc.PtrBuiltInMethod
+  methodInvertedFn gdc.PtrBuiltInMethod
+  methodLerpFn gdc.PtrBuiltInMethod
+  methodLightenedFn gdc.PtrBuiltInMethod
+  methodDarkenedFn gdc.PtrBuiltInMethod
+  methodBlendFn gdc.PtrBuiltInMethod
+  methodGetLuminanceFn gdc.PtrBuiltInMethod
+  methodSrgbToLinearFn gdc.PtrBuiltInMethod
+  methodLinearToSrgbFn gdc.PtrBuiltInMethod
+  methodIsEqualApproxFn gdc.PtrBuiltInMethod
+  methodHexFn gdc.PtrBuiltInMethod
+  methodHex64Fn gdc.PtrBuiltInMethod
+  methodHtmlFn gdc.PtrBuiltInMethod
+  methodHtmlIsValidFn gdc.PtrBuiltInMethod
+  methodFromStringFn gdc.PtrBuiltInMethod
+  methodFromHsvFn gdc.PtrBuiltInMethod
+  methodFromOkHslFn gdc.PtrBuiltInMethod
+  methodFromRgbe9995Fn gdc.PtrBuiltInMethod
+  operatorNegateFn gdc.PtrOperatorEvaluator
+  operatorPositiveFn gdc.PtrOperatorEvaluator
+  operatorNotFn gdc.PtrOperatorEvaluator
+  operatorMultiplyIntFn gdc.PtrOperatorEvaluator
+  operatorDivideIntFn gdc.PtrOperatorEvaluator
+  operatorMultiplyFloat32Fn gdc.PtrOperatorEvaluator
+  operatorDivideFloat32Fn gdc.PtrOperatorEvaluator
+  operatorEqualColorFn gdc.PtrOperatorEvaluator
+  operatorNotEqualColorFn gdc.PtrOperatorEvaluator
+  operatorAddColorFn gdc.PtrOperatorEvaluator
+  operatorSubtractColorFn gdc.PtrOperatorEvaluator
+  operatorMultiplyColorFn gdc.PtrOperatorEvaluator
+  operatorDivideColorFn gdc.PtrOperatorEvaluator
+  operatorInDictionaryFn gdc.PtrOperatorEvaluator
+  operatorInArrayFn gdc.PtrOperatorEvaluator
+  operatorInPackedColorArrayFn gdc.PtrOperatorEvaluator
+  memberrGetterFn gdc.PtrGetter
+  memberrSetterFn gdc.PtrSetter
+  membergGetterFn gdc.PtrGetter
+  membergSetterFn gdc.PtrSetter
+  memberbGetterFn gdc.PtrGetter
+  memberbSetterFn gdc.PtrSetter
+  memberaGetterFn gdc.PtrGetter
+  memberaSetterFn gdc.PtrSetter
+  memberr8GetterFn gdc.PtrGetter
+  memberr8SetterFn gdc.PtrSetter
+  memberg8GetterFn gdc.PtrGetter
+  memberg8SetterFn gdc.PtrSetter
+  memberb8GetterFn gdc.PtrGetter
+  memberb8SetterFn gdc.PtrSetter
+  membera8GetterFn gdc.PtrGetter
+  membera8SetterFn gdc.PtrSetter
+  memberhGetterFn gdc.PtrGetter
+  memberhSetterFn gdc.PtrSetter
+  membersGetterFn gdc.PtrGetter
+  membersSetterFn gdc.PtrSetter
+  membervGetterFn gdc.PtrGetter
+  membervSetterFn gdc.PtrSetter
+  toVariantFn gdc.TypeFromVariantConstructorFunc
+  fromVariantFn gdc.VariantFromTypeConstructorFunc
+}
+
+var ptrsForColor ptrsForColorList
+
+func initColorPtrs(iface gdc.Interface) {
+  ptrsForColor.ctrFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 0))
+  ptrsForColor.ctrFromColorFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 1))
+  ptrsForColor.ctrFromColorFloat32Fn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 2))
+  ptrsForColor.ctrFromFloat32Float32Float32Fn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 3))
+  ptrsForColor.ctrFromFloat32Float32Float32Float32Fn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 4))
+  ptrsForColor.ctrFromStringFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 5))
+  ptrsForColor.ctrFromStringFloat32Fn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 6))
+  {
+    methodName := StringNameFromStr("to_argb32")
+    defer methodName.Destroy()
+    ptrsForColor.methodToArgb32Fn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 3173160232))
+  }
+  {
+    methodName := StringNameFromStr("to_abgr32")
+    defer methodName.Destroy()
+    ptrsForColor.methodToAbgr32Fn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 3173160232))
+  }
+  {
+    methodName := StringNameFromStr("to_rgba32")
+    defer methodName.Destroy()
+    ptrsForColor.methodToRgba32Fn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 3173160232))
+  }
+  {
+    methodName := StringNameFromStr("to_argb64")
+    defer methodName.Destroy()
+    ptrsForColor.methodToArgb64Fn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 3173160232))
+  }
+  {
+    methodName := StringNameFromStr("to_abgr64")
+    defer methodName.Destroy()
+    ptrsForColor.methodToAbgr64Fn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 3173160232))
+  }
+  {
+    methodName := StringNameFromStr("to_rgba64")
+    defer methodName.Destroy()
+    ptrsForColor.methodToRgba64Fn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 3173160232))
+  }
+  {
+    methodName := StringNameFromStr("to_html")
+    defer methodName.Destroy()
+    ptrsForColor.methodToHtmlFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 3429816538))
+  }
+  {
+    methodName := StringNameFromStr("clamp")
+    defer methodName.Destroy()
+    ptrsForColor.methodClampFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 105651410))
+  }
+  {
+    methodName := StringNameFromStr("inverted")
+    defer methodName.Destroy()
+    ptrsForColor.methodInvertedFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 3334027602))
+  }
+  {
+    methodName := StringNameFromStr("lerp")
+    defer methodName.Destroy()
+    ptrsForColor.methodLerpFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 402949615))
+  }
+  {
+    methodName := StringNameFromStr("lightened")
+    defer methodName.Destroy()
+    ptrsForColor.methodLightenedFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 1466039168))
+  }
+  {
+    methodName := StringNameFromStr("darkened")
+    defer methodName.Destroy()
+    ptrsForColor.methodDarkenedFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 1466039168))
+  }
+  {
+    methodName := StringNameFromStr("blend")
+    defer methodName.Destroy()
+    ptrsForColor.methodBlendFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 3803690977))
+  }
+  {
+    methodName := StringNameFromStr("get_luminance")
+    defer methodName.Destroy()
+    ptrsForColor.methodGetLuminanceFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 466405837))
+  }
+  {
+    methodName := StringNameFromStr("srgb_to_linear")
+    defer methodName.Destroy()
+    ptrsForColor.methodSrgbToLinearFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 3334027602))
+  }
+  {
+    methodName := StringNameFromStr("linear_to_srgb")
+    defer methodName.Destroy()
+    ptrsForColor.methodLinearToSrgbFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 3334027602))
+  }
+  {
+    methodName := StringNameFromStr("is_equal_approx")
+    defer methodName.Destroy()
+    ptrsForColor.methodIsEqualApproxFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 3167426256))
+  }
+  {
+    methodName := StringNameFromStr("hex")
+    defer methodName.Destroy()
+    ptrsForColor.methodHexFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 351421375))
+  }
+  {
+    methodName := StringNameFromStr("hex64")
+    defer methodName.Destroy()
+    ptrsForColor.methodHex64Fn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 351421375))
+  }
+  {
+    methodName := StringNameFromStr("html")
+    defer methodName.Destroy()
+    ptrsForColor.methodHtmlFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 2500054655))
+  }
+  {
+    methodName := StringNameFromStr("html_is_valid")
+    defer methodName.Destroy()
+    ptrsForColor.methodHtmlIsValidFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 2942997125))
+  }
+  {
+    methodName := StringNameFromStr("from_string")
+    defer methodName.Destroy()
+    ptrsForColor.methodFromStringFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 3755044230))
+  }
+  {
+    methodName := StringNameFromStr("from_hsv")
+    defer methodName.Destroy()
+    ptrsForColor.methodFromHsvFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 1573799446))
+  }
+  {
+    methodName := StringNameFromStr("from_ok_hsl")
+    defer methodName.Destroy()
+    ptrsForColor.methodFromOkHslFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 1573799446))
+  }
+  {
+    methodName := StringNameFromStr("from_rgbe9995")
+    defer methodName.Destroy()
+    ptrsForColor.methodFromRgbe9995Fn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, methodName.AsCPtr(), 351421375))
+  }
+  ptrsForColor.operatorNegateFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNegate, gdc.VariantTypeColor, gdc.VariantTypeNil))
+  ptrsForColor.operatorPositiveFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpPositive, gdc.VariantTypeColor, gdc.VariantTypeNil))
+  ptrsForColor.operatorNotFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, gdc.VariantTypeColor, gdc.VariantTypeNil))
+  ptrsForColor.operatorMultiplyIntFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeColor, gdc.VariantTypeInt))
+  ptrsForColor.operatorDivideIntFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, gdc.VariantTypeColor, gdc.VariantTypeInt))
+  ptrsForColor.operatorMultiplyFloat32Fn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeColor, gdc.VariantTypeFloat))
+  ptrsForColor.operatorDivideFloat32Fn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, gdc.VariantTypeColor, gdc.VariantTypeFloat))
+  ptrsForColor.operatorEqualColorFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, gdc.VariantTypeColor, gdc.VariantTypeColor))
+  ptrsForColor.operatorNotEqualColorFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, gdc.VariantTypeColor, gdc.VariantTypeColor))
+  ptrsForColor.operatorAddColorFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAdd, gdc.VariantTypeColor, gdc.VariantTypeColor))
+  ptrsForColor.operatorSubtractColorFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpSubtract, gdc.VariantTypeColor, gdc.VariantTypeColor))
+  ptrsForColor.operatorMultiplyColorFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeColor, gdc.VariantTypeColor))
+  ptrsForColor.operatorDivideColorFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, gdc.VariantTypeColor, gdc.VariantTypeColor))
+  ptrsForColor.operatorInDictionaryFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, gdc.VariantTypeColor, gdc.VariantTypeDictionary))
+  ptrsForColor.operatorInArrayFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, gdc.VariantTypeColor, gdc.VariantTypeArray))
+  ptrsForColor.operatorInPackedColorArrayFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, gdc.VariantTypeColor, gdc.VariantTypePackedColorArray))
+  {
+    memberName := StringNameFromStr("r")
+    defer memberName.Destroy()
+    ptrsForColor.memberrGetterFn = ensurePtr(iface.VariantGetPtrGetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+    ptrsForColor.memberrSetterFn = ensurePtr(iface.VariantGetPtrSetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+  }
+  {
+    memberName := StringNameFromStr("g")
+    defer memberName.Destroy()
+    ptrsForColor.membergGetterFn = ensurePtr(iface.VariantGetPtrGetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+    ptrsForColor.membergSetterFn = ensurePtr(iface.VariantGetPtrSetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+  }
+  {
+    memberName := StringNameFromStr("b")
+    defer memberName.Destroy()
+    ptrsForColor.memberbGetterFn = ensurePtr(iface.VariantGetPtrGetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+    ptrsForColor.memberbSetterFn = ensurePtr(iface.VariantGetPtrSetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+  }
+  {
+    memberName := StringNameFromStr("a")
+    defer memberName.Destroy()
+    ptrsForColor.memberaGetterFn = ensurePtr(iface.VariantGetPtrGetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+    ptrsForColor.memberaSetterFn = ensurePtr(iface.VariantGetPtrSetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+  }
+  {
+    memberName := StringNameFromStr("r8")
+    defer memberName.Destroy()
+    ptrsForColor.memberr8GetterFn = ensurePtr(iface.VariantGetPtrGetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+    ptrsForColor.memberr8SetterFn = ensurePtr(iface.VariantGetPtrSetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+  }
+  {
+    memberName := StringNameFromStr("g8")
+    defer memberName.Destroy()
+    ptrsForColor.memberg8GetterFn = ensurePtr(iface.VariantGetPtrGetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+    ptrsForColor.memberg8SetterFn = ensurePtr(iface.VariantGetPtrSetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+  }
+  {
+    memberName := StringNameFromStr("b8")
+    defer memberName.Destroy()
+    ptrsForColor.memberb8GetterFn = ensurePtr(iface.VariantGetPtrGetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+    ptrsForColor.memberb8SetterFn = ensurePtr(iface.VariantGetPtrSetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+  }
+  {
+    memberName := StringNameFromStr("a8")
+    defer memberName.Destroy()
+    ptrsForColor.membera8GetterFn = ensurePtr(iface.VariantGetPtrGetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+    ptrsForColor.membera8SetterFn = ensurePtr(iface.VariantGetPtrSetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+  }
+  {
+    memberName := StringNameFromStr("h")
+    defer memberName.Destroy()
+    ptrsForColor.memberhGetterFn = ensurePtr(iface.VariantGetPtrGetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+    ptrsForColor.memberhSetterFn = ensurePtr(iface.VariantGetPtrSetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+  }
+  {
+    memberName := StringNameFromStr("s")
+    defer memberName.Destroy()
+    ptrsForColor.membersGetterFn = ensurePtr(iface.VariantGetPtrGetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+    ptrsForColor.membersSetterFn = ensurePtr(iface.VariantGetPtrSetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+  }
+  {
+    memberName := StringNameFromStr("v")
+    defer memberName.Destroy()
+    ptrsForColor.membervGetterFn = ensurePtr(iface.VariantGetPtrGetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+    ptrsForColor.membervSetterFn = ensurePtr(iface.VariantGetPtrSetter(gdc.VariantTypeColor, memberName.AsCPtr()))
+  }
+  ptrsForColor.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypeColor))
+  ptrsForColor.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypeColor))
+}
+
 type Color struct {
   data   *[classSizeColor]byte
   iface  gdc.Interface
@@ -183,8 +482,7 @@ func NewColor() *Color {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newColor()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 0) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForColor.ctrFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
   return me
 }
 
@@ -192,8 +490,7 @@ func NewColorFromColor(from Color, ) *Color {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newColor()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 1) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForColor.ctrFromColorFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
   return me
 }
 
@@ -202,8 +499,7 @@ func NewColorFromColorFloat32(from Color, alpha float64, ) *Color {
   defer pinner.Unpin()
   pinner.Pin(&alpha)
   me := newColor()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 2) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), gdc.ConstTypePtr(&alpha), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForColor.ctrFromColorFloat32Fn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), gdc.ConstTypePtr(&alpha), }))
   return me
 }
 
@@ -214,8 +510,7 @@ func NewColorFromFloat32Float32Float32(r float64, g float64, b float64, ) *Color
   pinner.Pin(&g)
   pinner.Pin(&b)
   me := newColor()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 3) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&r), gdc.ConstTypePtr(&g), gdc.ConstTypePtr(&b), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForColor.ctrFromFloat32Float32Float32Fn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&r), gdc.ConstTypePtr(&g), gdc.ConstTypePtr(&b), }))
   return me
 }
 
@@ -227,8 +522,7 @@ func NewColorFromFloat32Float32Float32Float32(r float64, g float64, b float64, a
   pinner.Pin(&b)
   pinner.Pin(&a)
   me := newColor()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 4) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&r), gdc.ConstTypePtr(&g), gdc.ConstTypePtr(&b), gdc.ConstTypePtr(&a), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForColor.ctrFromFloat32Float32Float32Float32Fn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&r), gdc.ConstTypePtr(&g), gdc.ConstTypePtr(&b), gdc.ConstTypePtr(&a), }))
   return me
 }
 
@@ -236,8 +530,7 @@ func NewColorFromString(code String, ) *Color {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newColor()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 5) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{code.AsCTypePtr(), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForColor.ctrFromStringFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{code.AsCTypePtr(), }))
   return me
 }
 
@@ -246,8 +539,7 @@ func NewColorFromStringFloat32(code String, alpha float64, ) *Color {
   defer pinner.Unpin()
   pinner.Pin(&alpha)
   me := newColor()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeColor, 6) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{code.AsCTypePtr(), gdc.ConstTypePtr(&alpha), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForColor.ctrFromStringFloat32Fn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{code.AsCTypePtr(), gdc.ConstTypePtr(&alpha), }))
   return me
 }
 
@@ -262,16 +554,14 @@ func (me *Variant) AsColor() (*Color, error) {
 		return nil, fmt.Errorf("variant is not a Color")
 	}
   bclass := newColor()
-	fn := me.iface.GetVariantToTypeConstructor(me.Type())
-	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	me.iface.CallTypeFromVariantConstructorFunc(ensurePtr(ptrsForColor.toVariantFn), bclass.asUninitialized(), me.AsPtr())
 	return bclass, nil
 }
 
 func (me *Color) AsVariant() *Variant {
   va := newVariant()
   va.inner = me
-  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
-  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  me.iface.CallVariantFromTypeConstructorFunc(ensurePtr(ptrsForColor.fromVariantFn), va.asUninitialized(), me.AsTypePtr())
   return va
 }
 
@@ -301,94 +591,66 @@ func (me *Color) asUninitialized() gdc.UninitializedTypePtr {
 // Methods
 
 func (me *Color) ToArgb32() int64 {
-  name := StringNameFromStr("to_argb32")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 3173160232) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodToArgb32Fn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Color) ToAbgr32() int64 {
-  name := StringNameFromStr("to_abgr32")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 3173160232) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodToAbgr32Fn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Color) ToRgba32() int64 {
-  name := StringNameFromStr("to_rgba32")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 3173160232) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodToRgba32Fn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Color) ToArgb64() int64 {
-  name := StringNameFromStr("to_argb64")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 3173160232) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodToArgb64Fn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Color) ToAbgr64() int64 {
-  name := StringNameFromStr("to_abgr64")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 3173160232) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodToAbgr64Fn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Color) ToRgba64() int64 {
-  name := StringNameFromStr("to_rgba64")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 3173160232) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodToRgba64Fn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Color) ToHtml(with_alpha bool, ) String {
-  name := StringNameFromStr("to_html")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 3429816538) // FIXME: should cache?
-
   ret := NewString()
 
   varg0 := NewBoolFromBool(with_alpha)
@@ -396,15 +658,11 @@ func (me *Color) ToHtml(with_alpha bool, ) String {
   args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodToHtmlFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Color) Clamp(min Color, max Color, ) Color {
-  name := StringNameFromStr("clamp")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 105651410) // FIXME: should cache?
-
   ret := NewColor()
 
 
@@ -412,29 +670,21 @@ func (me *Color) Clamp(min Color, max Color, ) Color {
   args := []gdc.ConstTypePtr{min.AsCTypePtr(), max.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodClampFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Color) Inverted() Color {
-  name := StringNameFromStr("inverted")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 3334027602) // FIXME: should cache?
-
   ret := NewColor()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodInvertedFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Color) Lerp(to Color, weight float64, ) Color {
-  name := StringNameFromStr("lerp")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 402949615) // FIXME: should cache?
-
   ret := NewColor()
 
 
@@ -443,15 +693,11 @@ func (me *Color) Lerp(to Color, weight float64, ) Color {
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), varg1.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodLerpFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Color) Lightened(amount float64, ) Color {
-  name := StringNameFromStr("lightened")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 1466039168) // FIXME: should cache?
-
   ret := NewColor()
 
   varg0 := NewFloatFromFloat32(amount)
@@ -459,15 +705,11 @@ func (me *Color) Lightened(amount float64, ) Color {
   args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodLightenedFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Color) Darkened(amount float64, ) Color {
-  name := StringNameFromStr("darkened")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 1466039168) // FIXME: should cache?
-
   ret := NewColor()
 
   varg0 := NewFloatFromFloat32(amount)
@@ -475,87 +717,63 @@ func (me *Color) Darkened(amount float64, ) Color {
   args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodDarkenedFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Color) Blend(over Color, ) Color {
-  name := StringNameFromStr("blend")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 3803690977) // FIXME: should cache?
-
   ret := NewColor()
 
 
   args := []gdc.ConstTypePtr{over.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodBlendFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Color) GetLuminance() float64 {
-  name := StringNameFromStr("get_luminance")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 466405837) // FIXME: should cache?
-
   ret := NewFloat()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodGetLuminanceFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Color) SrgbToLinear() Color {
-  name := StringNameFromStr("srgb_to_linear")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 3334027602) // FIXME: should cache?
-
   ret := NewColor()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodSrgbToLinearFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Color) LinearToSrgb() Color {
-  name := StringNameFromStr("linear_to_srgb")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 3334027602) // FIXME: should cache?
-
   ret := NewColor()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodLinearToSrgbFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Color) IsEqualApprox(to Color, ) bool {
-  name := StringNameFromStr("is_equal_approx")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 3167426256) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
 
   args := []gdc.ConstTypePtr{to.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodIsEqualApproxFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func ColorHex(hex int64, ) Color {
-  name := StringNameFromStr("hex")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 351421375) // FIXME: should cache?
-
   ret := NewColor()
 
   varg0 := NewIntFromInt(hex)
@@ -563,15 +781,11 @@ func ColorHex(hex int64, ) Color {
   args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodHexFn), nil, unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func ColorHex64(hex int64, ) Color {
-  name := StringNameFromStr("hex64")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 351421375) // FIXME: should cache?
-
   ret := NewColor()
 
   varg0 := NewIntFromInt(hex)
@@ -579,45 +793,33 @@ func ColorHex64(hex int64, ) Color {
   args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodHex64Fn), nil, unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func ColorHtml(rgba String, ) Color {
-  name := StringNameFromStr("html")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 2500054655) // FIXME: should cache?
-
   ret := NewColor()
 
 
   args := []gdc.ConstTypePtr{rgba.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodHtmlFn), nil, unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func ColorHtmlIsValid(color String, ) bool {
-  name := StringNameFromStr("html_is_valid")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 2942997125) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
 
   args := []gdc.ConstTypePtr{color.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodHtmlIsValidFn), nil, unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func ColorFromString(str String, default_ Color, ) Color {
-  name := StringNameFromStr("from_string")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 3755044230) // FIXME: should cache?
-
   ret := NewColor()
 
 
@@ -625,15 +827,11 @@ func ColorFromString(str String, default_ Color, ) Color {
   args := []gdc.ConstTypePtr{str.AsCTypePtr(), default_.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodFromStringFn), nil, unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func ColorFromHsv(h float64, s float64, v float64, alpha float64, ) Color {
-  name := StringNameFromStr("from_hsv")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 1573799446) // FIXME: should cache?
-
   ret := NewColor()
 
   varg0 := NewFloatFromFloat32(h)
@@ -647,15 +845,11 @@ func ColorFromHsv(h float64, s float64, v float64, alpha float64, ) Color {
   args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), varg3.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodFromHsvFn), nil, unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func ColorFromOkHsl(h float64, s float64, l float64, alpha float64, ) Color {
-  name := StringNameFromStr("from_ok_hsl")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 1573799446) // FIXME: should cache?
-
   ret := NewColor()
 
   varg0 := NewFloatFromFloat32(h)
@@ -669,15 +863,11 @@ func ColorFromOkHsl(h float64, s float64, l float64, alpha float64, ) Color {
   args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr(), varg2.AsCTypePtr(), varg3.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodFromOkHslFn), nil, unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func ColorFromRgbe9995(rgbe int64, ) Color {
-  name := StringNameFromStr("from_rgbe9995")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeColor, name.AsCPtr(), 351421375) // FIXME: should cache?
-
   ret := NewColor()
 
   varg0 := NewIntFromInt(rgbe)
@@ -685,44 +875,44 @@ func ColorFromRgbe9995(rgbe int64, ) Color {
   args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, nil, unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForColor.methodFromRgbe9995Fn), nil, unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 // Operators
 
 func (me *Color) EqualVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Color) NotEqualVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Color) Negate() Color {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNegate, me.Type(), gdc.VariantTypeNil) // FIXME: cache
+  opPtr := ptrsForColor.operatorNegateFn
   ret := NewColor()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), nil, ret.AsTypePtr())
   return *ret
 }
 
 func (me *Color) Positive() Color {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpPositive, me.Type(), gdc.VariantTypeNil) // FIXME: cache
+  opPtr := ptrsForColor.operatorPositiveFn
   ret := NewColor()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), nil, ret.AsTypePtr())
   return *ret
 }
 
 func (me *Color) Not() bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, me.Type(), gdc.VariantTypeNil) // FIXME: cache
+  opPtr := ptrsForColor.operatorNotFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), nil, ret.AsTypePtr())
   return ret.Get()
 }
 
@@ -730,9 +920,9 @@ func (me *Color) MultiplyInt(rightArg int64) Color {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForColor.operatorMultiplyIntFn
   ret := NewColor()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
@@ -740,9 +930,9 @@ func (me *Color) DivideInt(rightArg int64) Color {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForColor.operatorDivideIntFn
   ret := NewColor()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
@@ -750,9 +940,9 @@ func (me *Color) MultiplyFloat32(rightArg float64) Color {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForColor.operatorMultiplyFloat32Fn
   ret := NewColor()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
@@ -760,293 +950,205 @@ func (me *Color) DivideFloat32(rightArg float64) Color {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForColor.operatorDivideFloat32Fn
   ret := NewColor()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
 func (me *Color) EqualColor(right Color) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForColor.operatorEqualColorFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Color) NotEqualColor(right Color) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForColor.operatorNotEqualColorFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Color) AddColor(right Color) Color {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAdd, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForColor.operatorAddColorFn
   ret := NewColor()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
 func (me *Color) SubtractColor(right Color) Color {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpSubtract, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForColor.operatorSubtractColorFn
   ret := NewColor()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
 func (me *Color) MultiplyColor(right Color) Color {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForColor.operatorMultiplyColorFn
   ret := NewColor()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
 func (me *Color) DivideColor(right Color) Color {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForColor.operatorDivideColorFn
   ret := NewColor()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return *ret
 }
 
 func (me *Color) InDictionary(right Dictionary) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForColor.operatorInDictionaryFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Color) InArray(right Array) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForColor.operatorInArrayFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Color) InPackedColorArray(right PackedColorArray) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForColor.operatorInPackedColorArrayFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 // Members
 
 func (me *Color) R() float64 {
-  name := StringNameFromStr("r")
-  defer name.Destroy()
-
-  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
   ret := NewFloat()
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrGetter(ensurePtr(ptrsForColor.memberrGetterFn), me.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Color) SetR(value float64) {
-  name := StringNameFromStr("r")
-  defer name.Destroy()
   valueV := NewFloatFromFloat32(value)
   defer valueV.Destroy()
-
-  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
+  me.iface.CallPtrSetter(ensurePtr(ptrsForColor.memberrSetterFn), me.AsTypePtr(), valueV.AsCTypePtr())
 }
 
 func (me *Color) G() float64 {
-  name := StringNameFromStr("g")
-  defer name.Destroy()
-
-  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
   ret := NewFloat()
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrGetter(ensurePtr(ptrsForColor.membergGetterFn), me.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Color) SetG(value float64) {
-  name := StringNameFromStr("g")
-  defer name.Destroy()
   valueV := NewFloatFromFloat32(value)
   defer valueV.Destroy()
-
-  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
+  me.iface.CallPtrSetter(ensurePtr(ptrsForColor.membergSetterFn), me.AsTypePtr(), valueV.AsCTypePtr())
 }
 
 func (me *Color) B() float64 {
-  name := StringNameFromStr("b")
-  defer name.Destroy()
-
-  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
   ret := NewFloat()
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrGetter(ensurePtr(ptrsForColor.memberbGetterFn), me.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Color) SetB(value float64) {
-  name := StringNameFromStr("b")
-  defer name.Destroy()
   valueV := NewFloatFromFloat32(value)
   defer valueV.Destroy()
-
-  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
+  me.iface.CallPtrSetter(ensurePtr(ptrsForColor.memberbSetterFn), me.AsTypePtr(), valueV.AsCTypePtr())
 }
 
 func (me *Color) A() float64 {
-  name := StringNameFromStr("a")
-  defer name.Destroy()
-
-  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
   ret := NewFloat()
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrGetter(ensurePtr(ptrsForColor.memberaGetterFn), me.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Color) SetA(value float64) {
-  name := StringNameFromStr("a")
-  defer name.Destroy()
   valueV := NewFloatFromFloat32(value)
   defer valueV.Destroy()
-
-  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
+  me.iface.CallPtrSetter(ensurePtr(ptrsForColor.memberaSetterFn), me.AsTypePtr(), valueV.AsCTypePtr())
 }
 
 func (me *Color) R8() int64 {
-  name := StringNameFromStr("r8")
-  defer name.Destroy()
-
-  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
   ret := NewInt()
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrGetter(ensurePtr(ptrsForColor.memberr8GetterFn), me.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Color) SetR8(value int64) {
-  name := StringNameFromStr("r8")
-  defer name.Destroy()
   valueV := NewIntFromInt(value)
   defer valueV.Destroy()
-
-  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
+  me.iface.CallPtrSetter(ensurePtr(ptrsForColor.memberr8SetterFn), me.AsTypePtr(), valueV.AsCTypePtr())
 }
 
 func (me *Color) G8() int64 {
-  name := StringNameFromStr("g8")
-  defer name.Destroy()
-
-  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
   ret := NewInt()
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrGetter(ensurePtr(ptrsForColor.memberg8GetterFn), me.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Color) SetG8(value int64) {
-  name := StringNameFromStr("g8")
-  defer name.Destroy()
   valueV := NewIntFromInt(value)
   defer valueV.Destroy()
-
-  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
+  me.iface.CallPtrSetter(ensurePtr(ptrsForColor.memberg8SetterFn), me.AsTypePtr(), valueV.AsCTypePtr())
 }
 
 func (me *Color) B8() int64 {
-  name := StringNameFromStr("b8")
-  defer name.Destroy()
-
-  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
   ret := NewInt()
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrGetter(ensurePtr(ptrsForColor.memberb8GetterFn), me.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Color) SetB8(value int64) {
-  name := StringNameFromStr("b8")
-  defer name.Destroy()
   valueV := NewIntFromInt(value)
   defer valueV.Destroy()
-
-  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
+  me.iface.CallPtrSetter(ensurePtr(ptrsForColor.memberb8SetterFn), me.AsTypePtr(), valueV.AsCTypePtr())
 }
 
 func (me *Color) A8() int64 {
-  name := StringNameFromStr("a8")
-  defer name.Destroy()
-
-  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
   ret := NewInt()
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrGetter(ensurePtr(ptrsForColor.membera8GetterFn), me.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Color) SetA8(value int64) {
-  name := StringNameFromStr("a8")
-  defer name.Destroy()
   valueV := NewIntFromInt(value)
   defer valueV.Destroy()
-
-  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
+  me.iface.CallPtrSetter(ensurePtr(ptrsForColor.membera8SetterFn), me.AsTypePtr(), valueV.AsCTypePtr())
 }
 
 func (me *Color) H() float64 {
-  name := StringNameFromStr("h")
-  defer name.Destroy()
-
-  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
   ret := NewFloat()
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrGetter(ensurePtr(ptrsForColor.memberhGetterFn), me.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Color) SetH(value float64) {
-  name := StringNameFromStr("h")
-  defer name.Destroy()
   valueV := NewFloatFromFloat32(value)
   defer valueV.Destroy()
-
-  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
+  me.iface.CallPtrSetter(ensurePtr(ptrsForColor.memberhSetterFn), me.AsTypePtr(), valueV.AsCTypePtr())
 }
 
 func (me *Color) S() float64 {
-  name := StringNameFromStr("s")
-  defer name.Destroy()
-
-  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
   ret := NewFloat()
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrGetter(ensurePtr(ptrsForColor.membersGetterFn), me.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Color) SetS(value float64) {
-  name := StringNameFromStr("s")
-  defer name.Destroy()
   valueV := NewFloatFromFloat32(value)
   defer valueV.Destroy()
-
-  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
+  me.iface.CallPtrSetter(ensurePtr(ptrsForColor.membersSetterFn), me.AsTypePtr(), valueV.AsCTypePtr())
 }
 
 func (me *Color) V() float64 {
-  name := StringNameFromStr("v")
-  defer name.Destroy()
-
-  getter := me.iface.VariantGetPtrGetter(me.Type(), name.AsCPtr()) // FIXME: cache
   ret := NewFloat()
-  me.iface.CallPtrGetter(getter, me.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrGetter(ensurePtr(ptrsForColor.membervGetterFn), me.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Color) SetV(value float64) {
-  name := StringNameFromStr("v")
-  defer name.Destroy()
   valueV := NewFloatFromFloat32(value)
   defer valueV.Destroy()
-
-  setter := me.iface.VariantGetPtrSetter(me.Type(), name.AsCPtr()) // FIXME: cache
-  me.iface.CallPtrSetter(setter, me.AsTypePtr(), valueV.AsCTypePtr())
+  me.iface.CallPtrSetter(ensurePtr(ptrsForColor.membervSetterFn), me.AsTypePtr(), valueV.AsCTypePtr())
 }

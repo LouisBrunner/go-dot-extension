@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForWorldBoundaryShape3DList struct {
+  fnSetPlane gdc.MethodBindPtr
+  fnGetPlane gdc.MethodBindPtr
+}
+
+var ptrsForWorldBoundaryShape3D ptrsForWorldBoundaryShape3DList
+
+func initWorldBoundaryShape3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("WorldBoundaryShape3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_plane")
+    defer methodName.Destroy()
+    ptrsForWorldBoundaryShape3D.fnSetPlane = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3505987427))
+  }
+  {
+    methodName := StringNameFromStr("get_plane")
+    defer methodName.Destroy()
+    ptrsForWorldBoundaryShape3D.fnGetPlane = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2753500971))
+  }
+}
+
 type WorldBoundaryShape3D struct {
   Shape3D
 }
@@ -51,31 +74,21 @@ func (me *WorldBoundaryShape3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *WorldBoundaryShape3D) SetPlane(plane Plane, )  {
-  classNameV := StringNameFromStr("WorldBoundaryShape3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_plane")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3505987427) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{plane.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWorldBoundaryShape3D.fnSetPlane), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *WorldBoundaryShape3D) GetPlane() Plane {
-  classNameV := StringNameFromStr("WorldBoundaryShape3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_plane")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2753500971) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPlane()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWorldBoundaryShape3D.fnGetPlane), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

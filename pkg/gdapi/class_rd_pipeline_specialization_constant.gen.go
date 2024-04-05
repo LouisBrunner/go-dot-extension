@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForRDPipelineSpecializationConstantList struct {
+  fnSetValue gdc.MethodBindPtr
+  fnGetValue gdc.MethodBindPtr
+  fnSetConstantId gdc.MethodBindPtr
+  fnGetConstantId gdc.MethodBindPtr
+}
+
+var ptrsForRDPipelineSpecializationConstant ptrsForRDPipelineSpecializationConstantList
+
+func initRDPipelineSpecializationConstantPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("RDPipelineSpecializationConstant")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_value")
+    defer methodName.Destroy()
+    ptrsForRDPipelineSpecializationConstant.fnSetValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1114965689))
+  }
+  {
+    methodName := StringNameFromStr("get_value")
+    defer methodName.Destroy()
+    ptrsForRDPipelineSpecializationConstant.fnGetValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1214101251))
+  }
+  {
+    methodName := StringNameFromStr("set_constant_id")
+    defer methodName.Destroy()
+    ptrsForRDPipelineSpecializationConstant.fnSetConstantId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_constant_id")
+    defer methodName.Destroy()
+    ptrsForRDPipelineSpecializationConstant.fnGetConstantId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+}
+
 type RDPipelineSpecializationConstant struct {
   RefCounted
 }
@@ -51,60 +86,40 @@ func (me *RDPipelineSpecializationConstant) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *RDPipelineSpecializationConstant) SetValue(value Variant, )  {
-  classNameV := StringNameFromStr("RDPipelineSpecializationConstant")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1114965689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{value.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDPipelineSpecializationConstant.fnSetValue), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDPipelineSpecializationConstant) GetValue() Variant {
-  classNameV := StringNameFromStr("RDPipelineSpecializationConstant")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_value")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1214101251) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVariant()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDPipelineSpecializationConstant.fnGetValue), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *RDPipelineSpecializationConstant) SetConstantId(constant_id int64, )  {
-  classNameV := StringNameFromStr("RDPipelineSpecializationConstant")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_constant_id")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&constant_id) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDPipelineSpecializationConstant.fnSetConstantId), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDPipelineSpecializationConstant) GetConstantId() int64 {
-  classNameV := StringNameFromStr("RDPipelineSpecializationConstant")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_constant_id")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDPipelineSpecializationConstant.fnGetConstantId), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

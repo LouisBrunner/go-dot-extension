@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForDirectionalLight2DList struct {
+  fnSetMaxDistance gdc.MethodBindPtr
+  fnGetMaxDistance gdc.MethodBindPtr
+}
+
+var ptrsForDirectionalLight2D ptrsForDirectionalLight2DList
+
+func initDirectionalLight2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("DirectionalLight2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_max_distance")
+    defer methodName.Destroy()
+    ptrsForDirectionalLight2D.fnSetMaxDistance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_max_distance")
+    defer methodName.Destroy()
+    ptrsForDirectionalLight2D.fnGetMaxDistance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type DirectionalLight2D struct {
   Light2D
 }
@@ -51,31 +74,21 @@ func (me *DirectionalLight2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *DirectionalLight2D) SetMaxDistance(pixels float64, )  {
-  classNameV := StringNameFromStr("DirectionalLight2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_max_distance")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pixels) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForDirectionalLight2D.fnSetMaxDistance), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *DirectionalLight2D) GetMaxDistance() float64 {
-  classNameV := StringNameFromStr("DirectionalLight2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_max_distance")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForDirectionalLight2D.fnGetMaxDistance), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

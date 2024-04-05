@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForRDShaderSPIRVList struct {
+  fnSetStageBytecode gdc.MethodBindPtr
+  fnGetStageBytecode gdc.MethodBindPtr
+  fnSetStageCompileError gdc.MethodBindPtr
+  fnGetStageCompileError gdc.MethodBindPtr
+}
+
+var ptrsForRDShaderSPIRV ptrsForRDShaderSPIRVList
+
+func initRDShaderSPIRVPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("RDShaderSPIRV")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_stage_bytecode")
+    defer methodName.Destroy()
+    ptrsForRDShaderSPIRV.fnSetStageBytecode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3514097977))
+  }
+  {
+    methodName := StringNameFromStr("get_stage_bytecode")
+    defer methodName.Destroy()
+    ptrsForRDShaderSPIRV.fnGetStageBytecode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3816765404))
+  }
+  {
+    methodName := StringNameFromStr("set_stage_compile_error")
+    defer methodName.Destroy()
+    ptrsForRDShaderSPIRV.fnSetStageCompileError = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 620821314))
+  }
+  {
+    methodName := StringNameFromStr("get_stage_compile_error")
+    defer methodName.Destroy()
+    ptrsForRDShaderSPIRV.fnGetStageCompileError = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3354920045))
+  }
+}
+
 type RDShaderSPIRV struct {
   Resource
 }
@@ -51,62 +86,42 @@ func (me *RDShaderSPIRV) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *RDShaderSPIRV) SetStageBytecode(stage RenderingDeviceShaderStage, bytecode PackedByteArray, )  {
-  classNameV := StringNameFromStr("RDShaderSPIRV")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_stage_bytecode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3514097977) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stage) , bytecode.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDShaderSPIRV.fnSetStageBytecode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDShaderSPIRV) GetStageBytecode(stage RenderingDeviceShaderStage, ) PackedByteArray {
-  classNameV := StringNameFromStr("RDShaderSPIRV")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_stage_bytecode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3816765404) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stage) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedByteArray()
   pinner.Pin(&stage)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDShaderSPIRV.fnGetStageBytecode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *RDShaderSPIRV) SetStageCompileError(stage RenderingDeviceShaderStage, compile_error String, )  {
-  classNameV := StringNameFromStr("RDShaderSPIRV")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_stage_compile_error")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 620821314) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stage) , compile_error.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDShaderSPIRV.fnSetStageCompileError), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RDShaderSPIRV) GetStageCompileError(stage RenderingDeviceShaderStage, ) String {
-  classNameV := StringNameFromStr("RDShaderSPIRV")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_stage_compile_error")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3354920045) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stage) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
   pinner.Pin(&stage)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRDShaderSPIRV.fnGetStageCompileError), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

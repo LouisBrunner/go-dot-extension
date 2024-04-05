@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeParticleConeVelocityList struct {
+}
+
+var ptrsForVisualShaderNodeParticleConeVelocity ptrsForVisualShaderNodeParticleConeVelocityList
+
+func initVisualShaderNodeParticleConeVelocityPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeParticleConeVelocity")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeParticleConeVelocity struct {
   VisualShaderNode
 }

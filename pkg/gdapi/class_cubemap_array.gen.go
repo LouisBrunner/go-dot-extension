@@ -14,6 +14,23 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCubemapArrayList struct {
+  fnCreatePlaceholder gdc.MethodBindPtr
+}
+
+var ptrsForCubemapArray ptrsForCubemapArrayList
+
+func initCubemapArrayPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CubemapArray")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("create_placeholder")
+    defer methodName.Destroy()
+    ptrsForCubemapArray.fnCreatePlaceholder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 121922552))
+  }
+}
+
 type CubemapArray struct {
   ImageTextureLayered
 }
@@ -51,17 +68,12 @@ func (me *CubemapArray) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *CubemapArray) CreatePlaceholder() Resource {
-  classNameV := StringNameFromStr("CubemapArray")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("create_placeholder")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 121922552) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewResource()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCubemapArray.fnCreatePlaceholder), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

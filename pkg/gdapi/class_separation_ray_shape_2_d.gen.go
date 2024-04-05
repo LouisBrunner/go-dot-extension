@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForSeparationRayShape2DList struct {
+  fnSetLength gdc.MethodBindPtr
+  fnGetLength gdc.MethodBindPtr
+  fnSetSlideOnSlope gdc.MethodBindPtr
+  fnGetSlideOnSlope gdc.MethodBindPtr
+}
+
+var ptrsForSeparationRayShape2D ptrsForSeparationRayShape2DList
+
+func initSeparationRayShape2DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("SeparationRayShape2D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_length")
+    defer methodName.Destroy()
+    ptrsForSeparationRayShape2D.fnSetLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_length")
+    defer methodName.Destroy()
+    ptrsForSeparationRayShape2D.fnGetLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_slide_on_slope")
+    defer methodName.Destroy()
+    ptrsForSeparationRayShape2D.fnSetSlideOnSlope = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_slide_on_slope")
+    defer methodName.Destroy()
+    ptrsForSeparationRayShape2D.fnGetSlideOnSlope = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type SeparationRayShape2D struct {
   Shape2D
 }
@@ -51,60 +86,40 @@ func (me *SeparationRayShape2D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *SeparationRayShape2D) SetLength(length float64, )  {
-  classNameV := StringNameFromStr("SeparationRayShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&length) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSeparationRayShape2D.fnSetLength), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SeparationRayShape2D) GetLength() float64 {
-  classNameV := StringNameFromStr("SeparationRayShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_length")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSeparationRayShape2D.fnGetLength), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *SeparationRayShape2D) SetSlideOnSlope(active bool, )  {
-  classNameV := StringNameFromStr("SeparationRayShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_slide_on_slope")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&active) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSeparationRayShape2D.fnSetSlideOnSlope), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *SeparationRayShape2D) GetSlideOnSlope() bool {
-  classNameV := StringNameFromStr("SeparationRayShape2D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_slide_on_slope")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSeparationRayShape2D.fnGetSlideOnSlope), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

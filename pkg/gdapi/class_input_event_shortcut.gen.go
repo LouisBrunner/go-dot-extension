@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForInputEventShortcutList struct {
+  fnSetShortcut gdc.MethodBindPtr
+  fnGetShortcut gdc.MethodBindPtr
+}
+
+var ptrsForInputEventShortcut ptrsForInputEventShortcutList
+
+func initInputEventShortcutPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("InputEventShortcut")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_shortcut")
+    defer methodName.Destroy()
+    ptrsForInputEventShortcut.fnSetShortcut = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 857163497))
+  }
+  {
+    methodName := StringNameFromStr("get_shortcut")
+    defer methodName.Destroy()
+    ptrsForInputEventShortcut.fnGetShortcut = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3766804753))
+  }
+}
+
 type InputEventShortcut struct {
   InputEvent
 }
@@ -51,31 +74,21 @@ func (me *InputEventShortcut) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *InputEventShortcut) SetShortcut(shortcut Shortcut, )  {
-  classNameV := StringNameFromStr("InputEventShortcut")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_shortcut")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 857163497) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{shortcut.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventShortcut.fnSetShortcut), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventShortcut) GetShortcut() Shortcut {
-  classNameV := StringNameFromStr("InputEventShortcut")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_shortcut")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3766804753) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewShortcut()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventShortcut.fnGetShortcut), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

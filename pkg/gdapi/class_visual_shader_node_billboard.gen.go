@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeBillboardList struct {
+  fnSetBillboardType gdc.MethodBindPtr
+  fnGetBillboardType gdc.MethodBindPtr
+  fnSetKeepScaleEnabled gdc.MethodBindPtr
+  fnIsKeepScaleEnabled gdc.MethodBindPtr
+}
+
+var ptrsForVisualShaderNodeBillboard ptrsForVisualShaderNodeBillboardList
+
+func initVisualShaderNodeBillboardPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeBillboard")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_billboard_type")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeBillboard.fnSetBillboardType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1227463289))
+  }
+  {
+    methodName := StringNameFromStr("get_billboard_type")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeBillboard.fnGetBillboardType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3724188517))
+  }
+  {
+    methodName := StringNameFromStr("set_keep_scale_enabled")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeBillboard.fnSetKeepScaleEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_keep_scale_enabled")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeBillboard.fnIsKeepScaleEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type VisualShaderNodeBillboard struct {
   VisualShaderNode
 }
@@ -60,60 +95,40 @@ func (me *VisualShaderNodeBillboard) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisualShaderNodeBillboard) SetBillboardType(billboard_type VisualShaderNodeBillboardBillboardType, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeBillboard")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_billboard_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1227463289) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&billboard_type) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeBillboard.fnSetBillboardType), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeBillboard) GetBillboardType() VisualShaderNodeBillboardBillboardType {
-  classNameV := StringNameFromStr("VisualShaderNodeBillboard")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_billboard_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3724188517) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret VisualShaderNodeBillboardBillboardType
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeBillboard.fnGetBillboardType), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *VisualShaderNodeBillboard) SetKeepScaleEnabled(enabled bool, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeBillboard")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_keep_scale_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeBillboard.fnSetKeepScaleEnabled), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeBillboard) IsKeepScaleEnabled() bool {
-  classNameV := StringNameFromStr("VisualShaderNodeBillboard")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_keep_scale_enabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeBillboard.fnIsKeepScaleEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

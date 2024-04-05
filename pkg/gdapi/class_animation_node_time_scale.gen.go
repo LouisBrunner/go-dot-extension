@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAnimationNodeTimeScaleList struct {
+}
+
+var ptrsForAnimationNodeTimeScale ptrsForAnimationNodeTimeScaleList
+
+func initAnimationNodeTimeScalePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AnimationNodeTimeScale")
+  defer className.Destroy()
+}
+
 type AnimationNodeTimeScale struct {
   AnimationNode
 }

@@ -9,6 +9,127 @@ import (
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
+// FIXME: avoid unused imports
+var _ = fmt.Sprintf("")
+
+type ptrsForDictionaryList struct {
+  ctrFn gdc.PtrConstructor
+  ctrFromDictionaryFn gdc.PtrConstructor
+  destructorFn gdc.PtrDestructor
+  methodSizeFn gdc.PtrBuiltInMethod
+  methodIsEmptyFn gdc.PtrBuiltInMethod
+  methodClearFn gdc.PtrBuiltInMethod
+  methodMergeFn gdc.PtrBuiltInMethod
+  methodHasFn gdc.PtrBuiltInMethod
+  methodHasAllFn gdc.PtrBuiltInMethod
+  methodFindKeyFn gdc.PtrBuiltInMethod
+  methodEraseFn gdc.PtrBuiltInMethod
+  methodHashFn gdc.PtrBuiltInMethod
+  methodKeysFn gdc.PtrBuiltInMethod
+  methodValuesFn gdc.PtrBuiltInMethod
+  methodDuplicateFn gdc.PtrBuiltInMethod
+  methodGetFn gdc.PtrBuiltInMethod
+  methodMakeReadOnlyFn gdc.PtrBuiltInMethod
+  methodIsReadOnlyFn gdc.PtrBuiltInMethod
+  operatorNotFn gdc.PtrOperatorEvaluator
+  operatorEqualDictionaryFn gdc.PtrOperatorEvaluator
+  operatorNotEqualDictionaryFn gdc.PtrOperatorEvaluator
+  operatorInDictionaryFn gdc.PtrOperatorEvaluator
+  operatorInArrayFn gdc.PtrOperatorEvaluator
+  toVariantFn gdc.TypeFromVariantConstructorFunc
+  fromVariantFn gdc.VariantFromTypeConstructorFunc
+}
+
+var ptrsForDictionary ptrsForDictionaryList
+
+func initDictionaryPtrs(iface gdc.Interface) {
+  ptrsForDictionary.ctrFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeDictionary, 0))
+  ptrsForDictionary.ctrFromDictionaryFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeDictionary, 1))
+  ptrsForDictionary.destructorFn = ensurePtr(iface.VariantGetPtrDestructor(gdc.VariantTypeDictionary))
+  {
+    methodName := StringNameFromStr("size")
+    defer methodName.Destroy()
+    ptrsForDictionary.methodSizeFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 3173160232))
+  }
+  {
+    methodName := StringNameFromStr("is_empty")
+    defer methodName.Destroy()
+    ptrsForDictionary.methodIsEmptyFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 3918633141))
+  }
+  {
+    methodName := StringNameFromStr("clear")
+    defer methodName.Destroy()
+    ptrsForDictionary.methodClearFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("merge")
+    defer methodName.Destroy()
+    ptrsForDictionary.methodMergeFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 2079548978))
+  }
+  {
+    methodName := StringNameFromStr("has")
+    defer methodName.Destroy()
+    ptrsForDictionary.methodHasFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 3680194679))
+  }
+  {
+    methodName := StringNameFromStr("has_all")
+    defer methodName.Destroy()
+    ptrsForDictionary.methodHasAllFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 2988181878))
+  }
+  {
+    methodName := StringNameFromStr("find_key")
+    defer methodName.Destroy()
+    ptrsForDictionary.methodFindKeyFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 1988825835))
+  }
+  {
+    methodName := StringNameFromStr("erase")
+    defer methodName.Destroy()
+    ptrsForDictionary.methodEraseFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 1776646889))
+  }
+  {
+    methodName := StringNameFromStr("hash")
+    defer methodName.Destroy()
+    ptrsForDictionary.methodHashFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 3173160232))
+  }
+  {
+    methodName := StringNameFromStr("keys")
+    defer methodName.Destroy()
+    ptrsForDictionary.methodKeysFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 4144163970))
+  }
+  {
+    methodName := StringNameFromStr("values")
+    defer methodName.Destroy()
+    ptrsForDictionary.methodValuesFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 4144163970))
+  }
+  {
+    methodName := StringNameFromStr("duplicate")
+    defer methodName.Destroy()
+    ptrsForDictionary.methodDuplicateFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 830099069))
+  }
+  {
+    methodName := StringNameFromStr("get")
+    defer methodName.Destroy()
+    ptrsForDictionary.methodGetFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 2205440559))
+  }
+  {
+    methodName := StringNameFromStr("make_read_only")
+    defer methodName.Destroy()
+    ptrsForDictionary.methodMakeReadOnlyFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("is_read_only")
+    defer methodName.Destroy()
+    ptrsForDictionary.methodIsReadOnlyFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 3918633141))
+  }
+  ptrsForDictionary.operatorNotFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, gdc.VariantTypeDictionary, gdc.VariantTypeNil))
+  ptrsForDictionary.operatorEqualDictionaryFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, gdc.VariantTypeDictionary, gdc.VariantTypeDictionary))
+  ptrsForDictionary.operatorNotEqualDictionaryFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, gdc.VariantTypeDictionary, gdc.VariantTypeDictionary))
+  ptrsForDictionary.operatorInDictionaryFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, gdc.VariantTypeDictionary, gdc.VariantTypeDictionary))
+  ptrsForDictionary.operatorInArrayFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, gdc.VariantTypeDictionary, gdc.VariantTypeArray))
+  ptrsForDictionary.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypeDictionary))
+  ptrsForDictionary.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypeDictionary))
+}
+
 type Dictionary struct {
   data   *[classSizeDictionary]byte
   iface  gdc.Interface
@@ -32,8 +153,7 @@ func NewDictionary() *Dictionary {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newDictionary()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeDictionary, 0) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForDictionary.ctrFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
   return me
 }
 
@@ -41,15 +161,13 @@ func NewDictionaryFromDictionary(from Dictionary, ) *Dictionary {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newDictionary()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeDictionary, 1) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForDictionary.ctrFromDictionaryFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{from.AsCTypePtr(), }))
   return me
 }
 
 // Destructor
 func (me *Dictionary) Destroy() {
-  dtr := me.iface.VariantGetPtrDestructor(gdc.VariantTypeDictionary)
-	me.iface.CallPtrDestructor(dtr, me.AsTypePtr())
+	me.iface.CallPtrDestructor(ensurePtr(ptrsForDictionary.destructorFn), me.AsTypePtr())
   me.pinner.Unpin()
 }
 
@@ -59,16 +177,14 @@ func (me *Variant) AsDictionary() (*Dictionary, error) {
 		return nil, fmt.Errorf("variant is not a Dictionary")
 	}
   bclass := newDictionary()
-	fn := me.iface.GetVariantToTypeConstructor(me.Type())
-	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	me.iface.CallTypeFromVariantConstructorFunc(ensurePtr(ptrsForDictionary.toVariantFn), bclass.asUninitialized(), me.AsPtr())
 	return bclass, nil
 }
 
 func (me *Dictionary) AsVariant() *Variant {
   va := newVariant()
   va.inner = me
-  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
-  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  me.iface.CallVariantFromTypeConstructorFunc(ensurePtr(ptrsForDictionary.fromVariantFn), va.asUninitialized(), me.AsTypePtr())
   return va
 }
 
@@ -98,165 +214,117 @@ func (me *Dictionary) asUninitialized() gdc.UninitializedTypePtr {
 // Methods
 
 func (me *Dictionary) Size() int64 {
-  name := StringNameFromStr("size")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 3173160232) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodSizeFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Dictionary) IsEmpty() bool {
-  name := StringNameFromStr("is_empty")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 3918633141) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodIsEmptyFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Dictionary) Clear()  {
-  name := StringNameFromStr("clear")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 3218959716) // FIXME: should cache?
-
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodClearFn), me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
 func (me *Dictionary) Merge(dictionary Dictionary, overwrite bool, )  {
-  name := StringNameFromStr("merge")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 2079548978) // FIXME: should cache?
-
 
   varg1 := NewBoolFromBool(overwrite)
   defer varg1.Destroy()
   args := []gdc.ConstTypePtr{dictionary.AsCTypePtr(), varg1.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodMergeFn), me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
 func (me *Dictionary) Has(key Variant, ) bool {
-  name := StringNameFromStr("has")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 3680194679) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
 
   args := []gdc.ConstTypePtr{key.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodHasFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Dictionary) HasAll(keys Array, ) bool {
-  name := StringNameFromStr("has_all")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 2988181878) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
 
   args := []gdc.ConstTypePtr{keys.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodHasAllFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Dictionary) FindKey(value Variant, ) Variant {
-  name := StringNameFromStr("find_key")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 1988825835) // FIXME: should cache?
-
   ret := NewVariant()
 
 
   args := []gdc.ConstTypePtr{value.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodFindKeyFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Dictionary) Erase(key Variant, ) bool {
-  name := StringNameFromStr("erase")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 1776646889) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
 
   args := []gdc.ConstTypePtr{key.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodEraseFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Dictionary) Hash() int64 {
-  name := StringNameFromStr("hash")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 3173160232) // FIXME: should cache?
-
   ret := NewInt()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodHashFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 func (me *Dictionary) Keys() Array {
-  name := StringNameFromStr("keys")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 4144163970) // FIXME: should cache?
-
   ret := NewArray()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodKeysFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Dictionary) Values() Array {
-  name := StringNameFromStr("values")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 4144163970) // FIXME: should cache?
-
   ret := NewArray()
 
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodValuesFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Dictionary) Duplicate(deep bool, ) Dictionary {
-  name := StringNameFromStr("duplicate")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 830099069) // FIXME: should cache?
-
   ret := NewDictionary()
 
   varg0 := NewBoolFromBool(deep)
@@ -264,15 +332,11 @@ func (me *Dictionary) Duplicate(deep bool, ) Dictionary {
   args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodDuplicateFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Dictionary) Get(key Variant, default_ Variant, ) Variant {
-  name := StringNameFromStr("get")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 2205440559) // FIXME: should cache?
-
   ret := NewVariant()
 
 
@@ -280,83 +344,75 @@ func (me *Dictionary) Get(key Variant, default_ Variant, ) Variant {
   args := []gdc.ConstTypePtr{key.AsCTypePtr(), default_.AsCTypePtr(), }
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodGetFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return *ret
 }
 
 func (me *Dictionary) MakeReadOnly()  {
-  name := StringNameFromStr("make_read_only")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 3218959716) // FIXME: should cache?
-
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodMakeReadOnlyFn), me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
 func (me *Dictionary) IsReadOnly() bool {
-  name := StringNameFromStr("is_read_only")
-  defer name.Destroy()
-  methodPtr := giface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, name.AsCPtr(), 3918633141) // FIXME: should cache?
-
   ret := NewBool()
   defer ret.Destroy()
   args := []gdc.ConstTypePtr{}
 
 
-  giface.CallPtrBuiltInMethod(methodPtr, me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+  giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodIsReadOnlyFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
   return ret.Get()
 }
 
 // Operators
 
 func (me *Dictionary) EqualVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Dictionary) NotEqualVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Dictionary) Not() bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, me.Type(), gdc.VariantTypeNil) // FIXME: cache
+  opPtr := ptrsForDictionary.operatorNotFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), nil, ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Dictionary) EqualDictionary(right Dictionary) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForDictionary.operatorEqualDictionaryFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Dictionary) NotEqualDictionary(right Dictionary) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForDictionary.operatorNotEqualDictionaryFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Dictionary) InDictionary(right Dictionary) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForDictionary.operatorInDictionaryFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Dictionary) InArray(right Array) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForDictionary.operatorInArrayFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 

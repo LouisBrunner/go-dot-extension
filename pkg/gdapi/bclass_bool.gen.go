@@ -9,6 +9,67 @@ import (
   "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
+// FIXME: avoid unused imports
+var _ = fmt.Sprintf("")
+
+type ptrsForBoolList struct {
+  ctrFn gdc.PtrConstructor
+  ctrFromBoolFn gdc.PtrConstructor
+  ctrFromIntFn gdc.PtrConstructor
+  ctrFromFloat32Fn gdc.PtrConstructor
+  operatorNotFn gdc.PtrOperatorEvaluator
+  operatorEqualBoolFn gdc.PtrOperatorEvaluator
+  operatorNotEqualBoolFn gdc.PtrOperatorEvaluator
+  operatorLessBoolFn gdc.PtrOperatorEvaluator
+  operatorGreaterBoolFn gdc.PtrOperatorEvaluator
+  operatorAndBoolFn gdc.PtrOperatorEvaluator
+  operatorOrBoolFn gdc.PtrOperatorEvaluator
+  operatorXorBoolFn gdc.PtrOperatorEvaluator
+  operatorAndIntFn gdc.PtrOperatorEvaluator
+  operatorOrIntFn gdc.PtrOperatorEvaluator
+  operatorXorIntFn gdc.PtrOperatorEvaluator
+  operatorAndFloat32Fn gdc.PtrOperatorEvaluator
+  operatorOrFloat32Fn gdc.PtrOperatorEvaluator
+  operatorXorFloat32Fn gdc.PtrOperatorEvaluator
+  operatorAndObjectFn gdc.PtrOperatorEvaluator
+  operatorOrObjectFn gdc.PtrOperatorEvaluator
+  operatorXorObjectFn gdc.PtrOperatorEvaluator
+  operatorInDictionaryFn gdc.PtrOperatorEvaluator
+  operatorInArrayFn gdc.PtrOperatorEvaluator
+  toVariantFn gdc.TypeFromVariantConstructorFunc
+  fromVariantFn gdc.VariantFromTypeConstructorFunc
+}
+
+var ptrsForBool ptrsForBoolList
+
+func initBoolPtrs(iface gdc.Interface) {
+  ptrsForBool.ctrFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeBool, 0))
+  ptrsForBool.ctrFromBoolFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeBool, 1))
+  ptrsForBool.ctrFromIntFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeBool, 2))
+  ptrsForBool.ctrFromFloat32Fn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeBool, 3))
+  ptrsForBool.operatorNotFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, gdc.VariantTypeBool, gdc.VariantTypeNil))
+  ptrsForBool.operatorEqualBoolFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, gdc.VariantTypeBool, gdc.VariantTypeBool))
+  ptrsForBool.operatorNotEqualBoolFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, gdc.VariantTypeBool, gdc.VariantTypeBool))
+  ptrsForBool.operatorLessBoolFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpLess, gdc.VariantTypeBool, gdc.VariantTypeBool))
+  ptrsForBool.operatorGreaterBoolFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpGreater, gdc.VariantTypeBool, gdc.VariantTypeBool))
+  ptrsForBool.operatorAndBoolFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAnd, gdc.VariantTypeBool, gdc.VariantTypeBool))
+  ptrsForBool.operatorOrBoolFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpOr, gdc.VariantTypeBool, gdc.VariantTypeBool))
+  ptrsForBool.operatorXorBoolFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpXor, gdc.VariantTypeBool, gdc.VariantTypeBool))
+  ptrsForBool.operatorAndIntFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAnd, gdc.VariantTypeBool, gdc.VariantTypeInt))
+  ptrsForBool.operatorOrIntFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpOr, gdc.VariantTypeBool, gdc.VariantTypeInt))
+  ptrsForBool.operatorXorIntFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpXor, gdc.VariantTypeBool, gdc.VariantTypeInt))
+  ptrsForBool.operatorAndFloat32Fn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAnd, gdc.VariantTypeBool, gdc.VariantTypeFloat))
+  ptrsForBool.operatorOrFloat32Fn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpOr, gdc.VariantTypeBool, gdc.VariantTypeFloat))
+  ptrsForBool.operatorXorFloat32Fn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpXor, gdc.VariantTypeBool, gdc.VariantTypeFloat))
+  ptrsForBool.operatorAndObjectFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAnd, gdc.VariantTypeBool, gdc.VariantTypeObject))
+  ptrsForBool.operatorOrObjectFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpOr, gdc.VariantTypeBool, gdc.VariantTypeObject))
+  ptrsForBool.operatorXorObjectFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpXor, gdc.VariantTypeBool, gdc.VariantTypeObject))
+  ptrsForBool.operatorInDictionaryFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, gdc.VariantTypeBool, gdc.VariantTypeDictionary))
+  ptrsForBool.operatorInArrayFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, gdc.VariantTypeBool, gdc.VariantTypeArray))
+  ptrsForBool.toVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypeBool))
+  ptrsForBool.fromVariantFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypeBool))
+}
+
 type Bool struct {
   data   *[classSizeBool]byte
   iface  gdc.Interface
@@ -32,8 +93,7 @@ func NewBool() *Bool {
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   me := newBool()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeBool, 0) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForBool.ctrFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{}))
   return me
 }
 
@@ -42,8 +102,7 @@ func NewBoolFromBool(from bool, ) *Bool {
   defer pinner.Unpin()
   pinner.Pin(&from)
   me := newBool()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeBool, 1) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&from), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForBool.ctrFromBoolFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&from), }))
   return me
 }
 
@@ -52,8 +111,7 @@ func NewBoolFromInt(from int64, ) *Bool {
   defer pinner.Unpin()
   pinner.Pin(&from)
   me := newBool()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeBool, 2) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&from), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForBool.ctrFromIntFn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&from), }))
   return me
 }
 
@@ -62,8 +120,7 @@ func NewBoolFromFloat32(from float64, ) *Bool {
   defer pinner.Unpin()
   pinner.Pin(&from)
   me := newBool()
-  ctr := me.iface.VariantGetPtrConstructor(gdc.VariantTypeBool, 3) // FIXME: should cache?
-  me.iface.CallPtrConstructor(ctr, me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&from), }))
+  me.iface.CallPtrConstructor(ensurePtr(ptrsForBool.ctrFromFloat32Fn), me.asUninitialized(), unsafe.SliceData([]gdc.ConstTypePtr{gdc.ConstTypePtr(&from), }))
   return me
 }
 
@@ -78,16 +135,14 @@ func (me *Variant) AsBool() (*Bool, error) {
 		return nil, fmt.Errorf("variant is not a Bool")
 	}
   bclass := newBool()
-	fn := me.iface.GetVariantToTypeConstructor(me.Type())
-	me.iface.CallTypeFromVariantConstructorFunc(fn, bclass.asUninitialized(), me.AsPtr())
+	me.iface.CallTypeFromVariantConstructorFunc(ensurePtr(ptrsForBool.toVariantFn), bclass.asUninitialized(), me.AsPtr())
 	return bclass, nil
 }
 
 func (me *Bool) AsVariant() *Variant {
   va := newVariant()
   va.inner = me
-  fn := me.iface.GetVariantFromTypeConstructor(me.Type())
-  me.iface.CallVariantFromTypeConstructorFunc(fn, va.asUninitialized(), me.AsTypePtr())
+  me.iface.CallVariantFromTypeConstructorFunc(ensurePtr(ptrsForBool.fromVariantFn), va.asUninitialized(), me.AsTypePtr())
   return va
 }
 
@@ -123,44 +178,44 @@ func (me *Bool) Get() bool {
 // Operators
 
 func (me *Bool) EqualVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Bool) NotEqualVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Bool) AndVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAnd, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAnd, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Bool) OrVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpOr, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpOr, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Bool) XorVariant(right Variant) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpXor, me.Type(), right.Type()) // FIXME: cache
+  opPtr := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpXor, me.Type(), right.Type())
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Bool) Not() bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, me.Type(), gdc.VariantTypeNil) // FIXME: cache
+  opPtr := ptrsForBool.operatorNotFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), nil, ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), nil, ret.AsTypePtr())
   return ret.Get()
 }
 
@@ -168,9 +223,9 @@ func (me *Bool) EqualBool(rightArg bool) bool {
   right := NewBoolFromBool(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForBool.operatorEqualBoolFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
@@ -178,9 +233,9 @@ func (me *Bool) NotEqualBool(rightArg bool) bool {
   right := NewBoolFromBool(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForBool.operatorNotEqualBoolFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
@@ -188,9 +243,9 @@ func (me *Bool) LessBool(rightArg bool) bool {
   right := NewBoolFromBool(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpLess, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForBool.operatorLessBoolFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
@@ -198,9 +253,9 @@ func (me *Bool) GreaterBool(rightArg bool) bool {
   right := NewBoolFromBool(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpGreater, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForBool.operatorGreaterBoolFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
@@ -208,9 +263,9 @@ func (me *Bool) AndBool(rightArg bool) bool {
   right := NewBoolFromBool(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAnd, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForBool.operatorAndBoolFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
@@ -218,9 +273,9 @@ func (me *Bool) OrBool(rightArg bool) bool {
   right := NewBoolFromBool(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpOr, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForBool.operatorOrBoolFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
@@ -228,9 +283,9 @@ func (me *Bool) XorBool(rightArg bool) bool {
   right := NewBoolFromBool(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpXor, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForBool.operatorXorBoolFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
@@ -238,9 +293,9 @@ func (me *Bool) AndInt(rightArg int64) bool {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAnd, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForBool.operatorAndIntFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
@@ -248,9 +303,9 @@ func (me *Bool) OrInt(rightArg int64) bool {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpOr, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForBool.operatorOrIntFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
@@ -258,9 +313,9 @@ func (me *Bool) XorInt(rightArg int64) bool {
   right := NewIntFromInt(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpXor, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForBool.operatorXorIntFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
@@ -268,9 +323,9 @@ func (me *Bool) AndFloat32(rightArg float64) bool {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAnd, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForBool.operatorAndFloat32Fn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
@@ -278,9 +333,9 @@ func (me *Bool) OrFloat32(rightArg float64) bool {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpOr, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForBool.operatorOrFloat32Fn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
@@ -288,44 +343,44 @@ func (me *Bool) XorFloat32(rightArg float64) bool {
   right := NewFloatFromFloat32(rightArg)
   defer right.Destroy()
 
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpXor, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForBool.operatorXorFloat32Fn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Bool) AndObject(right Object) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpAnd, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForBool.operatorAndObjectFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Bool) OrObject(right Object) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpOr, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForBool.operatorOrObjectFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Bool) XorObject(right Object) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpXor, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForBool.operatorXorObjectFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Bool) InDictionary(right Dictionary) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForBool.operatorInDictionaryFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 
 func (me *Bool) InArray(right Array) bool {
-  op := me.iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpIn, me.Type(), right.Type()) // FIXME: cache
+  opPtr := ptrsForBool.operatorInArrayFn
   ret := NewBool()
-  me.iface.CallPtrOperatorEvaluator(op, me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+  me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
   return ret.Get()
 }
 

@@ -14,6 +14,23 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCallbackTweenerList struct {
+  fnSetDelay gdc.MethodBindPtr
+}
+
+var ptrsForCallbackTweener ptrsForCallbackTweenerList
+
+func initCallbackTweenerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CallbackTweener")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_delay")
+    defer methodName.Destroy()
+    ptrsForCallbackTweener.fnSetDelay = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3008182292))
+  }
+}
+
 type CallbackTweener struct {
   Tweener
 }
@@ -51,18 +68,13 @@ func (me *CallbackTweener) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *CallbackTweener) SetDelay(delay float64, ) CallbackTweener {
-  classNameV := StringNameFromStr("CallbackTweener")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_delay")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3008182292) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&delay) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewCallbackTweener()
   pinner.Pin(&delay)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCallbackTweener.fnSetDelay), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

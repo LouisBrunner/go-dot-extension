@@ -14,6 +14,23 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPlaceholderMeshList struct {
+  fnSetAabb gdc.MethodBindPtr
+}
+
+var ptrsForPlaceholderMesh ptrsForPlaceholderMeshList
+
+func initPlaceholderMeshPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PlaceholderMesh")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_aabb")
+    defer methodName.Destroy()
+    ptrsForPlaceholderMesh.fnSetAabb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 259215842))
+  }
+}
+
 type PlaceholderMesh struct {
   Mesh
 }
@@ -51,16 +68,11 @@ func (me *PlaceholderMesh) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PlaceholderMesh) SetAabb(aabb AABB, )  {
-  classNameV := StringNameFromStr("PlaceholderMesh")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_aabb")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 259215842) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{aabb.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPlaceholderMesh.fnSetAabb), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

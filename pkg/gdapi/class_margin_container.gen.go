@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForMarginContainerList struct {
+}
+
+var ptrsForMarginContainer ptrsForMarginContainerList
+
+func initMarginContainerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("MarginContainer")
+  defer className.Destroy()
+}
+
 type MarginContainer struct {
   Container
 }

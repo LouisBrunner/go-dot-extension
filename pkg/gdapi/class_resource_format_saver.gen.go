@@ -14,6 +14,22 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForResourceFormatSaverList struct {
+  fnXSave gdc.MethodBindPtr
+  fnXSetUid gdc.MethodBindPtr
+  fnXRecognize gdc.MethodBindPtr
+  fnXGetRecognizedExtensions gdc.MethodBindPtr
+  fnXRecognizePath gdc.MethodBindPtr
+}
+
+var ptrsForResourceFormatSaver ptrsForResourceFormatSaverList
+
+func initResourceFormatSaverPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ResourceFormatSaver")
+  defer className.Destroy()
+}
+
 type ResourceFormatSaver struct {
   RefCounted
 }

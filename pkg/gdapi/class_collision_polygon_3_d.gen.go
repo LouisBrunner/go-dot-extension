@@ -14,6 +14,65 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForCollisionPolygon3DList struct {
+  fnSetDepth gdc.MethodBindPtr
+  fnGetDepth gdc.MethodBindPtr
+  fnSetPolygon gdc.MethodBindPtr
+  fnGetPolygon gdc.MethodBindPtr
+  fnSetDisabled gdc.MethodBindPtr
+  fnIsDisabled gdc.MethodBindPtr
+  fnSetMargin gdc.MethodBindPtr
+  fnGetMargin gdc.MethodBindPtr
+}
+
+var ptrsForCollisionPolygon3D ptrsForCollisionPolygon3DList
+
+func initCollisionPolygon3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("CollisionPolygon3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_depth")
+    defer methodName.Destroy()
+    ptrsForCollisionPolygon3D.fnSetDepth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_depth")
+    defer methodName.Destroy()
+    ptrsForCollisionPolygon3D.fnGetDepth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_polygon")
+    defer methodName.Destroy()
+    ptrsForCollisionPolygon3D.fnSetPolygon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1509147220))
+  }
+  {
+    methodName := StringNameFromStr("get_polygon")
+    defer methodName.Destroy()
+    ptrsForCollisionPolygon3D.fnGetPolygon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2961356807))
+  }
+  {
+    methodName := StringNameFromStr("set_disabled")
+    defer methodName.Destroy()
+    ptrsForCollisionPolygon3D.fnSetDisabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_disabled")
+    defer methodName.Destroy()
+    ptrsForCollisionPolygon3D.fnIsDisabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_margin")
+    defer methodName.Destroy()
+    ptrsForCollisionPolygon3D.fnSetMargin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_margin")
+    defer methodName.Destroy()
+    ptrsForCollisionPolygon3D.fnGetMargin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type CollisionPolygon3D struct {
   Node3D
 }
@@ -51,118 +110,78 @@ func (me *CollisionPolygon3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *CollisionPolygon3D) SetDepth(depth float64, )  {
-  classNameV := StringNameFromStr("CollisionPolygon3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_depth")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&depth) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionPolygon3D.fnSetDepth), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CollisionPolygon3D) GetDepth() float64 {
-  classNameV := StringNameFromStr("CollisionPolygon3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_depth")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionPolygon3D.fnGetDepth), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *CollisionPolygon3D) SetPolygon(polygon PackedVector2Array, )  {
-  classNameV := StringNameFromStr("CollisionPolygon3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_polygon")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1509147220) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{polygon.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionPolygon3D.fnSetPolygon), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CollisionPolygon3D) GetPolygon() PackedVector2Array {
-  classNameV := StringNameFromStr("CollisionPolygon3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_polygon")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2961356807) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedVector2Array()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionPolygon3D.fnGetPolygon), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *CollisionPolygon3D) SetDisabled(disabled bool, )  {
-  classNameV := StringNameFromStr("CollisionPolygon3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_disabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&disabled) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionPolygon3D.fnSetDisabled), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CollisionPolygon3D) IsDisabled() bool {
-  classNameV := StringNameFromStr("CollisionPolygon3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_disabled")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionPolygon3D.fnIsDisabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *CollisionPolygon3D) SetMargin(margin float64, )  {
-  classNameV := StringNameFromStr("CollisionPolygon3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_margin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&margin) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionPolygon3D.fnSetMargin), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *CollisionPolygon3D) GetMargin() float64 {
-  classNameV := StringNameFromStr("CollisionPolygon3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_margin")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCollisionPolygon3D.fnGetMargin), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

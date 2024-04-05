@@ -14,6 +14,71 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorFileSystemList struct {
+  fnGetFilesystem gdc.MethodBindPtr
+  fnIsScanning gdc.MethodBindPtr
+  fnGetScanningProgress gdc.MethodBindPtr
+  fnScan gdc.MethodBindPtr
+  fnScanSources gdc.MethodBindPtr
+  fnUpdateFile gdc.MethodBindPtr
+  fnGetFilesystemPath gdc.MethodBindPtr
+  fnGetFileType gdc.MethodBindPtr
+  fnReimportFiles gdc.MethodBindPtr
+}
+
+var ptrsForEditorFileSystem ptrsForEditorFileSystemList
+
+func initEditorFileSystemPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorFileSystem")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_filesystem")
+    defer methodName.Destroy()
+    ptrsForEditorFileSystem.fnGetFilesystem = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 842323275))
+  }
+  {
+    methodName := StringNameFromStr("is_scanning")
+    defer methodName.Destroy()
+    ptrsForEditorFileSystem.fnIsScanning = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_scanning_progress")
+    defer methodName.Destroy()
+    ptrsForEditorFileSystem.fnGetScanningProgress = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("scan")
+    defer methodName.Destroy()
+    ptrsForEditorFileSystem.fnScan = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("scan_sources")
+    defer methodName.Destroy()
+    ptrsForEditorFileSystem.fnScanSources = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("update_file")
+    defer methodName.Destroy()
+    ptrsForEditorFileSystem.fnUpdateFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_filesystem_path")
+    defer methodName.Destroy()
+    ptrsForEditorFileSystem.fnGetFilesystemPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3188521125))
+  }
+  {
+    methodName := StringNameFromStr("get_file_type")
+    defer methodName.Destroy()
+    ptrsForEditorFileSystem.fnGetFileType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3135753539))
+  }
+  {
+    methodName := StringNameFromStr("reimport_files")
+    defer methodName.Destroy()
+    ptrsForEditorFileSystem.fnReimportFiles = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4015028928))
+  }
+}
+
 type EditorFileSystem struct {
   Node
 }
@@ -51,133 +116,88 @@ func (me *EditorFileSystem) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *EditorFileSystem) GetFilesystem() EditorFileSystemDirectory {
-  classNameV := StringNameFromStr("EditorFileSystem")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_filesystem")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 842323275) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewEditorFileSystemDirectory()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileSystem.fnGetFilesystem), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorFileSystem) IsScanning() bool {
-  classNameV := StringNameFromStr("EditorFileSystem")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_scanning")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileSystem.fnIsScanning), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *EditorFileSystem) GetScanningProgress() float64 {
-  classNameV := StringNameFromStr("EditorFileSystem")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_scanning_progress")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileSystem.fnGetScanningProgress), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *EditorFileSystem) Scan()  {
-  classNameV := StringNameFromStr("EditorFileSystem")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("scan")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileSystem.fnScan), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorFileSystem) ScanSources()  {
-  classNameV := StringNameFromStr("EditorFileSystem")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("scan_sources")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileSystem.fnScanSources), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorFileSystem) UpdateFile(path String, )  {
-  classNameV := StringNameFromStr("EditorFileSystem")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("update_file")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileSystem.fnUpdateFile), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *EditorFileSystem) GetFilesystemPath(path String, ) EditorFileSystemDirectory {
-  classNameV := StringNameFromStr("EditorFileSystem")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_filesystem_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3188521125) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewEditorFileSystemDirectory()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileSystem.fnGetFilesystemPath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorFileSystem) GetFileType(path String, ) String {
-  classNameV := StringNameFromStr("EditorFileSystem")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_file_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3135753539) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileSystem.fnGetFileType), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorFileSystem) ReimportFiles(files PackedStringArray, )  {
-  classNameV := StringNameFromStr("EditorFileSystem")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("reimport_files")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4015028928) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{files.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileSystem.fnReimportFiles), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

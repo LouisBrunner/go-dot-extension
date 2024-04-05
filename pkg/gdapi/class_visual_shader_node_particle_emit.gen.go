@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeParticleEmitList struct {
+  fnSetFlags gdc.MethodBindPtr
+  fnGetFlags gdc.MethodBindPtr
+}
+
+var ptrsForVisualShaderNodeParticleEmit ptrsForVisualShaderNodeParticleEmitList
+
+func initVisualShaderNodeParticleEmitPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeParticleEmit")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_flags")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeParticleEmit.fnSetFlags = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3960756792))
+  }
+  {
+    methodName := StringNameFromStr("get_flags")
+    defer methodName.Destroy()
+    ptrsForVisualShaderNodeParticleEmit.fnGetFlags = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 171277835))
+  }
+}
+
 type VisualShaderNodeParticleEmit struct {
   VisualShaderNode
 }
@@ -60,31 +83,21 @@ func (me *VisualShaderNodeParticleEmit) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *VisualShaderNodeParticleEmit) SetFlags(flags VisualShaderNodeParticleEmitEmitFlags, )  {
-  classNameV := StringNameFromStr("VisualShaderNodeParticleEmit")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_flags")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3960756792) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&flags) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeParticleEmit.fnSetFlags), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *VisualShaderNodeParticleEmit) GetFlags() VisualShaderNodeParticleEmitEmitFlags {
-  classNameV := StringNameFromStr("VisualShaderNodeParticleEmit")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_flags")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 171277835) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret VisualShaderNodeParticleEmitEmitFlags
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNodeParticleEmit.fnGetFlags), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

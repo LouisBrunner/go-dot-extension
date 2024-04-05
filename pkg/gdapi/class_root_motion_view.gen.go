@@ -14,6 +14,77 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForRootMotionViewList struct {
+  fnSetAnimationPath gdc.MethodBindPtr
+  fnGetAnimationPath gdc.MethodBindPtr
+  fnSetColor gdc.MethodBindPtr
+  fnGetColor gdc.MethodBindPtr
+  fnSetCellSize gdc.MethodBindPtr
+  fnGetCellSize gdc.MethodBindPtr
+  fnSetRadius gdc.MethodBindPtr
+  fnGetRadius gdc.MethodBindPtr
+  fnSetZeroY gdc.MethodBindPtr
+  fnGetZeroY gdc.MethodBindPtr
+}
+
+var ptrsForRootMotionView ptrsForRootMotionViewList
+
+func initRootMotionViewPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("RootMotionView")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_animation_path")
+    defer methodName.Destroy()
+    ptrsForRootMotionView.fnSetAnimationPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1348162250))
+  }
+  {
+    methodName := StringNameFromStr("get_animation_path")
+    defer methodName.Destroy()
+    ptrsForRootMotionView.fnGetAnimationPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4075236667))
+  }
+  {
+    methodName := StringNameFromStr("set_color")
+    defer methodName.Destroy()
+    ptrsForRootMotionView.fnSetColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2920490490))
+  }
+  {
+    methodName := StringNameFromStr("get_color")
+    defer methodName.Destroy()
+    ptrsForRootMotionView.fnGetColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3444240500))
+  }
+  {
+    methodName := StringNameFromStr("set_cell_size")
+    defer methodName.Destroy()
+    ptrsForRootMotionView.fnSetCellSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_cell_size")
+    defer methodName.Destroy()
+    ptrsForRootMotionView.fnGetCellSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_radius")
+    defer methodName.Destroy()
+    ptrsForRootMotionView.fnSetRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_radius")
+    defer methodName.Destroy()
+    ptrsForRootMotionView.fnGetRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_zero_y")
+    defer methodName.Destroy()
+    ptrsForRootMotionView.fnSetZeroY = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("get_zero_y")
+    defer methodName.Destroy()
+    ptrsForRootMotionView.fnGetZeroY = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type RootMotionView struct {
   VisualInstance3D
 }
@@ -51,147 +122,97 @@ func (me *RootMotionView) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *RootMotionView) SetAnimationPath(path NodePath, )  {
-  classNameV := StringNameFromStr("RootMotionView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_animation_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRootMotionView.fnSetAnimationPath), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RootMotionView) GetAnimationPath() NodePath {
-  classNameV := StringNameFromStr("RootMotionView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_animation_path")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNodePath()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRootMotionView.fnGetAnimationPath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *RootMotionView) SetColor(color Color, )  {
-  classNameV := StringNameFromStr("RootMotionView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_color")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2920490490) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{color.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRootMotionView.fnSetColor), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RootMotionView) GetColor() Color {
-  classNameV := StringNameFromStr("RootMotionView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_color")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3444240500) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewColor()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRootMotionView.fnGetColor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *RootMotionView) SetCellSize(size float64, )  {
-  classNameV := StringNameFromStr("RootMotionView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_cell_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRootMotionView.fnSetCellSize), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RootMotionView) GetCellSize() float64 {
-  classNameV := StringNameFromStr("RootMotionView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_cell_size")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRootMotionView.fnGetCellSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RootMotionView) SetRadius(size float64, )  {
-  classNameV := StringNameFromStr("RootMotionView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_radius")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&size) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRootMotionView.fnSetRadius), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RootMotionView) GetRadius() float64 {
-  classNameV := StringNameFromStr("RootMotionView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_radius")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRootMotionView.fnGetRadius), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *RootMotionView) SetZeroY(enable bool, )  {
-  classNameV := StringNameFromStr("RootMotionView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_zero_y")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRootMotionView.fnSetZeroY), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *RootMotionView) GetZeroY() bool {
-  classNameV := StringNameFromStr("RootMotionView")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_zero_y")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRootMotionView.fnGetZeroY), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

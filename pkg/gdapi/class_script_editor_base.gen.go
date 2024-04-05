@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForScriptEditorBaseList struct {
+  fnGetBaseEditor gdc.MethodBindPtr
+  fnAddSyntaxHighlighter gdc.MethodBindPtr
+}
+
+var ptrsForScriptEditorBase ptrsForScriptEditorBaseList
+
+func initScriptEditorBasePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ScriptEditorBase")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_base_editor")
+    defer methodName.Destroy()
+    ptrsForScriptEditorBase.fnGetBaseEditor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2783021301))
+  }
+  {
+    methodName := StringNameFromStr("add_syntax_highlighter")
+    defer methodName.Destroy()
+    ptrsForScriptEditorBase.fnAddSyntaxHighlighter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1092774468))
+  }
+}
+
 type ScriptEditorBase struct {
   VBoxContainer
 }
@@ -51,31 +74,21 @@ func (me *ScriptEditorBase) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ScriptEditorBase) GetBaseEditor() Control {
-  classNameV := StringNameFromStr("ScriptEditorBase")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_base_editor")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2783021301) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewControl()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScriptEditorBase.fnGetBaseEditor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ScriptEditorBase) AddSyntaxHighlighter(highlighter EditorSyntaxHighlighter, )  {
-  classNameV := StringNameFromStr("ScriptEditorBase")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_syntax_highlighter")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1092774468) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{highlighter.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScriptEditorBase.fnAddSyntaxHighlighter), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

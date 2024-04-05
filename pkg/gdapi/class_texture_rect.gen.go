@@ -14,6 +14,77 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForTextureRectList struct {
+  fnSetTexture gdc.MethodBindPtr
+  fnGetTexture gdc.MethodBindPtr
+  fnSetExpandMode gdc.MethodBindPtr
+  fnGetExpandMode gdc.MethodBindPtr
+  fnSetFlipH gdc.MethodBindPtr
+  fnIsFlippedH gdc.MethodBindPtr
+  fnSetFlipV gdc.MethodBindPtr
+  fnIsFlippedV gdc.MethodBindPtr
+  fnSetStretchMode gdc.MethodBindPtr
+  fnGetStretchMode gdc.MethodBindPtr
+}
+
+var ptrsForTextureRect ptrsForTextureRectList
+
+func initTextureRectPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("TextureRect")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_texture")
+    defer methodName.Destroy()
+    ptrsForTextureRect.fnSetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4051416890))
+  }
+  {
+    methodName := StringNameFromStr("get_texture")
+    defer methodName.Destroy()
+    ptrsForTextureRect.fnGetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
+  }
+  {
+    methodName := StringNameFromStr("set_expand_mode")
+    defer methodName.Destroy()
+    ptrsForTextureRect.fnSetExpandMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1870766882))
+  }
+  {
+    methodName := StringNameFromStr("get_expand_mode")
+    defer methodName.Destroy()
+    ptrsForTextureRect.fnGetExpandMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3863824733))
+  }
+  {
+    methodName := StringNameFromStr("set_flip_h")
+    defer methodName.Destroy()
+    ptrsForTextureRect.fnSetFlipH = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_flipped_h")
+    defer methodName.Destroy()
+    ptrsForTextureRect.fnIsFlippedH = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_flip_v")
+    defer methodName.Destroy()
+    ptrsForTextureRect.fnSetFlipV = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_flipped_v")
+    defer methodName.Destroy()
+    ptrsForTextureRect.fnIsFlippedV = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_stretch_mode")
+    defer methodName.Destroy()
+    ptrsForTextureRect.fnSetStretchMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 58788729))
+  }
+  {
+    methodName := StringNameFromStr("get_stretch_mode")
+    defer methodName.Destroy()
+    ptrsForTextureRect.fnGetStretchMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 346396079))
+  }
+}
+
 type TextureRect struct {
   Control
 }
@@ -72,147 +143,97 @@ func (me *TextureRect) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *TextureRect) SetTexture(texture Texture2D, )  {
-  classNameV := StringNameFromStr("TextureRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4051416890) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{texture.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureRect.fnSetTexture), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TextureRect) GetTexture() Texture2D {
-  classNameV := StringNameFromStr("TextureRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_texture")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3635182373) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewTexture2D()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureRect.fnGetTexture), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *TextureRect) SetExpandMode(expand_mode TextureRectExpandMode, )  {
-  classNameV := StringNameFromStr("TextureRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_expand_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1870766882) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&expand_mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureRect.fnSetExpandMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TextureRect) GetExpandMode() TextureRectExpandMode {
-  classNameV := StringNameFromStr("TextureRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_expand_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3863824733) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret TextureRectExpandMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureRect.fnGetExpandMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *TextureRect) SetFlipH(enable bool, )  {
-  classNameV := StringNameFromStr("TextureRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_flip_h")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureRect.fnSetFlipH), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TextureRect) IsFlippedH() bool {
-  classNameV := StringNameFromStr("TextureRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_flipped_h")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureRect.fnIsFlippedH), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *TextureRect) SetFlipV(enable bool, )  {
-  classNameV := StringNameFromStr("TextureRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_flip_v")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureRect.fnSetFlipV), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TextureRect) IsFlippedV() bool {
-  classNameV := StringNameFromStr("TextureRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_flipped_v")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureRect.fnIsFlippedV), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *TextureRect) SetStretchMode(stretch_mode TextureRectStretchMode, )  {
-  classNameV := StringNameFromStr("TextureRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_stretch_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 58788729) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&stretch_mode) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureRect.fnSetStretchMode), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *TextureRect) GetStretchMode() TextureRectStretchMode {
-  classNameV := StringNameFromStr("TextureRect")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_stretch_mode")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 346396079) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret TextureRectStretchMode
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextureRect.fnGetStretchMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

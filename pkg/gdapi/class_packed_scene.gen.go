@@ -14,6 +14,41 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPackedSceneList struct {
+  fnPack gdc.MethodBindPtr
+  fnInstantiate gdc.MethodBindPtr
+  fnCanInstantiate gdc.MethodBindPtr
+  fnGetState gdc.MethodBindPtr
+}
+
+var ptrsForPackedScene ptrsForPackedSceneList
+
+func initPackedScenePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PackedScene")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("pack")
+    defer methodName.Destroy()
+    ptrsForPackedScene.fnPack = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2584678054))
+  }
+  {
+    methodName := StringNameFromStr("instantiate")
+    defer methodName.Destroy()
+    ptrsForPackedScene.fnInstantiate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2628778455))
+  }
+  {
+    methodName := StringNameFromStr("can_instantiate")
+    defer methodName.Destroy()
+    ptrsForPackedScene.fnCanInstantiate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_state")
+    defer methodName.Destroy()
+    ptrsForPackedScene.fnGetState = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3479783971))
+  }
+}
+
 type PackedScene struct {
   Resource
 }
@@ -59,63 +94,43 @@ func (me *PackedScene) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *PackedScene) Pack(path Node, ) Error {
-  classNameV := StringNameFromStr("PackedScene")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("pack")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2584678054) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret Error
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPackedScene.fnPack), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *PackedScene) Instantiate(edit_state PackedSceneGenEditState, ) Node {
-  classNameV := StringNameFromStr("PackedScene")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("instantiate")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2628778455) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&edit_state) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNode()
   pinner.Pin(&edit_state)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPackedScene.fnInstantiate), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *PackedScene) CanInstantiate() bool {
-  classNameV := StringNameFromStr("PackedScene")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("can_instantiate")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPackedScene.fnCanInstantiate), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *PackedScene) GetState() SceneState {
-  classNameV := StringNameFromStr("PackedScene")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_state")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3479783971) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewSceneState()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPackedScene.fnGetState), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

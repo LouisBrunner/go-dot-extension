@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForTweenerList struct {
+}
+
+var ptrsForTweener ptrsForTweenerList
+
+func initTweenerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("Tweener")
+  defer className.Destroy()
+}
+
 type Tweener struct {
   RefCounted
 }

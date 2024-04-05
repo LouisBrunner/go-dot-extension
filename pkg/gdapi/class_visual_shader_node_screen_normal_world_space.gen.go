@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeScreenNormalWorldSpaceList struct {
+}
+
+var ptrsForVisualShaderNodeScreenNormalWorldSpace ptrsForVisualShaderNodeScreenNormalWorldSpaceList
+
+func initVisualShaderNodeScreenNormalWorldSpacePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeScreenNormalWorldSpace")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeScreenNormalWorldSpace struct {
   VisualShaderNode
 }

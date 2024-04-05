@@ -14,6 +14,18 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioEffectList struct {
+  fnXInstantiate gdc.MethodBindPtr
+}
+
+var ptrsForAudioEffect ptrsForAudioEffectList
+
+func initAudioEffectPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioEffect")
+  defer className.Destroy()
+}
+
 type AudioEffect struct {
   Resource
 }

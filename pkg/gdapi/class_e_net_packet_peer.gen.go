@@ -14,6 +14,107 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForENetPacketPeerList struct {
+  fnPeerDisconnect gdc.MethodBindPtr
+  fnPeerDisconnectLater gdc.MethodBindPtr
+  fnPeerDisconnectNow gdc.MethodBindPtr
+  fnPing gdc.MethodBindPtr
+  fnPingInterval gdc.MethodBindPtr
+  fnReset gdc.MethodBindPtr
+  fnSend gdc.MethodBindPtr
+  fnThrottleConfigure gdc.MethodBindPtr
+  fnSetTimeout gdc.MethodBindPtr
+  fnGetRemoteAddress gdc.MethodBindPtr
+  fnGetRemotePort gdc.MethodBindPtr
+  fnGetStatistic gdc.MethodBindPtr
+  fnGetState gdc.MethodBindPtr
+  fnGetChannels gdc.MethodBindPtr
+  fnIsActive gdc.MethodBindPtr
+}
+
+var ptrsForENetPacketPeer ptrsForENetPacketPeerList
+
+func initENetPacketPeerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ENetPacketPeer")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("peer_disconnect")
+    defer methodName.Destroy()
+    ptrsForENetPacketPeer.fnPeerDisconnect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1995695955))
+  }
+  {
+    methodName := StringNameFromStr("peer_disconnect_later")
+    defer methodName.Destroy()
+    ptrsForENetPacketPeer.fnPeerDisconnectLater = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1995695955))
+  }
+  {
+    methodName := StringNameFromStr("peer_disconnect_now")
+    defer methodName.Destroy()
+    ptrsForENetPacketPeer.fnPeerDisconnectNow = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1995695955))
+  }
+  {
+    methodName := StringNameFromStr("ping")
+    defer methodName.Destroy()
+    ptrsForENetPacketPeer.fnPing = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("ping_interval")
+    defer methodName.Destroy()
+    ptrsForENetPacketPeer.fnPingInterval = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("reset")
+    defer methodName.Destroy()
+    ptrsForENetPacketPeer.fnReset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+  {
+    methodName := StringNameFromStr("send")
+    defer methodName.Destroy()
+    ptrsForENetPacketPeer.fnSend = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 120522849))
+  }
+  {
+    methodName := StringNameFromStr("throttle_configure")
+    defer methodName.Destroy()
+    ptrsForENetPacketPeer.fnThrottleConfigure = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1649997291))
+  }
+  {
+    methodName := StringNameFromStr("set_timeout")
+    defer methodName.Destroy()
+    ptrsForENetPacketPeer.fnSetTimeout = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1649997291))
+  }
+  {
+    methodName := StringNameFromStr("get_remote_address")
+    defer methodName.Destroy()
+    ptrsForENetPacketPeer.fnGetRemoteAddress = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("get_remote_port")
+    defer methodName.Destroy()
+    ptrsForENetPacketPeer.fnGetRemotePort = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("get_statistic")
+    defer methodName.Destroy()
+    ptrsForENetPacketPeer.fnGetStatistic = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1642578323))
+  }
+  {
+    methodName := StringNameFromStr("get_state")
+    defer methodName.Destroy()
+    ptrsForENetPacketPeer.fnGetState = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 711068532))
+  }
+  {
+    methodName := StringNameFromStr("get_channels")
+    defer methodName.Destroy()
+    ptrsForENetPacketPeer.fnGetChannels = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("is_active")
+    defer methodName.Destroy()
+    ptrsForENetPacketPeer.fnIsActive = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+}
+
 type ENetPacketPeer struct {
   PacketPeer
 }
@@ -93,95 +194,60 @@ func (me *ENetPacketPeer) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ENetPacketPeer) PeerDisconnect(data int64, )  {
-  classNameV := StringNameFromStr("ENetPacketPeer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("peer_disconnect")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1995695955) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&data) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForENetPacketPeer.fnPeerDisconnect), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ENetPacketPeer) PeerDisconnectLater(data int64, )  {
-  classNameV := StringNameFromStr("ENetPacketPeer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("peer_disconnect_later")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1995695955) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&data) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForENetPacketPeer.fnPeerDisconnectLater), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ENetPacketPeer) PeerDisconnectNow(data int64, )  {
-  classNameV := StringNameFromStr("ENetPacketPeer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("peer_disconnect_now")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1995695955) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&data) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForENetPacketPeer.fnPeerDisconnectNow), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ENetPacketPeer) Ping()  {
-  classNameV := StringNameFromStr("ENetPacketPeer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("ping")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForENetPacketPeer.fnPing), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ENetPacketPeer) PingInterval(ping_interval int64, )  {
-  classNameV := StringNameFromStr("ENetPacketPeer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("ping_interval")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&ping_interval) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForENetPacketPeer.fnPingInterval), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ENetPacketPeer) Reset()  {
-  classNameV := StringNameFromStr("ENetPacketPeer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("reset")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForENetPacketPeer.fnReset), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ENetPacketPeer) Send(channel int64, packet PackedByteArray, flags int64, ) Error {
-  classNameV := StringNameFromStr("ENetPacketPeer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("send")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 120522849) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&channel) , packet.AsCTypePtr(), gdc.ConstTypePtr(&flags) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
@@ -189,126 +255,86 @@ func  (me *ENetPacketPeer) Send(channel int64, packet PackedByteArray, flags int
   pinner.Pin(&channel)
   pinner.Pin(&flags)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForENetPacketPeer.fnSend), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *ENetPacketPeer) ThrottleConfigure(interval int64, acceleration int64, deceleration int64, )  {
-  classNameV := StringNameFromStr("ENetPacketPeer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("throttle_configure")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1649997291) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&interval) , gdc.ConstTypePtr(&acceleration) , gdc.ConstTypePtr(&deceleration) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForENetPacketPeer.fnThrottleConfigure), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ENetPacketPeer) SetTimeout(timeout int64, timeout_min int64, timeout_max int64, )  {
-  classNameV := StringNameFromStr("ENetPacketPeer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_timeout")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1649997291) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&timeout) , gdc.ConstTypePtr(&timeout_min) , gdc.ConstTypePtr(&timeout_max) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForENetPacketPeer.fnSetTimeout), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ENetPacketPeer) GetRemoteAddress() String {
-  classNameV := StringNameFromStr("ENetPacketPeer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_remote_address")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForENetPacketPeer.fnGetRemoteAddress), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ENetPacketPeer) GetRemotePort() int64 {
-  classNameV := StringNameFromStr("ENetPacketPeer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_remote_port")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForENetPacketPeer.fnGetRemotePort), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ENetPacketPeer) GetStatistic(statistic ENetPacketPeerPeerStatistic, ) float64 {
-  classNameV := StringNameFromStr("ENetPacketPeer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_statistic")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1642578323) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&statistic) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
   pinner.Pin(&statistic)
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForENetPacketPeer.fnGetStatistic), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ENetPacketPeer) GetState() ENetPacketPeerPeerState {
-  classNameV := StringNameFromStr("ENetPacketPeer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_state")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 711068532) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret ENetPacketPeerPeerState
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForENetPacketPeer.fnGetState), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *ENetPacketPeer) GetChannels() int64 {
-  classNameV := StringNameFromStr("ENetPacketPeer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_channels")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForENetPacketPeer.fnGetChannels), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ENetPacketPeer) IsActive() bool {
-  classNameV := StringNameFromStr("ENetPacketPeer")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_active")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForENetPacketPeer.fnIsActive), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 

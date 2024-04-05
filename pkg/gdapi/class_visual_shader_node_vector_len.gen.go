@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeVectorLenList struct {
+}
+
+var ptrsForVisualShaderNodeVectorLen ptrsForVisualShaderNodeVectorLenList
+
+func initVisualShaderNodeVectorLenPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeVectorLen")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeVectorLen struct {
   VisualShaderNodeVectorBase
 }

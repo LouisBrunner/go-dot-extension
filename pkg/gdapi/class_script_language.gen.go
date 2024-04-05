@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForScriptLanguageList struct {
+}
+
+var ptrsForScriptLanguage ptrsForScriptLanguageList
+
+func initScriptLanguagePtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ScriptLanguage")
+  defer className.Destroy()
+}
+
 type ScriptLanguage struct {
   Object
 }

@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForOpenXRHandList struct {
+  fnSetHand gdc.MethodBindPtr
+  fnGetHand gdc.MethodBindPtr
+  fnSetHandSkeleton gdc.MethodBindPtr
+  fnGetHandSkeleton gdc.MethodBindPtr
+  fnSetMotionRange gdc.MethodBindPtr
+  fnGetMotionRange gdc.MethodBindPtr
+}
+
+var ptrsForOpenXRHand ptrsForOpenXRHandList
+
+func initOpenXRHandPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("OpenXRHand")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_hand")
+    defer methodName.Destroy()
+    ptrsForOpenXRHand.fnSetHand = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1849328560))
+  }
+  {
+    methodName := StringNameFromStr("get_hand")
+    defer methodName.Destroy()
+    ptrsForOpenXRHand.fnGetHand = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2850644561))
+  }
+  {
+    methodName := StringNameFromStr("set_hand_skeleton")
+    defer methodName.Destroy()
+    ptrsForOpenXRHand.fnSetHandSkeleton = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1348162250))
+  }
+  {
+    methodName := StringNameFromStr("get_hand_skeleton")
+    defer methodName.Destroy()
+    ptrsForOpenXRHand.fnGetHandSkeleton = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4075236667))
+  }
+  {
+    methodName := StringNameFromStr("set_motion_range")
+    defer methodName.Destroy()
+    ptrsForOpenXRHand.fnSetMotionRange = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3326516003))
+  }
+  {
+    methodName := StringNameFromStr("get_motion_range")
+    defer methodName.Destroy()
+    ptrsForOpenXRHand.fnGetMotionRange = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2191822314))
+  }
+}
+
 type OpenXRHand struct {
   Node3D
 }
@@ -65,89 +112,59 @@ func (me *OpenXRHand) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *OpenXRHand) SetHand(hand OpenXRHandHands, )  {
-  classNameV := StringNameFromStr("OpenXRHand")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_hand")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1849328560) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hand) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRHand.fnSetHand), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *OpenXRHand) GetHand() OpenXRHandHands {
-  classNameV := StringNameFromStr("OpenXRHand")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_hand")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2850644561) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret OpenXRHandHands
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRHand.fnGetHand), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *OpenXRHand) SetHandSkeleton(hand_skeleton NodePath, )  {
-  classNameV := StringNameFromStr("OpenXRHand")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_hand_skeleton")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1348162250) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{hand_skeleton.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRHand.fnSetHandSkeleton), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *OpenXRHand) GetHandSkeleton() NodePath {
-  classNameV := StringNameFromStr("OpenXRHand")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_hand_skeleton")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4075236667) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewNodePath()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRHand.fnGetHandSkeleton), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *OpenXRHand) SetMotionRange(motion_range OpenXRHandMotionRange, )  {
-  classNameV := StringNameFromStr("OpenXRHand")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_motion_range")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3326516003) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&motion_range) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRHand.fnSetMotionRange), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *OpenXRHand) GetMotionRange() OpenXRHandMotionRange {
-  classNameV := StringNameFromStr("OpenXRHand")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_motion_range")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2191822314) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret OpenXRHandMotionRange
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRHand.fnGetMotionRange), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

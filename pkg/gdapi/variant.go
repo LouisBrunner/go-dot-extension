@@ -18,6 +18,18 @@ type BClass interface {
 	AsVariant() *Variant
 }
 
+type ptrsForVariantList struct {
+	fromObjectFn  gdc.VariantFromTypeConstructorFunc
+	fromVariantFn gdc.TypeFromVariantConstructorFunc
+}
+
+var ptrsForVariant ptrsForVariantList
+
+func initVariantPtrs(iface gdc.Interface) {
+	ptrsForVariant.fromObjectFn = ensurePtr(iface.GetVariantFromTypeConstructor(gdc.VariantTypeObject))
+	ptrsForVariant.fromVariantFn = ensurePtr(iface.GetVariantToTypeConstructor(gdc.VariantTypeObject))
+}
+
 type Variant struct {
 	data   *[classSizeVariant]byte
 	iface  gdc.Interface
@@ -51,6 +63,11 @@ func NewVariantWithC(ptr gdc.ConstVariantPtr) *Variant {
 	return me
 }
 
+func AssignVariant(ptr gdc.VariantPtr, value Variant) {
+	value.iface.VariantDestroy(ptr)
+	value.iface.VariantNewCopy(gdc.UninitializedVariantPtr(ptr), value.AsCPtr())
+}
+
 // Getting pointers
 
 func (me *Variant) AsTypePtr() gdc.TypePtr {
@@ -80,16 +97,11 @@ func (me *Variant) Type() gdc.VariantType {
 }
 
 func (me *Variant) Destroy() {
-	giface.VariantDestroy(me.AsPtr())
+	me.iface.VariantDestroy(me.AsPtr())
 	if me.inner != nil {
 		me.inner.Destroy()
 	}
 	me.pinner.Unpin()
-}
-
-func (me *Variant) Assign(value Variant) {
-	me.Destroy()
-	me.iface.VariantNewCopy(me.asUninitialized(), value.AsCPtr())
 }
 
 func (me *Variant) String() string {
@@ -107,8 +119,7 @@ func (me *Variant) AsObject() (interface{}, error) {
 	}
 	data := [classSizeObject]byte{}
 	dataPtr := unsafe.Pointer(&data)
-	fn := me.iface.GetVariantToTypeConstructor(me.Type())
-	me.iface.CallTypeFromVariantConstructorFunc(fn, gdc.UninitializedTypePtr(dataPtr), me.AsPtr())
+	me.iface.CallTypeFromVariantConstructorFunc(ensurePtr(ptrsForVariant.fromVariantFn), gdc.UninitializedTypePtr(dataPtr), me.AsPtr())
 	objPtr := *(*gdc.ObjectPtr)(dataPtr)
 	obj := ObjectFromPtr(objPtr)
 	clazzStr := obj.GetClass()
@@ -119,6 +130,9 @@ func (me *Variant) AsObject() (interface{}, error) {
 func (me *Variant) AsBClass() (BClass, error) {
 	if me.Type() == gdc.VariantTypeObject {
 		return nil, fmt.Errorf("variant is an object, use AsObject instead")
+	}
+	if me.Type() == gdc.VariantTypeNil {
+		return nil, fmt.Errorf("variant is nil")
 	}
 	return bclassFromVariant[me.Type()](me)
 }

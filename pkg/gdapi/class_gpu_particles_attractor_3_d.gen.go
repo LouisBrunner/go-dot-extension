@@ -14,6 +14,65 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForGPUParticlesAttractor3DList struct {
+  fnSetCullMask gdc.MethodBindPtr
+  fnGetCullMask gdc.MethodBindPtr
+  fnSetStrength gdc.MethodBindPtr
+  fnGetStrength gdc.MethodBindPtr
+  fnSetAttenuation gdc.MethodBindPtr
+  fnGetAttenuation gdc.MethodBindPtr
+  fnSetDirectionality gdc.MethodBindPtr
+  fnGetDirectionality gdc.MethodBindPtr
+}
+
+var ptrsForGPUParticlesAttractor3D ptrsForGPUParticlesAttractor3DList
+
+func initGPUParticlesAttractor3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("GPUParticlesAttractor3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_cull_mask")
+    defer methodName.Destroy()
+    ptrsForGPUParticlesAttractor3D.fnSetCullMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+  }
+  {
+    methodName := StringNameFromStr("get_cull_mask")
+    defer methodName.Destroy()
+    ptrsForGPUParticlesAttractor3D.fnGetCullMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+  }
+  {
+    methodName := StringNameFromStr("set_strength")
+    defer methodName.Destroy()
+    ptrsForGPUParticlesAttractor3D.fnSetStrength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_strength")
+    defer methodName.Destroy()
+    ptrsForGPUParticlesAttractor3D.fnGetStrength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_attenuation")
+    defer methodName.Destroy()
+    ptrsForGPUParticlesAttractor3D.fnSetAttenuation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_attenuation")
+    defer methodName.Destroy()
+    ptrsForGPUParticlesAttractor3D.fnGetAttenuation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+  {
+    methodName := StringNameFromStr("set_directionality")
+    defer methodName.Destroy()
+    ptrsForGPUParticlesAttractor3D.fnSetDirectionality = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+  }
+  {
+    methodName := StringNameFromStr("get_directionality")
+    defer methodName.Destroy()
+    ptrsForGPUParticlesAttractor3D.fnGetDirectionality = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+  }
+}
+
 type GPUParticlesAttractor3D struct {
   VisualInstance3D
 }
@@ -51,118 +110,78 @@ func (me *GPUParticlesAttractor3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *GPUParticlesAttractor3D) SetCullMask(mask int64, )  {
-  classNameV := StringNameFromStr("GPUParticlesAttractor3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_cull_mask")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1286410249) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mask) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGPUParticlesAttractor3D.fnSetCullMask), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GPUParticlesAttractor3D) GetCullMask() int64 {
-  classNameV := StringNameFromStr("GPUParticlesAttractor3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_cull_mask")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3905245786) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewInt()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGPUParticlesAttractor3D.fnGetCullMask), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *GPUParticlesAttractor3D) SetStrength(strength float64, )  {
-  classNameV := StringNameFromStr("GPUParticlesAttractor3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_strength")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&strength) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGPUParticlesAttractor3D.fnSetStrength), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GPUParticlesAttractor3D) GetStrength() float64 {
-  classNameV := StringNameFromStr("GPUParticlesAttractor3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_strength")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGPUParticlesAttractor3D.fnGetStrength), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *GPUParticlesAttractor3D) SetAttenuation(attenuation float64, )  {
-  classNameV := StringNameFromStr("GPUParticlesAttractor3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_attenuation")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&attenuation) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGPUParticlesAttractor3D.fnSetAttenuation), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GPUParticlesAttractor3D) GetAttenuation() float64 {
-  classNameV := StringNameFromStr("GPUParticlesAttractor3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_attenuation")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGPUParticlesAttractor3D.fnGetAttenuation), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *GPUParticlesAttractor3D) SetDirectionality(amount float64, )  {
-  classNameV := StringNameFromStr("GPUParticlesAttractor3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_directionality")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 373806689) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&amount) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGPUParticlesAttractor3D.fnSetDirectionality), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *GPUParticlesAttractor3D) GetDirectionality() float64 {
-  classNameV := StringNameFromStr("GPUParticlesAttractor3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_directionality")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1740695150) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewFloat()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGPUParticlesAttractor3D.fnGetDirectionality), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 // Properties

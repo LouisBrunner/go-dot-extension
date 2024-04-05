@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForResourcePreloaderList struct {
+  fnAddResource gdc.MethodBindPtr
+  fnRemoveResource gdc.MethodBindPtr
+  fnRenameResource gdc.MethodBindPtr
+  fnHasResource gdc.MethodBindPtr
+  fnGetResource gdc.MethodBindPtr
+  fnGetResourceList gdc.MethodBindPtr
+}
+
+var ptrsForResourcePreloader ptrsForResourcePreloaderList
+
+func initResourcePreloaderPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ResourcePreloader")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("add_resource")
+    defer methodName.Destroy()
+    ptrsForResourcePreloader.fnAddResource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1168801743))
+  }
+  {
+    methodName := StringNameFromStr("remove_resource")
+    defer methodName.Destroy()
+    ptrsForResourcePreloader.fnRemoveResource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3304788590))
+  }
+  {
+    methodName := StringNameFromStr("rename_resource")
+    defer methodName.Destroy()
+    ptrsForResourcePreloader.fnRenameResource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3740211285))
+  }
+  {
+    methodName := StringNameFromStr("has_resource")
+    defer methodName.Destroy()
+    ptrsForResourcePreloader.fnHasResource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2619796661))
+  }
+  {
+    methodName := StringNameFromStr("get_resource")
+    defer methodName.Destroy()
+    ptrsForResourcePreloader.fnGetResource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3742749261))
+  }
+  {
+    methodName := StringNameFromStr("get_resource_list")
+    defer methodName.Destroy()
+    ptrsForResourcePreloader.fnGetResourceList = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1139954409))
+  }
+}
+
 type ResourcePreloader struct {
   Node
 }
@@ -51,89 +98,59 @@ func (me *ResourcePreloader) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *ResourcePreloader) AddResource(name StringName, resource Resource, )  {
-  classNameV := StringNameFromStr("ResourcePreloader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("add_resource")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1168801743) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), resource.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourcePreloader.fnAddResource), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ResourcePreloader) RemoveResource(name StringName, )  {
-  classNameV := StringNameFromStr("ResourcePreloader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("remove_resource")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourcePreloader.fnRemoveResource), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ResourcePreloader) RenameResource(name StringName, newname StringName, )  {
-  classNameV := StringNameFromStr("ResourcePreloader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("rename_resource")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3740211285) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), newname.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourcePreloader.fnRenameResource), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *ResourcePreloader) HasResource(name StringName, ) bool {
-  classNameV := StringNameFromStr("ResourcePreloader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_resource")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourcePreloader.fnHasResource), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *ResourcePreloader) GetResource(name StringName, ) Resource {
-  classNameV := StringNameFromStr("ResourcePreloader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_resource")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3742749261) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewResource()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourcePreloader.fnGetResource), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *ResourcePreloader) GetResourceList() PackedStringArray {
-  classNameV := StringNameFromStr("ResourcePreloader")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_resource_list")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1139954409) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewPackedStringArray()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResourcePreloader.fnGetResourceList), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

@@ -14,6 +14,18 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForRichTextEffectList struct {
+  fnXProcessCustomFx gdc.MethodBindPtr
+}
+
+var ptrsForRichTextEffect ptrsForRichTextEffectList
+
+func initRichTextEffectPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("RichTextEffect")
+  defer className.Destroy()
+}
+
 type RichTextEffect struct {
   Resource
 }

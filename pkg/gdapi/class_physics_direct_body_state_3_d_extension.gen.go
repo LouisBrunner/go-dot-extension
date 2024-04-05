@@ -14,6 +14,63 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForPhysicsDirectBodyState3DExtensionList struct {
+  fnXGetTotalGravity gdc.MethodBindPtr
+  fnXGetTotalLinearDamp gdc.MethodBindPtr
+  fnXGetTotalAngularDamp gdc.MethodBindPtr
+  fnXGetCenterOfMass gdc.MethodBindPtr
+  fnXGetCenterOfMassLocal gdc.MethodBindPtr
+  fnXGetPrincipalInertiaAxes gdc.MethodBindPtr
+  fnXGetInverseMass gdc.MethodBindPtr
+  fnXGetInverseInertia gdc.MethodBindPtr
+  fnXGetInverseInertiaTensor gdc.MethodBindPtr
+  fnXSetLinearVelocity gdc.MethodBindPtr
+  fnXGetLinearVelocity gdc.MethodBindPtr
+  fnXSetAngularVelocity gdc.MethodBindPtr
+  fnXGetAngularVelocity gdc.MethodBindPtr
+  fnXSetTransform gdc.MethodBindPtr
+  fnXGetTransform gdc.MethodBindPtr
+  fnXGetVelocityAtLocalPosition gdc.MethodBindPtr
+  fnXApplyCentralImpulse gdc.MethodBindPtr
+  fnXApplyImpulse gdc.MethodBindPtr
+  fnXApplyTorqueImpulse gdc.MethodBindPtr
+  fnXApplyCentralForce gdc.MethodBindPtr
+  fnXApplyForce gdc.MethodBindPtr
+  fnXApplyTorque gdc.MethodBindPtr
+  fnXAddConstantCentralForce gdc.MethodBindPtr
+  fnXAddConstantForce gdc.MethodBindPtr
+  fnXAddConstantTorque gdc.MethodBindPtr
+  fnXSetConstantForce gdc.MethodBindPtr
+  fnXGetConstantForce gdc.MethodBindPtr
+  fnXSetConstantTorque gdc.MethodBindPtr
+  fnXGetConstantTorque gdc.MethodBindPtr
+  fnXSetSleepState gdc.MethodBindPtr
+  fnXIsSleeping gdc.MethodBindPtr
+  fnXGetContactCount gdc.MethodBindPtr
+  fnXGetContactLocalPosition gdc.MethodBindPtr
+  fnXGetContactLocalNormal gdc.MethodBindPtr
+  fnXGetContactImpulse gdc.MethodBindPtr
+  fnXGetContactLocalShape gdc.MethodBindPtr
+  fnXGetContactLocalVelocityAtPosition gdc.MethodBindPtr
+  fnXGetContactCollider gdc.MethodBindPtr
+  fnXGetContactColliderPosition gdc.MethodBindPtr
+  fnXGetContactColliderId gdc.MethodBindPtr
+  fnXGetContactColliderObject gdc.MethodBindPtr
+  fnXGetContactColliderShape gdc.MethodBindPtr
+  fnXGetContactColliderVelocityAtPosition gdc.MethodBindPtr
+  fnXGetStep gdc.MethodBindPtr
+  fnXIntegrateForces gdc.MethodBindPtr
+  fnXGetSpaceState gdc.MethodBindPtr
+}
+
+var ptrsForPhysicsDirectBodyState3DExtension ptrsForPhysicsDirectBodyState3DExtensionList
+
+func initPhysicsDirectBodyState3DExtensionPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("PhysicsDirectBodyState3DExtension")
+  defer className.Destroy()
+}
+
 type PhysicsDirectBodyState3DExtension struct {
   PhysicsDirectBodyState3D
 }

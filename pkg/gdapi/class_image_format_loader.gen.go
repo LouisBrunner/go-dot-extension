@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForImageFormatLoaderList struct {
+}
+
+var ptrsForImageFormatLoader ptrsForImageFormatLoaderList
+
+func initImageFormatLoaderPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("ImageFormatLoader")
+  defer className.Destroy()
+}
+
 type ImageFormatLoader struct {
   RefCounted
 }

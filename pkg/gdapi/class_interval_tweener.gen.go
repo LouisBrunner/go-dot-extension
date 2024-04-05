@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForIntervalTweenerList struct {
+}
+
+var ptrsForIntervalTweener ptrsForIntervalTweenerList
+
+func initIntervalTweenerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("IntervalTweener")
+  defer className.Destroy()
+}
+
 type IntervalTweener struct {
   Tweener
 }

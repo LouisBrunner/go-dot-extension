@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForVisualShaderNodeTextureSDFNormalList struct {
+}
+
+var ptrsForVisualShaderNodeTextureSDFNormal ptrsForVisualShaderNodeTextureSDFNormalList
+
+func initVisualShaderNodeTextureSDFNormalPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("VisualShaderNodeTextureSDFNormal")
+  defer className.Destroy()
+}
+
 type VisualShaderNodeTextureSDFNormal struct {
   VisualShaderNode
 }

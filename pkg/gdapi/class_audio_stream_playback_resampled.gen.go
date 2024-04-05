@@ -14,6 +14,25 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForAudioStreamPlaybackResampledList struct {
+  fnXMixResampled gdc.MethodBindPtr
+  fnXGetStreamSamplingRate gdc.MethodBindPtr
+  fnBeginResample gdc.MethodBindPtr
+}
+
+var ptrsForAudioStreamPlaybackResampled ptrsForAudioStreamPlaybackResampledList
+
+func initAudioStreamPlaybackResampledPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("AudioStreamPlaybackResampled")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("begin_resample")
+    defer methodName.Destroy()
+    ptrsForAudioStreamPlaybackResampled.fnBeginResample = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+  }
+}
+
 type AudioStreamPlaybackResampled struct {
   AudioStreamPlayback
 }
@@ -51,16 +70,11 @@ func (me *AudioStreamPlaybackResampled) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *AudioStreamPlaybackResampled) BeginResample()  {
-  classNameV := StringNameFromStr("AudioStreamPlaybackResampled")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("begin_resample")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3218959716) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAudioStreamPlaybackResampled.fnBeginResample), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

@@ -14,6 +14,53 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForEditorPathsList struct {
+  fnGetDataDir gdc.MethodBindPtr
+  fnGetConfigDir gdc.MethodBindPtr
+  fnGetCacheDir gdc.MethodBindPtr
+  fnIsSelfContained gdc.MethodBindPtr
+  fnGetSelfContainedFile gdc.MethodBindPtr
+  fnGetProjectSettingsDir gdc.MethodBindPtr
+}
+
+var ptrsForEditorPaths ptrsForEditorPathsList
+
+func initEditorPathsPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("EditorPaths")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_data_dir")
+    defer methodName.Destroy()
+    ptrsForEditorPaths.fnGetDataDir = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("get_config_dir")
+    defer methodName.Destroy()
+    ptrsForEditorPaths.fnGetConfigDir = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("get_cache_dir")
+    defer methodName.Destroy()
+    ptrsForEditorPaths.fnGetCacheDir = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("is_self_contained")
+    defer methodName.Destroy()
+    ptrsForEditorPaths.fnIsSelfContained = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_self_contained_file")
+    defer methodName.Destroy()
+    ptrsForEditorPaths.fnGetSelfContainedFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("get_project_settings_dir")
+    defer methodName.Destroy()
+    ptrsForEditorPaths.fnGetProjectSettingsDir = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+}
+
 type EditorPaths struct {
   Object
 }
@@ -51,92 +98,62 @@ func (me *EditorPaths) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *EditorPaths) GetDataDir() String {
-  classNameV := StringNameFromStr("EditorPaths")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_data_dir")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorPaths.fnGetDataDir), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorPaths) GetConfigDir() String {
-  classNameV := StringNameFromStr("EditorPaths")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_config_dir")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorPaths.fnGetConfigDir), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorPaths) GetCacheDir() String {
-  classNameV := StringNameFromStr("EditorPaths")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_cache_dir")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorPaths.fnGetCacheDir), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorPaths) IsSelfContained() bool {
-  classNameV := StringNameFromStr("EditorPaths")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_self_contained")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorPaths.fnIsSelfContained), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *EditorPaths) GetSelfContainedFile() String {
-  classNameV := StringNameFromStr("EditorPaths")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_self_contained_file")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorPaths.fnGetSelfContainedFile), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *EditorPaths) GetProjectSettingsDir() String {
-  classNameV := StringNameFromStr("EditorPaths")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_project_settings_dir")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorPaths.fnGetProjectSettingsDir), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 

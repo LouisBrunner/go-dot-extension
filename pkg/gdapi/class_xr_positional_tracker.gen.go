@@ -14,6 +14,113 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForXRPositionalTrackerList struct {
+  fnGetTrackerType gdc.MethodBindPtr
+  fnSetTrackerType gdc.MethodBindPtr
+  fnGetTrackerName gdc.MethodBindPtr
+  fnSetTrackerName gdc.MethodBindPtr
+  fnGetTrackerDesc gdc.MethodBindPtr
+  fnSetTrackerDesc gdc.MethodBindPtr
+  fnGetTrackerProfile gdc.MethodBindPtr
+  fnSetTrackerProfile gdc.MethodBindPtr
+  fnGetTrackerHand gdc.MethodBindPtr
+  fnSetTrackerHand gdc.MethodBindPtr
+  fnHasPose gdc.MethodBindPtr
+  fnGetPose gdc.MethodBindPtr
+  fnInvalidatePose gdc.MethodBindPtr
+  fnSetPose gdc.MethodBindPtr
+  fnGetInput gdc.MethodBindPtr
+  fnSetInput gdc.MethodBindPtr
+}
+
+var ptrsForXRPositionalTracker ptrsForXRPositionalTrackerList
+
+func initXRPositionalTrackerPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("XRPositionalTracker")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("get_tracker_type")
+    defer methodName.Destroy()
+    ptrsForXRPositionalTracker.fnGetTrackerType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2784508102))
+  }
+  {
+    methodName := StringNameFromStr("set_tracker_type")
+    defer methodName.Destroy()
+    ptrsForXRPositionalTracker.fnSetTrackerType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3055763575))
+  }
+  {
+    methodName := StringNameFromStr("get_tracker_name")
+    defer methodName.Destroy()
+    ptrsForXRPositionalTracker.fnGetTrackerName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2002593661))
+  }
+  {
+    methodName := StringNameFromStr("set_tracker_name")
+    defer methodName.Destroy()
+    ptrsForXRPositionalTracker.fnSetTrackerName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3304788590))
+  }
+  {
+    methodName := StringNameFromStr("get_tracker_desc")
+    defer methodName.Destroy()
+    ptrsForXRPositionalTracker.fnGetTrackerDesc = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("set_tracker_desc")
+    defer methodName.Destroy()
+    ptrsForXRPositionalTracker.fnSetTrackerDesc = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_tracker_profile")
+    defer methodName.Destroy()
+    ptrsForXRPositionalTracker.fnGetTrackerProfile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+  }
+  {
+    methodName := StringNameFromStr("set_tracker_profile")
+    defer methodName.Destroy()
+    ptrsForXRPositionalTracker.fnSetTrackerProfile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+  }
+  {
+    methodName := StringNameFromStr("get_tracker_hand")
+    defer methodName.Destroy()
+    ptrsForXRPositionalTracker.fnGetTrackerHand = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4181770860))
+  }
+  {
+    methodName := StringNameFromStr("set_tracker_hand")
+    defer methodName.Destroy()
+    ptrsForXRPositionalTracker.fnSetTrackerHand = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3904108980))
+  }
+  {
+    methodName := StringNameFromStr("has_pose")
+    defer methodName.Destroy()
+    ptrsForXRPositionalTracker.fnHasPose = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2619796661))
+  }
+  {
+    methodName := StringNameFromStr("get_pose")
+    defer methodName.Destroy()
+    ptrsForXRPositionalTracker.fnGetPose = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4099720006))
+  }
+  {
+    methodName := StringNameFromStr("invalidate_pose")
+    defer methodName.Destroy()
+    ptrsForXRPositionalTracker.fnInvalidatePose = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3304788590))
+  }
+  {
+    methodName := StringNameFromStr("set_pose")
+    defer methodName.Destroy()
+    ptrsForXRPositionalTracker.fnSetPose = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3451230163))
+  }
+  {
+    methodName := StringNameFromStr("get_input")
+    defer methodName.Destroy()
+    ptrsForXRPositionalTracker.fnGetInput = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2760726917))
+  }
+  {
+    methodName := StringNameFromStr("set_input")
+    defer methodName.Destroy()
+    ptrsForXRPositionalTracker.fnSetInput = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3776071444))
+  }
+}
+
 type XRPositionalTracker struct {
   RefCounted
 }
@@ -58,234 +165,154 @@ func (me *XRPositionalTracker) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *XRPositionalTracker) GetTrackerType() XRServerTrackerType {
-  classNameV := StringNameFromStr("XRPositionalTracker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_tracker_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2784508102) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret XRServerTrackerType
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPositionalTracker.fnGetTrackerType), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *XRPositionalTracker) SetTrackerType(type_ XRServerTrackerType, )  {
-  classNameV := StringNameFromStr("XRPositionalTracker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_tracker_type")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3055763575) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPositionalTracker.fnSetTrackerType), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRPositionalTracker) GetTrackerName() StringName {
-  classNameV := StringNameFromStr("XRPositionalTracker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_tracker_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2002593661) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewStringName()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPositionalTracker.fnGetTrackerName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRPositionalTracker) SetTrackerName(name StringName, )  {
-  classNameV := StringNameFromStr("XRPositionalTracker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_tracker_name")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPositionalTracker.fnSetTrackerName), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRPositionalTracker) GetTrackerDesc() String {
-  classNameV := StringNameFromStr("XRPositionalTracker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_tracker_desc")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPositionalTracker.fnGetTrackerDesc), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRPositionalTracker) SetTrackerDesc(description String, )  {
-  classNameV := StringNameFromStr("XRPositionalTracker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_tracker_desc")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{description.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPositionalTracker.fnSetTrackerDesc), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRPositionalTracker) GetTrackerProfile() String {
-  classNameV := StringNameFromStr("XRPositionalTracker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_tracker_profile")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 201670096) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewString()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPositionalTracker.fnGetTrackerProfile), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRPositionalTracker) SetTrackerProfile(profile String, )  {
-  classNameV := StringNameFromStr("XRPositionalTracker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_tracker_profile")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 83702148) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{profile.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPositionalTracker.fnSetTrackerProfile), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRPositionalTracker) GetTrackerHand() XRPositionalTrackerTrackerHand {
-  classNameV := StringNameFromStr("XRPositionalTracker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_tracker_hand")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4181770860) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret XRPositionalTrackerTrackerHand
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPositionalTracker.fnGetTrackerHand), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 
 func  (me *XRPositionalTracker) SetTrackerHand(hand XRPositionalTrackerTrackerHand, )  {
-  classNameV := StringNameFromStr("XRPositionalTracker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_tracker_hand")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3904108980) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hand) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPositionalTracker.fnSetTrackerHand), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRPositionalTracker) HasPose(name StringName, ) bool {
-  classNameV := StringNameFromStr("XRPositionalTracker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("has_pose")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2619796661) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPositionalTracker.fnHasPose), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *XRPositionalTracker) GetPose(name StringName, ) XRPose {
-  classNameV := StringNameFromStr("XRPositionalTracker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_pose")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 4099720006) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewXRPose()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPositionalTracker.fnGetPose), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRPositionalTracker) InvalidatePose(name StringName, )  {
-  classNameV := StringNameFromStr("XRPositionalTracker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("invalidate_pose")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3304788590) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPositionalTracker.fnInvalidatePose), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRPositionalTracker) SetPose(name StringName, transform Transform3D, linear_velocity Vector3, angular_velocity Vector3, tracking_confidence XRPoseTrackingConfidence, )  {
-  classNameV := StringNameFromStr("XRPositionalTracker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_pose")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3451230163) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), transform.AsCTypePtr(), linear_velocity.AsCTypePtr(), angular_velocity.AsCTypePtr(), gdc.ConstTypePtr(&tracking_confidence) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPositionalTracker.fnSetPose), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *XRPositionalTracker) GetInput(name StringName, ) Variant {
-  classNameV := StringNameFromStr("XRPositionalTracker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_input")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2760726917) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewVariant()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPositionalTracker.fnGetInput), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 
 func  (me *XRPositionalTracker) SetInput(name StringName, value Variant, )  {
-  classNameV := StringNameFromStr("XRPositionalTracker")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_input")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 3776071444) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), value.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForXRPositionalTracker.fnSetInput), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 // Properties

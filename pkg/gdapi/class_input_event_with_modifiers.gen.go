@@ -14,6 +14,89 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForInputEventWithModifiersList struct {
+  fnSetCommandOrControlAutoremap gdc.MethodBindPtr
+  fnIsCommandOrControlAutoremap gdc.MethodBindPtr
+  fnIsCommandOrControlPressed gdc.MethodBindPtr
+  fnSetAltPressed gdc.MethodBindPtr
+  fnIsAltPressed gdc.MethodBindPtr
+  fnSetShiftPressed gdc.MethodBindPtr
+  fnIsShiftPressed gdc.MethodBindPtr
+  fnSetCtrlPressed gdc.MethodBindPtr
+  fnIsCtrlPressed gdc.MethodBindPtr
+  fnSetMetaPressed gdc.MethodBindPtr
+  fnIsMetaPressed gdc.MethodBindPtr
+  fnGetModifiersMask gdc.MethodBindPtr
+}
+
+var ptrsForInputEventWithModifiers ptrsForInputEventWithModifiersList
+
+func initInputEventWithModifiersPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("InputEventWithModifiers")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_command_or_control_autoremap")
+    defer methodName.Destroy()
+    ptrsForInputEventWithModifiers.fnSetCommandOrControlAutoremap = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_command_or_control_autoremap")
+    defer methodName.Destroy()
+    ptrsForInputEventWithModifiers.fnIsCommandOrControlAutoremap = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("is_command_or_control_pressed")
+    defer methodName.Destroy()
+    ptrsForInputEventWithModifiers.fnIsCommandOrControlPressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_alt_pressed")
+    defer methodName.Destroy()
+    ptrsForInputEventWithModifiers.fnSetAltPressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_alt_pressed")
+    defer methodName.Destroy()
+    ptrsForInputEventWithModifiers.fnIsAltPressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_shift_pressed")
+    defer methodName.Destroy()
+    ptrsForInputEventWithModifiers.fnSetShiftPressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_shift_pressed")
+    defer methodName.Destroy()
+    ptrsForInputEventWithModifiers.fnIsShiftPressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_ctrl_pressed")
+    defer methodName.Destroy()
+    ptrsForInputEventWithModifiers.fnSetCtrlPressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_ctrl_pressed")
+    defer methodName.Destroy()
+    ptrsForInputEventWithModifiers.fnIsCtrlPressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("set_meta_pressed")
+    defer methodName.Destroy()
+    ptrsForInputEventWithModifiers.fnSetMetaPressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+  }
+  {
+    methodName := StringNameFromStr("is_meta_pressed")
+    defer methodName.Destroy()
+    ptrsForInputEventWithModifiers.fnIsMetaPressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+  }
+  {
+    methodName := StringNameFromStr("get_modifiers_mask")
+    defer methodName.Destroy()
+    ptrsForInputEventWithModifiers.fnGetModifiersMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1258259499))
+  }
+}
+
 type InputEventWithModifiers struct {
   InputEventFromWindow
 }
@@ -51,177 +134,117 @@ func (me *InputEventWithModifiers) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *InputEventWithModifiers) SetCommandOrControlAutoremap(enable bool, )  {
-  classNameV := StringNameFromStr("InputEventWithModifiers")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_command_or_control_autoremap")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventWithModifiers.fnSetCommandOrControlAutoremap), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventWithModifiers) IsCommandOrControlAutoremap() bool {
-  classNameV := StringNameFromStr("InputEventWithModifiers")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_command_or_control_autoremap")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventWithModifiers.fnIsCommandOrControlAutoremap), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *InputEventWithModifiers) IsCommandOrControlPressed() bool {
-  classNameV := StringNameFromStr("InputEventWithModifiers")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_command_or_control_pressed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventWithModifiers.fnIsCommandOrControlPressed), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *InputEventWithModifiers) SetAltPressed(pressed bool, )  {
-  classNameV := StringNameFromStr("InputEventWithModifiers")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_alt_pressed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pressed) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventWithModifiers.fnSetAltPressed), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventWithModifiers) IsAltPressed() bool {
-  classNameV := StringNameFromStr("InputEventWithModifiers")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_alt_pressed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventWithModifiers.fnIsAltPressed), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *InputEventWithModifiers) SetShiftPressed(pressed bool, )  {
-  classNameV := StringNameFromStr("InputEventWithModifiers")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_shift_pressed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pressed) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventWithModifiers.fnSetShiftPressed), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventWithModifiers) IsShiftPressed() bool {
-  classNameV := StringNameFromStr("InputEventWithModifiers")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_shift_pressed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventWithModifiers.fnIsShiftPressed), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *InputEventWithModifiers) SetCtrlPressed(pressed bool, )  {
-  classNameV := StringNameFromStr("InputEventWithModifiers")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_ctrl_pressed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pressed) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventWithModifiers.fnSetCtrlPressed), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventWithModifiers) IsCtrlPressed() bool {
-  classNameV := StringNameFromStr("InputEventWithModifiers")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_ctrl_pressed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventWithModifiers.fnIsCtrlPressed), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *InputEventWithModifiers) SetMetaPressed(pressed bool, )  {
-  classNameV := StringNameFromStr("InputEventWithModifiers")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_meta_pressed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2586408642) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pressed) , }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventWithModifiers.fnSetMetaPressed), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *InputEventWithModifiers) IsMetaPressed() bool {
-  classNameV := StringNameFromStr("InputEventWithModifiers")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("is_meta_pressed")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 36873697) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewBool()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventWithModifiers.fnIsMetaPressed), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return ret.Get()
 }
 
 func  (me *InputEventWithModifiers) GetModifiersMask() KeyModifierMask {
-  classNameV := StringNameFromStr("InputEventWithModifiers")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_modifiers_mask")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1258259499) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   var ret KeyModifierMask
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventWithModifiers.fnGetModifiersMask), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
   return ret
 }
 // Properties

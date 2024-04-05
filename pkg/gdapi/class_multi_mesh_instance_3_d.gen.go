@@ -14,6 +14,29 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForMultiMeshInstance3DList struct {
+  fnSetMultimesh gdc.MethodBindPtr
+  fnGetMultimesh gdc.MethodBindPtr
+}
+
+var ptrsForMultiMeshInstance3D ptrsForMultiMeshInstance3DList
+
+func initMultiMeshInstance3DPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("MultiMeshInstance3D")
+  defer className.Destroy()
+  {
+    methodName := StringNameFromStr("set_multimesh")
+    defer methodName.Destroy()
+    ptrsForMultiMeshInstance3D.fnSetMultimesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2246127404))
+  }
+  {
+    methodName := StringNameFromStr("get_multimesh")
+    defer methodName.Destroy()
+    ptrsForMultiMeshInstance3D.fnGetMultimesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1385450523))
+  }
+}
+
 type MultiMeshInstance3D struct {
   GeometryInstance3D
 }
@@ -51,31 +74,21 @@ func (me *MultiMeshInstance3D) AsCTypePtr() gdc.ConstTypePtr {
 // Methods
 
 func  (me *MultiMeshInstance3D) SetMultimesh(multimesh MultiMesh, )  {
-  classNameV := StringNameFromStr("MultiMeshInstance3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("set_multimesh")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 2246127404) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{multimesh.AsCTypePtr(), }
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), nil)
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMeshInstance3D.fnSetMultimesh), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
 func  (me *MultiMeshInstance3D) GetMultimesh() MultiMesh {
-  classNameV := StringNameFromStr("MultiMeshInstance3D")
-  defer classNameV.Destroy()
-  methodNameV := StringNameFromStr("get_multimesh")
-  defer methodNameV.Destroy()
-  methodPtr := giface.ClassdbGetMethodBind(classNameV.AsCPtr(), methodNameV.AsCPtr(), 1385450523) // FIXME: should cache?
   cargs := []gdc.ConstTypePtr{}
   pinner := runtime.Pinner{}
   defer pinner.Unpin()
   ret := NewMultiMesh()
 
-  giface.ObjectMethodBindPtrcall(methodPtr, me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMeshInstance3D.fnGetMultimesh), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
   return *ret
 }
 // Properties

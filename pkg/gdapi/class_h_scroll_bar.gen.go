@@ -14,6 +14,17 @@ var _ log.Logger
 var _ unsafe.Pointer
 var _ runtime.Pinner
 
+type ptrsForHScrollBarList struct {
+}
+
+var ptrsForHScrollBar ptrsForHScrollBarList
+
+func initHScrollBarPtrs(iface gdc.Interface) {
+
+  className := StringNameFromStr("HScrollBar")
+  defer className.Destroy()
+}
+
 type HScrollBar struct {
   ScrollBar
 }
