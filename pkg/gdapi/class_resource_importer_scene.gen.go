@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForResourceImporterScene ptrsForResourceImporterSceneList
 
 func initResourceImporterScenePtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("ResourceImporterScene")
-  defer className.Destroy()
+	className := StringNameFromStr("ResourceImporterScene")
+	defer className.Destroy()
 }
 
 type ResourceImporterScene struct {
-  ResourceImporter
+	ResourceImporter
 }
 
 func (me *ResourceImporterScene) BaseClass() string {
-  return "ResourceImporterScene"
+	return "ResourceImporterScene"
 }
 
 func NewResourceImporterScene() *ResourceImporterScene {
-  str := StringNameFromStr("ResourceImporterScene") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("ResourceImporterScene") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &ResourceImporterScene{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &ResourceImporterScene{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *ResourceImporterScene) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *ResourceImporterScene) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *ResourceImporterScene) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

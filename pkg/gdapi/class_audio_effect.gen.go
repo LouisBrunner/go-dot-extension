@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -15,49 +15,47 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForAudioEffectList struct {
-  fnXInstantiate gdc.MethodBindPtr
+	fnXInstantiate gdc.MethodBindPtr
 }
 
 var ptrsForAudioEffect ptrsForAudioEffectList
 
 func initAudioEffectPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("AudioEffect")
-  defer className.Destroy()
+	className := StringNameFromStr("AudioEffect")
+	defer className.Destroy()
 }
 
 type AudioEffect struct {
-  Resource
+	Resource
 }
 
 func (me *AudioEffect) BaseClass() string {
-  return "AudioEffect"
+	return "AudioEffect"
 }
 
 func NewAudioEffect() *AudioEffect {
-  str := StringNameFromStr("AudioEffect") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("AudioEffect") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &AudioEffect{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &AudioEffect{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *AudioEffect) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *AudioEffect) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *AudioEffect) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

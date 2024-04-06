@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeTransformCompose ptrsForVisualShaderNodeTransformComp
 
 func initVisualShaderNodeTransformComposePtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeTransformCompose")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeTransformCompose")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeTransformCompose struct {
-  VisualShaderNode
+	VisualShaderNode
 }
 
 func (me *VisualShaderNodeTransformCompose) BaseClass() string {
-  return "VisualShaderNodeTransformCompose"
+	return "VisualShaderNodeTransformCompose"
 }
 
 func NewVisualShaderNodeTransformCompose() *VisualShaderNodeTransformCompose {
-  str := StringNameFromStr("VisualShaderNodeTransformCompose") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeTransformCompose") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeTransformCompose{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeTransformCompose{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeTransformCompose) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeTransformCompose) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeTransformCompose) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

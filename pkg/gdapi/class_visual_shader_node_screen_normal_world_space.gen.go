@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeScreenNormalWorldSpace ptrsForVisualShaderNodeScreenN
 
 func initVisualShaderNodeScreenNormalWorldSpacePtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeScreenNormalWorldSpace")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeScreenNormalWorldSpace")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeScreenNormalWorldSpace struct {
-  VisualShaderNode
+	VisualShaderNode
 }
 
 func (me *VisualShaderNodeScreenNormalWorldSpace) BaseClass() string {
-  return "VisualShaderNodeScreenNormalWorldSpace"
+	return "VisualShaderNodeScreenNormalWorldSpace"
 }
 
 func NewVisualShaderNodeScreenNormalWorldSpace() *VisualShaderNodeScreenNormalWorldSpace {
-  str := StringNameFromStr("VisualShaderNodeScreenNormalWorldSpace") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeScreenNormalWorldSpace") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeScreenNormalWorldSpace{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeScreenNormalWorldSpace{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeScreenNormalWorldSpace) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeScreenNormalWorldSpace) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeScreenNormalWorldSpace) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

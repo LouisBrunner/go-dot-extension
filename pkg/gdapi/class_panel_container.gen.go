@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForPanelContainer ptrsForPanelContainerList
 
 func initPanelContainerPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("PanelContainer")
-  defer className.Destroy()
+	className := StringNameFromStr("PanelContainer")
+	defer className.Destroy()
 }
 
 type PanelContainer struct {
-  Container
+	Container
 }
 
 func (me *PanelContainer) BaseClass() string {
-  return "PanelContainer"
+	return "PanelContainer"
 }
 
 func NewPanelContainer() *PanelContainer {
-  str := StringNameFromStr("PanelContainer") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("PanelContainer") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &PanelContainer{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &PanelContainer{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *PanelContainer) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *PanelContainer) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *PanelContainer) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

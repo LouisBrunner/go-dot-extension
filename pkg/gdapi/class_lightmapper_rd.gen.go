@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForLightmapperRD ptrsForLightmapperRDList
 
 func initLightmapperRDPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("LightmapperRD")
-  defer className.Destroy()
+	className := StringNameFromStr("LightmapperRD")
+	defer className.Destroy()
 }
 
 type LightmapperRD struct {
-  Lightmapper
+	Lightmapper
 }
 
 func (me *LightmapperRD) BaseClass() string {
-  return "LightmapperRD"
+	return "LightmapperRD"
 }
 
 func NewLightmapperRD() *LightmapperRD {
-  str := StringNameFromStr("LightmapperRD") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("LightmapperRD") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &LightmapperRD{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &LightmapperRD{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *LightmapperRD) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *LightmapperRD) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *LightmapperRD) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

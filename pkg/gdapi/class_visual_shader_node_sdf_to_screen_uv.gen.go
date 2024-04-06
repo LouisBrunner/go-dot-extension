@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeSDFToScreenUV ptrsForVisualShaderNodeSDFToScreenUVLis
 
 func initVisualShaderNodeSDFToScreenUVPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeSDFToScreenUV")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeSDFToScreenUV")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeSDFToScreenUV struct {
-  VisualShaderNode
+	VisualShaderNode
 }
 
 func (me *VisualShaderNodeSDFToScreenUV) BaseClass() string {
-  return "VisualShaderNodeSDFToScreenUV"
+	return "VisualShaderNodeSDFToScreenUV"
 }
 
 func NewVisualShaderNodeSDFToScreenUV() *VisualShaderNodeSDFToScreenUV {
-  str := StringNameFromStr("VisualShaderNodeSDFToScreenUV") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeSDFToScreenUV") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeSDFToScreenUV{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeSDFToScreenUV{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeSDFToScreenUV) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeSDFToScreenUV) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeSDFToScreenUV) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForHSeparator ptrsForHSeparatorList
 
 func initHSeparatorPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("HSeparator")
-  defer className.Destroy()
+	className := StringNameFromStr("HSeparator")
+	defer className.Destroy()
 }
 
 type HSeparator struct {
-  Separator
+	Separator
 }
 
 func (me *HSeparator) BaseClass() string {
-  return "HSeparator"
+	return "HSeparator"
 }
 
 func NewHSeparator() *HSeparator {
-  str := StringNameFromStr("HSeparator") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("HSeparator") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &HSeparator{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &HSeparator{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *HSeparator) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *HSeparator) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *HSeparator) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

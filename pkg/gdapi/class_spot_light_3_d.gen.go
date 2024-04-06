@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForSpotLight3D ptrsForSpotLight3DList
 
 func initSpotLight3DPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("SpotLight3D")
-  defer className.Destroy()
+	className := StringNameFromStr("SpotLight3D")
+	defer className.Destroy()
 }
 
 type SpotLight3D struct {
-  Light3D
+	Light3D
 }
 
 func (me *SpotLight3D) BaseClass() string {
-  return "SpotLight3D"
+	return "SpotLight3D"
 }
 
 func NewSpotLight3D() *SpotLight3D {
-  str := StringNameFromStr("SpotLight3D") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("SpotLight3D") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &SpotLight3D{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &SpotLight3D{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *SpotLight3D) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *SpotLight3D) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *SpotLight3D) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

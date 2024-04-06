@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForAnimationNodeAdd3 ptrsForAnimationNodeAdd3List
 
 func initAnimationNodeAdd3Ptrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("AnimationNodeAdd3")
-  defer className.Destroy()
+	className := StringNameFromStr("AnimationNodeAdd3")
+	defer className.Destroy()
 }
 
 type AnimationNodeAdd3 struct {
-  AnimationNodeSync
+	AnimationNodeSync
 }
 
 func (me *AnimationNodeAdd3) BaseClass() string {
-  return "AnimationNodeAdd3"
+	return "AnimationNodeAdd3"
 }
 
 func NewAnimationNodeAdd3() *AnimationNodeAdd3 {
-  str := StringNameFromStr("AnimationNodeAdd3") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("AnimationNodeAdd3") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &AnimationNodeAdd3{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &AnimationNodeAdd3{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *AnimationNodeAdd3) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *AnimationNodeAdd3) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *AnimationNodeAdd3) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

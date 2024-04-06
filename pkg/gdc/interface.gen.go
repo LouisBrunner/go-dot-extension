@@ -11,2099 +11,2097 @@ package gdc
 import "C"
 
 import (
-  "fmt"
+	"fmt"
 	"unsafe"
 )
 
 type Interface interface {
-  ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) VariantPtr
-  ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) VariantPtr
-  ArrayRef(pSelf TypePtr, pFrom ConstTypePtr, ) 
-  ArraySetTyped(pSelf TypePtr, pType VariantType, pClassName ConstStringNamePtr, pScript ConstVariantPtr, ) 
-  CallableCustomCreate(rCallable UninitializedTypePtr, pCallableCustomInfo *CallableCustomInfo, ) 
-  CallableCustomGetUserdata(pCallable ConstTypePtr, pToken unsafe.Pointer, ) unsafe.Pointer
-  ClassdbConstructObject(pClassname ConstStringNamePtr, ) ObjectPtr
-  ClassdbGetClassTag(pClassname ConstStringNamePtr, ) unsafe.Pointer
-  ClassdbGetMethodBind(pClassname ConstStringNamePtr, pMethodname ConstStringNamePtr, pHash Int, ) MethodBindPtr
-  ClassdbRegisterExtensionClass(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pParentClassName ConstStringNamePtr, pExtensionFuncs *ClassCreationInfo, ) 
-  ClassdbRegisterExtensionClass2(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pParentClassName ConstStringNamePtr, pExtensionFuncs *ClassCreationInfo2, ) 
-  ClassdbRegisterExtensionClassIntegerConstant(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pEnumName ConstStringNamePtr, pConstantName ConstStringNamePtr, pConstantValue Int, pIsBitfield Bool, ) 
-  ClassdbRegisterExtensionClassMethod(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pMethodInfo *ClassMethodInfo, ) 
-  ClassdbRegisterExtensionClassProperty(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pInfo *PropertyInfo, pSetter ConstStringNamePtr, pGetter ConstStringNamePtr, ) 
-  ClassdbRegisterExtensionClassPropertyGroup(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pGroupName ConstStringPtr, pPrefix ConstStringPtr, ) 
-  ClassdbRegisterExtensionClassPropertyIndexed(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pInfo *PropertyInfo, pSetter ConstStringNamePtr, pGetter ConstStringNamePtr, pIndex Int, ) 
-  ClassdbRegisterExtensionClassPropertySubgroup(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pSubgroupName ConstStringPtr, pPrefix ConstStringPtr, ) 
-  ClassdbRegisterExtensionClassSignal(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pSignalName ConstStringNamePtr, pArgumentInfo *PropertyInfo, pArgumentCount Int, ) 
-  ClassdbUnregisterExtensionClass(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, ) 
-  DictionaryOperatorIndex(pSelf TypePtr, pKey ConstVariantPtr, ) VariantPtr
-  DictionaryOperatorIndexConst(pSelf ConstTypePtr, pKey ConstVariantPtr, ) VariantPtr
-  EditorAddPlugin(pClassName ConstStringNamePtr, ) 
-  EditorRemovePlugin(pClassName ConstStringNamePtr, ) 
-  FileAccessGetBuffer(pInstance ConstObjectPtr, pDst *uint8, pLength uint64, ) uint64
-  FileAccessStoreBuffer(pInstance ObjectPtr, pSrc *uint8, pLength uint64, ) 
-  GetGodotVersion(rGodotVersion *GodotVersion, ) 
-  GetLibraryPath(pLibrary ClassLibraryPtr, rPath UninitializedStringPtr, ) 
-  GetNativeStructSize(pName ConstStringNamePtr, ) uint64
-  GetVariantFromTypeConstructor(pType VariantType, ) VariantFromTypeConstructorFunc
-  CallVariantFromTypeConstructorFunc(ptrToCall VariantFromTypeConstructorFunc, arg0 UninitializedVariantPtr, arg1 TypePtr, ) 
-  GetVariantToTypeConstructor(pType VariantType, ) TypeFromVariantConstructorFunc
-  CallTypeFromVariantConstructorFunc(ptrToCall TypeFromVariantConstructorFunc, arg0 UninitializedTypePtr, arg1 VariantPtr, ) 
-  GlobalGetSingleton(pName ConstStringNamePtr, ) ObjectPtr
-  MemAlloc(pBytes uint64, ) unsafe.Pointer
-  MemFree(pPtr unsafe.Pointer, ) 
-  MemRealloc(pPtr unsafe.Pointer, pBytes uint64, ) unsafe.Pointer
-  ObjectCastTo(pObject ConstObjectPtr, pClassTag unsafe.Pointer, ) ObjectPtr
-  ObjectDestroy(pO ObjectPtr, ) 
-  ObjectFreeInstanceBinding(pO ObjectPtr, pToken unsafe.Pointer, ) 
-  ObjectGetClassName(pObject ConstObjectPtr, pLibrary ClassLibraryPtr, rClassName UninitializedStringNamePtr, ) Bool
-  ObjectGetInstanceBinding(pO ObjectPtr, pToken unsafe.Pointer, pCallbacks *InstanceBindingCallbacks, ) unsafe.Pointer
-  ObjectGetInstanceFromId(pInstanceId uint64, ) ObjectPtr
-  ObjectGetInstanceId(pObject ConstObjectPtr, ) uint64
-  ObjectGetScriptInstance(pObject ConstObjectPtr, pLanguage ObjectPtr, ) ScriptInstanceDataPtr
-  ObjectMethodBindCall(pMethodBind MethodBindPtr, pInstance ObjectPtr, pArgs *ConstVariantPtr, pArgCount Int, rRet UninitializedVariantPtr, rError *CallError, ) 
-  ObjectMethodBindPtrcall(pMethodBind MethodBindPtr, pInstance ObjectPtr, pArgs *ConstTypePtr, rRet TypePtr, ) 
-  ObjectSetInstance(pO ObjectPtr, pClassname ConstStringNamePtr, pInstance ClassInstancePtr, ) 
-  ObjectSetInstanceBinding(pO ObjectPtr, pToken unsafe.Pointer, pBinding unsafe.Pointer, pCallbacks *InstanceBindingCallbacks, ) 
-  PackedByteArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) *uint8
-  PackedByteArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) *uint8
-  PackedColorArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) TypePtr
-  PackedColorArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) TypePtr
-  PackedFloat32ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) *float32
-  PackedFloat32ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) *float32
-  PackedFloat64ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) *float64
-  PackedFloat64ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) *float64
-  PackedInt32ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) *int
-  PackedInt32ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) *int
-  PackedInt64ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) *int64
-  PackedInt64ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) *int64
-  PackedStringArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) StringPtr
-  PackedStringArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) StringPtr
-  PackedVector2ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) TypePtr
-  PackedVector2ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) TypePtr
-  PackedVector3ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) TypePtr
-  PackedVector3ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) TypePtr
-  PlaceholderScriptInstanceCreate(pLanguage ObjectPtr, pScript ObjectPtr, pOwner ObjectPtr, ) ScriptInstancePtr
-  PlaceholderScriptInstanceUpdate(pPlaceholder ScriptInstancePtr, pProperties ConstTypePtr, pValues ConstTypePtr, ) 
-  PrintError(pDescription string, pFunction string, pFile string, pLine int, pEditorNotify Bool, ) 
-  PrintErrorWithMessage(pDescription string, pMessage string, pFunction string, pFile string, pLine int, pEditorNotify Bool, ) 
-  PrintScriptError(pDescription string, pFunction string, pFile string, pLine int, pEditorNotify Bool, ) 
-  PrintScriptErrorWithMessage(pDescription string, pMessage string, pFunction string, pFile string, pLine int, pEditorNotify Bool, ) 
-  PrintWarning(pDescription string, pFunction string, pFile string, pLine int, pEditorNotify Bool, ) 
-  PrintWarningWithMessage(pDescription string, pMessage string, pFunction string, pFile string, pLine int, pEditorNotify Bool, ) 
-  RefGetObject(pRef ConstRefPtr, ) ObjectPtr
-  RefSetObject(pRef RefPtr, pObject ObjectPtr, ) 
-  ScriptInstanceCreate(pInfo *ScriptInstanceInfo, pInstanceData ScriptInstanceDataPtr, ) ScriptInstancePtr
-  ScriptInstanceCreate2(pInfo *ScriptInstanceInfo2, pInstanceData ScriptInstanceDataPtr, ) ScriptInstancePtr
-  StringNameNewWithLatin1Chars(rDest UninitializedStringNamePtr, pContents string, pIsStatic Bool, ) 
-  StringNameNewWithUtf8Chars(rDest UninitializedStringNamePtr, pContents string, ) 
-  StringNameNewWithUtf8CharsAndLen(rDest UninitializedStringNamePtr, pContents string, pSize Int, ) 
-  StringNewWithLatin1Chars(rDest UninitializedStringPtr, pContents string, ) 
-  StringNewWithLatin1CharsAndLen(rDest UninitializedStringPtr, pContents string, pSize Int, ) 
-  StringNewWithUtf16Chars(rDest UninitializedStringPtr, pContents *uint16, ) 
-  StringNewWithUtf16CharsAndLen(rDest UninitializedStringPtr, pContents *uint16, pCharCount Int, ) 
-  StringNewWithUtf32Chars(rDest UninitializedStringPtr, pContents *uint, ) 
-  StringNewWithUtf32CharsAndLen(rDest UninitializedStringPtr, pContents *uint, pCharCount Int, ) 
-  StringNewWithUtf8Chars(rDest UninitializedStringPtr, pContents string, ) 
-  StringNewWithUtf8CharsAndLen(rDest UninitializedStringPtr, pContents string, pSize Int, ) 
-  StringNewWithWideChars(rDest UninitializedStringPtr, pContents *int, ) 
-  StringNewWithWideCharsAndLen(rDest UninitializedStringPtr, pContents *int, pCharCount Int, ) 
-  StringOperatorIndex(pSelf StringPtr, pIndex Int, ) *uint
-  StringOperatorIndexConst(pSelf ConstStringPtr, pIndex Int, ) *uint
-  StringOperatorPlusEqC32Str(pSelf StringPtr, pB *uint, ) 
-  StringOperatorPlusEqChar(pSelf StringPtr, pB uint, ) 
-  StringOperatorPlusEqCstr(pSelf StringPtr, pB string, ) 
-  StringOperatorPlusEqString(pSelf StringPtr, pB ConstStringPtr, ) 
-  StringOperatorPlusEqWcstr(pSelf StringPtr, pB *int, ) 
-  StringResize(pSelf StringPtr, pResize Int, ) Int
-  StringToLatin1Chars(pSelf ConstStringPtr, rText *byte, pMaxWriteLength Int, ) Int
-  StringToUtf16Chars(pSelf ConstStringPtr, rText *uint16, pMaxWriteLength Int, ) Int
-  StringToUtf32Chars(pSelf ConstStringPtr, rText *uint, pMaxWriteLength Int, ) Int
-  StringToUtf8Chars(pSelf ConstStringPtr, rText *byte, pMaxWriteLength Int, ) Int
-  StringToWideChars(pSelf ConstStringPtr, rText *int, pMaxWriteLength Int, ) Int
-  VariantBooleanize(pSelf ConstVariantPtr, ) Bool
-  VariantCall(pSelf VariantPtr, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn UninitializedVariantPtr, rError *CallError, ) 
-  VariantCallStatic(pType VariantType, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn UninitializedVariantPtr, rError *CallError, ) 
-  VariantCanConvert(pFrom VariantType, pTo VariantType, ) Bool
-  VariantCanConvertStrict(pFrom VariantType, pTo VariantType, ) Bool
-  VariantConstruct(pType VariantType, rBase UninitializedVariantPtr, pArgs *ConstVariantPtr, pArgumentCount int, rError *CallError, ) 
-  VariantDestroy(pSelf VariantPtr, ) 
-  VariantDuplicate(pSelf ConstVariantPtr, rRet VariantPtr, pDeep Bool, ) 
-  VariantEvaluate(pOp VariantOperator, pA ConstVariantPtr, pB ConstVariantPtr, rReturn UninitializedVariantPtr, rValid *uint8, ) 
-  VariantGet(pSelf ConstVariantPtr, pKey ConstVariantPtr, rRet UninitializedVariantPtr, rValid *uint8, ) 
-  VariantGetConstantValue(pType VariantType, pConstant ConstStringNamePtr, rRet UninitializedVariantPtr, ) 
-  VariantGetIndexed(pSelf ConstVariantPtr, pIndex Int, rRet UninitializedVariantPtr, rValid *uint8, rOob *uint8, ) 
-  VariantGetKeyed(pSelf ConstVariantPtr, pKey ConstVariantPtr, rRet UninitializedVariantPtr, rValid *uint8, ) 
-  VariantGetNamed(pSelf ConstVariantPtr, pKey ConstStringNamePtr, rRet UninitializedVariantPtr, rValid *uint8, ) 
-  VariantGetPtrBuiltinMethod(pType VariantType, pMethod ConstStringNamePtr, pHash Int, ) PtrBuiltInMethod
-  CallPtrBuiltInMethod(ptrToCall PtrBuiltInMethod, pBase TypePtr, pArgs *ConstTypePtr, rReturn TypePtr, pArgumentCount int, ) 
-  VariantGetPtrConstructor(pType VariantType, pConstructor int, ) PtrConstructor
-  CallPtrConstructor(ptrToCall PtrConstructor, pBase UninitializedTypePtr, pArgs *ConstTypePtr, ) 
-  VariantGetPtrDestructor(pType VariantType, ) PtrDestructor
-  CallPtrDestructor(ptrToCall PtrDestructor, pBase TypePtr, ) 
-  VariantGetPtrGetter(pType VariantType, pMember ConstStringNamePtr, ) PtrGetter
-  CallPtrGetter(ptrToCall PtrGetter, pBase ConstTypePtr, rValue TypePtr, ) 
-  VariantGetPtrIndexedGetter(pType VariantType, ) PtrIndexedGetter
-  CallPtrIndexedGetter(ptrToCall PtrIndexedGetter, pBase ConstTypePtr, pIndex Int, rValue TypePtr, ) 
-  VariantGetPtrIndexedSetter(pType VariantType, ) PtrIndexedSetter
-  CallPtrIndexedSetter(ptrToCall PtrIndexedSetter, pBase TypePtr, pIndex Int, pValue ConstTypePtr, ) 
-  VariantGetPtrKeyedChecker(pType VariantType, ) PtrKeyedChecker
-  CallPtrKeyedChecker(ptrToCall PtrKeyedChecker, pBase ConstVariantPtr, pKey ConstVariantPtr, ) uint
-  VariantGetPtrKeyedGetter(pType VariantType, ) PtrKeyedGetter
-  CallPtrKeyedGetter(ptrToCall PtrKeyedGetter, pBase ConstTypePtr, pKey ConstTypePtr, rValue TypePtr, ) 
-  VariantGetPtrKeyedSetter(pType VariantType, ) PtrKeyedSetter
-  CallPtrKeyedSetter(ptrToCall PtrKeyedSetter, pBase TypePtr, pKey ConstTypePtr, pValue ConstTypePtr, ) 
-  VariantGetPtrOperatorEvaluator(pOperator VariantOperator, pTypeA VariantType, pTypeB VariantType, ) PtrOperatorEvaluator
-  CallPtrOperatorEvaluator(ptrToCall PtrOperatorEvaluator, pLeft ConstTypePtr, pRight ConstTypePtr, rResult TypePtr, ) 
-  VariantGetPtrSetter(pType VariantType, pMember ConstStringNamePtr, ) PtrSetter
-  CallPtrSetter(ptrToCall PtrSetter, pBase TypePtr, pValue ConstTypePtr, ) 
-  VariantGetPtrUtilityFunction(pFunction ConstStringNamePtr, pHash Int, ) PtrUtilityFunction
-  CallPtrUtilityFunction(ptrToCall PtrUtilityFunction, rReturn TypePtr, pArgs *ConstTypePtr, pArgumentCount int, ) 
-  VariantGetType(pSelf ConstVariantPtr, ) VariantType
-  VariantGetTypeName(pType VariantType, rName UninitializedStringPtr, ) 
-  VariantHasKey(pSelf ConstVariantPtr, pKey ConstVariantPtr, rValid *uint8, ) Bool
-  VariantHasMember(pType VariantType, pMember ConstStringNamePtr, ) Bool
-  VariantHasMethod(pSelf ConstVariantPtr, pMethod ConstStringNamePtr, ) Bool
-  VariantHash(pSelf ConstVariantPtr, ) Int
-  VariantHashCompare(pSelf ConstVariantPtr, pOther ConstVariantPtr, ) Bool
-  VariantIterGet(pSelf ConstVariantPtr, rIter VariantPtr, rRet UninitializedVariantPtr, rValid *uint8, ) 
-  VariantIterInit(pSelf ConstVariantPtr, rIter UninitializedVariantPtr, rValid *uint8, ) Bool
-  VariantIterNext(pSelf ConstVariantPtr, rIter VariantPtr, rValid *uint8, ) Bool
-  VariantNewCopy(rDest UninitializedVariantPtr, pSrc ConstVariantPtr, ) 
-  VariantNewNil(rDest UninitializedVariantPtr, ) 
-  VariantRecursiveHash(pSelf ConstVariantPtr, pRecursionCount Int, ) Int
-  VariantSet(pSelf VariantPtr, pKey ConstVariantPtr, pValue ConstVariantPtr, rValid *uint8, ) 
-  VariantSetIndexed(pSelf VariantPtr, pIndex Int, pValue ConstVariantPtr, rValid *uint8, rOob *uint8, ) 
-  VariantSetKeyed(pSelf VariantPtr, pKey ConstVariantPtr, pValue ConstVariantPtr, rValid *uint8, ) 
-  VariantSetNamed(pSelf VariantPtr, pKey ConstStringNamePtr, pValue ConstVariantPtr, rValid *uint8, ) 
-  VariantStringify(pSelf ConstVariantPtr, rRet StringPtr, ) 
-  WorkerThreadPoolAddNativeGroupTask(pInstance ObjectPtr, pFunc unsafe.Pointer, pUserdata unsafe.Pointer, pElements int, pTasks int, pHighPriority Bool, pDescription ConstStringPtr, ) int64
-  WorkerThreadPoolAddNativeTask(pInstance ObjectPtr, pFunc unsafe.Pointer, pUserdata unsafe.Pointer, pHighPriority Bool, pDescription ConstStringPtr, ) int64
-  XmlParserOpenBuffer(pInstance ObjectPtr, pBuffer *uint8, pSize uint64, ) Int
+	ArrayOperatorIndex(pSelf TypePtr, pIndex Int) VariantPtr
+	ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) VariantPtr
+	ArrayRef(pSelf TypePtr, pFrom ConstTypePtr)
+	ArraySetTyped(pSelf TypePtr, pType VariantType, pClassName ConstStringNamePtr, pScript ConstVariantPtr)
+	CallableCustomCreate(rCallable UninitializedTypePtr, pCallableCustomInfo *CallableCustomInfo)
+	CallableCustomGetUserdata(pCallable ConstTypePtr, pToken unsafe.Pointer) unsafe.Pointer
+	ClassdbConstructObject(pClassname ConstStringNamePtr) ObjectPtr
+	ClassdbGetClassTag(pClassname ConstStringNamePtr) unsafe.Pointer
+	ClassdbGetMethodBind(pClassname ConstStringNamePtr, pMethodname ConstStringNamePtr, pHash Int) MethodBindPtr
+	ClassdbRegisterExtensionClass(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pParentClassName ConstStringNamePtr, pExtensionFuncs *ClassCreationInfo)
+	ClassdbRegisterExtensionClass2(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pParentClassName ConstStringNamePtr, pExtensionFuncs *ClassCreationInfo2)
+	ClassdbRegisterExtensionClassIntegerConstant(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pEnumName ConstStringNamePtr, pConstantName ConstStringNamePtr, pConstantValue Int, pIsBitfield Bool)
+	ClassdbRegisterExtensionClassMethod(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pMethodInfo *ClassMethodInfo)
+	ClassdbRegisterExtensionClassProperty(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pInfo *PropertyInfo, pSetter ConstStringNamePtr, pGetter ConstStringNamePtr)
+	ClassdbRegisterExtensionClassPropertyGroup(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pGroupName ConstStringPtr, pPrefix ConstStringPtr)
+	ClassdbRegisterExtensionClassPropertyIndexed(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pInfo *PropertyInfo, pSetter ConstStringNamePtr, pGetter ConstStringNamePtr, pIndex Int)
+	ClassdbRegisterExtensionClassPropertySubgroup(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pSubgroupName ConstStringPtr, pPrefix ConstStringPtr)
+	ClassdbRegisterExtensionClassSignal(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pSignalName ConstStringNamePtr, pArgumentInfo *PropertyInfo, pArgumentCount Int)
+	ClassdbUnregisterExtensionClass(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr)
+	DictionaryOperatorIndex(pSelf TypePtr, pKey ConstVariantPtr) VariantPtr
+	DictionaryOperatorIndexConst(pSelf ConstTypePtr, pKey ConstVariantPtr) VariantPtr
+	EditorAddPlugin(pClassName ConstStringNamePtr)
+	EditorRemovePlugin(pClassName ConstStringNamePtr)
+	FileAccessGetBuffer(pInstance ConstObjectPtr, pDst *uint8, pLength uint64) uint64
+	FileAccessStoreBuffer(pInstance ObjectPtr, pSrc *uint8, pLength uint64)
+	GetGodotVersion(rGodotVersion *GodotVersion)
+	GetLibraryPath(pLibrary ClassLibraryPtr, rPath UninitializedStringPtr)
+	GetNativeStructSize(pName ConstStringNamePtr) uint64
+	GetVariantFromTypeConstructor(pType VariantType) VariantFromTypeConstructorFunc
+	CallVariantFromTypeConstructorFunc(ptrToCall VariantFromTypeConstructorFunc, arg0 UninitializedVariantPtr, arg1 TypePtr)
+	GetVariantToTypeConstructor(pType VariantType) TypeFromVariantConstructorFunc
+	CallTypeFromVariantConstructorFunc(ptrToCall TypeFromVariantConstructorFunc, arg0 UninitializedTypePtr, arg1 VariantPtr)
+	GlobalGetSingleton(pName ConstStringNamePtr) ObjectPtr
+	MemAlloc(pBytes uint64) unsafe.Pointer
+	MemFree(pPtr unsafe.Pointer)
+	MemRealloc(pPtr unsafe.Pointer, pBytes uint64) unsafe.Pointer
+	ObjectCastTo(pObject ConstObjectPtr, pClassTag unsafe.Pointer) ObjectPtr
+	ObjectDestroy(pO ObjectPtr)
+	ObjectFreeInstanceBinding(pO ObjectPtr, pToken unsafe.Pointer)
+	ObjectGetClassName(pObject ConstObjectPtr, pLibrary ClassLibraryPtr, rClassName UninitializedStringNamePtr) Bool
+	ObjectGetInstanceBinding(pO ObjectPtr, pToken unsafe.Pointer, pCallbacks *InstanceBindingCallbacks) unsafe.Pointer
+	ObjectGetInstanceFromId(pInstanceId uint64) ObjectPtr
+	ObjectGetInstanceId(pObject ConstObjectPtr) uint64
+	ObjectGetScriptInstance(pObject ConstObjectPtr, pLanguage ObjectPtr) ScriptInstanceDataPtr
+	ObjectMethodBindCall(pMethodBind MethodBindPtr, pInstance ObjectPtr, pArgs *ConstVariantPtr, pArgCount Int, rRet UninitializedVariantPtr, rError *CallError)
+	ObjectMethodBindPtrcall(pMethodBind MethodBindPtr, pInstance ObjectPtr, pArgs *ConstTypePtr, rRet TypePtr)
+	ObjectSetInstance(pO ObjectPtr, pClassname ConstStringNamePtr, pInstance ClassInstancePtr)
+	ObjectSetInstanceBinding(pO ObjectPtr, pToken unsafe.Pointer, pBinding unsafe.Pointer, pCallbacks *InstanceBindingCallbacks)
+	PackedByteArrayOperatorIndex(pSelf TypePtr, pIndex Int) *uint8
+	PackedByteArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) *uint8
+	PackedColorArrayOperatorIndex(pSelf TypePtr, pIndex Int) TypePtr
+	PackedColorArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) TypePtr
+	PackedFloat32ArrayOperatorIndex(pSelf TypePtr, pIndex Int) *float32
+	PackedFloat32ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) *float32
+	PackedFloat64ArrayOperatorIndex(pSelf TypePtr, pIndex Int) *float64
+	PackedFloat64ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) *float64
+	PackedInt32ArrayOperatorIndex(pSelf TypePtr, pIndex Int) *int
+	PackedInt32ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) *int
+	PackedInt64ArrayOperatorIndex(pSelf TypePtr, pIndex Int) *int64
+	PackedInt64ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) *int64
+	PackedStringArrayOperatorIndex(pSelf TypePtr, pIndex Int) StringPtr
+	PackedStringArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) StringPtr
+	PackedVector2ArrayOperatorIndex(pSelf TypePtr, pIndex Int) TypePtr
+	PackedVector2ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) TypePtr
+	PackedVector3ArrayOperatorIndex(pSelf TypePtr, pIndex Int) TypePtr
+	PackedVector3ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) TypePtr
+	PlaceholderScriptInstanceCreate(pLanguage ObjectPtr, pScript ObjectPtr, pOwner ObjectPtr) ScriptInstancePtr
+	PlaceholderScriptInstanceUpdate(pPlaceholder ScriptInstancePtr, pProperties ConstTypePtr, pValues ConstTypePtr)
+	PrintError(pDescription string, pFunction string, pFile string, pLine int, pEditorNotify Bool)
+	PrintErrorWithMessage(pDescription string, pMessage string, pFunction string, pFile string, pLine int, pEditorNotify Bool)
+	PrintScriptError(pDescription string, pFunction string, pFile string, pLine int, pEditorNotify Bool)
+	PrintScriptErrorWithMessage(pDescription string, pMessage string, pFunction string, pFile string, pLine int, pEditorNotify Bool)
+	PrintWarning(pDescription string, pFunction string, pFile string, pLine int, pEditorNotify Bool)
+	PrintWarningWithMessage(pDescription string, pMessage string, pFunction string, pFile string, pLine int, pEditorNotify Bool)
+	RefGetObject(pRef ConstRefPtr) ObjectPtr
+	RefSetObject(pRef RefPtr, pObject ObjectPtr)
+	ScriptInstanceCreate(pInfo *ScriptInstanceInfo, pInstanceData ScriptInstanceDataPtr) ScriptInstancePtr
+	ScriptInstanceCreate2(pInfo *ScriptInstanceInfo2, pInstanceData ScriptInstanceDataPtr) ScriptInstancePtr
+	StringNameNewWithLatin1Chars(rDest UninitializedStringNamePtr, pContents string, pIsStatic Bool)
+	StringNameNewWithUtf8Chars(rDest UninitializedStringNamePtr, pContents string)
+	StringNameNewWithUtf8CharsAndLen(rDest UninitializedStringNamePtr, pContents string, pSize Int)
+	StringNewWithLatin1Chars(rDest UninitializedStringPtr, pContents string)
+	StringNewWithLatin1CharsAndLen(rDest UninitializedStringPtr, pContents string, pSize Int)
+	StringNewWithUtf16Chars(rDest UninitializedStringPtr, pContents *uint16)
+	StringNewWithUtf16CharsAndLen(rDest UninitializedStringPtr, pContents *uint16, pCharCount Int)
+	StringNewWithUtf32Chars(rDest UninitializedStringPtr, pContents *uint)
+	StringNewWithUtf32CharsAndLen(rDest UninitializedStringPtr, pContents *uint, pCharCount Int)
+	StringNewWithUtf8Chars(rDest UninitializedStringPtr, pContents string)
+	StringNewWithUtf8CharsAndLen(rDest UninitializedStringPtr, pContents string, pSize Int)
+	StringNewWithWideChars(rDest UninitializedStringPtr, pContents *int)
+	StringNewWithWideCharsAndLen(rDest UninitializedStringPtr, pContents *int, pCharCount Int)
+	StringOperatorIndex(pSelf StringPtr, pIndex Int) *uint
+	StringOperatorIndexConst(pSelf ConstStringPtr, pIndex Int) *uint
+	StringOperatorPlusEqC32Str(pSelf StringPtr, pB *uint)
+	StringOperatorPlusEqChar(pSelf StringPtr, pB uint)
+	StringOperatorPlusEqCstr(pSelf StringPtr, pB string)
+	StringOperatorPlusEqString(pSelf StringPtr, pB ConstStringPtr)
+	StringOperatorPlusEqWcstr(pSelf StringPtr, pB *int)
+	StringResize(pSelf StringPtr, pResize Int) Int
+	StringToLatin1Chars(pSelf ConstStringPtr, rText *byte, pMaxWriteLength Int) Int
+	StringToUtf16Chars(pSelf ConstStringPtr, rText *uint16, pMaxWriteLength Int) Int
+	StringToUtf32Chars(pSelf ConstStringPtr, rText *uint, pMaxWriteLength Int) Int
+	StringToUtf8Chars(pSelf ConstStringPtr, rText *byte, pMaxWriteLength Int) Int
+	StringToWideChars(pSelf ConstStringPtr, rText *int, pMaxWriteLength Int) Int
+	VariantBooleanize(pSelf ConstVariantPtr) Bool
+	VariantCall(pSelf VariantPtr, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn UninitializedVariantPtr, rError *CallError)
+	VariantCallStatic(pType VariantType, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn UninitializedVariantPtr, rError *CallError)
+	VariantCanConvert(pFrom VariantType, pTo VariantType) Bool
+	VariantCanConvertStrict(pFrom VariantType, pTo VariantType) Bool
+	VariantConstruct(pType VariantType, rBase UninitializedVariantPtr, pArgs *ConstVariantPtr, pArgumentCount int, rError *CallError)
+	VariantDestroy(pSelf VariantPtr)
+	VariantDuplicate(pSelf ConstVariantPtr, rRet VariantPtr, pDeep Bool)
+	VariantEvaluate(pOp VariantOperator, pA ConstVariantPtr, pB ConstVariantPtr, rReturn UninitializedVariantPtr, rValid *uint8)
+	VariantGet(pSelf ConstVariantPtr, pKey ConstVariantPtr, rRet UninitializedVariantPtr, rValid *uint8)
+	VariantGetConstantValue(pType VariantType, pConstant ConstStringNamePtr, rRet UninitializedVariantPtr)
+	VariantGetIndexed(pSelf ConstVariantPtr, pIndex Int, rRet UninitializedVariantPtr, rValid *uint8, rOob *uint8)
+	VariantGetKeyed(pSelf ConstVariantPtr, pKey ConstVariantPtr, rRet UninitializedVariantPtr, rValid *uint8)
+	VariantGetNamed(pSelf ConstVariantPtr, pKey ConstStringNamePtr, rRet UninitializedVariantPtr, rValid *uint8)
+	VariantGetPtrBuiltinMethod(pType VariantType, pMethod ConstStringNamePtr, pHash Int) PtrBuiltInMethod
+	CallPtrBuiltInMethod(ptrToCall PtrBuiltInMethod, pBase TypePtr, pArgs *ConstTypePtr, rReturn TypePtr, pArgumentCount int)
+	VariantGetPtrConstructor(pType VariantType, pConstructor int) PtrConstructor
+	CallPtrConstructor(ptrToCall PtrConstructor, pBase UninitializedTypePtr, pArgs *ConstTypePtr)
+	VariantGetPtrDestructor(pType VariantType) PtrDestructor
+	CallPtrDestructor(ptrToCall PtrDestructor, pBase TypePtr)
+	VariantGetPtrGetter(pType VariantType, pMember ConstStringNamePtr) PtrGetter
+	CallPtrGetter(ptrToCall PtrGetter, pBase ConstTypePtr, rValue TypePtr)
+	VariantGetPtrIndexedGetter(pType VariantType) PtrIndexedGetter
+	CallPtrIndexedGetter(ptrToCall PtrIndexedGetter, pBase ConstTypePtr, pIndex Int, rValue TypePtr)
+	VariantGetPtrIndexedSetter(pType VariantType) PtrIndexedSetter
+	CallPtrIndexedSetter(ptrToCall PtrIndexedSetter, pBase TypePtr, pIndex Int, pValue ConstTypePtr)
+	VariantGetPtrKeyedChecker(pType VariantType) PtrKeyedChecker
+	CallPtrKeyedChecker(ptrToCall PtrKeyedChecker, pBase ConstVariantPtr, pKey ConstVariantPtr) uint
+	VariantGetPtrKeyedGetter(pType VariantType) PtrKeyedGetter
+	CallPtrKeyedGetter(ptrToCall PtrKeyedGetter, pBase ConstTypePtr, pKey ConstTypePtr, rValue TypePtr)
+	VariantGetPtrKeyedSetter(pType VariantType) PtrKeyedSetter
+	CallPtrKeyedSetter(ptrToCall PtrKeyedSetter, pBase TypePtr, pKey ConstTypePtr, pValue ConstTypePtr)
+	VariantGetPtrOperatorEvaluator(pOperator VariantOperator, pTypeA VariantType, pTypeB VariantType) PtrOperatorEvaluator
+	CallPtrOperatorEvaluator(ptrToCall PtrOperatorEvaluator, pLeft ConstTypePtr, pRight ConstTypePtr, rResult TypePtr)
+	VariantGetPtrSetter(pType VariantType, pMember ConstStringNamePtr) PtrSetter
+	CallPtrSetter(ptrToCall PtrSetter, pBase TypePtr, pValue ConstTypePtr)
+	VariantGetPtrUtilityFunction(pFunction ConstStringNamePtr, pHash Int) PtrUtilityFunction
+	CallPtrUtilityFunction(ptrToCall PtrUtilityFunction, rReturn TypePtr, pArgs *ConstTypePtr, pArgumentCount int)
+	VariantGetType(pSelf ConstVariantPtr) VariantType
+	VariantGetTypeName(pType VariantType, rName UninitializedStringPtr)
+	VariantHasKey(pSelf ConstVariantPtr, pKey ConstVariantPtr, rValid *uint8) Bool
+	VariantHasMember(pType VariantType, pMember ConstStringNamePtr) Bool
+	VariantHasMethod(pSelf ConstVariantPtr, pMethod ConstStringNamePtr) Bool
+	VariantHash(pSelf ConstVariantPtr) Int
+	VariantHashCompare(pSelf ConstVariantPtr, pOther ConstVariantPtr) Bool
+	VariantIterGet(pSelf ConstVariantPtr, rIter VariantPtr, rRet UninitializedVariantPtr, rValid *uint8)
+	VariantIterInit(pSelf ConstVariantPtr, rIter UninitializedVariantPtr, rValid *uint8) Bool
+	VariantIterNext(pSelf ConstVariantPtr, rIter VariantPtr, rValid *uint8) Bool
+	VariantNewCopy(rDest UninitializedVariantPtr, pSrc ConstVariantPtr)
+	VariantNewNil(rDest UninitializedVariantPtr)
+	VariantRecursiveHash(pSelf ConstVariantPtr, pRecursionCount Int) Int
+	VariantSet(pSelf VariantPtr, pKey ConstVariantPtr, pValue ConstVariantPtr, rValid *uint8)
+	VariantSetIndexed(pSelf VariantPtr, pIndex Int, pValue ConstVariantPtr, rValid *uint8, rOob *uint8)
+	VariantSetKeyed(pSelf VariantPtr, pKey ConstVariantPtr, pValue ConstVariantPtr, rValid *uint8)
+	VariantSetNamed(pSelf VariantPtr, pKey ConstStringNamePtr, pValue ConstVariantPtr, rValid *uint8)
+	VariantStringify(pSelf ConstVariantPtr, rRet StringPtr)
+	WorkerThreadPoolAddNativeGroupTask(pInstance ObjectPtr, pFunc unsafe.Pointer, pUserdata unsafe.Pointer, pElements int, pTasks int, pHighPriority Bool, pDescription ConstStringPtr) int64
+	WorkerThreadPoolAddNativeTask(pInstance ObjectPtr, pFunc unsafe.Pointer, pUserdata unsafe.Pointer, pHighPriority Bool, pDescription ConstStringPtr) int64
+	XmlParserOpenBuffer(pInstance ObjectPtr, pBuffer *uint8, pSize uint64) Int
 }
 
 func callGetProcAddress[T any](getProcAddr InterfaceGetProcAddress, proc string) (T, error) {
-  cProc := C.CString(proc)
-  defer C.free(unsafe.Pointer(cProc))
+	cProc := C.CString(proc)
+	defer C.free(unsafe.Pointer(cProc))
 
-  ptr := C.callGetProcAddress(getProcAddr, cProc)
-  finalPtr := *(*T)(unsafe.Pointer(&ptr))
-  if ptr == nil {
-    return finalPtr, fmt.Errorf("failed to get proc address for %q", proc)
-  }
-  return finalPtr, nil
+	ptr := C.callGetProcAddress(getProcAddr, cProc)
+	finalPtr := *(*T)(unsafe.Pointer(&ptr))
+	if ptr == nil {
+		return finalPtr, fmt.Errorf("failed to get proc address for %q", proc)
+	}
+	return finalPtr, nil
 }
 
 // NewInterface returns a wrapper allowing you to call methods from GDExtension
 func NewInterface(getProcAddr InterfaceGetProcAddress) (Interface, error) {
-  iface := &interfaceImpl{
-  }
-  var err error
-
-  iface.ptrArrayOperatorIndex, err = callGetProcAddress[InterfaceArrayOperatorIndex](getProcAddr, "array_operator_index")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrArrayOperatorIndexConst, err = callGetProcAddress[InterfaceArrayOperatorIndexConst](getProcAddr, "array_operator_index_const")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrArrayRef, err = callGetProcAddress[InterfaceArrayRef](getProcAddr, "array_ref")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrArraySetTyped, err = callGetProcAddress[InterfaceArraySetTyped](getProcAddr, "array_set_typed")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrCallableCustomCreate, err = callGetProcAddress[InterfaceCallableCustomCreate](getProcAddr, "callable_custom_create")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrCallableCustomGetUserdata, err = callGetProcAddress[InterfaceCallableCustomGetUserData](getProcAddr, "callable_custom_get_userdata")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrClassdbConstructObject, err = callGetProcAddress[InterfaceClassdbConstructObject](getProcAddr, "classdb_construct_object")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrClassdbGetClassTag, err = callGetProcAddress[InterfaceClassdbGetClassTag](getProcAddr, "classdb_get_class_tag")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrClassdbGetMethodBind, err = callGetProcAddress[InterfaceClassdbGetMethodBind](getProcAddr, "classdb_get_method_bind")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrClassdbRegisterExtensionClass, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClass](getProcAddr, "classdb_register_extension_class")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrClassdbRegisterExtensionClass2, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClass2](getProcAddr, "classdb_register_extension_class2")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrClassdbRegisterExtensionClassIntegerConstant, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassIntegerConstant](getProcAddr, "classdb_register_extension_class_integer_constant")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrClassdbRegisterExtensionClassMethod, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassMethod](getProcAddr, "classdb_register_extension_class_method")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrClassdbRegisterExtensionClassProperty, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassProperty](getProcAddr, "classdb_register_extension_class_property")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrClassdbRegisterExtensionClassPropertyGroup, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassPropertyGroup](getProcAddr, "classdb_register_extension_class_property_group")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrClassdbRegisterExtensionClassPropertyIndexed, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassPropertyIndexed](getProcAddr, "classdb_register_extension_class_property_indexed")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrClassdbRegisterExtensionClassPropertySubgroup, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassPropertySubgroup](getProcAddr, "classdb_register_extension_class_property_subgroup")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrClassdbRegisterExtensionClassSignal, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassSignal](getProcAddr, "classdb_register_extension_class_signal")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrClassdbUnregisterExtensionClass, err = callGetProcAddress[InterfaceClassdbUnregisterExtensionClass](getProcAddr, "classdb_unregister_extension_class")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrDictionaryOperatorIndex, err = callGetProcAddress[InterfaceDictionaryOperatorIndex](getProcAddr, "dictionary_operator_index")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrDictionaryOperatorIndexConst, err = callGetProcAddress[InterfaceDictionaryOperatorIndexConst](getProcAddr, "dictionary_operator_index_const")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrEditorAddPlugin, err = callGetProcAddress[InterfaceEditorAddPlugin](getProcAddr, "editor_add_plugin")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrEditorRemovePlugin, err = callGetProcAddress[InterfaceEditorRemovePlugin](getProcAddr, "editor_remove_plugin")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrFileAccessGetBuffer, err = callGetProcAddress[InterfaceFileAccessGetBuffer](getProcAddr, "file_access_get_buffer")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrFileAccessStoreBuffer, err = callGetProcAddress[InterfaceFileAccessStoreBuffer](getProcAddr, "file_access_store_buffer")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrGetGodotVersion, err = callGetProcAddress[InterfaceGetGodotVersion](getProcAddr, "get_godot_version")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrGetLibraryPath, err = callGetProcAddress[InterfaceGetLibraryPath](getProcAddr, "get_library_path")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrGetNativeStructSize, err = callGetProcAddress[InterfaceGetNativeStructSize](getProcAddr, "get_native_struct_size")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrGetVariantFromTypeConstructor, err = callGetProcAddress[InterfaceGetVariantFromTypeConstructor](getProcAddr, "get_variant_from_type_constructor")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrGetVariantToTypeConstructor, err = callGetProcAddress[InterfaceGetVariantToTypeConstructor](getProcAddr, "get_variant_to_type_constructor")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrGlobalGetSingleton, err = callGetProcAddress[InterfaceGlobalGetSingleton](getProcAddr, "global_get_singleton")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrMemAlloc, err = callGetProcAddress[InterfaceMemAlloc](getProcAddr, "mem_alloc")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrMemFree, err = callGetProcAddress[InterfaceMemFree](getProcAddr, "mem_free")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrMemRealloc, err = callGetProcAddress[InterfaceMemRealloc](getProcAddr, "mem_realloc")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrObjectCastTo, err = callGetProcAddress[InterfaceObjectCastTo](getProcAddr, "object_cast_to")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrObjectDestroy, err = callGetProcAddress[InterfaceObjectDestroy](getProcAddr, "object_destroy")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrObjectFreeInstanceBinding, err = callGetProcAddress[InterfaceObjectFreeInstanceBinding](getProcAddr, "object_free_instance_binding")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrObjectGetClassName, err = callGetProcAddress[InterfaceObjectGetClassName](getProcAddr, "object_get_class_name")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrObjectGetInstanceBinding, err = callGetProcAddress[InterfaceObjectGetInstanceBinding](getProcAddr, "object_get_instance_binding")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrObjectGetInstanceFromId, err = callGetProcAddress[InterfaceObjectGetInstanceFromId](getProcAddr, "object_get_instance_from_id")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrObjectGetInstanceId, err = callGetProcAddress[InterfaceObjectGetInstanceId](getProcAddr, "object_get_instance_id")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrObjectGetScriptInstance, err = callGetProcAddress[InterfaceObjectGetScriptInstance](getProcAddr, "object_get_script_instance")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrObjectMethodBindCall, err = callGetProcAddress[InterfaceObjectMethodBindCall](getProcAddr, "object_method_bind_call")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrObjectMethodBindPtrcall, err = callGetProcAddress[InterfaceObjectMethodBindPtrcall](getProcAddr, "object_method_bind_ptrcall")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrObjectSetInstance, err = callGetProcAddress[InterfaceObjectSetInstance](getProcAddr, "object_set_instance")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrObjectSetInstanceBinding, err = callGetProcAddress[InterfaceObjectSetInstanceBinding](getProcAddr, "object_set_instance_binding")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPackedByteArrayOperatorIndex, err = callGetProcAddress[InterfacePackedByteArrayOperatorIndex](getProcAddr, "packed_byte_array_operator_index")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPackedByteArrayOperatorIndexConst, err = callGetProcAddress[InterfacePackedByteArrayOperatorIndexConst](getProcAddr, "packed_byte_array_operator_index_const")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPackedColorArrayOperatorIndex, err = callGetProcAddress[InterfacePackedColorArrayOperatorIndex](getProcAddr, "packed_color_array_operator_index")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPackedColorArrayOperatorIndexConst, err = callGetProcAddress[InterfacePackedColorArrayOperatorIndexConst](getProcAddr, "packed_color_array_operator_index_const")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPackedFloat32ArrayOperatorIndex, err = callGetProcAddress[InterfacePackedFloat32ArrayOperatorIndex](getProcAddr, "packed_float32_array_operator_index")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPackedFloat32ArrayOperatorIndexConst, err = callGetProcAddress[InterfacePackedFloat32ArrayOperatorIndexConst](getProcAddr, "packed_float32_array_operator_index_const")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPackedFloat64ArrayOperatorIndex, err = callGetProcAddress[InterfacePackedFloat64ArrayOperatorIndex](getProcAddr, "packed_float64_array_operator_index")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPackedFloat64ArrayOperatorIndexConst, err = callGetProcAddress[InterfacePackedFloat64ArrayOperatorIndexConst](getProcAddr, "packed_float64_array_operator_index_const")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPackedInt32ArrayOperatorIndex, err = callGetProcAddress[InterfacePackedInt32ArrayOperatorIndex](getProcAddr, "packed_int32_array_operator_index")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPackedInt32ArrayOperatorIndexConst, err = callGetProcAddress[InterfacePackedInt32ArrayOperatorIndexConst](getProcAddr, "packed_int32_array_operator_index_const")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPackedInt64ArrayOperatorIndex, err = callGetProcAddress[InterfacePackedInt64ArrayOperatorIndex](getProcAddr, "packed_int64_array_operator_index")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPackedInt64ArrayOperatorIndexConst, err = callGetProcAddress[InterfacePackedInt64ArrayOperatorIndexConst](getProcAddr, "packed_int64_array_operator_index_const")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPackedStringArrayOperatorIndex, err = callGetProcAddress[InterfacePackedStringArrayOperatorIndex](getProcAddr, "packed_string_array_operator_index")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPackedStringArrayOperatorIndexConst, err = callGetProcAddress[InterfacePackedStringArrayOperatorIndexConst](getProcAddr, "packed_string_array_operator_index_const")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPackedVector2ArrayOperatorIndex, err = callGetProcAddress[InterfacePackedVector2ArrayOperatorIndex](getProcAddr, "packed_vector2_array_operator_index")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPackedVector2ArrayOperatorIndexConst, err = callGetProcAddress[InterfacePackedVector2ArrayOperatorIndexConst](getProcAddr, "packed_vector2_array_operator_index_const")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPackedVector3ArrayOperatorIndex, err = callGetProcAddress[InterfacePackedVector3ArrayOperatorIndex](getProcAddr, "packed_vector3_array_operator_index")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPackedVector3ArrayOperatorIndexConst, err = callGetProcAddress[InterfacePackedVector3ArrayOperatorIndexConst](getProcAddr, "packed_vector3_array_operator_index_const")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPlaceholderScriptInstanceCreate, err = callGetProcAddress[InterfacePlaceHolderScriptInstanceCreate](getProcAddr, "placeholder_script_instance_create")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPlaceholderScriptInstanceUpdate, err = callGetProcAddress[InterfacePlaceHolderScriptInstanceUpdate](getProcAddr, "placeholder_script_instance_update")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPrintError, err = callGetProcAddress[InterfacePrintError](getProcAddr, "print_error")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPrintErrorWithMessage, err = callGetProcAddress[InterfacePrintErrorWithMessage](getProcAddr, "print_error_with_message")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPrintScriptError, err = callGetProcAddress[InterfacePrintScriptError](getProcAddr, "print_script_error")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPrintScriptErrorWithMessage, err = callGetProcAddress[InterfacePrintScriptErrorWithMessage](getProcAddr, "print_script_error_with_message")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPrintWarning, err = callGetProcAddress[InterfacePrintWarning](getProcAddr, "print_warning")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrPrintWarningWithMessage, err = callGetProcAddress[InterfacePrintWarningWithMessage](getProcAddr, "print_warning_with_message")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrRefGetObject, err = callGetProcAddress[InterfaceRefGetObject](getProcAddr, "ref_get_object")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrRefSetObject, err = callGetProcAddress[InterfaceRefSetObject](getProcAddr, "ref_set_object")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrScriptInstanceCreate, err = callGetProcAddress[InterfaceScriptInstanceCreate](getProcAddr, "script_instance_create")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrScriptInstanceCreate2, err = callGetProcAddress[InterfaceScriptInstanceCreate2](getProcAddr, "script_instance_create2")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringNameNewWithLatin1Chars, err = callGetProcAddress[InterfaceStringNameNewWithLatin1Chars](getProcAddr, "string_name_new_with_latin1_chars")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringNameNewWithUtf8Chars, err = callGetProcAddress[InterfaceStringNameNewWithUtf8Chars](getProcAddr, "string_name_new_with_utf8_chars")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringNameNewWithUtf8CharsAndLen, err = callGetProcAddress[InterfaceStringNameNewWithUtf8CharsAndLen](getProcAddr, "string_name_new_with_utf8_chars_and_len")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringNewWithLatin1Chars, err = callGetProcAddress[InterfaceStringNewWithLatin1Chars](getProcAddr, "string_new_with_latin1_chars")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringNewWithLatin1CharsAndLen, err = callGetProcAddress[InterfaceStringNewWithLatin1CharsAndLen](getProcAddr, "string_new_with_latin1_chars_and_len")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringNewWithUtf16Chars, err = callGetProcAddress[InterfaceStringNewWithUtf16Chars](getProcAddr, "string_new_with_utf16_chars")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringNewWithUtf16CharsAndLen, err = callGetProcAddress[InterfaceStringNewWithUtf16CharsAndLen](getProcAddr, "string_new_with_utf16_chars_and_len")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringNewWithUtf32Chars, err = callGetProcAddress[InterfaceStringNewWithUtf32Chars](getProcAddr, "string_new_with_utf32_chars")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringNewWithUtf32CharsAndLen, err = callGetProcAddress[InterfaceStringNewWithUtf32CharsAndLen](getProcAddr, "string_new_with_utf32_chars_and_len")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringNewWithUtf8Chars, err = callGetProcAddress[InterfaceStringNewWithUtf8Chars](getProcAddr, "string_new_with_utf8_chars")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringNewWithUtf8CharsAndLen, err = callGetProcAddress[InterfaceStringNewWithUtf8CharsAndLen](getProcAddr, "string_new_with_utf8_chars_and_len")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringNewWithWideChars, err = callGetProcAddress[InterfaceStringNewWithWideChars](getProcAddr, "string_new_with_wide_chars")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringNewWithWideCharsAndLen, err = callGetProcAddress[InterfaceStringNewWithWideCharsAndLen](getProcAddr, "string_new_with_wide_chars_and_len")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringOperatorIndex, err = callGetProcAddress[InterfaceStringOperatorIndex](getProcAddr, "string_operator_index")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringOperatorIndexConst, err = callGetProcAddress[InterfaceStringOperatorIndexConst](getProcAddr, "string_operator_index_const")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringOperatorPlusEqC32Str, err = callGetProcAddress[InterfaceStringOperatorPlusEqC32str](getProcAddr, "string_operator_plus_eq_c32str")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringOperatorPlusEqChar, err = callGetProcAddress[InterfaceStringOperatorPlusEqChar](getProcAddr, "string_operator_plus_eq_char")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringOperatorPlusEqCstr, err = callGetProcAddress[InterfaceStringOperatorPlusEqCstr](getProcAddr, "string_operator_plus_eq_cstr")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringOperatorPlusEqString, err = callGetProcAddress[InterfaceStringOperatorPlusEqString](getProcAddr, "string_operator_plus_eq_string")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringOperatorPlusEqWcstr, err = callGetProcAddress[InterfaceStringOperatorPlusEqWcstr](getProcAddr, "string_operator_plus_eq_wcstr")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringResize, err = callGetProcAddress[InterfaceStringResize](getProcAddr, "string_resize")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringToLatin1Chars, err = callGetProcAddress[InterfaceStringToLatin1Chars](getProcAddr, "string_to_latin1_chars")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringToUtf16Chars, err = callGetProcAddress[InterfaceStringToUtf16Chars](getProcAddr, "string_to_utf16_chars")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringToUtf32Chars, err = callGetProcAddress[InterfaceStringToUtf32Chars](getProcAddr, "string_to_utf32_chars")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringToUtf8Chars, err = callGetProcAddress[InterfaceStringToUtf8Chars](getProcAddr, "string_to_utf8_chars")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrStringToWideChars, err = callGetProcAddress[InterfaceStringToWideChars](getProcAddr, "string_to_wide_chars")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantBooleanize, err = callGetProcAddress[InterfaceVariantBooleanize](getProcAddr, "variant_booleanize")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantCall, err = callGetProcAddress[InterfaceVariantCall](getProcAddr, "variant_call")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantCallStatic, err = callGetProcAddress[InterfaceVariantCallStatic](getProcAddr, "variant_call_static")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantCanConvert, err = callGetProcAddress[InterfaceVariantCanConvert](getProcAddr, "variant_can_convert")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantCanConvertStrict, err = callGetProcAddress[InterfaceVariantCanConvertStrict](getProcAddr, "variant_can_convert_strict")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantConstruct, err = callGetProcAddress[InterfaceVariantConstruct](getProcAddr, "variant_construct")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantDestroy, err = callGetProcAddress[InterfaceVariantDestroy](getProcAddr, "variant_destroy")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantDuplicate, err = callGetProcAddress[InterfaceVariantDuplicate](getProcAddr, "variant_duplicate")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantEvaluate, err = callGetProcAddress[InterfaceVariantEvaluate](getProcAddr, "variant_evaluate")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGet, err = callGetProcAddress[InterfaceVariantGet](getProcAddr, "variant_get")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGetConstantValue, err = callGetProcAddress[InterfaceVariantGetConstantValue](getProcAddr, "variant_get_constant_value")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGetIndexed, err = callGetProcAddress[InterfaceVariantGetIndexed](getProcAddr, "variant_get_indexed")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGetKeyed, err = callGetProcAddress[InterfaceVariantGetKeyed](getProcAddr, "variant_get_keyed")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGetNamed, err = callGetProcAddress[InterfaceVariantGetNamed](getProcAddr, "variant_get_named")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGetPtrBuiltinMethod, err = callGetProcAddress[InterfaceVariantGetPtrBuiltinMethod](getProcAddr, "variant_get_ptr_builtin_method")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGetPtrConstructor, err = callGetProcAddress[InterfaceVariantGetPtrConstructor](getProcAddr, "variant_get_ptr_constructor")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGetPtrDestructor, err = callGetProcAddress[InterfaceVariantGetPtrDestructor](getProcAddr, "variant_get_ptr_destructor")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGetPtrGetter, err = callGetProcAddress[InterfaceVariantGetPtrGetter](getProcAddr, "variant_get_ptr_getter")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGetPtrIndexedGetter, err = callGetProcAddress[InterfaceVariantGetPtrIndexedGetter](getProcAddr, "variant_get_ptr_indexed_getter")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGetPtrIndexedSetter, err = callGetProcAddress[InterfaceVariantGetPtrIndexedSetter](getProcAddr, "variant_get_ptr_indexed_setter")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGetPtrKeyedChecker, err = callGetProcAddress[InterfaceVariantGetPtrKeyedChecker](getProcAddr, "variant_get_ptr_keyed_checker")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGetPtrKeyedGetter, err = callGetProcAddress[InterfaceVariantGetPtrKeyedGetter](getProcAddr, "variant_get_ptr_keyed_getter")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGetPtrKeyedSetter, err = callGetProcAddress[InterfaceVariantGetPtrKeyedSetter](getProcAddr, "variant_get_ptr_keyed_setter")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGetPtrOperatorEvaluator, err = callGetProcAddress[InterfaceVariantGetPtrOperatorEvaluator](getProcAddr, "variant_get_ptr_operator_evaluator")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGetPtrSetter, err = callGetProcAddress[InterfaceVariantGetPtrSetter](getProcAddr, "variant_get_ptr_setter")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGetPtrUtilityFunction, err = callGetProcAddress[InterfaceVariantGetPtrUtilityFunction](getProcAddr, "variant_get_ptr_utility_function")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGetType, err = callGetProcAddress[InterfaceVariantGetType](getProcAddr, "variant_get_type")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantGetTypeName, err = callGetProcAddress[InterfaceVariantGetTypeName](getProcAddr, "variant_get_type_name")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantHasKey, err = callGetProcAddress[InterfaceVariantHasKey](getProcAddr, "variant_has_key")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantHasMember, err = callGetProcAddress[InterfaceVariantHasMember](getProcAddr, "variant_has_member")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantHasMethod, err = callGetProcAddress[InterfaceVariantHasMethod](getProcAddr, "variant_has_method")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantHash, err = callGetProcAddress[InterfaceVariantHash](getProcAddr, "variant_hash")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantHashCompare, err = callGetProcAddress[InterfaceVariantHashCompare](getProcAddr, "variant_hash_compare")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantIterGet, err = callGetProcAddress[InterfaceVariantIterGet](getProcAddr, "variant_iter_get")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantIterInit, err = callGetProcAddress[InterfaceVariantIterInit](getProcAddr, "variant_iter_init")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantIterNext, err = callGetProcAddress[InterfaceVariantIterNext](getProcAddr, "variant_iter_next")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantNewCopy, err = callGetProcAddress[InterfaceVariantNewCopy](getProcAddr, "variant_new_copy")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantNewNil, err = callGetProcAddress[InterfaceVariantNewNil](getProcAddr, "variant_new_nil")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantRecursiveHash, err = callGetProcAddress[InterfaceVariantRecursiveHash](getProcAddr, "variant_recursive_hash")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantSet, err = callGetProcAddress[InterfaceVariantSet](getProcAddr, "variant_set")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantSetIndexed, err = callGetProcAddress[InterfaceVariantSetIndexed](getProcAddr, "variant_set_indexed")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantSetKeyed, err = callGetProcAddress[InterfaceVariantSetKeyed](getProcAddr, "variant_set_keyed")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantSetNamed, err = callGetProcAddress[InterfaceVariantSetNamed](getProcAddr, "variant_set_named")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrVariantStringify, err = callGetProcAddress[InterfaceVariantStringify](getProcAddr, "variant_stringify")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrWorkerThreadPoolAddNativeGroupTask, err = callGetProcAddress[InterfaceWorkerThreadPoolAddNativeGroupTask](getProcAddr, "worker_thread_pool_add_native_group_task")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrWorkerThreadPoolAddNativeTask, err = callGetProcAddress[InterfaceWorkerThreadPoolAddNativeTask](getProcAddr, "worker_thread_pool_add_native_task")
-  if err != nil {
-    return nil, err
-  }
-
-  iface.ptrXmlParserOpenBuffer, err = callGetProcAddress[InterfaceXmlParserOpenBuffer](getProcAddr, "xml_parser_open_buffer")
-  if err != nil {
-    return nil, err
-  }
-
-  return iface, nil
+	iface := &interfaceImpl{}
+	var err error
+
+	iface.ptrArrayOperatorIndex, err = callGetProcAddress[InterfaceArrayOperatorIndex](getProcAddr, "array_operator_index")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrArrayOperatorIndexConst, err = callGetProcAddress[InterfaceArrayOperatorIndexConst](getProcAddr, "array_operator_index_const")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrArrayRef, err = callGetProcAddress[InterfaceArrayRef](getProcAddr, "array_ref")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrArraySetTyped, err = callGetProcAddress[InterfaceArraySetTyped](getProcAddr, "array_set_typed")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrCallableCustomCreate, err = callGetProcAddress[InterfaceCallableCustomCreate](getProcAddr, "callable_custom_create")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrCallableCustomGetUserdata, err = callGetProcAddress[InterfaceCallableCustomGetUserData](getProcAddr, "callable_custom_get_userdata")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrClassdbConstructObject, err = callGetProcAddress[InterfaceClassdbConstructObject](getProcAddr, "classdb_construct_object")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrClassdbGetClassTag, err = callGetProcAddress[InterfaceClassdbGetClassTag](getProcAddr, "classdb_get_class_tag")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrClassdbGetMethodBind, err = callGetProcAddress[InterfaceClassdbGetMethodBind](getProcAddr, "classdb_get_method_bind")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrClassdbRegisterExtensionClass, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClass](getProcAddr, "classdb_register_extension_class")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrClassdbRegisterExtensionClass2, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClass2](getProcAddr, "classdb_register_extension_class2")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrClassdbRegisterExtensionClassIntegerConstant, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassIntegerConstant](getProcAddr, "classdb_register_extension_class_integer_constant")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrClassdbRegisterExtensionClassMethod, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassMethod](getProcAddr, "classdb_register_extension_class_method")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrClassdbRegisterExtensionClassProperty, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassProperty](getProcAddr, "classdb_register_extension_class_property")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrClassdbRegisterExtensionClassPropertyGroup, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassPropertyGroup](getProcAddr, "classdb_register_extension_class_property_group")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrClassdbRegisterExtensionClassPropertyIndexed, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassPropertyIndexed](getProcAddr, "classdb_register_extension_class_property_indexed")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrClassdbRegisterExtensionClassPropertySubgroup, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassPropertySubgroup](getProcAddr, "classdb_register_extension_class_property_subgroup")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrClassdbRegisterExtensionClassSignal, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassSignal](getProcAddr, "classdb_register_extension_class_signal")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrClassdbUnregisterExtensionClass, err = callGetProcAddress[InterfaceClassdbUnregisterExtensionClass](getProcAddr, "classdb_unregister_extension_class")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrDictionaryOperatorIndex, err = callGetProcAddress[InterfaceDictionaryOperatorIndex](getProcAddr, "dictionary_operator_index")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrDictionaryOperatorIndexConst, err = callGetProcAddress[InterfaceDictionaryOperatorIndexConst](getProcAddr, "dictionary_operator_index_const")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrEditorAddPlugin, err = callGetProcAddress[InterfaceEditorAddPlugin](getProcAddr, "editor_add_plugin")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrEditorRemovePlugin, err = callGetProcAddress[InterfaceEditorRemovePlugin](getProcAddr, "editor_remove_plugin")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrFileAccessGetBuffer, err = callGetProcAddress[InterfaceFileAccessGetBuffer](getProcAddr, "file_access_get_buffer")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrFileAccessStoreBuffer, err = callGetProcAddress[InterfaceFileAccessStoreBuffer](getProcAddr, "file_access_store_buffer")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrGetGodotVersion, err = callGetProcAddress[InterfaceGetGodotVersion](getProcAddr, "get_godot_version")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrGetLibraryPath, err = callGetProcAddress[InterfaceGetLibraryPath](getProcAddr, "get_library_path")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrGetNativeStructSize, err = callGetProcAddress[InterfaceGetNativeStructSize](getProcAddr, "get_native_struct_size")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrGetVariantFromTypeConstructor, err = callGetProcAddress[InterfaceGetVariantFromTypeConstructor](getProcAddr, "get_variant_from_type_constructor")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrGetVariantToTypeConstructor, err = callGetProcAddress[InterfaceGetVariantToTypeConstructor](getProcAddr, "get_variant_to_type_constructor")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrGlobalGetSingleton, err = callGetProcAddress[InterfaceGlobalGetSingleton](getProcAddr, "global_get_singleton")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrMemAlloc, err = callGetProcAddress[InterfaceMemAlloc](getProcAddr, "mem_alloc")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrMemFree, err = callGetProcAddress[InterfaceMemFree](getProcAddr, "mem_free")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrMemRealloc, err = callGetProcAddress[InterfaceMemRealloc](getProcAddr, "mem_realloc")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrObjectCastTo, err = callGetProcAddress[InterfaceObjectCastTo](getProcAddr, "object_cast_to")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrObjectDestroy, err = callGetProcAddress[InterfaceObjectDestroy](getProcAddr, "object_destroy")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrObjectFreeInstanceBinding, err = callGetProcAddress[InterfaceObjectFreeInstanceBinding](getProcAddr, "object_free_instance_binding")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrObjectGetClassName, err = callGetProcAddress[InterfaceObjectGetClassName](getProcAddr, "object_get_class_name")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrObjectGetInstanceBinding, err = callGetProcAddress[InterfaceObjectGetInstanceBinding](getProcAddr, "object_get_instance_binding")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrObjectGetInstanceFromId, err = callGetProcAddress[InterfaceObjectGetInstanceFromId](getProcAddr, "object_get_instance_from_id")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrObjectGetInstanceId, err = callGetProcAddress[InterfaceObjectGetInstanceId](getProcAddr, "object_get_instance_id")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrObjectGetScriptInstance, err = callGetProcAddress[InterfaceObjectGetScriptInstance](getProcAddr, "object_get_script_instance")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrObjectMethodBindCall, err = callGetProcAddress[InterfaceObjectMethodBindCall](getProcAddr, "object_method_bind_call")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrObjectMethodBindPtrcall, err = callGetProcAddress[InterfaceObjectMethodBindPtrcall](getProcAddr, "object_method_bind_ptrcall")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrObjectSetInstance, err = callGetProcAddress[InterfaceObjectSetInstance](getProcAddr, "object_set_instance")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrObjectSetInstanceBinding, err = callGetProcAddress[InterfaceObjectSetInstanceBinding](getProcAddr, "object_set_instance_binding")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPackedByteArrayOperatorIndex, err = callGetProcAddress[InterfacePackedByteArrayOperatorIndex](getProcAddr, "packed_byte_array_operator_index")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPackedByteArrayOperatorIndexConst, err = callGetProcAddress[InterfacePackedByteArrayOperatorIndexConst](getProcAddr, "packed_byte_array_operator_index_const")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPackedColorArrayOperatorIndex, err = callGetProcAddress[InterfacePackedColorArrayOperatorIndex](getProcAddr, "packed_color_array_operator_index")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPackedColorArrayOperatorIndexConst, err = callGetProcAddress[InterfacePackedColorArrayOperatorIndexConst](getProcAddr, "packed_color_array_operator_index_const")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPackedFloat32ArrayOperatorIndex, err = callGetProcAddress[InterfacePackedFloat32ArrayOperatorIndex](getProcAddr, "packed_float32_array_operator_index")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPackedFloat32ArrayOperatorIndexConst, err = callGetProcAddress[InterfacePackedFloat32ArrayOperatorIndexConst](getProcAddr, "packed_float32_array_operator_index_const")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPackedFloat64ArrayOperatorIndex, err = callGetProcAddress[InterfacePackedFloat64ArrayOperatorIndex](getProcAddr, "packed_float64_array_operator_index")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPackedFloat64ArrayOperatorIndexConst, err = callGetProcAddress[InterfacePackedFloat64ArrayOperatorIndexConst](getProcAddr, "packed_float64_array_operator_index_const")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPackedInt32ArrayOperatorIndex, err = callGetProcAddress[InterfacePackedInt32ArrayOperatorIndex](getProcAddr, "packed_int32_array_operator_index")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPackedInt32ArrayOperatorIndexConst, err = callGetProcAddress[InterfacePackedInt32ArrayOperatorIndexConst](getProcAddr, "packed_int32_array_operator_index_const")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPackedInt64ArrayOperatorIndex, err = callGetProcAddress[InterfacePackedInt64ArrayOperatorIndex](getProcAddr, "packed_int64_array_operator_index")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPackedInt64ArrayOperatorIndexConst, err = callGetProcAddress[InterfacePackedInt64ArrayOperatorIndexConst](getProcAddr, "packed_int64_array_operator_index_const")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPackedStringArrayOperatorIndex, err = callGetProcAddress[InterfacePackedStringArrayOperatorIndex](getProcAddr, "packed_string_array_operator_index")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPackedStringArrayOperatorIndexConst, err = callGetProcAddress[InterfacePackedStringArrayOperatorIndexConst](getProcAddr, "packed_string_array_operator_index_const")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPackedVector2ArrayOperatorIndex, err = callGetProcAddress[InterfacePackedVector2ArrayOperatorIndex](getProcAddr, "packed_vector2_array_operator_index")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPackedVector2ArrayOperatorIndexConst, err = callGetProcAddress[InterfacePackedVector2ArrayOperatorIndexConst](getProcAddr, "packed_vector2_array_operator_index_const")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPackedVector3ArrayOperatorIndex, err = callGetProcAddress[InterfacePackedVector3ArrayOperatorIndex](getProcAddr, "packed_vector3_array_operator_index")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPackedVector3ArrayOperatorIndexConst, err = callGetProcAddress[InterfacePackedVector3ArrayOperatorIndexConst](getProcAddr, "packed_vector3_array_operator_index_const")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPlaceholderScriptInstanceCreate, err = callGetProcAddress[InterfacePlaceHolderScriptInstanceCreate](getProcAddr, "placeholder_script_instance_create")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPlaceholderScriptInstanceUpdate, err = callGetProcAddress[InterfacePlaceHolderScriptInstanceUpdate](getProcAddr, "placeholder_script_instance_update")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPrintError, err = callGetProcAddress[InterfacePrintError](getProcAddr, "print_error")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPrintErrorWithMessage, err = callGetProcAddress[InterfacePrintErrorWithMessage](getProcAddr, "print_error_with_message")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPrintScriptError, err = callGetProcAddress[InterfacePrintScriptError](getProcAddr, "print_script_error")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPrintScriptErrorWithMessage, err = callGetProcAddress[InterfacePrintScriptErrorWithMessage](getProcAddr, "print_script_error_with_message")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPrintWarning, err = callGetProcAddress[InterfacePrintWarning](getProcAddr, "print_warning")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrPrintWarningWithMessage, err = callGetProcAddress[InterfacePrintWarningWithMessage](getProcAddr, "print_warning_with_message")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrRefGetObject, err = callGetProcAddress[InterfaceRefGetObject](getProcAddr, "ref_get_object")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrRefSetObject, err = callGetProcAddress[InterfaceRefSetObject](getProcAddr, "ref_set_object")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrScriptInstanceCreate, err = callGetProcAddress[InterfaceScriptInstanceCreate](getProcAddr, "script_instance_create")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrScriptInstanceCreate2, err = callGetProcAddress[InterfaceScriptInstanceCreate2](getProcAddr, "script_instance_create2")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringNameNewWithLatin1Chars, err = callGetProcAddress[InterfaceStringNameNewWithLatin1Chars](getProcAddr, "string_name_new_with_latin1_chars")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringNameNewWithUtf8Chars, err = callGetProcAddress[InterfaceStringNameNewWithUtf8Chars](getProcAddr, "string_name_new_with_utf8_chars")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringNameNewWithUtf8CharsAndLen, err = callGetProcAddress[InterfaceStringNameNewWithUtf8CharsAndLen](getProcAddr, "string_name_new_with_utf8_chars_and_len")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringNewWithLatin1Chars, err = callGetProcAddress[InterfaceStringNewWithLatin1Chars](getProcAddr, "string_new_with_latin1_chars")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringNewWithLatin1CharsAndLen, err = callGetProcAddress[InterfaceStringNewWithLatin1CharsAndLen](getProcAddr, "string_new_with_latin1_chars_and_len")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringNewWithUtf16Chars, err = callGetProcAddress[InterfaceStringNewWithUtf16Chars](getProcAddr, "string_new_with_utf16_chars")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringNewWithUtf16CharsAndLen, err = callGetProcAddress[InterfaceStringNewWithUtf16CharsAndLen](getProcAddr, "string_new_with_utf16_chars_and_len")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringNewWithUtf32Chars, err = callGetProcAddress[InterfaceStringNewWithUtf32Chars](getProcAddr, "string_new_with_utf32_chars")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringNewWithUtf32CharsAndLen, err = callGetProcAddress[InterfaceStringNewWithUtf32CharsAndLen](getProcAddr, "string_new_with_utf32_chars_and_len")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringNewWithUtf8Chars, err = callGetProcAddress[InterfaceStringNewWithUtf8Chars](getProcAddr, "string_new_with_utf8_chars")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringNewWithUtf8CharsAndLen, err = callGetProcAddress[InterfaceStringNewWithUtf8CharsAndLen](getProcAddr, "string_new_with_utf8_chars_and_len")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringNewWithWideChars, err = callGetProcAddress[InterfaceStringNewWithWideChars](getProcAddr, "string_new_with_wide_chars")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringNewWithWideCharsAndLen, err = callGetProcAddress[InterfaceStringNewWithWideCharsAndLen](getProcAddr, "string_new_with_wide_chars_and_len")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringOperatorIndex, err = callGetProcAddress[InterfaceStringOperatorIndex](getProcAddr, "string_operator_index")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringOperatorIndexConst, err = callGetProcAddress[InterfaceStringOperatorIndexConst](getProcAddr, "string_operator_index_const")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringOperatorPlusEqC32Str, err = callGetProcAddress[InterfaceStringOperatorPlusEqC32str](getProcAddr, "string_operator_plus_eq_c32str")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringOperatorPlusEqChar, err = callGetProcAddress[InterfaceStringOperatorPlusEqChar](getProcAddr, "string_operator_plus_eq_char")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringOperatorPlusEqCstr, err = callGetProcAddress[InterfaceStringOperatorPlusEqCstr](getProcAddr, "string_operator_plus_eq_cstr")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringOperatorPlusEqString, err = callGetProcAddress[InterfaceStringOperatorPlusEqString](getProcAddr, "string_operator_plus_eq_string")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringOperatorPlusEqWcstr, err = callGetProcAddress[InterfaceStringOperatorPlusEqWcstr](getProcAddr, "string_operator_plus_eq_wcstr")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringResize, err = callGetProcAddress[InterfaceStringResize](getProcAddr, "string_resize")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringToLatin1Chars, err = callGetProcAddress[InterfaceStringToLatin1Chars](getProcAddr, "string_to_latin1_chars")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringToUtf16Chars, err = callGetProcAddress[InterfaceStringToUtf16Chars](getProcAddr, "string_to_utf16_chars")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringToUtf32Chars, err = callGetProcAddress[InterfaceStringToUtf32Chars](getProcAddr, "string_to_utf32_chars")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringToUtf8Chars, err = callGetProcAddress[InterfaceStringToUtf8Chars](getProcAddr, "string_to_utf8_chars")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrStringToWideChars, err = callGetProcAddress[InterfaceStringToWideChars](getProcAddr, "string_to_wide_chars")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantBooleanize, err = callGetProcAddress[InterfaceVariantBooleanize](getProcAddr, "variant_booleanize")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantCall, err = callGetProcAddress[InterfaceVariantCall](getProcAddr, "variant_call")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantCallStatic, err = callGetProcAddress[InterfaceVariantCallStatic](getProcAddr, "variant_call_static")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantCanConvert, err = callGetProcAddress[InterfaceVariantCanConvert](getProcAddr, "variant_can_convert")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantCanConvertStrict, err = callGetProcAddress[InterfaceVariantCanConvertStrict](getProcAddr, "variant_can_convert_strict")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantConstruct, err = callGetProcAddress[InterfaceVariantConstruct](getProcAddr, "variant_construct")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantDestroy, err = callGetProcAddress[InterfaceVariantDestroy](getProcAddr, "variant_destroy")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantDuplicate, err = callGetProcAddress[InterfaceVariantDuplicate](getProcAddr, "variant_duplicate")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantEvaluate, err = callGetProcAddress[InterfaceVariantEvaluate](getProcAddr, "variant_evaluate")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGet, err = callGetProcAddress[InterfaceVariantGet](getProcAddr, "variant_get")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGetConstantValue, err = callGetProcAddress[InterfaceVariantGetConstantValue](getProcAddr, "variant_get_constant_value")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGetIndexed, err = callGetProcAddress[InterfaceVariantGetIndexed](getProcAddr, "variant_get_indexed")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGetKeyed, err = callGetProcAddress[InterfaceVariantGetKeyed](getProcAddr, "variant_get_keyed")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGetNamed, err = callGetProcAddress[InterfaceVariantGetNamed](getProcAddr, "variant_get_named")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGetPtrBuiltinMethod, err = callGetProcAddress[InterfaceVariantGetPtrBuiltinMethod](getProcAddr, "variant_get_ptr_builtin_method")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGetPtrConstructor, err = callGetProcAddress[InterfaceVariantGetPtrConstructor](getProcAddr, "variant_get_ptr_constructor")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGetPtrDestructor, err = callGetProcAddress[InterfaceVariantGetPtrDestructor](getProcAddr, "variant_get_ptr_destructor")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGetPtrGetter, err = callGetProcAddress[InterfaceVariantGetPtrGetter](getProcAddr, "variant_get_ptr_getter")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGetPtrIndexedGetter, err = callGetProcAddress[InterfaceVariantGetPtrIndexedGetter](getProcAddr, "variant_get_ptr_indexed_getter")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGetPtrIndexedSetter, err = callGetProcAddress[InterfaceVariantGetPtrIndexedSetter](getProcAddr, "variant_get_ptr_indexed_setter")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGetPtrKeyedChecker, err = callGetProcAddress[InterfaceVariantGetPtrKeyedChecker](getProcAddr, "variant_get_ptr_keyed_checker")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGetPtrKeyedGetter, err = callGetProcAddress[InterfaceVariantGetPtrKeyedGetter](getProcAddr, "variant_get_ptr_keyed_getter")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGetPtrKeyedSetter, err = callGetProcAddress[InterfaceVariantGetPtrKeyedSetter](getProcAddr, "variant_get_ptr_keyed_setter")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGetPtrOperatorEvaluator, err = callGetProcAddress[InterfaceVariantGetPtrOperatorEvaluator](getProcAddr, "variant_get_ptr_operator_evaluator")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGetPtrSetter, err = callGetProcAddress[InterfaceVariantGetPtrSetter](getProcAddr, "variant_get_ptr_setter")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGetPtrUtilityFunction, err = callGetProcAddress[InterfaceVariantGetPtrUtilityFunction](getProcAddr, "variant_get_ptr_utility_function")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGetType, err = callGetProcAddress[InterfaceVariantGetType](getProcAddr, "variant_get_type")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantGetTypeName, err = callGetProcAddress[InterfaceVariantGetTypeName](getProcAddr, "variant_get_type_name")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantHasKey, err = callGetProcAddress[InterfaceVariantHasKey](getProcAddr, "variant_has_key")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantHasMember, err = callGetProcAddress[InterfaceVariantHasMember](getProcAddr, "variant_has_member")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantHasMethod, err = callGetProcAddress[InterfaceVariantHasMethod](getProcAddr, "variant_has_method")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantHash, err = callGetProcAddress[InterfaceVariantHash](getProcAddr, "variant_hash")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantHashCompare, err = callGetProcAddress[InterfaceVariantHashCompare](getProcAddr, "variant_hash_compare")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantIterGet, err = callGetProcAddress[InterfaceVariantIterGet](getProcAddr, "variant_iter_get")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantIterInit, err = callGetProcAddress[InterfaceVariantIterInit](getProcAddr, "variant_iter_init")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantIterNext, err = callGetProcAddress[InterfaceVariantIterNext](getProcAddr, "variant_iter_next")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantNewCopy, err = callGetProcAddress[InterfaceVariantNewCopy](getProcAddr, "variant_new_copy")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantNewNil, err = callGetProcAddress[InterfaceVariantNewNil](getProcAddr, "variant_new_nil")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantRecursiveHash, err = callGetProcAddress[InterfaceVariantRecursiveHash](getProcAddr, "variant_recursive_hash")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantSet, err = callGetProcAddress[InterfaceVariantSet](getProcAddr, "variant_set")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantSetIndexed, err = callGetProcAddress[InterfaceVariantSetIndexed](getProcAddr, "variant_set_indexed")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantSetKeyed, err = callGetProcAddress[InterfaceVariantSetKeyed](getProcAddr, "variant_set_keyed")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantSetNamed, err = callGetProcAddress[InterfaceVariantSetNamed](getProcAddr, "variant_set_named")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrVariantStringify, err = callGetProcAddress[InterfaceVariantStringify](getProcAddr, "variant_stringify")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrWorkerThreadPoolAddNativeGroupTask, err = callGetProcAddress[InterfaceWorkerThreadPoolAddNativeGroupTask](getProcAddr, "worker_thread_pool_add_native_group_task")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrWorkerThreadPoolAddNativeTask, err = callGetProcAddress[InterfaceWorkerThreadPoolAddNativeTask](getProcAddr, "worker_thread_pool_add_native_task")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrXmlParserOpenBuffer, err = callGetProcAddress[InterfaceXmlParserOpenBuffer](getProcAddr, "xml_parser_open_buffer")
+	if err != nil {
+		return nil, err
+	}
+
+	return iface, nil
 }
 
 type interfaceImpl struct {
-  ptrArrayOperatorIndex InterfaceArrayOperatorIndex
-  ptrArrayOperatorIndexConst InterfaceArrayOperatorIndexConst
-  ptrArrayRef InterfaceArrayRef
-  ptrArraySetTyped InterfaceArraySetTyped
-  ptrCallableCustomCreate InterfaceCallableCustomCreate
-  ptrCallableCustomGetUserdata InterfaceCallableCustomGetUserData
-  ptrClassdbConstructObject InterfaceClassdbConstructObject
-  ptrClassdbGetClassTag InterfaceClassdbGetClassTag
-  ptrClassdbGetMethodBind InterfaceClassdbGetMethodBind
-  ptrClassdbRegisterExtensionClass InterfaceClassdbRegisterExtensionClass
-  ptrClassdbRegisterExtensionClass2 InterfaceClassdbRegisterExtensionClass2
-  ptrClassdbRegisterExtensionClassIntegerConstant InterfaceClassdbRegisterExtensionClassIntegerConstant
-  ptrClassdbRegisterExtensionClassMethod InterfaceClassdbRegisterExtensionClassMethod
-  ptrClassdbRegisterExtensionClassProperty InterfaceClassdbRegisterExtensionClassProperty
-  ptrClassdbRegisterExtensionClassPropertyGroup InterfaceClassdbRegisterExtensionClassPropertyGroup
-  ptrClassdbRegisterExtensionClassPropertyIndexed InterfaceClassdbRegisterExtensionClassPropertyIndexed
-  ptrClassdbRegisterExtensionClassPropertySubgroup InterfaceClassdbRegisterExtensionClassPropertySubgroup
-  ptrClassdbRegisterExtensionClassSignal InterfaceClassdbRegisterExtensionClassSignal
-  ptrClassdbUnregisterExtensionClass InterfaceClassdbUnregisterExtensionClass
-  ptrDictionaryOperatorIndex InterfaceDictionaryOperatorIndex
-  ptrDictionaryOperatorIndexConst InterfaceDictionaryOperatorIndexConst
-  ptrEditorAddPlugin InterfaceEditorAddPlugin
-  ptrEditorRemovePlugin InterfaceEditorRemovePlugin
-  ptrFileAccessGetBuffer InterfaceFileAccessGetBuffer
-  ptrFileAccessStoreBuffer InterfaceFileAccessStoreBuffer
-  ptrGetGodotVersion InterfaceGetGodotVersion
-  ptrGetLibraryPath InterfaceGetLibraryPath
-  ptrGetNativeStructSize InterfaceGetNativeStructSize
-  ptrGetVariantFromTypeConstructor InterfaceGetVariantFromTypeConstructor
-  ptrGetVariantToTypeConstructor InterfaceGetVariantToTypeConstructor
-  ptrGlobalGetSingleton InterfaceGlobalGetSingleton
-  ptrMemAlloc InterfaceMemAlloc
-  ptrMemFree InterfaceMemFree
-  ptrMemRealloc InterfaceMemRealloc
-  ptrObjectCastTo InterfaceObjectCastTo
-  ptrObjectDestroy InterfaceObjectDestroy
-  ptrObjectFreeInstanceBinding InterfaceObjectFreeInstanceBinding
-  ptrObjectGetClassName InterfaceObjectGetClassName
-  ptrObjectGetInstanceBinding InterfaceObjectGetInstanceBinding
-  ptrObjectGetInstanceFromId InterfaceObjectGetInstanceFromId
-  ptrObjectGetInstanceId InterfaceObjectGetInstanceId
-  ptrObjectGetScriptInstance InterfaceObjectGetScriptInstance
-  ptrObjectMethodBindCall InterfaceObjectMethodBindCall
-  ptrObjectMethodBindPtrcall InterfaceObjectMethodBindPtrcall
-  ptrObjectSetInstance InterfaceObjectSetInstance
-  ptrObjectSetInstanceBinding InterfaceObjectSetInstanceBinding
-  ptrPackedByteArrayOperatorIndex InterfacePackedByteArrayOperatorIndex
-  ptrPackedByteArrayOperatorIndexConst InterfacePackedByteArrayOperatorIndexConst
-  ptrPackedColorArrayOperatorIndex InterfacePackedColorArrayOperatorIndex
-  ptrPackedColorArrayOperatorIndexConst InterfacePackedColorArrayOperatorIndexConst
-  ptrPackedFloat32ArrayOperatorIndex InterfacePackedFloat32ArrayOperatorIndex
-  ptrPackedFloat32ArrayOperatorIndexConst InterfacePackedFloat32ArrayOperatorIndexConst
-  ptrPackedFloat64ArrayOperatorIndex InterfacePackedFloat64ArrayOperatorIndex
-  ptrPackedFloat64ArrayOperatorIndexConst InterfacePackedFloat64ArrayOperatorIndexConst
-  ptrPackedInt32ArrayOperatorIndex InterfacePackedInt32ArrayOperatorIndex
-  ptrPackedInt32ArrayOperatorIndexConst InterfacePackedInt32ArrayOperatorIndexConst
-  ptrPackedInt64ArrayOperatorIndex InterfacePackedInt64ArrayOperatorIndex
-  ptrPackedInt64ArrayOperatorIndexConst InterfacePackedInt64ArrayOperatorIndexConst
-  ptrPackedStringArrayOperatorIndex InterfacePackedStringArrayOperatorIndex
-  ptrPackedStringArrayOperatorIndexConst InterfacePackedStringArrayOperatorIndexConst
-  ptrPackedVector2ArrayOperatorIndex InterfacePackedVector2ArrayOperatorIndex
-  ptrPackedVector2ArrayOperatorIndexConst InterfacePackedVector2ArrayOperatorIndexConst
-  ptrPackedVector3ArrayOperatorIndex InterfacePackedVector3ArrayOperatorIndex
-  ptrPackedVector3ArrayOperatorIndexConst InterfacePackedVector3ArrayOperatorIndexConst
-  ptrPlaceholderScriptInstanceCreate InterfacePlaceHolderScriptInstanceCreate
-  ptrPlaceholderScriptInstanceUpdate InterfacePlaceHolderScriptInstanceUpdate
-  ptrPrintError InterfacePrintError
-  ptrPrintErrorWithMessage InterfacePrintErrorWithMessage
-  ptrPrintScriptError InterfacePrintScriptError
-  ptrPrintScriptErrorWithMessage InterfacePrintScriptErrorWithMessage
-  ptrPrintWarning InterfacePrintWarning
-  ptrPrintWarningWithMessage InterfacePrintWarningWithMessage
-  ptrRefGetObject InterfaceRefGetObject
-  ptrRefSetObject InterfaceRefSetObject
-  ptrScriptInstanceCreate InterfaceScriptInstanceCreate
-  ptrScriptInstanceCreate2 InterfaceScriptInstanceCreate2
-  ptrStringNameNewWithLatin1Chars InterfaceStringNameNewWithLatin1Chars
-  ptrStringNameNewWithUtf8Chars InterfaceStringNameNewWithUtf8Chars
-  ptrStringNameNewWithUtf8CharsAndLen InterfaceStringNameNewWithUtf8CharsAndLen
-  ptrStringNewWithLatin1Chars InterfaceStringNewWithLatin1Chars
-  ptrStringNewWithLatin1CharsAndLen InterfaceStringNewWithLatin1CharsAndLen
-  ptrStringNewWithUtf16Chars InterfaceStringNewWithUtf16Chars
-  ptrStringNewWithUtf16CharsAndLen InterfaceStringNewWithUtf16CharsAndLen
-  ptrStringNewWithUtf32Chars InterfaceStringNewWithUtf32Chars
-  ptrStringNewWithUtf32CharsAndLen InterfaceStringNewWithUtf32CharsAndLen
-  ptrStringNewWithUtf8Chars InterfaceStringNewWithUtf8Chars
-  ptrStringNewWithUtf8CharsAndLen InterfaceStringNewWithUtf8CharsAndLen
-  ptrStringNewWithWideChars InterfaceStringNewWithWideChars
-  ptrStringNewWithWideCharsAndLen InterfaceStringNewWithWideCharsAndLen
-  ptrStringOperatorIndex InterfaceStringOperatorIndex
-  ptrStringOperatorIndexConst InterfaceStringOperatorIndexConst
-  ptrStringOperatorPlusEqC32Str InterfaceStringOperatorPlusEqC32str
-  ptrStringOperatorPlusEqChar InterfaceStringOperatorPlusEqChar
-  ptrStringOperatorPlusEqCstr InterfaceStringOperatorPlusEqCstr
-  ptrStringOperatorPlusEqString InterfaceStringOperatorPlusEqString
-  ptrStringOperatorPlusEqWcstr InterfaceStringOperatorPlusEqWcstr
-  ptrStringResize InterfaceStringResize
-  ptrStringToLatin1Chars InterfaceStringToLatin1Chars
-  ptrStringToUtf16Chars InterfaceStringToUtf16Chars
-  ptrStringToUtf32Chars InterfaceStringToUtf32Chars
-  ptrStringToUtf8Chars InterfaceStringToUtf8Chars
-  ptrStringToWideChars InterfaceStringToWideChars
-  ptrVariantBooleanize InterfaceVariantBooleanize
-  ptrVariantCall InterfaceVariantCall
-  ptrVariantCallStatic InterfaceVariantCallStatic
-  ptrVariantCanConvert InterfaceVariantCanConvert
-  ptrVariantCanConvertStrict InterfaceVariantCanConvertStrict
-  ptrVariantConstruct InterfaceVariantConstruct
-  ptrVariantDestroy InterfaceVariantDestroy
-  ptrVariantDuplicate InterfaceVariantDuplicate
-  ptrVariantEvaluate InterfaceVariantEvaluate
-  ptrVariantGet InterfaceVariantGet
-  ptrVariantGetConstantValue InterfaceVariantGetConstantValue
-  ptrVariantGetIndexed InterfaceVariantGetIndexed
-  ptrVariantGetKeyed InterfaceVariantGetKeyed
-  ptrVariantGetNamed InterfaceVariantGetNamed
-  ptrVariantGetPtrBuiltinMethod InterfaceVariantGetPtrBuiltinMethod
-  ptrVariantGetPtrConstructor InterfaceVariantGetPtrConstructor
-  ptrVariantGetPtrDestructor InterfaceVariantGetPtrDestructor
-  ptrVariantGetPtrGetter InterfaceVariantGetPtrGetter
-  ptrVariantGetPtrIndexedGetter InterfaceVariantGetPtrIndexedGetter
-  ptrVariantGetPtrIndexedSetter InterfaceVariantGetPtrIndexedSetter
-  ptrVariantGetPtrKeyedChecker InterfaceVariantGetPtrKeyedChecker
-  ptrVariantGetPtrKeyedGetter InterfaceVariantGetPtrKeyedGetter
-  ptrVariantGetPtrKeyedSetter InterfaceVariantGetPtrKeyedSetter
-  ptrVariantGetPtrOperatorEvaluator InterfaceVariantGetPtrOperatorEvaluator
-  ptrVariantGetPtrSetter InterfaceVariantGetPtrSetter
-  ptrVariantGetPtrUtilityFunction InterfaceVariantGetPtrUtilityFunction
-  ptrVariantGetType InterfaceVariantGetType
-  ptrVariantGetTypeName InterfaceVariantGetTypeName
-  ptrVariantHasKey InterfaceVariantHasKey
-  ptrVariantHasMember InterfaceVariantHasMember
-  ptrVariantHasMethod InterfaceVariantHasMethod
-  ptrVariantHash InterfaceVariantHash
-  ptrVariantHashCompare InterfaceVariantHashCompare
-  ptrVariantIterGet InterfaceVariantIterGet
-  ptrVariantIterInit InterfaceVariantIterInit
-  ptrVariantIterNext InterfaceVariantIterNext
-  ptrVariantNewCopy InterfaceVariantNewCopy
-  ptrVariantNewNil InterfaceVariantNewNil
-  ptrVariantRecursiveHash InterfaceVariantRecursiveHash
-  ptrVariantSet InterfaceVariantSet
-  ptrVariantSetIndexed InterfaceVariantSetIndexed
-  ptrVariantSetKeyed InterfaceVariantSetKeyed
-  ptrVariantSetNamed InterfaceVariantSetNamed
-  ptrVariantStringify InterfaceVariantStringify
-  ptrWorkerThreadPoolAddNativeGroupTask InterfaceWorkerThreadPoolAddNativeGroupTask
-  ptrWorkerThreadPoolAddNativeTask InterfaceWorkerThreadPoolAddNativeTask
-  ptrXmlParserOpenBuffer InterfaceXmlParserOpenBuffer
+	ptrArrayOperatorIndex                            InterfaceArrayOperatorIndex
+	ptrArrayOperatorIndexConst                       InterfaceArrayOperatorIndexConst
+	ptrArrayRef                                      InterfaceArrayRef
+	ptrArraySetTyped                                 InterfaceArraySetTyped
+	ptrCallableCustomCreate                          InterfaceCallableCustomCreate
+	ptrCallableCustomGetUserdata                     InterfaceCallableCustomGetUserData
+	ptrClassdbConstructObject                        InterfaceClassdbConstructObject
+	ptrClassdbGetClassTag                            InterfaceClassdbGetClassTag
+	ptrClassdbGetMethodBind                          InterfaceClassdbGetMethodBind
+	ptrClassdbRegisterExtensionClass                 InterfaceClassdbRegisterExtensionClass
+	ptrClassdbRegisterExtensionClass2                InterfaceClassdbRegisterExtensionClass2
+	ptrClassdbRegisterExtensionClassIntegerConstant  InterfaceClassdbRegisterExtensionClassIntegerConstant
+	ptrClassdbRegisterExtensionClassMethod           InterfaceClassdbRegisterExtensionClassMethod
+	ptrClassdbRegisterExtensionClassProperty         InterfaceClassdbRegisterExtensionClassProperty
+	ptrClassdbRegisterExtensionClassPropertyGroup    InterfaceClassdbRegisterExtensionClassPropertyGroup
+	ptrClassdbRegisterExtensionClassPropertyIndexed  InterfaceClassdbRegisterExtensionClassPropertyIndexed
+	ptrClassdbRegisterExtensionClassPropertySubgroup InterfaceClassdbRegisterExtensionClassPropertySubgroup
+	ptrClassdbRegisterExtensionClassSignal           InterfaceClassdbRegisterExtensionClassSignal
+	ptrClassdbUnregisterExtensionClass               InterfaceClassdbUnregisterExtensionClass
+	ptrDictionaryOperatorIndex                       InterfaceDictionaryOperatorIndex
+	ptrDictionaryOperatorIndexConst                  InterfaceDictionaryOperatorIndexConst
+	ptrEditorAddPlugin                               InterfaceEditorAddPlugin
+	ptrEditorRemovePlugin                            InterfaceEditorRemovePlugin
+	ptrFileAccessGetBuffer                           InterfaceFileAccessGetBuffer
+	ptrFileAccessStoreBuffer                         InterfaceFileAccessStoreBuffer
+	ptrGetGodotVersion                               InterfaceGetGodotVersion
+	ptrGetLibraryPath                                InterfaceGetLibraryPath
+	ptrGetNativeStructSize                           InterfaceGetNativeStructSize
+	ptrGetVariantFromTypeConstructor                 InterfaceGetVariantFromTypeConstructor
+	ptrGetVariantToTypeConstructor                   InterfaceGetVariantToTypeConstructor
+	ptrGlobalGetSingleton                            InterfaceGlobalGetSingleton
+	ptrMemAlloc                                      InterfaceMemAlloc
+	ptrMemFree                                       InterfaceMemFree
+	ptrMemRealloc                                    InterfaceMemRealloc
+	ptrObjectCastTo                                  InterfaceObjectCastTo
+	ptrObjectDestroy                                 InterfaceObjectDestroy
+	ptrObjectFreeInstanceBinding                     InterfaceObjectFreeInstanceBinding
+	ptrObjectGetClassName                            InterfaceObjectGetClassName
+	ptrObjectGetInstanceBinding                      InterfaceObjectGetInstanceBinding
+	ptrObjectGetInstanceFromId                       InterfaceObjectGetInstanceFromId
+	ptrObjectGetInstanceId                           InterfaceObjectGetInstanceId
+	ptrObjectGetScriptInstance                       InterfaceObjectGetScriptInstance
+	ptrObjectMethodBindCall                          InterfaceObjectMethodBindCall
+	ptrObjectMethodBindPtrcall                       InterfaceObjectMethodBindPtrcall
+	ptrObjectSetInstance                             InterfaceObjectSetInstance
+	ptrObjectSetInstanceBinding                      InterfaceObjectSetInstanceBinding
+	ptrPackedByteArrayOperatorIndex                  InterfacePackedByteArrayOperatorIndex
+	ptrPackedByteArrayOperatorIndexConst             InterfacePackedByteArrayOperatorIndexConst
+	ptrPackedColorArrayOperatorIndex                 InterfacePackedColorArrayOperatorIndex
+	ptrPackedColorArrayOperatorIndexConst            InterfacePackedColorArrayOperatorIndexConst
+	ptrPackedFloat32ArrayOperatorIndex               InterfacePackedFloat32ArrayOperatorIndex
+	ptrPackedFloat32ArrayOperatorIndexConst          InterfacePackedFloat32ArrayOperatorIndexConst
+	ptrPackedFloat64ArrayOperatorIndex               InterfacePackedFloat64ArrayOperatorIndex
+	ptrPackedFloat64ArrayOperatorIndexConst          InterfacePackedFloat64ArrayOperatorIndexConst
+	ptrPackedInt32ArrayOperatorIndex                 InterfacePackedInt32ArrayOperatorIndex
+	ptrPackedInt32ArrayOperatorIndexConst            InterfacePackedInt32ArrayOperatorIndexConst
+	ptrPackedInt64ArrayOperatorIndex                 InterfacePackedInt64ArrayOperatorIndex
+	ptrPackedInt64ArrayOperatorIndexConst            InterfacePackedInt64ArrayOperatorIndexConst
+	ptrPackedStringArrayOperatorIndex                InterfacePackedStringArrayOperatorIndex
+	ptrPackedStringArrayOperatorIndexConst           InterfacePackedStringArrayOperatorIndexConst
+	ptrPackedVector2ArrayOperatorIndex               InterfacePackedVector2ArrayOperatorIndex
+	ptrPackedVector2ArrayOperatorIndexConst          InterfacePackedVector2ArrayOperatorIndexConst
+	ptrPackedVector3ArrayOperatorIndex               InterfacePackedVector3ArrayOperatorIndex
+	ptrPackedVector3ArrayOperatorIndexConst          InterfacePackedVector3ArrayOperatorIndexConst
+	ptrPlaceholderScriptInstanceCreate               InterfacePlaceHolderScriptInstanceCreate
+	ptrPlaceholderScriptInstanceUpdate               InterfacePlaceHolderScriptInstanceUpdate
+	ptrPrintError                                    InterfacePrintError
+	ptrPrintErrorWithMessage                         InterfacePrintErrorWithMessage
+	ptrPrintScriptError                              InterfacePrintScriptError
+	ptrPrintScriptErrorWithMessage                   InterfacePrintScriptErrorWithMessage
+	ptrPrintWarning                                  InterfacePrintWarning
+	ptrPrintWarningWithMessage                       InterfacePrintWarningWithMessage
+	ptrRefGetObject                                  InterfaceRefGetObject
+	ptrRefSetObject                                  InterfaceRefSetObject
+	ptrScriptInstanceCreate                          InterfaceScriptInstanceCreate
+	ptrScriptInstanceCreate2                         InterfaceScriptInstanceCreate2
+	ptrStringNameNewWithLatin1Chars                  InterfaceStringNameNewWithLatin1Chars
+	ptrStringNameNewWithUtf8Chars                    InterfaceStringNameNewWithUtf8Chars
+	ptrStringNameNewWithUtf8CharsAndLen              InterfaceStringNameNewWithUtf8CharsAndLen
+	ptrStringNewWithLatin1Chars                      InterfaceStringNewWithLatin1Chars
+	ptrStringNewWithLatin1CharsAndLen                InterfaceStringNewWithLatin1CharsAndLen
+	ptrStringNewWithUtf16Chars                       InterfaceStringNewWithUtf16Chars
+	ptrStringNewWithUtf16CharsAndLen                 InterfaceStringNewWithUtf16CharsAndLen
+	ptrStringNewWithUtf32Chars                       InterfaceStringNewWithUtf32Chars
+	ptrStringNewWithUtf32CharsAndLen                 InterfaceStringNewWithUtf32CharsAndLen
+	ptrStringNewWithUtf8Chars                        InterfaceStringNewWithUtf8Chars
+	ptrStringNewWithUtf8CharsAndLen                  InterfaceStringNewWithUtf8CharsAndLen
+	ptrStringNewWithWideChars                        InterfaceStringNewWithWideChars
+	ptrStringNewWithWideCharsAndLen                  InterfaceStringNewWithWideCharsAndLen
+	ptrStringOperatorIndex                           InterfaceStringOperatorIndex
+	ptrStringOperatorIndexConst                      InterfaceStringOperatorIndexConst
+	ptrStringOperatorPlusEqC32Str                    InterfaceStringOperatorPlusEqC32str
+	ptrStringOperatorPlusEqChar                      InterfaceStringOperatorPlusEqChar
+	ptrStringOperatorPlusEqCstr                      InterfaceStringOperatorPlusEqCstr
+	ptrStringOperatorPlusEqString                    InterfaceStringOperatorPlusEqString
+	ptrStringOperatorPlusEqWcstr                     InterfaceStringOperatorPlusEqWcstr
+	ptrStringResize                                  InterfaceStringResize
+	ptrStringToLatin1Chars                           InterfaceStringToLatin1Chars
+	ptrStringToUtf16Chars                            InterfaceStringToUtf16Chars
+	ptrStringToUtf32Chars                            InterfaceStringToUtf32Chars
+	ptrStringToUtf8Chars                             InterfaceStringToUtf8Chars
+	ptrStringToWideChars                             InterfaceStringToWideChars
+	ptrVariantBooleanize                             InterfaceVariantBooleanize
+	ptrVariantCall                                   InterfaceVariantCall
+	ptrVariantCallStatic                             InterfaceVariantCallStatic
+	ptrVariantCanConvert                             InterfaceVariantCanConvert
+	ptrVariantCanConvertStrict                       InterfaceVariantCanConvertStrict
+	ptrVariantConstruct                              InterfaceVariantConstruct
+	ptrVariantDestroy                                InterfaceVariantDestroy
+	ptrVariantDuplicate                              InterfaceVariantDuplicate
+	ptrVariantEvaluate                               InterfaceVariantEvaluate
+	ptrVariantGet                                    InterfaceVariantGet
+	ptrVariantGetConstantValue                       InterfaceVariantGetConstantValue
+	ptrVariantGetIndexed                             InterfaceVariantGetIndexed
+	ptrVariantGetKeyed                               InterfaceVariantGetKeyed
+	ptrVariantGetNamed                               InterfaceVariantGetNamed
+	ptrVariantGetPtrBuiltinMethod                    InterfaceVariantGetPtrBuiltinMethod
+	ptrVariantGetPtrConstructor                      InterfaceVariantGetPtrConstructor
+	ptrVariantGetPtrDestructor                       InterfaceVariantGetPtrDestructor
+	ptrVariantGetPtrGetter                           InterfaceVariantGetPtrGetter
+	ptrVariantGetPtrIndexedGetter                    InterfaceVariantGetPtrIndexedGetter
+	ptrVariantGetPtrIndexedSetter                    InterfaceVariantGetPtrIndexedSetter
+	ptrVariantGetPtrKeyedChecker                     InterfaceVariantGetPtrKeyedChecker
+	ptrVariantGetPtrKeyedGetter                      InterfaceVariantGetPtrKeyedGetter
+	ptrVariantGetPtrKeyedSetter                      InterfaceVariantGetPtrKeyedSetter
+	ptrVariantGetPtrOperatorEvaluator                InterfaceVariantGetPtrOperatorEvaluator
+	ptrVariantGetPtrSetter                           InterfaceVariantGetPtrSetter
+	ptrVariantGetPtrUtilityFunction                  InterfaceVariantGetPtrUtilityFunction
+	ptrVariantGetType                                InterfaceVariantGetType
+	ptrVariantGetTypeName                            InterfaceVariantGetTypeName
+	ptrVariantHasKey                                 InterfaceVariantHasKey
+	ptrVariantHasMember                              InterfaceVariantHasMember
+	ptrVariantHasMethod                              InterfaceVariantHasMethod
+	ptrVariantHash                                   InterfaceVariantHash
+	ptrVariantHashCompare                            InterfaceVariantHashCompare
+	ptrVariantIterGet                                InterfaceVariantIterGet
+	ptrVariantIterInit                               InterfaceVariantIterInit
+	ptrVariantIterNext                               InterfaceVariantIterNext
+	ptrVariantNewCopy                                InterfaceVariantNewCopy
+	ptrVariantNewNil                                 InterfaceVariantNewNil
+	ptrVariantRecursiveHash                          InterfaceVariantRecursiveHash
+	ptrVariantSet                                    InterfaceVariantSet
+	ptrVariantSetIndexed                             InterfaceVariantSetIndexed
+	ptrVariantSetKeyed                               InterfaceVariantSetKeyed
+	ptrVariantSetNamed                               InterfaceVariantSetNamed
+	ptrVariantStringify                              InterfaceVariantStringify
+	ptrWorkerThreadPoolAddNativeGroupTask            InterfaceWorkerThreadPoolAddNativeGroupTask
+	ptrWorkerThreadPoolAddNativeTask                 InterfaceWorkerThreadPoolAddNativeTask
+	ptrXmlParserOpenBuffer                           InterfaceXmlParserOpenBuffer
 }
 
-func (me *interfaceImpl) ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) VariantPtr {
+func (me *interfaceImpl) ArrayOperatorIndex(pSelf TypePtr, pIndex Int) VariantPtr {
 
-  ret := C.callArrayOperatorIndex(me.ptrArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return VariantPtr(ret)
+	ret := C.callArrayOperatorIndex(me.ptrArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return VariantPtr(ret)
 }
 
-func (me *interfaceImpl) ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) VariantPtr {
+func (me *interfaceImpl) ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) VariantPtr {
 
-  ret := C.callArrayOperatorIndexConst(me.ptrArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return VariantPtr(ret)
+	ret := C.callArrayOperatorIndexConst(me.ptrArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return VariantPtr(ret)
 }
 
-func (me *interfaceImpl) ArrayRef(pSelf TypePtr, pFrom ConstTypePtr, )  {
+func (me *interfaceImpl) ArrayRef(pSelf TypePtr, pFrom ConstTypePtr) {
 
-  C.callArrayRef(me.ptrArrayRef, C.GDExtensionTypePtr(pSelf), C.GDExtensionConstTypePtr(pFrom),)
+	C.callArrayRef(me.ptrArrayRef, C.GDExtensionTypePtr(pSelf), C.GDExtensionConstTypePtr(pFrom))
 }
 
-func (me *interfaceImpl) ArraySetTyped(pSelf TypePtr, pType VariantType, pClassName ConstStringNamePtr, pScript ConstVariantPtr, )  {
+func (me *interfaceImpl) ArraySetTyped(pSelf TypePtr, pType VariantType, pClassName ConstStringNamePtr, pScript ConstVariantPtr) {
 
-  C.callArraySetTyped(me.ptrArraySetTyped, C.GDExtensionTypePtr(pSelf), C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstVariantPtr(pScript),)
+	C.callArraySetTyped(me.ptrArraySetTyped, C.GDExtensionTypePtr(pSelf), C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstVariantPtr(pScript))
 }
 
-func (me *interfaceImpl) CallableCustomCreate(rCallable UninitializedTypePtr, pCallableCustomInfo *CallableCustomInfo, )  {
+func (me *interfaceImpl) CallableCustomCreate(rCallable UninitializedTypePtr, pCallableCustomInfo *CallableCustomInfo) {
 
-  C.callCallableCustomCreate(me.ptrCallableCustomCreate, C.GDExtensionUninitializedTypePtr(rCallable), (*C.GDExtensionCallableCustomInfo)(unsafe.Pointer(pCallableCustomInfo)),)
+	C.callCallableCustomCreate(me.ptrCallableCustomCreate, C.GDExtensionUninitializedTypePtr(rCallable), (*C.GDExtensionCallableCustomInfo)(unsafe.Pointer(pCallableCustomInfo)))
 }
 
-func (me *interfaceImpl) CallableCustomGetUserdata(pCallable ConstTypePtr, pToken unsafe.Pointer, ) unsafe.Pointer {
+func (me *interfaceImpl) CallableCustomGetUserdata(pCallable ConstTypePtr, pToken unsafe.Pointer) unsafe.Pointer {
 
-  ret := C.callCallableCustomGetUserdata(me.ptrCallableCustomGetUserdata, C.GDExtensionConstTypePtr(pCallable), pToken,)
-  return unsafe.Pointer(ret)
+	ret := C.callCallableCustomGetUserdata(me.ptrCallableCustomGetUserdata, C.GDExtensionConstTypePtr(pCallable), pToken)
+	return unsafe.Pointer(ret)
 }
 
-func (me *interfaceImpl) ClassdbConstructObject(pClassname ConstStringNamePtr, ) ObjectPtr {
+func (me *interfaceImpl) ClassdbConstructObject(pClassname ConstStringNamePtr) ObjectPtr {
 
-  ret := C.callClassdbConstructObject(me.ptrClassdbConstructObject, C.GDExtensionConstStringNamePtr(pClassname),)
-  return ObjectPtr(ret)
+	ret := C.callClassdbConstructObject(me.ptrClassdbConstructObject, C.GDExtensionConstStringNamePtr(pClassname))
+	return ObjectPtr(ret)
 }
 
-func (me *interfaceImpl) ClassdbGetClassTag(pClassname ConstStringNamePtr, ) unsafe.Pointer {
+func (me *interfaceImpl) ClassdbGetClassTag(pClassname ConstStringNamePtr) unsafe.Pointer {
 
-  ret := C.callClassdbGetClassTag(me.ptrClassdbGetClassTag, C.GDExtensionConstStringNamePtr(pClassname),)
-  return unsafe.Pointer(ret)
+	ret := C.callClassdbGetClassTag(me.ptrClassdbGetClassTag, C.GDExtensionConstStringNamePtr(pClassname))
+	return unsafe.Pointer(ret)
 }
 
-func (me *interfaceImpl) ClassdbGetMethodBind(pClassname ConstStringNamePtr, pMethodname ConstStringNamePtr, pHash Int, ) MethodBindPtr {
+func (me *interfaceImpl) ClassdbGetMethodBind(pClassname ConstStringNamePtr, pMethodname ConstStringNamePtr, pHash Int) MethodBindPtr {
 
-  ret := C.callClassdbGetMethodBind(me.ptrClassdbGetMethodBind, C.GDExtensionConstStringNamePtr(pClassname), C.GDExtensionConstStringNamePtr(pMethodname), C.GDExtensionInt(pHash),)
-  return MethodBindPtr(ret)
+	ret := C.callClassdbGetMethodBind(me.ptrClassdbGetMethodBind, C.GDExtensionConstStringNamePtr(pClassname), C.GDExtensionConstStringNamePtr(pMethodname), C.GDExtensionInt(pHash))
+	return MethodBindPtr(ret)
 }
 
-func (me *interfaceImpl) ClassdbRegisterExtensionClass(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pParentClassName ConstStringNamePtr, pExtensionFuncs *ClassCreationInfo, )  {
+func (me *interfaceImpl) ClassdbRegisterExtensionClass(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pParentClassName ConstStringNamePtr, pExtensionFuncs *ClassCreationInfo) {
 
-  C.callClassdbRegisterExtensionClass(me.ptrClassdbRegisterExtensionClass, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringNamePtr(pParentClassName), (*C.GDExtensionClassCreationInfo)(unsafe.Pointer(pExtensionFuncs)),)
+	C.callClassdbRegisterExtensionClass(me.ptrClassdbRegisterExtensionClass, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringNamePtr(pParentClassName), (*C.GDExtensionClassCreationInfo)(unsafe.Pointer(pExtensionFuncs)))
 }
 
-func (me *interfaceImpl) ClassdbRegisterExtensionClass2(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pParentClassName ConstStringNamePtr, pExtensionFuncs *ClassCreationInfo2, )  {
+func (me *interfaceImpl) ClassdbRegisterExtensionClass2(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pParentClassName ConstStringNamePtr, pExtensionFuncs *ClassCreationInfo2) {
 
-  C.callClassdbRegisterExtensionClass2(me.ptrClassdbRegisterExtensionClass2, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringNamePtr(pParentClassName), (*C.GDExtensionClassCreationInfo2)(unsafe.Pointer(pExtensionFuncs)),)
+	C.callClassdbRegisterExtensionClass2(me.ptrClassdbRegisterExtensionClass2, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringNamePtr(pParentClassName), (*C.GDExtensionClassCreationInfo2)(unsafe.Pointer(pExtensionFuncs)))
 }
 
-func (me *interfaceImpl) ClassdbRegisterExtensionClassIntegerConstant(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pEnumName ConstStringNamePtr, pConstantName ConstStringNamePtr, pConstantValue Int, pIsBitfield Bool, )  {
+func (me *interfaceImpl) ClassdbRegisterExtensionClassIntegerConstant(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pEnumName ConstStringNamePtr, pConstantName ConstStringNamePtr, pConstantValue Int, pIsBitfield Bool) {
 
-  C.callClassdbRegisterExtensionClassIntegerConstant(me.ptrClassdbRegisterExtensionClassIntegerConstant, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringNamePtr(pEnumName), C.GDExtensionConstStringNamePtr(pConstantName), C.GDExtensionInt(pConstantValue), C.GDExtensionBool(pIsBitfield),)
+	C.callClassdbRegisterExtensionClassIntegerConstant(me.ptrClassdbRegisterExtensionClassIntegerConstant, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringNamePtr(pEnumName), C.GDExtensionConstStringNamePtr(pConstantName), C.GDExtensionInt(pConstantValue), C.GDExtensionBool(pIsBitfield))
 }
 
-func (me *interfaceImpl) ClassdbRegisterExtensionClassMethod(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pMethodInfo *ClassMethodInfo, )  {
+func (me *interfaceImpl) ClassdbRegisterExtensionClassMethod(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pMethodInfo *ClassMethodInfo) {
 
-  C.callClassdbRegisterExtensionClassMethod(me.ptrClassdbRegisterExtensionClassMethod, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), (*C.GDExtensionClassMethodInfo)(unsafe.Pointer(pMethodInfo)),)
+	C.callClassdbRegisterExtensionClassMethod(me.ptrClassdbRegisterExtensionClassMethod, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), (*C.GDExtensionClassMethodInfo)(unsafe.Pointer(pMethodInfo)))
 }
 
-func (me *interfaceImpl) ClassdbRegisterExtensionClassProperty(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pInfo *PropertyInfo, pSetter ConstStringNamePtr, pGetter ConstStringNamePtr, )  {
+func (me *interfaceImpl) ClassdbRegisterExtensionClassProperty(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pInfo *PropertyInfo, pSetter ConstStringNamePtr, pGetter ConstStringNamePtr) {
 
-  C.callClassdbRegisterExtensionClassProperty(me.ptrClassdbRegisterExtensionClassProperty, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), (*C.GDExtensionPropertyInfo)(unsafe.Pointer(pInfo)), C.GDExtensionConstStringNamePtr(pSetter), C.GDExtensionConstStringNamePtr(pGetter),)
+	C.callClassdbRegisterExtensionClassProperty(me.ptrClassdbRegisterExtensionClassProperty, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), (*C.GDExtensionPropertyInfo)(unsafe.Pointer(pInfo)), C.GDExtensionConstStringNamePtr(pSetter), C.GDExtensionConstStringNamePtr(pGetter))
 }
 
-func (me *interfaceImpl) ClassdbRegisterExtensionClassPropertyGroup(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pGroupName ConstStringPtr, pPrefix ConstStringPtr, )  {
+func (me *interfaceImpl) ClassdbRegisterExtensionClassPropertyGroup(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pGroupName ConstStringPtr, pPrefix ConstStringPtr) {
 
-  C.callClassdbRegisterExtensionClassPropertyGroup(me.ptrClassdbRegisterExtensionClassPropertyGroup, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringPtr(pGroupName), C.GDExtensionConstStringPtr(pPrefix),)
+	C.callClassdbRegisterExtensionClassPropertyGroup(me.ptrClassdbRegisterExtensionClassPropertyGroup, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringPtr(pGroupName), C.GDExtensionConstStringPtr(pPrefix))
 }
 
-func (me *interfaceImpl) ClassdbRegisterExtensionClassPropertyIndexed(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pInfo *PropertyInfo, pSetter ConstStringNamePtr, pGetter ConstStringNamePtr, pIndex Int, )  {
+func (me *interfaceImpl) ClassdbRegisterExtensionClassPropertyIndexed(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pInfo *PropertyInfo, pSetter ConstStringNamePtr, pGetter ConstStringNamePtr, pIndex Int) {
 
-  C.callClassdbRegisterExtensionClassPropertyIndexed(me.ptrClassdbRegisterExtensionClassPropertyIndexed, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), (*C.GDExtensionPropertyInfo)(unsafe.Pointer(pInfo)), C.GDExtensionConstStringNamePtr(pSetter), C.GDExtensionConstStringNamePtr(pGetter), C.GDExtensionInt(pIndex),)
+	C.callClassdbRegisterExtensionClassPropertyIndexed(me.ptrClassdbRegisterExtensionClassPropertyIndexed, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), (*C.GDExtensionPropertyInfo)(unsafe.Pointer(pInfo)), C.GDExtensionConstStringNamePtr(pSetter), C.GDExtensionConstStringNamePtr(pGetter), C.GDExtensionInt(pIndex))
 }
 
-func (me *interfaceImpl) ClassdbRegisterExtensionClassPropertySubgroup(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pSubgroupName ConstStringPtr, pPrefix ConstStringPtr, )  {
+func (me *interfaceImpl) ClassdbRegisterExtensionClassPropertySubgroup(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pSubgroupName ConstStringPtr, pPrefix ConstStringPtr) {
 
-  C.callClassdbRegisterExtensionClassPropertySubgroup(me.ptrClassdbRegisterExtensionClassPropertySubgroup, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringPtr(pSubgroupName), C.GDExtensionConstStringPtr(pPrefix),)
+	C.callClassdbRegisterExtensionClassPropertySubgroup(me.ptrClassdbRegisterExtensionClassPropertySubgroup, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringPtr(pSubgroupName), C.GDExtensionConstStringPtr(pPrefix))
 }
 
-func (me *interfaceImpl) ClassdbRegisterExtensionClassSignal(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pSignalName ConstStringNamePtr, pArgumentInfo *PropertyInfo, pArgumentCount Int, )  {
+func (me *interfaceImpl) ClassdbRegisterExtensionClassSignal(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pSignalName ConstStringNamePtr, pArgumentInfo *PropertyInfo, pArgumentCount Int) {
 
-  C.callClassdbRegisterExtensionClassSignal(me.ptrClassdbRegisterExtensionClassSignal, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringNamePtr(pSignalName), (*C.GDExtensionPropertyInfo)(unsafe.Pointer(pArgumentInfo)), C.GDExtensionInt(pArgumentCount),)
+	C.callClassdbRegisterExtensionClassSignal(me.ptrClassdbRegisterExtensionClassSignal, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringNamePtr(pSignalName), (*C.GDExtensionPropertyInfo)(unsafe.Pointer(pArgumentInfo)), C.GDExtensionInt(pArgumentCount))
 }
 
-func (me *interfaceImpl) ClassdbUnregisterExtensionClass(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, )  {
+func (me *interfaceImpl) ClassdbUnregisterExtensionClass(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr) {
 
-  C.callClassdbUnregisterExtensionClass(me.ptrClassdbUnregisterExtensionClass, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName),)
+	C.callClassdbUnregisterExtensionClass(me.ptrClassdbUnregisterExtensionClass, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName))
 }
 
-func (me *interfaceImpl) DictionaryOperatorIndex(pSelf TypePtr, pKey ConstVariantPtr, ) VariantPtr {
+func (me *interfaceImpl) DictionaryOperatorIndex(pSelf TypePtr, pKey ConstVariantPtr) VariantPtr {
 
-  ret := C.callDictionaryOperatorIndex(me.ptrDictionaryOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionConstVariantPtr(pKey),)
-  return VariantPtr(ret)
+	ret := C.callDictionaryOperatorIndex(me.ptrDictionaryOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionConstVariantPtr(pKey))
+	return VariantPtr(ret)
 }
 
-func (me *interfaceImpl) DictionaryOperatorIndexConst(pSelf ConstTypePtr, pKey ConstVariantPtr, ) VariantPtr {
+func (me *interfaceImpl) DictionaryOperatorIndexConst(pSelf ConstTypePtr, pKey ConstVariantPtr) VariantPtr {
 
-  ret := C.callDictionaryOperatorIndexConst(me.ptrDictionaryOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionConstVariantPtr(pKey),)
-  return VariantPtr(ret)
+	ret := C.callDictionaryOperatorIndexConst(me.ptrDictionaryOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionConstVariantPtr(pKey))
+	return VariantPtr(ret)
 }
 
-func (me *interfaceImpl) EditorAddPlugin(pClassName ConstStringNamePtr, )  {
+func (me *interfaceImpl) EditorAddPlugin(pClassName ConstStringNamePtr) {
 
-  C.callEditorAddPlugin(me.ptrEditorAddPlugin, C.GDExtensionConstStringNamePtr(pClassName),)
+	C.callEditorAddPlugin(me.ptrEditorAddPlugin, C.GDExtensionConstStringNamePtr(pClassName))
 }
 
-func (me *interfaceImpl) EditorRemovePlugin(pClassName ConstStringNamePtr, )  {
+func (me *interfaceImpl) EditorRemovePlugin(pClassName ConstStringNamePtr) {
 
-  C.callEditorRemovePlugin(me.ptrEditorRemovePlugin, C.GDExtensionConstStringNamePtr(pClassName),)
+	C.callEditorRemovePlugin(me.ptrEditorRemovePlugin, C.GDExtensionConstStringNamePtr(pClassName))
 }
 
-func (me *interfaceImpl) FileAccessGetBuffer(pInstance ConstObjectPtr, pDst *uint8, pLength uint64, ) uint64 {
+func (me *interfaceImpl) FileAccessGetBuffer(pInstance ConstObjectPtr, pDst *uint8, pLength uint64) uint64 {
 
-  ret := C.callFileAccessGetBuffer(me.ptrFileAccessGetBuffer, C.GDExtensionConstObjectPtr(pInstance), *(**C.uint8_t)(unsafe.Pointer(&pDst)), C.uint64_t(pLength),)
-  return uint64(ret)
+	ret := C.callFileAccessGetBuffer(me.ptrFileAccessGetBuffer, C.GDExtensionConstObjectPtr(pInstance), *(**C.uint8_t)(unsafe.Pointer(&pDst)), C.uint64_t(pLength))
+	return uint64(ret)
 }
 
-func (me *interfaceImpl) FileAccessStoreBuffer(pInstance ObjectPtr, pSrc *uint8, pLength uint64, )  {
+func (me *interfaceImpl) FileAccessStoreBuffer(pInstance ObjectPtr, pSrc *uint8, pLength uint64) {
 
-  C.callFileAccessStoreBuffer(me.ptrFileAccessStoreBuffer, C.GDExtensionObjectPtr(pInstance), *(**C.uint8_t)(unsafe.Pointer(&pSrc)), C.uint64_t(pLength),)
+	C.callFileAccessStoreBuffer(me.ptrFileAccessStoreBuffer, C.GDExtensionObjectPtr(pInstance), *(**C.uint8_t)(unsafe.Pointer(&pSrc)), C.uint64_t(pLength))
 }
 
-func (me *interfaceImpl) GetGodotVersion(rGodotVersion *GodotVersion, )  {
+func (me *interfaceImpl) GetGodotVersion(rGodotVersion *GodotVersion) {
 
-  C.callGetGodotVersion(me.ptrGetGodotVersion, (*C.GDExtensionGodotVersion)(unsafe.Pointer(rGodotVersion)),)
+	C.callGetGodotVersion(me.ptrGetGodotVersion, (*C.GDExtensionGodotVersion)(unsafe.Pointer(rGodotVersion)))
 }
 
-func (me *interfaceImpl) GetLibraryPath(pLibrary ClassLibraryPtr, rPath UninitializedStringPtr, )  {
+func (me *interfaceImpl) GetLibraryPath(pLibrary ClassLibraryPtr, rPath UninitializedStringPtr) {
 
-  C.callGetLibraryPath(me.ptrGetLibraryPath, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionUninitializedStringPtr(rPath),)
+	C.callGetLibraryPath(me.ptrGetLibraryPath, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionUninitializedStringPtr(rPath))
 }
 
-func (me *interfaceImpl) GetNativeStructSize(pName ConstStringNamePtr, ) uint64 {
+func (me *interfaceImpl) GetNativeStructSize(pName ConstStringNamePtr) uint64 {
 
-  ret := C.callGetNativeStructSize(me.ptrGetNativeStructSize, C.GDExtensionConstStringNamePtr(pName),)
-  return uint64(ret)
+	ret := C.callGetNativeStructSize(me.ptrGetNativeStructSize, C.GDExtensionConstStringNamePtr(pName))
+	return uint64(ret)
 }
 
-func (me *interfaceImpl) GetVariantFromTypeConstructor(pType VariantType, ) VariantFromTypeConstructorFunc {
+func (me *interfaceImpl) GetVariantFromTypeConstructor(pType VariantType) VariantFromTypeConstructorFunc {
 
-  ret := C.callGetVariantFromTypeConstructor(me.ptrGetVariantFromTypeConstructor, C.GDExtensionVariantType(pType),)
-  return VariantFromTypeConstructorFunc(ret)
+	ret := C.callGetVariantFromTypeConstructor(me.ptrGetVariantFromTypeConstructor, C.GDExtensionVariantType(pType))
+	return VariantFromTypeConstructorFunc(ret)
 }
 
-func (me *interfaceImpl) CallVariantFromTypeConstructorFunc(ptrToCall VariantFromTypeConstructorFunc, arg0 UninitializedVariantPtr, arg1 TypePtr, )  {
+func (me *interfaceImpl) CallVariantFromTypeConstructorFunc(ptrToCall VariantFromTypeConstructorFunc, arg0 UninitializedVariantPtr, arg1 TypePtr) {
 
-  if ptrToCall == nil {
-    panic("ptrToCall is nil for CallVariantFromTypeConstructorFunc") // TODO: better error handling
-  }
-  C.callCallVariantFromTypeConstructorFunc(ptrToCall, C.GDExtensionUninitializedVariantPtr(arg0), C.GDExtensionTypePtr(arg1),)
+	if ptrToCall == nil {
+		panic("ptrToCall is nil for CallVariantFromTypeConstructorFunc") // TODO: better error handling
+	}
+	C.callCallVariantFromTypeConstructorFunc(ptrToCall, C.GDExtensionUninitializedVariantPtr(arg0), C.GDExtensionTypePtr(arg1))
 }
 
-func (me *interfaceImpl) GetVariantToTypeConstructor(pType VariantType, ) TypeFromVariantConstructorFunc {
+func (me *interfaceImpl) GetVariantToTypeConstructor(pType VariantType) TypeFromVariantConstructorFunc {
 
-  ret := C.callGetVariantToTypeConstructor(me.ptrGetVariantToTypeConstructor, C.GDExtensionVariantType(pType),)
-  return TypeFromVariantConstructorFunc(ret)
+	ret := C.callGetVariantToTypeConstructor(me.ptrGetVariantToTypeConstructor, C.GDExtensionVariantType(pType))
+	return TypeFromVariantConstructorFunc(ret)
 }
 
-func (me *interfaceImpl) CallTypeFromVariantConstructorFunc(ptrToCall TypeFromVariantConstructorFunc, arg0 UninitializedTypePtr, arg1 VariantPtr, )  {
+func (me *interfaceImpl) CallTypeFromVariantConstructorFunc(ptrToCall TypeFromVariantConstructorFunc, arg0 UninitializedTypePtr, arg1 VariantPtr) {
 
-  if ptrToCall == nil {
-    panic("ptrToCall is nil for CallTypeFromVariantConstructorFunc") // TODO: better error handling
-  }
-  C.callCallTypeFromVariantConstructorFunc(ptrToCall, C.GDExtensionUninitializedTypePtr(arg0), C.GDExtensionVariantPtr(arg1),)
+	if ptrToCall == nil {
+		panic("ptrToCall is nil for CallTypeFromVariantConstructorFunc") // TODO: better error handling
+	}
+	C.callCallTypeFromVariantConstructorFunc(ptrToCall, C.GDExtensionUninitializedTypePtr(arg0), C.GDExtensionVariantPtr(arg1))
 }
 
-func (me *interfaceImpl) GlobalGetSingleton(pName ConstStringNamePtr, ) ObjectPtr {
+func (me *interfaceImpl) GlobalGetSingleton(pName ConstStringNamePtr) ObjectPtr {
 
-  ret := C.callGlobalGetSingleton(me.ptrGlobalGetSingleton, C.GDExtensionConstStringNamePtr(pName),)
-  return ObjectPtr(ret)
+	ret := C.callGlobalGetSingleton(me.ptrGlobalGetSingleton, C.GDExtensionConstStringNamePtr(pName))
+	return ObjectPtr(ret)
 }
 
-func (me *interfaceImpl) MemAlloc(pBytes uint64, ) unsafe.Pointer {
+func (me *interfaceImpl) MemAlloc(pBytes uint64) unsafe.Pointer {
 
-  ret := C.callMemAlloc(me.ptrMemAlloc, C.size_t(pBytes),)
-  return unsafe.Pointer(ret)
+	ret := C.callMemAlloc(me.ptrMemAlloc, C.size_t(pBytes))
+	return unsafe.Pointer(ret)
 }
 
-func (me *interfaceImpl) MemFree(pPtr unsafe.Pointer, )  {
+func (me *interfaceImpl) MemFree(pPtr unsafe.Pointer) {
 
-  C.callMemFree(me.ptrMemFree, pPtr,)
+	C.callMemFree(me.ptrMemFree, pPtr)
 }
 
-func (me *interfaceImpl) MemRealloc(pPtr unsafe.Pointer, pBytes uint64, ) unsafe.Pointer {
+func (me *interfaceImpl) MemRealloc(pPtr unsafe.Pointer, pBytes uint64) unsafe.Pointer {
 
-  ret := C.callMemRealloc(me.ptrMemRealloc, pPtr, C.size_t(pBytes),)
-  return unsafe.Pointer(ret)
+	ret := C.callMemRealloc(me.ptrMemRealloc, pPtr, C.size_t(pBytes))
+	return unsafe.Pointer(ret)
 }
 
-func (me *interfaceImpl) ObjectCastTo(pObject ConstObjectPtr, pClassTag unsafe.Pointer, ) ObjectPtr {
+func (me *interfaceImpl) ObjectCastTo(pObject ConstObjectPtr, pClassTag unsafe.Pointer) ObjectPtr {
 
-  ret := C.callObjectCastTo(me.ptrObjectCastTo, C.GDExtensionConstObjectPtr(pObject), pClassTag,)
-  return ObjectPtr(ret)
+	ret := C.callObjectCastTo(me.ptrObjectCastTo, C.GDExtensionConstObjectPtr(pObject), pClassTag)
+	return ObjectPtr(ret)
 }
 
-func (me *interfaceImpl) ObjectDestroy(pO ObjectPtr, )  {
+func (me *interfaceImpl) ObjectDestroy(pO ObjectPtr) {
 
-  C.callObjectDestroy(me.ptrObjectDestroy, C.GDExtensionObjectPtr(pO),)
+	C.callObjectDestroy(me.ptrObjectDestroy, C.GDExtensionObjectPtr(pO))
 }
 
-func (me *interfaceImpl) ObjectFreeInstanceBinding(pO ObjectPtr, pToken unsafe.Pointer, )  {
+func (me *interfaceImpl) ObjectFreeInstanceBinding(pO ObjectPtr, pToken unsafe.Pointer) {
 
-  C.callObjectFreeInstanceBinding(me.ptrObjectFreeInstanceBinding, C.GDExtensionObjectPtr(pO), pToken,)
+	C.callObjectFreeInstanceBinding(me.ptrObjectFreeInstanceBinding, C.GDExtensionObjectPtr(pO), pToken)
 }
 
-func (me *interfaceImpl) ObjectGetClassName(pObject ConstObjectPtr, pLibrary ClassLibraryPtr, rClassName UninitializedStringNamePtr, ) Bool {
+func (me *interfaceImpl) ObjectGetClassName(pObject ConstObjectPtr, pLibrary ClassLibraryPtr, rClassName UninitializedStringNamePtr) Bool {
 
-  ret := C.callObjectGetClassName(me.ptrObjectGetClassName, C.GDExtensionConstObjectPtr(pObject), C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionUninitializedStringNamePtr(rClassName),)
-  return Bool(ret)
+	ret := C.callObjectGetClassName(me.ptrObjectGetClassName, C.GDExtensionConstObjectPtr(pObject), C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionUninitializedStringNamePtr(rClassName))
+	return Bool(ret)
 }
 
-func (me *interfaceImpl) ObjectGetInstanceBinding(pO ObjectPtr, pToken unsafe.Pointer, pCallbacks *InstanceBindingCallbacks, ) unsafe.Pointer {
+func (me *interfaceImpl) ObjectGetInstanceBinding(pO ObjectPtr, pToken unsafe.Pointer, pCallbacks *InstanceBindingCallbacks) unsafe.Pointer {
 
-  ret := C.callObjectGetInstanceBinding(me.ptrObjectGetInstanceBinding, C.GDExtensionObjectPtr(pO), pToken, (*C.GDExtensionInstanceBindingCallbacks)(unsafe.Pointer(pCallbacks)),)
-  return unsafe.Pointer(ret)
+	ret := C.callObjectGetInstanceBinding(me.ptrObjectGetInstanceBinding, C.GDExtensionObjectPtr(pO), pToken, (*C.GDExtensionInstanceBindingCallbacks)(unsafe.Pointer(pCallbacks)))
+	return unsafe.Pointer(ret)
 }
 
-func (me *interfaceImpl) ObjectGetInstanceFromId(pInstanceId uint64, ) ObjectPtr {
+func (me *interfaceImpl) ObjectGetInstanceFromId(pInstanceId uint64) ObjectPtr {
 
-  ret := C.callObjectGetInstanceFromId(me.ptrObjectGetInstanceFromId, C.GDObjectInstanceID(pInstanceId),)
-  return ObjectPtr(ret)
+	ret := C.callObjectGetInstanceFromId(me.ptrObjectGetInstanceFromId, C.GDObjectInstanceID(pInstanceId))
+	return ObjectPtr(ret)
 }
 
-func (me *interfaceImpl) ObjectGetInstanceId(pObject ConstObjectPtr, ) uint64 {
+func (me *interfaceImpl) ObjectGetInstanceId(pObject ConstObjectPtr) uint64 {
 
-  ret := C.callObjectGetInstanceId(me.ptrObjectGetInstanceId, C.GDExtensionConstObjectPtr(pObject),)
-  return uint64(ret)
+	ret := C.callObjectGetInstanceId(me.ptrObjectGetInstanceId, C.GDExtensionConstObjectPtr(pObject))
+	return uint64(ret)
 }
 
-func (me *interfaceImpl) ObjectGetScriptInstance(pObject ConstObjectPtr, pLanguage ObjectPtr, ) ScriptInstanceDataPtr {
+func (me *interfaceImpl) ObjectGetScriptInstance(pObject ConstObjectPtr, pLanguage ObjectPtr) ScriptInstanceDataPtr {
 
-  ret := C.callObjectGetScriptInstance(me.ptrObjectGetScriptInstance, C.GDExtensionConstObjectPtr(pObject), C.GDExtensionObjectPtr(pLanguage),)
-  return ScriptInstanceDataPtr(ret)
+	ret := C.callObjectGetScriptInstance(me.ptrObjectGetScriptInstance, C.GDExtensionConstObjectPtr(pObject), C.GDExtensionObjectPtr(pLanguage))
+	return ScriptInstanceDataPtr(ret)
 }
 
-func (me *interfaceImpl) ObjectMethodBindCall(pMethodBind MethodBindPtr, pInstance ObjectPtr, pArgs *ConstVariantPtr, pArgCount Int, rRet UninitializedVariantPtr, rError *CallError, )  {
+func (me *interfaceImpl) ObjectMethodBindCall(pMethodBind MethodBindPtr, pInstance ObjectPtr, pArgs *ConstVariantPtr, pArgCount Int, rRet UninitializedVariantPtr, rError *CallError) {
 
-  C.callObjectMethodBindCall(me.ptrObjectMethodBindCall, C.GDExtensionMethodBindPtr(pMethodBind), C.GDExtensionObjectPtr(pInstance), *(**C.GDExtensionConstVariantPtr)(unsafe.Pointer(&pArgs)), C.GDExtensionInt(pArgCount), C.GDExtensionUninitializedVariantPtr(rRet), (*C.GDExtensionCallError)(unsafe.Pointer(rError)),)
+	C.callObjectMethodBindCall(me.ptrObjectMethodBindCall, C.GDExtensionMethodBindPtr(pMethodBind), C.GDExtensionObjectPtr(pInstance), *(**C.GDExtensionConstVariantPtr)(unsafe.Pointer(&pArgs)), C.GDExtensionInt(pArgCount), C.GDExtensionUninitializedVariantPtr(rRet), (*C.GDExtensionCallError)(unsafe.Pointer(rError)))
 }
 
-func (me *interfaceImpl) ObjectMethodBindPtrcall(pMethodBind MethodBindPtr, pInstance ObjectPtr, pArgs *ConstTypePtr, rRet TypePtr, )  {
+func (me *interfaceImpl) ObjectMethodBindPtrcall(pMethodBind MethodBindPtr, pInstance ObjectPtr, pArgs *ConstTypePtr, rRet TypePtr) {
 
-  C.callObjectMethodBindPtrcall(me.ptrObjectMethodBindPtrcall, C.GDExtensionMethodBindPtr(pMethodBind), C.GDExtensionObjectPtr(pInstance), *(**C.GDExtensionConstTypePtr)(unsafe.Pointer(&pArgs)), C.GDExtensionTypePtr(rRet),)
+	C.callObjectMethodBindPtrcall(me.ptrObjectMethodBindPtrcall, C.GDExtensionMethodBindPtr(pMethodBind), C.GDExtensionObjectPtr(pInstance), *(**C.GDExtensionConstTypePtr)(unsafe.Pointer(&pArgs)), C.GDExtensionTypePtr(rRet))
 }
 
-func (me *interfaceImpl) ObjectSetInstance(pO ObjectPtr, pClassname ConstStringNamePtr, pInstance ClassInstancePtr, )  {
+func (me *interfaceImpl) ObjectSetInstance(pO ObjectPtr, pClassname ConstStringNamePtr, pInstance ClassInstancePtr) {
 
-  C.callObjectSetInstance(me.ptrObjectSetInstance, C.GDExtensionObjectPtr(pO), C.GDExtensionConstStringNamePtr(pClassname), C.GDExtensionClassInstancePtr(pInstance),)
+	C.callObjectSetInstance(me.ptrObjectSetInstance, C.GDExtensionObjectPtr(pO), C.GDExtensionConstStringNamePtr(pClassname), C.GDExtensionClassInstancePtr(pInstance))
 }
 
-func (me *interfaceImpl) ObjectSetInstanceBinding(pO ObjectPtr, pToken unsafe.Pointer, pBinding unsafe.Pointer, pCallbacks *InstanceBindingCallbacks, )  {
+func (me *interfaceImpl) ObjectSetInstanceBinding(pO ObjectPtr, pToken unsafe.Pointer, pBinding unsafe.Pointer, pCallbacks *InstanceBindingCallbacks) {
 
-  C.callObjectSetInstanceBinding(me.ptrObjectSetInstanceBinding, C.GDExtensionObjectPtr(pO), pToken, pBinding, (*C.GDExtensionInstanceBindingCallbacks)(unsafe.Pointer(pCallbacks)),)
+	C.callObjectSetInstanceBinding(me.ptrObjectSetInstanceBinding, C.GDExtensionObjectPtr(pO), pToken, pBinding, (*C.GDExtensionInstanceBindingCallbacks)(unsafe.Pointer(pCallbacks)))
 }
 
-func (me *interfaceImpl) PackedByteArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) *uint8 {
+func (me *interfaceImpl) PackedByteArrayOperatorIndex(pSelf TypePtr, pIndex Int) *uint8 {
 
-  ret := C.callPackedByteArrayOperatorIndex(me.ptrPackedByteArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return *(**uint8)(unsafe.Pointer(&ret))
+	ret := C.callPackedByteArrayOperatorIndex(me.ptrPackedByteArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return *(**uint8)(unsafe.Pointer(&ret))
 }
 
-func (me *interfaceImpl) PackedByteArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) *uint8 {
+func (me *interfaceImpl) PackedByteArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) *uint8 {
 
-  ret := C.callPackedByteArrayOperatorIndexConst(me.ptrPackedByteArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return *(**uint8)(unsafe.Pointer(&ret))
+	ret := C.callPackedByteArrayOperatorIndexConst(me.ptrPackedByteArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return *(**uint8)(unsafe.Pointer(&ret))
 }
 
-func (me *interfaceImpl) PackedColorArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) TypePtr {
+func (me *interfaceImpl) PackedColorArrayOperatorIndex(pSelf TypePtr, pIndex Int) TypePtr {
 
-  ret := C.callPackedColorArrayOperatorIndex(me.ptrPackedColorArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return TypePtr(ret)
+	ret := C.callPackedColorArrayOperatorIndex(me.ptrPackedColorArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return TypePtr(ret)
 }
 
-func (me *interfaceImpl) PackedColorArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) TypePtr {
+func (me *interfaceImpl) PackedColorArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) TypePtr {
 
-  ret := C.callPackedColorArrayOperatorIndexConst(me.ptrPackedColorArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return TypePtr(ret)
+	ret := C.callPackedColorArrayOperatorIndexConst(me.ptrPackedColorArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return TypePtr(ret)
 }
 
-func (me *interfaceImpl) PackedFloat32ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) *float32 {
+func (me *interfaceImpl) PackedFloat32ArrayOperatorIndex(pSelf TypePtr, pIndex Int) *float32 {
 
-  ret := C.callPackedFloat32ArrayOperatorIndex(me.ptrPackedFloat32ArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return *(**float32)(unsafe.Pointer(&ret))
+	ret := C.callPackedFloat32ArrayOperatorIndex(me.ptrPackedFloat32ArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return *(**float32)(unsafe.Pointer(&ret))
 }
 
-func (me *interfaceImpl) PackedFloat32ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) *float32 {
+func (me *interfaceImpl) PackedFloat32ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) *float32 {
 
-  ret := C.callPackedFloat32ArrayOperatorIndexConst(me.ptrPackedFloat32ArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return *(**float32)(unsafe.Pointer(&ret))
+	ret := C.callPackedFloat32ArrayOperatorIndexConst(me.ptrPackedFloat32ArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return *(**float32)(unsafe.Pointer(&ret))
 }
 
-func (me *interfaceImpl) PackedFloat64ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) *float64 {
+func (me *interfaceImpl) PackedFloat64ArrayOperatorIndex(pSelf TypePtr, pIndex Int) *float64 {
 
-  ret := C.callPackedFloat64ArrayOperatorIndex(me.ptrPackedFloat64ArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return *(**float64)(unsafe.Pointer(&ret))
+	ret := C.callPackedFloat64ArrayOperatorIndex(me.ptrPackedFloat64ArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return *(**float64)(unsafe.Pointer(&ret))
 }
 
-func (me *interfaceImpl) PackedFloat64ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) *float64 {
+func (me *interfaceImpl) PackedFloat64ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) *float64 {
 
-  ret := C.callPackedFloat64ArrayOperatorIndexConst(me.ptrPackedFloat64ArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return *(**float64)(unsafe.Pointer(&ret))
+	ret := C.callPackedFloat64ArrayOperatorIndexConst(me.ptrPackedFloat64ArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return *(**float64)(unsafe.Pointer(&ret))
 }
 
-func (me *interfaceImpl) PackedInt32ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) *int {
+func (me *interfaceImpl) PackedInt32ArrayOperatorIndex(pSelf TypePtr, pIndex Int) *int {
 
-  ret := C.callPackedInt32ArrayOperatorIndex(me.ptrPackedInt32ArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return *(**int)(unsafe.Pointer(&ret))
+	ret := C.callPackedInt32ArrayOperatorIndex(me.ptrPackedInt32ArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return *(**int)(unsafe.Pointer(&ret))
 }
 
-func (me *interfaceImpl) PackedInt32ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) *int {
+func (me *interfaceImpl) PackedInt32ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) *int {
 
-  ret := C.callPackedInt32ArrayOperatorIndexConst(me.ptrPackedInt32ArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return *(**int)(unsafe.Pointer(&ret))
+	ret := C.callPackedInt32ArrayOperatorIndexConst(me.ptrPackedInt32ArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return *(**int)(unsafe.Pointer(&ret))
 }
 
-func (me *interfaceImpl) PackedInt64ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) *int64 {
+func (me *interfaceImpl) PackedInt64ArrayOperatorIndex(pSelf TypePtr, pIndex Int) *int64 {
 
-  ret := C.callPackedInt64ArrayOperatorIndex(me.ptrPackedInt64ArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return *(**int64)(unsafe.Pointer(&ret))
+	ret := C.callPackedInt64ArrayOperatorIndex(me.ptrPackedInt64ArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return *(**int64)(unsafe.Pointer(&ret))
 }
 
-func (me *interfaceImpl) PackedInt64ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) *int64 {
+func (me *interfaceImpl) PackedInt64ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) *int64 {
 
-  ret := C.callPackedInt64ArrayOperatorIndexConst(me.ptrPackedInt64ArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return *(**int64)(unsafe.Pointer(&ret))
+	ret := C.callPackedInt64ArrayOperatorIndexConst(me.ptrPackedInt64ArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return *(**int64)(unsafe.Pointer(&ret))
 }
 
-func (me *interfaceImpl) PackedStringArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) StringPtr {
+func (me *interfaceImpl) PackedStringArrayOperatorIndex(pSelf TypePtr, pIndex Int) StringPtr {
 
-  ret := C.callPackedStringArrayOperatorIndex(me.ptrPackedStringArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return StringPtr(ret)
+	ret := C.callPackedStringArrayOperatorIndex(me.ptrPackedStringArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return StringPtr(ret)
 }
 
-func (me *interfaceImpl) PackedStringArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) StringPtr {
+func (me *interfaceImpl) PackedStringArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) StringPtr {
 
-  ret := C.callPackedStringArrayOperatorIndexConst(me.ptrPackedStringArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return StringPtr(ret)
+	ret := C.callPackedStringArrayOperatorIndexConst(me.ptrPackedStringArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return StringPtr(ret)
 }
 
-func (me *interfaceImpl) PackedVector2ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) TypePtr {
+func (me *interfaceImpl) PackedVector2ArrayOperatorIndex(pSelf TypePtr, pIndex Int) TypePtr {
 
-  ret := C.callPackedVector2ArrayOperatorIndex(me.ptrPackedVector2ArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return TypePtr(ret)
+	ret := C.callPackedVector2ArrayOperatorIndex(me.ptrPackedVector2ArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return TypePtr(ret)
 }
 
-func (me *interfaceImpl) PackedVector2ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) TypePtr {
+func (me *interfaceImpl) PackedVector2ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) TypePtr {
 
-  ret := C.callPackedVector2ArrayOperatorIndexConst(me.ptrPackedVector2ArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return TypePtr(ret)
+	ret := C.callPackedVector2ArrayOperatorIndexConst(me.ptrPackedVector2ArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return TypePtr(ret)
 }
 
-func (me *interfaceImpl) PackedVector3ArrayOperatorIndex(pSelf TypePtr, pIndex Int, ) TypePtr {
+func (me *interfaceImpl) PackedVector3ArrayOperatorIndex(pSelf TypePtr, pIndex Int) TypePtr {
 
-  ret := C.callPackedVector3ArrayOperatorIndex(me.ptrPackedVector3ArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return TypePtr(ret)
+	ret := C.callPackedVector3ArrayOperatorIndex(me.ptrPackedVector3ArrayOperatorIndex, C.GDExtensionTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return TypePtr(ret)
 }
 
-func (me *interfaceImpl) PackedVector3ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int, ) TypePtr {
+func (me *interfaceImpl) PackedVector3ArrayOperatorIndexConst(pSelf ConstTypePtr, pIndex Int) TypePtr {
 
-  ret := C.callPackedVector3ArrayOperatorIndexConst(me.ptrPackedVector3ArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex),)
-  return TypePtr(ret)
+	ret := C.callPackedVector3ArrayOperatorIndexConst(me.ptrPackedVector3ArrayOperatorIndexConst, C.GDExtensionConstTypePtr(pSelf), C.GDExtensionInt(pIndex))
+	return TypePtr(ret)
 }
 
-func (me *interfaceImpl) PlaceholderScriptInstanceCreate(pLanguage ObjectPtr, pScript ObjectPtr, pOwner ObjectPtr, ) ScriptInstancePtr {
+func (me *interfaceImpl) PlaceholderScriptInstanceCreate(pLanguage ObjectPtr, pScript ObjectPtr, pOwner ObjectPtr) ScriptInstancePtr {
 
-  ret := C.callPlaceholderScriptInstanceCreate(me.ptrPlaceholderScriptInstanceCreate, C.GDExtensionObjectPtr(pLanguage), C.GDExtensionObjectPtr(pScript), C.GDExtensionObjectPtr(pOwner),)
-  return ScriptInstancePtr(ret)
+	ret := C.callPlaceholderScriptInstanceCreate(me.ptrPlaceholderScriptInstanceCreate, C.GDExtensionObjectPtr(pLanguage), C.GDExtensionObjectPtr(pScript), C.GDExtensionObjectPtr(pOwner))
+	return ScriptInstancePtr(ret)
 }
 
-func (me *interfaceImpl) PlaceholderScriptInstanceUpdate(pPlaceholder ScriptInstancePtr, pProperties ConstTypePtr, pValues ConstTypePtr, )  {
+func (me *interfaceImpl) PlaceholderScriptInstanceUpdate(pPlaceholder ScriptInstancePtr, pProperties ConstTypePtr, pValues ConstTypePtr) {
 
-  C.callPlaceholderScriptInstanceUpdate(me.ptrPlaceholderScriptInstanceUpdate, C.GDExtensionScriptInstancePtr(pPlaceholder), C.GDExtensionConstTypePtr(pProperties), C.GDExtensionConstTypePtr(pValues),)
+	C.callPlaceholderScriptInstanceUpdate(me.ptrPlaceholderScriptInstanceUpdate, C.GDExtensionScriptInstancePtr(pPlaceholder), C.GDExtensionConstTypePtr(pProperties), C.GDExtensionConstTypePtr(pValues))
 }
 
-func (me *interfaceImpl) PrintError(pDescription string, pFunction string, pFile string, pLine int, pEditorNotify Bool, )  {
-  cpDescription := C.CString(pDescription)
-  cpFunction := C.CString(pFunction)
-  cpFile := C.CString(pFile)
-  defer func() {
-    C.free(unsafe.Pointer(cpDescription))
-    C.free(unsafe.Pointer(cpFunction))
-    C.free(unsafe.Pointer(cpFile))
-  }()
-  C.callPrintError(me.ptrPrintError, cpDescription, cpFunction, cpFile, C.int32_t(pLine), C.GDExtensionBool(pEditorNotify),)
+func (me *interfaceImpl) PrintError(pDescription string, pFunction string, pFile string, pLine int, pEditorNotify Bool) {
+	cpDescription := C.CString(pDescription)
+	cpFunction := C.CString(pFunction)
+	cpFile := C.CString(pFile)
+	defer func() {
+		C.free(unsafe.Pointer(cpDescription))
+		C.free(unsafe.Pointer(cpFunction))
+		C.free(unsafe.Pointer(cpFile))
+	}()
+	C.callPrintError(me.ptrPrintError, cpDescription, cpFunction, cpFile, C.int32_t(pLine), C.GDExtensionBool(pEditorNotify))
 }
 
-func (me *interfaceImpl) PrintErrorWithMessage(pDescription string, pMessage string, pFunction string, pFile string, pLine int, pEditorNotify Bool, )  {
-  cpDescription := C.CString(pDescription)
-  cpMessage := C.CString(pMessage)
-  cpFunction := C.CString(pFunction)
-  cpFile := C.CString(pFile)
-  defer func() {
-    C.free(unsafe.Pointer(cpDescription))
-    C.free(unsafe.Pointer(cpMessage))
-    C.free(unsafe.Pointer(cpFunction))
-    C.free(unsafe.Pointer(cpFile))
-  }()
-  C.callPrintErrorWithMessage(me.ptrPrintErrorWithMessage, cpDescription, cpMessage, cpFunction, cpFile, C.int32_t(pLine), C.GDExtensionBool(pEditorNotify),)
+func (me *interfaceImpl) PrintErrorWithMessage(pDescription string, pMessage string, pFunction string, pFile string, pLine int, pEditorNotify Bool) {
+	cpDescription := C.CString(pDescription)
+	cpMessage := C.CString(pMessage)
+	cpFunction := C.CString(pFunction)
+	cpFile := C.CString(pFile)
+	defer func() {
+		C.free(unsafe.Pointer(cpDescription))
+		C.free(unsafe.Pointer(cpMessage))
+		C.free(unsafe.Pointer(cpFunction))
+		C.free(unsafe.Pointer(cpFile))
+	}()
+	C.callPrintErrorWithMessage(me.ptrPrintErrorWithMessage, cpDescription, cpMessage, cpFunction, cpFile, C.int32_t(pLine), C.GDExtensionBool(pEditorNotify))
 }
 
-func (me *interfaceImpl) PrintScriptError(pDescription string, pFunction string, pFile string, pLine int, pEditorNotify Bool, )  {
-  cpDescription := C.CString(pDescription)
-  cpFunction := C.CString(pFunction)
-  cpFile := C.CString(pFile)
-  defer func() {
-    C.free(unsafe.Pointer(cpDescription))
-    C.free(unsafe.Pointer(cpFunction))
-    C.free(unsafe.Pointer(cpFile))
-  }()
-  C.callPrintScriptError(me.ptrPrintScriptError, cpDescription, cpFunction, cpFile, C.int32_t(pLine), C.GDExtensionBool(pEditorNotify),)
+func (me *interfaceImpl) PrintScriptError(pDescription string, pFunction string, pFile string, pLine int, pEditorNotify Bool) {
+	cpDescription := C.CString(pDescription)
+	cpFunction := C.CString(pFunction)
+	cpFile := C.CString(pFile)
+	defer func() {
+		C.free(unsafe.Pointer(cpDescription))
+		C.free(unsafe.Pointer(cpFunction))
+		C.free(unsafe.Pointer(cpFile))
+	}()
+	C.callPrintScriptError(me.ptrPrintScriptError, cpDescription, cpFunction, cpFile, C.int32_t(pLine), C.GDExtensionBool(pEditorNotify))
 }
 
-func (me *interfaceImpl) PrintScriptErrorWithMessage(pDescription string, pMessage string, pFunction string, pFile string, pLine int, pEditorNotify Bool, )  {
-  cpDescription := C.CString(pDescription)
-  cpMessage := C.CString(pMessage)
-  cpFunction := C.CString(pFunction)
-  cpFile := C.CString(pFile)
-  defer func() {
-    C.free(unsafe.Pointer(cpDescription))
-    C.free(unsafe.Pointer(cpMessage))
-    C.free(unsafe.Pointer(cpFunction))
-    C.free(unsafe.Pointer(cpFile))
-  }()
-  C.callPrintScriptErrorWithMessage(me.ptrPrintScriptErrorWithMessage, cpDescription, cpMessage, cpFunction, cpFile, C.int32_t(pLine), C.GDExtensionBool(pEditorNotify),)
+func (me *interfaceImpl) PrintScriptErrorWithMessage(pDescription string, pMessage string, pFunction string, pFile string, pLine int, pEditorNotify Bool) {
+	cpDescription := C.CString(pDescription)
+	cpMessage := C.CString(pMessage)
+	cpFunction := C.CString(pFunction)
+	cpFile := C.CString(pFile)
+	defer func() {
+		C.free(unsafe.Pointer(cpDescription))
+		C.free(unsafe.Pointer(cpMessage))
+		C.free(unsafe.Pointer(cpFunction))
+		C.free(unsafe.Pointer(cpFile))
+	}()
+	C.callPrintScriptErrorWithMessage(me.ptrPrintScriptErrorWithMessage, cpDescription, cpMessage, cpFunction, cpFile, C.int32_t(pLine), C.GDExtensionBool(pEditorNotify))
 }
 
-func (me *interfaceImpl) PrintWarning(pDescription string, pFunction string, pFile string, pLine int, pEditorNotify Bool, )  {
-  cpDescription := C.CString(pDescription)
-  cpFunction := C.CString(pFunction)
-  cpFile := C.CString(pFile)
-  defer func() {
-    C.free(unsafe.Pointer(cpDescription))
-    C.free(unsafe.Pointer(cpFunction))
-    C.free(unsafe.Pointer(cpFile))
-  }()
-  C.callPrintWarning(me.ptrPrintWarning, cpDescription, cpFunction, cpFile, C.int32_t(pLine), C.GDExtensionBool(pEditorNotify),)
+func (me *interfaceImpl) PrintWarning(pDescription string, pFunction string, pFile string, pLine int, pEditorNotify Bool) {
+	cpDescription := C.CString(pDescription)
+	cpFunction := C.CString(pFunction)
+	cpFile := C.CString(pFile)
+	defer func() {
+		C.free(unsafe.Pointer(cpDescription))
+		C.free(unsafe.Pointer(cpFunction))
+		C.free(unsafe.Pointer(cpFile))
+	}()
+	C.callPrintWarning(me.ptrPrintWarning, cpDescription, cpFunction, cpFile, C.int32_t(pLine), C.GDExtensionBool(pEditorNotify))
 }
 
-func (me *interfaceImpl) PrintWarningWithMessage(pDescription string, pMessage string, pFunction string, pFile string, pLine int, pEditorNotify Bool, )  {
-  cpDescription := C.CString(pDescription)
-  cpMessage := C.CString(pMessage)
-  cpFunction := C.CString(pFunction)
-  cpFile := C.CString(pFile)
-  defer func() {
-    C.free(unsafe.Pointer(cpDescription))
-    C.free(unsafe.Pointer(cpMessage))
-    C.free(unsafe.Pointer(cpFunction))
-    C.free(unsafe.Pointer(cpFile))
-  }()
-  C.callPrintWarningWithMessage(me.ptrPrintWarningWithMessage, cpDescription, cpMessage, cpFunction, cpFile, C.int32_t(pLine), C.GDExtensionBool(pEditorNotify),)
+func (me *interfaceImpl) PrintWarningWithMessage(pDescription string, pMessage string, pFunction string, pFile string, pLine int, pEditorNotify Bool) {
+	cpDescription := C.CString(pDescription)
+	cpMessage := C.CString(pMessage)
+	cpFunction := C.CString(pFunction)
+	cpFile := C.CString(pFile)
+	defer func() {
+		C.free(unsafe.Pointer(cpDescription))
+		C.free(unsafe.Pointer(cpMessage))
+		C.free(unsafe.Pointer(cpFunction))
+		C.free(unsafe.Pointer(cpFile))
+	}()
+	C.callPrintWarningWithMessage(me.ptrPrintWarningWithMessage, cpDescription, cpMessage, cpFunction, cpFile, C.int32_t(pLine), C.GDExtensionBool(pEditorNotify))
 }
 
-func (me *interfaceImpl) RefGetObject(pRef ConstRefPtr, ) ObjectPtr {
+func (me *interfaceImpl) RefGetObject(pRef ConstRefPtr) ObjectPtr {
 
-  ret := C.callRefGetObject(me.ptrRefGetObject, C.GDExtensionConstRefPtr(pRef),)
-  return ObjectPtr(ret)
+	ret := C.callRefGetObject(me.ptrRefGetObject, C.GDExtensionConstRefPtr(pRef))
+	return ObjectPtr(ret)
 }
 
-func (me *interfaceImpl) RefSetObject(pRef RefPtr, pObject ObjectPtr, )  {
+func (me *interfaceImpl) RefSetObject(pRef RefPtr, pObject ObjectPtr) {
 
-  C.callRefSetObject(me.ptrRefSetObject, C.GDExtensionRefPtr(pRef), C.GDExtensionObjectPtr(pObject),)
+	C.callRefSetObject(me.ptrRefSetObject, C.GDExtensionRefPtr(pRef), C.GDExtensionObjectPtr(pObject))
 }
 
-func (me *interfaceImpl) ScriptInstanceCreate(pInfo *ScriptInstanceInfo, pInstanceData ScriptInstanceDataPtr, ) ScriptInstancePtr {
+func (me *interfaceImpl) ScriptInstanceCreate(pInfo *ScriptInstanceInfo, pInstanceData ScriptInstanceDataPtr) ScriptInstancePtr {
 
-  ret := C.callScriptInstanceCreate(me.ptrScriptInstanceCreate, (*C.GDExtensionScriptInstanceInfo)(unsafe.Pointer(pInfo)), C.GDExtensionScriptInstanceDataPtr(pInstanceData),)
-  return ScriptInstancePtr(ret)
+	ret := C.callScriptInstanceCreate(me.ptrScriptInstanceCreate, (*C.GDExtensionScriptInstanceInfo)(unsafe.Pointer(pInfo)), C.GDExtensionScriptInstanceDataPtr(pInstanceData))
+	return ScriptInstancePtr(ret)
 }
 
-func (me *interfaceImpl) ScriptInstanceCreate2(pInfo *ScriptInstanceInfo2, pInstanceData ScriptInstanceDataPtr, ) ScriptInstancePtr {
+func (me *interfaceImpl) ScriptInstanceCreate2(pInfo *ScriptInstanceInfo2, pInstanceData ScriptInstanceDataPtr) ScriptInstancePtr {
 
-  ret := C.callScriptInstanceCreate2(me.ptrScriptInstanceCreate2, (*C.GDExtensionScriptInstanceInfo2)(unsafe.Pointer(pInfo)), C.GDExtensionScriptInstanceDataPtr(pInstanceData),)
-  return ScriptInstancePtr(ret)
+	ret := C.callScriptInstanceCreate2(me.ptrScriptInstanceCreate2, (*C.GDExtensionScriptInstanceInfo2)(unsafe.Pointer(pInfo)), C.GDExtensionScriptInstanceDataPtr(pInstanceData))
+	return ScriptInstancePtr(ret)
 }
 
-func (me *interfaceImpl) StringNameNewWithLatin1Chars(rDest UninitializedStringNamePtr, pContents string, pIsStatic Bool, )  {
-  cpContents := C.CString(pContents)
-  defer func() {
-    C.free(unsafe.Pointer(cpContents))
-  }()
-  C.callStringNameNewWithLatin1Chars(me.ptrStringNameNewWithLatin1Chars, C.GDExtensionUninitializedStringNamePtr(rDest), cpContents, C.GDExtensionBool(pIsStatic),)
+func (me *interfaceImpl) StringNameNewWithLatin1Chars(rDest UninitializedStringNamePtr, pContents string, pIsStatic Bool) {
+	cpContents := C.CString(pContents)
+	defer func() {
+		C.free(unsafe.Pointer(cpContents))
+	}()
+	C.callStringNameNewWithLatin1Chars(me.ptrStringNameNewWithLatin1Chars, C.GDExtensionUninitializedStringNamePtr(rDest), cpContents, C.GDExtensionBool(pIsStatic))
 }
 
-func (me *interfaceImpl) StringNameNewWithUtf8Chars(rDest UninitializedStringNamePtr, pContents string, )  {
-  cpContents := C.CString(pContents)
-  defer func() {
-    C.free(unsafe.Pointer(cpContents))
-  }()
-  C.callStringNameNewWithUtf8Chars(me.ptrStringNameNewWithUtf8Chars, C.GDExtensionUninitializedStringNamePtr(rDest), cpContents,)
+func (me *interfaceImpl) StringNameNewWithUtf8Chars(rDest UninitializedStringNamePtr, pContents string) {
+	cpContents := C.CString(pContents)
+	defer func() {
+		C.free(unsafe.Pointer(cpContents))
+	}()
+	C.callStringNameNewWithUtf8Chars(me.ptrStringNameNewWithUtf8Chars, C.GDExtensionUninitializedStringNamePtr(rDest), cpContents)
 }
 
-func (me *interfaceImpl) StringNameNewWithUtf8CharsAndLen(rDest UninitializedStringNamePtr, pContents string, pSize Int, )  {
-  cpContents := C.CString(pContents)
-  defer func() {
-    C.free(unsafe.Pointer(cpContents))
-  }()
-  C.callStringNameNewWithUtf8CharsAndLen(me.ptrStringNameNewWithUtf8CharsAndLen, C.GDExtensionUninitializedStringNamePtr(rDest), cpContents, C.GDExtensionInt(pSize),)
+func (me *interfaceImpl) StringNameNewWithUtf8CharsAndLen(rDest UninitializedStringNamePtr, pContents string, pSize Int) {
+	cpContents := C.CString(pContents)
+	defer func() {
+		C.free(unsafe.Pointer(cpContents))
+	}()
+	C.callStringNameNewWithUtf8CharsAndLen(me.ptrStringNameNewWithUtf8CharsAndLen, C.GDExtensionUninitializedStringNamePtr(rDest), cpContents, C.GDExtensionInt(pSize))
 }
 
-func (me *interfaceImpl) StringNewWithLatin1Chars(rDest UninitializedStringPtr, pContents string, )  {
-  cpContents := C.CString(pContents)
-  defer func() {
-    C.free(unsafe.Pointer(cpContents))
-  }()
-  C.callStringNewWithLatin1Chars(me.ptrStringNewWithLatin1Chars, C.GDExtensionUninitializedStringPtr(rDest), cpContents,)
+func (me *interfaceImpl) StringNewWithLatin1Chars(rDest UninitializedStringPtr, pContents string) {
+	cpContents := C.CString(pContents)
+	defer func() {
+		C.free(unsafe.Pointer(cpContents))
+	}()
+	C.callStringNewWithLatin1Chars(me.ptrStringNewWithLatin1Chars, C.GDExtensionUninitializedStringPtr(rDest), cpContents)
 }
 
-func (me *interfaceImpl) StringNewWithLatin1CharsAndLen(rDest UninitializedStringPtr, pContents string, pSize Int, )  {
-  cpContents := C.CString(pContents)
-  defer func() {
-    C.free(unsafe.Pointer(cpContents))
-  }()
-  C.callStringNewWithLatin1CharsAndLen(me.ptrStringNewWithLatin1CharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), cpContents, C.GDExtensionInt(pSize),)
+func (me *interfaceImpl) StringNewWithLatin1CharsAndLen(rDest UninitializedStringPtr, pContents string, pSize Int) {
+	cpContents := C.CString(pContents)
+	defer func() {
+		C.free(unsafe.Pointer(cpContents))
+	}()
+	C.callStringNewWithLatin1CharsAndLen(me.ptrStringNewWithLatin1CharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), cpContents, C.GDExtensionInt(pSize))
 }
 
-func (me *interfaceImpl) StringNewWithUtf16Chars(rDest UninitializedStringPtr, pContents *uint16, )  {
+func (me *interfaceImpl) StringNewWithUtf16Chars(rDest UninitializedStringPtr, pContents *uint16) {
 
-  C.callStringNewWithUtf16Chars(me.ptrStringNewWithUtf16Chars, C.GDExtensionUninitializedStringPtr(rDest), *(**C.uint16_t)(unsafe.Pointer(&pContents)),)
+	C.callStringNewWithUtf16Chars(me.ptrStringNewWithUtf16Chars, C.GDExtensionUninitializedStringPtr(rDest), *(**C.uint16_t)(unsafe.Pointer(&pContents)))
 }
 
-func (me *interfaceImpl) StringNewWithUtf16CharsAndLen(rDest UninitializedStringPtr, pContents *uint16, pCharCount Int, )  {
+func (me *interfaceImpl) StringNewWithUtf16CharsAndLen(rDest UninitializedStringPtr, pContents *uint16, pCharCount Int) {
 
-  C.callStringNewWithUtf16CharsAndLen(me.ptrStringNewWithUtf16CharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), *(**C.uint16_t)(unsafe.Pointer(&pContents)), C.GDExtensionInt(pCharCount),)
+	C.callStringNewWithUtf16CharsAndLen(me.ptrStringNewWithUtf16CharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), *(**C.uint16_t)(unsafe.Pointer(&pContents)), C.GDExtensionInt(pCharCount))
 }
 
-func (me *interfaceImpl) StringNewWithUtf32Chars(rDest UninitializedStringPtr, pContents *uint, )  {
+func (me *interfaceImpl) StringNewWithUtf32Chars(rDest UninitializedStringPtr, pContents *uint) {
 
-  C.callStringNewWithUtf32Chars(me.ptrStringNewWithUtf32Chars, C.GDExtensionUninitializedStringPtr(rDest), *(**C.unsigned)(unsafe.Pointer(&pContents)),)
+	C.callStringNewWithUtf32Chars(me.ptrStringNewWithUtf32Chars, C.GDExtensionUninitializedStringPtr(rDest), *(**C.unsigned)(unsafe.Pointer(&pContents)))
 }
 
-func (me *interfaceImpl) StringNewWithUtf32CharsAndLen(rDest UninitializedStringPtr, pContents *uint, pCharCount Int, )  {
+func (me *interfaceImpl) StringNewWithUtf32CharsAndLen(rDest UninitializedStringPtr, pContents *uint, pCharCount Int) {
 
-  C.callStringNewWithUtf32CharsAndLen(me.ptrStringNewWithUtf32CharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), *(**C.unsigned)(unsafe.Pointer(&pContents)), C.GDExtensionInt(pCharCount),)
+	C.callStringNewWithUtf32CharsAndLen(me.ptrStringNewWithUtf32CharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), *(**C.unsigned)(unsafe.Pointer(&pContents)), C.GDExtensionInt(pCharCount))
 }
 
-func (me *interfaceImpl) StringNewWithUtf8Chars(rDest UninitializedStringPtr, pContents string, )  {
-  cpContents := C.CString(pContents)
-  defer func() {
-    C.free(unsafe.Pointer(cpContents))
-  }()
-  C.callStringNewWithUtf8Chars(me.ptrStringNewWithUtf8Chars, C.GDExtensionUninitializedStringPtr(rDest), cpContents,)
+func (me *interfaceImpl) StringNewWithUtf8Chars(rDest UninitializedStringPtr, pContents string) {
+	cpContents := C.CString(pContents)
+	defer func() {
+		C.free(unsafe.Pointer(cpContents))
+	}()
+	C.callStringNewWithUtf8Chars(me.ptrStringNewWithUtf8Chars, C.GDExtensionUninitializedStringPtr(rDest), cpContents)
 }
 
-func (me *interfaceImpl) StringNewWithUtf8CharsAndLen(rDest UninitializedStringPtr, pContents string, pSize Int, )  {
-  cpContents := C.CString(pContents)
-  defer func() {
-    C.free(unsafe.Pointer(cpContents))
-  }()
-  C.callStringNewWithUtf8CharsAndLen(me.ptrStringNewWithUtf8CharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), cpContents, C.GDExtensionInt(pSize),)
+func (me *interfaceImpl) StringNewWithUtf8CharsAndLen(rDest UninitializedStringPtr, pContents string, pSize Int) {
+	cpContents := C.CString(pContents)
+	defer func() {
+		C.free(unsafe.Pointer(cpContents))
+	}()
+	C.callStringNewWithUtf8CharsAndLen(me.ptrStringNewWithUtf8CharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), cpContents, C.GDExtensionInt(pSize))
 }
 
-func (me *interfaceImpl) StringNewWithWideChars(rDest UninitializedStringPtr, pContents *int, )  {
+func (me *interfaceImpl) StringNewWithWideChars(rDest UninitializedStringPtr, pContents *int) {
 
-  C.callStringNewWithWideChars(me.ptrStringNewWithWideChars, C.GDExtensionUninitializedStringPtr(rDest), *(**C.int)(unsafe.Pointer(&pContents)),)
+	C.callStringNewWithWideChars(me.ptrStringNewWithWideChars, C.GDExtensionUninitializedStringPtr(rDest), *(**C.int)(unsafe.Pointer(&pContents)))
 }
 
-func (me *interfaceImpl) StringNewWithWideCharsAndLen(rDest UninitializedStringPtr, pContents *int, pCharCount Int, )  {
+func (me *interfaceImpl) StringNewWithWideCharsAndLen(rDest UninitializedStringPtr, pContents *int, pCharCount Int) {
 
-  C.callStringNewWithWideCharsAndLen(me.ptrStringNewWithWideCharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), *(**C.int)(unsafe.Pointer(&pContents)), C.GDExtensionInt(pCharCount),)
+	C.callStringNewWithWideCharsAndLen(me.ptrStringNewWithWideCharsAndLen, C.GDExtensionUninitializedStringPtr(rDest), *(**C.int)(unsafe.Pointer(&pContents)), C.GDExtensionInt(pCharCount))
 }
 
-func (me *interfaceImpl) StringOperatorIndex(pSelf StringPtr, pIndex Int, ) *uint {
+func (me *interfaceImpl) StringOperatorIndex(pSelf StringPtr, pIndex Int) *uint {
 
-  ret := C.callStringOperatorIndex(me.ptrStringOperatorIndex, C.GDExtensionStringPtr(pSelf), C.GDExtensionInt(pIndex),)
-  return *(**uint)(unsafe.Pointer(&ret))
+	ret := C.callStringOperatorIndex(me.ptrStringOperatorIndex, C.GDExtensionStringPtr(pSelf), C.GDExtensionInt(pIndex))
+	return *(**uint)(unsafe.Pointer(&ret))
 }
 
-func (me *interfaceImpl) StringOperatorIndexConst(pSelf ConstStringPtr, pIndex Int, ) *uint {
+func (me *interfaceImpl) StringOperatorIndexConst(pSelf ConstStringPtr, pIndex Int) *uint {
 
-  ret := C.callStringOperatorIndexConst(me.ptrStringOperatorIndexConst, C.GDExtensionConstStringPtr(pSelf), C.GDExtensionInt(pIndex),)
-  return *(**uint)(unsafe.Pointer(&ret))
+	ret := C.callStringOperatorIndexConst(me.ptrStringOperatorIndexConst, C.GDExtensionConstStringPtr(pSelf), C.GDExtensionInt(pIndex))
+	return *(**uint)(unsafe.Pointer(&ret))
 }
 
-func (me *interfaceImpl) StringOperatorPlusEqC32Str(pSelf StringPtr, pB *uint, )  {
+func (me *interfaceImpl) StringOperatorPlusEqC32Str(pSelf StringPtr, pB *uint) {
 
-  C.callStringOperatorPlusEqC32Str(me.ptrStringOperatorPlusEqC32Str, C.GDExtensionStringPtr(pSelf), *(**C.unsigned)(unsafe.Pointer(&pB)),)
+	C.callStringOperatorPlusEqC32Str(me.ptrStringOperatorPlusEqC32Str, C.GDExtensionStringPtr(pSelf), *(**C.unsigned)(unsafe.Pointer(&pB)))
 }
 
-func (me *interfaceImpl) StringOperatorPlusEqChar(pSelf StringPtr, pB uint, )  {
+func (me *interfaceImpl) StringOperatorPlusEqChar(pSelf StringPtr, pB uint) {
 
-  C.callStringOperatorPlusEqChar(me.ptrStringOperatorPlusEqChar, C.GDExtensionStringPtr(pSelf), C.char32_t(pB),)
+	C.callStringOperatorPlusEqChar(me.ptrStringOperatorPlusEqChar, C.GDExtensionStringPtr(pSelf), C.char32_t(pB))
 }
 
-func (me *interfaceImpl) StringOperatorPlusEqCstr(pSelf StringPtr, pB string, )  {
-  cpB := C.CString(pB)
-  defer func() {
-    C.free(unsafe.Pointer(cpB))
-  }()
-  C.callStringOperatorPlusEqCstr(me.ptrStringOperatorPlusEqCstr, C.GDExtensionStringPtr(pSelf), cpB,)
+func (me *interfaceImpl) StringOperatorPlusEqCstr(pSelf StringPtr, pB string) {
+	cpB := C.CString(pB)
+	defer func() {
+		C.free(unsafe.Pointer(cpB))
+	}()
+	C.callStringOperatorPlusEqCstr(me.ptrStringOperatorPlusEqCstr, C.GDExtensionStringPtr(pSelf), cpB)
 }
 
-func (me *interfaceImpl) StringOperatorPlusEqString(pSelf StringPtr, pB ConstStringPtr, )  {
+func (me *interfaceImpl) StringOperatorPlusEqString(pSelf StringPtr, pB ConstStringPtr) {
 
-  C.callStringOperatorPlusEqString(me.ptrStringOperatorPlusEqString, C.GDExtensionStringPtr(pSelf), C.GDExtensionConstStringPtr(pB),)
+	C.callStringOperatorPlusEqString(me.ptrStringOperatorPlusEqString, C.GDExtensionStringPtr(pSelf), C.GDExtensionConstStringPtr(pB))
 }
 
-func (me *interfaceImpl) StringOperatorPlusEqWcstr(pSelf StringPtr, pB *int, )  {
+func (me *interfaceImpl) StringOperatorPlusEqWcstr(pSelf StringPtr, pB *int) {
 
-  C.callStringOperatorPlusEqWcstr(me.ptrStringOperatorPlusEqWcstr, C.GDExtensionStringPtr(pSelf), *(**C.int)(unsafe.Pointer(&pB)),)
+	C.callStringOperatorPlusEqWcstr(me.ptrStringOperatorPlusEqWcstr, C.GDExtensionStringPtr(pSelf), *(**C.int)(unsafe.Pointer(&pB)))
 }
 
-func (me *interfaceImpl) StringResize(pSelf StringPtr, pResize Int, ) Int {
+func (me *interfaceImpl) StringResize(pSelf StringPtr, pResize Int) Int {
 
-  ret := C.callStringResize(me.ptrStringResize, C.GDExtensionStringPtr(pSelf), C.GDExtensionInt(pResize),)
-  return Int(ret)
+	ret := C.callStringResize(me.ptrStringResize, C.GDExtensionStringPtr(pSelf), C.GDExtensionInt(pResize))
+	return Int(ret)
 }
 
-func (me *interfaceImpl) StringToLatin1Chars(pSelf ConstStringPtr, rText *byte, pMaxWriteLength Int, ) Int {
+func (me *interfaceImpl) StringToLatin1Chars(pSelf ConstStringPtr, rText *byte, pMaxWriteLength Int) Int {
 
-  ret := C.callStringToLatin1Chars(me.ptrStringToLatin1Chars, C.GDExtensionConstStringPtr(pSelf), *(**C.char)(unsafe.Pointer(&rText)), C.GDExtensionInt(pMaxWriteLength),)
-  return Int(ret)
+	ret := C.callStringToLatin1Chars(me.ptrStringToLatin1Chars, C.GDExtensionConstStringPtr(pSelf), *(**C.char)(unsafe.Pointer(&rText)), C.GDExtensionInt(pMaxWriteLength))
+	return Int(ret)
 }
 
-func (me *interfaceImpl) StringToUtf16Chars(pSelf ConstStringPtr, rText *uint16, pMaxWriteLength Int, ) Int {
+func (me *interfaceImpl) StringToUtf16Chars(pSelf ConstStringPtr, rText *uint16, pMaxWriteLength Int) Int {
 
-  ret := C.callStringToUtf16Chars(me.ptrStringToUtf16Chars, C.GDExtensionConstStringPtr(pSelf), *(**C.uint16_t)(unsafe.Pointer(&rText)), C.GDExtensionInt(pMaxWriteLength),)
-  return Int(ret)
+	ret := C.callStringToUtf16Chars(me.ptrStringToUtf16Chars, C.GDExtensionConstStringPtr(pSelf), *(**C.uint16_t)(unsafe.Pointer(&rText)), C.GDExtensionInt(pMaxWriteLength))
+	return Int(ret)
 }
 
-func (me *interfaceImpl) StringToUtf32Chars(pSelf ConstStringPtr, rText *uint, pMaxWriteLength Int, ) Int {
+func (me *interfaceImpl) StringToUtf32Chars(pSelf ConstStringPtr, rText *uint, pMaxWriteLength Int) Int {
 
-  ret := C.callStringToUtf32Chars(me.ptrStringToUtf32Chars, C.GDExtensionConstStringPtr(pSelf), *(**C.unsigned)(unsafe.Pointer(&rText)), C.GDExtensionInt(pMaxWriteLength),)
-  return Int(ret)
+	ret := C.callStringToUtf32Chars(me.ptrStringToUtf32Chars, C.GDExtensionConstStringPtr(pSelf), *(**C.unsigned)(unsafe.Pointer(&rText)), C.GDExtensionInt(pMaxWriteLength))
+	return Int(ret)
 }
 
-func (me *interfaceImpl) StringToUtf8Chars(pSelf ConstStringPtr, rText *byte, pMaxWriteLength Int, ) Int {
+func (me *interfaceImpl) StringToUtf8Chars(pSelf ConstStringPtr, rText *byte, pMaxWriteLength Int) Int {
 
-  ret := C.callStringToUtf8Chars(me.ptrStringToUtf8Chars, C.GDExtensionConstStringPtr(pSelf), *(**C.char)(unsafe.Pointer(&rText)), C.GDExtensionInt(pMaxWriteLength),)
-  return Int(ret)
+	ret := C.callStringToUtf8Chars(me.ptrStringToUtf8Chars, C.GDExtensionConstStringPtr(pSelf), *(**C.char)(unsafe.Pointer(&rText)), C.GDExtensionInt(pMaxWriteLength))
+	return Int(ret)
 }
 
-func (me *interfaceImpl) StringToWideChars(pSelf ConstStringPtr, rText *int, pMaxWriteLength Int, ) Int {
+func (me *interfaceImpl) StringToWideChars(pSelf ConstStringPtr, rText *int, pMaxWriteLength Int) Int {
 
-  ret := C.callStringToWideChars(me.ptrStringToWideChars, C.GDExtensionConstStringPtr(pSelf), *(**C.int)(unsafe.Pointer(&rText)), C.GDExtensionInt(pMaxWriteLength),)
-  return Int(ret)
+	ret := C.callStringToWideChars(me.ptrStringToWideChars, C.GDExtensionConstStringPtr(pSelf), *(**C.int)(unsafe.Pointer(&rText)), C.GDExtensionInt(pMaxWriteLength))
+	return Int(ret)
 }
 
-func (me *interfaceImpl) VariantBooleanize(pSelf ConstVariantPtr, ) Bool {
+func (me *interfaceImpl) VariantBooleanize(pSelf ConstVariantPtr) Bool {
 
-  ret := C.callVariantBooleanize(me.ptrVariantBooleanize, C.GDExtensionConstVariantPtr(pSelf),)
-  return Bool(ret)
+	ret := C.callVariantBooleanize(me.ptrVariantBooleanize, C.GDExtensionConstVariantPtr(pSelf))
+	return Bool(ret)
 }
 
-func (me *interfaceImpl) VariantCall(pSelf VariantPtr, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn UninitializedVariantPtr, rError *CallError, )  {
+func (me *interfaceImpl) VariantCall(pSelf VariantPtr, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn UninitializedVariantPtr, rError *CallError) {
 
-  C.callVariantCall(me.ptrVariantCall, C.GDExtensionVariantPtr(pSelf), C.GDExtensionConstStringNamePtr(pMethod), *(**C.GDExtensionConstVariantPtr)(unsafe.Pointer(&pArgs)), C.GDExtensionInt(pArgumentCount), C.GDExtensionUninitializedVariantPtr(rReturn), (*C.GDExtensionCallError)(unsafe.Pointer(rError)),)
+	C.callVariantCall(me.ptrVariantCall, C.GDExtensionVariantPtr(pSelf), C.GDExtensionConstStringNamePtr(pMethod), *(**C.GDExtensionConstVariantPtr)(unsafe.Pointer(&pArgs)), C.GDExtensionInt(pArgumentCount), C.GDExtensionUninitializedVariantPtr(rReturn), (*C.GDExtensionCallError)(unsafe.Pointer(rError)))
 }
 
-func (me *interfaceImpl) VariantCallStatic(pType VariantType, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn UninitializedVariantPtr, rError *CallError, )  {
+func (me *interfaceImpl) VariantCallStatic(pType VariantType, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn UninitializedVariantPtr, rError *CallError) {
 
-  C.callVariantCallStatic(me.ptrVariantCallStatic, C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pMethod), *(**C.GDExtensionConstVariantPtr)(unsafe.Pointer(&pArgs)), C.GDExtensionInt(pArgumentCount), C.GDExtensionUninitializedVariantPtr(rReturn), (*C.GDExtensionCallError)(unsafe.Pointer(rError)),)
+	C.callVariantCallStatic(me.ptrVariantCallStatic, C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pMethod), *(**C.GDExtensionConstVariantPtr)(unsafe.Pointer(&pArgs)), C.GDExtensionInt(pArgumentCount), C.GDExtensionUninitializedVariantPtr(rReturn), (*C.GDExtensionCallError)(unsafe.Pointer(rError)))
 }
 
-func (me *interfaceImpl) VariantCanConvert(pFrom VariantType, pTo VariantType, ) Bool {
+func (me *interfaceImpl) VariantCanConvert(pFrom VariantType, pTo VariantType) Bool {
 
-  ret := C.callVariantCanConvert(me.ptrVariantCanConvert, C.GDExtensionVariantType(pFrom), C.GDExtensionVariantType(pTo),)
-  return Bool(ret)
+	ret := C.callVariantCanConvert(me.ptrVariantCanConvert, C.GDExtensionVariantType(pFrom), C.GDExtensionVariantType(pTo))
+	return Bool(ret)
 }
 
-func (me *interfaceImpl) VariantCanConvertStrict(pFrom VariantType, pTo VariantType, ) Bool {
+func (me *interfaceImpl) VariantCanConvertStrict(pFrom VariantType, pTo VariantType) Bool {
 
-  ret := C.callVariantCanConvertStrict(me.ptrVariantCanConvertStrict, C.GDExtensionVariantType(pFrom), C.GDExtensionVariantType(pTo),)
-  return Bool(ret)
+	ret := C.callVariantCanConvertStrict(me.ptrVariantCanConvertStrict, C.GDExtensionVariantType(pFrom), C.GDExtensionVariantType(pTo))
+	return Bool(ret)
 }
 
-func (me *interfaceImpl) VariantConstruct(pType VariantType, rBase UninitializedVariantPtr, pArgs *ConstVariantPtr, pArgumentCount int, rError *CallError, )  {
+func (me *interfaceImpl) VariantConstruct(pType VariantType, rBase UninitializedVariantPtr, pArgs *ConstVariantPtr, pArgumentCount int, rError *CallError) {
 
-  C.callVariantConstruct(me.ptrVariantConstruct, C.GDExtensionVariantType(pType), C.GDExtensionUninitializedVariantPtr(rBase), *(**C.GDExtensionConstVariantPtr)(unsafe.Pointer(&pArgs)), C.int32_t(pArgumentCount), (*C.GDExtensionCallError)(unsafe.Pointer(rError)),)
+	C.callVariantConstruct(me.ptrVariantConstruct, C.GDExtensionVariantType(pType), C.GDExtensionUninitializedVariantPtr(rBase), *(**C.GDExtensionConstVariantPtr)(unsafe.Pointer(&pArgs)), C.int32_t(pArgumentCount), (*C.GDExtensionCallError)(unsafe.Pointer(rError)))
 }
 
-func (me *interfaceImpl) VariantDestroy(pSelf VariantPtr, )  {
+func (me *interfaceImpl) VariantDestroy(pSelf VariantPtr) {
 
-  C.callVariantDestroy(me.ptrVariantDestroy, C.GDExtensionVariantPtr(pSelf),)
+	C.callVariantDestroy(me.ptrVariantDestroy, C.GDExtensionVariantPtr(pSelf))
 }
 
-func (me *interfaceImpl) VariantDuplicate(pSelf ConstVariantPtr, rRet VariantPtr, pDeep Bool, )  {
+func (me *interfaceImpl) VariantDuplicate(pSelf ConstVariantPtr, rRet VariantPtr, pDeep Bool) {
 
-  C.callVariantDuplicate(me.ptrVariantDuplicate, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionVariantPtr(rRet), C.GDExtensionBool(pDeep),)
+	C.callVariantDuplicate(me.ptrVariantDuplicate, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionVariantPtr(rRet), C.GDExtensionBool(pDeep))
 }
 
-func (me *interfaceImpl) VariantEvaluate(pOp VariantOperator, pA ConstVariantPtr, pB ConstVariantPtr, rReturn UninitializedVariantPtr, rValid *uint8, )  {
+func (me *interfaceImpl) VariantEvaluate(pOp VariantOperator, pA ConstVariantPtr, pB ConstVariantPtr, rReturn UninitializedVariantPtr, rValid *uint8) {
 
-  C.callVariantEvaluate(me.ptrVariantEvaluate, C.GDExtensionVariantOperator(pOp), C.GDExtensionConstVariantPtr(pA), C.GDExtensionConstVariantPtr(pB), C.GDExtensionUninitializedVariantPtr(rReturn), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
+	C.callVariantEvaluate(me.ptrVariantEvaluate, C.GDExtensionVariantOperator(pOp), C.GDExtensionConstVariantPtr(pA), C.GDExtensionConstVariantPtr(pB), C.GDExtensionUninitializedVariantPtr(rReturn), *(**C.uint8_t)(unsafe.Pointer(&rValid)))
 }
 
-func (me *interfaceImpl) VariantGet(pSelf ConstVariantPtr, pKey ConstVariantPtr, rRet UninitializedVariantPtr, rValid *uint8, )  {
+func (me *interfaceImpl) VariantGet(pSelf ConstVariantPtr, pKey ConstVariantPtr, rRet UninitializedVariantPtr, rValid *uint8) {
 
-  C.callVariantGet(me.ptrVariantGet, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionConstVariantPtr(pKey), C.GDExtensionUninitializedVariantPtr(rRet), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
+	C.callVariantGet(me.ptrVariantGet, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionConstVariantPtr(pKey), C.GDExtensionUninitializedVariantPtr(rRet), *(**C.uint8_t)(unsafe.Pointer(&rValid)))
 }
 
-func (me *interfaceImpl) VariantGetConstantValue(pType VariantType, pConstant ConstStringNamePtr, rRet UninitializedVariantPtr, )  {
+func (me *interfaceImpl) VariantGetConstantValue(pType VariantType, pConstant ConstStringNamePtr, rRet UninitializedVariantPtr) {
 
-  C.callVariantGetConstantValue(me.ptrVariantGetConstantValue, C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pConstant), C.GDExtensionUninitializedVariantPtr(rRet),)
+	C.callVariantGetConstantValue(me.ptrVariantGetConstantValue, C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pConstant), C.GDExtensionUninitializedVariantPtr(rRet))
 }
 
-func (me *interfaceImpl) VariantGetIndexed(pSelf ConstVariantPtr, pIndex Int, rRet UninitializedVariantPtr, rValid *uint8, rOob *uint8, )  {
+func (me *interfaceImpl) VariantGetIndexed(pSelf ConstVariantPtr, pIndex Int, rRet UninitializedVariantPtr, rValid *uint8, rOob *uint8) {
 
-  C.callVariantGetIndexed(me.ptrVariantGetIndexed, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionInt(pIndex), C.GDExtensionUninitializedVariantPtr(rRet), *(**C.uint8_t)(unsafe.Pointer(&rValid)), *(**C.uint8_t)(unsafe.Pointer(&rOob)),)
+	C.callVariantGetIndexed(me.ptrVariantGetIndexed, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionInt(pIndex), C.GDExtensionUninitializedVariantPtr(rRet), *(**C.uint8_t)(unsafe.Pointer(&rValid)), *(**C.uint8_t)(unsafe.Pointer(&rOob)))
 }
 
-func (me *interfaceImpl) VariantGetKeyed(pSelf ConstVariantPtr, pKey ConstVariantPtr, rRet UninitializedVariantPtr, rValid *uint8, )  {
+func (me *interfaceImpl) VariantGetKeyed(pSelf ConstVariantPtr, pKey ConstVariantPtr, rRet UninitializedVariantPtr, rValid *uint8) {
 
-  C.callVariantGetKeyed(me.ptrVariantGetKeyed, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionConstVariantPtr(pKey), C.GDExtensionUninitializedVariantPtr(rRet), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
+	C.callVariantGetKeyed(me.ptrVariantGetKeyed, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionConstVariantPtr(pKey), C.GDExtensionUninitializedVariantPtr(rRet), *(**C.uint8_t)(unsafe.Pointer(&rValid)))
 }
 
-func (me *interfaceImpl) VariantGetNamed(pSelf ConstVariantPtr, pKey ConstStringNamePtr, rRet UninitializedVariantPtr, rValid *uint8, )  {
+func (me *interfaceImpl) VariantGetNamed(pSelf ConstVariantPtr, pKey ConstStringNamePtr, rRet UninitializedVariantPtr, rValid *uint8) {
 
-  C.callVariantGetNamed(me.ptrVariantGetNamed, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionConstStringNamePtr(pKey), C.GDExtensionUninitializedVariantPtr(rRet), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
+	C.callVariantGetNamed(me.ptrVariantGetNamed, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionConstStringNamePtr(pKey), C.GDExtensionUninitializedVariantPtr(rRet), *(**C.uint8_t)(unsafe.Pointer(&rValid)))
 }
 
-func (me *interfaceImpl) VariantGetPtrBuiltinMethod(pType VariantType, pMethod ConstStringNamePtr, pHash Int, ) PtrBuiltInMethod {
+func (me *interfaceImpl) VariantGetPtrBuiltinMethod(pType VariantType, pMethod ConstStringNamePtr, pHash Int) PtrBuiltInMethod {
 
-  ret := C.callVariantGetPtrBuiltinMethod(me.ptrVariantGetPtrBuiltinMethod, C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pMethod), C.GDExtensionInt(pHash),)
-  return PtrBuiltInMethod(ret)
+	ret := C.callVariantGetPtrBuiltinMethod(me.ptrVariantGetPtrBuiltinMethod, C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pMethod), C.GDExtensionInt(pHash))
+	return PtrBuiltInMethod(ret)
 }
 
-func (me *interfaceImpl) CallPtrBuiltInMethod(ptrToCall PtrBuiltInMethod, pBase TypePtr, pArgs *ConstTypePtr, rReturn TypePtr, pArgumentCount int, )  {
+func (me *interfaceImpl) CallPtrBuiltInMethod(ptrToCall PtrBuiltInMethod, pBase TypePtr, pArgs *ConstTypePtr, rReturn TypePtr, pArgumentCount int) {
 
-  if ptrToCall == nil {
-    panic("ptrToCall is nil for CallPtrBuiltInMethod") // TODO: better error handling
-  }
-  C.callCallPtrBuiltInMethod(ptrToCall, C.GDExtensionTypePtr(pBase), *(**C.GDExtensionConstTypePtr)(unsafe.Pointer(&pArgs)), C.GDExtensionTypePtr(rReturn), C.int(pArgumentCount),)
+	if ptrToCall == nil {
+		panic("ptrToCall is nil for CallPtrBuiltInMethod") // TODO: better error handling
+	}
+	C.callCallPtrBuiltInMethod(ptrToCall, C.GDExtensionTypePtr(pBase), *(**C.GDExtensionConstTypePtr)(unsafe.Pointer(&pArgs)), C.GDExtensionTypePtr(rReturn), C.int(pArgumentCount))
 }
 
-func (me *interfaceImpl) VariantGetPtrConstructor(pType VariantType, pConstructor int, ) PtrConstructor {
+func (me *interfaceImpl) VariantGetPtrConstructor(pType VariantType, pConstructor int) PtrConstructor {
 
-  ret := C.callVariantGetPtrConstructor(me.ptrVariantGetPtrConstructor, C.GDExtensionVariantType(pType), C.int32_t(pConstructor),)
-  return PtrConstructor(ret)
+	ret := C.callVariantGetPtrConstructor(me.ptrVariantGetPtrConstructor, C.GDExtensionVariantType(pType), C.int32_t(pConstructor))
+	return PtrConstructor(ret)
 }
 
-func (me *interfaceImpl) CallPtrConstructor(ptrToCall PtrConstructor, pBase UninitializedTypePtr, pArgs *ConstTypePtr, )  {
+func (me *interfaceImpl) CallPtrConstructor(ptrToCall PtrConstructor, pBase UninitializedTypePtr, pArgs *ConstTypePtr) {
 
-  if ptrToCall == nil {
-    panic("ptrToCall is nil for CallPtrConstructor") // TODO: better error handling
-  }
-  C.callCallPtrConstructor(ptrToCall, C.GDExtensionUninitializedTypePtr(pBase), *(**C.GDExtensionConstTypePtr)(unsafe.Pointer(&pArgs)),)
+	if ptrToCall == nil {
+		panic("ptrToCall is nil for CallPtrConstructor") // TODO: better error handling
+	}
+	C.callCallPtrConstructor(ptrToCall, C.GDExtensionUninitializedTypePtr(pBase), *(**C.GDExtensionConstTypePtr)(unsafe.Pointer(&pArgs)))
 }
 
-func (me *interfaceImpl) VariantGetPtrDestructor(pType VariantType, ) PtrDestructor {
+func (me *interfaceImpl) VariantGetPtrDestructor(pType VariantType) PtrDestructor {
 
-  ret := C.callVariantGetPtrDestructor(me.ptrVariantGetPtrDestructor, C.GDExtensionVariantType(pType),)
-  return PtrDestructor(ret)
+	ret := C.callVariantGetPtrDestructor(me.ptrVariantGetPtrDestructor, C.GDExtensionVariantType(pType))
+	return PtrDestructor(ret)
 }
 
-func (me *interfaceImpl) CallPtrDestructor(ptrToCall PtrDestructor, pBase TypePtr, )  {
+func (me *interfaceImpl) CallPtrDestructor(ptrToCall PtrDestructor, pBase TypePtr) {
 
-  if ptrToCall == nil {
-    panic("ptrToCall is nil for CallPtrDestructor") // TODO: better error handling
-  }
-  C.callCallPtrDestructor(ptrToCall, C.GDExtensionTypePtr(pBase),)
+	if ptrToCall == nil {
+		panic("ptrToCall is nil for CallPtrDestructor") // TODO: better error handling
+	}
+	C.callCallPtrDestructor(ptrToCall, C.GDExtensionTypePtr(pBase))
 }
 
-func (me *interfaceImpl) VariantGetPtrGetter(pType VariantType, pMember ConstStringNamePtr, ) PtrGetter {
+func (me *interfaceImpl) VariantGetPtrGetter(pType VariantType, pMember ConstStringNamePtr) PtrGetter {
 
-  ret := C.callVariantGetPtrGetter(me.ptrVariantGetPtrGetter, C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pMember),)
-  return PtrGetter(ret)
+	ret := C.callVariantGetPtrGetter(me.ptrVariantGetPtrGetter, C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pMember))
+	return PtrGetter(ret)
 }
 
-func (me *interfaceImpl) CallPtrGetter(ptrToCall PtrGetter, pBase ConstTypePtr, rValue TypePtr, )  {
+func (me *interfaceImpl) CallPtrGetter(ptrToCall PtrGetter, pBase ConstTypePtr, rValue TypePtr) {
 
-  if ptrToCall == nil {
-    panic("ptrToCall is nil for CallPtrGetter") // TODO: better error handling
-  }
-  C.callCallPtrGetter(ptrToCall, C.GDExtensionConstTypePtr(pBase), C.GDExtensionTypePtr(rValue),)
+	if ptrToCall == nil {
+		panic("ptrToCall is nil for CallPtrGetter") // TODO: better error handling
+	}
+	C.callCallPtrGetter(ptrToCall, C.GDExtensionConstTypePtr(pBase), C.GDExtensionTypePtr(rValue))
 }
 
-func (me *interfaceImpl) VariantGetPtrIndexedGetter(pType VariantType, ) PtrIndexedGetter {
+func (me *interfaceImpl) VariantGetPtrIndexedGetter(pType VariantType) PtrIndexedGetter {
 
-  ret := C.callVariantGetPtrIndexedGetter(me.ptrVariantGetPtrIndexedGetter, C.GDExtensionVariantType(pType),)
-  return PtrIndexedGetter(ret)
+	ret := C.callVariantGetPtrIndexedGetter(me.ptrVariantGetPtrIndexedGetter, C.GDExtensionVariantType(pType))
+	return PtrIndexedGetter(ret)
 }
 
-func (me *interfaceImpl) CallPtrIndexedGetter(ptrToCall PtrIndexedGetter, pBase ConstTypePtr, pIndex Int, rValue TypePtr, )  {
+func (me *interfaceImpl) CallPtrIndexedGetter(ptrToCall PtrIndexedGetter, pBase ConstTypePtr, pIndex Int, rValue TypePtr) {
 
-  if ptrToCall == nil {
-    panic("ptrToCall is nil for CallPtrIndexedGetter") // TODO: better error handling
-  }
-  C.callCallPtrIndexedGetter(ptrToCall, C.GDExtensionConstTypePtr(pBase), C.GDExtensionInt(pIndex), C.GDExtensionTypePtr(rValue),)
+	if ptrToCall == nil {
+		panic("ptrToCall is nil for CallPtrIndexedGetter") // TODO: better error handling
+	}
+	C.callCallPtrIndexedGetter(ptrToCall, C.GDExtensionConstTypePtr(pBase), C.GDExtensionInt(pIndex), C.GDExtensionTypePtr(rValue))
 }
 
-func (me *interfaceImpl) VariantGetPtrIndexedSetter(pType VariantType, ) PtrIndexedSetter {
+func (me *interfaceImpl) VariantGetPtrIndexedSetter(pType VariantType) PtrIndexedSetter {
 
-  ret := C.callVariantGetPtrIndexedSetter(me.ptrVariantGetPtrIndexedSetter, C.GDExtensionVariantType(pType),)
-  return PtrIndexedSetter(ret)
+	ret := C.callVariantGetPtrIndexedSetter(me.ptrVariantGetPtrIndexedSetter, C.GDExtensionVariantType(pType))
+	return PtrIndexedSetter(ret)
 }
 
-func (me *interfaceImpl) CallPtrIndexedSetter(ptrToCall PtrIndexedSetter, pBase TypePtr, pIndex Int, pValue ConstTypePtr, )  {
+func (me *interfaceImpl) CallPtrIndexedSetter(ptrToCall PtrIndexedSetter, pBase TypePtr, pIndex Int, pValue ConstTypePtr) {
 
-  if ptrToCall == nil {
-    panic("ptrToCall is nil for CallPtrIndexedSetter") // TODO: better error handling
-  }
-  C.callCallPtrIndexedSetter(ptrToCall, C.GDExtensionTypePtr(pBase), C.GDExtensionInt(pIndex), C.GDExtensionConstTypePtr(pValue),)
+	if ptrToCall == nil {
+		panic("ptrToCall is nil for CallPtrIndexedSetter") // TODO: better error handling
+	}
+	C.callCallPtrIndexedSetter(ptrToCall, C.GDExtensionTypePtr(pBase), C.GDExtensionInt(pIndex), C.GDExtensionConstTypePtr(pValue))
 }
 
-func (me *interfaceImpl) VariantGetPtrKeyedChecker(pType VariantType, ) PtrKeyedChecker {
+func (me *interfaceImpl) VariantGetPtrKeyedChecker(pType VariantType) PtrKeyedChecker {
 
-  ret := C.callVariantGetPtrKeyedChecker(me.ptrVariantGetPtrKeyedChecker, C.GDExtensionVariantType(pType),)
-  return PtrKeyedChecker(ret)
+	ret := C.callVariantGetPtrKeyedChecker(me.ptrVariantGetPtrKeyedChecker, C.GDExtensionVariantType(pType))
+	return PtrKeyedChecker(ret)
 }
 
-func (me *interfaceImpl) CallPtrKeyedChecker(ptrToCall PtrKeyedChecker, pBase ConstVariantPtr, pKey ConstVariantPtr, ) uint {
+func (me *interfaceImpl) CallPtrKeyedChecker(ptrToCall PtrKeyedChecker, pBase ConstVariantPtr, pKey ConstVariantPtr) uint {
 
-  if ptrToCall == nil {
-    panic("ptrToCall is nil for CallPtrKeyedChecker") // TODO: better error handling
-  }
-  ret := C.callCallPtrKeyedChecker(ptrToCall, C.GDExtensionConstVariantPtr(pBase), C.GDExtensionConstVariantPtr(pKey),)
-  return uint(ret)
+	if ptrToCall == nil {
+		panic("ptrToCall is nil for CallPtrKeyedChecker") // TODO: better error handling
+	}
+	ret := C.callCallPtrKeyedChecker(ptrToCall, C.GDExtensionConstVariantPtr(pBase), C.GDExtensionConstVariantPtr(pKey))
+	return uint(ret)
 }
 
-func (me *interfaceImpl) VariantGetPtrKeyedGetter(pType VariantType, ) PtrKeyedGetter {
+func (me *interfaceImpl) VariantGetPtrKeyedGetter(pType VariantType) PtrKeyedGetter {
 
-  ret := C.callVariantGetPtrKeyedGetter(me.ptrVariantGetPtrKeyedGetter, C.GDExtensionVariantType(pType),)
-  return PtrKeyedGetter(ret)
+	ret := C.callVariantGetPtrKeyedGetter(me.ptrVariantGetPtrKeyedGetter, C.GDExtensionVariantType(pType))
+	return PtrKeyedGetter(ret)
 }
 
-func (me *interfaceImpl) CallPtrKeyedGetter(ptrToCall PtrKeyedGetter, pBase ConstTypePtr, pKey ConstTypePtr, rValue TypePtr, )  {
+func (me *interfaceImpl) CallPtrKeyedGetter(ptrToCall PtrKeyedGetter, pBase ConstTypePtr, pKey ConstTypePtr, rValue TypePtr) {
 
-  if ptrToCall == nil {
-    panic("ptrToCall is nil for CallPtrKeyedGetter") // TODO: better error handling
-  }
-  C.callCallPtrKeyedGetter(ptrToCall, C.GDExtensionConstTypePtr(pBase), C.GDExtensionConstTypePtr(pKey), C.GDExtensionTypePtr(rValue),)
+	if ptrToCall == nil {
+		panic("ptrToCall is nil for CallPtrKeyedGetter") // TODO: better error handling
+	}
+	C.callCallPtrKeyedGetter(ptrToCall, C.GDExtensionConstTypePtr(pBase), C.GDExtensionConstTypePtr(pKey), C.GDExtensionTypePtr(rValue))
 }
 
-func (me *interfaceImpl) VariantGetPtrKeyedSetter(pType VariantType, ) PtrKeyedSetter {
+func (me *interfaceImpl) VariantGetPtrKeyedSetter(pType VariantType) PtrKeyedSetter {
 
-  ret := C.callVariantGetPtrKeyedSetter(me.ptrVariantGetPtrKeyedSetter, C.GDExtensionVariantType(pType),)
-  return PtrKeyedSetter(ret)
+	ret := C.callVariantGetPtrKeyedSetter(me.ptrVariantGetPtrKeyedSetter, C.GDExtensionVariantType(pType))
+	return PtrKeyedSetter(ret)
 }
 
-func (me *interfaceImpl) CallPtrKeyedSetter(ptrToCall PtrKeyedSetter, pBase TypePtr, pKey ConstTypePtr, pValue ConstTypePtr, )  {
+func (me *interfaceImpl) CallPtrKeyedSetter(ptrToCall PtrKeyedSetter, pBase TypePtr, pKey ConstTypePtr, pValue ConstTypePtr) {
 
-  if ptrToCall == nil {
-    panic("ptrToCall is nil for CallPtrKeyedSetter") // TODO: better error handling
-  }
-  C.callCallPtrKeyedSetter(ptrToCall, C.GDExtensionTypePtr(pBase), C.GDExtensionConstTypePtr(pKey), C.GDExtensionConstTypePtr(pValue),)
+	if ptrToCall == nil {
+		panic("ptrToCall is nil for CallPtrKeyedSetter") // TODO: better error handling
+	}
+	C.callCallPtrKeyedSetter(ptrToCall, C.GDExtensionTypePtr(pBase), C.GDExtensionConstTypePtr(pKey), C.GDExtensionConstTypePtr(pValue))
 }
 
-func (me *interfaceImpl) VariantGetPtrOperatorEvaluator(pOperator VariantOperator, pTypeA VariantType, pTypeB VariantType, ) PtrOperatorEvaluator {
+func (me *interfaceImpl) VariantGetPtrOperatorEvaluator(pOperator VariantOperator, pTypeA VariantType, pTypeB VariantType) PtrOperatorEvaluator {
 
-  ret := C.callVariantGetPtrOperatorEvaluator(me.ptrVariantGetPtrOperatorEvaluator, C.GDExtensionVariantOperator(pOperator), C.GDExtensionVariantType(pTypeA), C.GDExtensionVariantType(pTypeB),)
-  return PtrOperatorEvaluator(ret)
+	ret := C.callVariantGetPtrOperatorEvaluator(me.ptrVariantGetPtrOperatorEvaluator, C.GDExtensionVariantOperator(pOperator), C.GDExtensionVariantType(pTypeA), C.GDExtensionVariantType(pTypeB))
+	return PtrOperatorEvaluator(ret)
 }
 
-func (me *interfaceImpl) CallPtrOperatorEvaluator(ptrToCall PtrOperatorEvaluator, pLeft ConstTypePtr, pRight ConstTypePtr, rResult TypePtr, )  {
+func (me *interfaceImpl) CallPtrOperatorEvaluator(ptrToCall PtrOperatorEvaluator, pLeft ConstTypePtr, pRight ConstTypePtr, rResult TypePtr) {
 
-  if ptrToCall == nil {
-    panic("ptrToCall is nil for CallPtrOperatorEvaluator") // TODO: better error handling
-  }
-  C.callCallPtrOperatorEvaluator(ptrToCall, C.GDExtensionConstTypePtr(pLeft), C.GDExtensionConstTypePtr(pRight), C.GDExtensionTypePtr(rResult),)
+	if ptrToCall == nil {
+		panic("ptrToCall is nil for CallPtrOperatorEvaluator") // TODO: better error handling
+	}
+	C.callCallPtrOperatorEvaluator(ptrToCall, C.GDExtensionConstTypePtr(pLeft), C.GDExtensionConstTypePtr(pRight), C.GDExtensionTypePtr(rResult))
 }
 
-func (me *interfaceImpl) VariantGetPtrSetter(pType VariantType, pMember ConstStringNamePtr, ) PtrSetter {
+func (me *interfaceImpl) VariantGetPtrSetter(pType VariantType, pMember ConstStringNamePtr) PtrSetter {
 
-  ret := C.callVariantGetPtrSetter(me.ptrVariantGetPtrSetter, C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pMember),)
-  return PtrSetter(ret)
+	ret := C.callVariantGetPtrSetter(me.ptrVariantGetPtrSetter, C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pMember))
+	return PtrSetter(ret)
 }
 
-func (me *interfaceImpl) CallPtrSetter(ptrToCall PtrSetter, pBase TypePtr, pValue ConstTypePtr, )  {
+func (me *interfaceImpl) CallPtrSetter(ptrToCall PtrSetter, pBase TypePtr, pValue ConstTypePtr) {
 
-  if ptrToCall == nil {
-    panic("ptrToCall is nil for CallPtrSetter") // TODO: better error handling
-  }
-  C.callCallPtrSetter(ptrToCall, C.GDExtensionTypePtr(pBase), C.GDExtensionConstTypePtr(pValue),)
+	if ptrToCall == nil {
+		panic("ptrToCall is nil for CallPtrSetter") // TODO: better error handling
+	}
+	C.callCallPtrSetter(ptrToCall, C.GDExtensionTypePtr(pBase), C.GDExtensionConstTypePtr(pValue))
 }
 
-func (me *interfaceImpl) VariantGetPtrUtilityFunction(pFunction ConstStringNamePtr, pHash Int, ) PtrUtilityFunction {
+func (me *interfaceImpl) VariantGetPtrUtilityFunction(pFunction ConstStringNamePtr, pHash Int) PtrUtilityFunction {
 
-  ret := C.callVariantGetPtrUtilityFunction(me.ptrVariantGetPtrUtilityFunction, C.GDExtensionConstStringNamePtr(pFunction), C.GDExtensionInt(pHash),)
-  return PtrUtilityFunction(ret)
+	ret := C.callVariantGetPtrUtilityFunction(me.ptrVariantGetPtrUtilityFunction, C.GDExtensionConstStringNamePtr(pFunction), C.GDExtensionInt(pHash))
+	return PtrUtilityFunction(ret)
 }
 
-func (me *interfaceImpl) CallPtrUtilityFunction(ptrToCall PtrUtilityFunction, rReturn TypePtr, pArgs *ConstTypePtr, pArgumentCount int, )  {
+func (me *interfaceImpl) CallPtrUtilityFunction(ptrToCall PtrUtilityFunction, rReturn TypePtr, pArgs *ConstTypePtr, pArgumentCount int) {
 
-  if ptrToCall == nil {
-    panic("ptrToCall is nil for CallPtrUtilityFunction") // TODO: better error handling
-  }
-  C.callCallPtrUtilityFunction(ptrToCall, C.GDExtensionTypePtr(rReturn), *(**C.GDExtensionConstTypePtr)(unsafe.Pointer(&pArgs)), C.int(pArgumentCount),)
+	if ptrToCall == nil {
+		panic("ptrToCall is nil for CallPtrUtilityFunction") // TODO: better error handling
+	}
+	C.callCallPtrUtilityFunction(ptrToCall, C.GDExtensionTypePtr(rReturn), *(**C.GDExtensionConstTypePtr)(unsafe.Pointer(&pArgs)), C.int(pArgumentCount))
 }
 
-func (me *interfaceImpl) VariantGetType(pSelf ConstVariantPtr, ) VariantType {
+func (me *interfaceImpl) VariantGetType(pSelf ConstVariantPtr) VariantType {
 
-  ret := C.callVariantGetType(me.ptrVariantGetType, C.GDExtensionConstVariantPtr(pSelf),)
-  return VariantType(ret)
+	ret := C.callVariantGetType(me.ptrVariantGetType, C.GDExtensionConstVariantPtr(pSelf))
+	return VariantType(ret)
 }
 
-func (me *interfaceImpl) VariantGetTypeName(pType VariantType, rName UninitializedStringPtr, )  {
+func (me *interfaceImpl) VariantGetTypeName(pType VariantType, rName UninitializedStringPtr) {
 
-  C.callVariantGetTypeName(me.ptrVariantGetTypeName, C.GDExtensionVariantType(pType), C.GDExtensionUninitializedStringPtr(rName),)
+	C.callVariantGetTypeName(me.ptrVariantGetTypeName, C.GDExtensionVariantType(pType), C.GDExtensionUninitializedStringPtr(rName))
 }
 
-func (me *interfaceImpl) VariantHasKey(pSelf ConstVariantPtr, pKey ConstVariantPtr, rValid *uint8, ) Bool {
+func (me *interfaceImpl) VariantHasKey(pSelf ConstVariantPtr, pKey ConstVariantPtr, rValid *uint8) Bool {
 
-  ret := C.callVariantHasKey(me.ptrVariantHasKey, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionConstVariantPtr(pKey), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
-  return Bool(ret)
+	ret := C.callVariantHasKey(me.ptrVariantHasKey, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionConstVariantPtr(pKey), *(**C.uint8_t)(unsafe.Pointer(&rValid)))
+	return Bool(ret)
 }
 
-func (me *interfaceImpl) VariantHasMember(pType VariantType, pMember ConstStringNamePtr, ) Bool {
+func (me *interfaceImpl) VariantHasMember(pType VariantType, pMember ConstStringNamePtr) Bool {
 
-  ret := C.callVariantHasMember(me.ptrVariantHasMember, C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pMember),)
-  return Bool(ret)
+	ret := C.callVariantHasMember(me.ptrVariantHasMember, C.GDExtensionVariantType(pType), C.GDExtensionConstStringNamePtr(pMember))
+	return Bool(ret)
 }
 
-func (me *interfaceImpl) VariantHasMethod(pSelf ConstVariantPtr, pMethod ConstStringNamePtr, ) Bool {
+func (me *interfaceImpl) VariantHasMethod(pSelf ConstVariantPtr, pMethod ConstStringNamePtr) Bool {
 
-  ret := C.callVariantHasMethod(me.ptrVariantHasMethod, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionConstStringNamePtr(pMethod),)
-  return Bool(ret)
+	ret := C.callVariantHasMethod(me.ptrVariantHasMethod, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionConstStringNamePtr(pMethod))
+	return Bool(ret)
 }
 
-func (me *interfaceImpl) VariantHash(pSelf ConstVariantPtr, ) Int {
+func (me *interfaceImpl) VariantHash(pSelf ConstVariantPtr) Int {
 
-  ret := C.callVariantHash(me.ptrVariantHash, C.GDExtensionConstVariantPtr(pSelf),)
-  return Int(ret)
+	ret := C.callVariantHash(me.ptrVariantHash, C.GDExtensionConstVariantPtr(pSelf))
+	return Int(ret)
 }
 
-func (me *interfaceImpl) VariantHashCompare(pSelf ConstVariantPtr, pOther ConstVariantPtr, ) Bool {
+func (me *interfaceImpl) VariantHashCompare(pSelf ConstVariantPtr, pOther ConstVariantPtr) Bool {
 
-  ret := C.callVariantHashCompare(me.ptrVariantHashCompare, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionConstVariantPtr(pOther),)
-  return Bool(ret)
+	ret := C.callVariantHashCompare(me.ptrVariantHashCompare, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionConstVariantPtr(pOther))
+	return Bool(ret)
 }
 
-func (me *interfaceImpl) VariantIterGet(pSelf ConstVariantPtr, rIter VariantPtr, rRet UninitializedVariantPtr, rValid *uint8, )  {
+func (me *interfaceImpl) VariantIterGet(pSelf ConstVariantPtr, rIter VariantPtr, rRet UninitializedVariantPtr, rValid *uint8) {
 
-  C.callVariantIterGet(me.ptrVariantIterGet, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionVariantPtr(rIter), C.GDExtensionUninitializedVariantPtr(rRet), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
+	C.callVariantIterGet(me.ptrVariantIterGet, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionVariantPtr(rIter), C.GDExtensionUninitializedVariantPtr(rRet), *(**C.uint8_t)(unsafe.Pointer(&rValid)))
 }
 
-func (me *interfaceImpl) VariantIterInit(pSelf ConstVariantPtr, rIter UninitializedVariantPtr, rValid *uint8, ) Bool {
+func (me *interfaceImpl) VariantIterInit(pSelf ConstVariantPtr, rIter UninitializedVariantPtr, rValid *uint8) Bool {
 
-  ret := C.callVariantIterInit(me.ptrVariantIterInit, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionUninitializedVariantPtr(rIter), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
-  return Bool(ret)
+	ret := C.callVariantIterInit(me.ptrVariantIterInit, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionUninitializedVariantPtr(rIter), *(**C.uint8_t)(unsafe.Pointer(&rValid)))
+	return Bool(ret)
 }
 
-func (me *interfaceImpl) VariantIterNext(pSelf ConstVariantPtr, rIter VariantPtr, rValid *uint8, ) Bool {
+func (me *interfaceImpl) VariantIterNext(pSelf ConstVariantPtr, rIter VariantPtr, rValid *uint8) Bool {
 
-  ret := C.callVariantIterNext(me.ptrVariantIterNext, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionVariantPtr(rIter), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
-  return Bool(ret)
+	ret := C.callVariantIterNext(me.ptrVariantIterNext, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionVariantPtr(rIter), *(**C.uint8_t)(unsafe.Pointer(&rValid)))
+	return Bool(ret)
 }
 
-func (me *interfaceImpl) VariantNewCopy(rDest UninitializedVariantPtr, pSrc ConstVariantPtr, )  {
+func (me *interfaceImpl) VariantNewCopy(rDest UninitializedVariantPtr, pSrc ConstVariantPtr) {
 
-  C.callVariantNewCopy(me.ptrVariantNewCopy, C.GDExtensionUninitializedVariantPtr(rDest), C.GDExtensionConstVariantPtr(pSrc),)
+	C.callVariantNewCopy(me.ptrVariantNewCopy, C.GDExtensionUninitializedVariantPtr(rDest), C.GDExtensionConstVariantPtr(pSrc))
 }
 
-func (me *interfaceImpl) VariantNewNil(rDest UninitializedVariantPtr, )  {
+func (me *interfaceImpl) VariantNewNil(rDest UninitializedVariantPtr) {
 
-  C.callVariantNewNil(me.ptrVariantNewNil, C.GDExtensionUninitializedVariantPtr(rDest),)
+	C.callVariantNewNil(me.ptrVariantNewNil, C.GDExtensionUninitializedVariantPtr(rDest))
 }
 
-func (me *interfaceImpl) VariantRecursiveHash(pSelf ConstVariantPtr, pRecursionCount Int, ) Int {
+func (me *interfaceImpl) VariantRecursiveHash(pSelf ConstVariantPtr, pRecursionCount Int) Int {
 
-  ret := C.callVariantRecursiveHash(me.ptrVariantRecursiveHash, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionInt(pRecursionCount),)
-  return Int(ret)
+	ret := C.callVariantRecursiveHash(me.ptrVariantRecursiveHash, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionInt(pRecursionCount))
+	return Int(ret)
 }
 
-func (me *interfaceImpl) VariantSet(pSelf VariantPtr, pKey ConstVariantPtr, pValue ConstVariantPtr, rValid *uint8, )  {
+func (me *interfaceImpl) VariantSet(pSelf VariantPtr, pKey ConstVariantPtr, pValue ConstVariantPtr, rValid *uint8) {
 
-  C.callVariantSet(me.ptrVariantSet, C.GDExtensionVariantPtr(pSelf), C.GDExtensionConstVariantPtr(pKey), C.GDExtensionConstVariantPtr(pValue), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
+	C.callVariantSet(me.ptrVariantSet, C.GDExtensionVariantPtr(pSelf), C.GDExtensionConstVariantPtr(pKey), C.GDExtensionConstVariantPtr(pValue), *(**C.uint8_t)(unsafe.Pointer(&rValid)))
 }
 
-func (me *interfaceImpl) VariantSetIndexed(pSelf VariantPtr, pIndex Int, pValue ConstVariantPtr, rValid *uint8, rOob *uint8, )  {
+func (me *interfaceImpl) VariantSetIndexed(pSelf VariantPtr, pIndex Int, pValue ConstVariantPtr, rValid *uint8, rOob *uint8) {
 
-  C.callVariantSetIndexed(me.ptrVariantSetIndexed, C.GDExtensionVariantPtr(pSelf), C.GDExtensionInt(pIndex), C.GDExtensionConstVariantPtr(pValue), *(**C.uint8_t)(unsafe.Pointer(&rValid)), *(**C.uint8_t)(unsafe.Pointer(&rOob)),)
+	C.callVariantSetIndexed(me.ptrVariantSetIndexed, C.GDExtensionVariantPtr(pSelf), C.GDExtensionInt(pIndex), C.GDExtensionConstVariantPtr(pValue), *(**C.uint8_t)(unsafe.Pointer(&rValid)), *(**C.uint8_t)(unsafe.Pointer(&rOob)))
 }
 
-func (me *interfaceImpl) VariantSetKeyed(pSelf VariantPtr, pKey ConstVariantPtr, pValue ConstVariantPtr, rValid *uint8, )  {
+func (me *interfaceImpl) VariantSetKeyed(pSelf VariantPtr, pKey ConstVariantPtr, pValue ConstVariantPtr, rValid *uint8) {
 
-  C.callVariantSetKeyed(me.ptrVariantSetKeyed, C.GDExtensionVariantPtr(pSelf), C.GDExtensionConstVariantPtr(pKey), C.GDExtensionConstVariantPtr(pValue), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
+	C.callVariantSetKeyed(me.ptrVariantSetKeyed, C.GDExtensionVariantPtr(pSelf), C.GDExtensionConstVariantPtr(pKey), C.GDExtensionConstVariantPtr(pValue), *(**C.uint8_t)(unsafe.Pointer(&rValid)))
 }
 
-func (me *interfaceImpl) VariantSetNamed(pSelf VariantPtr, pKey ConstStringNamePtr, pValue ConstVariantPtr, rValid *uint8, )  {
+func (me *interfaceImpl) VariantSetNamed(pSelf VariantPtr, pKey ConstStringNamePtr, pValue ConstVariantPtr, rValid *uint8) {
 
-  C.callVariantSetNamed(me.ptrVariantSetNamed, C.GDExtensionVariantPtr(pSelf), C.GDExtensionConstStringNamePtr(pKey), C.GDExtensionConstVariantPtr(pValue), *(**C.uint8_t)(unsafe.Pointer(&rValid)),)
+	C.callVariantSetNamed(me.ptrVariantSetNamed, C.GDExtensionVariantPtr(pSelf), C.GDExtensionConstStringNamePtr(pKey), C.GDExtensionConstVariantPtr(pValue), *(**C.uint8_t)(unsafe.Pointer(&rValid)))
 }
 
-func (me *interfaceImpl) VariantStringify(pSelf ConstVariantPtr, rRet StringPtr, )  {
+func (me *interfaceImpl) VariantStringify(pSelf ConstVariantPtr, rRet StringPtr) {
 
-  C.callVariantStringify(me.ptrVariantStringify, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionStringPtr(rRet),)
+	C.callVariantStringify(me.ptrVariantStringify, C.GDExtensionConstVariantPtr(pSelf), C.GDExtensionStringPtr(rRet))
 }
 
-func (me *interfaceImpl) WorkerThreadPoolAddNativeGroupTask(pInstance ObjectPtr, pFunc unsafe.Pointer, pUserdata unsafe.Pointer, pElements int, pTasks int, pHighPriority Bool, pDescription ConstStringPtr, ) int64 {
+func (me *interfaceImpl) WorkerThreadPoolAddNativeGroupTask(pInstance ObjectPtr, pFunc unsafe.Pointer, pUserdata unsafe.Pointer, pElements int, pTasks int, pHighPriority Bool, pDescription ConstStringPtr) int64 {
 
-  ret := C.callWorkerThreadPoolAddNativeGroupTask(me.ptrWorkerThreadPoolAddNativeGroupTask, C.GDExtensionObjectPtr(pInstance), pFunc, pUserdata, C.int(pElements), C.int(pTasks), C.GDExtensionBool(pHighPriority), C.GDExtensionConstStringPtr(pDescription),)
-  return int64(ret)
+	ret := C.callWorkerThreadPoolAddNativeGroupTask(me.ptrWorkerThreadPoolAddNativeGroupTask, C.GDExtensionObjectPtr(pInstance), pFunc, pUserdata, C.int(pElements), C.int(pTasks), C.GDExtensionBool(pHighPriority), C.GDExtensionConstStringPtr(pDescription))
+	return int64(ret)
 }
 
-func (me *interfaceImpl) WorkerThreadPoolAddNativeTask(pInstance ObjectPtr, pFunc unsafe.Pointer, pUserdata unsafe.Pointer, pHighPriority Bool, pDescription ConstStringPtr, ) int64 {
+func (me *interfaceImpl) WorkerThreadPoolAddNativeTask(pInstance ObjectPtr, pFunc unsafe.Pointer, pUserdata unsafe.Pointer, pHighPriority Bool, pDescription ConstStringPtr) int64 {
 
-  ret := C.callWorkerThreadPoolAddNativeTask(me.ptrWorkerThreadPoolAddNativeTask, C.GDExtensionObjectPtr(pInstance), pFunc, pUserdata, C.GDExtensionBool(pHighPriority), C.GDExtensionConstStringPtr(pDescription),)
-  return int64(ret)
+	ret := C.callWorkerThreadPoolAddNativeTask(me.ptrWorkerThreadPoolAddNativeTask, C.GDExtensionObjectPtr(pInstance), pFunc, pUserdata, C.GDExtensionBool(pHighPriority), C.GDExtensionConstStringPtr(pDescription))
+	return int64(ret)
 }
 
-func (me *interfaceImpl) XmlParserOpenBuffer(pInstance ObjectPtr, pBuffer *uint8, pSize uint64, ) Int {
+func (me *interfaceImpl) XmlParserOpenBuffer(pInstance ObjectPtr, pBuffer *uint8, pSize uint64) Int {
 
-  ret := C.callXmlParserOpenBuffer(me.ptrXmlParserOpenBuffer, C.GDExtensionObjectPtr(pInstance), *(**C.uint8_t)(unsafe.Pointer(&pBuffer)), C.size_t(pSize),)
-  return Int(ret)
+	ret := C.callXmlParserOpenBuffer(me.ptrXmlParserOpenBuffer, C.GDExtensionObjectPtr(pInstance), *(**C.uint8_t)(unsafe.Pointer(&pBuffer)), C.size_t(pSize))
+	return Int(ret)
 }
-

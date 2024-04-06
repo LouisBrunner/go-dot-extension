@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeTexture2DArrayParameter ptrsForVisualShaderNodeTextur
 
 func initVisualShaderNodeTexture2DArrayParameterPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeTexture2DArrayParameter")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeTexture2DArrayParameter")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeTexture2DArrayParameter struct {
-  VisualShaderNodeTextureParameter
+	VisualShaderNodeTextureParameter
 }
 
 func (me *VisualShaderNodeTexture2DArrayParameter) BaseClass() string {
-  return "VisualShaderNodeTexture2DArrayParameter"
+	return "VisualShaderNodeTexture2DArrayParameter"
 }
 
 func NewVisualShaderNodeTexture2DArrayParameter() *VisualShaderNodeTexture2DArrayParameter {
-  str := StringNameFromStr("VisualShaderNodeTexture2DArrayParameter") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeTexture2DArrayParameter") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeTexture2DArrayParameter{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeTexture2DArrayParameter{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeTexture2DArrayParameter) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeTexture2DArrayParameter) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeTexture2DArrayParameter) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

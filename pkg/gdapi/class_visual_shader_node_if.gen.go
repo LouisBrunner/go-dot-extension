@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeIf ptrsForVisualShaderNodeIfList
 
 func initVisualShaderNodeIfPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeIf")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeIf")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeIf struct {
-  VisualShaderNode
+	VisualShaderNode
 }
 
 func (me *VisualShaderNodeIf) BaseClass() string {
-  return "VisualShaderNodeIf"
+	return "VisualShaderNodeIf"
 }
 
 func NewVisualShaderNodeIf() *VisualShaderNodeIf {
-  str := StringNameFromStr("VisualShaderNodeIf") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeIf") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeIf{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeIf{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeIf) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeIf) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeIf) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -15,50 +15,48 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForEditorTranslationParserPluginList struct {
-  fnXParseFile gdc.MethodBindPtr
-  fnXGetRecognizedExtensions gdc.MethodBindPtr
+	fnXParseFile               gdc.MethodBindPtr
+	fnXGetRecognizedExtensions gdc.MethodBindPtr
 }
 
 var ptrsForEditorTranslationParserPlugin ptrsForEditorTranslationParserPluginList
 
 func initEditorTranslationParserPluginPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("EditorTranslationParserPlugin")
-  defer className.Destroy()
+	className := StringNameFromStr("EditorTranslationParserPlugin")
+	defer className.Destroy()
 }
 
 type EditorTranslationParserPlugin struct {
-  RefCounted
+	RefCounted
 }
 
 func (me *EditorTranslationParserPlugin) BaseClass() string {
-  return "EditorTranslationParserPlugin"
+	return "EditorTranslationParserPlugin"
 }
 
 func NewEditorTranslationParserPlugin() *EditorTranslationParserPlugin {
-  str := StringNameFromStr("EditorTranslationParserPlugin") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("EditorTranslationParserPlugin") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &EditorTranslationParserPlugin{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &EditorTranslationParserPlugin{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *EditorTranslationParserPlugin) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *EditorTranslationParserPlugin) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *EditorTranslationParserPlugin) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

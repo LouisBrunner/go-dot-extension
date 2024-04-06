@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForSkeletonProfileHumanoid ptrsForSkeletonProfileHumanoidList
 
 func initSkeletonProfileHumanoidPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("SkeletonProfileHumanoid")
-  defer className.Destroy()
+	className := StringNameFromStr("SkeletonProfileHumanoid")
+	defer className.Destroy()
 }
 
 type SkeletonProfileHumanoid struct {
-  SkeletonProfile
+	SkeletonProfile
 }
 
 func (me *SkeletonProfileHumanoid) BaseClass() string {
-  return "SkeletonProfileHumanoid"
+	return "SkeletonProfileHumanoid"
 }
 
 func NewSkeletonProfileHumanoid() *SkeletonProfileHumanoid {
-  str := StringNameFromStr("SkeletonProfileHumanoid") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("SkeletonProfileHumanoid") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &SkeletonProfileHumanoid{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &SkeletonProfileHumanoid{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *SkeletonProfileHumanoid) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *SkeletonProfileHumanoid) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *SkeletonProfileHumanoid) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

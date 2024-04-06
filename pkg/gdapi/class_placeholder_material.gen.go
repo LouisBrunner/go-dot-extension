@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForPlaceholderMaterial ptrsForPlaceholderMaterialList
 
 func initPlaceholderMaterialPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("PlaceholderMaterial")
-  defer className.Destroy()
+	className := StringNameFromStr("PlaceholderMaterial")
+	defer className.Destroy()
 }
 
 type PlaceholderMaterial struct {
-  Material
+	Material
 }
 
 func (me *PlaceholderMaterial) BaseClass() string {
-  return "PlaceholderMaterial"
+	return "PlaceholderMaterial"
 }
 
 func NewPlaceholderMaterial() *PlaceholderMaterial {
-  str := StringNameFromStr("PlaceholderMaterial") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("PlaceholderMaterial") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &PlaceholderMaterial{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &PlaceholderMaterial{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *PlaceholderMaterial) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *PlaceholderMaterial) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *PlaceholderMaterial) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

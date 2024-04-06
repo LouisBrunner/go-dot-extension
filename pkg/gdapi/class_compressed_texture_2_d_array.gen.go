@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForCompressedTexture2DArray ptrsForCompressedTexture2DArrayList
 
 func initCompressedTexture2DArrayPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("CompressedTexture2DArray")
-  defer className.Destroy()
+	className := StringNameFromStr("CompressedTexture2DArray")
+	defer className.Destroy()
 }
 
 type CompressedTexture2DArray struct {
-  CompressedTextureLayered
+	CompressedTextureLayered
 }
 
 func (me *CompressedTexture2DArray) BaseClass() string {
-  return "CompressedTexture2DArray"
+	return "CompressedTexture2DArray"
 }
 
 func NewCompressedTexture2DArray() *CompressedTexture2DArray {
-  str := StringNameFromStr("CompressedTexture2DArray") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("CompressedTexture2DArray") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &CompressedTexture2DArray{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &CompressedTexture2DArray{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *CompressedTexture2DArray) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *CompressedTexture2DArray) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *CompressedTexture2DArray) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

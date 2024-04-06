@@ -19,131 +19,154 @@ type VariantType uint32
 
 // VariantType values
 const (
-  VariantTypeNil VariantType = 0
-  VariantTypeBool VariantType = 1
-  VariantTypeInt VariantType = 2
-  VariantTypeFloat VariantType = 3
-  VariantTypeString VariantType = 4
-  VariantTypeVector2 VariantType = 5
-  VariantTypeVector2I VariantType = 6
-  VariantTypeRect2 VariantType = 7
-  VariantTypeRect2I VariantType = 8
-  VariantTypeVector3 VariantType = 9
-  VariantTypeVector3I VariantType = 10
-  VariantTypeTransform2D VariantType = 11
-  VariantTypeVector4 VariantType = 12
-  VariantTypeVector4I VariantType = 13
-  VariantTypePlane VariantType = 14
-  VariantTypeQuaternion VariantType = 15
-  VariantTypeAABB VariantType = 16
-  VariantTypeBasis VariantType = 17
-  VariantTypeTransform3D VariantType = 18
-  VariantTypeProjection VariantType = 19
-  VariantTypeColor VariantType = 20
-  VariantTypeStringName VariantType = 21
-  VariantTypeNodePath VariantType = 22
-  VariantTypeRID VariantType = 23
-  VariantTypeObject VariantType = 24
-  VariantTypeCallable VariantType = 25
-  VariantTypeSignal VariantType = 26
-  VariantTypeDictionary VariantType = 27
-  VariantTypeArray VariantType = 28
-  VariantTypePackedByteArray VariantType = 29
-  VariantTypePackedInt32Array VariantType = 30
-  VariantTypePackedInt64Array VariantType = 31
-  VariantTypePackedFloat32Array VariantType = 32
-  VariantTypePackedFloat64Array VariantType = 33
-  VariantTypePackedStringArray VariantType = 34
-  VariantTypePackedVector2Array VariantType = 35
-  VariantTypePackedVector3Array VariantType = 36
-  VariantTypePackedColorArray VariantType = 37
-  VariantTypeVariantMax VariantType = 38
+	VariantTypeNil                VariantType = 0
+	VariantTypeBool               VariantType = 1
+	VariantTypeInt                VariantType = 2
+	VariantTypeFloat              VariantType = 3
+	VariantTypeString             VariantType = 4
+	VariantTypeVector2            VariantType = 5
+	VariantTypeVector2I           VariantType = 6
+	VariantTypeRect2              VariantType = 7
+	VariantTypeRect2I             VariantType = 8
+	VariantTypeVector3            VariantType = 9
+	VariantTypeVector3I           VariantType = 10
+	VariantTypeTransform2D        VariantType = 11
+	VariantTypeVector4            VariantType = 12
+	VariantTypeVector4I           VariantType = 13
+	VariantTypePlane              VariantType = 14
+	VariantTypeQuaternion         VariantType = 15
+	VariantTypeAABB               VariantType = 16
+	VariantTypeBasis              VariantType = 17
+	VariantTypeTransform3D        VariantType = 18
+	VariantTypeProjection         VariantType = 19
+	VariantTypeColor              VariantType = 20
+	VariantTypeStringName         VariantType = 21
+	VariantTypeNodePath           VariantType = 22
+	VariantTypeRID                VariantType = 23
+	VariantTypeObject             VariantType = 24
+	VariantTypeCallable           VariantType = 25
+	VariantTypeSignal             VariantType = 26
+	VariantTypeDictionary         VariantType = 27
+	VariantTypeArray              VariantType = 28
+	VariantTypePackedByteArray    VariantType = 29
+	VariantTypePackedInt32Array   VariantType = 30
+	VariantTypePackedInt64Array   VariantType = 31
+	VariantTypePackedFloat32Array VariantType = 32
+	VariantTypePackedFloat64Array VariantType = 33
+	VariantTypePackedStringArray  VariantType = 34
+	VariantTypePackedVector2Array VariantType = 35
+	VariantTypePackedVector3Array VariantType = 36
+	VariantTypePackedColorArray   VariantType = 37
+	VariantTypeVariantMax         VariantType = 38
 )
+
 // VariantOperator represents the enum GDExtensionVariantOperator
 type VariantOperator uint32
 
 // VariantOperator values
 const (
-  VariantOpEqual VariantOperator = 0
-  VariantOpNotEqual VariantOperator = 1
-  VariantOpLess VariantOperator = 2
-  VariantOpLessEqual VariantOperator = 3
-  VariantOpGreater VariantOperator = 4
-  VariantOpGreaterEqual VariantOperator = 5
-  VariantOpAdd VariantOperator = 6
-  VariantOpSubtract VariantOperator = 7
-  VariantOpMultiply VariantOperator = 8
-  VariantOpDivide VariantOperator = 9
-  VariantOpNegate VariantOperator = 10
-  VariantOpPositive VariantOperator = 11
-  VariantOpModule VariantOperator = 12
-  VariantOpPower VariantOperator = 13
-  VariantOpShiftLeft VariantOperator = 14
-  VariantOpShiftRight VariantOperator = 15
-  VariantOpBitAnd VariantOperator = 16
-  VariantOpBitOr VariantOperator = 17
-  VariantOpBitXor VariantOperator = 18
-  VariantOpBitNegate VariantOperator = 19
-  VariantOpAnd VariantOperator = 20
-  VariantOpOr VariantOperator = 21
-  VariantOpXor VariantOperator = 22
-  VariantOpNot VariantOperator = 23
-  VariantOpIn VariantOperator = 24
-  VariantOpMax VariantOperator = 25
+	VariantOpEqual        VariantOperator = 0
+	VariantOpNotEqual     VariantOperator = 1
+	VariantOpLess         VariantOperator = 2
+	VariantOpLessEqual    VariantOperator = 3
+	VariantOpGreater      VariantOperator = 4
+	VariantOpGreaterEqual VariantOperator = 5
+	VariantOpAdd          VariantOperator = 6
+	VariantOpSubtract     VariantOperator = 7
+	VariantOpMultiply     VariantOperator = 8
+	VariantOpDivide       VariantOperator = 9
+	VariantOpNegate       VariantOperator = 10
+	VariantOpPositive     VariantOperator = 11
+	VariantOpModule       VariantOperator = 12
+	VariantOpPower        VariantOperator = 13
+	VariantOpShiftLeft    VariantOperator = 14
+	VariantOpShiftRight   VariantOperator = 15
+	VariantOpBitAnd       VariantOperator = 16
+	VariantOpBitOr        VariantOperator = 17
+	VariantOpBitXor       VariantOperator = 18
+	VariantOpBitNegate    VariantOperator = 19
+	VariantOpAnd          VariantOperator = 20
+	VariantOpOr           VariantOperator = 21
+	VariantOpXor          VariantOperator = 22
+	VariantOpNot          VariantOperator = 23
+	VariantOpIn           VariantOperator = 24
+	VariantOpMax          VariantOperator = 25
 )
+
 // VariantPtr is equivalent to C type GDExtensionVariantPtr
 type VariantPtr C.GDExtensionVariantPtr
+
 // ConstVariantPtr is equivalent to C type GDExtensionConstVariantPtr
 type ConstVariantPtr C.GDExtensionConstVariantPtr
+
 // UninitializedVariantPtr is equivalent to C type GDExtensionUninitializedVariantPtr
 type UninitializedVariantPtr C.GDExtensionUninitializedVariantPtr
+
 // StringNamePtr is equivalent to C type GDExtensionStringNamePtr
 type StringNamePtr C.GDExtensionStringNamePtr
+
 // ConstStringNamePtr is equivalent to C type GDExtensionConstStringNamePtr
 type ConstStringNamePtr C.GDExtensionConstStringNamePtr
+
 // UninitializedStringNamePtr is equivalent to C type GDExtensionUninitializedStringNamePtr
 type UninitializedStringNamePtr C.GDExtensionUninitializedStringNamePtr
+
 // StringPtr is equivalent to C type GDExtensionStringPtr
 type StringPtr C.GDExtensionStringPtr
+
 // ConstStringPtr is equivalent to C type GDExtensionConstStringPtr
 type ConstStringPtr C.GDExtensionConstStringPtr
+
 // UninitializedStringPtr is equivalent to C type GDExtensionUninitializedStringPtr
 type UninitializedStringPtr C.GDExtensionUninitializedStringPtr
+
 // ObjectPtr is equivalent to C type GDExtensionObjectPtr
 type ObjectPtr C.GDExtensionObjectPtr
+
 // ConstObjectPtr is equivalent to C type GDExtensionConstObjectPtr
 type ConstObjectPtr C.GDExtensionConstObjectPtr
+
 // UninitializedObjectPtr is equivalent to C type GDExtensionUninitializedObjectPtr
 type UninitializedObjectPtr C.GDExtensionUninitializedObjectPtr
+
 // TypePtr is equivalent to C type GDExtensionTypePtr
 type TypePtr C.GDExtensionTypePtr
+
 // ConstTypePtr is equivalent to C type GDExtensionConstTypePtr
 type ConstTypePtr C.GDExtensionConstTypePtr
+
 // UninitializedTypePtr is equivalent to C type GDExtensionUninitializedTypePtr
 type UninitializedTypePtr C.GDExtensionUninitializedTypePtr
+
 // MethodBindPtr is equivalent to C type GDExtensionMethodBindPtr
 type MethodBindPtr C.GDExtensionMethodBindPtr
+
 // Int is equivalent to C type GDExtensionInt
 type Int int64
+
 // Bool is equivalent to C type GDExtensionBool
 type Bool uint8
+
 // RefPtr is equivalent to C type GDExtensionRefPtr
 type RefPtr C.GDExtensionRefPtr
+
 // ConstRefPtr is equivalent to C type GDExtensionConstRefPtr
 type ConstRefPtr C.GDExtensionConstRefPtr
+
 // CallErrorType represents the enum GDExtensionCallErrorType
 type CallErrorType uint32
 
 // CallErrorType values
 const (
-  CallOk CallErrorType = 0
-  CallErrorInvalidMethod CallErrorType = 1
-  CallErrorInvalidArgument CallErrorType = 2
-  CallErrorTooManyArguments CallErrorType = 3
-  CallErrorTooFewArguments CallErrorType = 4
-  CallErrorInstanceIsNull CallErrorType = 5
-  CallErrorMethodNotConst CallErrorType = 6
+	CallOk                    CallErrorType = 0
+	CallErrorInvalidMethod    CallErrorType = 1
+	CallErrorInvalidArgument  CallErrorType = 2
+	CallErrorTooManyArguments CallErrorType = 3
+	CallErrorTooFewArguments  CallErrorType = 4
+	CallErrorInstanceIsNull   CallErrorType = 5
+	CallErrorMethodNotConst   CallErrorType = 6
 )
+
 // CallErrorRaw corresponds to C type GDExtensionCallError
 type CallErrorRaw C.GDExtensionCallError
 
@@ -153,22 +176,22 @@ func CallErrorRawFromUnsafe(p unsafe.Pointer) *CallErrorRaw {
 }
 
 type CallError struct {
-	Error CallErrorType
+	Error    CallErrorType
 	Argument int
 	Expected int
 }
 
 func CNewCallError() *CallError {
-  return (*CallError)(C.malloc(C.sizeof_GDExtensionCallError))
+	return (*CallError)(C.malloc(C.sizeof_GDExtensionCallError))
 }
 
 func CNewCallErrorArray(size int) []CallError {
-  ptr := (*CallError)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionCallError))
-  return unsafe.Slice(ptr, size)
+	ptr := (*CallError)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionCallError))
+	return unsafe.Slice(ptr, size)
 }
 
 func CFreeCallError(p *CallError) {
-  C.free(unsafe.Pointer(p))
+	C.free(unsafe.Pointer(p))
 }
 
 // ToRaw converts CallError to a CallErrorRaw
@@ -180,44 +203,63 @@ func (me *CallError) ToRaw() (CallErrorRaw, func()) {
 	raw.expected = C.int32_t(me.Expected)
 
 	return raw, func() {
-  }
+	}
 }
+
 // VariantFromTypeConstructorFunc corresponds to C type GDExtensionVariantFromTypeConstructorFunc
 type VariantFromTypeConstructorFunc C.GDExtensionVariantFromTypeConstructorFunc
+
 // TypeFromVariantConstructorFunc corresponds to C type GDExtensionTypeFromVariantConstructorFunc
 type TypeFromVariantConstructorFunc C.GDExtensionTypeFromVariantConstructorFunc
+
 // PtrOperatorEvaluator corresponds to C type GDExtensionPtrOperatorEvaluator
 type PtrOperatorEvaluator C.GDExtensionPtrOperatorEvaluator
+
 // PtrBuiltInMethod corresponds to C type GDExtensionPtrBuiltInMethod
 type PtrBuiltInMethod C.GDExtensionPtrBuiltInMethod
+
 // PtrConstructor corresponds to C type GDExtensionPtrConstructor
 type PtrConstructor C.GDExtensionPtrConstructor
+
 // PtrDestructor corresponds to C type GDExtensionPtrDestructor
 type PtrDestructor C.GDExtensionPtrDestructor
+
 // PtrSetter corresponds to C type GDExtensionPtrSetter
 type PtrSetter C.GDExtensionPtrSetter
+
 // PtrGetter corresponds to C type GDExtensionPtrGetter
 type PtrGetter C.GDExtensionPtrGetter
+
 // PtrIndexedSetter corresponds to C type GDExtensionPtrIndexedSetter
 type PtrIndexedSetter C.GDExtensionPtrIndexedSetter
+
 // PtrIndexedGetter corresponds to C type GDExtensionPtrIndexedGetter
 type PtrIndexedGetter C.GDExtensionPtrIndexedGetter
+
 // PtrKeyedSetter corresponds to C type GDExtensionPtrKeyedSetter
 type PtrKeyedSetter C.GDExtensionPtrKeyedSetter
+
 // PtrKeyedGetter corresponds to C type GDExtensionPtrKeyedGetter
 type PtrKeyedGetter C.GDExtensionPtrKeyedGetter
+
 // PtrKeyedChecker corresponds to C type GDExtensionPtrKeyedChecker
 type PtrKeyedChecker C.GDExtensionPtrKeyedChecker
+
 // PtrUtilityFunction corresponds to C type GDExtensionPtrUtilityFunction
 type PtrUtilityFunction C.GDExtensionPtrUtilityFunction
+
 // ClassConstructor corresponds to C type GDExtensionClassConstructor
 type ClassConstructor C.GDExtensionClassConstructor
+
 // InstanceBindingCreateCallback corresponds to C type GDExtensionInstanceBindingCreateCallback
 type InstanceBindingCreateCallback C.GDExtensionInstanceBindingCreateCallback
+
 // InstanceBindingFreeCallback corresponds to C type GDExtensionInstanceBindingFreeCallback
 type InstanceBindingFreeCallback C.GDExtensionInstanceBindingFreeCallback
+
 // InstanceBindingReferenceCallback corresponds to C type GDExtensionInstanceBindingReferenceCallback
 type InstanceBindingReferenceCallback C.GDExtensionInstanceBindingReferenceCallback
+
 // InstanceBindingCallbacksRaw corresponds to C type GDExtensionInstanceBindingCallbacks
 type InstanceBindingCallbacksRaw C.GDExtensionInstanceBindingCallbacks
 
@@ -227,22 +269,22 @@ func InstanceBindingCallbacksRawFromUnsafe(p unsafe.Pointer) *InstanceBindingCal
 }
 
 type InstanceBindingCallbacks struct {
-	CreateCallback InstanceBindingCreateCallback
-	FreeCallback InstanceBindingFreeCallback
+	CreateCallback    InstanceBindingCreateCallback
+	FreeCallback      InstanceBindingFreeCallback
 	ReferenceCallback InstanceBindingReferenceCallback
 }
 
 func CNewInstanceBindingCallbacks() *InstanceBindingCallbacks {
-  return (*InstanceBindingCallbacks)(C.malloc(C.sizeof_GDExtensionInstanceBindingCallbacks))
+	return (*InstanceBindingCallbacks)(C.malloc(C.sizeof_GDExtensionInstanceBindingCallbacks))
 }
 
 func CNewInstanceBindingCallbacksArray(size int) []InstanceBindingCallbacks {
-  ptr := (*InstanceBindingCallbacks)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionInstanceBindingCallbacks))
-  return unsafe.Slice(ptr, size)
+	ptr := (*InstanceBindingCallbacks)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionInstanceBindingCallbacks))
+	return unsafe.Slice(ptr, size)
 }
 
 func CFreeInstanceBindingCallbacks(p *InstanceBindingCallbacks) {
-  C.free(unsafe.Pointer(p))
+	C.free(unsafe.Pointer(p))
 }
 
 // ToRaw converts InstanceBindingCallbacks to a InstanceBindingCallbacksRaw
@@ -254,16 +296,21 @@ func (me *InstanceBindingCallbacks) ToRaw() (InstanceBindingCallbacksRaw, func()
 	raw.reference_callback = C.GDExtensionInstanceBindingReferenceCallback(me.ReferenceCallback)
 
 	return raw, func() {
-  }
+	}
 }
+
 // ClassInstancePtr is equivalent to C type GDExtensionClassInstancePtr
 type ClassInstancePtr C.GDExtensionClassInstancePtr
+
 // ClassSet corresponds to C type GDExtensionClassSet
 type ClassSet C.GDExtensionClassSet
+
 // ClassGet corresponds to C type GDExtensionClassGet
 type ClassGet C.GDExtensionClassGet
+
 // ClassGetRID corresponds to C type GDExtensionClassGetRID
 type ClassGetRID C.GDExtensionClassGetRID
+
 // PropertyInfoRaw corresponds to C type GDExtensionPropertyInfo
 type PropertyInfoRaw C.GDExtensionPropertyInfo
 
@@ -273,25 +320,25 @@ func PropertyInfoRawFromUnsafe(p unsafe.Pointer) *PropertyInfoRaw {
 }
 
 type PropertyInfo struct {
-	Type VariantType
-	Name StringNamePtr
-	ClassName StringNamePtr
-	Hint uint
+	Type       VariantType
+	Name       StringNamePtr
+	ClassName  StringNamePtr
+	Hint       uint
 	HintString StringPtr
-	Usage uint
+	Usage      uint
 }
 
 func CNewPropertyInfo() *PropertyInfo {
-  return (*PropertyInfo)(C.malloc(C.sizeof_GDExtensionPropertyInfo))
+	return (*PropertyInfo)(C.malloc(C.sizeof_GDExtensionPropertyInfo))
 }
 
 func CNewPropertyInfoArray(size int) []PropertyInfo {
-  ptr := (*PropertyInfo)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionPropertyInfo))
-  return unsafe.Slice(ptr, size)
+	ptr := (*PropertyInfo)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionPropertyInfo))
+	return unsafe.Slice(ptr, size)
 }
 
 func CFreePropertyInfo(p *PropertyInfo) {
-  C.free(unsafe.Pointer(p))
+	C.free(unsafe.Pointer(p))
 }
 
 // ToRaw converts PropertyInfo to a PropertyInfoRaw
@@ -306,8 +353,9 @@ func (me *PropertyInfo) ToRaw() (PropertyInfoRaw, func()) {
 	raw.usage = C.uint32_t(me.Usage)
 
 	return raw, func() {
-  }
+	}
 }
+
 // MethodInfoRaw corresponds to C type GDExtensionMethodInfo
 type MethodInfoRaw C.GDExtensionMethodInfo
 
@@ -317,27 +365,27 @@ func MethodInfoRawFromUnsafe(p unsafe.Pointer) *MethodInfoRaw {
 }
 
 type MethodInfo struct {
-	Name StringNamePtr
-	ReturnValue PropertyInfo
-	Flags uint
-	Id int
-	ArgumentCount uint
-	Arguments *PropertyInfo
+	Name                 StringNamePtr
+	ReturnValue          PropertyInfo
+	Flags                uint
+	Id                   int
+	ArgumentCount        uint
+	Arguments            *PropertyInfo
 	DefaultArgumentCount uint
-	DefaultArguments *VariantPtr
+	DefaultArguments     *VariantPtr
 }
 
 func CNewMethodInfo() *MethodInfo {
-  return (*MethodInfo)(C.malloc(C.sizeof_GDExtensionMethodInfo))
+	return (*MethodInfo)(C.malloc(C.sizeof_GDExtensionMethodInfo))
 }
 
 func CNewMethodInfoArray(size int) []MethodInfo {
-  ptr := (*MethodInfo)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionMethodInfo))
-  return unsafe.Slice(ptr, size)
+	ptr := (*MethodInfo)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionMethodInfo))
+	return unsafe.Slice(ptr, size)
 }
 
 func CFreeMethodInfo(p *MethodInfo) {
-  C.free(unsafe.Pointer(p))
+	C.free(unsafe.Pointer(p))
 }
 
 // ToRaw converts MethodInfo to a MethodInfoRaw
@@ -354,42 +402,60 @@ func (me *MethodInfo) ToRaw() (MethodInfoRaw, func()) {
 	raw.default_arguments = *(**C.GDExtensionVariantPtr)(unsafe.Pointer(&me.DefaultArguments))
 
 	return raw, func() {
-  }
+	}
 }
+
 // ClassGetPropertyList corresponds to C type GDExtensionClassGetPropertyList
 type ClassGetPropertyList C.GDExtensionClassGetPropertyList
+
 // ClassFreePropertyList corresponds to C type GDExtensionClassFreePropertyList
 type ClassFreePropertyList C.GDExtensionClassFreePropertyList
+
 // ClassPropertyCanRevert corresponds to C type GDExtensionClassPropertyCanRevert
 type ClassPropertyCanRevert C.GDExtensionClassPropertyCanRevert
+
 // ClassPropertyGetRevert corresponds to C type GDExtensionClassPropertyGetRevert
 type ClassPropertyGetRevert C.GDExtensionClassPropertyGetRevert
+
 // ClassValidateProperty corresponds to C type GDExtensionClassValidateProperty
 type ClassValidateProperty C.GDExtensionClassValidateProperty
+
 // ClassNotification corresponds to C type GDExtensionClassNotification
 type ClassNotification C.GDExtensionClassNotification
+
 // ClassNotification2 corresponds to C type GDExtensionClassNotification2
 type ClassNotification2 C.GDExtensionClassNotification2
+
 // ClassToString corresponds to C type GDExtensionClassToString
 type ClassToString C.GDExtensionClassToString
+
 // ClassReference corresponds to C type GDExtensionClassReference
 type ClassReference C.GDExtensionClassReference
+
 // ClassUnreference corresponds to C type GDExtensionClassUnreference
 type ClassUnreference C.GDExtensionClassUnreference
+
 // ClassCallVirtual corresponds to C type GDExtensionClassCallVirtual
 type ClassCallVirtual C.GDExtensionClassCallVirtual
+
 // ClassCreateInstance corresponds to C type GDExtensionClassCreateInstance
 type ClassCreateInstance C.GDExtensionClassCreateInstance
+
 // ClassFreeInstance corresponds to C type GDExtensionClassFreeInstance
 type ClassFreeInstance C.GDExtensionClassFreeInstance
+
 // ClassRecreateInstance corresponds to C type GDExtensionClassRecreateInstance
 type ClassRecreateInstance C.GDExtensionClassRecreateInstance
+
 // ClassGetVirtual corresponds to C type GDExtensionClassGetVirtual
 type ClassGetVirtual C.GDExtensionClassGetVirtual
+
 // ClassGetVirtualCallData corresponds to C type GDExtensionClassGetVirtualCallData
 type ClassGetVirtualCallData C.GDExtensionClassGetVirtualCallData
+
 // ClassCallVirtualWithData corresponds to C type GDExtensionClassCallVirtualWithData
 type ClassCallVirtualWithData C.GDExtensionClassCallVirtualWithData
+
 // ClassCreationInfoRaw corresponds to C type GDExtensionClassCreationInfo
 type ClassCreationInfoRaw C.GDExtensionClassCreationInfo
 
@@ -399,36 +465,36 @@ func ClassCreationInfoRawFromUnsafe(p unsafe.Pointer) *ClassCreationInfoRaw {
 }
 
 type ClassCreationInfo struct {
-	IsVirtual Bool
-	IsAbstract Bool
-	SetFunc ClassSet
-	GetFunc ClassGet
-	GetPropertyListFunc ClassGetPropertyList
-	FreePropertyListFunc ClassFreePropertyList
+	IsVirtual             Bool
+	IsAbstract            Bool
+	SetFunc               ClassSet
+	GetFunc               ClassGet
+	GetPropertyListFunc   ClassGetPropertyList
+	FreePropertyListFunc  ClassFreePropertyList
 	PropertyCanRevertFunc ClassPropertyCanRevert
 	PropertyGetRevertFunc ClassPropertyGetRevert
-	NotificationFunc ClassNotification
-	ToStringFunc ClassToString
-	ReferenceFunc ClassReference
-	UnreferenceFunc ClassUnreference
-	CreateInstanceFunc ClassCreateInstance
-	FreeInstanceFunc ClassFreeInstance
-	GetVirtualFunc ClassGetVirtual
-	GetRidFunc ClassGetRID
-	ClassUserdata unsafe.Pointer
+	NotificationFunc      ClassNotification
+	ToStringFunc          ClassToString
+	ReferenceFunc         ClassReference
+	UnreferenceFunc       ClassUnreference
+	CreateInstanceFunc    ClassCreateInstance
+	FreeInstanceFunc      ClassFreeInstance
+	GetVirtualFunc        ClassGetVirtual
+	GetRidFunc            ClassGetRID
+	ClassUserdata         unsafe.Pointer
 }
 
 func CNewClassCreationInfo() *ClassCreationInfo {
-  return (*ClassCreationInfo)(C.malloc(C.sizeof_GDExtensionClassCreationInfo))
+	return (*ClassCreationInfo)(C.malloc(C.sizeof_GDExtensionClassCreationInfo))
 }
 
 func CNewClassCreationInfoArray(size int) []ClassCreationInfo {
-  ptr := (*ClassCreationInfo)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionClassCreationInfo))
-  return unsafe.Slice(ptr, size)
+	ptr := (*ClassCreationInfo)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionClassCreationInfo))
+	return unsafe.Slice(ptr, size)
 }
 
 func CFreeClassCreationInfo(p *ClassCreationInfo) {
-  C.free(unsafe.Pointer(p))
+	C.free(unsafe.Pointer(p))
 }
 
 // ToRaw converts ClassCreationInfo to a ClassCreationInfoRaw
@@ -454,8 +520,9 @@ func (me *ClassCreationInfo) ToRaw() (ClassCreationInfoRaw, func()) {
 	raw.class_userdata = me.ClassUserdata
 
 	return raw, func() {
-  }
+	}
 }
+
 // ClassCreationInfo2Raw corresponds to C type GDExtensionClassCreationInfo2
 type ClassCreationInfo2Raw C.GDExtensionClassCreationInfo2
 
@@ -465,41 +532,41 @@ func ClassCreationInfo2RawFromUnsafe(p unsafe.Pointer) *ClassCreationInfo2Raw {
 }
 
 type ClassCreationInfo2 struct {
-	IsVirtual Bool
-	IsAbstract Bool
-	IsExposed Bool
-	SetFunc ClassSet
-	GetFunc ClassGet
-	GetPropertyListFunc ClassGetPropertyList
-	FreePropertyListFunc ClassFreePropertyList
-	PropertyCanRevertFunc ClassPropertyCanRevert
-	PropertyGetRevertFunc ClassPropertyGetRevert
-	ValidatePropertyFunc ClassValidateProperty
-	NotificationFunc ClassNotification2
-	ToStringFunc ClassToString
-	ReferenceFunc ClassReference
-	UnreferenceFunc ClassUnreference
-	CreateInstanceFunc ClassCreateInstance
-	FreeInstanceFunc ClassFreeInstance
-	RecreateInstanceFunc ClassRecreateInstance
-	GetVirtualFunc ClassGetVirtual
-	GetVirtualCallDataFunc ClassGetVirtualCallData
+	IsVirtual               Bool
+	IsAbstract              Bool
+	IsExposed               Bool
+	SetFunc                 ClassSet
+	GetFunc                 ClassGet
+	GetPropertyListFunc     ClassGetPropertyList
+	FreePropertyListFunc    ClassFreePropertyList
+	PropertyCanRevertFunc   ClassPropertyCanRevert
+	PropertyGetRevertFunc   ClassPropertyGetRevert
+	ValidatePropertyFunc    ClassValidateProperty
+	NotificationFunc        ClassNotification2
+	ToStringFunc            ClassToString
+	ReferenceFunc           ClassReference
+	UnreferenceFunc         ClassUnreference
+	CreateInstanceFunc      ClassCreateInstance
+	FreeInstanceFunc        ClassFreeInstance
+	RecreateInstanceFunc    ClassRecreateInstance
+	GetVirtualFunc          ClassGetVirtual
+	GetVirtualCallDataFunc  ClassGetVirtualCallData
 	CallVirtualWithDataFunc ClassCallVirtualWithData
-	GetRidFunc ClassGetRID
-	ClassUserdata unsafe.Pointer
+	GetRidFunc              ClassGetRID
+	ClassUserdata           unsafe.Pointer
 }
 
 func CNewClassCreationInfo2() *ClassCreationInfo2 {
-  return (*ClassCreationInfo2)(C.malloc(C.sizeof_GDExtensionClassCreationInfo2))
+	return (*ClassCreationInfo2)(C.malloc(C.sizeof_GDExtensionClassCreationInfo2))
 }
 
 func CNewClassCreationInfo2Array(size int) []ClassCreationInfo2 {
-  ptr := (*ClassCreationInfo2)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionClassCreationInfo2))
-  return unsafe.Slice(ptr, size)
+	ptr := (*ClassCreationInfo2)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionClassCreationInfo2))
+	return unsafe.Slice(ptr, size)
 }
 
 func CFreeClassCreationInfo2(p *ClassCreationInfo2) {
-  C.free(unsafe.Pointer(p))
+	C.free(unsafe.Pointer(p))
 }
 
 // ToRaw converts ClassCreationInfo2 to a ClassCreationInfo2Raw
@@ -530,46 +597,53 @@ func (me *ClassCreationInfo2) ToRaw() (ClassCreationInfo2Raw, func()) {
 	raw.class_userdata = me.ClassUserdata
 
 	return raw, func() {
-  }
+	}
 }
+
 // ClassLibraryPtr is equivalent to C type GDExtensionClassLibraryPtr
 type ClassLibraryPtr C.GDExtensionClassLibraryPtr
+
 // ClassMethodFlags represents the enum GDExtensionClassMethodFlags
 type ClassMethodFlags uint32
 
 // ClassMethodFlags values
 const (
-  MethodFlagNormal ClassMethodFlags = 1
-  MethodFlagEditor ClassMethodFlags = 2
-  MethodFlagConst ClassMethodFlags = 4
-  MethodFlagVirtual ClassMethodFlags = 8
-  MethodFlagVararg ClassMethodFlags = 16
-  MethodFlagStatic ClassMethodFlags = 32
-  MethodFlagsDefault ClassMethodFlags = 1
+	MethodFlagNormal   ClassMethodFlags = 1
+	MethodFlagEditor   ClassMethodFlags = 2
+	MethodFlagConst    ClassMethodFlags = 4
+	MethodFlagVirtual  ClassMethodFlags = 8
+	MethodFlagVararg   ClassMethodFlags = 16
+	MethodFlagStatic   ClassMethodFlags = 32
+	MethodFlagsDefault ClassMethodFlags = 1
 )
+
 // ClassMethodArgumentMetadata represents the enum GDExtensionClassMethodArgumentMetadata
 type ClassMethodArgumentMetadata uint32
 
 // ClassMethodArgumentMetadata values
 const (
-  MethodArgumentMetadataNone ClassMethodArgumentMetadata = 0
-  MethodArgumentMetadataIntIsInt8 ClassMethodArgumentMetadata = 1
-  MethodArgumentMetadataIntIsInt16 ClassMethodArgumentMetadata = 2
-  MethodArgumentMetadataIntIsInt32 ClassMethodArgumentMetadata = 3
-  MethodArgumentMetadataIntIsInt64 ClassMethodArgumentMetadata = 4
-  MethodArgumentMetadataIntIsUint8 ClassMethodArgumentMetadata = 5
-  MethodArgumentMetadataIntIsUint16 ClassMethodArgumentMetadata = 6
-  MethodArgumentMetadataIntIsUint32 ClassMethodArgumentMetadata = 7
-  MethodArgumentMetadataIntIsUint64 ClassMethodArgumentMetadata = 8
-  MethodArgumentMetadataRealIsFloat ClassMethodArgumentMetadata = 9
-  MethodArgumentMetadataRealIsDouble ClassMethodArgumentMetadata = 10
+	MethodArgumentMetadataNone         ClassMethodArgumentMetadata = 0
+	MethodArgumentMetadataIntIsInt8    ClassMethodArgumentMetadata = 1
+	MethodArgumentMetadataIntIsInt16   ClassMethodArgumentMetadata = 2
+	MethodArgumentMetadataIntIsInt32   ClassMethodArgumentMetadata = 3
+	MethodArgumentMetadataIntIsInt64   ClassMethodArgumentMetadata = 4
+	MethodArgumentMetadataIntIsUint8   ClassMethodArgumentMetadata = 5
+	MethodArgumentMetadataIntIsUint16  ClassMethodArgumentMetadata = 6
+	MethodArgumentMetadataIntIsUint32  ClassMethodArgumentMetadata = 7
+	MethodArgumentMetadataIntIsUint64  ClassMethodArgumentMetadata = 8
+	MethodArgumentMetadataRealIsFloat  ClassMethodArgumentMetadata = 9
+	MethodArgumentMetadataRealIsDouble ClassMethodArgumentMetadata = 10
 )
+
 // ClassMethodCall corresponds to C type GDExtensionClassMethodCall
 type ClassMethodCall C.GDExtensionClassMethodCall
+
 // ClassMethodValidatedCall corresponds to C type GDExtensionClassMethodValidatedCall
 type ClassMethodValidatedCall C.GDExtensionClassMethodValidatedCall
+
 // ClassMethodPtrCall corresponds to C type GDExtensionClassMethodPtrCall
 type ClassMethodPtrCall C.GDExtensionClassMethodPtrCall
+
 // ClassMethodInfoRaw corresponds to C type GDExtensionClassMethodInfo
 type ClassMethodInfoRaw C.GDExtensionClassMethodInfo
 
@@ -579,32 +653,32 @@ func ClassMethodInfoRawFromUnsafe(p unsafe.Pointer) *ClassMethodInfoRaw {
 }
 
 type ClassMethodInfo struct {
-	Name StringNamePtr
-	MethodUserdata unsafe.Pointer
-	CallFunc ClassMethodCall
-	PtrcallFunc ClassMethodPtrCall
-	MethodFlags uint
-	HasReturnValue Bool
-	ReturnValueInfo *PropertyInfo
-	ReturnValueMetadata ClassMethodArgumentMetadata
-	ArgumentCount uint
-	ArgumentsInfo *PropertyInfo
-	ArgumentsMetadata *ClassMethodArgumentMetadata
+	Name                 StringNamePtr
+	MethodUserdata       unsafe.Pointer
+	CallFunc             ClassMethodCall
+	PtrcallFunc          ClassMethodPtrCall
+	MethodFlags          uint
+	HasReturnValue       Bool
+	ReturnValueInfo      *PropertyInfo
+	ReturnValueMetadata  ClassMethodArgumentMetadata
+	ArgumentCount        uint
+	ArgumentsInfo        *PropertyInfo
+	ArgumentsMetadata    *ClassMethodArgumentMetadata
 	DefaultArgumentCount uint
-	DefaultArguments *VariantPtr
+	DefaultArguments     *VariantPtr
 }
 
 func CNewClassMethodInfo() *ClassMethodInfo {
-  return (*ClassMethodInfo)(C.malloc(C.sizeof_GDExtensionClassMethodInfo))
+	return (*ClassMethodInfo)(C.malloc(C.sizeof_GDExtensionClassMethodInfo))
 }
 
 func CNewClassMethodInfoArray(size int) []ClassMethodInfo {
-  ptr := (*ClassMethodInfo)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionClassMethodInfo))
-  return unsafe.Slice(ptr, size)
+	ptr := (*ClassMethodInfo)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionClassMethodInfo))
+	return unsafe.Slice(ptr, size)
 }
 
 func CFreeClassMethodInfo(p *ClassMethodInfo) {
-  C.free(unsafe.Pointer(p))
+	C.free(unsafe.Pointer(p))
 }
 
 // ToRaw converts ClassMethodInfo to a ClassMethodInfoRaw
@@ -626,22 +700,30 @@ func (me *ClassMethodInfo) ToRaw() (ClassMethodInfoRaw, func()) {
 	raw.default_arguments = *(**C.GDExtensionVariantPtr)(unsafe.Pointer(&me.DefaultArguments))
 
 	return raw, func() {
-  }
+	}
 }
+
 // CallableCustomCall corresponds to C type GDExtensionCallableCustomCall
 type CallableCustomCall C.GDExtensionCallableCustomCall
+
 // CallableCustomIsValid corresponds to C type GDExtensionCallableCustomIsValid
 type CallableCustomIsValid C.GDExtensionCallableCustomIsValid
+
 // CallableCustomFree corresponds to C type GDExtensionCallableCustomFree
 type CallableCustomFree C.GDExtensionCallableCustomFree
+
 // CallableCustomHash corresponds to C type GDExtensionCallableCustomHash
 type CallableCustomHash C.GDExtensionCallableCustomHash
+
 // CallableCustomEqual corresponds to C type GDExtensionCallableCustomEqual
 type CallableCustomEqual C.GDExtensionCallableCustomEqual
+
 // CallableCustomLessThan corresponds to C type GDExtensionCallableCustomLessThan
 type CallableCustomLessThan C.GDExtensionCallableCustomLessThan
+
 // CallableCustomToString corresponds to C type GDExtensionCallableCustomToString
 type CallableCustomToString C.GDExtensionCallableCustomToString
+
 // CallableCustomInfoRaw corresponds to C type GDExtensionCallableCustomInfo
 type CallableCustomInfoRaw C.GDExtensionCallableCustomInfo
 
@@ -652,28 +734,28 @@ func CallableCustomInfoRawFromUnsafe(p unsafe.Pointer) *CallableCustomInfoRaw {
 
 type CallableCustomInfo struct {
 	CallableUserdata unsafe.Pointer
-	Token unsafe.Pointer
-	ObjectId uint64
-	CallFunc CallableCustomCall
-	IsValidFunc CallableCustomIsValid
-	FreeFunc CallableCustomFree
-	HashFunc CallableCustomHash
-	EqualFunc CallableCustomEqual
-	LessThanFunc CallableCustomLessThan
-	ToStringFunc CallableCustomToString
+	Token            unsafe.Pointer
+	ObjectId         uint64
+	CallFunc         CallableCustomCall
+	IsValidFunc      CallableCustomIsValid
+	FreeFunc         CallableCustomFree
+	HashFunc         CallableCustomHash
+	EqualFunc        CallableCustomEqual
+	LessThanFunc     CallableCustomLessThan
+	ToStringFunc     CallableCustomToString
 }
 
 func CNewCallableCustomInfo() *CallableCustomInfo {
-  return (*CallableCustomInfo)(C.malloc(C.sizeof_GDExtensionCallableCustomInfo))
+	return (*CallableCustomInfo)(C.malloc(C.sizeof_GDExtensionCallableCustomInfo))
 }
 
 func CNewCallableCustomInfoArray(size int) []CallableCustomInfo {
-  ptr := (*CallableCustomInfo)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionCallableCustomInfo))
-  return unsafe.Slice(ptr, size)
+	ptr := (*CallableCustomInfo)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionCallableCustomInfo))
+	return unsafe.Slice(ptr, size)
 }
 
 func CFreeCallableCustomInfo(p *CallableCustomInfo) {
-  C.free(unsafe.Pointer(p))
+	C.free(unsafe.Pointer(p))
 }
 
 // ToRaw converts CallableCustomInfo to a CallableCustomInfoRaw
@@ -692,64 +774,93 @@ func (me *CallableCustomInfo) ToRaw() (CallableCustomInfoRaw, func()) {
 	raw.to_string_func = C.GDExtensionCallableCustomToString(me.ToStringFunc)
 
 	return raw, func() {
-  }
+	}
 }
+
 // ScriptInstanceDataPtr is equivalent to C type GDExtensionScriptInstanceDataPtr
 type ScriptInstanceDataPtr C.GDExtensionScriptInstanceDataPtr
+
 // ScriptInstanceSet corresponds to C type GDExtensionScriptInstanceSet
 type ScriptInstanceSet C.GDExtensionScriptInstanceSet
+
 // ScriptInstanceGet corresponds to C type GDExtensionScriptInstanceGet
 type ScriptInstanceGet C.GDExtensionScriptInstanceGet
+
 // ScriptInstanceGetPropertyList corresponds to C type GDExtensionScriptInstanceGetPropertyList
 type ScriptInstanceGetPropertyList C.GDExtensionScriptInstanceGetPropertyList
+
 // ScriptInstanceFreePropertyList corresponds to C type GDExtensionScriptInstanceFreePropertyList
 type ScriptInstanceFreePropertyList C.GDExtensionScriptInstanceFreePropertyList
+
 // ScriptInstanceGetClassCategory corresponds to C type GDExtensionScriptInstanceGetClassCategory
 type ScriptInstanceGetClassCategory C.GDExtensionScriptInstanceGetClassCategory
+
 // ScriptInstanceGetPropertyType corresponds to C type GDExtensionScriptInstanceGetPropertyType
 type ScriptInstanceGetPropertyType C.GDExtensionScriptInstanceGetPropertyType
+
 // ScriptInstanceValidateProperty corresponds to C type GDExtensionScriptInstanceValidateProperty
 type ScriptInstanceValidateProperty C.GDExtensionScriptInstanceValidateProperty
+
 // ScriptInstancePropertyCanRevert corresponds to C type GDExtensionScriptInstancePropertyCanRevert
 type ScriptInstancePropertyCanRevert C.GDExtensionScriptInstancePropertyCanRevert
+
 // ScriptInstancePropertyGetRevert corresponds to C type GDExtensionScriptInstancePropertyGetRevert
 type ScriptInstancePropertyGetRevert C.GDExtensionScriptInstancePropertyGetRevert
+
 // ScriptInstanceGetOwner corresponds to C type GDExtensionScriptInstanceGetOwner
 type ScriptInstanceGetOwner C.GDExtensionScriptInstanceGetOwner
+
 // ScriptInstancePropertyStateAdd corresponds to C type GDExtensionScriptInstancePropertyStateAdd
 type ScriptInstancePropertyStateAdd C.GDExtensionScriptInstancePropertyStateAdd
+
 // ScriptInstanceGetPropertyState corresponds to C type GDExtensionScriptInstanceGetPropertyState
 type ScriptInstanceGetPropertyState C.GDExtensionScriptInstanceGetPropertyState
+
 // ScriptInstanceGetMethodList corresponds to C type GDExtensionScriptInstanceGetMethodList
 type ScriptInstanceGetMethodList C.GDExtensionScriptInstanceGetMethodList
+
 // ScriptInstanceFreeMethodList corresponds to C type GDExtensionScriptInstanceFreeMethodList
 type ScriptInstanceFreeMethodList C.GDExtensionScriptInstanceFreeMethodList
+
 // ScriptInstanceHasMethod corresponds to C type GDExtensionScriptInstanceHasMethod
 type ScriptInstanceHasMethod C.GDExtensionScriptInstanceHasMethod
+
 // ScriptInstanceCall corresponds to C type GDExtensionScriptInstanceCall
 type ScriptInstanceCall C.GDExtensionScriptInstanceCall
+
 // ScriptInstanceNotification corresponds to C type GDExtensionScriptInstanceNotification
 type ScriptInstanceNotification C.GDExtensionScriptInstanceNotification
+
 // ScriptInstanceNotification2 corresponds to C type GDExtensionScriptInstanceNotification2
 type ScriptInstanceNotification2 C.GDExtensionScriptInstanceNotification2
+
 // ScriptInstanceToString corresponds to C type GDExtensionScriptInstanceToString
 type ScriptInstanceToString C.GDExtensionScriptInstanceToString
+
 // ScriptInstanceRefCountIncremented corresponds to C type GDExtensionScriptInstanceRefCountIncremented
 type ScriptInstanceRefCountIncremented C.GDExtensionScriptInstanceRefCountIncremented
+
 // ScriptInstanceRefCountDecremented corresponds to C type GDExtensionScriptInstanceRefCountDecremented
 type ScriptInstanceRefCountDecremented C.GDExtensionScriptInstanceRefCountDecremented
+
 // ScriptInstanceGetScript corresponds to C type GDExtensionScriptInstanceGetScript
 type ScriptInstanceGetScript C.GDExtensionScriptInstanceGetScript
+
 // ScriptInstanceIsPlaceholder corresponds to C type GDExtensionScriptInstanceIsPlaceholder
 type ScriptInstanceIsPlaceholder C.GDExtensionScriptInstanceIsPlaceholder
+
 // ScriptLanguagePtr is equivalent to C type GDExtensionScriptLanguagePtr
 type ScriptLanguagePtr C.GDExtensionScriptLanguagePtr
+
 // ScriptInstanceGetLanguage corresponds to C type GDExtensionScriptInstanceGetLanguage
 type ScriptInstanceGetLanguage C.GDExtensionScriptInstanceGetLanguage
+
 // ScriptInstanceFree corresponds to C type GDExtensionScriptInstanceFree
 type ScriptInstanceFree C.GDExtensionScriptInstanceFree
+
 // ScriptInstancePtr is equivalent to C type GDExtensionScriptInstancePtr
 type ScriptInstancePtr C.GDExtensionScriptInstancePtr
+
 // ScriptInstanceInfoRaw corresponds to C type GDExtensionScriptInstanceInfo
 type ScriptInstanceInfoRaw C.GDExtensionScriptInstanceInfo
 
@@ -759,42 +870,42 @@ func ScriptInstanceInfoRawFromUnsafe(p unsafe.Pointer) *ScriptInstanceInfoRaw {
 }
 
 type ScriptInstanceInfo struct {
-	SetFunc ScriptInstanceSet
-	GetFunc ScriptInstanceGet
-	GetPropertyListFunc ScriptInstanceGetPropertyList
-	FreePropertyListFunc ScriptInstanceFreePropertyList
-	PropertyCanRevertFunc ScriptInstancePropertyCanRevert
-	PropertyGetRevertFunc ScriptInstancePropertyGetRevert
-	GetOwnerFunc ScriptInstanceGetOwner
-	GetPropertyStateFunc ScriptInstanceGetPropertyState
-	GetMethodListFunc ScriptInstanceGetMethodList
-	FreeMethodListFunc ScriptInstanceFreeMethodList
-	GetPropertyTypeFunc ScriptInstanceGetPropertyType
-	HasMethodFunc ScriptInstanceHasMethod
-	CallFunc ScriptInstanceCall
-	NotificationFunc ScriptInstanceNotification
-	ToStringFunc ScriptInstanceToString
+	SetFunc                 ScriptInstanceSet
+	GetFunc                 ScriptInstanceGet
+	GetPropertyListFunc     ScriptInstanceGetPropertyList
+	FreePropertyListFunc    ScriptInstanceFreePropertyList
+	PropertyCanRevertFunc   ScriptInstancePropertyCanRevert
+	PropertyGetRevertFunc   ScriptInstancePropertyGetRevert
+	GetOwnerFunc            ScriptInstanceGetOwner
+	GetPropertyStateFunc    ScriptInstanceGetPropertyState
+	GetMethodListFunc       ScriptInstanceGetMethodList
+	FreeMethodListFunc      ScriptInstanceFreeMethodList
+	GetPropertyTypeFunc     ScriptInstanceGetPropertyType
+	HasMethodFunc           ScriptInstanceHasMethod
+	CallFunc                ScriptInstanceCall
+	NotificationFunc        ScriptInstanceNotification
+	ToStringFunc            ScriptInstanceToString
 	RefcountIncrementedFunc ScriptInstanceRefCountIncremented
 	RefcountDecrementedFunc ScriptInstanceRefCountDecremented
-	GetScriptFunc ScriptInstanceGetScript
-	IsPlaceholderFunc ScriptInstanceIsPlaceholder
-	SetFallbackFunc ScriptInstanceSet
-	GetFallbackFunc ScriptInstanceGet
-	GetLanguageFunc ScriptInstanceGetLanguage
-	FreeFunc ScriptInstanceFree
+	GetScriptFunc           ScriptInstanceGetScript
+	IsPlaceholderFunc       ScriptInstanceIsPlaceholder
+	SetFallbackFunc         ScriptInstanceSet
+	GetFallbackFunc         ScriptInstanceGet
+	GetLanguageFunc         ScriptInstanceGetLanguage
+	FreeFunc                ScriptInstanceFree
 }
 
 func CNewScriptInstanceInfo() *ScriptInstanceInfo {
-  return (*ScriptInstanceInfo)(C.malloc(C.sizeof_GDExtensionScriptInstanceInfo))
+	return (*ScriptInstanceInfo)(C.malloc(C.sizeof_GDExtensionScriptInstanceInfo))
 }
 
 func CNewScriptInstanceInfoArray(size int) []ScriptInstanceInfo {
-  ptr := (*ScriptInstanceInfo)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionScriptInstanceInfo))
-  return unsafe.Slice(ptr, size)
+	ptr := (*ScriptInstanceInfo)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionScriptInstanceInfo))
+	return unsafe.Slice(ptr, size)
 }
 
 func CFreeScriptInstanceInfo(p *ScriptInstanceInfo) {
-  C.free(unsafe.Pointer(p))
+	C.free(unsafe.Pointer(p))
 }
 
 // ToRaw converts ScriptInstanceInfo to a ScriptInstanceInfoRaw
@@ -826,8 +937,9 @@ func (me *ScriptInstanceInfo) ToRaw() (ScriptInstanceInfoRaw, func()) {
 	raw.free_func = C.GDExtensionScriptInstanceFree(me.FreeFunc)
 
 	return raw, func() {
-  }
+	}
 }
+
 // ScriptInstanceInfo2Raw corresponds to C type GDExtensionScriptInstanceInfo2
 type ScriptInstanceInfo2Raw C.GDExtensionScriptInstanceInfo2
 
@@ -837,44 +949,44 @@ func ScriptInstanceInfo2RawFromUnsafe(p unsafe.Pointer) *ScriptInstanceInfo2Raw 
 }
 
 type ScriptInstanceInfo2 struct {
-	SetFunc ScriptInstanceSet
-	GetFunc ScriptInstanceGet
-	GetPropertyListFunc ScriptInstanceGetPropertyList
-	FreePropertyListFunc ScriptInstanceFreePropertyList
-	GetClassCategoryFunc ScriptInstanceGetClassCategory
-	PropertyCanRevertFunc ScriptInstancePropertyCanRevert
-	PropertyGetRevertFunc ScriptInstancePropertyGetRevert
-	GetOwnerFunc ScriptInstanceGetOwner
-	GetPropertyStateFunc ScriptInstanceGetPropertyState
-	GetMethodListFunc ScriptInstanceGetMethodList
-	FreeMethodListFunc ScriptInstanceFreeMethodList
-	GetPropertyTypeFunc ScriptInstanceGetPropertyType
-	ValidatePropertyFunc ScriptInstanceValidateProperty
-	HasMethodFunc ScriptInstanceHasMethod
-	CallFunc ScriptInstanceCall
-	NotificationFunc ScriptInstanceNotification2
-	ToStringFunc ScriptInstanceToString
+	SetFunc                 ScriptInstanceSet
+	GetFunc                 ScriptInstanceGet
+	GetPropertyListFunc     ScriptInstanceGetPropertyList
+	FreePropertyListFunc    ScriptInstanceFreePropertyList
+	GetClassCategoryFunc    ScriptInstanceGetClassCategory
+	PropertyCanRevertFunc   ScriptInstancePropertyCanRevert
+	PropertyGetRevertFunc   ScriptInstancePropertyGetRevert
+	GetOwnerFunc            ScriptInstanceGetOwner
+	GetPropertyStateFunc    ScriptInstanceGetPropertyState
+	GetMethodListFunc       ScriptInstanceGetMethodList
+	FreeMethodListFunc      ScriptInstanceFreeMethodList
+	GetPropertyTypeFunc     ScriptInstanceGetPropertyType
+	ValidatePropertyFunc    ScriptInstanceValidateProperty
+	HasMethodFunc           ScriptInstanceHasMethod
+	CallFunc                ScriptInstanceCall
+	NotificationFunc        ScriptInstanceNotification2
+	ToStringFunc            ScriptInstanceToString
 	RefcountIncrementedFunc ScriptInstanceRefCountIncremented
 	RefcountDecrementedFunc ScriptInstanceRefCountDecremented
-	GetScriptFunc ScriptInstanceGetScript
-	IsPlaceholderFunc ScriptInstanceIsPlaceholder
-	SetFallbackFunc ScriptInstanceSet
-	GetFallbackFunc ScriptInstanceGet
-	GetLanguageFunc ScriptInstanceGetLanguage
-	FreeFunc ScriptInstanceFree
+	GetScriptFunc           ScriptInstanceGetScript
+	IsPlaceholderFunc       ScriptInstanceIsPlaceholder
+	SetFallbackFunc         ScriptInstanceSet
+	GetFallbackFunc         ScriptInstanceGet
+	GetLanguageFunc         ScriptInstanceGetLanguage
+	FreeFunc                ScriptInstanceFree
 }
 
 func CNewScriptInstanceInfo2() *ScriptInstanceInfo2 {
-  return (*ScriptInstanceInfo2)(C.malloc(C.sizeof_GDExtensionScriptInstanceInfo2))
+	return (*ScriptInstanceInfo2)(C.malloc(C.sizeof_GDExtensionScriptInstanceInfo2))
 }
 
 func CNewScriptInstanceInfo2Array(size int) []ScriptInstanceInfo2 {
-  ptr := (*ScriptInstanceInfo2)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionScriptInstanceInfo2))
-  return unsafe.Slice(ptr, size)
+	ptr := (*ScriptInstanceInfo2)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionScriptInstanceInfo2))
+	return unsafe.Slice(ptr, size)
 }
 
 func CFreeScriptInstanceInfo2(p *ScriptInstanceInfo2) {
-  C.free(unsafe.Pointer(p))
+	C.free(unsafe.Pointer(p))
 }
 
 // ToRaw converts ScriptInstanceInfo2 to a ScriptInstanceInfo2Raw
@@ -908,23 +1020,27 @@ func (me *ScriptInstanceInfo2) ToRaw() (ScriptInstanceInfo2Raw, func()) {
 	raw.free_func = C.GDExtensionScriptInstanceFree(me.FreeFunc)
 
 	return raw, func() {
-  }
+	}
 }
+
 // InitializationLevel represents the enum GDExtensionInitializationLevel
 type InitializationLevel uint32
 
 // InitializationLevel values
 const (
-  InitializationCore InitializationLevel = 0
-  InitializationServers InitializationLevel = 1
-  InitializationScene InitializationLevel = 2
-  InitializationEditor InitializationLevel = 3
-  MaxInitializationLevel InitializationLevel = 4
+	InitializationCore     InitializationLevel = 0
+	InitializationServers  InitializationLevel = 1
+	InitializationScene    InitializationLevel = 2
+	InitializationEditor   InitializationLevel = 3
+	MaxInitializationLevel InitializationLevel = 4
 )
+
 // InitializationInitializeFn is a function representing the type of Initialization.<no value>
 type InitializationInitializeFn unsafe.Pointer
+
 // InitializationDeinitializeFn is a function representing the type of Initialization.<no value>
 type InitializationDeinitializeFn unsafe.Pointer
+
 // InitializationRaw corresponds to C type GDExtensionInitialization
 type InitializationRaw C.GDExtensionInitialization
 
@@ -935,22 +1051,22 @@ func InitializationRawFromUnsafe(p unsafe.Pointer) *InitializationRaw {
 
 type Initialization struct {
 	MinimumInitializationLevel InitializationLevel
-	Userdata unsafe.Pointer
-	Initialize InitializationInitializeFn
-	Deinitialize InitializationDeinitializeFn
+	Userdata                   unsafe.Pointer
+	Initialize                 InitializationInitializeFn
+	Deinitialize               InitializationDeinitializeFn
 }
 
 func CNewInitialization() *Initialization {
-  return (*Initialization)(C.malloc(C.sizeof_GDExtensionInitialization))
+	return (*Initialization)(C.malloc(C.sizeof_GDExtensionInitialization))
 }
 
 func CNewInitializationArray(size int) []Initialization {
-  ptr := (*Initialization)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionInitialization))
-  return unsafe.Slice(ptr, size)
+	ptr := (*Initialization)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionInitialization))
+	return unsafe.Slice(ptr, size)
 }
 
 func CFreeInitialization(p *Initialization) {
-  C.free(unsafe.Pointer(p))
+	C.free(unsafe.Pointer(p))
 }
 
 // ToRaw converts Initialization to a InitializationRaw
@@ -963,14 +1079,18 @@ func (me *Initialization) ToRaw() (InitializationRaw, func()) {
 	raw.deinitialize = (*[0]byte)(me.Deinitialize)
 
 	return raw, func() {
-  }
+	}
 }
+
 // InterfaceFunctionPtr corresponds to C type GDExtensionInterfaceFunctionPtr
 type InterfaceFunctionPtr C.GDExtensionInterfaceFunctionPtr
+
 // InterfaceGetProcAddress corresponds to C type GDExtensionInterfaceGetProcAddress
 type InterfaceGetProcAddress C.GDExtensionInterfaceGetProcAddress
+
 // InitializationFunction corresponds to C type GDExtensionInitializationFunction
 type InitializationFunction C.GDExtensionInitializationFunction
+
 // GodotVersionRaw corresponds to C type GDExtensionGodotVersion
 type GodotVersionRaw C.GDExtensionGodotVersion
 
@@ -980,28 +1100,28 @@ func GodotVersionRawFromUnsafe(p unsafe.Pointer) *GodotVersionRaw {
 }
 
 type GodotVersion struct {
-	Major uint
-	Minor uint
-	Patch uint
+	Major  uint
+	Minor  uint
+	Patch  uint
 	String string
 }
 
 func CNewGodotVersion() *GodotVersion {
-  return (*GodotVersion)(C.malloc(C.sizeof_GDExtensionGodotVersion))
+	return (*GodotVersion)(C.malloc(C.sizeof_GDExtensionGodotVersion))
 }
 
 func CNewGodotVersionArray(size int) []GodotVersion {
-  ptr := (*GodotVersion)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionGodotVersion))
-  return unsafe.Slice(ptr, size)
+	ptr := (*GodotVersion)(C.malloc(C.size_t(size) * C.sizeof_GDExtensionGodotVersion))
+	return unsafe.Slice(ptr, size)
 }
 
 func CFreeGodotVersion(p *GodotVersion) {
-  C.free(unsafe.Pointer(p))
+	C.free(unsafe.Pointer(p))
 }
 
 // ToRaw converts GodotVersion to a GodotVersionRaw
 func (me *GodotVersion) ToRaw() (GodotVersionRaw, func()) {
-  cmeString := C.CString(me.String)
+	cmeString := C.CString(me.String)
 
 	raw := GodotVersionRaw{}
 	raw.major = C.uint32_t(me.Major)
@@ -1010,304 +1130,453 @@ func (me *GodotVersion) ToRaw() (GodotVersionRaw, func()) {
 	raw.string = cmeString
 
 	return raw, func() {
-    C.free(unsafe.Pointer(cmeString))
-  }
+		C.free(unsafe.Pointer(cmeString))
+	}
 }
+
 // InterfaceGetGodotVersion corresponds to C type GDExtensionInterfaceGetGodotVersion
 type InterfaceGetGodotVersion C.GDExtensionInterfaceGetGodotVersion
+
 // InterfaceMemAlloc corresponds to C type GDExtensionInterfaceMemAlloc
 type InterfaceMemAlloc C.GDExtensionInterfaceMemAlloc
+
 // InterfaceMemRealloc corresponds to C type GDExtensionInterfaceMemRealloc
 type InterfaceMemRealloc C.GDExtensionInterfaceMemRealloc
+
 // InterfaceMemFree corresponds to C type GDExtensionInterfaceMemFree
 type InterfaceMemFree C.GDExtensionInterfaceMemFree
+
 // InterfacePrintError corresponds to C type GDExtensionInterfacePrintError
 type InterfacePrintError C.GDExtensionInterfacePrintError
+
 // InterfacePrintErrorWithMessage corresponds to C type GDExtensionInterfacePrintErrorWithMessage
 type InterfacePrintErrorWithMessage C.GDExtensionInterfacePrintErrorWithMessage
+
 // InterfacePrintWarning corresponds to C type GDExtensionInterfacePrintWarning
 type InterfacePrintWarning C.GDExtensionInterfacePrintWarning
+
 // InterfacePrintWarningWithMessage corresponds to C type GDExtensionInterfacePrintWarningWithMessage
 type InterfacePrintWarningWithMessage C.GDExtensionInterfacePrintWarningWithMessage
+
 // InterfacePrintScriptError corresponds to C type GDExtensionInterfacePrintScriptError
 type InterfacePrintScriptError C.GDExtensionInterfacePrintScriptError
+
 // InterfacePrintScriptErrorWithMessage corresponds to C type GDExtensionInterfacePrintScriptErrorWithMessage
 type InterfacePrintScriptErrorWithMessage C.GDExtensionInterfacePrintScriptErrorWithMessage
+
 // InterfaceGetNativeStructSize corresponds to C type GDExtensionInterfaceGetNativeStructSize
 type InterfaceGetNativeStructSize C.GDExtensionInterfaceGetNativeStructSize
+
 // InterfaceVariantNewCopy corresponds to C type GDExtensionInterfaceVariantNewCopy
 type InterfaceVariantNewCopy C.GDExtensionInterfaceVariantNewCopy
+
 // InterfaceVariantNewNil corresponds to C type GDExtensionInterfaceVariantNewNil
 type InterfaceVariantNewNil C.GDExtensionInterfaceVariantNewNil
+
 // InterfaceVariantDestroy corresponds to C type GDExtensionInterfaceVariantDestroy
 type InterfaceVariantDestroy C.GDExtensionInterfaceVariantDestroy
+
 // InterfaceVariantCall corresponds to C type GDExtensionInterfaceVariantCall
 type InterfaceVariantCall C.GDExtensionInterfaceVariantCall
+
 // InterfaceVariantCallStatic corresponds to C type GDExtensionInterfaceVariantCallStatic
 type InterfaceVariantCallStatic C.GDExtensionInterfaceVariantCallStatic
+
 // InterfaceVariantEvaluate corresponds to C type GDExtensionInterfaceVariantEvaluate
 type InterfaceVariantEvaluate C.GDExtensionInterfaceVariantEvaluate
+
 // InterfaceVariantSet corresponds to C type GDExtensionInterfaceVariantSet
 type InterfaceVariantSet C.GDExtensionInterfaceVariantSet
+
 // InterfaceVariantSetNamed corresponds to C type GDExtensionInterfaceVariantSetNamed
 type InterfaceVariantSetNamed C.GDExtensionInterfaceVariantSetNamed
+
 // InterfaceVariantSetKeyed corresponds to C type GDExtensionInterfaceVariantSetKeyed
 type InterfaceVariantSetKeyed C.GDExtensionInterfaceVariantSetKeyed
+
 // InterfaceVariantSetIndexed corresponds to C type GDExtensionInterfaceVariantSetIndexed
 type InterfaceVariantSetIndexed C.GDExtensionInterfaceVariantSetIndexed
+
 // InterfaceVariantGet corresponds to C type GDExtensionInterfaceVariantGet
 type InterfaceVariantGet C.GDExtensionInterfaceVariantGet
+
 // InterfaceVariantGetNamed corresponds to C type GDExtensionInterfaceVariantGetNamed
 type InterfaceVariantGetNamed C.GDExtensionInterfaceVariantGetNamed
+
 // InterfaceVariantGetKeyed corresponds to C type GDExtensionInterfaceVariantGetKeyed
 type InterfaceVariantGetKeyed C.GDExtensionInterfaceVariantGetKeyed
+
 // InterfaceVariantGetIndexed corresponds to C type GDExtensionInterfaceVariantGetIndexed
 type InterfaceVariantGetIndexed C.GDExtensionInterfaceVariantGetIndexed
+
 // InterfaceVariantIterInit corresponds to C type GDExtensionInterfaceVariantIterInit
 type InterfaceVariantIterInit C.GDExtensionInterfaceVariantIterInit
+
 // InterfaceVariantIterNext corresponds to C type GDExtensionInterfaceVariantIterNext
 type InterfaceVariantIterNext C.GDExtensionInterfaceVariantIterNext
+
 // InterfaceVariantIterGet corresponds to C type GDExtensionInterfaceVariantIterGet
 type InterfaceVariantIterGet C.GDExtensionInterfaceVariantIterGet
+
 // InterfaceVariantHash corresponds to C type GDExtensionInterfaceVariantHash
 type InterfaceVariantHash C.GDExtensionInterfaceVariantHash
+
 // InterfaceVariantRecursiveHash corresponds to C type GDExtensionInterfaceVariantRecursiveHash
 type InterfaceVariantRecursiveHash C.GDExtensionInterfaceVariantRecursiveHash
+
 // InterfaceVariantHashCompare corresponds to C type GDExtensionInterfaceVariantHashCompare
 type InterfaceVariantHashCompare C.GDExtensionInterfaceVariantHashCompare
+
 // InterfaceVariantBooleanize corresponds to C type GDExtensionInterfaceVariantBooleanize
 type InterfaceVariantBooleanize C.GDExtensionInterfaceVariantBooleanize
+
 // InterfaceVariantDuplicate corresponds to C type GDExtensionInterfaceVariantDuplicate
 type InterfaceVariantDuplicate C.GDExtensionInterfaceVariantDuplicate
+
 // InterfaceVariantStringify corresponds to C type GDExtensionInterfaceVariantStringify
 type InterfaceVariantStringify C.GDExtensionInterfaceVariantStringify
+
 // InterfaceVariantGetType corresponds to C type GDExtensionInterfaceVariantGetType
 type InterfaceVariantGetType C.GDExtensionInterfaceVariantGetType
+
 // InterfaceVariantHasMethod corresponds to C type GDExtensionInterfaceVariantHasMethod
 type InterfaceVariantHasMethod C.GDExtensionInterfaceVariantHasMethod
+
 // InterfaceVariantHasMember corresponds to C type GDExtensionInterfaceVariantHasMember
 type InterfaceVariantHasMember C.GDExtensionInterfaceVariantHasMember
+
 // InterfaceVariantHasKey corresponds to C type GDExtensionInterfaceVariantHasKey
 type InterfaceVariantHasKey C.GDExtensionInterfaceVariantHasKey
+
 // InterfaceVariantGetTypeName corresponds to C type GDExtensionInterfaceVariantGetTypeName
 type InterfaceVariantGetTypeName C.GDExtensionInterfaceVariantGetTypeName
+
 // InterfaceVariantCanConvert corresponds to C type GDExtensionInterfaceVariantCanConvert
 type InterfaceVariantCanConvert C.GDExtensionInterfaceVariantCanConvert
+
 // InterfaceVariantCanConvertStrict corresponds to C type GDExtensionInterfaceVariantCanConvertStrict
 type InterfaceVariantCanConvertStrict C.GDExtensionInterfaceVariantCanConvertStrict
+
 // InterfaceGetVariantFromTypeConstructor corresponds to C type GDExtensionInterfaceGetVariantFromTypeConstructor
 type InterfaceGetVariantFromTypeConstructor C.GDExtensionInterfaceGetVariantFromTypeConstructor
+
 // InterfaceGetVariantToTypeConstructor corresponds to C type GDExtensionInterfaceGetVariantToTypeConstructor
 type InterfaceGetVariantToTypeConstructor C.GDExtensionInterfaceGetVariantToTypeConstructor
+
 // InterfaceVariantGetPtrOperatorEvaluator corresponds to C type GDExtensionInterfaceVariantGetPtrOperatorEvaluator
 type InterfaceVariantGetPtrOperatorEvaluator C.GDExtensionInterfaceVariantGetPtrOperatorEvaluator
+
 // InterfaceVariantGetPtrBuiltinMethod corresponds to C type GDExtensionInterfaceVariantGetPtrBuiltinMethod
 type InterfaceVariantGetPtrBuiltinMethod C.GDExtensionInterfaceVariantGetPtrBuiltinMethod
+
 // InterfaceVariantGetPtrConstructor corresponds to C type GDExtensionInterfaceVariantGetPtrConstructor
 type InterfaceVariantGetPtrConstructor C.GDExtensionInterfaceVariantGetPtrConstructor
+
 // InterfaceVariantGetPtrDestructor corresponds to C type GDExtensionInterfaceVariantGetPtrDestructor
 type InterfaceVariantGetPtrDestructor C.GDExtensionInterfaceVariantGetPtrDestructor
+
 // InterfaceVariantConstruct corresponds to C type GDExtensionInterfaceVariantConstruct
 type InterfaceVariantConstruct C.GDExtensionInterfaceVariantConstruct
+
 // InterfaceVariantGetPtrSetter corresponds to C type GDExtensionInterfaceVariantGetPtrSetter
 type InterfaceVariantGetPtrSetter C.GDExtensionInterfaceVariantGetPtrSetter
+
 // InterfaceVariantGetPtrGetter corresponds to C type GDExtensionInterfaceVariantGetPtrGetter
 type InterfaceVariantGetPtrGetter C.GDExtensionInterfaceVariantGetPtrGetter
+
 // InterfaceVariantGetPtrIndexedSetter corresponds to C type GDExtensionInterfaceVariantGetPtrIndexedSetter
 type InterfaceVariantGetPtrIndexedSetter C.GDExtensionInterfaceVariantGetPtrIndexedSetter
+
 // InterfaceVariantGetPtrIndexedGetter corresponds to C type GDExtensionInterfaceVariantGetPtrIndexedGetter
 type InterfaceVariantGetPtrIndexedGetter C.GDExtensionInterfaceVariantGetPtrIndexedGetter
+
 // InterfaceVariantGetPtrKeyedSetter corresponds to C type GDExtensionInterfaceVariantGetPtrKeyedSetter
 type InterfaceVariantGetPtrKeyedSetter C.GDExtensionInterfaceVariantGetPtrKeyedSetter
+
 // InterfaceVariantGetPtrKeyedGetter corresponds to C type GDExtensionInterfaceVariantGetPtrKeyedGetter
 type InterfaceVariantGetPtrKeyedGetter C.GDExtensionInterfaceVariantGetPtrKeyedGetter
+
 // InterfaceVariantGetPtrKeyedChecker corresponds to C type GDExtensionInterfaceVariantGetPtrKeyedChecker
 type InterfaceVariantGetPtrKeyedChecker C.GDExtensionInterfaceVariantGetPtrKeyedChecker
+
 // InterfaceVariantGetConstantValue corresponds to C type GDExtensionInterfaceVariantGetConstantValue
 type InterfaceVariantGetConstantValue C.GDExtensionInterfaceVariantGetConstantValue
+
 // InterfaceVariantGetPtrUtilityFunction corresponds to C type GDExtensionInterfaceVariantGetPtrUtilityFunction
 type InterfaceVariantGetPtrUtilityFunction C.GDExtensionInterfaceVariantGetPtrUtilityFunction
+
 // InterfaceStringNewWithLatin1Chars corresponds to C type GDExtensionInterfaceStringNewWithLatin1Chars
 type InterfaceStringNewWithLatin1Chars C.GDExtensionInterfaceStringNewWithLatin1Chars
+
 // InterfaceStringNewWithUtf8Chars corresponds to C type GDExtensionInterfaceStringNewWithUtf8Chars
 type InterfaceStringNewWithUtf8Chars C.GDExtensionInterfaceStringNewWithUtf8Chars
+
 // InterfaceStringNewWithUtf16Chars corresponds to C type GDExtensionInterfaceStringNewWithUtf16Chars
 type InterfaceStringNewWithUtf16Chars C.GDExtensionInterfaceStringNewWithUtf16Chars
+
 // InterfaceStringNewWithUtf32Chars corresponds to C type GDExtensionInterfaceStringNewWithUtf32Chars
 type InterfaceStringNewWithUtf32Chars C.GDExtensionInterfaceStringNewWithUtf32Chars
+
 // InterfaceStringNewWithWideChars corresponds to C type GDExtensionInterfaceStringNewWithWideChars
 type InterfaceStringNewWithWideChars C.GDExtensionInterfaceStringNewWithWideChars
+
 // InterfaceStringNewWithLatin1CharsAndLen corresponds to C type GDExtensionInterfaceStringNewWithLatin1CharsAndLen
 type InterfaceStringNewWithLatin1CharsAndLen C.GDExtensionInterfaceStringNewWithLatin1CharsAndLen
+
 // InterfaceStringNewWithUtf8CharsAndLen corresponds to C type GDExtensionInterfaceStringNewWithUtf8CharsAndLen
 type InterfaceStringNewWithUtf8CharsAndLen C.GDExtensionInterfaceStringNewWithUtf8CharsAndLen
+
 // InterfaceStringNewWithUtf16CharsAndLen corresponds to C type GDExtensionInterfaceStringNewWithUtf16CharsAndLen
 type InterfaceStringNewWithUtf16CharsAndLen C.GDExtensionInterfaceStringNewWithUtf16CharsAndLen
+
 // InterfaceStringNewWithUtf32CharsAndLen corresponds to C type GDExtensionInterfaceStringNewWithUtf32CharsAndLen
 type InterfaceStringNewWithUtf32CharsAndLen C.GDExtensionInterfaceStringNewWithUtf32CharsAndLen
+
 // InterfaceStringNewWithWideCharsAndLen corresponds to C type GDExtensionInterfaceStringNewWithWideCharsAndLen
 type InterfaceStringNewWithWideCharsAndLen C.GDExtensionInterfaceStringNewWithWideCharsAndLen
+
 // InterfaceStringToLatin1Chars corresponds to C type GDExtensionInterfaceStringToLatin1Chars
 type InterfaceStringToLatin1Chars C.GDExtensionInterfaceStringToLatin1Chars
+
 // InterfaceStringToUtf8Chars corresponds to C type GDExtensionInterfaceStringToUtf8Chars
 type InterfaceStringToUtf8Chars C.GDExtensionInterfaceStringToUtf8Chars
+
 // InterfaceStringToUtf16Chars corresponds to C type GDExtensionInterfaceStringToUtf16Chars
 type InterfaceStringToUtf16Chars C.GDExtensionInterfaceStringToUtf16Chars
+
 // InterfaceStringToUtf32Chars corresponds to C type GDExtensionInterfaceStringToUtf32Chars
 type InterfaceStringToUtf32Chars C.GDExtensionInterfaceStringToUtf32Chars
+
 // InterfaceStringToWideChars corresponds to C type GDExtensionInterfaceStringToWideChars
 type InterfaceStringToWideChars C.GDExtensionInterfaceStringToWideChars
+
 // InterfaceStringOperatorIndex corresponds to C type GDExtensionInterfaceStringOperatorIndex
 type InterfaceStringOperatorIndex C.GDExtensionInterfaceStringOperatorIndex
+
 // InterfaceStringOperatorIndexConst corresponds to C type GDExtensionInterfaceStringOperatorIndexConst
 type InterfaceStringOperatorIndexConst C.GDExtensionInterfaceStringOperatorIndexConst
+
 // InterfaceStringOperatorPlusEqString corresponds to C type GDExtensionInterfaceStringOperatorPlusEqString
 type InterfaceStringOperatorPlusEqString C.GDExtensionInterfaceStringOperatorPlusEqString
+
 // InterfaceStringOperatorPlusEqChar corresponds to C type GDExtensionInterfaceStringOperatorPlusEqChar
 type InterfaceStringOperatorPlusEqChar C.GDExtensionInterfaceStringOperatorPlusEqChar
+
 // InterfaceStringOperatorPlusEqCstr corresponds to C type GDExtensionInterfaceStringOperatorPlusEqCstr
 type InterfaceStringOperatorPlusEqCstr C.GDExtensionInterfaceStringOperatorPlusEqCstr
+
 // InterfaceStringOperatorPlusEqWcstr corresponds to C type GDExtensionInterfaceStringOperatorPlusEqWcstr
 type InterfaceStringOperatorPlusEqWcstr C.GDExtensionInterfaceStringOperatorPlusEqWcstr
+
 // InterfaceStringOperatorPlusEqC32str corresponds to C type GDExtensionInterfaceStringOperatorPlusEqC32str
 type InterfaceStringOperatorPlusEqC32str C.GDExtensionInterfaceStringOperatorPlusEqC32str
+
 // InterfaceStringResize corresponds to C type GDExtensionInterfaceStringResize
 type InterfaceStringResize C.GDExtensionInterfaceStringResize
+
 // InterfaceStringNameNewWithLatin1Chars corresponds to C type GDExtensionInterfaceStringNameNewWithLatin1Chars
 type InterfaceStringNameNewWithLatin1Chars C.GDExtensionInterfaceStringNameNewWithLatin1Chars
+
 // InterfaceStringNameNewWithUtf8Chars corresponds to C type GDExtensionInterfaceStringNameNewWithUtf8Chars
 type InterfaceStringNameNewWithUtf8Chars C.GDExtensionInterfaceStringNameNewWithUtf8Chars
+
 // InterfaceStringNameNewWithUtf8CharsAndLen corresponds to C type GDExtensionInterfaceStringNameNewWithUtf8CharsAndLen
 type InterfaceStringNameNewWithUtf8CharsAndLen C.GDExtensionInterfaceStringNameNewWithUtf8CharsAndLen
+
 // InterfaceXmlParserOpenBuffer corresponds to C type GDExtensionInterfaceXmlParserOpenBuffer
 type InterfaceXmlParserOpenBuffer C.GDExtensionInterfaceXmlParserOpenBuffer
+
 // InterfaceFileAccessStoreBuffer corresponds to C type GDExtensionInterfaceFileAccessStoreBuffer
 type InterfaceFileAccessStoreBuffer C.GDExtensionInterfaceFileAccessStoreBuffer
+
 // InterfaceFileAccessGetBuffer corresponds to C type GDExtensionInterfaceFileAccessGetBuffer
 type InterfaceFileAccessGetBuffer C.GDExtensionInterfaceFileAccessGetBuffer
+
 // InterfaceWorkerThreadPoolAddNativeGroupTask corresponds to C type GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask
 type InterfaceWorkerThreadPoolAddNativeGroupTask C.GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask
+
 // InterfaceWorkerThreadPoolAddNativeTask corresponds to C type GDExtensionInterfaceWorkerThreadPoolAddNativeTask
 type InterfaceWorkerThreadPoolAddNativeTask C.GDExtensionInterfaceWorkerThreadPoolAddNativeTask
+
 // InterfacePackedByteArrayOperatorIndex corresponds to C type GDExtensionInterfacePackedByteArrayOperatorIndex
 type InterfacePackedByteArrayOperatorIndex C.GDExtensionInterfacePackedByteArrayOperatorIndex
+
 // InterfacePackedByteArrayOperatorIndexConst corresponds to C type GDExtensionInterfacePackedByteArrayOperatorIndexConst
 type InterfacePackedByteArrayOperatorIndexConst C.GDExtensionInterfacePackedByteArrayOperatorIndexConst
+
 // InterfacePackedColorArrayOperatorIndex corresponds to C type GDExtensionInterfacePackedColorArrayOperatorIndex
 type InterfacePackedColorArrayOperatorIndex C.GDExtensionInterfacePackedColorArrayOperatorIndex
+
 // InterfacePackedColorArrayOperatorIndexConst corresponds to C type GDExtensionInterfacePackedColorArrayOperatorIndexConst
 type InterfacePackedColorArrayOperatorIndexConst C.GDExtensionInterfacePackedColorArrayOperatorIndexConst
+
 // InterfacePackedFloat32ArrayOperatorIndex corresponds to C type GDExtensionInterfacePackedFloat32ArrayOperatorIndex
 type InterfacePackedFloat32ArrayOperatorIndex C.GDExtensionInterfacePackedFloat32ArrayOperatorIndex
+
 // InterfacePackedFloat32ArrayOperatorIndexConst corresponds to C type GDExtensionInterfacePackedFloat32ArrayOperatorIndexConst
 type InterfacePackedFloat32ArrayOperatorIndexConst C.GDExtensionInterfacePackedFloat32ArrayOperatorIndexConst
+
 // InterfacePackedFloat64ArrayOperatorIndex corresponds to C type GDExtensionInterfacePackedFloat64ArrayOperatorIndex
 type InterfacePackedFloat64ArrayOperatorIndex C.GDExtensionInterfacePackedFloat64ArrayOperatorIndex
+
 // InterfacePackedFloat64ArrayOperatorIndexConst corresponds to C type GDExtensionInterfacePackedFloat64ArrayOperatorIndexConst
 type InterfacePackedFloat64ArrayOperatorIndexConst C.GDExtensionInterfacePackedFloat64ArrayOperatorIndexConst
+
 // InterfacePackedInt32ArrayOperatorIndex corresponds to C type GDExtensionInterfacePackedInt32ArrayOperatorIndex
 type InterfacePackedInt32ArrayOperatorIndex C.GDExtensionInterfacePackedInt32ArrayOperatorIndex
+
 // InterfacePackedInt32ArrayOperatorIndexConst corresponds to C type GDExtensionInterfacePackedInt32ArrayOperatorIndexConst
 type InterfacePackedInt32ArrayOperatorIndexConst C.GDExtensionInterfacePackedInt32ArrayOperatorIndexConst
+
 // InterfacePackedInt64ArrayOperatorIndex corresponds to C type GDExtensionInterfacePackedInt64ArrayOperatorIndex
 type InterfacePackedInt64ArrayOperatorIndex C.GDExtensionInterfacePackedInt64ArrayOperatorIndex
+
 // InterfacePackedInt64ArrayOperatorIndexConst corresponds to C type GDExtensionInterfacePackedInt64ArrayOperatorIndexConst
 type InterfacePackedInt64ArrayOperatorIndexConst C.GDExtensionInterfacePackedInt64ArrayOperatorIndexConst
+
 // InterfacePackedStringArrayOperatorIndex corresponds to C type GDExtensionInterfacePackedStringArrayOperatorIndex
 type InterfacePackedStringArrayOperatorIndex C.GDExtensionInterfacePackedStringArrayOperatorIndex
+
 // InterfacePackedStringArrayOperatorIndexConst corresponds to C type GDExtensionInterfacePackedStringArrayOperatorIndexConst
 type InterfacePackedStringArrayOperatorIndexConst C.GDExtensionInterfacePackedStringArrayOperatorIndexConst
+
 // InterfacePackedVector2ArrayOperatorIndex corresponds to C type GDExtensionInterfacePackedVector2ArrayOperatorIndex
 type InterfacePackedVector2ArrayOperatorIndex C.GDExtensionInterfacePackedVector2ArrayOperatorIndex
+
 // InterfacePackedVector2ArrayOperatorIndexConst corresponds to C type GDExtensionInterfacePackedVector2ArrayOperatorIndexConst
 type InterfacePackedVector2ArrayOperatorIndexConst C.GDExtensionInterfacePackedVector2ArrayOperatorIndexConst
+
 // InterfacePackedVector3ArrayOperatorIndex corresponds to C type GDExtensionInterfacePackedVector3ArrayOperatorIndex
 type InterfacePackedVector3ArrayOperatorIndex C.GDExtensionInterfacePackedVector3ArrayOperatorIndex
+
 // InterfacePackedVector3ArrayOperatorIndexConst corresponds to C type GDExtensionInterfacePackedVector3ArrayOperatorIndexConst
 type InterfacePackedVector3ArrayOperatorIndexConst C.GDExtensionInterfacePackedVector3ArrayOperatorIndexConst
+
 // InterfaceArrayOperatorIndex corresponds to C type GDExtensionInterfaceArrayOperatorIndex
 type InterfaceArrayOperatorIndex C.GDExtensionInterfaceArrayOperatorIndex
+
 // InterfaceArrayOperatorIndexConst corresponds to C type GDExtensionInterfaceArrayOperatorIndexConst
 type InterfaceArrayOperatorIndexConst C.GDExtensionInterfaceArrayOperatorIndexConst
+
 // InterfaceArrayRef corresponds to C type GDExtensionInterfaceArrayRef
 type InterfaceArrayRef C.GDExtensionInterfaceArrayRef
+
 // InterfaceArraySetTyped corresponds to C type GDExtensionInterfaceArraySetTyped
 type InterfaceArraySetTyped C.GDExtensionInterfaceArraySetTyped
+
 // InterfaceDictionaryOperatorIndex corresponds to C type GDExtensionInterfaceDictionaryOperatorIndex
 type InterfaceDictionaryOperatorIndex C.GDExtensionInterfaceDictionaryOperatorIndex
+
 // InterfaceDictionaryOperatorIndexConst corresponds to C type GDExtensionInterfaceDictionaryOperatorIndexConst
 type InterfaceDictionaryOperatorIndexConst C.GDExtensionInterfaceDictionaryOperatorIndexConst
+
 // InterfaceObjectMethodBindCall corresponds to C type GDExtensionInterfaceObjectMethodBindCall
 type InterfaceObjectMethodBindCall C.GDExtensionInterfaceObjectMethodBindCall
+
 // InterfaceObjectMethodBindPtrcall corresponds to C type GDExtensionInterfaceObjectMethodBindPtrcall
 type InterfaceObjectMethodBindPtrcall C.GDExtensionInterfaceObjectMethodBindPtrcall
+
 // InterfaceObjectDestroy corresponds to C type GDExtensionInterfaceObjectDestroy
 type InterfaceObjectDestroy C.GDExtensionInterfaceObjectDestroy
+
 // InterfaceGlobalGetSingleton corresponds to C type GDExtensionInterfaceGlobalGetSingleton
 type InterfaceGlobalGetSingleton C.GDExtensionInterfaceGlobalGetSingleton
+
 // InterfaceObjectGetInstanceBinding corresponds to C type GDExtensionInterfaceObjectGetInstanceBinding
 type InterfaceObjectGetInstanceBinding C.GDExtensionInterfaceObjectGetInstanceBinding
+
 // InterfaceObjectSetInstanceBinding corresponds to C type GDExtensionInterfaceObjectSetInstanceBinding
 type InterfaceObjectSetInstanceBinding C.GDExtensionInterfaceObjectSetInstanceBinding
+
 // InterfaceObjectFreeInstanceBinding corresponds to C type GDExtensionInterfaceObjectFreeInstanceBinding
 type InterfaceObjectFreeInstanceBinding C.GDExtensionInterfaceObjectFreeInstanceBinding
+
 // InterfaceObjectSetInstance corresponds to C type GDExtensionInterfaceObjectSetInstance
 type InterfaceObjectSetInstance C.GDExtensionInterfaceObjectSetInstance
+
 // InterfaceObjectGetClassName corresponds to C type GDExtensionInterfaceObjectGetClassName
 type InterfaceObjectGetClassName C.GDExtensionInterfaceObjectGetClassName
+
 // InterfaceObjectCastTo corresponds to C type GDExtensionInterfaceObjectCastTo
 type InterfaceObjectCastTo C.GDExtensionInterfaceObjectCastTo
+
 // InterfaceObjectGetInstanceFromId corresponds to C type GDExtensionInterfaceObjectGetInstanceFromId
 type InterfaceObjectGetInstanceFromId C.GDExtensionInterfaceObjectGetInstanceFromId
+
 // InterfaceObjectGetInstanceId corresponds to C type GDExtensionInterfaceObjectGetInstanceId
 type InterfaceObjectGetInstanceId C.GDExtensionInterfaceObjectGetInstanceId
+
 // InterfaceRefGetObject corresponds to C type GDExtensionInterfaceRefGetObject
 type InterfaceRefGetObject C.GDExtensionInterfaceRefGetObject
+
 // InterfaceRefSetObject corresponds to C type GDExtensionInterfaceRefSetObject
 type InterfaceRefSetObject C.GDExtensionInterfaceRefSetObject
+
 // InterfaceScriptInstanceCreate corresponds to C type GDExtensionInterfaceScriptInstanceCreate
 type InterfaceScriptInstanceCreate C.GDExtensionInterfaceScriptInstanceCreate
+
 // InterfaceScriptInstanceCreate2 corresponds to C type GDExtensionInterfaceScriptInstanceCreate2
 type InterfaceScriptInstanceCreate2 C.GDExtensionInterfaceScriptInstanceCreate2
+
 // InterfacePlaceHolderScriptInstanceCreate corresponds to C type GDExtensionInterfacePlaceHolderScriptInstanceCreate
 type InterfacePlaceHolderScriptInstanceCreate C.GDExtensionInterfacePlaceHolderScriptInstanceCreate
+
 // InterfacePlaceHolderScriptInstanceUpdate corresponds to C type GDExtensionInterfacePlaceHolderScriptInstanceUpdate
 type InterfacePlaceHolderScriptInstanceUpdate C.GDExtensionInterfacePlaceHolderScriptInstanceUpdate
+
 // InterfaceObjectGetScriptInstance corresponds to C type GDExtensionInterfaceObjectGetScriptInstance
 type InterfaceObjectGetScriptInstance C.GDExtensionInterfaceObjectGetScriptInstance
+
 // InterfaceCallableCustomCreate corresponds to C type GDExtensionInterfaceCallableCustomCreate
 type InterfaceCallableCustomCreate C.GDExtensionInterfaceCallableCustomCreate
+
 // InterfaceCallableCustomGetUserData corresponds to C type GDExtensionInterfaceCallableCustomGetUserData
 type InterfaceCallableCustomGetUserData C.GDExtensionInterfaceCallableCustomGetUserData
+
 // InterfaceClassdbConstructObject corresponds to C type GDExtensionInterfaceClassdbConstructObject
 type InterfaceClassdbConstructObject C.GDExtensionInterfaceClassdbConstructObject
+
 // InterfaceClassdbGetMethodBind corresponds to C type GDExtensionInterfaceClassdbGetMethodBind
 type InterfaceClassdbGetMethodBind C.GDExtensionInterfaceClassdbGetMethodBind
+
 // InterfaceClassdbGetClassTag corresponds to C type GDExtensionInterfaceClassdbGetClassTag
 type InterfaceClassdbGetClassTag C.GDExtensionInterfaceClassdbGetClassTag
+
 // InterfaceClassdbRegisterExtensionClass corresponds to C type GDExtensionInterfaceClassdbRegisterExtensionClass
 type InterfaceClassdbRegisterExtensionClass C.GDExtensionInterfaceClassdbRegisterExtensionClass
+
 // InterfaceClassdbRegisterExtensionClass2 corresponds to C type GDExtensionInterfaceClassdbRegisterExtensionClass2
 type InterfaceClassdbRegisterExtensionClass2 C.GDExtensionInterfaceClassdbRegisterExtensionClass2
+
 // InterfaceClassdbRegisterExtensionClassMethod corresponds to C type GDExtensionInterfaceClassdbRegisterExtensionClassMethod
 type InterfaceClassdbRegisterExtensionClassMethod C.GDExtensionInterfaceClassdbRegisterExtensionClassMethod
+
 // InterfaceClassdbRegisterExtensionClassIntegerConstant corresponds to C type GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant
 type InterfaceClassdbRegisterExtensionClassIntegerConstant C.GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant
+
 // InterfaceClassdbRegisterExtensionClassProperty corresponds to C type GDExtensionInterfaceClassdbRegisterExtensionClassProperty
 type InterfaceClassdbRegisterExtensionClassProperty C.GDExtensionInterfaceClassdbRegisterExtensionClassProperty
+
 // InterfaceClassdbRegisterExtensionClassPropertyIndexed corresponds to C type GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed
 type InterfaceClassdbRegisterExtensionClassPropertyIndexed C.GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed
+
 // InterfaceClassdbRegisterExtensionClassPropertyGroup corresponds to C type GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup
 type InterfaceClassdbRegisterExtensionClassPropertyGroup C.GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup
+
 // InterfaceClassdbRegisterExtensionClassPropertySubgroup corresponds to C type GDExtensionInterfaceClassdbRegisterExtensionClassPropertySubgroup
 type InterfaceClassdbRegisterExtensionClassPropertySubgroup C.GDExtensionInterfaceClassdbRegisterExtensionClassPropertySubgroup
+
 // InterfaceClassdbRegisterExtensionClassSignal corresponds to C type GDExtensionInterfaceClassdbRegisterExtensionClassSignal
 type InterfaceClassdbRegisterExtensionClassSignal C.GDExtensionInterfaceClassdbRegisterExtensionClassSignal
+
 // InterfaceClassdbUnregisterExtensionClass corresponds to C type GDExtensionInterfaceClassdbUnregisterExtensionClass
 type InterfaceClassdbUnregisterExtensionClass C.GDExtensionInterfaceClassdbUnregisterExtensionClass
+
 // InterfaceGetLibraryPath corresponds to C type GDExtensionInterfaceGetLibraryPath
 type InterfaceGetLibraryPath C.GDExtensionInterfaceGetLibraryPath
+
 // InterfaceEditorAddPlugin corresponds to C type GDExtensionInterfaceEditorAddPlugin
 type InterfaceEditorAddPlugin C.GDExtensionInterfaceEditorAddPlugin
+
 // InterfaceEditorRemovePlugin corresponds to C type GDExtensionInterfaceEditorRemovePlugin
 type InterfaceEditorRemovePlugin C.GDExtensionInterfaceEditorRemovePlugin

@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForTexture ptrsForTextureList
 
 func initTexturePtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("Texture")
-  defer className.Destroy()
+	className := StringNameFromStr("Texture")
+	defer className.Destroy()
 }
 
 type Texture struct {
-  Resource
+	Resource
 }
 
 func (me *Texture) BaseClass() string {
-  return "Texture"
+	return "Texture"
 }
 
 func NewTexture() *Texture {
-  str := StringNameFromStr("Texture") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("Texture") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &Texture{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &Texture{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *Texture) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *Texture) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *Texture) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

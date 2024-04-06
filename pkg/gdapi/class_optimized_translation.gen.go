@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -15,64 +15,62 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForOptimizedTranslationList struct {
-  fnGenerate gdc.MethodBindPtr
+	fnGenerate gdc.MethodBindPtr
 }
 
 var ptrsForOptimizedTranslation ptrsForOptimizedTranslationList
 
 func initOptimizedTranslationPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("OptimizedTranslation")
-  defer className.Destroy()
-  {
-    methodName := StringNameFromStr("generate")
-    defer methodName.Destroy()
-    ptrsForOptimizedTranslation.fnGenerate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1466479800))
-  }
+	className := StringNameFromStr("OptimizedTranslation")
+	defer className.Destroy()
+	{
+		methodName := StringNameFromStr("generate")
+		defer methodName.Destroy()
+		ptrsForOptimizedTranslation.fnGenerate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1466479800))
+	}
 }
 
 type OptimizedTranslation struct {
-  Translation
+	Translation
 }
 
 func (me *OptimizedTranslation) BaseClass() string {
-  return "OptimizedTranslation"
+	return "OptimizedTranslation"
 }
 
 func NewOptimizedTranslation() *OptimizedTranslation {
-  str := StringNameFromStr("OptimizedTranslation") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("OptimizedTranslation") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &OptimizedTranslation{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &OptimizedTranslation{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *OptimizedTranslation) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *OptimizedTranslation) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *OptimizedTranslation) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods
 
-func  (me *OptimizedTranslation) Generate(from Translation, )  {
-  cargs := []gdc.ConstTypePtr{from.AsCTypePtr(), }
-  pinner := runtime.Pinner{}
-  defer pinner.Unpin()
+func (me *OptimizedTranslation) Generate(from Translation) {
+	cargs := []gdc.ConstTypePtr{from.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
 
-  giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOptimizedTranslation.fnGenerate), me.obj, unsafe.SliceData(cargs), nil)
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOptimizedTranslation.fnGenerate), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

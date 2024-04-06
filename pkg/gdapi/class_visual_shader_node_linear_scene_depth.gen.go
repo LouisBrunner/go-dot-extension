@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeLinearSceneDepth ptrsForVisualShaderNodeLinearSceneDe
 
 func initVisualShaderNodeLinearSceneDepthPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeLinearSceneDepth")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeLinearSceneDepth")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeLinearSceneDepth struct {
-  VisualShaderNode
+	VisualShaderNode
 }
 
 func (me *VisualShaderNodeLinearSceneDepth) BaseClass() string {
-  return "VisualShaderNodeLinearSceneDepth"
+	return "VisualShaderNodeLinearSceneDepth"
 }
 
 func NewVisualShaderNodeLinearSceneDepth() *VisualShaderNodeLinearSceneDepth {
-  str := StringNameFromStr("VisualShaderNodeLinearSceneDepth") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeLinearSceneDepth") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeLinearSceneDepth{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeLinearSceneDepth{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeLinearSceneDepth) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeLinearSceneDepth) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeLinearSceneDepth) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

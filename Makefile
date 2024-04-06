@@ -16,6 +16,7 @@ ifeq (, $(findstring test,$(MAKECMDGOALS))$(findstring vet,$(MAKECMDGOALS)))
 else
 	go generate -x ./build
 endif
+	gofmt -s -w .
 .PHONY: generate
 
 # Linting

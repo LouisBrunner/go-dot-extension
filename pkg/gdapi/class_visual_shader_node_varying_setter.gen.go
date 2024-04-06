@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeVaryingSetter ptrsForVisualShaderNodeVaryingSetterLis
 
 func initVisualShaderNodeVaryingSetterPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeVaryingSetter")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeVaryingSetter")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeVaryingSetter struct {
-  VisualShaderNodeVarying
+	VisualShaderNodeVarying
 }
 
 func (me *VisualShaderNodeVaryingSetter) BaseClass() string {
-  return "VisualShaderNodeVaryingSetter"
+	return "VisualShaderNodeVaryingSetter"
 }
 
 func NewVisualShaderNodeVaryingSetter() *VisualShaderNodeVaryingSetter {
-  str := StringNameFromStr("VisualShaderNodeVaryingSetter") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeVaryingSetter") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeVaryingSetter{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeVaryingSetter{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeVaryingSetter) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeVaryingSetter) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeVaryingSetter) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

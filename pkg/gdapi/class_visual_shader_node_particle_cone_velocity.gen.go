@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeParticleConeVelocity ptrsForVisualShaderNodeParticleC
 
 func initVisualShaderNodeParticleConeVelocityPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeParticleConeVelocity")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeParticleConeVelocity")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeParticleConeVelocity struct {
-  VisualShaderNode
+	VisualShaderNode
 }
 
 func (me *VisualShaderNodeParticleConeVelocity) BaseClass() string {
-  return "VisualShaderNodeParticleConeVelocity"
+	return "VisualShaderNodeParticleConeVelocity"
 }
 
 func NewVisualShaderNodeParticleConeVelocity() *VisualShaderNodeParticleConeVelocity {
-  str := StringNameFromStr("VisualShaderNodeParticleConeVelocity") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeParticleConeVelocity") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeParticleConeVelocity{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeParticleConeVelocity{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeParticleConeVelocity) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeParticleConeVelocity) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeParticleConeVelocity) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

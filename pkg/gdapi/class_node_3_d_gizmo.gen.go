@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForNode3DGizmo ptrsForNode3DGizmoList
 
 func initNode3DGizmoPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("Node3DGizmo")
-  defer className.Destroy()
+	className := StringNameFromStr("Node3DGizmo")
+	defer className.Destroy()
 }
 
 type Node3DGizmo struct {
-  RefCounted
+	RefCounted
 }
 
 func (me *Node3DGizmo) BaseClass() string {
-  return "Node3DGizmo"
+	return "Node3DGizmo"
 }
 
 func NewNode3DGizmo() *Node3DGizmo {
-  str := StringNameFromStr("Node3DGizmo") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("Node3DGizmo") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &Node3DGizmo{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &Node3DGizmo{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *Node3DGizmo) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *Node3DGizmo) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *Node3DGizmo) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

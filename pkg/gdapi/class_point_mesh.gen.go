@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForPointMesh ptrsForPointMeshList
 
 func initPointMeshPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("PointMesh")
-  defer className.Destroy()
+	className := StringNameFromStr("PointMesh")
+	defer className.Destroy()
 }
 
 type PointMesh struct {
-  PrimitiveMesh
+	PrimitiveMesh
 }
 
 func (me *PointMesh) BaseClass() string {
-  return "PointMesh"
+	return "PointMesh"
 }
 
 func NewPointMesh() *PointMesh {
-  str := StringNameFromStr("PointMesh") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("PointMesh") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &PointMesh{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &PointMesh{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *PointMesh) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *PointMesh) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *PointMesh) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

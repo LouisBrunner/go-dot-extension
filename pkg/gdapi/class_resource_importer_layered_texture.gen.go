@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForResourceImporterLayeredTexture ptrsForResourceImporterLayeredTextureL
 
 func initResourceImporterLayeredTexturePtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("ResourceImporterLayeredTexture")
-  defer className.Destroy()
+	className := StringNameFromStr("ResourceImporterLayeredTexture")
+	defer className.Destroy()
 }
 
 type ResourceImporterLayeredTexture struct {
-  ResourceImporter
+	ResourceImporter
 }
 
 func (me *ResourceImporterLayeredTexture) BaseClass() string {
-  return "ResourceImporterLayeredTexture"
+	return "ResourceImporterLayeredTexture"
 }
 
 func NewResourceImporterLayeredTexture() *ResourceImporterLayeredTexture {
-  str := StringNameFromStr("ResourceImporterLayeredTexture") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("ResourceImporterLayeredTexture") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &ResourceImporterLayeredTexture{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &ResourceImporterLayeredTexture{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *ResourceImporterLayeredTexture) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *ResourceImporterLayeredTexture) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *ResourceImporterLayeredTexture) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

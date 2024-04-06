@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeFresnel ptrsForVisualShaderNodeFresnelList
 
 func initVisualShaderNodeFresnelPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeFresnel")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeFresnel")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeFresnel struct {
-  VisualShaderNode
+	VisualShaderNode
 }
 
 func (me *VisualShaderNodeFresnel) BaseClass() string {
-  return "VisualShaderNodeFresnel"
+	return "VisualShaderNodeFresnel"
 }
 
 func NewVisualShaderNodeFresnel() *VisualShaderNodeFresnel {
-  str := StringNameFromStr("VisualShaderNodeFresnel") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeFresnel") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeFresnel{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeFresnel{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeFresnel) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeFresnel) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeFresnel) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

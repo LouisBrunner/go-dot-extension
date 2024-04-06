@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeVectorRefract ptrsForVisualShaderNodeVectorRefractLis
 
 func initVisualShaderNodeVectorRefractPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeVectorRefract")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeVectorRefract")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeVectorRefract struct {
-  VisualShaderNodeVectorBase
+	VisualShaderNodeVectorBase
 }
 
 func (me *VisualShaderNodeVectorRefract) BaseClass() string {
-  return "VisualShaderNodeVectorRefract"
+	return "VisualShaderNodeVectorRefract"
 }
 
 func NewVisualShaderNodeVectorRefract() *VisualShaderNodeVectorRefract {
-  str := StringNameFromStr("VisualShaderNodeVectorRefract") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeVectorRefract") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeVectorRefract{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeVectorRefract{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeVectorRefract) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeVectorRefract) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeVectorRefract) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

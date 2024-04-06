@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForResourceImporterDynamicFont ptrsForResourceImporterDynamicFontList
 
 func initResourceImporterDynamicFontPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("ResourceImporterDynamicFont")
-  defer className.Destroy()
+	className := StringNameFromStr("ResourceImporterDynamicFont")
+	defer className.Destroy()
 }
 
 type ResourceImporterDynamicFont struct {
-  ResourceImporter
+	ResourceImporter
 }
 
 func (me *ResourceImporterDynamicFont) BaseClass() string {
-  return "ResourceImporterDynamicFont"
+	return "ResourceImporterDynamicFont"
 }
 
 func NewResourceImporterDynamicFont() *ResourceImporterDynamicFont {
-  str := StringNameFromStr("ResourceImporterDynamicFont") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("ResourceImporterDynamicFont") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &ResourceImporterDynamicFont{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &ResourceImporterDynamicFont{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *ResourceImporterDynamicFont) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *ResourceImporterDynamicFont) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *ResourceImporterDynamicFont) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

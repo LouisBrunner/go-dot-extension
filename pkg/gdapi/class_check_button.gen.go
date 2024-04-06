@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForCheckButton ptrsForCheckButtonList
 
 func initCheckButtonPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("CheckButton")
-  defer className.Destroy()
+	className := StringNameFromStr("CheckButton")
+	defer className.Destroy()
 }
 
 type CheckButton struct {
-  Button
+	Button
 }
 
 func (me *CheckButton) BaseClass() string {
-  return "CheckButton"
+	return "CheckButton"
 }
 
 func NewCheckButton() *CheckButton {
-  str := StringNameFromStr("CheckButton") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("CheckButton") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &CheckButton{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &CheckButton{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *CheckButton) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *CheckButton) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *CheckButton) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

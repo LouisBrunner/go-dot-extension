@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVideoStreamTheora ptrsForVideoStreamTheoraList
 
 func initVideoStreamTheoraPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VideoStreamTheora")
-  defer className.Destroy()
+	className := StringNameFromStr("VideoStreamTheora")
+	defer className.Destroy()
 }
 
 type VideoStreamTheora struct {
-  VideoStream
+	VideoStream
 }
 
 func (me *VideoStreamTheora) BaseClass() string {
-  return "VideoStreamTheora"
+	return "VideoStreamTheora"
 }
 
 func NewVideoStreamTheora() *VideoStreamTheora {
-  str := StringNameFromStr("VideoStreamTheora") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VideoStreamTheora") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VideoStreamTheora{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VideoStreamTheora{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VideoStreamTheora) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VideoStreamTheora) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VideoStreamTheora) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

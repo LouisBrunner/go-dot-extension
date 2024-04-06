@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForTextServerAdvanced ptrsForTextServerAdvancedList
 
 func initTextServerAdvancedPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("TextServerAdvanced")
-  defer className.Destroy()
+	className := StringNameFromStr("TextServerAdvanced")
+	defer className.Destroy()
 }
 
 type TextServerAdvanced struct {
-  TextServerExtension
+	TextServerExtension
 }
 
 func (me *TextServerAdvanced) BaseClass() string {
-  return "TextServerAdvanced"
+	return "TextServerAdvanced"
 }
 
 func NewTextServerAdvanced() *TextServerAdvanced {
-  str := StringNameFromStr("TextServerAdvanced") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("TextServerAdvanced") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &TextServerAdvanced{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &TextServerAdvanced{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *TextServerAdvanced) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *TextServerAdvanced) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *TextServerAdvanced) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -15,53 +15,51 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForEditorResourcePreviewGeneratorList struct {
-  fnXHandles gdc.MethodBindPtr
-  fnXGenerate gdc.MethodBindPtr
-  fnXGenerateFromPath gdc.MethodBindPtr
-  fnXGenerateSmallPreviewAutomatically gdc.MethodBindPtr
-  fnXCanGenerateSmallPreview gdc.MethodBindPtr
+	fnXHandles                           gdc.MethodBindPtr
+	fnXGenerate                          gdc.MethodBindPtr
+	fnXGenerateFromPath                  gdc.MethodBindPtr
+	fnXGenerateSmallPreviewAutomatically gdc.MethodBindPtr
+	fnXCanGenerateSmallPreview           gdc.MethodBindPtr
 }
 
 var ptrsForEditorResourcePreviewGenerator ptrsForEditorResourcePreviewGeneratorList
 
 func initEditorResourcePreviewGeneratorPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("EditorResourcePreviewGenerator")
-  defer className.Destroy()
+	className := StringNameFromStr("EditorResourcePreviewGenerator")
+	defer className.Destroy()
 }
 
 type EditorResourcePreviewGenerator struct {
-  RefCounted
+	RefCounted
 }
 
 func (me *EditorResourcePreviewGenerator) BaseClass() string {
-  return "EditorResourcePreviewGenerator"
+	return "EditorResourcePreviewGenerator"
 }
 
 func NewEditorResourcePreviewGenerator() *EditorResourcePreviewGenerator {
-  str := StringNameFromStr("EditorResourcePreviewGenerator") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("EditorResourcePreviewGenerator") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &EditorResourcePreviewGenerator{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &EditorResourcePreviewGenerator{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *EditorResourcePreviewGenerator) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *EditorResourcePreviewGenerator) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *EditorResourcePreviewGenerator) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

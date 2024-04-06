@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,48 +21,47 @@ var ptrsForResourceImporter ptrsForResourceImporterList
 
 func initResourceImporterPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("ResourceImporter")
-  defer className.Destroy()
+	className := StringNameFromStr("ResourceImporter")
+	defer className.Destroy()
 }
 
 type ResourceImporter struct {
-  RefCounted
+	RefCounted
 }
 
 func (me *ResourceImporter) BaseClass() string {
-  return "ResourceImporter"
+	return "ResourceImporter"
 }
 
 func NewResourceImporter() *ResourceImporter {
-  str := StringNameFromStr("ResourceImporter") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("ResourceImporter") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &ResourceImporter{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &ResourceImporter{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 type ResourceImporterImportOrder int
+
 const (
-  ResourceImporterImportOrderImportOrderDefault ResourceImporterImportOrder = 0
-  ResourceImporterImportOrderImportOrderScene ResourceImporterImportOrder = 100
+	ResourceImporterImportOrderImportOrderDefault ResourceImporterImportOrder = 0
+	ResourceImporterImportOrderImportOrderScene   ResourceImporterImportOrder = 100
 )
 
 func (me *ResourceImporter) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *ResourceImporter) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *ResourceImporter) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

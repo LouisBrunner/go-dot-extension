@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForHSlider ptrsForHSliderList
 
 func initHSliderPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("HSlider")
-  defer className.Destroy()
+	className := StringNameFromStr("HSlider")
+	defer className.Destroy()
 }
 
 type HSlider struct {
-  Slider
+	Slider
 }
 
 func (me *HSlider) BaseClass() string {
-  return "HSlider"
+	return "HSlider"
 }
 
 func NewHSlider() *HSlider {
-  str := StringNameFromStr("HSlider") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("HSlider") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &HSlider{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &HSlider{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *HSlider) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *HSlider) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *HSlider) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

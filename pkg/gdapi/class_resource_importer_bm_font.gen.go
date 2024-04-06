@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForResourceImporterBMFont ptrsForResourceImporterBMFontList
 
 func initResourceImporterBMFontPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("ResourceImporterBMFont")
-  defer className.Destroy()
+	className := StringNameFromStr("ResourceImporterBMFont")
+	defer className.Destroy()
 }
 
 type ResourceImporterBMFont struct {
-  ResourceImporter
+	ResourceImporter
 }
 
 func (me *ResourceImporterBMFont) BaseClass() string {
-  return "ResourceImporterBMFont"
+	return "ResourceImporterBMFont"
 }
 
 func NewResourceImporterBMFont() *ResourceImporterBMFont {
-  str := StringNameFromStr("ResourceImporterBMFont") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("ResourceImporterBMFont") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &ResourceImporterBMFont{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &ResourceImporterBMFont{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *ResourceImporterBMFont) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *ResourceImporterBMFont) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *ResourceImporterBMFont) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForTweener ptrsForTweenerList
 
 func initTweenerPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("Tweener")
-  defer className.Destroy()
+	className := StringNameFromStr("Tweener")
+	defer className.Destroy()
 }
 
 type Tweener struct {
-  RefCounted
+	RefCounted
 }
 
 func (me *Tweener) BaseClass() string {
-  return "Tweener"
+	return "Tweener"
 }
 
 func NewTweener() *Tweener {
-  str := StringNameFromStr("Tweener") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("Tweener") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &Tweener{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &Tweener{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *Tweener) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *Tweener) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *Tweener) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods
@@ -66,13 +64,13 @@ func (me *Tweener) AsCTypePtr() gdc.ConstTypePtr {
 type TweenerFinishedSignalFn func()
 
 func (me *Tweener) ConnectFinished(subs SignalSubscribers, fn TweenerFinishedSignalFn) {
-  sig := StringNameFromStr("finished")
-  defer sig.Destroy()
-  me.Connect(*sig, subs.add(fn), 0)
+	sig := StringNameFromStr("finished")
+	defer sig.Destroy()
+	me.Connect(*sig, subs.add(fn), 0)
 }
 
 func (me *Tweener) DisconnectFinished(subs SignalSubscribers, fn TweenerFinishedSignalFn) {
-  sig := StringNameFromStr("finished")
-  defer sig.Destroy()
-  me.Disconnect(*sig, *subs.remove(fn))
+	sig := StringNameFromStr("finished")
+	defer sig.Destroy()
+	me.Disconnect(*sig, *subs.remove(fn))
 }

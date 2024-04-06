@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -15,57 +15,55 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForMultiplayerAPIExtensionList struct {
-  fnXPoll gdc.MethodBindPtr
-  fnXSetMultiplayerPeer gdc.MethodBindPtr
-  fnXGetMultiplayerPeer gdc.MethodBindPtr
-  fnXGetUniqueId gdc.MethodBindPtr
-  fnXGetPeerIds gdc.MethodBindPtr
-  fnXRpc gdc.MethodBindPtr
-  fnXGetRemoteSenderId gdc.MethodBindPtr
-  fnXObjectConfigurationAdd gdc.MethodBindPtr
-  fnXObjectConfigurationRemove gdc.MethodBindPtr
+	fnXPoll                      gdc.MethodBindPtr
+	fnXSetMultiplayerPeer        gdc.MethodBindPtr
+	fnXGetMultiplayerPeer        gdc.MethodBindPtr
+	fnXGetUniqueId               gdc.MethodBindPtr
+	fnXGetPeerIds                gdc.MethodBindPtr
+	fnXRpc                       gdc.MethodBindPtr
+	fnXGetRemoteSenderId         gdc.MethodBindPtr
+	fnXObjectConfigurationAdd    gdc.MethodBindPtr
+	fnXObjectConfigurationRemove gdc.MethodBindPtr
 }
 
 var ptrsForMultiplayerAPIExtension ptrsForMultiplayerAPIExtensionList
 
 func initMultiplayerAPIExtensionPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("MultiplayerAPIExtension")
-  defer className.Destroy()
+	className := StringNameFromStr("MultiplayerAPIExtension")
+	defer className.Destroy()
 }
 
 type MultiplayerAPIExtension struct {
-  MultiplayerAPI
+	MultiplayerAPI
 }
 
 func (me *MultiplayerAPIExtension) BaseClass() string {
-  return "MultiplayerAPIExtension"
+	return "MultiplayerAPIExtension"
 }
 
 func NewMultiplayerAPIExtension() *MultiplayerAPIExtension {
-  str := StringNameFromStr("MultiplayerAPIExtension") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("MultiplayerAPIExtension") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &MultiplayerAPIExtension{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &MultiplayerAPIExtension{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *MultiplayerAPIExtension) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *MultiplayerAPIExtension) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *MultiplayerAPIExtension) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

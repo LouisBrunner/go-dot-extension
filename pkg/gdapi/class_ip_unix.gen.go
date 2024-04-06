@@ -2,39 +2,37 @@
 package gdapi
 
 import (
-  "unsafe"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type IPUnix struct {
-  obj gdc.ObjectPtr
+	obj gdc.ObjectPtr
 }
 
 func (me *IPUnix) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+	me.obj = obj
 }
 
 func (me *IPUnix) BaseClass() string {
-  return "IPUnix"
+	return "IPUnix"
 }
-
-
 
 // Enums
 
 func (me *IPUnix) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *IPUnix) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *IPUnix) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForEditorExportPlatformPC ptrsForEditorExportPlatformPCList
 
 func initEditorExportPlatformPCPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("EditorExportPlatformPC")
-  defer className.Destroy()
+	className := StringNameFromStr("EditorExportPlatformPC")
+	defer className.Destroy()
 }
 
 type EditorExportPlatformPC struct {
-  EditorExportPlatform
+	EditorExportPlatform
 }
 
 func (me *EditorExportPlatformPC) BaseClass() string {
-  return "EditorExportPlatformPC"
+	return "EditorExportPlatformPC"
 }
 
 func NewEditorExportPlatformPC() *EditorExportPlatformPC {
-  str := StringNameFromStr("EditorExportPlatformPC") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("EditorExportPlatformPC") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &EditorExportPlatformPC{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &EditorExportPlatformPC{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *EditorExportPlatformPC) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *EditorExportPlatformPC) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *EditorExportPlatformPC) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

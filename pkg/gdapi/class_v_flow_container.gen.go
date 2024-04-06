@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVFlowContainer ptrsForVFlowContainerList
 
 func initVFlowContainerPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VFlowContainer")
-  defer className.Destroy()
+	className := StringNameFromStr("VFlowContainer")
+	defer className.Destroy()
 }
 
 type VFlowContainer struct {
-  FlowContainer
+	FlowContainer
 }
 
 func (me *VFlowContainer) BaseClass() string {
-  return "VFlowContainer"
+	return "VFlowContainer"
 }
 
 func NewVFlowContainer() *VFlowContainer {
-  str := StringNameFromStr("VFlowContainer") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VFlowContainer") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VFlowContainer{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VFlowContainer{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VFlowContainer) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VFlowContainer) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VFlowContainer) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

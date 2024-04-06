@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForCompressedCubemap ptrsForCompressedCubemapList
 
 func initCompressedCubemapPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("CompressedCubemap")
-  defer className.Destroy()
+	className := StringNameFromStr("CompressedCubemap")
+	defer className.Destroy()
 }
 
 type CompressedCubemap struct {
-  CompressedTextureLayered
+	CompressedTextureLayered
 }
 
 func (me *CompressedCubemap) BaseClass() string {
-  return "CompressedCubemap"
+	return "CompressedCubemap"
 }
 
 func NewCompressedCubemap() *CompressedCubemap {
-  str := StringNameFromStr("CompressedCubemap") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("CompressedCubemap") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &CompressedCubemap{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &CompressedCubemap{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *CompressedCubemap) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *CompressedCubemap) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *CompressedCubemap) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

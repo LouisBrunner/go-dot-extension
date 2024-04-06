@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForResourceImporterImageFont ptrsForResourceImporterImageFontList
 
 func initResourceImporterImageFontPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("ResourceImporterImageFont")
-  defer className.Destroy()
+	className := StringNameFromStr("ResourceImporterImageFont")
+	defer className.Destroy()
 }
 
 type ResourceImporterImageFont struct {
-  ResourceImporter
+	ResourceImporter
 }
 
 func (me *ResourceImporterImageFont) BaseClass() string {
-  return "ResourceImporterImageFont"
+	return "ResourceImporterImageFont"
 }
 
 func NewResourceImporterImageFont() *ResourceImporterImageFont {
-  str := StringNameFromStr("ResourceImporterImageFont") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("ResourceImporterImageFont") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &ResourceImporterImageFont{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &ResourceImporterImageFont{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *ResourceImporterImageFont) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *ResourceImporterImageFont) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *ResourceImporterImageFont) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

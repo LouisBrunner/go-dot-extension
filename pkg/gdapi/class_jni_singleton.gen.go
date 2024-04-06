@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForJNISingleton ptrsForJNISingletonList
 
 func initJNISingletonPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("JNISingleton")
-  defer className.Destroy()
+	className := StringNameFromStr("JNISingleton")
+	defer className.Destroy()
 }
 
 type JNISingleton struct {
-  Object
+	Object
 }
 
 func (me *JNISingleton) BaseClass() string {
-  return "JNISingleton"
+	return "JNISingleton"
 }
 
 func NewJNISingleton() *JNISingleton {
-  str := StringNameFromStr("JNISingleton") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("JNISingleton") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &JNISingleton{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &JNISingleton{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *JNISingleton) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *JNISingleton) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *JNISingleton) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

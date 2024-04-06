@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForStyleBoxEmpty ptrsForStyleBoxEmptyList
 
 func initStyleBoxEmptyPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("StyleBoxEmpty")
-  defer className.Destroy()
+	className := StringNameFromStr("StyleBoxEmpty")
+	defer className.Destroy()
 }
 
 type StyleBoxEmpty struct {
-  StyleBox
+	StyleBox
 }
 
 func (me *StyleBoxEmpty) BaseClass() string {
-  return "StyleBoxEmpty"
+	return "StyleBoxEmpty"
 }
 
 func NewStyleBoxEmpty() *StyleBoxEmpty {
-  str := StringNameFromStr("StyleBoxEmpty") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("StyleBoxEmpty") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &StyleBoxEmpty{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &StyleBoxEmpty{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *StyleBoxEmpty) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *StyleBoxEmpty) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *StyleBoxEmpty) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

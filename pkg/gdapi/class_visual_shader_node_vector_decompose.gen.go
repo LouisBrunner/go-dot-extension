@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeVectorDecompose ptrsForVisualShaderNodeVectorDecompos
 
 func initVisualShaderNodeVectorDecomposePtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeVectorDecompose")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeVectorDecompose")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeVectorDecompose struct {
-  VisualShaderNodeVectorBase
+	VisualShaderNodeVectorBase
 }
 
 func (me *VisualShaderNodeVectorDecompose) BaseClass() string {
-  return "VisualShaderNodeVectorDecompose"
+	return "VisualShaderNodeVectorDecompose"
 }
 
 func NewVisualShaderNodeVectorDecompose() *VisualShaderNodeVectorDecompose {
-  str := StringNameFromStr("VisualShaderNodeVectorDecompose") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeVectorDecompose") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeVectorDecompose{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeVectorDecompose{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeVectorDecompose) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeVectorDecompose) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeVectorDecompose) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

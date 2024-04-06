@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForAudioStreamPlaybackOggVorbis ptrsForAudioStreamPlaybackOggVorbisList
 
 func initAudioStreamPlaybackOggVorbisPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("AudioStreamPlaybackOggVorbis")
-  defer className.Destroy()
+	className := StringNameFromStr("AudioStreamPlaybackOggVorbis")
+	defer className.Destroy()
 }
 
 type AudioStreamPlaybackOggVorbis struct {
-  AudioStreamPlaybackResampled
+	AudioStreamPlaybackResampled
 }
 
 func (me *AudioStreamPlaybackOggVorbis) BaseClass() string {
-  return "AudioStreamPlaybackOggVorbis"
+	return "AudioStreamPlaybackOggVorbis"
 }
 
 func NewAudioStreamPlaybackOggVorbis() *AudioStreamPlaybackOggVorbis {
-  str := StringNameFromStr("AudioStreamPlaybackOggVorbis") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("AudioStreamPlaybackOggVorbis") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &AudioStreamPlaybackOggVorbis{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &AudioStreamPlaybackOggVorbis{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *AudioStreamPlaybackOggVorbis) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *AudioStreamPlaybackOggVorbis) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *AudioStreamPlaybackOggVorbis) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

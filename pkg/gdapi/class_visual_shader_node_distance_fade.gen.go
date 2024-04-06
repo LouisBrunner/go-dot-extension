@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeDistanceFade ptrsForVisualShaderNodeDistanceFadeList
 
 func initVisualShaderNodeDistanceFadePtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeDistanceFade")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeDistanceFade")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeDistanceFade struct {
-  VisualShaderNode
+	VisualShaderNode
 }
 
 func (me *VisualShaderNodeDistanceFade) BaseClass() string {
-  return "VisualShaderNodeDistanceFade"
+	return "VisualShaderNodeDistanceFade"
 }
 
 func NewVisualShaderNodeDistanceFade() *VisualShaderNodeDistanceFade {
-  str := StringNameFromStr("VisualShaderNodeDistanceFade") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeDistanceFade") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeDistanceFade{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeDistanceFade{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeDistanceFade) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeDistanceFade) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeDistanceFade) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

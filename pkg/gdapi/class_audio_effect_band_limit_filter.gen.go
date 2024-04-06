@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForAudioEffectBandLimitFilter ptrsForAudioEffectBandLimitFilterList
 
 func initAudioEffectBandLimitFilterPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("AudioEffectBandLimitFilter")
-  defer className.Destroy()
+	className := StringNameFromStr("AudioEffectBandLimitFilter")
+	defer className.Destroy()
 }
 
 type AudioEffectBandLimitFilter struct {
-  AudioEffectFilter
+	AudioEffectFilter
 }
 
 func (me *AudioEffectBandLimitFilter) BaseClass() string {
-  return "AudioEffectBandLimitFilter"
+	return "AudioEffectBandLimitFilter"
 }
 
 func NewAudioEffectBandLimitFilter() *AudioEffectBandLimitFilter {
-  str := StringNameFromStr("AudioEffectBandLimitFilter") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("AudioEffectBandLimitFilter") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &AudioEffectBandLimitFilter{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &AudioEffectBandLimitFilter{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *AudioEffectBandLimitFilter) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *AudioEffectBandLimitFilter) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *AudioEffectBandLimitFilter) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

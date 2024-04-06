@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeRemap ptrsForVisualShaderNodeRemapList
 
 func initVisualShaderNodeRemapPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeRemap")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeRemap")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeRemap struct {
-  VisualShaderNode
+	VisualShaderNode
 }
 
 func (me *VisualShaderNodeRemap) BaseClass() string {
-  return "VisualShaderNodeRemap"
+	return "VisualShaderNodeRemap"
 }
 
 func NewVisualShaderNodeRemap() *VisualShaderNodeRemap {
-  str := StringNameFromStr("VisualShaderNodeRemap") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeRemap") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeRemap{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeRemap{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeRemap) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeRemap) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeRemap) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeRandomRange ptrsForVisualShaderNodeRandomRangeList
 
 func initVisualShaderNodeRandomRangePtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeRandomRange")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeRandomRange")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeRandomRange struct {
-  VisualShaderNode
+	VisualShaderNode
 }
 
 func (me *VisualShaderNodeRandomRange) BaseClass() string {
-  return "VisualShaderNodeRandomRange"
+	return "VisualShaderNodeRandomRange"
 }
 
 func NewVisualShaderNodeRandomRange() *VisualShaderNodeRandomRange {
-  str := StringNameFromStr("VisualShaderNodeRandomRange") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeRandomRange") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeRandomRange{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeRandomRange{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeRandomRange) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeRandomRange) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeRandomRange) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

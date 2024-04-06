@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForCSGCombiner3D ptrsForCSGCombiner3DList
 
 func initCSGCombiner3DPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("CSGCombiner3D")
-  defer className.Destroy()
+	className := StringNameFromStr("CSGCombiner3D")
+	defer className.Destroy()
 }
 
 type CSGCombiner3D struct {
-  CSGShape3D
+	CSGShape3D
 }
 
 func (me *CSGCombiner3D) BaseClass() string {
-  return "CSGCombiner3D"
+	return "CSGCombiner3D"
 }
 
 func NewCSGCombiner3D() *CSGCombiner3D {
-  str := StringNameFromStr("CSGCombiner3D") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("CSGCombiner3D") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &CSGCombiner3D{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &CSGCombiner3D{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *CSGCombiner3D) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *CSGCombiner3D) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *CSGCombiner3D) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

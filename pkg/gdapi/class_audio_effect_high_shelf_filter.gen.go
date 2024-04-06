@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForAudioEffectHighShelfFilter ptrsForAudioEffectHighShelfFilterList
 
 func initAudioEffectHighShelfFilterPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("AudioEffectHighShelfFilter")
-  defer className.Destroy()
+	className := StringNameFromStr("AudioEffectHighShelfFilter")
+	defer className.Destroy()
 }
 
 type AudioEffectHighShelfFilter struct {
-  AudioEffectFilter
+	AudioEffectFilter
 }
 
 func (me *AudioEffectHighShelfFilter) BaseClass() string {
-  return "AudioEffectHighShelfFilter"
+	return "AudioEffectHighShelfFilter"
 }
 
 func NewAudioEffectHighShelfFilter() *AudioEffectHighShelfFilter {
-  str := StringNameFromStr("AudioEffectHighShelfFilter") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("AudioEffectHighShelfFilter") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &AudioEffectHighShelfFilter{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &AudioEffectHighShelfFilter{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *AudioEffectHighShelfFilter) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *AudioEffectHighShelfFilter) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *AudioEffectHighShelfFilter) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

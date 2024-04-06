@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeParticleSphereEmitter ptrsForVisualShaderNodeParticle
 
 func initVisualShaderNodeParticleSphereEmitterPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeParticleSphereEmitter")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeParticleSphereEmitter")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeParticleSphereEmitter struct {
-  VisualShaderNodeParticleEmitter
+	VisualShaderNodeParticleEmitter
 }
 
 func (me *VisualShaderNodeParticleSphereEmitter) BaseClass() string {
-  return "VisualShaderNodeParticleSphereEmitter"
+	return "VisualShaderNodeParticleSphereEmitter"
 }
 
 func NewVisualShaderNodeParticleSphereEmitter() *VisualShaderNodeParticleSphereEmitter {
-  str := StringNameFromStr("VisualShaderNodeParticleSphereEmitter") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeParticleSphereEmitter") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeParticleSphereEmitter{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeParticleSphereEmitter{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeParticleSphereEmitter) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeParticleSphereEmitter) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeParticleSphereEmitter) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

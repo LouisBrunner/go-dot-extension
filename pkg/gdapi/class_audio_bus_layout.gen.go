@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForAudioBusLayout ptrsForAudioBusLayoutList
 
 func initAudioBusLayoutPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("AudioBusLayout")
-  defer className.Destroy()
+	className := StringNameFromStr("AudioBusLayout")
+	defer className.Destroy()
 }
 
 type AudioBusLayout struct {
-  Resource
+	Resource
 }
 
 func (me *AudioBusLayout) BaseClass() string {
-  return "AudioBusLayout"
+	return "AudioBusLayout"
 }
 
 func NewAudioBusLayout() *AudioBusLayout {
-  str := StringNameFromStr("AudioBusLayout") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("AudioBusLayout") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &AudioBusLayout{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &AudioBusLayout{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *AudioBusLayout) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *AudioBusLayout) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *AudioBusLayout) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

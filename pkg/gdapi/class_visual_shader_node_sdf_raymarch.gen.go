@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeSDFRaymarch ptrsForVisualShaderNodeSDFRaymarchList
 
 func initVisualShaderNodeSDFRaymarchPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeSDFRaymarch")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeSDFRaymarch")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeSDFRaymarch struct {
-  VisualShaderNode
+	VisualShaderNode
 }
 
 func (me *VisualShaderNodeSDFRaymarch) BaseClass() string {
-  return "VisualShaderNodeSDFRaymarch"
+	return "VisualShaderNodeSDFRaymarch"
 }
 
 func NewVisualShaderNodeSDFRaymarch() *VisualShaderNodeSDFRaymarch {
-  str := StringNameFromStr("VisualShaderNodeSDFRaymarch") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeSDFRaymarch") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeSDFRaymarch{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeSDFRaymarch{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeSDFRaymarch) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeSDFRaymarch) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeSDFRaymarch) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

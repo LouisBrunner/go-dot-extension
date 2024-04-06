@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForMarginContainer ptrsForMarginContainerList
 
 func initMarginContainerPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("MarginContainer")
-  defer className.Destroy()
+	className := StringNameFromStr("MarginContainer")
+	defer className.Destroy()
 }
 
 type MarginContainer struct {
-  Container
+	Container
 }
 
 func (me *MarginContainer) BaseClass() string {
-  return "MarginContainer"
+	return "MarginContainer"
 }
 
 func NewMarginContainer() *MarginContainer {
-  str := StringNameFromStr("MarginContainer") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("MarginContainer") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &MarginContainer{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &MarginContainer{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *MarginContainer) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *MarginContainer) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *MarginContainer) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

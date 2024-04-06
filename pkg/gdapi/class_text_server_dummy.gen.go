@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForTextServerDummy ptrsForTextServerDummyList
 
 func initTextServerDummyPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("TextServerDummy")
-  defer className.Destroy()
+	className := StringNameFromStr("TextServerDummy")
+	defer className.Destroy()
 }
 
 type TextServerDummy struct {
-  TextServerExtension
+	TextServerExtension
 }
 
 func (me *TextServerDummy) BaseClass() string {
-  return "TextServerDummy"
+	return "TextServerDummy"
 }
 
 func NewTextServerDummy() *TextServerDummy {
-  str := StringNameFromStr("TextServerDummy") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("TextServerDummy") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &TextServerDummy{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &TextServerDummy{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *TextServerDummy) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *TextServerDummy) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *TextServerDummy) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

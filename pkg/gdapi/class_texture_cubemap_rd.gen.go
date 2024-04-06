@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForTextureCubemapRD ptrsForTextureCubemapRDList
 
 func initTextureCubemapRDPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("TextureCubemapRD")
-  defer className.Destroy()
+	className := StringNameFromStr("TextureCubemapRD")
+	defer className.Destroy()
 }
 
 type TextureCubemapRD struct {
-  TextureLayeredRD
+	TextureLayeredRD
 }
 
 func (me *TextureCubemapRD) BaseClass() string {
-  return "TextureCubemapRD"
+	return "TextureCubemapRD"
 }
 
 func NewTextureCubemapRD() *TextureCubemapRD {
-  str := StringNameFromStr("TextureCubemapRD") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("TextureCubemapRD") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &TextureCubemapRD{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &TextureCubemapRD{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *TextureCubemapRD) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *TextureCubemapRD) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *TextureCubemapRD) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

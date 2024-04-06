@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForPlaceholderCubemapArray ptrsForPlaceholderCubemapArrayList
 
 func initPlaceholderCubemapArrayPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("PlaceholderCubemapArray")
-  defer className.Destroy()
+	className := StringNameFromStr("PlaceholderCubemapArray")
+	defer className.Destroy()
 }
 
 type PlaceholderCubemapArray struct {
-  PlaceholderTextureLayered
+	PlaceholderTextureLayered
 }
 
 func (me *PlaceholderCubemapArray) BaseClass() string {
-  return "PlaceholderCubemapArray"
+	return "PlaceholderCubemapArray"
 }
 
 func NewPlaceholderCubemapArray() *PlaceholderCubemapArray {
-  str := StringNameFromStr("PlaceholderCubemapArray") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("PlaceholderCubemapArray") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &PlaceholderCubemapArray{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &PlaceholderCubemapArray{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *PlaceholderCubemapArray) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *PlaceholderCubemapArray) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *PlaceholderCubemapArray) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

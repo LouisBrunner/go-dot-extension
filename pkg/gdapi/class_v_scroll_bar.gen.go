@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVScrollBar ptrsForVScrollBarList
 
 func initVScrollBarPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VScrollBar")
-  defer className.Destroy()
+	className := StringNameFromStr("VScrollBar")
+	defer className.Destroy()
 }
 
 type VScrollBar struct {
-  ScrollBar
+	ScrollBar
 }
 
 func (me *VScrollBar) BaseClass() string {
-  return "VScrollBar"
+	return "VScrollBar"
 }
 
 func NewVScrollBar() *VScrollBar {
-  str := StringNameFromStr("VScrollBar") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VScrollBar") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VScrollBar{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VScrollBar{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VScrollBar) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VScrollBar) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VScrollBar) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

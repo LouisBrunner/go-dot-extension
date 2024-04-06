@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeTexture3DParameter ptrsForVisualShaderNodeTexture3DPa
 
 func initVisualShaderNodeTexture3DParameterPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeTexture3DParameter")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeTexture3DParameter")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeTexture3DParameter struct {
-  VisualShaderNodeTextureParameter
+	VisualShaderNodeTextureParameter
 }
 
 func (me *VisualShaderNodeTexture3DParameter) BaseClass() string {
-  return "VisualShaderNodeTexture3DParameter"
+	return "VisualShaderNodeTexture3DParameter"
 }
 
 func NewVisualShaderNodeTexture3DParameter() *VisualShaderNodeTexture3DParameter {
-  str := StringNameFromStr("VisualShaderNodeTexture3DParameter") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeTexture3DParameter") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeTexture3DParameter{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeTexture3DParameter{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeTexture3DParameter) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeTexture3DParameter) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeTexture3DParameter) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForQuadMesh ptrsForQuadMeshList
 
 func initQuadMeshPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("QuadMesh")
-  defer className.Destroy()
+	className := StringNameFromStr("QuadMesh")
+	defer className.Destroy()
 }
 
 type QuadMesh struct {
-  PlaneMesh
+	PlaneMesh
 }
 
 func (me *QuadMesh) BaseClass() string {
-  return "QuadMesh"
+	return "QuadMesh"
 }
 
 func NewQuadMesh() *QuadMesh {
-  str := StringNameFromStr("QuadMesh") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("QuadMesh") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &QuadMesh{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &QuadMesh{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *QuadMesh) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *QuadMesh) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *QuadMesh) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

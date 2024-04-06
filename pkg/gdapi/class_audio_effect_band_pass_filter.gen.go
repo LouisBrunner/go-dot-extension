@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForAudioEffectBandPassFilter ptrsForAudioEffectBandPassFilterList
 
 func initAudioEffectBandPassFilterPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("AudioEffectBandPassFilter")
-  defer className.Destroy()
+	className := StringNameFromStr("AudioEffectBandPassFilter")
+	defer className.Destroy()
 }
 
 type AudioEffectBandPassFilter struct {
-  AudioEffectFilter
+	AudioEffectFilter
 }
 
 func (me *AudioEffectBandPassFilter) BaseClass() string {
-  return "AudioEffectBandPassFilter"
+	return "AudioEffectBandPassFilter"
 }
 
 func NewAudioEffectBandPassFilter() *AudioEffectBandPassFilter {
-  str := StringNameFromStr("AudioEffectBandPassFilter") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("AudioEffectBandPassFilter") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &AudioEffectBandPassFilter{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &AudioEffectBandPassFilter{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *AudioEffectBandPassFilter) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *AudioEffectBandPassFilter) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *AudioEffectBandPassFilter) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

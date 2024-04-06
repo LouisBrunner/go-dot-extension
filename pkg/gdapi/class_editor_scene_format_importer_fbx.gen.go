@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForEditorSceneFormatImporterFBX ptrsForEditorSceneFormatImporterFBXList
 
 func initEditorSceneFormatImporterFBXPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("EditorSceneFormatImporterFBX")
-  defer className.Destroy()
+	className := StringNameFromStr("EditorSceneFormatImporterFBX")
+	defer className.Destroy()
 }
 
 type EditorSceneFormatImporterFBX struct {
-  EditorSceneFormatImporter
+	EditorSceneFormatImporter
 }
 
 func (me *EditorSceneFormatImporterFBX) BaseClass() string {
-  return "EditorSceneFormatImporterFBX"
+	return "EditorSceneFormatImporterFBX"
 }
 
 func NewEditorSceneFormatImporterFBX() *EditorSceneFormatImporterFBX {
-  str := StringNameFromStr("EditorSceneFormatImporterFBX") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("EditorSceneFormatImporterFBX") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &EditorSceneFormatImporterFBX{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &EditorSceneFormatImporterFBX{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *EditorSceneFormatImporterFBX) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *EditorSceneFormatImporterFBX) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *EditorSceneFormatImporterFBX) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

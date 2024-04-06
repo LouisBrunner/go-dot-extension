@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeFaceForward ptrsForVisualShaderNodeFaceForwardList
 
 func initVisualShaderNodeFaceForwardPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeFaceForward")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeFaceForward")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeFaceForward struct {
-  VisualShaderNodeVectorBase
+	VisualShaderNodeVectorBase
 }
 
 func (me *VisualShaderNodeFaceForward) BaseClass() string {
-  return "VisualShaderNodeFaceForward"
+	return "VisualShaderNodeFaceForward"
 }
 
 func NewVisualShaderNodeFaceForward() *VisualShaderNodeFaceForward {
-  str := StringNameFromStr("VisualShaderNodeFaceForward") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeFaceForward") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeFaceForward{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeFaceForward{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeFaceForward) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeFaceForward) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeFaceForward) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

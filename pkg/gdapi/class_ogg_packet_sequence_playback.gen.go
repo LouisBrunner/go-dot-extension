@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForOggPacketSequencePlayback ptrsForOggPacketSequencePlaybackList
 
 func initOggPacketSequencePlaybackPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("OggPacketSequencePlayback")
-  defer className.Destroy()
+	className := StringNameFromStr("OggPacketSequencePlayback")
+	defer className.Destroy()
 }
 
 type OggPacketSequencePlayback struct {
-  RefCounted
+	RefCounted
 }
 
 func (me *OggPacketSequencePlayback) BaseClass() string {
-  return "OggPacketSequencePlayback"
+	return "OggPacketSequencePlayback"
 }
 
 func NewOggPacketSequencePlayback() *OggPacketSequencePlayback {
-  str := StringNameFromStr("OggPacketSequencePlayback") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("OggPacketSequencePlayback") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &OggPacketSequencePlayback{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &OggPacketSequencePlayback{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *OggPacketSequencePlayback) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *OggPacketSequencePlayback) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *OggPacketSequencePlayback) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

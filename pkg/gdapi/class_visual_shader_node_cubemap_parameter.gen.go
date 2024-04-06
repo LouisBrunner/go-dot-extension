@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeCubemapParameter ptrsForVisualShaderNodeCubemapParame
 
 func initVisualShaderNodeCubemapParameterPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeCubemapParameter")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeCubemapParameter")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeCubemapParameter struct {
-  VisualShaderNodeTextureParameter
+	VisualShaderNodeTextureParameter
 }
 
 func (me *VisualShaderNodeCubemapParameter) BaseClass() string {
-  return "VisualShaderNodeCubemapParameter"
+	return "VisualShaderNodeCubemapParameter"
 }
 
 func NewVisualShaderNodeCubemapParameter() *VisualShaderNodeCubemapParameter {
-  str := StringNameFromStr("VisualShaderNodeCubemapParameter") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeCubemapParameter") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeCubemapParameter{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeCubemapParameter{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeCubemapParameter) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeCubemapParameter) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeCubemapParameter) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

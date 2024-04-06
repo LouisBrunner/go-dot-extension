@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForResourceImporterShaderFile ptrsForResourceImporterShaderFileList
 
 func initResourceImporterShaderFilePtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("ResourceImporterShaderFile")
-  defer className.Destroy()
+	className := StringNameFromStr("ResourceImporterShaderFile")
+	defer className.Destroy()
 }
 
 type ResourceImporterShaderFile struct {
-  ResourceImporter
+	ResourceImporter
 }
 
 func (me *ResourceImporterShaderFile) BaseClass() string {
-  return "ResourceImporterShaderFile"
+	return "ResourceImporterShaderFile"
 }
 
 func NewResourceImporterShaderFile() *ResourceImporterShaderFile {
-  str := StringNameFromStr("ResourceImporterShaderFile") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("ResourceImporterShaderFile") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &ResourceImporterShaderFile{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &ResourceImporterShaderFile{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *ResourceImporterShaderFile) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *ResourceImporterShaderFile) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *ResourceImporterShaderFile) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForScriptLanguage ptrsForScriptLanguageList
 
 func initScriptLanguagePtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("ScriptLanguage")
-  defer className.Destroy()
+	className := StringNameFromStr("ScriptLanguage")
+	defer className.Destroy()
 }
 
 type ScriptLanguage struct {
-  Object
+	Object
 }
 
 func (me *ScriptLanguage) BaseClass() string {
-  return "ScriptLanguage"
+	return "ScriptLanguage"
 }
 
 func NewScriptLanguage() *ScriptLanguage {
-  str := StringNameFromStr("ScriptLanguage") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("ScriptLanguage") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &ScriptLanguage{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &ScriptLanguage{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *ScriptLanguage) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *ScriptLanguage) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *ScriptLanguage) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

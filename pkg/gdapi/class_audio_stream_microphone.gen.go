@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForAudioStreamMicrophone ptrsForAudioStreamMicrophoneList
 
 func initAudioStreamMicrophonePtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("AudioStreamMicrophone")
-  defer className.Destroy()
+	className := StringNameFromStr("AudioStreamMicrophone")
+	defer className.Destroy()
 }
 
 type AudioStreamMicrophone struct {
-  AudioStream
+	AudioStream
 }
 
 func (me *AudioStreamMicrophone) BaseClass() string {
-  return "AudioStreamMicrophone"
+	return "AudioStreamMicrophone"
 }
 
 func NewAudioStreamMicrophone() *AudioStreamMicrophone {
-  str := StringNameFromStr("AudioStreamMicrophone") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("AudioStreamMicrophone") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &AudioStreamMicrophone{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &AudioStreamMicrophone{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *AudioStreamMicrophone) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *AudioStreamMicrophone) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *AudioStreamMicrophone) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

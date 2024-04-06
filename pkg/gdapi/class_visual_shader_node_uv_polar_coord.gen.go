@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForVisualShaderNodeUVPolarCoord ptrsForVisualShaderNodeUVPolarCoordList
 
 func initVisualShaderNodeUVPolarCoordPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("VisualShaderNodeUVPolarCoord")
-  defer className.Destroy()
+	className := StringNameFromStr("VisualShaderNodeUVPolarCoord")
+	defer className.Destroy()
 }
 
 type VisualShaderNodeUVPolarCoord struct {
-  VisualShaderNode
+	VisualShaderNode
 }
 
 func (me *VisualShaderNodeUVPolarCoord) BaseClass() string {
-  return "VisualShaderNodeUVPolarCoord"
+	return "VisualShaderNodeUVPolarCoord"
 }
 
 func NewVisualShaderNodeUVPolarCoord() *VisualShaderNodeUVPolarCoord {
-  str := StringNameFromStr("VisualShaderNodeUVPolarCoord") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("VisualShaderNodeUVPolarCoord") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &VisualShaderNodeUVPolarCoord{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &VisualShaderNodeUVPolarCoord{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *VisualShaderNodeUVPolarCoord) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *VisualShaderNodeUVPolarCoord) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *VisualShaderNodeUVPolarCoord) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

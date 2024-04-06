@@ -2,39 +2,37 @@
 package gdapi
 
 import (
-  "unsafe"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 var _ unsafe.Pointer // FIXME: avoid unused import warning
 
 type GLTFDocumentExtensionPhysics struct {
-  obj gdc.ObjectPtr
+	obj gdc.ObjectPtr
 }
 
 func (me *GLTFDocumentExtensionPhysics) SetBaseObject(obj gdc.ObjectPtr) {
-  me.obj = obj
+	me.obj = obj
 }
 
 func (me *GLTFDocumentExtensionPhysics) BaseClass() string {
-  return "GLTFDocumentExtensionPhysics"
+	return "GLTFDocumentExtensionPhysics"
 }
-
-
 
 // Enums
 
 func (me *GLTFDocumentExtensionPhysics) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *GLTFDocumentExtensionPhysics) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *GLTFDocumentExtensionPhysics) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods

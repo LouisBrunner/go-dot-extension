@@ -2,11 +2,11 @@
 package gdapi
 
 import (
-  "log"
-  "runtime"
-  "unsafe"
+	"log"
+	"runtime"
+	"unsafe"
 
-  "github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
 // FIXME: avoid unused import warning
@@ -21,42 +21,40 @@ var ptrsForGLTFDocumentExtensionConvertImporterMesh ptrsForGLTFDocumentExtension
 
 func initGLTFDocumentExtensionConvertImporterMeshPtrs(iface gdc.Interface) {
 
-  className := StringNameFromStr("GLTFDocumentExtensionConvertImporterMesh")
-  defer className.Destroy()
+	className := StringNameFromStr("GLTFDocumentExtensionConvertImporterMesh")
+	defer className.Destroy()
 }
 
 type GLTFDocumentExtensionConvertImporterMesh struct {
-  GLTFDocumentExtension
+	GLTFDocumentExtension
 }
 
 func (me *GLTFDocumentExtensionConvertImporterMesh) BaseClass() string {
-  return "GLTFDocumentExtensionConvertImporterMesh"
+	return "GLTFDocumentExtensionConvertImporterMesh"
 }
 
 func NewGLTFDocumentExtensionConvertImporterMesh() *GLTFDocumentExtensionConvertImporterMesh {
-  str := StringNameFromStr("GLTFDocumentExtensionConvertImporterMesh") // FIXME: should cache?
-  defer str.Destroy()
+	str := StringNameFromStr("GLTFDocumentExtensionConvertImporterMesh") // FIXME: should cache?
+	defer str.Destroy()
 
 	objPtr := giface.ClassdbConstructObject(str.AsCPtr())
-  obj := &GLTFDocumentExtensionConvertImporterMesh{}
-  obj.SetBaseObject(objPtr)
-  return obj
+	obj := &GLTFDocumentExtensionConvertImporterMesh{}
+	obj.SetBaseObject(objPtr)
+	return obj
 }
-
-
 
 // Enums
 
 func (me *GLTFDocumentExtensionConvertImporterMesh) Type() gdc.VariantType {
-  return gdc.VariantTypeObject
+	return gdc.VariantTypeObject
 }
 
 func (me *GLTFDocumentExtensionConvertImporterMesh) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(me.obj)
+	return gdc.TypePtr(me.obj)
 }
 
 func (me *GLTFDocumentExtensionConvertImporterMesh) AsCTypePtr() gdc.ConstTypePtr {
-  return gdc.ConstTypePtr(me.obj)
+	return gdc.ConstTypePtr(me.obj)
 }
 
 // Methods
