@@ -25,6 +25,12 @@ vet: download generate
 	go run honnef.co/go/tools/cmd/staticcheck ./...
 .PHONY: vet
 
+vet-ci: download
+	gofmt -d -e -s .
+	go vet ./...
+	go run honnef.co/go/tools/cmd/staticcheck ./...
+.PHONY: vet-ci
+
 # Testing
 test: download generate
 	go test -v ./...
@@ -33,7 +39,7 @@ test: download generate
 TEST_OUT_DIR ?= .
 COV_OUT_DIR ?= $(TEST_OUT_DIR)
 
-test-ci: download generate
+test-ci: download
 	go run gotest.tools/gotestsum --junitfile $(TEST_OUT_DIR)/report.xml -- -coverprofile=$(TEST_OUT_DIR)/coverage.out -v ./...
 .PHONY: test-ci
 
