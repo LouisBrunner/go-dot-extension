@@ -187,9 +187,14 @@ func typeToVariantNClass(val reflect.Type) (gdc.VariantType, bool, gdc.StringNam
 	if va != gdc.VariantTypeObject {
 		return va, isBclass, gdapi.NewStringName().AsPtr(), nil
 	}
-	inst, ok := reflect.New(val).Interface().(Class)
+	instRaw := reflect.New(val).Interface()
+	inst, ok := instRaw.(Class)
 	if !ok {
 		return gdc.VariantTypeNil, false, nil, fmt.Errorf("unsupported object type %s (%T)", val, inst)
 	}
-	return va, true, gdapi.StringNameFromStr(inst.BaseClass()).AsPtr(), nil
+	name, err := nameForClass(val, instRaw)
+	if err != nil {
+		return gdc.VariantTypeNil, false, nil, err
+	}
+	return va, true, gdapi.StringNameFromStr(name).AsPtr(), nil
 }

@@ -4,7 +4,6 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/LouisBrunner/go-dot-extension/pkg/gdapi"
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
 )
 
@@ -16,8 +15,6 @@ type ConstantsDefinition struct {
 type Class interface {
 	BaseClass() string
 	SetBaseObject(obj gdc.ObjectPtr)
-	Get(name gdapi.StringName) gdapi.Variant
-	Set(name gdapi.StringName, value gdapi.Variant)
 }
 
 type ClassWithConstants interface {

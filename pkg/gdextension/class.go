@@ -156,10 +156,15 @@ func (me *extension) unregisterClass(class *classEntry) {
 }
 
 func nameForClass(typ reflect.Type, instance any) (string, error) {
-	if typ.Kind() != reflect.Pointer && typ.Elem().Kind() != reflect.Struct {
-		return "", fmt.Errorf("expected a pointer to struct but got %s (%T)", typ.Kind(), instance)
+	switch typ.Kind() {
+	case reflect.Pointer:
+		if typ.Elem().Kind() == reflect.Struct {
+			return typ.Elem().Name(), nil
+		}
+	case reflect.Struct:
+		return typ.Name(), nil
 	}
-	return typ.Elem().Name(), nil
+	return "", fmt.Errorf("expected a struct or a pointer to struct but got %s (%T)", typ.Kind(), instance)
 }
 
 func (me *extension) CreateClass(typ reflect.Type) (any, error) {

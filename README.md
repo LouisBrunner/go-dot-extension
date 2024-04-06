@@ -135,10 +135,7 @@ You can find examples in the `examples` folder.
 ## Issues
 
 - cannot connect to signals from within Go (do it from GDScript/the editor directly)
-- no way to add custom enums or constants
 - the extension will exit the whole program when unloaded, otherwise it will just crash (most likely SIGSEGV)
-- cannot use another custom class as a base class
-- cannot receive another custom class as an argument on an exported method
 - ptrcall methods return type conversion is unimplemented
 - `Signal`s have no arguments in the Godot documentation/type hint system
 
