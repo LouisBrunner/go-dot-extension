@@ -47,6 +47,7 @@ func initPacketPeerDTLSPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPacketPeerDTLS.fnDisconnectFromPeer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type PacketPeerDTLS struct {

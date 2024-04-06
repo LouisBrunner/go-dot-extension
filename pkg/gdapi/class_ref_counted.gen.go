@@ -47,6 +47,7 @@ func initRefCountedPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRefCounted.fnGetReferenceCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type RefCounted struct {

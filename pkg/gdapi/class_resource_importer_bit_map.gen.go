@@ -23,6 +23,7 @@ func initResourceImporterBitMapPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("ResourceImporterBitMap")
 	defer className.Destroy()
+
 }
 
 type ResourceImporterBitMap struct {

@@ -95,6 +95,7 @@ func initGeneric6DOFJoint3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGeneric6DOFJoint3D.fnGetFlagZ = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2122427807))
 	}
+
 }
 
 type Generic6DOFJoint3D struct {

@@ -71,6 +71,7 @@ func initScriptEditorPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForScriptEditor.fnOpenScriptCreateDialog = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3186203200))
 	}
+
 }
 
 type ScriptEditor struct {

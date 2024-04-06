@@ -47,6 +47,7 @@ func initVisualShaderNodeCommentPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeComment.fnGetDescription = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type VisualShaderNodeComment struct {

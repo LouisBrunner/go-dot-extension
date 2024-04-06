@@ -163,6 +163,7 @@ func initAStar3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAStar3D.fnGetIdPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3404614526))
 	}
+
 }
 
 type AStar3D struct {

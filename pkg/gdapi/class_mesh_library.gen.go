@@ -155,6 +155,7 @@ func initMeshLibraryPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMeshLibrary.fnGetLastUnusedItemId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type MeshLibrary struct {

@@ -49,6 +49,7 @@ func initEditorScenePostImportPluginPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorScenePostImportPlugin.fnAddImportOptionAdvanced = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3674075649))
 	}
+
 }
 
 type EditorScenePostImportPlugin struct {

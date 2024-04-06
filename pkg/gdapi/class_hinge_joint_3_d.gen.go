@@ -47,6 +47,7 @@ func initHingeJoint3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForHingeJoint3D.fnGetFlag = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2841369610))
 	}
+
 }
 
 type HingeJoint3D struct {

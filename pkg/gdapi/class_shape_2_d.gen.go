@@ -71,6 +71,7 @@ func initShape2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForShape2D.fnGetRect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1639390495))
 	}
+
 }
 
 type Shape2D struct {

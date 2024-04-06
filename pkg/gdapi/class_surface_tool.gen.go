@@ -215,6 +215,7 @@ func initSurfaceToolPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSurfaceTool.fnCommitToArrays = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2915620761))
 	}
+
 }
 
 type SurfaceTool struct {

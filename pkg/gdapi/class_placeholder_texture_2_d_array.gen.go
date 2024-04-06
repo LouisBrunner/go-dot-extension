@@ -23,6 +23,7 @@ func initPlaceholderTexture2DArrayPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("PlaceholderTexture2DArray")
 	defer className.Destroy()
+
 }
 
 type PlaceholderTexture2DArray struct {

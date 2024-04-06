@@ -23,6 +23,7 @@ func initTextServerAdvancedPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("TextServerAdvanced")
 	defer className.Destroy()
+
 }
 
 type TextServerAdvanced struct {

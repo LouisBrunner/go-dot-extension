@@ -23,6 +23,7 @@ func initVSliderPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VSlider")
 	defer className.Destroy()
+
 }
 
 type VSlider struct {

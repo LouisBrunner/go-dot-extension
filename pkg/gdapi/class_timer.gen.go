@@ -107,6 +107,7 @@ func initTimerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTimer.fnGetTimerProcessCallback = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2672570227))
 	}
+
 }
 
 type Timer struct {

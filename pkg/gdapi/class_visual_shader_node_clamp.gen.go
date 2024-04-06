@@ -35,6 +35,7 @@ func initVisualShaderNodeClampPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeClamp.fnGetOpType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 233276050))
 	}
+
 }
 
 type VisualShaderNodeClamp struct {

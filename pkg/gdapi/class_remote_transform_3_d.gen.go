@@ -89,6 +89,7 @@ func initRemoteTransform3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRemoteTransform3D.fnGetUpdateScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type RemoteTransform3D struct {

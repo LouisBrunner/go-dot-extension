@@ -23,6 +23,7 @@ func initAudioEffectBandPassFilterPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("AudioEffectBandPassFilter")
 	defer className.Destroy()
+
 }
 
 type AudioEffectBandPassFilter struct {

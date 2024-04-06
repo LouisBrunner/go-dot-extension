@@ -443,6 +443,7 @@ func initNode3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNode3D.fnToGlobal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 192990374))
 	}
+
 }
 
 type Node3D struct {

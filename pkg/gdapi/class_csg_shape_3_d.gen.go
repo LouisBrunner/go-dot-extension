@@ -143,6 +143,7 @@ func initCSGShape3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCSGShape3D.fnGetMeshes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
 	}
+
 }
 
 type CSGShape3D struct {

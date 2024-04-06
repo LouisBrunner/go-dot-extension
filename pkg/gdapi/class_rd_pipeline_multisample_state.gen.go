@@ -95,6 +95,7 @@ func initRDPipelineMultisampleStatePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRDPipelineMultisampleState.fnGetSampleMasks = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
 	}
+
 }
 
 type RDPipelineMultisampleState struct {

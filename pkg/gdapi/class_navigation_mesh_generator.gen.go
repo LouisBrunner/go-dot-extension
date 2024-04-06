@@ -47,6 +47,7 @@ func initNavigationMeshGeneratorPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNavigationMeshGenerator.fnBakeFromSourceGeometryData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2469318639))
 	}
+
 }
 
 type NavigationMeshGenerator struct {

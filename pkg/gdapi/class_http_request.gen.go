@@ -161,6 +161,7 @@ func initHTTPRequestPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForHTTPRequest.fnSetHttpsProxy = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2956805083))
 	}
+
 }
 
 type HTTPRequest struct {

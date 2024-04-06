@@ -35,6 +35,7 @@ func initPinJoint3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPinJoint3D.fnGetParam = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1758438771))
 	}
+
 }
 
 type PinJoint3D struct {

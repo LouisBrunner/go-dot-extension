@@ -167,6 +167,7 @@ func initMenuBarPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMenuBar.fnGetMenuPopup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2100501353))
 	}
+
 }
 
 type MenuBar struct {

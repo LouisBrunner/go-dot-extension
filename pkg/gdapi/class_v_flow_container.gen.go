@@ -23,6 +23,7 @@ func initVFlowContainerPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VFlowContainer")
 	defer className.Destroy()
+
 }
 
 type VFlowContainer struct {

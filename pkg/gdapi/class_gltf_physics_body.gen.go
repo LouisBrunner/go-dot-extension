@@ -119,6 +119,7 @@ func initGLTFPhysicsBodyPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGLTFPhysicsBody.fnSetInertiaTensor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1055510324))
 	}
+
 }
 
 type GLTFPhysicsBody struct {

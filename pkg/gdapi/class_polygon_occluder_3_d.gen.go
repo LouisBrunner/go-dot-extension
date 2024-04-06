@@ -35,6 +35,7 @@ func initPolygonOccluder3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPolygonOccluder3D.fnGetPolygon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2961356807))
 	}
+
 }
 
 type PolygonOccluder3D struct {

@@ -37,6 +37,7 @@ func initContainerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForContainer.fnFitChildInRect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1993438598))
 	}
+
 }
 
 type Container struct {

@@ -275,6 +275,7 @@ func initRDPipelineDepthStencilStatePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRDPipelineDepthStencilState.fnGetBackOpReference = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type RDPipelineDepthStencilState struct {

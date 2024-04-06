@@ -23,6 +23,7 @@ func initOggPacketSequencePlaybackPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("OggPacketSequencePlayback")
 	defer className.Destroy()
+
 }
 
 type OggPacketSequencePlayback struct {

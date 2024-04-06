@@ -47,6 +47,7 @@ func initWorldBoundaryShape2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForWorldBoundaryShape2D.fnGetDistance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type WorldBoundaryShape2D struct {

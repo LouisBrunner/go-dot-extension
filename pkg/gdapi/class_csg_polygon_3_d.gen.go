@@ -215,6 +215,7 @@ func initCSGPolygon3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCSGPolygon3D.fnGetSmoothFaces = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type CSGPolygon3D struct {

@@ -65,6 +65,7 @@ func initRDUniformPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRDUniform.fnGetIds = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
 	}
+
 }
 
 type RDUniform struct {

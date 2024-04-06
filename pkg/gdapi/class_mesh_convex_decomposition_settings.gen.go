@@ -179,6 +179,7 @@ func initMeshConvexDecompositionSettingsPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMeshConvexDecompositionSettings.fnGetProjectHullVertices = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type MeshConvexDecompositionSettings struct {

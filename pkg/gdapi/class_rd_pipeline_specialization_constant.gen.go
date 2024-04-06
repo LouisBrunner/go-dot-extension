@@ -47,6 +47,7 @@ func initRDPipelineSpecializationConstantPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRDPipelineSpecializationConstant.fnGetConstantId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type RDPipelineSpecializationConstant struct {

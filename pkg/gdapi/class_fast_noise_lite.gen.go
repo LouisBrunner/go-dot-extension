@@ -275,6 +275,7 @@ func initFastNoiseLitePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForFastNoiseLite.fnGetDomainWarpFractalGain = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type FastNoiseLite struct {

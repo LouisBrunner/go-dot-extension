@@ -269,6 +269,7 @@ func initSceneTreePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSceneTree.fnIsMultiplayerPollEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type SceneTree struct {

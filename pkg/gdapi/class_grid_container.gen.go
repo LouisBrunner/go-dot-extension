@@ -35,6 +35,7 @@ func initGridContainerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGridContainer.fnGetColumns = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type GridContainer struct {

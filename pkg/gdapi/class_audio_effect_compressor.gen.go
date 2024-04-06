@@ -107,6 +107,7 @@ func initAudioEffectCompressorPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioEffectCompressor.fnGetSidechain = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2002593661))
 	}
+
 }
 
 type AudioEffectCompressor struct {

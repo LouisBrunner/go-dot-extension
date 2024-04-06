@@ -47,6 +47,7 @@ func initConcavePolygonShape3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForConcavePolygonShape3D.fnIsBackfaceCollisionEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type ConcavePolygonShape3D struct {

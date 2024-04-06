@@ -113,6 +113,7 @@ func initAudioStreamRandomizerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioStreamRandomizer.fnGetPlaybackMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3943055077))
 	}
+
 }
 
 type AudioStreamRandomizer struct {

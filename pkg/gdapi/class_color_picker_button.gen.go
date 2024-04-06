@@ -59,6 +59,7 @@ func initColorPickerButtonPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForColorPickerButton.fnIsEditingAlpha = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type ColorPickerButton struct {

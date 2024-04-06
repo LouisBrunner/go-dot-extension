@@ -29,6 +29,7 @@ func initPlaceholderMeshPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPlaceholderMesh.fnSetAabb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 259215842))
 	}
+
 }
 
 type PlaceholderMesh struct {

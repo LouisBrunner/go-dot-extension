@@ -35,6 +35,7 @@ func initTexture2DRDPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTexture2DRD.fnGetTextureRdRid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
 	}
+
 }
 
 type Texture2DRD struct {

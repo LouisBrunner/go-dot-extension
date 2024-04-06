@@ -167,6 +167,7 @@ func initNavigationRegion2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNavigationRegion2D.fnBakeNavigationPolygon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3216645846))
 	}
+
 }
 
 type NavigationRegion2D struct {

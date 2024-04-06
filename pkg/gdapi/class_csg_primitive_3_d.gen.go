@@ -35,6 +35,7 @@ func initCSGPrimitive3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCSGPrimitive3D.fnGetFlipFaces = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
 	}
+
 }
 
 type CSGPrimitive3D struct {

@@ -185,6 +185,7 @@ func initAnimationNodeBlendSpace2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAnimationNodeBlendSpace2D.fnIsUsingSync = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type AnimationNodeBlendSpace2D struct {

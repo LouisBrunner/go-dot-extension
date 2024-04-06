@@ -59,6 +59,7 @@ func initShaderPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForShader.fnGetShaderUniformList = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1230511656))
 	}
+
 }
 
 type Shader struct {

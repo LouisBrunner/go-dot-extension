@@ -275,6 +275,7 @@ func initLabelPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForLabel.fnGetStructuredTextBidiOverrideOptions = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
 	}
+
 }
 
 type Label struct {

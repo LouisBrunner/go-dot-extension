@@ -1271,6 +1271,7 @@ func initTextEditPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTextEdit.fnMenuOption = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
 	}
+
 }
 
 type TextEdit struct {

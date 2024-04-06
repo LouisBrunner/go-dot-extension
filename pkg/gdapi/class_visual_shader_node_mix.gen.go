@@ -35,6 +35,7 @@ func initVisualShaderNodeMixPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeMix.fnGetOpType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4013957297))
 	}
+
 }
 
 type VisualShaderNodeMix struct {

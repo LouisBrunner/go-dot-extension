@@ -23,6 +23,7 @@ func initGLTFDocumentExtensionConvertImporterMeshPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("GLTFDocumentExtensionConvertImporterMesh")
 	defer className.Destroy()
+
 }
 
 type GLTFDocumentExtensionConvertImporterMesh struct {

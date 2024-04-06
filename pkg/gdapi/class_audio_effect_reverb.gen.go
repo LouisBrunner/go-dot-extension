@@ -119,6 +119,7 @@ func initAudioEffectReverbPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioEffectReverb.fnGetHpf = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type AudioEffectReverb struct {

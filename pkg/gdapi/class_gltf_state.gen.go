@@ -401,6 +401,7 @@ func initGLTFStatePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGLTFState.fnSetHandleBinaryImage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
 	}
+
 }
 
 type GLTFState struct {

@@ -47,6 +47,7 @@ func initRDShaderSourcePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRDShaderSource.fnGetLanguage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1063538261))
 	}
+
 }
 
 type RDShaderSource struct {

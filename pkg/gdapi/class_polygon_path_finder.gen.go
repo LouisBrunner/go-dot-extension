@@ -71,6 +71,7 @@ func initPolygonPathFinderPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPolygonPathFinder.fnGetBounds = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1639390495))
 	}
+
 }
 
 type PolygonPathFinder struct {

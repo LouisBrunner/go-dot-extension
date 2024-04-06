@@ -35,6 +35,7 @@ func initVisualShaderNodeParticleEmitterPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeParticleEmitter.fnIsMode2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type VisualShaderNodeParticleEmitter struct {

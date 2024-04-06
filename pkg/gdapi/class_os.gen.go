@@ -443,6 +443,7 @@ func initOSPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForOS.fnRevokeGrantedPermissions = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type OS struct {

@@ -23,6 +23,7 @@ func initVisualShaderNodeSDFToScreenUVPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeSDFToScreenUV")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeSDFToScreenUV struct {

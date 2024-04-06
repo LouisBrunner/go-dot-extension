@@ -23,6 +23,7 @@ func initVisualShaderNodeSDFRaymarchPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeSDFRaymarch")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeSDFRaymarch struct {

@@ -41,6 +41,7 @@ func initAudioEffectEQPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioEffectEQ.fnGetBandCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type AudioEffectEQ struct {

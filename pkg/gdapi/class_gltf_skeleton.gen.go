@@ -89,6 +89,7 @@ func initGLTFSkeletonPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGLTFSkeleton.fnGetBoneAttachment = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 945440495))
 	}
+
 }
 
 type GLTFSkeleton struct {

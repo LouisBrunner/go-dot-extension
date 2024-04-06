@@ -35,6 +35,7 @@ func initVisualShaderNodeParticleAcceleratorPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeParticleAccelerator.fnGetMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2660365633))
 	}
+
 }
 
 type VisualShaderNodeParticleAccelerator struct {

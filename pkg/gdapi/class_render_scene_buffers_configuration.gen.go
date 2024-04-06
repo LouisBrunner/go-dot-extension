@@ -131,6 +131,7 @@ func initRenderSceneBuffersConfigurationPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRenderSceneBuffersConfiguration.fnSetTextureMipmapBias = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
 	}
+
 }
 
 type RenderSceneBuffersConfiguration struct {

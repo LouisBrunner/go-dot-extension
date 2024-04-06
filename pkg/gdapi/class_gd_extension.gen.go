@@ -25,35 +25,7 @@ type ptrsForGDExtensionList struct {
 var ptrsForGDExtension ptrsForGDExtensionList
 
 func initGDExtensionPtrs(iface gdc.Interface) {
-	return
 
-	className := StringNameFromStr("GDExtension")
-	defer className.Destroy()
-	{
-		methodName := StringNameFromStr("open_library")
-		defer methodName.Destroy()
-		ptrsForGDExtension.fnOpenLibrary = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 852856452))
-	}
-	{
-		methodName := StringNameFromStr("close_library")
-		defer methodName.Destroy()
-		ptrsForGDExtension.fnCloseLibrary = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
-	}
-	{
-		methodName := StringNameFromStr("is_library_open")
-		defer methodName.Destroy()
-		ptrsForGDExtension.fnIsLibraryOpen = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
-	}
-	{
-		methodName := StringNameFromStr("get_minimum_library_initialization_level")
-		defer methodName.Destroy()
-		ptrsForGDExtension.fnGetMinimumLibraryInitializationLevel = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 964858755))
-	}
-	{
-		methodName := StringNameFromStr("initialize_library")
-		defer methodName.Destroy()
-		ptrsForGDExtension.fnInitializeLibrary = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3409922941))
-	}
 }
 
 type GDExtension struct {

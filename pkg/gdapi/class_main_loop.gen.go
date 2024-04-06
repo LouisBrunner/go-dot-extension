@@ -27,6 +27,7 @@ func initMainLoopPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("MainLoop")
 	defer className.Destroy()
+
 }
 
 type MainLoop struct {

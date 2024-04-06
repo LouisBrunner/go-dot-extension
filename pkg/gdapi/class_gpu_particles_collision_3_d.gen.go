@@ -35,6 +35,7 @@ func initGPUParticlesCollision3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGPUParticlesCollision3D.fnGetCullMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type GPUParticlesCollision3D struct {

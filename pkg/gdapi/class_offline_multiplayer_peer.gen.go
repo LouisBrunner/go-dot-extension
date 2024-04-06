@@ -23,6 +23,7 @@ func initOfflineMultiplayerPeerPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("OfflineMultiplayerPeer")
 	defer className.Destroy()
+
 }
 
 type OfflineMultiplayerPeer struct {

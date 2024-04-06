@@ -23,6 +23,7 @@ func initAnimationNodeAdd3Ptrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("AnimationNodeAdd3")
 	defer className.Destroy()
+
 }
 
 type AnimationNodeAdd3 struct {

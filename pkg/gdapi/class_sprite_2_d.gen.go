@@ -179,6 +179,7 @@ func initSprite2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSprite2D.fnGetRect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1639390495))
 	}
+
 }
 
 type Sprite2D struct {

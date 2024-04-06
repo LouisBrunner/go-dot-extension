@@ -23,6 +23,7 @@ func initAudioEffectHighShelfFilterPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("AudioEffectHighShelfFilter")
 	defer className.Destroy()
+
 }
 
 type AudioEffectHighShelfFilter struct {

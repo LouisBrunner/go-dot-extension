@@ -431,6 +431,7 @@ func initThemePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTheme.fnClear = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type Theme struct {

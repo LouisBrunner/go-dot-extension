@@ -71,6 +71,7 @@ func initPacketPeerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPacketPeer.fnSetEncodeBufferMaxSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
 	}
+
 }
 
 type PacketPeer struct {

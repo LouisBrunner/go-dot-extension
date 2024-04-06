@@ -41,6 +41,7 @@ func initPlaceholderTextureLayeredPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPlaceholderTextureLayered.fnSetLayers = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
 	}
+
 }
 
 type PlaceholderTextureLayered struct {

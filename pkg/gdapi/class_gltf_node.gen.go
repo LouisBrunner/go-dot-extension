@@ -179,6 +179,7 @@ func initGLTFNodePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGLTFNode.fnSetAdditionalData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3776071444))
 	}
+
 }
 
 type GLTFNode struct {

@@ -23,6 +23,7 @@ func initResourceImporterWAVPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("ResourceImporterWAV")
 	defer className.Destroy()
+
 }
 
 type ResourceImporterWAV struct {

@@ -35,6 +35,7 @@ func initVisualShaderNodeParticleEmitPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeParticleEmit.fnGetFlags = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 171277835))
 	}
+
 }
 
 type VisualShaderNodeParticleEmit struct {

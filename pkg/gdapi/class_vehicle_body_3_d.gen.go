@@ -59,6 +59,7 @@ func initVehicleBody3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVehicleBody3D.fnGetSteering = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type VehicleBody3D struct {

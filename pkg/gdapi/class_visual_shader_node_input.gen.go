@@ -41,6 +41,7 @@ func initVisualShaderNodeInputPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeInput.fnGetInputRealName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type VisualShaderNodeInput struct {

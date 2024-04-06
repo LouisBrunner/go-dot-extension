@@ -95,6 +95,7 @@ func initGPUParticlesCollisionSDF3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGPUParticlesCollisionSDF3D.fnGetBakeMaskValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
 	}
+
 }
 
 type GPUParticlesCollisionSDF3D struct {

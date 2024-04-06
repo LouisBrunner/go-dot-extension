@@ -399,6 +399,7 @@ func initGraphEditPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGraphEdit.fnSetSelected = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1078189570))
 	}
+
 }
 
 type GraphEdit struct {

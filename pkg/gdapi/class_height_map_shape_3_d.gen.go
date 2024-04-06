@@ -59,6 +59,7 @@ func initHeightMapShape3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForHeightMapShape3D.fnGetMapData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 675695659))
 	}
+
 }
 
 type HeightMapShape3D struct {

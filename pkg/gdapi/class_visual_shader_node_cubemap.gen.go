@@ -59,6 +59,7 @@ func initVisualShaderNodeCubemapPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeCubemap.fnGetTextureType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3356498888))
 	}
+
 }
 
 type VisualShaderNodeCubemap struct {

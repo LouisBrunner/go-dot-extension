@@ -35,6 +35,7 @@ func initEditorScriptPickerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorScriptPicker.fnGetScriptOwner = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3160264692))
 	}
+
 }
 
 type EditorScriptPicker struct {

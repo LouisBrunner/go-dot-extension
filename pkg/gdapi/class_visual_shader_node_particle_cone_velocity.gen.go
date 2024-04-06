@@ -23,6 +23,7 @@ func initVisualShaderNodeParticleConeVelocityPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeParticleConeVelocity")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeParticleConeVelocity struct {

@@ -47,6 +47,7 @@ func initButtonGroupPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForButtonGroup.fnIsAllowUnpress = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
 	}
+
 }
 
 type ButtonGroup struct {

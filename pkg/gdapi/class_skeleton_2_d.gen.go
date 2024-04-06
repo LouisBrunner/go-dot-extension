@@ -71,6 +71,7 @@ func initSkeleton2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSkeleton2D.fnGetBoneLocalPoseOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2995540667))
 	}
+
 }
 
 type Skeleton2D struct {

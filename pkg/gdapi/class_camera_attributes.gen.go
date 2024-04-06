@@ -83,6 +83,7 @@ func initCameraAttributesPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCameraAttributes.fnGetAutoExposureScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type CameraAttributes struct {

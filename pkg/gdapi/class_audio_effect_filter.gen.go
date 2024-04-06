@@ -71,6 +71,7 @@ func initAudioEffectFilterPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioEffectFilter.fnGetDb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3981721890))
 	}
+
 }
 
 type AudioEffectFilter struct {

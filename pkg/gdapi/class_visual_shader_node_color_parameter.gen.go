@@ -47,6 +47,7 @@ func initVisualShaderNodeColorParameterPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeColorParameter.fnGetDefaultValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3444240500))
 	}
+
 }
 
 type VisualShaderNodeColorParameter struct {

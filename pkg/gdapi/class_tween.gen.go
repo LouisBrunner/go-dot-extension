@@ -167,6 +167,7 @@ func initTweenPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTween.fnInterpolateValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3452526450))
 	}
+
 }
 
 type Tween struct {

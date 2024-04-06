@@ -232,6 +232,7 @@ func initCollisionObject2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCollisionObject2D.fnShapeFindOwner = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 923996154))
 	}
+
 }
 
 type CollisionObject2D struct {

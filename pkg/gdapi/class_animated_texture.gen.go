@@ -107,6 +107,7 @@ func initAnimatedTexturePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAnimatedTexture.fnGetFrameDuration = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2339986948))
 	}
+
 }
 
 type AnimatedTexture struct {

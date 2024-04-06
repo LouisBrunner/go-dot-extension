@@ -23,6 +23,7 @@ func initCSGCombiner3DPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("CSGCombiner3D")
 	defer className.Destroy()
+
 }
 
 type CSGCombiner3D struct {

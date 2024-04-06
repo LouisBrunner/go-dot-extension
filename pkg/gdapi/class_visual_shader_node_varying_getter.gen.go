@@ -23,6 +23,7 @@ func initVisualShaderNodeVaryingGetterPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeVaryingGetter")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeVaryingGetter struct {

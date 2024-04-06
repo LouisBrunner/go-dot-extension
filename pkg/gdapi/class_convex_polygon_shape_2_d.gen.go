@@ -41,6 +41,7 @@ func initConvexPolygonShape2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForConvexPolygonShape2D.fnGetPoints = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2961356807))
 	}
+
 }
 
 type ConvexPolygonShape2D struct {

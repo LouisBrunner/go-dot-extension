@@ -28,6 +28,7 @@ func initEditorResourcePreviewGeneratorPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("EditorResourcePreviewGenerator")
 	defer className.Destroy()
+
 }
 
 type EditorResourcePreviewGenerator struct {

@@ -59,6 +59,7 @@ func initAudioStreamGeneratorPlaybackPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioStreamGeneratorPlayback.fnClearBuffer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type AudioStreamGeneratorPlayback struct {

@@ -70,6 +70,7 @@ func initEditorNode3DGizmoPluginPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorNode3DGizmoPlugin.fnGetMaterial = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 974464017))
 	}
+
 }
 
 type EditorNode3DGizmoPlugin struct {

@@ -23,6 +23,7 @@ func initCompressedTexture2DArrayPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("CompressedTexture2DArray")
 	defer className.Destroy()
+
 }
 
 type CompressedTexture2DArray struct {

@@ -35,6 +35,7 @@ func initAudioEffectPannerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioEffectPanner.fnGetPan = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type AudioEffectPanner struct {

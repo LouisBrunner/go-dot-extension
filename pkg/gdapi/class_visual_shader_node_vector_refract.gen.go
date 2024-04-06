@@ -23,6 +23,7 @@ func initVisualShaderNodeVectorRefractPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeVectorRefract")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeVectorRefract struct {

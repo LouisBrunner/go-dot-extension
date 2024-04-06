@@ -71,6 +71,7 @@ func initWebRTCMultiplayerPeerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForWebRTCMultiplayerPeer.fnGetPeers = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2382534195))
 	}
+
 }
 
 type WebRTCMultiplayerPeer struct {

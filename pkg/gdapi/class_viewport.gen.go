@@ -671,6 +671,7 @@ func initViewportPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForViewport.fnGetVrsTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
 	}
+
 }
 
 type Viewport struct {

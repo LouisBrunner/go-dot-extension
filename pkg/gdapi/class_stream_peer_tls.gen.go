@@ -59,6 +59,7 @@ func initStreamPeerTLSPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForStreamPeerTLS.fnDisconnectFromStream = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type StreamPeerTLS struct {

@@ -125,6 +125,7 @@ func initCameraAttributesPhysicalPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCameraAttributesPhysical.fnGetAutoExposureMinExposureValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type CameraAttributesPhysical struct {

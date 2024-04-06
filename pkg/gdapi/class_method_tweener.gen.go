@@ -41,6 +41,7 @@ func initMethodTweenerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMethodTweener.fnSetEase = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 315540545))
 	}
+
 }
 
 type MethodTweener struct {

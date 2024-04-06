@@ -155,6 +155,7 @@ func initHTTPClientPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForHTTPClient.fnQueryStringFromDict = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2538086567))
 	}
+
 }
 
 type HTTPClient struct {

@@ -35,6 +35,7 @@ func initVisualShaderNodeUIntConstantPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeUIntConstant.fnGetConstant = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type VisualShaderNodeUIntConstant struct {

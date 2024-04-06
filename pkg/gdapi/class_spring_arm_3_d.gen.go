@@ -95,6 +95,7 @@ func initSpringArm3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSpringArm3D.fnGetMargin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 191475506))
 	}
+
 }
 
 type SpringArm3D struct {

@@ -23,6 +23,7 @@ func initTriangleMeshPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("TriangleMesh")
 	defer className.Destroy()
+
 }
 
 type TriangleMesh struct {

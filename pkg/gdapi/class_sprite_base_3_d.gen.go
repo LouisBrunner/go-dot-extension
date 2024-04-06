@@ -227,6 +227,7 @@ func initSpriteBase3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSpriteBase3D.fnGenerateTriangleMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3476533166))
 	}
+
 }
 
 type SpriteBase3D struct {

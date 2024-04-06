@@ -83,6 +83,7 @@ func initCSGSphere3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCSGSphere3D.fnGetMaterial = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 5934680))
 	}
+
 }
 
 type CSGSphere3D struct {

@@ -23,6 +23,7 @@ func initVisualShaderNodeRemapPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeRemap")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeRemap struct {

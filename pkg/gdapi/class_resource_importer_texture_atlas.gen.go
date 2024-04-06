@@ -23,6 +23,7 @@ func initResourceImporterTextureAtlasPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("ResourceImporterTextureAtlas")
 	defer className.Destroy()
+
 }
 
 type ResourceImporterTextureAtlas struct {

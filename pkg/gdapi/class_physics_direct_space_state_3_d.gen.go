@@ -59,6 +59,7 @@ func initPhysicsDirectSpaceState3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPhysicsDirectSpaceState3D.fnGetRestInfo = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1376751592))
 	}
+
 }
 
 type PhysicsDirectSpaceState3D struct {

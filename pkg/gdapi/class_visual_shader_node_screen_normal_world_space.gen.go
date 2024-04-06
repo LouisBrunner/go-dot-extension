@@ -23,6 +23,7 @@ func initVisualShaderNodeScreenNormalWorldSpacePtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeScreenNormalWorldSpace")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeScreenNormalWorldSpace struct {

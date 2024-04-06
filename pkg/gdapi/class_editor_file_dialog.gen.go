@@ -167,6 +167,7 @@ func initEditorFileDialogPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorFileDialog.fnInvalidate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type EditorFileDialog struct {

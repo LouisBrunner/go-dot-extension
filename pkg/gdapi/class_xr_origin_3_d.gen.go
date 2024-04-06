@@ -47,6 +47,7 @@ func initXROrigin3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForXROrigin3D.fnIsCurrent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type XROrigin3D struct {

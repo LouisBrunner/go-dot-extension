@@ -35,6 +35,7 @@ func initVisualShaderNodeVec4ConstantPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeVec4Constant.fnGetConstant = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1222331677))
 	}
+
 }
 
 type VisualShaderNodeVec4Constant struct {

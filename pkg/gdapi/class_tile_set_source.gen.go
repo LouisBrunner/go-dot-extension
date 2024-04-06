@@ -59,6 +59,7 @@ func initTileSetSourcePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTileSetSource.fnHasAlternativeTile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1073731340))
 	}
+
 }
 
 type TileSetSource struct {

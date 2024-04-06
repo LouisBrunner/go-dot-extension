@@ -71,6 +71,7 @@ func initNavigationMeshSourceGeometryData2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNavigationMeshSourceGeometryData2D.fnAddObstructionOutline = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1509147220))
 	}
+
 }
 
 type NavigationMeshSourceGeometryData2D struct {

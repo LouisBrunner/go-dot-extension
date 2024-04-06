@@ -47,6 +47,7 @@ func initVisualShaderNodeVaryingPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeVarying.fnGetVaryingType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 523183580))
 	}
+
 }
 
 type VisualShaderNodeVarying struct {

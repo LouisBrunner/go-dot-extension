@@ -143,6 +143,7 @@ func initImporterMeshInstance3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForImporterMeshInstance3D.fnGetVisibilityRangeFadeMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2067221882))
 	}
+
 }
 
 type ImporterMeshInstance3D struct {

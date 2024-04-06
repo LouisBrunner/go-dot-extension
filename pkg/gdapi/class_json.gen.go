@@ -71,6 +71,7 @@ func initJSONPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForJSON.fnGetErrorMessage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type JSON struct {

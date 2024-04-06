@@ -23,6 +23,7 @@ func initVisualShaderNodeFaceForwardPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeFaceForward")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeFaceForward struct {

@@ -23,6 +23,7 @@ func initHSplitContainerPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("HSplitContainer")
 	defer className.Destroy()
+
 }
 
 type HSplitContainer struct {

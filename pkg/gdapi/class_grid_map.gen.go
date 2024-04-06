@@ -305,6 +305,7 @@ func initGridMapPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGridMap.fnMakeBakedMeshes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3609286057))
 	}
+
 }
 
 type GridMap struct {

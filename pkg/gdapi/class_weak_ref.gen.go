@@ -29,6 +29,7 @@ func initWeakRefPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForWeakRef.fnGetRef = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1214101251))
 	}
+
 }
 
 type WeakRef struct {

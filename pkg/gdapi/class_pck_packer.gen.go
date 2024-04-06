@@ -41,6 +41,7 @@ func initPCKPackerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPCKPacker.fnFlush = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1633102583))
 	}
+
 }
 
 type PCKPacker struct {

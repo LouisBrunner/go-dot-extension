@@ -23,6 +23,7 @@ func initVisualShaderNodeTextureParameterTriplanarPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeTextureParameterTriplanar")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeTextureParameterTriplanar struct {

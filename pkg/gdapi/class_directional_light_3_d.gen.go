@@ -59,6 +59,7 @@ func initDirectionalLight3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForDirectionalLight3D.fnGetSkyMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3819982774))
 	}
+
 }
 
 type DirectionalLight3D struct {

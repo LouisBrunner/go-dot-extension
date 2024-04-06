@@ -119,6 +119,7 @@ func initGLTFLightPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGLTFLight.fnSetOuterConeAngle = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
 	}
+
 }
 
 type GLTFLight struct {

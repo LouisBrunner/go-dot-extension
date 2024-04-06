@@ -65,6 +65,7 @@ func initWorkerThreadPoolPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForWorkerThreadPool.fnWaitForGroupTaskCompletion = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
 	}
+
 }
 
 type WorkerThreadPool struct {

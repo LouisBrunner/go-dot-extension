@@ -77,6 +77,7 @@ func initNavigationPathQueryResult3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNavigationPathQueryResult3D.fnReset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type NavigationPathQueryResult3D struct {

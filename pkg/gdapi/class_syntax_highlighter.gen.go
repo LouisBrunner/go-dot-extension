@@ -50,6 +50,7 @@ func initSyntaxHighlighterPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSyntaxHighlighter.fnGetTextEdit = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1893027089))
 	}
+
 }
 
 type SyntaxHighlighter struct {

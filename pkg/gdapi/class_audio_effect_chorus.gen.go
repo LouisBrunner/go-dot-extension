@@ -131,6 +131,7 @@ func initAudioEffectChorusPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioEffectChorus.fnGetDry = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type AudioEffectChorus struct {

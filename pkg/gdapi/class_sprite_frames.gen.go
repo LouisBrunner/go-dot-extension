@@ -125,6 +125,7 @@ func initSpriteFramesPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSpriteFrames.fnClearAll = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type SpriteFrames struct {

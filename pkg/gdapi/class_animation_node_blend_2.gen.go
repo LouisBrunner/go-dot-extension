@@ -23,6 +23,7 @@ func initAnimationNodeBlend2Ptrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("AnimationNodeBlend2")
 	defer className.Destroy()
+
 }
 
 type AnimationNodeBlend2 struct {

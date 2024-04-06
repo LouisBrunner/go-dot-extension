@@ -145,6 +145,7 @@ func initEditorPropertyPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorProperty.fnEmitChanged = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3069422438))
 	}
+
 }
 
 type EditorProperty struct {

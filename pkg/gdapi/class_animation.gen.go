@@ -461,6 +461,7 @@ func initAnimationPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAnimation.fnCompress = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3608408117))
 	}
+
 }
 
 type Animation struct {

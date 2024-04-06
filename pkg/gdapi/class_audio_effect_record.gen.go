@@ -53,6 +53,7 @@ func initAudioEffectRecordPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioEffectRecord.fnGetRecording = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2964110865))
 	}
+
 }
 
 type AudioEffectRecord struct {

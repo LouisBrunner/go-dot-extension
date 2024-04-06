@@ -161,6 +161,7 @@ func initImporterMeshPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForImporterMesh.fnGetLightmapSizeHint = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3690982128))
 	}
+
 }
 
 type ImporterMesh struct {

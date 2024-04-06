@@ -65,6 +65,7 @@ func initPhysicsBody3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPhysicsBody3D.fnRemoveCollisionExceptionWith = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1078189570))
 	}
+
 }
 
 type PhysicsBody3D struct {

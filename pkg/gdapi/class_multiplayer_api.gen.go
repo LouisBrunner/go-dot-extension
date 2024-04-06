@@ -107,6 +107,7 @@ func initMultiplayerAPIPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMultiplayerAPI.fnCreateDefaultInterface = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3294156723))
 	}
+
 }
 
 type MultiplayerAPI struct {

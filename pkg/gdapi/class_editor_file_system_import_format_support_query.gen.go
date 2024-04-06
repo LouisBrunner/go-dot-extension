@@ -26,6 +26,7 @@ func initEditorFileSystemImportFormatSupportQueryPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("EditorFileSystemImportFormatSupportQuery")
 	defer className.Destroy()
+
 }
 
 type EditorFileSystemImportFormatSupportQuery struct {

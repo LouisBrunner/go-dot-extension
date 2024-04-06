@@ -437,6 +437,7 @@ func initImagePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForImage.fnLoadSvgFromString = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3254053600))
 	}
+
 }
 
 type Image struct {

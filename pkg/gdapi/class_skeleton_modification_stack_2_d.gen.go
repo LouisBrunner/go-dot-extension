@@ -113,6 +113,7 @@ func initSkeletonModificationStack2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSkeletonModificationStack2D.fnGetSkeleton = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1697361217))
 	}
+
 }
 
 type SkeletonModificationStack2D struct {

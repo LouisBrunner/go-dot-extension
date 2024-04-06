@@ -83,6 +83,7 @@ func initTileMapPatternPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTileMapPattern.fnIsEmpty = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type TileMapPattern struct {

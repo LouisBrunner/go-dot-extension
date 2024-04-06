@@ -372,6 +372,7 @@ func initRigidBody2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRigidBody2D.fnGetCollidingBodies = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
 	}
+
 }
 
 type RigidBody2D struct {

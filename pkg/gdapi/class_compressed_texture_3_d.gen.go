@@ -35,6 +35,7 @@ func initCompressedTexture3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCompressedTexture3D.fnGetLoadPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type CompressedTexture3D struct {

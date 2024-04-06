@@ -251,6 +251,7 @@ func initMeshDataToolPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMeshDataTool.fnGetMaterial = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 5934680))
 	}
+
 }
 
 type MeshDataTool struct {

@@ -27,6 +27,7 @@ func initRenderSceneBuffersExtensionPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("RenderSceneBuffersExtension")
 	defer className.Destroy()
+
 }
 
 type RenderSceneBuffersExtension struct {

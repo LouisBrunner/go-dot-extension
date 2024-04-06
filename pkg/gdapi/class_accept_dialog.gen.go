@@ -119,6 +119,7 @@ func initAcceptDialogPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAcceptDialog.fnGetOkButtonText = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type AcceptDialog struct {

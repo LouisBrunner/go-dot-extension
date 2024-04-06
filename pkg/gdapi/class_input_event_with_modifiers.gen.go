@@ -95,6 +95,7 @@ func initInputEventWithModifiersPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForInputEventWithModifiers.fnGetModifiersMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1258259499))
 	}
+
 }
 
 type InputEventWithModifiers struct {

@@ -137,6 +137,7 @@ func initTouchScreenButtonPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTouchScreenButton.fnIsPressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type TouchScreenButton struct {

@@ -23,6 +23,7 @@ func initEditorExportPlatformAndroidPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("EditorExportPlatformAndroid")
 	defer className.Destroy()
+
 }
 
 type EditorExportPlatformAndroid struct {

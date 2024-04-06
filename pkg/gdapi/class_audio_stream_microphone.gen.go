@@ -23,6 +23,7 @@ func initAudioStreamMicrophonePtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("AudioStreamMicrophone")
 	defer className.Destroy()
+
 }
 
 type AudioStreamMicrophone struct {

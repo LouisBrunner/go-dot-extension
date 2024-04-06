@@ -113,6 +113,7 @@ func initInputEventPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForInputEvent.fnXformedBy = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1282766827))
 	}
+
 }
 
 type InputEvent struct {

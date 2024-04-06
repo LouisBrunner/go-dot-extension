@@ -31,6 +31,7 @@ func initAudioStreamPlaybackPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("AudioStreamPlayback")
 	defer className.Destroy()
+
 }
 
 type AudioStreamPlayback struct {

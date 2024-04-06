@@ -125,6 +125,7 @@ func initWebSocketMultiplayerPeerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForWebSocketMultiplayerPeer.fnGetMaxQueuedPackets = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type WebSocketMultiplayerPeer struct {

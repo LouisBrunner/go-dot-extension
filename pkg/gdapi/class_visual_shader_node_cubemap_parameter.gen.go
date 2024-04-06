@@ -23,6 +23,7 @@ func initVisualShaderNodeCubemapParameterPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeCubemapParameter")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeCubemapParameter struct {

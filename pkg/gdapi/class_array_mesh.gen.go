@@ -173,6 +173,7 @@ func initArrayMeshPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForArrayMesh.fnGetShadowMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3206942465))
 	}
+
 }
 
 type ArrayMesh struct {

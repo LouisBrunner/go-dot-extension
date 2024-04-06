@@ -25,6 +25,7 @@ func initAudioEffectInstancePtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("AudioEffectInstance")
 	defer className.Destroy()
+
 }
 
 type AudioEffectInstance struct {

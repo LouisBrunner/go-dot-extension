@@ -107,6 +107,7 @@ func initGeometry3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGeometry3D.fnClipPolygon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2603188319))
 	}
+
 }
 
 type Geometry3D struct {

@@ -59,6 +59,7 @@ func initThreadPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForThread.fnSetThreadSafetyChecksEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
 	}
+
 }
 
 type Thread struct {

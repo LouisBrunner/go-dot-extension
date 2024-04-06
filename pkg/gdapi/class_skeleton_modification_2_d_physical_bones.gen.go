@@ -65,6 +65,7 @@ func initSkeletonModification2DPhysicalBonesPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSkeletonModification2DPhysicalBones.fnStopSimulation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2787316981))
 	}
+
 }
 
 type SkeletonModification2DPhysicalBones struct {

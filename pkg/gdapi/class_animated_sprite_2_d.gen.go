@@ -185,6 +185,7 @@ func initAnimatedSprite2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAnimatedSprite2D.fnGetPlayingSpeed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type AnimatedSprite2D struct {

@@ -143,6 +143,7 @@ func initRenderSceneBuffersRDPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRenderSceneBuffersRD.fnGetUseTaa = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type RenderSceneBuffersRD struct {

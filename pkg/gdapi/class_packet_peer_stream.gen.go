@@ -59,6 +59,7 @@ func initPacketPeerStreamPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPacketPeerStream.fnGetOutputBufferMaxSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type PacketPeerStream struct {

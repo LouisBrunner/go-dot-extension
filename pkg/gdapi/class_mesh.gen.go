@@ -121,6 +121,7 @@ func initMeshPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMesh.fnGenerateTriangleMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3476533166))
 	}
+
 }
 
 type Mesh struct {

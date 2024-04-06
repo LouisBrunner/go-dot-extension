@@ -77,6 +77,7 @@ func initEditorFileSystemPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorFileSystem.fnReimportFiles = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4015028928))
 	}
+
 }
 
 type EditorFileSystem struct {

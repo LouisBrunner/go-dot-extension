@@ -359,6 +359,7 @@ func initNavigationMeshPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNavigationMesh.fnClear = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type NavigationMesh struct {

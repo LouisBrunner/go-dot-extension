@@ -65,6 +65,7 @@ func initMenuButtonPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMenuButton.fnGetItemCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type MenuButton struct {

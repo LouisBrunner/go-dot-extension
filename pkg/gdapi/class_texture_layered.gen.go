@@ -72,6 +72,7 @@ func initTextureLayeredPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTextureLayered.fnGetLayerData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3655284255))
 	}
+
 }
 
 type TextureLayered struct {

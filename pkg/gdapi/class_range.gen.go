@@ -162,6 +162,7 @@ func initRangePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRange.fnUnshare = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type Range struct {

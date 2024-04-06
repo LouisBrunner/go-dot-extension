@@ -23,6 +23,7 @@ func initAudioStreamPlaybackOggVorbisPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("AudioStreamPlaybackOggVorbis")
 	defer className.Destroy()
+
 }
 
 type AudioStreamPlaybackOggVorbis struct {

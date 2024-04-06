@@ -84,6 +84,7 @@ func initXRInterfaceExtensionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForXRInterfaceExtension.fnGetRenderTargetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 41030802))
 	}
+
 }
 
 type XRInterfaceExtension struct {

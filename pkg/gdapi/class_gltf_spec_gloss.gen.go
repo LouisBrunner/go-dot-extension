@@ -83,6 +83,7 @@ func initGLTFSpecGlossPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGLTFSpecGloss.fnSetSpecGlossImg = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 532598488))
 	}
+
 }
 
 type GLTFSpecGloss struct {

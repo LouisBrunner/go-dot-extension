@@ -107,6 +107,7 @@ func initEditorFileSystemDirectoryPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorFileSystemDirectory.fnFindDirIndex = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1321353865))
 	}
+
 }
 
 type EditorFileSystemDirectory struct {

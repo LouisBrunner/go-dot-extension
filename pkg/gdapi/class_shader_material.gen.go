@@ -47,6 +47,7 @@ func initShaderMaterialPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForShaderMaterial.fnGetShaderParameter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2760726917))
 	}
+
 }
 
 type ShaderMaterial struct {

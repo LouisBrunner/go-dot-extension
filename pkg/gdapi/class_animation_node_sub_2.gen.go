@@ -23,6 +23,7 @@ func initAnimationNodeSub2Ptrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("AnimationNodeSub2")
 	defer className.Destroy()
+
 }
 
 type AnimationNodeSub2 struct {

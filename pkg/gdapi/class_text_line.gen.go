@@ -227,6 +227,7 @@ func initTextLinePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTextLine.fnHitTest = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2401831903))
 	}
+
 }
 
 type TextLine struct {

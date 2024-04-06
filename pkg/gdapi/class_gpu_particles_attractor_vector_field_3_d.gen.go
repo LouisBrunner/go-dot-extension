@@ -47,6 +47,7 @@ func initGPUParticlesAttractorVectorField3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGPUParticlesAttractorVectorField3D.fnGetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373985333))
 	}
+
 }
 
 type GPUParticlesAttractorVectorField3D struct {

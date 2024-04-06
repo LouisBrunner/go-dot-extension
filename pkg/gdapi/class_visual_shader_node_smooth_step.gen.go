@@ -35,6 +35,7 @@ func initVisualShaderNodeSmoothStepPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeSmoothStep.fnGetOpType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 359640855))
 	}
+
 }
 
 type VisualShaderNodeSmoothStep struct {

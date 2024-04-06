@@ -29,6 +29,7 @@ func initAudioEffectSpectrumAnalyzerInstancePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioEffectSpectrumAnalyzerInstance.fnGetMagnitudeForFrequencyRange = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 797993915))
 	}
+
 }
 
 type AudioEffectSpectrumAnalyzerInstance struct {

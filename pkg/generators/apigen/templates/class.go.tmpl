@@ -23,8 +23,7 @@ type ptrsFor{{$Class}}List struct {
 var ptrsFor{{$Class}} ptrsFor{{$Class}}List
 
 func init{{$Class}}Ptrs(iface gdc.Interface) {
-{{if eq .Name "GDExtension"}}  return {{/* TODO: why can't I load their methods??? */}}
-{{end}}
+{{if ne .Name "GDExtension"}}{{/* TODO: why can't I load its methods??? */}}
   className := StringNameFromStr("{{.Name}}")
   defer className.Destroy()
 {{- range .Methods}}{{if not .IsVirtual}}
@@ -35,6 +34,7 @@ func init{{$Class}}Ptrs(iface gdc.Interface) {
   }
 {{- end}}{{end}}
 {{- template "class_init_constants" .}}
+{{end}}
 }
 
 type {{$Class}} struct {

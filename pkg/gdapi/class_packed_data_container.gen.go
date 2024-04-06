@@ -35,6 +35,7 @@ func initPackedDataContainerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPackedDataContainer.fnSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type PackedDataContainer struct {

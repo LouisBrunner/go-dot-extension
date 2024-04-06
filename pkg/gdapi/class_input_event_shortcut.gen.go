@@ -35,6 +35,7 @@ func initInputEventShortcutPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForInputEventShortcut.fnGetShortcut = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3766804753))
 	}
+
 }
 
 type InputEventShortcut struct {

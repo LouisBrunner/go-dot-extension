@@ -59,6 +59,7 @@ func initCameraTexturePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCameraTexture.fnGetCameraActive = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type CameraTexture struct {

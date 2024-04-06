@@ -53,6 +53,7 @@ func initCryptoKeyPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCryptoKey.fnLoadFromString = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 885841341))
 	}
+
 }
 
 type CryptoKey struct {

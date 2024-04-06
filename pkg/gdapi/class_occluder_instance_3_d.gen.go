@@ -71,6 +71,7 @@ func initOccluderInstance3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForOccluderInstance3D.fnGetOccluder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1696836198))
 	}
+
 }
 
 type OccluderInstance3D struct {

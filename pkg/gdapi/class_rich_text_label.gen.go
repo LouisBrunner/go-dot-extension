@@ -719,6 +719,7 @@ func initRichTextLabelPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRichTextLabel.fnMenuOption = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
 	}
+
 }
 
 type RichTextLabel struct {

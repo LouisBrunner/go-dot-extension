@@ -71,6 +71,7 @@ func initAtlasTexturePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAtlasTexture.fnHasFilterClip = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type AtlasTexture struct {

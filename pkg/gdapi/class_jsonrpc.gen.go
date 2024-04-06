@@ -65,6 +65,7 @@ func initJSONRPCPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForJSONRPC.fnMakeResponseError = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 928596297))
 	}
+
 }
 
 type JSONRPC struct {

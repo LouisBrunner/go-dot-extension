@@ -137,6 +137,7 @@ func initPathFollow3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPathFollow3D.fnCorrectPosture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2686588690))
 	}
+
 }
 
 type PathFollow3D struct {

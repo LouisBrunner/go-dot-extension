@@ -47,6 +47,7 @@ func initAudioListener3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioListener3D.fnGetListenerTransform = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3229777777))
 	}
+
 }
 
 type AudioListener3D struct {

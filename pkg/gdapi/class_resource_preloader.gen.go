@@ -59,6 +59,7 @@ func initResourcePreloaderPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForResourcePreloader.fnGetResourceList = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1139954409))
 	}
+
 }
 
 type ResourcePreloader struct {

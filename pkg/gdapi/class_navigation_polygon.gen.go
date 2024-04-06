@@ -203,6 +203,7 @@ func initNavigationPolygonPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNavigationPolygon.fnClear = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type NavigationPolygon struct {

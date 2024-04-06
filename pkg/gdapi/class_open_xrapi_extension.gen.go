@@ -107,6 +107,7 @@ func initOpenXRAPIExtensionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForOpenXRAPIExtension.fnCanRender = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
 	}
+
 }
 
 type OpenXRAPIExtension struct {

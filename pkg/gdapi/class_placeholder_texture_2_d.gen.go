@@ -29,6 +29,7 @@ func initPlaceholderTexture2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPlaceholderTexture2D.fnSetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
 	}
+
 }
 
 type PlaceholderTexture2D struct {

@@ -53,6 +53,7 @@ func initZIPReaderPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForZIPReader.fnFileExists = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 35364943))
 	}
+
 }
 
 type ZIPReader struct {

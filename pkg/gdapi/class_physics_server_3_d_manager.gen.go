@@ -35,6 +35,7 @@ func initPhysicsServer3DManagerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPhysicsServer3DManager.fnSetDefaultServer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2956805083))
 	}
+
 }
 
 type PhysicsServer3DManager struct {

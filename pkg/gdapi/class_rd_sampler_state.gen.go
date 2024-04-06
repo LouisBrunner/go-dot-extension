@@ -203,6 +203,7 @@ func initRDSamplerStatePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRDSamplerState.fnGetUnnormalizedUvw = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type RDSamplerState struct {

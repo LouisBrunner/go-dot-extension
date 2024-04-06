@@ -41,6 +41,7 @@ func initVisibleOnScreenNotifier2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisibleOnScreenNotifier2D.fnIsOnScreen = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type VisibleOnScreenNotifier2D struct {

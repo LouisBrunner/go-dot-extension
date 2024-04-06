@@ -71,6 +71,7 @@ func initTorusMeshPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTorusMesh.fnGetRingSegments = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type TorusMesh struct {

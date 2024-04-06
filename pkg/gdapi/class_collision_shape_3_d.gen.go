@@ -59,6 +59,7 @@ func initCollisionShape3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCollisionShape3D.fnMakeConvexFromSiblings = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type CollisionShape3D struct {

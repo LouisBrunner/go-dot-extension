@@ -47,6 +47,7 @@ func initVisualShaderNodeTransformParameterPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeTransformParameter.fnGetDefaultValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3229777777))
 	}
+
 }
 
 type VisualShaderNodeTransformParameter struct {

@@ -35,6 +35,7 @@ func initCenterContainerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCenterContainer.fnIsUsingTopLeft = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type CenterContainer struct {

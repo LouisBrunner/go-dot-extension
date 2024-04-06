@@ -71,6 +71,7 @@ func initBoxMeshPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForBoxMesh.fnGetSubdivideDepth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type BoxMesh struct {

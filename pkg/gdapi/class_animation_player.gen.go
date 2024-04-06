@@ -227,6 +227,7 @@ func initAnimationPlayerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAnimationPlayer.fnGetRoot = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4075236667))
 	}
+
 }
 
 type AnimationPlayer struct {

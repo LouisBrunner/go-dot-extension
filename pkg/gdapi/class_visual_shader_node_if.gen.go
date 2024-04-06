@@ -23,6 +23,7 @@ func initVisualShaderNodeIfPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeIf")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeIf struct {

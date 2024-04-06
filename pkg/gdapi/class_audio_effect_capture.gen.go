@@ -77,6 +77,7 @@ func initAudioEffectCapturePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioEffectCapture.fnGetPushedFrames = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type AudioEffectCapture struct {

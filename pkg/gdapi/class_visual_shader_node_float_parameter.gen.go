@@ -95,6 +95,7 @@ func initVisualShaderNodeFloatParameterPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeFloatParameter.fnGetDefaultValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type VisualShaderNodeFloatParameter struct {

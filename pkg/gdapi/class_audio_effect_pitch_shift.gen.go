@@ -59,6 +59,7 @@ func initAudioEffectPitchShiftPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioEffectPitchShift.fnGetFftSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2361246789))
 	}
+
 }
 
 type AudioEffectPitchShift struct {

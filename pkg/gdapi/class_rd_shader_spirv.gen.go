@@ -47,6 +47,7 @@ func initRDShaderSPIRVPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRDShaderSPIRV.fnGetStageCompileError = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3354920045))
 	}
+
 }
 
 type RDShaderSPIRV struct {

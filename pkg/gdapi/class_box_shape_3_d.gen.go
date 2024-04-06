@@ -35,6 +35,7 @@ func initBoxShape3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForBoxShape3D.fnGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
 	}
+
 }
 
 type BoxShape3D struct {

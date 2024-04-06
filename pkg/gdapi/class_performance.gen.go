@@ -65,6 +65,7 @@ func initPerformancePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPerformance.fnGetCustomMonitorNames = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2915620761))
 	}
+
 }
 
 type Performance struct {

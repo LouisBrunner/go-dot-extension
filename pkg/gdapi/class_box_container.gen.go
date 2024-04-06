@@ -53,6 +53,7 @@ func initBoxContainerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForBoxContainer.fnIsVertical = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type BoxContainer struct {

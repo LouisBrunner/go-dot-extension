@@ -35,6 +35,7 @@ func initSphereOccluder3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSphereOccluder3D.fnGetRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type SphereOccluder3D struct {

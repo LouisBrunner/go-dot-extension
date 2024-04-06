@@ -63,6 +63,7 @@ func initMaterialPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMaterial.fnCreatePlaceholder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 121922552))
 	}
+
 }
 
 type Material struct {

@@ -112,6 +112,7 @@ func initEditorNode3DGizmoPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorNode3DGizmo.fnGetSubgizmoSelection = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1930428628))
 	}
+
 }
 
 type EditorNode3DGizmo struct {

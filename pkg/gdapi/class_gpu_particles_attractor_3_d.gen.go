@@ -71,6 +71,7 @@ func initGPUParticlesAttractor3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGPUParticlesAttractor3D.fnGetDirectionality = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type GPUParticlesAttractor3D struct {

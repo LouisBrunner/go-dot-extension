@@ -143,6 +143,7 @@ func initTextureButtonPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTextureButton.fnGetStretchMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 33815122))
 	}
+
 }
 
 type TextureButton struct {

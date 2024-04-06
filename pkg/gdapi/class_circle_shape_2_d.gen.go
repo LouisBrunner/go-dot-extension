@@ -35,6 +35,7 @@ func initCircleShape2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCircleShape2D.fnGetRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type CircleShape2D struct {

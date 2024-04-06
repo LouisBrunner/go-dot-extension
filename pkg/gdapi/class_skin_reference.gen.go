@@ -35,6 +35,7 @@ func initSkinReferencePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSkinReference.fnGetSkin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2074563878))
 	}
+
 }
 
 type SkinReference struct {

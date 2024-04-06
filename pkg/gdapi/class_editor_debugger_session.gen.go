@@ -65,6 +65,7 @@ func initEditorDebuggerSessionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorDebuggerSession.fnRemoveSessionTab = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1496901182))
 	}
+
 }
 
 type EditorDebuggerSession struct {

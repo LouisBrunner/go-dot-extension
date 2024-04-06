@@ -107,6 +107,7 @@ func initCanvasTexturePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCanvasTexture.fnGetTextureRepeat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2667158319))
 	}
+
 }
 
 type CanvasTexture struct {

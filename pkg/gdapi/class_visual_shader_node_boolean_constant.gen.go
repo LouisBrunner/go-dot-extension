@@ -35,6 +35,7 @@ func initVisualShaderNodeBooleanConstantPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeBooleanConstant.fnGetConstant = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type VisualShaderNodeBooleanConstant struct {

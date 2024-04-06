@@ -47,6 +47,7 @@ func initMissingNodePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMissingNode.fnIsRecordingProperties = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type MissingNode struct {

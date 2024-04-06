@@ -23,6 +23,7 @@ func initVisualShaderNodeProximityFadePtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeProximityFade")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeProximityFade struct {

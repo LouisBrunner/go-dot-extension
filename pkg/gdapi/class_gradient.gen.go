@@ -125,6 +125,7 @@ func initGradientPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGradient.fnGetInterpolationColorSpace = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1538296000))
 	}
+
 }
 
 type Gradient struct {

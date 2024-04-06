@@ -53,6 +53,7 @@ func initEditorSelectionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorSelection.fnGetTransformableSelectedNodes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2915620761))
 	}
+
 }
 
 type EditorSelection struct {

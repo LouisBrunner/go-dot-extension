@@ -1079,6 +1079,7 @@ func initEnvironmentPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEnvironment.fnGetAdjustmentColorCorrection = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4037048985))
 	}
+
 }
 
 type Environment struct {

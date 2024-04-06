@@ -305,6 +305,7 @@ func initCamera3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCamera3D.fnGetCullMaskValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
 	}
+
 }
 
 type Camera3D struct {

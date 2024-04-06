@@ -23,6 +23,7 @@ func initAnimationNodeOutputPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("AnimationNodeOutput")
 	defer className.Destroy()
+
 }
 
 type AnimationNodeOutput struct {

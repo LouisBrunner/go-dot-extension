@@ -131,6 +131,7 @@ func initENetConnectionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForENetConnection.fnSocketSend = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1100646812))
 	}
+
 }
 
 type ENetConnection struct {

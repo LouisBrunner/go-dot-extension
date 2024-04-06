@@ -35,6 +35,7 @@ func initInputEventFromWindowPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForInputEventFromWindow.fnGetWindowId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type InputEventFromWindow struct {

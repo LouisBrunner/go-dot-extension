@@ -23,6 +23,7 @@ func initVisualShaderNodeParticleSphereEmitterPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeParticleSphereEmitter")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeParticleSphereEmitter struct {

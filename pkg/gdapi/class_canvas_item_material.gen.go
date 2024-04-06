@@ -95,6 +95,7 @@ func initCanvasItemMaterialPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCanvasItemMaterial.fnGetParticlesAnimLoop = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type CanvasItemMaterial struct {

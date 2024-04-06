@@ -35,6 +35,7 @@ func initVisualShaderNodeParticleRandomnessPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeParticleRandomness.fnGetOpType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3597061078))
 	}
+
 }
 
 type VisualShaderNodeParticleRandomness struct {

@@ -23,6 +23,7 @@ func initSkeletonProfileHumanoidPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("SkeletonProfileHumanoid")
 	defer className.Destroy()
+
 }
 
 type SkeletonProfileHumanoid struct {

@@ -101,6 +101,7 @@ func initXRPosePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForXRPose.fnGetTrackingConfidence = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2064923680))
 	}
+
 }
 
 type XRPose struct {

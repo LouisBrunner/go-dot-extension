@@ -663,6 +663,7 @@ func initNodePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNode.fnNotifyThreadSafe = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
 	}
+
 }
 
 type Node struct {

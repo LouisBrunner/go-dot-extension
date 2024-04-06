@@ -185,6 +185,7 @@ func initSkeletonProfilePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSkeletonProfile.fnSetGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3780747571))
 	}
+
 }
 
 type SkeletonProfile struct {

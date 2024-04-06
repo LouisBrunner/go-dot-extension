@@ -95,6 +95,7 @@ func initParallaxBackgroundPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForParallaxBackground.fnIsIgnoreCameraZoom = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
 	}
+
 }
 
 type ParallaxBackground struct {

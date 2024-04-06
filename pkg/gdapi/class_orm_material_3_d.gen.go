@@ -23,6 +23,7 @@ func initORMMaterial3DPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("ORMMaterial3D")
 	defer className.Destroy()
+
 }
 
 type ORMMaterial3D struct {

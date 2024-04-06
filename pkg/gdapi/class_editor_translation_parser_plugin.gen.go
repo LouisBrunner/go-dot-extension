@@ -25,6 +25,7 @@ func initEditorTranslationParserPluginPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("EditorTranslationParserPlugin")
 	defer className.Destroy()
+
 }
 
 type EditorTranslationParserPlugin struct {

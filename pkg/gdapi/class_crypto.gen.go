@@ -77,6 +77,7 @@ func initCryptoPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCrypto.fnConstantTimeCompare = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1024142237))
 	}
+
 }
 
 type Crypto struct {

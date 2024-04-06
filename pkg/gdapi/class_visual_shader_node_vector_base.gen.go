@@ -35,6 +35,7 @@ func initVisualShaderNodeVectorBasePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeVectorBase.fnGetOpType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2568738462))
 	}
+
 }
 
 type VisualShaderNodeVectorBase struct {

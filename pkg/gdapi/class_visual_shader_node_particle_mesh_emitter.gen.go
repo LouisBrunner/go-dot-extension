@@ -59,6 +59,7 @@ func initVisualShaderNodeParticleMeshEmitterPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeParticleMeshEmitter.fnGetSurfaceIndex = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type VisualShaderNodeParticleMeshEmitter struct {

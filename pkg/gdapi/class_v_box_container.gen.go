@@ -23,6 +23,7 @@ func initVBoxContainerPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VBoxContainer")
 	defer className.Destroy()
+
 }
 
 type VBoxContainer struct {

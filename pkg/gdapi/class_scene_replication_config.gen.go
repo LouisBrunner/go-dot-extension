@@ -101,6 +101,7 @@ func initSceneReplicationConfigPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSceneReplicationConfig.fnPropertySetWatch = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3868023870))
 	}
+
 }
 
 type SceneReplicationConfig struct {

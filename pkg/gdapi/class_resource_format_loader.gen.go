@@ -34,6 +34,7 @@ func initResourceFormatLoaderPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("ResourceFormatLoader")
 	defer className.Destroy()
+
 }
 
 type ResourceFormatLoader struct {

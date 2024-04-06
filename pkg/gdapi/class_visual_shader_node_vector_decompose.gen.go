@@ -23,6 +23,7 @@ func initVisualShaderNodeVectorDecomposePtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeVectorDecompose")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeVectorDecompose struct {

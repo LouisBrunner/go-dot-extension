@@ -23,6 +23,7 @@ func initResourceImporterImageFontPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("ResourceImporterImageFont")
 	defer className.Destroy()
+
 }
 
 type ResourceImporterImageFont struct {

@@ -23,6 +23,7 @@ func initVisualShaderNodeTexture3DParameterPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeTexture3DParameter")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeTexture3DParameter struct {

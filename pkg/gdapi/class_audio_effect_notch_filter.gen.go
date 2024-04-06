@@ -23,6 +23,7 @@ func initAudioEffectNotchFilterPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("AudioEffectNotchFilter")
 	defer className.Destroy()
+
 }
 
 type AudioEffectNotchFilter struct {

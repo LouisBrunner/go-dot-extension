@@ -42,6 +42,7 @@ func initGLTFDocumentExtensionPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("GLTFDocumentExtension")
 	defer className.Destroy()
+
 }
 
 type GLTFDocumentExtension struct {

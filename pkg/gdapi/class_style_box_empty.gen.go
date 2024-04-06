@@ -23,6 +23,7 @@ func initStyleBoxEmptyPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("StyleBoxEmpty")
 	defer className.Destroy()
+
 }
 
 type StyleBoxEmpty struct {

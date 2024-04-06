@@ -24,6 +24,7 @@ func initRichTextEffectPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("RichTextEffect")
 	defer className.Destroy()
+
 }
 
 type RichTextEffect struct {

@@ -47,6 +47,7 @@ func initProgressBarPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForProgressBar.fnIsPercentageShown = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type ProgressBar struct {

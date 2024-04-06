@@ -131,6 +131,7 @@ func initCameraAttributesPracticalPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCameraAttributesPractical.fnGetAutoExposureMinSensitivity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type CameraAttributesPractical struct {

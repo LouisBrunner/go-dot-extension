@@ -131,6 +131,7 @@ func initStyleBoxTexturePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForStyleBoxTexture.fnGetVAxisStretchMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3807744063))
 	}
+
 }
 
 type StyleBoxTexture struct {

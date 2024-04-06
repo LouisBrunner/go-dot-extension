@@ -59,6 +59,7 @@ func initMarshallsPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMarshalls.fnBase64ToUtf8 = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1703090593))
 	}
+
 }
 
 type Marshalls struct {

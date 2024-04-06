@@ -23,6 +23,7 @@ func initAudioEffectEQ10Ptrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("AudioEffectEQ10")
 	defer className.Destroy()
+
 }
 
 type AudioEffectEQ10 struct {

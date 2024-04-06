@@ -35,6 +35,7 @@ func initCanvasModulatePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCanvasModulate.fnGetColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3444240500))
 	}
+
 }
 
 type CanvasModulate struct {

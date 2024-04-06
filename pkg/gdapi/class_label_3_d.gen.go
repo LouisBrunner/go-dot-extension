@@ -377,6 +377,7 @@ func initLabel3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForLabel3D.fnGenerateTriangleMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3476533166))
 	}
+
 }
 
 type Label3D struct {

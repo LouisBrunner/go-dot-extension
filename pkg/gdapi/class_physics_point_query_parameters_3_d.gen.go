@@ -83,6 +83,7 @@ func initPhysicsPointQueryParameters3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPhysicsPointQueryParameters3D.fnIsCollideWithAreasEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type PhysicsPointQueryParameters3D struct {

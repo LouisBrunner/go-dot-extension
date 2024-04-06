@@ -47,6 +47,7 @@ func initBackBufferCopyPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForBackBufferCopy.fnGetCopyMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3271169440))
 	}
+
 }
 
 type BackBufferCopy struct {

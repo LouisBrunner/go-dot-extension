@@ -299,6 +299,7 @@ func initSkeleton3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSkeleton3D.fnPhysicalBonesRemoveCollisionException = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2722037293))
 	}
+
 }
 
 type Skeleton3D struct {

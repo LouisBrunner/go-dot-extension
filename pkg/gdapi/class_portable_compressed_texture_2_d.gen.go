@@ -77,6 +77,7 @@ func initPortableCompressedTexture2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPortableCompressedTexture2D.fnIsKeepingAllCompressedBuffers = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
 	}
+
 }
 
 type PortableCompressedTexture2D struct {

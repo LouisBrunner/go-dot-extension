@@ -107,6 +107,7 @@ func initMobileVRInterfacePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMobileVRInterface.fnGetK2 = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type MobileVRInterface struct {

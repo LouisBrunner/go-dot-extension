@@ -227,6 +227,7 @@ func initFontPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForFont.fnGetFaceCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type Font struct {

@@ -119,6 +119,7 @@ func initInputEventMIDIPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForInputEventMIDI.fnGetControllerValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type InputEventMIDI struct {

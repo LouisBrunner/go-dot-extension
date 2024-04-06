@@ -89,6 +89,7 @@ func initMultiplayerSpawnerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMultiplayerSpawner.fnSetSpawnFunction = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1611583062))
 	}
+
 }
 
 type MultiplayerSpawner struct {

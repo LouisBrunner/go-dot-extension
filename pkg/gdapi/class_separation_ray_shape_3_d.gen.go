@@ -47,6 +47,7 @@ func initSeparationRayShape3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSeparationRayShape3D.fnGetSlideOnSlope = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type SeparationRayShape3D struct {

@@ -23,6 +23,7 @@ func initCheckButtonPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("CheckButton")
 	defer className.Destroy()
+
 }
 
 type CheckButton struct {

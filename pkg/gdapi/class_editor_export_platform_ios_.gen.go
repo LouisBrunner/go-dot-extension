@@ -23,6 +23,7 @@ func initEditorExportPlatformIOSPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("EditorExportPlatformIOS")
 	defer className.Destroy()
+
 }
 
 type EditorExportPlatformIOS struct {

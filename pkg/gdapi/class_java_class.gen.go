@@ -23,6 +23,7 @@ func initJavaClassPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("JavaClass")
 	defer className.Destroy()
+
 }
 
 type JavaClass struct {

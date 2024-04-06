@@ -155,6 +155,7 @@ func initButtonPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForButton.fnIsExpandIcon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type Button struct {

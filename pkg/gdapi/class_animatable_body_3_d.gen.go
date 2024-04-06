@@ -35,6 +35,7 @@ func initAnimatableBody3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAnimatableBody3D.fnIsSyncToPhysicsEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type AnimatableBody3D struct {

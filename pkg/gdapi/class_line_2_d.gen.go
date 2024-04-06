@@ -227,6 +227,7 @@ func initLine2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForLine2D.fnGetAntialiased = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type Line2D struct {

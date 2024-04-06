@@ -23,6 +23,7 @@ func initAudioBusLayoutPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("AudioBusLayout")
 	defer className.Destroy()
+
 }
 
 type AudioBusLayout struct {

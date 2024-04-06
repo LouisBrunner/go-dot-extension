@@ -59,6 +59,7 @@ func initStaticBody2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForStaticBody2D.fnGetPhysicsMaterialOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2521850424))
 	}
+
 }
 
 type StaticBody2D struct {

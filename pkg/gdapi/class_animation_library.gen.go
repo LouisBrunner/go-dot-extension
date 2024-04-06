@@ -59,6 +59,7 @@ func initAnimationLibraryPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAnimationLibrary.fnGetAnimationList = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
 	}
+
 }
 
 type AnimationLibrary struct {

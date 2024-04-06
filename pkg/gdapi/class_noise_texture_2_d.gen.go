@@ -155,6 +155,7 @@ func initNoiseTexture2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNoiseTexture2D.fnGetNoise = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 185851837))
 	}
+
 }
 
 type NoiseTexture2D struct {

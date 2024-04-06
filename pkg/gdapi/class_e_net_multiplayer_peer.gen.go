@@ -65,6 +65,7 @@ func initENetMultiplayerPeerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForENetMultiplayerPeer.fnGetPeer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3793311544))
 	}
+
 }
 
 type ENetMultiplayerPeer struct {

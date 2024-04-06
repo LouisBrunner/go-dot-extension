@@ -161,6 +161,7 @@ func initTranslationServerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTranslationServer.fnPseudolocalize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1965194235))
 	}
+
 }
 
 type TranslationServer struct {

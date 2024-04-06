@@ -47,6 +47,7 @@ func initWorld2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForWorld2D.fnGetDirectSpaceState = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2506717822))
 	}
+
 }
 
 type World2D struct {

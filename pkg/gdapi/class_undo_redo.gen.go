@@ -149,6 +149,7 @@ func initUndoRedoPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForUndoRedo.fnUndo = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
 	}
+
 }
 
 type UndoRedo struct {

@@ -69,6 +69,7 @@ func initPhysicsDirectBodyState3DExtensionPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("PhysicsDirectBodyState3DExtension")
 	defer className.Destroy()
+
 }
 
 type PhysicsDirectBodyState3DExtension struct {

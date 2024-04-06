@@ -77,6 +77,7 @@ func initStreamPeerTCPPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForStreamPeerTCP.fnSetNoDelay = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
 	}
+
 }
 
 type StreamPeerTCP struct {

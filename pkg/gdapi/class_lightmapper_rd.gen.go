@@ -23,6 +23,7 @@ func initLightmapperRDPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("LightmapperRD")
 	defer className.Destroy()
+
 }
 
 type LightmapperRD struct {

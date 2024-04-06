@@ -35,6 +35,7 @@ func initViewportTexturePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForViewportTexture.fnGetViewportPathInScene = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4075236667))
 	}
+
 }
 
 type ViewportTexture struct {

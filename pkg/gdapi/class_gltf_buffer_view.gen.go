@@ -83,6 +83,7 @@ func initGLTFBufferViewPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGLTFBufferView.fnSetIndices = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
 	}
+
 }
 
 type GLTFBufferView struct {

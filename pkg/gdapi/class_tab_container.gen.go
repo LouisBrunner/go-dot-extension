@@ -269,6 +269,7 @@ func initTabContainerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTabContainer.fnGetTabFocusMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2132829277))
 	}
+
 }
 
 type TabContainer struct {

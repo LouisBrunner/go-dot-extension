@@ -36,6 +36,7 @@ func initVideoStreamPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVideoStream.fnGetFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2841200299))
 	}
+
 }
 
 type VideoStream struct {

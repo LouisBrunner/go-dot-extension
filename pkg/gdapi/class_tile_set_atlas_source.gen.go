@@ -269,6 +269,7 @@ func initTileSetAtlasSourcePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTileSetAtlasSource.fnGetRuntimeTileTextureRegion = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 104874263))
 	}
+
 }
 
 type TileSetAtlasSource struct {

@@ -137,6 +137,7 @@ func initScrollContainerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForScrollContainer.fnEnsureControlVisible = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1496901182))
 	}
+
 }
 
 type ScrollContainer struct {

@@ -47,6 +47,7 @@ func initPanoramaSkyMaterialPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPanoramaSkyMaterial.fnIsFilteringEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type PanoramaSkyMaterial struct {

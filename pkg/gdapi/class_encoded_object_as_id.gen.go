@@ -35,6 +35,7 @@ func initEncodedObjectAsIDPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEncodedObjectAsID.fnGetObjectId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type EncodedObjectAsID struct {

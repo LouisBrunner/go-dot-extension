@@ -245,6 +245,7 @@ func initEnginePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEngine.fnIsPrintingErrorMessages = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type Engine struct {

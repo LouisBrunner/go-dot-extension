@@ -77,6 +77,7 @@ func initOpenXRActionSetPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForOpenXRActionSet.fnRemoveAction = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 349361333))
 	}
+
 }
 
 type OpenXRActionSet struct {

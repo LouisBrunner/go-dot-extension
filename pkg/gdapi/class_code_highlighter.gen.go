@@ -191,6 +191,7 @@ func initCodeHighlighterPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCodeHighlighter.fnGetMemberVariableColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3444240500))
 	}
+
 }
 
 type CodeHighlighter struct {

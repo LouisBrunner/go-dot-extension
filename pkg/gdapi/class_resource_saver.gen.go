@@ -47,6 +47,7 @@ func initResourceSaverPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForResourceSaver.fnRemoveResourceFormatSaver = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3373026878))
 	}
+
 }
 
 type ResourceSaver struct {

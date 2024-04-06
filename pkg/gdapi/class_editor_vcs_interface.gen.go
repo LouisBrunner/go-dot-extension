@@ -94,6 +94,7 @@ func initEditorVCSInterfacePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorVCSInterface.fnPopupError = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
 	}
+
 }
 
 type EditorVCSInterface struct {

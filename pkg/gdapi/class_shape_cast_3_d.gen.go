@@ -251,6 +251,7 @@ func initShapeCast3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForShapeCast3D.fnGetDebugShapeCustomColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3444240500))
 	}
+
 }
 
 type ShapeCast3D struct {

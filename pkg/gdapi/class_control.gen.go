@@ -800,6 +800,7 @@ func initControlPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForControl.fnIsLocalizingNumeralSystem = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type Control struct {

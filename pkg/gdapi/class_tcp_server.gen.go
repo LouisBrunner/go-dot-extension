@@ -59,6 +59,7 @@ func initTCPServerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTCPServer.fnStop = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type TCPServer struct {

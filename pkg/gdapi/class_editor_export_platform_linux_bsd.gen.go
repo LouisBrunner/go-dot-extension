@@ -23,6 +23,7 @@ func initEditorExportPlatformLinuxBSDPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("EditorExportPlatformLinuxBSD")
 	defer className.Destroy()
+
 }
 
 type EditorExportPlatformLinuxBSD struct {

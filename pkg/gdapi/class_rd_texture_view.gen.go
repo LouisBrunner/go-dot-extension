@@ -83,6 +83,7 @@ func initRDTextureViewPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRDTextureView.fnGetSwizzleA = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4150792614))
 	}
+
 }
 
 type RDTextureView struct {

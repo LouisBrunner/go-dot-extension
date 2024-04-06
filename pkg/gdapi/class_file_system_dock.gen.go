@@ -41,6 +41,7 @@ func initFileSystemDockPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForFileSystemDock.fnRemoveResourceTooltipPlugin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2258356838))
 	}
+
 }
 
 type FileSystemDock struct {

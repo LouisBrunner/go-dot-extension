@@ -35,6 +35,7 @@ func initResourceImporterOggVorbisPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForResourceImporterOggVorbis.fnLoadFromFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 797568536))
 	}
+
 }
 
 type ResourceImporterOggVorbis struct {

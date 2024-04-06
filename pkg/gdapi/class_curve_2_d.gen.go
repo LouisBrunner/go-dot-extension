@@ -161,6 +161,7 @@ func initCurve2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCurve2D.fnTessellateEvenLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2319761637))
 	}
+
 }
 
 type Curve2D struct {

@@ -191,6 +191,7 @@ func initXRInterfacePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForXRInterface.fnGetEnvironmentBlendMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1984334071))
 	}
+
 }
 
 type XRInterface struct {

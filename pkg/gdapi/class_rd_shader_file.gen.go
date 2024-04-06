@@ -53,6 +53,7 @@ func initRDShaderFilePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRDShaderFile.fnGetBaseError = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type RDShaderFile struct {

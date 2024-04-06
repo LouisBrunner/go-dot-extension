@@ -59,6 +59,7 @@ func initRDAttachmentFormatPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRDAttachmentFormat.fnGetUsageFlags = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type RDAttachmentFormat struct {

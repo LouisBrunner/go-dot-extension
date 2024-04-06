@@ -83,6 +83,7 @@ func initEditorSpinSliderPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorSpinSlider.fnIsHidingSlider = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type EditorSpinSlider struct {

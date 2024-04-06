@@ -23,6 +23,7 @@ func initVisualShaderNodeVectorLenPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeVectorLen")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeVectorLen struct {

@@ -30,6 +30,7 @@ func initEditorScenePostImportPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorScenePostImport.fnGetSourceFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type EditorScenePostImport struct {

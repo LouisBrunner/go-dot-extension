@@ -53,6 +53,7 @@ func initCurveTexturePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCurveTexture.fnGetTextureMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 715756376))
 	}
+
 }
 
 type CurveTexture struct {

@@ -65,6 +65,7 @@ func initOggPacketSequencePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForOggPacketSequence.fnGetLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type OggPacketSequence struct {

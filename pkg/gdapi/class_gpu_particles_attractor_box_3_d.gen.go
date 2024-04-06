@@ -35,6 +35,7 @@ func initGPUParticlesAttractorBox3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGPUParticlesAttractorBox3D.fnGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
 	}
+
 }
 
 type GPUParticlesAttractorBox3D struct {

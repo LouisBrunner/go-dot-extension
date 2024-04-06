@@ -35,6 +35,7 @@ func initPath3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPath3D.fnGetCurve = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4244715212))
 	}
+
 }
 
 type Path3D struct {

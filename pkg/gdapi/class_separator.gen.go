@@ -23,6 +23,7 @@ func initSeparatorPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("Separator")
 	defer className.Destroy()
+
 }
 
 type Separator struct {

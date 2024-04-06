@@ -161,6 +161,7 @@ func initClassDBPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForClassDB.fnIsClassEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2619796661))
 	}
+
 }
 
 type ClassDB struct {

@@ -41,6 +41,7 @@ func initHMACContextPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForHMACContext.fnFinish = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2115431945))
 	}
+
 }
 
 type HMACContext struct {

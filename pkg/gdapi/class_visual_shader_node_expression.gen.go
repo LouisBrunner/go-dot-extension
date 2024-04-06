@@ -35,6 +35,7 @@ func initVisualShaderNodeExpressionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeExpression.fnGetExpression = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type VisualShaderNodeExpression struct {

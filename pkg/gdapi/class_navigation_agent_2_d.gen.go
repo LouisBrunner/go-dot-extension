@@ -425,6 +425,7 @@ func initNavigationAgent2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNavigationAgent2D.fnGetDebugPathCustomLineWidth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type NavigationAgent2D struct {

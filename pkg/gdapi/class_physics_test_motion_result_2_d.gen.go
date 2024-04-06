@@ -101,6 +101,7 @@ func initPhysicsTestMotionResult2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPhysicsTestMotionResult2D.fnGetCollisionUnsafeFraction = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type PhysicsTestMotionResult2D struct {

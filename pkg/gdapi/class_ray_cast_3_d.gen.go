@@ -233,6 +233,7 @@ func initRayCast3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRayCast3D.fnGetDebugShapeThickness = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type RayCast3D struct {

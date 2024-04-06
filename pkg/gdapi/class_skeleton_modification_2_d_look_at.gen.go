@@ -119,6 +119,7 @@ func initSkeletonModification2DLookAtPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSkeletonModification2DLookAt.fnGetConstraintAngleInvert = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type SkeletonModification2DLookAt struct {

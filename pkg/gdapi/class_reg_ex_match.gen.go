@@ -65,6 +65,7 @@ func initRegExMatchPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRegExMatch.fnGetEnd = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 490464691))
 	}
+
 }
 
 type RegExMatch struct {

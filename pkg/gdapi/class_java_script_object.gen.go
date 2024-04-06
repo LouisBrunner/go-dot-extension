@@ -23,6 +23,7 @@ func initJavaScriptObjectPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("JavaScriptObject")
 	defer className.Destroy()
+
 }
 
 type JavaScriptObject struct {

@@ -59,6 +59,7 @@ func initFogVolumePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForFogVolume.fnGetMaterial = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 5934680))
 	}
+
 }
 
 type FogVolume struct {

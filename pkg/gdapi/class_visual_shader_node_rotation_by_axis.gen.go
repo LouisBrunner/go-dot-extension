@@ -23,6 +23,7 @@ func initVisualShaderNodeRotationByAxisPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeRotationByAxis")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeRotationByAxis struct {

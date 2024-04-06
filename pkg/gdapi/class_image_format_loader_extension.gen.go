@@ -37,6 +37,7 @@ func initImageFormatLoaderExtensionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForImageFormatLoaderExtension.fnRemoveFormatLoader = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type ImageFormatLoaderExtension struct {

@@ -359,6 +359,7 @@ func initFileAccessPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForFileAccess.fnGetReadOnlyAttribute = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2323990056))
 	}
+
 }
 
 type FileAccess struct {

@@ -503,6 +503,7 @@ func initCPUParticles3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCPUParticles3D.fnConvertFromParticles = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1078189570))
 	}
+
 }
 
 type CPUParticles3D struct {

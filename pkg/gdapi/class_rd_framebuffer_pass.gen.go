@@ -83,6 +83,7 @@ func initRDFramebufferPassPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRDFramebufferPass.fnGetDepthAttachment = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type RDFramebufferPass struct {

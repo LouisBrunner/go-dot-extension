@@ -47,6 +47,7 @@ func initWorldEnvironmentPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForWorldEnvironment.fnGetCameraAttributes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3921283215))
 	}
+
 }
 
 type WorldEnvironment struct {

@@ -179,6 +179,7 @@ func initSystemFontPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSystemFont.fnSetFontStretch = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
 	}
+
 }
 
 type SystemFont struct {

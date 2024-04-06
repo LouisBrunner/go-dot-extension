@@ -89,6 +89,7 @@ func initAnimationNodeTransitionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAnimationNodeTransition.fnIsAllowTransitionToSelf = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type AnimationNodeTransition struct {

@@ -107,6 +107,7 @@ func initGLTFDocumentPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGLTFDocument.fnUnregisterGltfDocumentExtension = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2684415758))
 	}
+
 }
 
 type GLTFDocument struct {

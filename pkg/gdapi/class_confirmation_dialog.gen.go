@@ -41,6 +41,7 @@ func initConfirmationDialogPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForConfirmationDialog.fnGetCancelButtonText = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type ConfirmationDialog struct {

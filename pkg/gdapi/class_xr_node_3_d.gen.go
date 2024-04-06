@@ -71,6 +71,7 @@ func initXRNode3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForXRNode3D.fnTriggerHapticPulse = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 508576839))
 	}
+
 }
 
 type XRNode3D struct {

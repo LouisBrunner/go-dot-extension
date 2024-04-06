@@ -317,6 +317,7 @@ func initCamera2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCamera2D.fnIsMarginDrawingEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type Camera2D struct {

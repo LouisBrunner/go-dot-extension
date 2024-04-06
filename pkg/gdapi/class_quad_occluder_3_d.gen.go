@@ -35,6 +35,7 @@ func initQuadOccluder3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForQuadOccluder3D.fnGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
 	}
+
 }
 
 type QuadOccluder3D struct {

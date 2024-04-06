@@ -48,6 +48,7 @@ func initSubViewportContainerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSubViewportContainer.fnGetStretchShrink = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type SubViewportContainer struct {

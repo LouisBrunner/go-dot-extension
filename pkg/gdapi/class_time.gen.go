@@ -149,6 +149,7 @@ func initTimePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTime.fnGetTicksUsec = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type Time struct {

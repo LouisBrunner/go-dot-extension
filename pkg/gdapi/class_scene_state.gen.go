@@ -149,6 +149,7 @@ func initSceneStatePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSceneState.fnGetConnectionUnbinds = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 923996154))
 	}
+
 }
 
 type SceneState struct {

@@ -84,6 +84,7 @@ func initTexture2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTexture2D.fnCreatePlaceholder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 121922552))
 	}
+
 }
 
 type Texture2D struct {

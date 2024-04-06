@@ -29,6 +29,7 @@ func initRenderSceneBuffersPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRenderSceneBuffers.fnConfigure = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3072623270))
 	}
+
 }
 
 type RenderSceneBuffers struct {

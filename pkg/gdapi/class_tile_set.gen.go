@@ -539,6 +539,7 @@ func initTileSetPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTileSet.fnGetPatternsCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2455072627))
 	}
+
 }
 
 type TileSet struct {

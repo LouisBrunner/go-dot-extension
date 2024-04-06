@@ -23,6 +23,7 @@ func initVisualShaderNodeFresnelPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeFresnel")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeFresnel struct {

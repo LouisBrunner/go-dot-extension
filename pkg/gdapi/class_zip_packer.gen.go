@@ -53,6 +53,7 @@ func initZIPPackerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForZIPPacker.fnClose = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 166280745))
 	}
+
 }
 
 type ZIPPacker struct {

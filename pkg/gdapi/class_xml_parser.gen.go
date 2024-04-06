@@ -125,6 +125,7 @@ func initXMLParserPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForXMLParser.fnOpenBuffer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 680677267))
 	}
+
 }
 
 type XMLParser struct {

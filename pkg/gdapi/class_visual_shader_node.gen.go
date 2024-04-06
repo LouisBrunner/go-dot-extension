@@ -77,6 +77,7 @@ func initVisualShaderNodePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNode.fnGetDefaultInputValues = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
 	}
+
 }
 
 type VisualShaderNode struct {

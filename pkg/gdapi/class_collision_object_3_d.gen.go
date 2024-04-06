@@ -218,6 +218,7 @@ func initCollisionObject3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCollisionObject3D.fnShapeFindOwner = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 923996154))
 	}
+
 }
 
 type CollisionObject3D struct {

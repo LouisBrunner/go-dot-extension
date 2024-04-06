@@ -23,6 +23,7 @@ func initVisualShaderNodeVectorDistancePtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeVectorDistance")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeVectorDistance struct {

@@ -179,6 +179,7 @@ func initCharFXTransformPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCharFXTransform.fnSetFont = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2722037293))
 	}
+
 }
 
 type CharFXTransform struct {

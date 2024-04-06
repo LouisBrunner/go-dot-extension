@@ -26,6 +26,7 @@ func initEngineProfilerPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("EngineProfiler")
 	defer className.Destroy()
+
 }
 
 type EngineProfiler struct {

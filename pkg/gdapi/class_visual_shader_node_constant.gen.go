@@ -23,6 +23,7 @@ func initVisualShaderNodeConstantPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeConstant")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeConstant struct {

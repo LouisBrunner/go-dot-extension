@@ -47,6 +47,7 @@ func initAudioStreamPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioStream.fnInstantiatePlayback = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 210135309))
 	}
+
 }
 
 type AudioStream struct {

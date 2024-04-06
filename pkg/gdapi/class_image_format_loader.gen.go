@@ -23,6 +23,7 @@ func initImageFormatLoaderPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("ImageFormatLoader")
 	defer className.Destroy()
+
 }
 
 type ImageFormatLoader struct {

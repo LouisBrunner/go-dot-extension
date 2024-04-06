@@ -23,6 +23,7 @@ func initMarginContainerPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("MarginContainer")
 	defer className.Destroy()
+
 }
 
 type MarginContainer struct {

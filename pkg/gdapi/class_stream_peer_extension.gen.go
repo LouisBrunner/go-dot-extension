@@ -28,6 +28,7 @@ func initStreamPeerExtensionPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("StreamPeerExtension")
 	defer className.Destroy()
+
 }
 
 type StreamPeerExtension struct {

@@ -47,6 +47,7 @@ func initCapsuleShape3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCapsuleShape3D.fnGetHeight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type CapsuleShape3D struct {

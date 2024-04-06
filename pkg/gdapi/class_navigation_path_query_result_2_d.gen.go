@@ -77,6 +77,7 @@ func initNavigationPathQueryResult2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNavigationPathQueryResult2D.fnReset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type NavigationPathQueryResult2D struct {

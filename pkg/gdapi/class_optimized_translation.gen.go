@@ -29,6 +29,7 @@ func initOptimizedTranslationPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForOptimizedTranslation.fnGenerate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1466479800))
 	}
+
 }
 
 type OptimizedTranslation struct {

@@ -35,6 +35,7 @@ func initEditorCommandPalettePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorCommandPalette.fnRemoveCommand = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
 	}
+
 }
 
 type EditorCommandPalette struct {

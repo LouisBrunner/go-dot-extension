@@ -71,6 +71,7 @@ func initDampedSpringJoint2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForDampedSpringJoint2D.fnGetDamping = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type DampedSpringJoint2D struct {

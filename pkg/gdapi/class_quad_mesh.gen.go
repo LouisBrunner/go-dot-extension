@@ -23,6 +23,7 @@ func initQuadMeshPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("QuadMesh")
 	defer className.Destroy()
+
 }
 
 type QuadMesh struct {

@@ -101,6 +101,7 @@ func initInputMapPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForInputMap.fnLoadFromProjectSettings = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type InputMap struct {

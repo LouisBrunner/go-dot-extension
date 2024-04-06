@@ -155,6 +155,7 @@ func initRDPipelineRasterizationStatePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRDPipelineRasterizationState.fnGetPatchControlPoints = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type RDPipelineRasterizationState struct {

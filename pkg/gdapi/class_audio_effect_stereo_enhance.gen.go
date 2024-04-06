@@ -59,6 +59,7 @@ func initAudioEffectStereoEnhancePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioEffectStereoEnhance.fnGetSurround = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type AudioEffectStereoEnhance struct {

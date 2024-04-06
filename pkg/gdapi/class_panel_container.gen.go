@@ -23,6 +23,7 @@ func initPanelContainerPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("PanelContainer")
 	defer className.Destroy()
+
 }
 
 type PanelContainer struct {

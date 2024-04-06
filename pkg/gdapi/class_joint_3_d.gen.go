@@ -77,6 +77,7 @@ func initJoint3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForJoint3D.fnGetRid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
 	}
+
 }
 
 type Joint3D struct {

@@ -35,6 +35,7 @@ func initColorRectPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForColorRect.fnGetColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3444240500))
 	}
+
 }
 
 type ColorRect struct {

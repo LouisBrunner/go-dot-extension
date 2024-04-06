@@ -233,6 +233,7 @@ func initShapeCast2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForShapeCast2D.fnIsCollideWithBodiesEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type ShapeCast2D struct {

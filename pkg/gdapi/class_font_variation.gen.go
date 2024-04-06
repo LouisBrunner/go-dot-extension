@@ -95,6 +95,7 @@ func initFontVariationPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForFontVariation.fnSetSpacing = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3122339690))
 	}
+
 }
 
 type FontVariation struct {

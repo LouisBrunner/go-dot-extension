@@ -59,6 +59,7 @@ func initOpenXRHandPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForOpenXRHand.fnGetMotionRange = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2191822314))
 	}
+
 }
 
 type OpenXRHand struct {

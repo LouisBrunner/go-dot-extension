@@ -23,6 +23,7 @@ func initStandardMaterial3DPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("StandardMaterial3D")
 	defer className.Destroy()
+
 }
 
 type StandardMaterial3D struct {

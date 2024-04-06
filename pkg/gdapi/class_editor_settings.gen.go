@@ -119,6 +119,7 @@ func initEditorSettingsPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorSettings.fnMarkSettingChanged = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
 	}
+
 }
 
 type EditorSettings struct {

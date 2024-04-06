@@ -179,6 +179,7 @@ func initProceduralSkyMaterialPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForProceduralSkyMaterial.fnGetUseDebanding = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type ProceduralSkyMaterial struct {

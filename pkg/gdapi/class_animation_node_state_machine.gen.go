@@ -173,6 +173,7 @@ func initAnimationNodeStateMachinePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAnimationNodeStateMachine.fnAreEndsReset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type AnimationNodeStateMachine struct {

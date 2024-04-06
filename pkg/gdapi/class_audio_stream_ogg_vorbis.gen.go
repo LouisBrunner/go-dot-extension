@@ -107,6 +107,7 @@ func initAudioStreamOggVorbisPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioStreamOggVorbis.fnGetBarBeats = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type AudioStreamOggVorbis struct {

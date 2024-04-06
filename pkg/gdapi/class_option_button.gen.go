@@ -227,6 +227,7 @@ func initOptionButtonPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForOptionButton.fnSetDisableShortcuts = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
 	}
+
 }
 
 type OptionButton struct {

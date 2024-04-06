@@ -204,6 +204,7 @@ func initGraphNodePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGraphNode.fnGetOutputPortSlot = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3744713108))
 	}
+
 }
 
 type GraphNode struct {

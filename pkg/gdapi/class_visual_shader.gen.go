@@ -143,6 +143,7 @@ func initVisualShaderPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShader.fnHasVarying = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3927539163))
 	}
+
 }
 
 type VisualShader struct {

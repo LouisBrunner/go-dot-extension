@@ -117,6 +117,7 @@ func initEditorExportPluginPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorExportPlugin.fnGetOption = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2760726917))
 	}
+
 }
 
 type EditorExportPlugin struct {

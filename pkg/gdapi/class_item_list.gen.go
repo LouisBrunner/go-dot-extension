@@ -461,6 +461,7 @@ func initItemListPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForItemList.fnForceUpdateListSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type ItemList struct {

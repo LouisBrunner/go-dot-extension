@@ -23,6 +23,7 @@ func initTextServerDummyPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("TextServerDummy")
 	defer className.Destroy()
+
 }
 
 type TextServerDummy struct {

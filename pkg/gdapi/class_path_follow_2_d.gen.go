@@ -107,6 +107,7 @@ func initPathFollow2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPathFollow2D.fnHasLoop = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type PathFollow2D struct {

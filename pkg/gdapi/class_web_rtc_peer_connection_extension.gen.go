@@ -34,6 +34,7 @@ func initWebRTCPeerConnectionExtensionPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("WebRTCPeerConnectionExtension")
 	defer className.Destroy()
+
 }
 
 type WebRTCPeerConnectionExtension struct {

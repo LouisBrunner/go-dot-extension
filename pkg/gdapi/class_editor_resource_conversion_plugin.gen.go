@@ -26,6 +26,7 @@ func initEditorResourceConversionPluginPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("EditorResourceConversionPlugin")
 	defer className.Destroy()
+
 }
 
 type EditorResourceConversionPlugin struct {

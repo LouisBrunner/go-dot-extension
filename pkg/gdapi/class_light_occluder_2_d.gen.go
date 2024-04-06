@@ -59,6 +59,7 @@ func initLightOccluder2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForLightOccluder2D.fnIsSetAsSdfCollision = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type LightOccluder2D struct {

@@ -173,6 +173,7 @@ func initPhysicsServer2DExtensionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPhysicsServer2DExtension.fnBodyTestMotionIsExcludingObject = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
 	}
+
 }
 
 type PhysicsServer2DExtension struct {

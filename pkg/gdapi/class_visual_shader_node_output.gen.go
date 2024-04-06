@@ -23,6 +23,7 @@ func initVisualShaderNodeOutputPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeOutput")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeOutput struct {

@@ -95,6 +95,7 @@ func initNinePatchRectPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNinePatchRect.fnGetVAxisStretchMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3317113799))
 	}
+
 }
 
 type NinePatchRect struct {

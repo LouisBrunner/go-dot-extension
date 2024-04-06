@@ -23,6 +23,7 @@ func initResourceImporterBMFontPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("ResourceImporterBMFont")
 	defer className.Destroy()
+
 }
 
 type ResourceImporterBMFont struct {

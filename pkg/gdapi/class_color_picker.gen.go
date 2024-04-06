@@ -191,6 +191,7 @@ func initColorPickerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForColorPicker.fnGetPickerShape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1143229889))
 	}
+
 }
 
 type ColorPicker struct {

@@ -155,6 +155,7 @@ func initSceneMultiplayerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSceneMultiplayer.fnSetMaxDeltaPacketSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
 	}
+
 }
 
 type SceneMultiplayer struct {

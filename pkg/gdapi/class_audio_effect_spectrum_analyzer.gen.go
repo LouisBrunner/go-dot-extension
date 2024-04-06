@@ -59,6 +59,7 @@ func initAudioEffectSpectrumAnalyzerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioEffectSpectrumAnalyzer.fnGetFftSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3925405343))
 	}
+
 }
 
 type AudioEffectSpectrumAnalyzer struct {

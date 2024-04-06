@@ -89,6 +89,7 @@ func initSkinPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSkin.fnClearBinds = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type Skin struct {

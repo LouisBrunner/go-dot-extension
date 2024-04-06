@@ -113,6 +113,7 @@ func initENetPacketPeerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForENetPacketPeer.fnIsActive = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type ENetPacketPeer struct {

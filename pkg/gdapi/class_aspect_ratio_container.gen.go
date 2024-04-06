@@ -71,6 +71,7 @@ func initAspectRatioContainerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAspectRatioContainer.fnGetAlignmentVertical = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3838875429))
 	}
+
 }
 
 type AspectRatioContainer struct {

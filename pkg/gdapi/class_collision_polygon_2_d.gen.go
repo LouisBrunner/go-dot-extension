@@ -83,6 +83,7 @@ func initCollisionPolygon2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCollisionPolygon2D.fnGetOneWayCollisionMargin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type CollisionPolygon2D struct {

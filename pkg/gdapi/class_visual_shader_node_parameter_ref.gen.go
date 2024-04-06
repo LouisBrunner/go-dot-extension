@@ -35,6 +35,7 @@ func initVisualShaderNodeParameterRefPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeParameterRef.fnGetParameterName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type VisualShaderNodeParameterRef struct {

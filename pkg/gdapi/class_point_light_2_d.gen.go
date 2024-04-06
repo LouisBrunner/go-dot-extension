@@ -59,6 +59,7 @@ func initPointLight2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPointLight2D.fnGetTextureScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type PointLight2D struct {

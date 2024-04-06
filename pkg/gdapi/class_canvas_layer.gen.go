@@ -155,6 +155,7 @@ func initCanvasLayerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCanvasLayer.fnGetCanvas = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
 	}
+
 }
 
 type CanvasLayer struct {

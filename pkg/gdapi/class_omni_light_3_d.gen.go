@@ -35,6 +35,7 @@ func initOmniLight3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForOmniLight3D.fnGetShadowMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4181586331))
 	}
+
 }
 
 type OmniLight3D struct {

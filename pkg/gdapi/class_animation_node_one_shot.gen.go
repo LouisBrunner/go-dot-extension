@@ -119,6 +119,7 @@ func initAnimationNodeOneShotPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAnimationNodeOneShot.fnGetMixMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3076550526))
 	}
+
 }
 
 type AnimationNodeOneShot struct {

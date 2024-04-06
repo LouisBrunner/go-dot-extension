@@ -23,6 +23,7 @@ func initResourceImporterShaderFilePtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("ResourceImporterShaderFile")
 	defer className.Destroy()
+
 }
 
 type ResourceImporterShaderFile struct {

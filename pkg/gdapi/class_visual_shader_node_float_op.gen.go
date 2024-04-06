@@ -35,6 +35,7 @@ func initVisualShaderNodeFloatOpPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeFloatOp.fnGetOperator = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1867979390))
 	}
+
 }
 
 type VisualShaderNodeFloatOp struct {

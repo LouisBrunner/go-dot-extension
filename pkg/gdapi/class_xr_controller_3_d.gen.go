@@ -53,6 +53,7 @@ func initXRController3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForXRController3D.fnGetTrackerHand = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4181770860))
 	}
+
 }
 
 type XRController3D struct {

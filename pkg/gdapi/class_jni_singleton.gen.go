@@ -23,6 +23,7 @@ func initJNISingletonPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("JNISingleton")
 	defer className.Destroy()
+
 }
 
 type JNISingleton struct {

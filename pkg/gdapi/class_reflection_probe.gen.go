@@ -179,6 +179,7 @@ func initReflectionProbePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForReflectionProbe.fnGetUpdateMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2367550552))
 	}
+
 }
 
 type ReflectionProbe struct {

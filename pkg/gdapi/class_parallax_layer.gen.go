@@ -59,6 +59,7 @@ func initParallaxLayerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForParallaxLayer.fnGetMirroring = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
 	}
+
 }
 
 type ParallaxLayer struct {

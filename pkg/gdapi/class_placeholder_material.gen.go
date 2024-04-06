@@ -23,6 +23,7 @@ func initPlaceholderMaterialPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("PlaceholderMaterial")
 	defer className.Destroy()
+
 }
 
 type PlaceholderMaterial struct {

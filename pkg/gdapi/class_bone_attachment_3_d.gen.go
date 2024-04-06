@@ -89,6 +89,7 @@ func initBoneAttachment3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForBoneAttachment3D.fnGetExternalSkeleton = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4075236667))
 	}
+
 }
 
 type BoneAttachment3D struct {

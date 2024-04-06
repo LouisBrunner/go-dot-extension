@@ -215,6 +215,7 @@ func initStyleBoxFlatPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForStyleBoxFlat.fnGetCornerDetail = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type StyleBoxFlat struct {

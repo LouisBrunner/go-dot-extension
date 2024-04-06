@@ -89,6 +89,7 @@ func initEditorUndoRedoManagerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorUndoRedoManager.fnGetHistoryUndoRedo = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2417974513))
 	}
+
 }
 
 type EditorUndoRedoManager struct {

@@ -35,6 +35,7 @@ func initGPUParticlesCollisionBox3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGPUParticlesCollisionBox3D.fnGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
 	}
+
 }
 
 type GPUParticlesCollisionBox3D struct {

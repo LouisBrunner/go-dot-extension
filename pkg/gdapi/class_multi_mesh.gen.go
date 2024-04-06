@@ -161,6 +161,7 @@ func initMultiMeshPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMultiMesh.fnSetBuffer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2899603908))
 	}
+
 }
 
 type MultiMesh struct {

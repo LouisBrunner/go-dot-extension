@@ -83,6 +83,7 @@ func initIPPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForIP.fnClearCache = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3005725572))
 	}
+
 }
 
 type IP struct {

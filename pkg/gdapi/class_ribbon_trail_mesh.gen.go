@@ -95,6 +95,7 @@ func initRibbonTrailMeshPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRibbonTrailMesh.fnGetShape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1317484155))
 	}
+
 }
 
 type RibbonTrailMesh struct {

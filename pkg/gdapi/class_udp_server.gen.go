@@ -77,6 +77,7 @@ func initUDPServerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForUDPServer.fnGetMaxPendingConnections = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type UDPServer struct {

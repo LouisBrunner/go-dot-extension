@@ -714,6 +714,7 @@ func initWindowPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForWindow.fnPopupExclusiveCenteredClamped = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2612708785))
 	}
+
 }
 
 type Window struct {

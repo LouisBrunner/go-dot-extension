@@ -35,6 +35,7 @@ func initSliderJoint3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSliderJoint3D.fnGetParam = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 959925627))
 	}
+
 }
 
 type SliderJoint3D struct {

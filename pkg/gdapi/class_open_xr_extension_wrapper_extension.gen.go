@@ -57,6 +57,7 @@ func initOpenXRExtensionWrapperExtensionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForOpenXRExtensionWrapperExtension.fnRegisterExtensionWrapper = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type OpenXRExtensionWrapperExtension struct {

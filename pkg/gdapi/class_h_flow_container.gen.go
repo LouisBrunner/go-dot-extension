@@ -23,6 +23,7 @@ func initHFlowContainerPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("HFlowContainer")
 	defer className.Destroy()
+
 }
 
 type HFlowContainer struct {

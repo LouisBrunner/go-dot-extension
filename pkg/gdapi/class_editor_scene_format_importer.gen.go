@@ -28,6 +28,7 @@ func initEditorSceneFormatImporterPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("EditorSceneFormatImporter")
 	defer className.Destroy()
+
 }
 
 type EditorSceneFormatImporter struct {

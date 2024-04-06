@@ -83,6 +83,7 @@ func initInputEventMouseMotionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForInputEventMouseMotion.fnGetVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
 	}
+
 }
 
 type InputEventMouseMotion struct {

@@ -373,6 +373,7 @@ func initTileMapPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTileMap.fnGetNeighborCell = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 986575103))
 	}
+
 }
 
 type TileMap struct {

@@ -35,6 +35,7 @@ func initDTLSServerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForDTLSServer.fnTakeConnection = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3946580474))
 	}
+
 }
 
 type DTLSServer struct {

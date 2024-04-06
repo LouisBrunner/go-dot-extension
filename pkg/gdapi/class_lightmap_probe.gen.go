@@ -23,6 +23,7 @@ func initLightmapProbePtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("LightmapProbe")
 	defer className.Destroy()
+
 }
 
 type LightmapProbe struct {

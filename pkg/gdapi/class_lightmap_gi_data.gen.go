@@ -83,6 +83,7 @@ func initLightmapGIDataPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForLightmapGIData.fnGetLightTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3984243839))
 	}
+
 }
 
 type LightmapGIData struct {

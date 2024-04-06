@@ -107,6 +107,7 @@ func initPhysicsTestMotionResult3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPhysicsTestMotionResult3D.fnGetCollisionDepth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 218038398))
 	}
+
 }
 
 type PhysicsTestMotionResult3D struct {

@@ -71,6 +71,7 @@ func initStreamPeerBufferPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForStreamPeerBuffer.fnDuplicate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2474064677))
 	}
+
 }
 
 type StreamPeerBuffer struct {

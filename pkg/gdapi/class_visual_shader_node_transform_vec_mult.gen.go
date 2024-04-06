@@ -35,6 +35,7 @@ func initVisualShaderNodeTransformVecMultPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeTransformVecMult.fnGetOperator = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1622088722))
 	}
+
 }
 
 type VisualShaderNodeTransformVecMult struct {

@@ -246,6 +246,7 @@ func initPhysicalBone3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPhysicalBone3D.fnIsAbleToSleep = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type PhysicalBone3D struct {

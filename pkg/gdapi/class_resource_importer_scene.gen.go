@@ -23,6 +23,7 @@ func initResourceImporterScenePtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("ResourceImporterScene")
 	defer className.Destroy()
+
 }
 
 type ResourceImporterScene struct {

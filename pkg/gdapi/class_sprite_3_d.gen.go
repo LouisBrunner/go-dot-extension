@@ -107,6 +107,7 @@ func initSprite3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSprite3D.fnGetHframes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type Sprite3D struct {

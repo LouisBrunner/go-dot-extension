@@ -197,6 +197,7 @@ func initAudioStreamPlayer2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioStreamPlayer2D.fnGetStreamPlayback = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 210135309))
 	}
+
 }
 
 type AudioStreamPlayer2D struct {

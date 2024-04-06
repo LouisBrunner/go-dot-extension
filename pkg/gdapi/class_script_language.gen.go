@@ -23,6 +23,7 @@ func initScriptLanguagePtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("ScriptLanguage")
 	defer className.Destroy()
+
 }
 
 type ScriptLanguage struct {

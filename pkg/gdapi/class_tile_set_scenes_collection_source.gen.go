@@ -89,6 +89,7 @@ func initTileSetScenesCollectionSourcePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTileSetScenesCollectionSource.fnGetNextSceneTileId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type TileSetScenesCollectionSource struct {

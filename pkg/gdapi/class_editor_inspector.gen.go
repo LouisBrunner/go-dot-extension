@@ -35,6 +35,7 @@ func initEditorInspectorPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorInspector.fnGetEditedObject = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2050059866))
 	}
+
 }
 
 type EditorInspector struct {

@@ -35,6 +35,7 @@ func initVisualShaderNodeResizableBasePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeResizableBase.fnGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
 	}
+
 }
 
 type VisualShaderNodeResizableBase struct {

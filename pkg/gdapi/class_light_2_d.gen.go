@@ -215,6 +215,7 @@ func initLight2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForLight2D.fnGetHeight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type Light2D struct {

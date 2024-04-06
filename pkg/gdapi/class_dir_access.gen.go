@@ -227,6 +227,7 @@ func initDirAccessPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForDirAccess.fnIsCaseSensitive = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3927539163))
 	}
+
 }
 
 type DirAccess struct {

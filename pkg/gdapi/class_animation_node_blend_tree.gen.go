@@ -89,6 +89,7 @@ func initAnimationNodeBlendTreePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAnimationNodeBlendTree.fnGetGraphOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
 	}
+
 }
 
 type AnimationNodeBlendTree struct {

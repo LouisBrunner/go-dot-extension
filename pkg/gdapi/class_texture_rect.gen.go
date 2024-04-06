@@ -83,6 +83,7 @@ func initTextureRectPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTextureRect.fnGetStretchMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 346396079))
 	}
+
 }
 
 type TextureRect struct {

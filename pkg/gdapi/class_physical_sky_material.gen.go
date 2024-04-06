@@ -155,6 +155,7 @@ func initPhysicalSkyMaterialPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPhysicalSkyMaterial.fnGetNightSky = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
 	}
+
 }
 
 type PhysicalSkyMaterial struct {

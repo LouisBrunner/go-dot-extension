@@ -197,6 +197,7 @@ func initLight3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForLight3D.fnGetCorrelatedColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3444240500))
 	}
+
 }
 
 type Light3D struct {

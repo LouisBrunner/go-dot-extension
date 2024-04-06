@@ -41,6 +41,7 @@ func initInstancePlaceholderPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForInstancePlaceholder.fnGetInstancePath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type InstancePlaceholder struct {

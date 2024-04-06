@@ -35,6 +35,7 @@ func initSkeletonModification2DStackHolderPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSkeletonModification2DStackHolder.fnGetHeldModificationStack = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2107508396))
 	}
+
 }
 
 type SkeletonModification2DStackHolder struct {

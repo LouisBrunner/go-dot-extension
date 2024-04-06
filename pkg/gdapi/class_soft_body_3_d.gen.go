@@ -221,6 +221,7 @@ func initSoftBody3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSoftBody3D.fnIsRayPickable = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type SoftBody3D struct {

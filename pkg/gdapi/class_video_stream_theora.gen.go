@@ -23,6 +23,7 @@ func initVideoStreamTheoraPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VideoStreamTheora")
 	defer className.Destroy()
+
 }
 
 type VideoStreamTheora struct {

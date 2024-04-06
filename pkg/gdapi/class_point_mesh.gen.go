@@ -23,6 +23,7 @@ func initPointMeshPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("PointMesh")
 	defer className.Destroy()
+
 }
 
 type PointMesh struct {

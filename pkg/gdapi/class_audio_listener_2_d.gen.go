@@ -41,6 +41,7 @@ func initAudioListener2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioListener2D.fnIsCurrent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type AudioListener2D struct {

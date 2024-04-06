@@ -35,6 +35,7 @@ func initGLTFAnimationPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGLTFAnimation.fnSetLoop = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
 	}
+
 }
 
 type GLTFAnimation struct {

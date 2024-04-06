@@ -53,6 +53,7 @@ func initShortcutPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForShortcut.fnGetAsText = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type Shortcut struct {

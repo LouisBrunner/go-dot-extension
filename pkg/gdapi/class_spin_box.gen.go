@@ -119,6 +119,7 @@ func initSpinBoxPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSpinBox.fnGetLineEdit = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4071694264))
 	}
+
 }
 
 type SpinBox struct {

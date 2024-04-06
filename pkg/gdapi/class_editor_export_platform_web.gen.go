@@ -23,6 +23,7 @@ func initEditorExportPlatformWebPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("EditorExportPlatformWeb")
 	defer className.Destroy()
+
 }
 
 type EditorExportPlatformWeb struct {

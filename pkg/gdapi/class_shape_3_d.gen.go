@@ -53,6 +53,7 @@ func initShape3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForShape3D.fnGetDebugMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1605880883))
 	}
+
 }
 
 type Shape3D struct {

@@ -41,6 +41,7 @@ func initWebRTCDataChannelExtensionPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("WebRTCDataChannelExtension")
 	defer className.Destroy()
+
 }
 
 type WebRTCDataChannelExtension struct {

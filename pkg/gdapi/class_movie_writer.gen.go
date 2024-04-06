@@ -35,6 +35,7 @@ func initMovieWriterPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMovieWriter.fnAddWriter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4023702871))
 	}
+
 }
 
 type MovieWriter struct {

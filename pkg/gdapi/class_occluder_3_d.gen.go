@@ -35,6 +35,7 @@ func initOccluder3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForOccluder3D.fnGetIndices = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1930428628))
 	}
+
 }
 
 type Occluder3D struct {

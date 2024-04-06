@@ -47,6 +47,7 @@ func initVisibleOnScreenEnabler3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisibleOnScreenEnabler3D.fnGetEnableNodePath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 277076166))
 	}
+
 }
 
 type VisibleOnScreenEnabler3D struct {

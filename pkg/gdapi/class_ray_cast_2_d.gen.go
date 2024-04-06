@@ -191,6 +191,7 @@ func initRayCast2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRayCast2D.fnIsHitFromInsideEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type RayCast2D struct {

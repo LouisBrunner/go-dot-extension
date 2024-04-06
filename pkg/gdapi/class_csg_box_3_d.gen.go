@@ -47,6 +47,7 @@ func initCSGBox3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCSGBox3D.fnGetMaterial = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 5934680))
 	}
+
 }
 
 type CSGBox3D struct {

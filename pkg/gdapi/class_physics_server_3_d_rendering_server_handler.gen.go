@@ -44,6 +44,7 @@ func initPhysicsServer3DRenderingServerHandlerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPhysicsServer3DRenderingServerHandler.fnSetAabb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 259215842))
 	}
+
 }
 
 type PhysicsServer3DRenderingServerHandler struct {

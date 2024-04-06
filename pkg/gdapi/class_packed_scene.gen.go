@@ -47,6 +47,7 @@ func initPackedScenePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPackedScene.fnGetState = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3479783971))
 	}
+
 }
 
 type PackedScene struct {

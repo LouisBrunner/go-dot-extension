@@ -47,6 +47,7 @@ func initGLTFTexturePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGLTFTexture.fnSetSampler = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
 	}
+
 }
 
 type GLTFTexture struct {

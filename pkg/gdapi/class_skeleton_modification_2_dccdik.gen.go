@@ -143,6 +143,7 @@ func initSkeletonModification2DCCDIKPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSkeletonModification2DCCDIK.fnGetCcdikJointConstraintAngleInvert = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
 	}
+
 }
 
 type SkeletonModification2DCCDIK struct {

@@ -125,6 +125,7 @@ func initPhysicsRayQueryParameters3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPhysicsRayQueryParameters3D.fnIsHitBackFacesEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type PhysicsRayQueryParameters3D struct {

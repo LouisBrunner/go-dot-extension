@@ -53,6 +53,7 @@ func initGradientTexture1DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGradientTexture1D.fnIsUsingHdr = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type GradientTexture1D struct {

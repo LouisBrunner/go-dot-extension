@@ -121,6 +121,7 @@ func initAnimationNodePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAnimationNode.fnGetParameter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2760726917))
 	}
+
 }
 
 type AnimationNode struct {

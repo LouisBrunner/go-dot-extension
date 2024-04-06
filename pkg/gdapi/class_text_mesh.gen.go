@@ -239,6 +239,7 @@ func initTextMeshPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTextMesh.fnIsUppercase = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type TextMesh struct {

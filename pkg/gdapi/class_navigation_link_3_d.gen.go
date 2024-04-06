@@ -143,6 +143,7 @@ func initNavigationLink3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNavigationLink3D.fnGetTravelCost = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type NavigationLink3D struct {

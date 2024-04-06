@@ -163,6 +163,7 @@ func initBaseButtonPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForBaseButton.fnGetButtonGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 281644053))
 	}
+
 }
 
 type BaseButton struct {

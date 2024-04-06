@@ -23,6 +23,7 @@ func initVSplitContainerPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VSplitContainer")
 	defer className.Destroy()
+
 }
 
 type VSplitContainer struct {

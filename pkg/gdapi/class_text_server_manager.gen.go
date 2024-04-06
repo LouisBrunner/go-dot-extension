@@ -71,6 +71,7 @@ func initTextServerManagerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTextServerManager.fnGetPrimaryInterface = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 905850878))
 	}
+
 }
 
 type TextServerManager struct {

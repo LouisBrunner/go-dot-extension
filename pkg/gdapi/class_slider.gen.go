@@ -71,6 +71,7 @@ func initSliderPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSlider.fnIsScrollable = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type Slider struct {

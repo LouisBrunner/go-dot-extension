@@ -41,6 +41,7 @@ func initHashingContextPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForHashingContext.fnFinish = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2115431945))
 	}
+
 }
 
 type HashingContext struct {

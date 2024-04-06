@@ -35,6 +35,7 @@ func initVisualShaderNodeMultiplyAddPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeMultiplyAdd.fnGetOpType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2823201991))
 	}
+
 }
 
 type VisualShaderNodeMultiplyAdd struct {

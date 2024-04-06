@@ -23,6 +23,7 @@ func initTexture2DArrayRDPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("Texture2DArrayRD")
 	defer className.Destroy()
+
 }
 
 type Texture2DArrayRD struct {

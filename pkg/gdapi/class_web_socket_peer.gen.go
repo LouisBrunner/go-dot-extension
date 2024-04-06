@@ -179,6 +179,7 @@ func initWebSocketPeerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForWebSocketPeer.fnGetMaxQueuedPackets = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type WebSocketPeer struct {

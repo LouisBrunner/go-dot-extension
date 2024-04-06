@@ -299,6 +299,7 @@ func initTileDataPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTileData.fnGetCustomDataByLayerId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4227898402))
 	}
+
 }
 
 type TileData struct {

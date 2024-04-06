@@ -42,6 +42,7 @@ func initVideoStreamPlaybackPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVideoStreamPlayback.fnMixAudio = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 93876830))
 	}
+
 }
 
 type VideoStreamPlayback struct {

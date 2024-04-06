@@ -161,6 +161,7 @@ func initGeometry2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGeometry2D.fnMakeAtlas = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1337682371))
 	}
+
 }
 
 type Geometry2D struct {

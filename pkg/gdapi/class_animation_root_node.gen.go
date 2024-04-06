@@ -23,6 +23,7 @@ func initAnimationRootNodePtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("AnimationRootNode")
 	defer className.Destroy()
+
 }
 
 type AnimationRootNode struct {

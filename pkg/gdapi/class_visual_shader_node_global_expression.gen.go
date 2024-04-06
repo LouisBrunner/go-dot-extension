@@ -23,6 +23,7 @@ func initVisualShaderNodeGlobalExpressionPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeGlobalExpression")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeGlobalExpression struct {

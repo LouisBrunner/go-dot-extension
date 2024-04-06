@@ -47,6 +47,7 @@ func initCylinderShape3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCylinderShape3D.fnGetHeight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type CylinderShape3D struct {

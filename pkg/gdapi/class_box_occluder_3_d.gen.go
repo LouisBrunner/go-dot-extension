@@ -35,6 +35,7 @@ func initBoxOccluder3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForBoxOccluder3D.fnGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
 	}
+
 }
 
 type BoxOccluder3D struct {

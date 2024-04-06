@@ -29,6 +29,7 @@ func initEditorExportPlatformPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorExportPlatform.fnGetOsName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type EditorExportPlatform struct {

@@ -143,6 +143,7 @@ func initGLTFSkinPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGLTFSkin.fnSetGodotSkin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3971435618))
 	}
+
 }
 
 type GLTFSkin struct {

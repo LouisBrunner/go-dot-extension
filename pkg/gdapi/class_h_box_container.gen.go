@@ -23,6 +23,7 @@ func initHBoxContainerPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("HBoxContainer")
 	defer className.Destroy()
+
 }
 
 type HBoxContainer struct {

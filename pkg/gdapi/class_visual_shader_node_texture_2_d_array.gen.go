@@ -35,6 +35,7 @@ func initVisualShaderNodeTexture2DArrayPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeTexture2DArray.fnGetTextureArray = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 146117123))
 	}
+
 }
 
 type VisualShaderNodeTexture2DArray struct {

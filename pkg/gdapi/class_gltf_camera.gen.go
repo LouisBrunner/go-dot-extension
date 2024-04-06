@@ -107,6 +107,7 @@ func initGLTFCameraPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGLTFCamera.fnSetDepthNear = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
 	}
+
 }
 
 type GLTFCamera struct {

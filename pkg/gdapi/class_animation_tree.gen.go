@@ -71,6 +71,7 @@ func initAnimationTreePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAnimationTree.fnGetProcessCallback = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 891317132))
 	}
+
 }
 
 type AnimationTree struct {

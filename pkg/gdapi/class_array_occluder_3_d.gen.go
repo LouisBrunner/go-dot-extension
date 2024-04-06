@@ -41,6 +41,7 @@ func initArrayOccluder3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForArrayOccluder3D.fnSetIndices = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3614634198))
 	}
+
 }
 
 type ArrayOccluder3D struct {

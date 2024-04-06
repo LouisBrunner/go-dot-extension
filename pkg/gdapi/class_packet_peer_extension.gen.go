@@ -27,6 +27,7 @@ func initPacketPeerExtensionPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("PacketPeerExtension")
 	defer className.Destroy()
+
 }
 
 type PacketPeerExtension struct {

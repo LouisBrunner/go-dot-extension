@@ -839,6 +839,7 @@ func initBaseMaterial3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForBaseMaterial3D.fnGetDistanceFadeMinDistance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type BaseMaterial3D struct {

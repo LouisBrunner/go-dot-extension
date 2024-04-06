@@ -83,6 +83,7 @@ func initPlaneMeshPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPlaneMesh.fnGetOrientation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3227599250))
 	}
+
 }
 
 type PlaneMesh struct {

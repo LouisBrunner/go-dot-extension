@@ -599,6 +599,7 @@ func initRenderingDevicePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRenderingDevice.fnGetDriverResource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 501815484))
 	}
+
 }
 
 type RenderingDevice struct {

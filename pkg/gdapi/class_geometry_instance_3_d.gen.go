@@ -215,6 +215,7 @@ func initGeometryInstance3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGeometryInstance3D.fnGetCustomAabb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1068685055))
 	}
+
 }
 
 type GeometryInstance3D struct {

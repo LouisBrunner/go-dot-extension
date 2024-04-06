@@ -47,6 +47,7 @@ func initAudioStreamGeneratorPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioStreamGenerator.fnGetBufferLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type AudioStreamGenerator struct {

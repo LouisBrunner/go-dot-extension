@@ -35,6 +35,7 @@ func initAudioStreamPolyphonicPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioStreamPolyphonic.fnGetPolyphony = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type AudioStreamPolyphonic struct {

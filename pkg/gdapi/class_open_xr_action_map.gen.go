@@ -113,6 +113,7 @@ func initOpenXRActionMapPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForOpenXRActionMap.fnCreateDefaultActionSets = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type OpenXRActionMap struct {

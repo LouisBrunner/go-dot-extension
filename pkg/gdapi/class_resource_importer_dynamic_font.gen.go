@@ -23,6 +23,7 @@ func initResourceImporterDynamicFontPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("ResourceImporterDynamicFont")
 	defer className.Destroy()
+
 }
 
 type ResourceImporterDynamicFont struct {

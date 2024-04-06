@@ -95,6 +95,7 @@ func initThemeDBPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForThemeDB.fnGetFallbackStylebox = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 496040854))
 	}
+
 }
 
 type ThemeDB struct {

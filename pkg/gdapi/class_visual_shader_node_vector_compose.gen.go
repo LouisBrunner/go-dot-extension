@@ -23,6 +23,7 @@ func initVisualShaderNodeVectorComposePtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeVectorCompose")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeVectorCompose struct {

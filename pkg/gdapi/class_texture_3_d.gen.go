@@ -71,6 +71,7 @@ func initTexture3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTexture3D.fnCreatePlaceholder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 121922552))
 	}
+
 }
 
 type Texture3D struct {

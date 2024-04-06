@@ -53,6 +53,7 @@ func initInputEventActionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForInputEventAction.fnGetStrength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type InputEventAction struct {

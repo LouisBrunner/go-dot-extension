@@ -35,6 +35,7 @@ func initVisualShaderNodeColorOpPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeColorOp.fnGetOperator = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1950956529))
 	}
+
 }
 
 type VisualShaderNodeColorOp struct {

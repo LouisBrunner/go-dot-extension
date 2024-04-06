@@ -23,6 +23,7 @@ func initVisualShaderNodeLinearSceneDepthPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeLinearSceneDepth")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeLinearSceneDepth struct {

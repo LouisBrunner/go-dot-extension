@@ -83,6 +83,7 @@ func initPrismMeshPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPrismMesh.fnGetSubdivideDepth = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type PrismMesh struct {

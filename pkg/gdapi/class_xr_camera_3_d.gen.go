@@ -23,6 +23,7 @@ func initXRCamera3DPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("XRCamera3D")
 	defer className.Destroy()
+
 }
 
 type XRCamera3D struct {

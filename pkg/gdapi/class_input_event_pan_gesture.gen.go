@@ -35,6 +35,7 @@ func initInputEventPanGesturePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForInputEventPanGesture.fnGetDelta = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
 	}
+
 }
 
 type InputEventPanGesture struct {

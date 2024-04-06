@@ -107,6 +107,7 @@ func initNavigationPathQueryParameters3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNavigationPathQueryParameters3D.fnGetMetadataFlags = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1582332802))
 	}
+
 }
 
 type NavigationPathQueryParameters3D struct {

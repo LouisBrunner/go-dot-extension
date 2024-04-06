@@ -125,6 +125,7 @@ func initMultiplayerSynchronizerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMultiplayerSynchronizer.fnGetVisibilityFor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
 	}
+
 }
 
 type MultiplayerSynchronizer struct {

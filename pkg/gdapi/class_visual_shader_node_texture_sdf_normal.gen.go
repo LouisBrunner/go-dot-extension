@@ -23,6 +23,7 @@ func initVisualShaderNodeTextureSDFNormalPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeTextureSDFNormal")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeTextureSDFNormal struct {

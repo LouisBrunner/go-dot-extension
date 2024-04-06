@@ -89,6 +89,7 @@ func initEngineDebuggerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEngineDebugger.fnSendMessage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1209351045))
 	}
+
 }
 
 type EngineDebugger struct {

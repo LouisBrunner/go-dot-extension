@@ -59,6 +59,7 @@ func initReferenceRectPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForReferenceRect.fnSetEditorOnly = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
 	}
+
 }
 
 type ReferenceRect struct {

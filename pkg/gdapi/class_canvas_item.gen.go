@@ -540,6 +540,7 @@ func initCanvasItemPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCanvasItem.fnGetClipChildrenMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3581808349))
 	}
+
 }
 
 type CanvasItem struct {

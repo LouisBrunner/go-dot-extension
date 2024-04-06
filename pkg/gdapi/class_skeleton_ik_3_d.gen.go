@@ -167,6 +167,7 @@ func initSkeletonIK3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSkeletonIK3D.fnStop = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type SkeletonIK3D struct {

@@ -83,6 +83,7 @@ func initGraphElementPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGraphElement.fnGetPositionOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
 	}
+
 }
 
 type GraphElement struct {

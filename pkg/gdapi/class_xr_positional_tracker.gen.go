@@ -119,6 +119,7 @@ func initXRPositionalTrackerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForXRPositionalTracker.fnSetInput = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3776071444))
 	}
+
 }
 
 type XRPositionalTracker struct {

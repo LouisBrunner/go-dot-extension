@@ -90,6 +90,7 @@ func initPrimitiveMeshPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPrimitiveMesh.fnGetUv2Padding = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type PrimitiveMesh struct {

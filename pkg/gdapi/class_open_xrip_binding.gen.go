@@ -71,6 +71,7 @@ func initOpenXRIPBindingPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForOpenXRIPBinding.fnRemovePath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
 	}
+
 }
 
 type OpenXRIPBinding struct {

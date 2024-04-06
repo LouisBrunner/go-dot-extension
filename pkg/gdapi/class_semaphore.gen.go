@@ -41,6 +41,7 @@ func initSemaphorePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSemaphore.fnPost = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type Semaphore struct {

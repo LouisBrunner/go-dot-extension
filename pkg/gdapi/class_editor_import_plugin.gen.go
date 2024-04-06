@@ -41,6 +41,7 @@ func initEditorImportPluginPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorImportPlugin.fnAppendImportExternalResource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 320493106))
 	}
+
 }
 
 type EditorImportPlugin struct {

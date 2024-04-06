@@ -23,6 +23,7 @@ func initHScrollBarPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("HScrollBar")
 	defer className.Destroy()
+
 }
 
 type HScrollBar struct {

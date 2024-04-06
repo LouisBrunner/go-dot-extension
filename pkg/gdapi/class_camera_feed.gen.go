@@ -71,6 +71,7 @@ func initCameraFeedPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCameraFeed.fnGetDatatype = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1477782850))
 	}
+
 }
 
 type CameraFeed struct {

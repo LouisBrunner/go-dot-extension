@@ -143,6 +143,7 @@ func initRDTextureFormatPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRDTextureFormat.fnRemoveShareableFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 565531219))
 	}
+
 }
 
 type RDTextureFormat struct {

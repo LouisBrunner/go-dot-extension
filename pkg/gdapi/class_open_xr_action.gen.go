@@ -59,6 +59,7 @@ func initOpenXRActionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForOpenXRAction.fnGetToplevelPaths = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1139954409))
 	}
+
 }
 
 type OpenXRAction struct {

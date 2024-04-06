@@ -131,6 +131,7 @@ func initProjectSettingsPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForProjectSettings.fnSaveCustom = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 166001499))
 	}
+
 }
 
 type ProjectSettings struct {

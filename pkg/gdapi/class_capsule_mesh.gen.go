@@ -71,6 +71,7 @@ func initCapsuleMeshPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCapsuleMesh.fnGetRings = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type CapsuleMesh struct {

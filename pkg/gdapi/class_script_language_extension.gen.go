@@ -78,6 +78,7 @@ func initScriptLanguageExtensionPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("ScriptLanguageExtension")
 	defer className.Destroy()
+
 }
 
 type ScriptLanguageExtension struct {

@@ -35,6 +35,7 @@ func initInputEventGesturePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForInputEventGesture.fnGetPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
 	}
+
 }
 
 type InputEventGesture struct {

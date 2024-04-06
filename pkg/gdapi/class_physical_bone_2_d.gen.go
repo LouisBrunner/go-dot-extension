@@ -95,6 +95,7 @@ func initPhysicalBone2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPhysicalBone2D.fnGetFollowBoneWhenSimulating = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type PhysicalBone2D struct {

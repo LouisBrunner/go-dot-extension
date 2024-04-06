@@ -71,6 +71,7 @@ func initResourceUIDPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForResourceUID.fnRemoveId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
 	}
+
 }
 
 type ResourceUID struct {

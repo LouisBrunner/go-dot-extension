@@ -665,6 +665,7 @@ func initTreeItemPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTreeItem.fnCallRecursive = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2866548813))
 	}
+
 }
 
 type TreeItem struct {

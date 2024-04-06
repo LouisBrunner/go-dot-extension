@@ -234,6 +234,7 @@ func initAnimationMixerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAnimationMixer.fnFindAnimationLibrary = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1559484580))
 	}
+
 }
 
 type AnimationMixer struct {

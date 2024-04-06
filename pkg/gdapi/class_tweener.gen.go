@@ -23,6 +23,7 @@ func initTweenerPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("Tweener")
 	defer className.Destroy()
+
 }
 
 type Tweener struct {

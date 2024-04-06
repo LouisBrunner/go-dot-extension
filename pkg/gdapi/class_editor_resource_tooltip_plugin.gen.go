@@ -31,6 +31,7 @@ func initEditorResourceTooltipPluginPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorResourceTooltipPlugin.fnRequestThumbnail = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3245519720))
 	}
+
 }
 
 type EditorResourceTooltipPlugin struct {

@@ -83,6 +83,7 @@ func initCollisionShape2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCollisionShape2D.fnGetDebugColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3444240500))
 	}
+
 }
 
 type CollisionShape2D struct {

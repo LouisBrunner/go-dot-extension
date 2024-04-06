@@ -42,6 +42,7 @@ func initEditorScriptPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorScript.fnGetEditorInterface = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1976662476))
 	}
+
 }
 
 type EditorScript struct {

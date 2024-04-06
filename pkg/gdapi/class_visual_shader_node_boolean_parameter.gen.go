@@ -47,6 +47,7 @@ func initVisualShaderNodeBooleanParameterPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeBooleanParameter.fnGetDefaultValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type VisualShaderNodeBooleanParameter struct {

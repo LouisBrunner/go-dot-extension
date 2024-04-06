@@ -41,6 +41,7 @@ func initTLSOptionsPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTLSOptions.fnServer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36969539))
 	}
+
 }
 
 type TLSOptions struct {

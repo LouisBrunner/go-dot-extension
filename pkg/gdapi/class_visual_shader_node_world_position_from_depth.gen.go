@@ -23,6 +23,7 @@ func initVisualShaderNodeWorldPositionFromDepthPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeWorldPositionFromDepth")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeWorldPositionFromDepth struct {

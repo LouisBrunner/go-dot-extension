@@ -287,6 +287,7 @@ func initPhysicsDirectBodyState2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPhysicsDirectBodyState2D.fnGetSpaceState = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2506717822))
 	}
+
 }
 
 type PhysicsDirectBodyState2D struct {

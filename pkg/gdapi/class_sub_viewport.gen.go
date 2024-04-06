@@ -83,6 +83,7 @@ func initSubViewportPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSubViewport.fnGetClearMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 331324495))
 	}
+
 }
 
 type SubViewport struct {

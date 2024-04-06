@@ -71,6 +71,7 @@ func initInputEventMouseButtonPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForInputEventMouseButton.fnIsDoubleClick = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type InputEventMouseButton struct {

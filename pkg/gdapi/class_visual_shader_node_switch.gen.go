@@ -35,6 +35,7 @@ func initVisualShaderNodeSwitchPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeSwitch.fnGetOpType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2517845071))
 	}
+
 }
 
 type VisualShaderNodeSwitch struct {

@@ -23,6 +23,7 @@ func initTextureCubemapRDPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("TextureCubemapRD")
 	defer className.Destroy()
+
 }
 
 type TextureCubemapRD struct {

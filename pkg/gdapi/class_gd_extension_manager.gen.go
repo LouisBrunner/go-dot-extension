@@ -59,6 +59,7 @@ func initGDExtensionManagerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGDExtensionManager.fnGetExtension = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 49743343))
 	}
+
 }
 
 type GDExtensionManager struct {

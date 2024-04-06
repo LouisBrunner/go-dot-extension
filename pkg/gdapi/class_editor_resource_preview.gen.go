@@ -53,6 +53,7 @@ func initEditorResourcePreviewPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorResourcePreview.fnCheckForInvalidation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
 	}
+
 }
 
 type EditorResourcePreview struct {

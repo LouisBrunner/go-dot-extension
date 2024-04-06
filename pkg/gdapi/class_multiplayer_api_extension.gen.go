@@ -32,6 +32,7 @@ func initMultiplayerAPIExtensionPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("MultiplayerAPIExtension")
 	defer className.Destroy()
+
 }
 
 type MultiplayerAPIExtension struct {

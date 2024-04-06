@@ -101,6 +101,7 @@ func initBitMapPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForBitMap.fnOpaqueToPolygons = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 48478126))
 	}
+
 }
 
 type BitMap struct {

@@ -335,6 +335,7 @@ func initGPUParticles2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGPUParticles2D.fnGetAmountRatio = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type GPUParticles2D struct {

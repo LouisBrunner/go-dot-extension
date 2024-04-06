@@ -227,6 +227,7 @@ func initSkeletonModification2DJigglePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSkeletonModification2DJiggle.fnGetJiggleJointGravity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2299179447))
 	}
+
 }
 
 type SkeletonModification2DJiggle struct {

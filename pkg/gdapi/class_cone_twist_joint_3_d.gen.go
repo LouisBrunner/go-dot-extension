@@ -35,6 +35,7 @@ func initConeTwistJoint3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForConeTwistJoint3D.fnGetParam = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2928790850))
 	}
+
 }
 
 type ConeTwistJoint3D struct {

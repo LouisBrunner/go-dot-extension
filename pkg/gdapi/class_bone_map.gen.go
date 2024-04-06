@@ -53,6 +53,7 @@ func initBoneMapPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForBoneMap.fnFindProfileBoneName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1965194235))
 	}
+
 }
 
 type BoneMap struct {

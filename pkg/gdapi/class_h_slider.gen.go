@@ -23,6 +23,7 @@ func initHSliderPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("HSlider")
 	defer className.Destroy()
+
 }
 
 type HSlider struct {

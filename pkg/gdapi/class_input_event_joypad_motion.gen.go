@@ -47,6 +47,7 @@ func initInputEventJoypadMotionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForInputEventJoypadMotion.fnGetAxisValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type InputEventJoypadMotion struct {

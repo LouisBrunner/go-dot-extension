@@ -35,6 +35,7 @@ func initScrollBarPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForScrollBar.fnGetCustomStep = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type ScrollBar struct {

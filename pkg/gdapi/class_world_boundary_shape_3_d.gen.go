@@ -35,6 +35,7 @@ func initWorldBoundaryShape3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForWorldBoundaryShape3D.fnGetPlane = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2753500971))
 	}
+
 }
 
 type WorldBoundaryShape3D struct {

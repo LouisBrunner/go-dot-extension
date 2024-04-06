@@ -131,6 +131,7 @@ func initGLTFPhysicsShapePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGLTFPhysicsShape.fnSetImporterMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2255166972))
 	}
+
 }
 
 type GLTFPhysicsShape struct {

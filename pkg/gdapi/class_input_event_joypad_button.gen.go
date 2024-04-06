@@ -53,6 +53,7 @@ func initInputEventJoypadButtonPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForInputEventJoypadButton.fnSetPressed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
 	}
+
 }
 
 type InputEventJoypadButton struct {

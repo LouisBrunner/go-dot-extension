@@ -107,6 +107,7 @@ func initGradientTexture2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGradientTexture2D.fnGetRepeat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3351758665))
 	}
+
 }
 
 type GradientTexture2D struct {

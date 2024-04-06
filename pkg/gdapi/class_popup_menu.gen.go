@@ -473,6 +473,7 @@ func initPopupMenuPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPopupMenu.fnGetAllowSearch = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type PopupMenu struct {

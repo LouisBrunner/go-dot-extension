@@ -311,6 +311,7 @@ func initCharacterBody2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCharacterBody2D.fnGetLastSlideCollision = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2161834755))
 	}
+
 }
 
 type CharacterBody2D struct {

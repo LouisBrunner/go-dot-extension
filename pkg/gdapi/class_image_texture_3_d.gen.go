@@ -35,6 +35,7 @@ func initImageTexture3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForImageTexture3D.fnUpdate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 381264803))
 	}
+
 }
 
 type ImageTexture3D struct {

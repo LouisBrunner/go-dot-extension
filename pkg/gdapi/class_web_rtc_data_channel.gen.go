@@ -107,6 +107,7 @@ func initWebRTCDataChannelPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForWebRTCDataChannel.fnGetBufferedAmount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type WebRTCDataChannel struct {

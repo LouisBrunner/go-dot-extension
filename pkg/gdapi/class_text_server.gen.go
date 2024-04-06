@@ -1241,6 +1241,7 @@ func initTextServerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTextServer.fnParseStructuredText = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3310685015))
 	}
+
 }
 
 type TextServer struct {

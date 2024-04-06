@@ -179,6 +179,7 @@ func initCurvePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCurve.fnSetBakeResolution = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
 	}
+
 }
 
 type Curve struct {

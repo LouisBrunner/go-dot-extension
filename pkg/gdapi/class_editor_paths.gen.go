@@ -59,6 +59,7 @@ func initEditorPathsPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorPaths.fnGetProjectSettingsDir = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type EditorPaths struct {

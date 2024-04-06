@@ -23,6 +23,7 @@ func initVisualShaderNodeUVPolarCoordPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeUVPolarCoord")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeUVPolarCoord struct {

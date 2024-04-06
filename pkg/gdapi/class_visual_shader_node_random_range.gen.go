@@ -23,6 +23,7 @@ func initVisualShaderNodeRandomRangePtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VisualShaderNodeRandomRange")
 	defer className.Destroy()
+
 }
 
 type VisualShaderNodeRandomRange struct {

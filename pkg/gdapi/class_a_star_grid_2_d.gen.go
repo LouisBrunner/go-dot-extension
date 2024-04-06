@@ -205,6 +205,7 @@ func initAStarGrid2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAStarGrid2D.fnGetIdPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1989391000))
 	}
+
 }
 
 type AStarGrid2D struct {

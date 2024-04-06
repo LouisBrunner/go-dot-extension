@@ -131,6 +131,7 @@ func initLabelSettingsPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForLabelSettings.fnGetShadowOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
 	}
+
 }
 
 type LabelSettings struct {

@@ -125,6 +125,7 @@ func initUPNPPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForUPNP.fnIsDiscoverIpv6 = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type UPNP struct {

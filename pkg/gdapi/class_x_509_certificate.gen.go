@@ -47,6 +47,7 @@ func initX509CertificatePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForX509Certificate.fnLoadFromString = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 166001499))
 	}
+
 }
 
 type X509Certificate struct {

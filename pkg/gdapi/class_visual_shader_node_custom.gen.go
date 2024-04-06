@@ -50,6 +50,7 @@ func initVisualShaderNodeCustomPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeCustom.fnGetOptionIndex = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 923996154))
 	}
+
 }
 
 type VisualShaderNodeCustom struct {

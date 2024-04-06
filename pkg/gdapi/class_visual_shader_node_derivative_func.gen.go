@@ -59,6 +59,7 @@ func initVisualShaderNodeDerivativeFuncPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeDerivativeFunc.fnGetPrecision = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3822547323))
 	}
+
 }
 
 type VisualShaderNodeDerivativeFunc struct {

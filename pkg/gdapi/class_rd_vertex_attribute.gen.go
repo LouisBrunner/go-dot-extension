@@ -83,6 +83,7 @@ func initRDVertexAttributePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRDVertexAttribute.fnGetFrequency = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4154106413))
 	}
+
 }
 
 type RDVertexAttribute struct {

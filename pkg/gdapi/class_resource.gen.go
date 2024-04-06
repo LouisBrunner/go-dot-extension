@@ -96,6 +96,7 @@ func initResourcePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForResource.fnDuplicate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 482882304))
 	}
+
 }
 
 type Resource struct {

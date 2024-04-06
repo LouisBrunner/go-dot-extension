@@ -149,6 +149,7 @@ func initVisualShaderNodeGroupBasePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeGroupBase.fnGetFreeOutputPortId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type VisualShaderNodeGroupBase struct {

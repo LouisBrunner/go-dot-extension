@@ -119,6 +119,7 @@ func initAnimationNodeStateMachineTransitionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAnimationNodeStateMachineTransition.fnGetAdvanceExpression = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type AnimationNodeStateMachineTransition struct {

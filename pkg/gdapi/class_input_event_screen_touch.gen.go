@@ -71,6 +71,7 @@ func initInputEventScreenTouchPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForInputEventScreenTouch.fnIsDoubleTap = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type InputEventScreenTouch struct {

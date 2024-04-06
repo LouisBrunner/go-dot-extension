@@ -29,6 +29,7 @@ func initCallbackTweenerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCallbackTweener.fnSetDelay = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3008182292))
 	}
+
 }
 
 type CallbackTweener struct {

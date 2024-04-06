@@ -83,6 +83,7 @@ func initImmediateMeshPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForImmediateMesh.fnClearSurfaces = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type ImmediateMesh struct {

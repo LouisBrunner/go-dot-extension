@@ -35,6 +35,7 @@ func initVisualShaderNodeCurveXYZTexturePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeCurveXYZTexture.fnGetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1950275015))
 	}
+
 }
 
 type VisualShaderNodeCurveXYZTexture struct {

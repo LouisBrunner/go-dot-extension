@@ -23,6 +23,7 @@ func initPlaceholderCubemapPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("PlaceholderCubemap")
 	defer className.Destroy()
+
 }
 
 type PlaceholderCubemap struct {

@@ -59,6 +59,7 @@ func initMeshTexturePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMeshTexture.fnGetBaseTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
 	}
+
 }
 
 type MeshTexture struct {

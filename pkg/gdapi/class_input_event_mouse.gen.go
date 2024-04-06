@@ -59,6 +59,7 @@ func initInputEventMousePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForInputEventMouse.fnGetGlobalPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
 	}
+
 }
 
 type InputEventMouse struct {

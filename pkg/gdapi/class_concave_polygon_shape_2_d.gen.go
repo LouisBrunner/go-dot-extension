@@ -35,6 +35,7 @@ func initConcavePolygonShape2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForConcavePolygonShape2D.fnGetSegments = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2961356807))
 	}
+
 }
 
 type ConcavePolygonShape2D struct {

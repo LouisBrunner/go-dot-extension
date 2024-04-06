@@ -23,6 +23,7 @@ func initCompressedCubemapPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("CompressedCubemap")
 	defer className.Destroy()
+
 }
 
 type CompressedCubemap struct {

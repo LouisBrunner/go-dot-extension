@@ -119,6 +119,7 @@ func initSkeletonModification2DTwoBoneIKPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSkeletonModification2DTwoBoneIK.fnGetJointTwoBoneIdx = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type SkeletonModification2DTwoBoneIK struct {

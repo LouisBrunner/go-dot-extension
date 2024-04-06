@@ -191,6 +191,7 @@ func initGLTFAccessorPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGLTFAccessor.fnSetSparseValuesByteOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
 	}
+
 }
 
 type GLTFAccessor struct {

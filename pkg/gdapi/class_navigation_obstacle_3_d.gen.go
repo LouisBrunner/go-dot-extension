@@ -137,6 +137,7 @@ func initNavigationObstacle3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNavigationObstacle3D.fnGetUse3DAvoidance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type NavigationObstacle3D struct {

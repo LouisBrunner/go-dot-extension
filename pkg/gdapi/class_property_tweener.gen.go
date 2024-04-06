@@ -59,6 +59,7 @@ func initPropertyTweenerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPropertyTweener.fnSetDelay = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2171559331))
 	}
+
 }
 
 type PropertyTweener struct {

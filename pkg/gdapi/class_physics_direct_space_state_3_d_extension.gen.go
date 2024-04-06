@@ -36,6 +36,7 @@ func initPhysicsDirectSpaceState3DExtensionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPhysicsDirectSpaceState3DExtension.fnIsBodyExcludedFromQuery = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4155700596))
 	}
+
 }
 
 type PhysicsDirectSpaceState3DExtension struct {

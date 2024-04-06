@@ -47,6 +47,7 @@ func initMissingResourcePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMissingResource.fnIsRecordingProperties = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type MissingResource struct {

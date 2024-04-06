@@ -47,6 +47,7 @@ func initCSGMesh3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCSGMesh3D.fnGetMaterial = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 5934680))
 	}
+
 }
 
 type CSGMesh3D struct {

@@ -47,6 +47,7 @@ func initSegmentShape2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSegmentShape2D.fnGetB = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
 	}
+
 }
 
 type SegmentShape2D struct {

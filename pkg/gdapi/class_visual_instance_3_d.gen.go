@@ -96,6 +96,7 @@ func initVisualInstance3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualInstance3D.fnGetAabb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1068685055))
 	}
+
 }
 
 type VisualInstance3D struct {

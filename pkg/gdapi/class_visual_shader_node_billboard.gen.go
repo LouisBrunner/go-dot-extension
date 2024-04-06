@@ -47,6 +47,7 @@ func initVisualShaderNodeBillboardPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeBillboard.fnIsKeepScaleEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type VisualShaderNodeBillboard struct {

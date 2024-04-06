@@ -239,6 +239,7 @@ func initArea2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForArea2D.fnIsOverridingAudioBus = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type Area2D struct {

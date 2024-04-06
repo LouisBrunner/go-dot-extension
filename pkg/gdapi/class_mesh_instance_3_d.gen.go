@@ -131,6 +131,7 @@ func initMeshInstance3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMeshInstance3D.fnCreateDebugTangents = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type MeshInstance3D struct {

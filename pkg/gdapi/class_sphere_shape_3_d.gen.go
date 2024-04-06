@@ -35,6 +35,7 @@ func initSphereShape3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSphereShape3D.fnGetRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type SphereShape3D struct {

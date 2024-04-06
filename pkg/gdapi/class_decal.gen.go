@@ -167,6 +167,7 @@ func initDecalPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForDecal.fnGetCullMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type Decal struct {

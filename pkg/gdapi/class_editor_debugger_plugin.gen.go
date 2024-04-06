@@ -38,6 +38,7 @@ func initEditorDebuggerPluginPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorDebuggerPlugin.fnGetSessions = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2915620761))
 	}
+
 }
 
 type EditorDebuggerPlugin struct {

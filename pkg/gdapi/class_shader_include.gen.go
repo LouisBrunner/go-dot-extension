@@ -35,6 +35,7 @@ func initShaderIncludePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForShaderInclude.fnGetCode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type ShaderInclude struct {

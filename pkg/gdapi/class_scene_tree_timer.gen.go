@@ -35,6 +35,7 @@ func initSceneTreeTimerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSceneTreeTimer.fnGetTimeLeft = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type SceneTreeTimer struct {

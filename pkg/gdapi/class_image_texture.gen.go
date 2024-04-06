@@ -53,6 +53,7 @@ func initImageTexturePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForImageTexture.fnSetSizeOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1130785943))
 	}
+
 }
 
 type ImageTexture struct {

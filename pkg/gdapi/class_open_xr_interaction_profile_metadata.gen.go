@@ -47,6 +47,7 @@ func initOpenXRInteractionProfileMetadataPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForOpenXRInteractionProfileMetadata.fnRegisterIoPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3443511926))
 	}
+
 }
 
 type OpenXRInteractionProfileMetadata struct {

@@ -23,6 +23,7 @@ func initNode3DGizmoPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("Node3DGizmo")
 	defer className.Destroy()
+
 }
 
 type Node3DGizmo struct {

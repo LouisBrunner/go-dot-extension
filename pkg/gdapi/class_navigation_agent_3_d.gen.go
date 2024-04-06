@@ -461,6 +461,7 @@ func initNavigationAgent3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNavigationAgent3D.fnGetDebugPathCustomPointSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type NavigationAgent3D struct {

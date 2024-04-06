@@ -251,6 +251,7 @@ func initPolygon2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPolygon2D.fnGetInternalVertexCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type Polygon2D struct {

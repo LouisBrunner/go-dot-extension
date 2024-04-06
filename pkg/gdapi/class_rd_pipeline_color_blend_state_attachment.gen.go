@@ -161,6 +161,7 @@ func initRDPipelineColorBlendStateAttachmentPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRDPipelineColorBlendStateAttachment.fnGetWriteA = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type RDPipelineColorBlendStateAttachment struct {

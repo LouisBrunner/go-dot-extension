@@ -35,6 +35,7 @@ func initMultiMeshInstance3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMultiMeshInstance3D.fnGetMultimesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1385450523))
 	}
+
 }
 
 type MultiMeshInstance3D struct {

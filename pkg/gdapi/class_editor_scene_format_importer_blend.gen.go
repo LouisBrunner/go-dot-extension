@@ -23,6 +23,7 @@ func initEditorSceneFormatImporterBlendPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("EditorSceneFormatImporterBlend")
 	defer className.Destroy()
+
 }
 
 type EditorSceneFormatImporterBlend struct {

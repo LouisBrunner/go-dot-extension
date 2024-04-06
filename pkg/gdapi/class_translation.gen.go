@@ -85,6 +85,7 @@ func initTranslationPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTranslation.fnGetMessageCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type Translation struct {

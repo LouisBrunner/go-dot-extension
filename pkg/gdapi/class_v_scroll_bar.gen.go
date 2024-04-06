@@ -23,6 +23,7 @@ func initVScrollBarPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("VScrollBar")
 	defer className.Destroy()
+
 }
 
 type VScrollBar struct {

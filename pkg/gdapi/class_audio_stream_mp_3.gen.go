@@ -95,6 +95,7 @@ func initAudioStreamMP3Ptrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioStreamMP3.fnGetBarBeats = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
+
 }
 
 type AudioStreamMP3 struct {

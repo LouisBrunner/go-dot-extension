@@ -89,6 +89,7 @@ func initEditorFeatureProfilePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorFeatureProfile.fnLoadFromFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 166001499))
 	}
+
 }
 
 type EditorFeatureProfile struct {

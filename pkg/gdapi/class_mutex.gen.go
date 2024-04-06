@@ -41,6 +41,7 @@ func initMutexPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMutex.fnUnlock = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type Mutex struct {

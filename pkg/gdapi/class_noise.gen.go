@@ -77,6 +77,7 @@ func initNoisePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNoise.fnGetSeamlessImage3D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 451006340))
 	}
+
 }
 
 type Noise struct {

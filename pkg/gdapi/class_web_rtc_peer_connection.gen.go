@@ -95,6 +95,7 @@ func initWebRTCPeerConnectionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForWebRTCPeerConnection.fnGetSignalingState = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3342956226))
 	}
+
 }
 
 type WebRTCPeerConnection struct {

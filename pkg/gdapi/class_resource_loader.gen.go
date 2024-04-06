@@ -95,6 +95,7 @@ func initResourceLoaderPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForResourceLoader.fnGetResourceUid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1597066294))
 	}
+
 }
 
 type ResourceLoader struct {

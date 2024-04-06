@@ -47,6 +47,7 @@ func initGrooveJoint2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGrooveJoint2D.fnGetInitialOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type GrooveJoint2D struct {

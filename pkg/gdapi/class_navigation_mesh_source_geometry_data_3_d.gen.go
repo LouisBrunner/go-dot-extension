@@ -77,6 +77,7 @@ func initNavigationMeshSourceGeometryData3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNavigationMeshSourceGeometryData3D.fnAddFaces = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1440358797))
 	}
+
 }
 
 type NavigationMeshSourceGeometryData3D struct {

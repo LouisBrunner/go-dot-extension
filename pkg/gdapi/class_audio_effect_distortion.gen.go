@@ -83,6 +83,7 @@ func initAudioEffectDistortionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioEffectDistortion.fnGetPostGain = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type AudioEffectDistortion struct {

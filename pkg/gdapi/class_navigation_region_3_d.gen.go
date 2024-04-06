@@ -131,6 +131,7 @@ func initNavigationRegion3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNavigationRegion3D.fnBakeNavigationMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3216645846))
 	}
+
 }
 
 type NavigationRegion3D struct {

@@ -23,6 +23,7 @@ func initResourceImporterOBJPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("ResourceImporterOBJ")
 	defer className.Destroy()
+
 }
 
 type ResourceImporterOBJ struct {

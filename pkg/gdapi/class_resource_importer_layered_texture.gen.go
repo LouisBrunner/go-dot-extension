@@ -23,6 +23,7 @@ func initResourceImporterLayeredTexturePtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("ResourceImporterLayeredTexture")
 	defer className.Destroy()
+
 }
 
 type ResourceImporterLayeredTexture struct {

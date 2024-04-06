@@ -35,6 +35,7 @@ func initRectangleShape2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRectangleShape2D.fnGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
 	}
+
 }
 
 type RectangleShape2D struct {

@@ -29,6 +29,7 @@ func initCubemapArrayPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCubemapArray.fnCreatePlaceholder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 121922552))
 	}
+
 }
 
 type CubemapArray struct {

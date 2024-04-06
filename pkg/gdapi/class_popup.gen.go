@@ -23,6 +23,7 @@ func initPopupPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("Popup")
 	defer className.Destroy()
+
 }
 
 type Popup struct {

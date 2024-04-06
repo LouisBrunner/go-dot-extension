@@ -81,6 +81,7 @@ func initStyleBoxPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForStyleBox.fnTestMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3735564539))
 	}
+
 }
 
 type StyleBox struct {

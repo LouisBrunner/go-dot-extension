@@ -611,6 +611,7 @@ func initFontFilePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForFontFile.fnGetCharFromGlyphIndex = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3175239445))
 	}
+
 }
 
 type FontFile struct {

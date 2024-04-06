@@ -95,6 +95,7 @@ func initCSGCylinder3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCSGCylinder3D.fnGetSmoothFaces = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type CSGCylinder3D struct {

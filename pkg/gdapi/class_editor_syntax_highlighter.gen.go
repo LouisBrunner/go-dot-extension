@@ -25,6 +25,7 @@ func initEditorSyntaxHighlighterPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("EditorSyntaxHighlighter")
 	defer className.Destroy()
+
 }
 
 type EditorSyntaxHighlighter struct {

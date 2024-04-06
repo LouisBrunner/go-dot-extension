@@ -47,6 +47,7 @@ func initStreamPeerGZIPPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForStreamPeerGZIP.fnClear = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type StreamPeerGZIP struct {

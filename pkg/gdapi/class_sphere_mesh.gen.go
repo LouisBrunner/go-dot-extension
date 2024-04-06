@@ -83,6 +83,7 @@ func initSphereMeshPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSphereMesh.fnGetIsHemisphere = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type SphereMesh struct {

@@ -28,6 +28,7 @@ func initResourceFormatSaverPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("ResourceFormatSaver")
 	defer className.Destroy()
+
 }
 
 type ResourceFormatSaver struct {

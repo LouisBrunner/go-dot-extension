@@ -23,6 +23,7 @@ func initSpotLight3DPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("SpotLight3D")
 	defer className.Destroy()
+
 }
 
 type SpotLight3D struct {

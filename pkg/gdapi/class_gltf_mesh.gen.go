@@ -59,6 +59,7 @@ func initGLTFMeshPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGLTFMesh.fnSetInstanceMaterials = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 381264803))
 	}
+
 }
 
 type GLTFMesh struct {

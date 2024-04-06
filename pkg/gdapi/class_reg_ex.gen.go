@@ -83,6 +83,7 @@ func initRegExPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRegEx.fnGetNames = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1139954409))
 	}
+
 }
 
 type RegEx struct {

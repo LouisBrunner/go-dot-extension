@@ -323,6 +323,7 @@ func initArea3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForArea3D.fnGetReverbUniformity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type Area3D struct {

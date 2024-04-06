@@ -59,6 +59,7 @@ func initVisualShaderNodeComparePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeCompare.fnGetCondition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3281078941))
 	}
+
 }
 
 type VisualShaderNodeCompare struct {

@@ -35,6 +35,7 @@ func initMarker3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMarker3D.fnGetGizmoExtents = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type Marker3D struct {

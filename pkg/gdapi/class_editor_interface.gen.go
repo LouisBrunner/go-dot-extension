@@ -335,6 +335,7 @@ func initEditorInterfacePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorInterface.fnIsMovieMakerEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type EditorInterface struct {

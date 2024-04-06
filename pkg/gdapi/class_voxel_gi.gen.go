@@ -83,6 +83,7 @@ func initVoxelGIPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVoxelGI.fnDebugBake = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type VoxelGI struct {

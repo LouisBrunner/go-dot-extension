@@ -119,6 +119,7 @@ func initUPNPDevicePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForUPNPDevice.fnGetIgdStatus = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 180887011))
 	}
+
 }
 
 type UPNPDevice struct {

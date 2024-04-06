@@ -221,6 +221,7 @@ func initStreamPeerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForStreamPeer.fnGetVar = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3442865206))
 	}
+
 }
 
 type StreamPeer struct {

@@ -71,6 +71,7 @@ func initPhysicsMaterialPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPhysicsMaterial.fnIsAbsorbent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type PhysicsMaterial struct {

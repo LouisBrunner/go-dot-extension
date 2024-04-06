@@ -47,6 +47,7 @@ func initMultiMeshInstance2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForMultiMeshInstance2D.fnGetTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
 	}
+
 }
 
 type MultiMeshInstance2D struct {

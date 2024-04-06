@@ -47,6 +47,7 @@ func initEditorInspectorPluginPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorInspectorPlugin.fnAddPropertyEditorForMultipleProperties = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 788598683))
 	}
+
 }
 
 type EditorInspectorPlugin struct {

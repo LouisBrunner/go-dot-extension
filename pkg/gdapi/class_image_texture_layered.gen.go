@@ -35,6 +35,7 @@ func initImageTextureLayeredPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForImageTextureLayered.fnUpdateLayer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3331733361))
 	}
+
 }
 
 type ImageTextureLayered struct {

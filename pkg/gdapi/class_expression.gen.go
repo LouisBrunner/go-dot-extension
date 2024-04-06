@@ -47,6 +47,7 @@ func initExpressionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForExpression.fnGetErrorText = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type Expression struct {

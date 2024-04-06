@@ -113,6 +113,7 @@ func initAudioStreamWAVPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioStreamWAV.fnSaveToWav = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 166001499))
 	}
+
 }
 
 type AudioStreamWAV struct {

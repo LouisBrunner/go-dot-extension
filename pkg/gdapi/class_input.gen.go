@@ -317,6 +317,7 @@ func initInputPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForInput.fnFlushBufferedEvents = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type Input struct {

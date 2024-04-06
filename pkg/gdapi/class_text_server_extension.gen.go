@@ -229,6 +229,7 @@ func initTextServerExtensionPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("TextServerExtension")
 	defer className.Destroy()
+
 }
 
 type TextServerExtension struct {

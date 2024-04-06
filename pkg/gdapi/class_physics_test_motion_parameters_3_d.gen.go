@@ -119,6 +119,7 @@ func initPhysicsTestMotionParameters3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPhysicsTestMotionParameters3D.fnSetRecoveryAsCollisionEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
 	}
+
 }
 
 type PhysicsTestMotionParameters3D struct {

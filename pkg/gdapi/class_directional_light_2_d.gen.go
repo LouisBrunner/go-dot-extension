@@ -35,6 +35,7 @@ func initDirectionalLight2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForDirectionalLight2D.fnGetMaxDistance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type DirectionalLight2D struct {

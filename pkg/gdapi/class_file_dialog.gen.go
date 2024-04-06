@@ -179,6 +179,7 @@ func initFileDialogPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForFileDialog.fnInvalidate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type FileDialog struct {

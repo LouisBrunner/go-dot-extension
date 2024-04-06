@@ -35,6 +35,7 @@ func initScriptEditorBasePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForScriptEditorBase.fnAddSyntaxHighlighter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1092774468))
 	}
+
 }
 
 type ScriptEditorBase struct {

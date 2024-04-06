@@ -35,6 +35,7 @@ func initVisualShaderNodeSample3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVisualShaderNodeSample3D.fnGetSource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1079494121))
 	}
+
 }
 
 type VisualShaderNodeSample3D struct {

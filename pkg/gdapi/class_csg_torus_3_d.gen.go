@@ -95,6 +95,7 @@ func initCSGTorus3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForCSGTorus3D.fnGetSmoothFaces = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type CSGTorus3D struct {

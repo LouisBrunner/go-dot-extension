@@ -95,6 +95,7 @@ func initSkeletonModification2DFABRIKPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForSkeletonModification2DFABRIK.fnGetFabrikJointUseTargetRotation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
 	}
+
 }
 
 type SkeletonModification2DFABRIK struct {

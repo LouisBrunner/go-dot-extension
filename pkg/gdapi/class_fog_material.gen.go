@@ -95,6 +95,7 @@ func initFogMaterialPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForFogMaterial.fnGetDensityTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373985333))
 	}
+
 }
 
 type FogMaterial struct {

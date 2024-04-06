@@ -179,6 +179,7 @@ func initTextureProgressBarPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTextureProgressBar.fnGetNinePatchStretch = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+
 }
 
 type TextureProgressBar struct {

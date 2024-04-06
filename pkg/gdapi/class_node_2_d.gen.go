@@ -221,6 +221,7 @@ func initNode2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNode2D.fnGetRelativeTransformToParent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 904556875))
 	}
+
 }
 
 type Node2D struct {

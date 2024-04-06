@@ -161,6 +161,7 @@ func initOpenXRInterfacePtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForOpenXRInterface.fnIsEyeGazeInteractionSupported = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
 	}
+
 }
 
 type OpenXRInterface struct {

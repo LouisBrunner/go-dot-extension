@@ -29,6 +29,7 @@ func initGDScriptPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForGDScript.fnNew = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1545262638))
 	}
+
 }
 
 type GDScript struct {

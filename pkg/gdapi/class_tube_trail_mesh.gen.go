@@ -119,6 +119,7 @@ func initTubeTrailMeshPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTubeTrailMesh.fnGetCurve = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2460114913))
 	}
+
 }
 
 type TubeTrailMesh struct {

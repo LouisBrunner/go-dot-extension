@@ -119,6 +119,7 @@ func initInputEventKeyPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForInputEventKey.fnAsTextKeyLabel = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type InputEventKey struct {

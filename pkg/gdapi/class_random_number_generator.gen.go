@@ -83,6 +83,7 @@ func initRandomNumberGeneratorPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForRandomNumberGenerator.fnRandomize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
+
 }
 
 type RandomNumberGenerator struct {

@@ -23,6 +23,7 @@ func initResourceImporterCSVTranslationPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("ResourceImporterCSVTranslation")
 	defer className.Destroy()
+
 }
 
 type ResourceImporterCSVTranslation struct {

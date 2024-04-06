@@ -23,6 +23,7 @@ func initAnimationNodeTimeSeekPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("AnimationNodeTimeSeek")
 	defer className.Destroy()
+
 }
 
 type AnimationNodeTimeSeek struct {

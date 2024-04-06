@@ -113,6 +113,7 @@ func initNavigationObstacle2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNavigationObstacle2D.fnGetAvoidanceLayerValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
 	}
+
 }
 
 type NavigationObstacle2D struct {

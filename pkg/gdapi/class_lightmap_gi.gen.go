@@ -227,6 +227,7 @@ func initLightmapGIPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForLightmapGI.fnGetCameraAttributes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3921283215))
 	}
+
 }
 
 type LightmapGI struct {

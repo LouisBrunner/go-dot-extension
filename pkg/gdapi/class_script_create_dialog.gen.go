@@ -29,6 +29,7 @@ func initScriptCreateDialogPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForScriptCreateDialog.fnConfig = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 869314288))
 	}
+
 }
 
 type ScriptCreateDialog struct {

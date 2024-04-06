@@ -23,6 +23,7 @@ func initIntervalTweenerPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("IntervalTweener")
 	defer className.Destroy()
+
 }
 
 type IntervalTweener struct {

@@ -35,6 +35,7 @@ func initAudioEffectAmplifyPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForAudioEffectAmplify.fnGetVolumeDb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
+
 }
 
 type AudioEffectAmplify struct {

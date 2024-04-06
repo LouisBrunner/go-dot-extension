@@ -107,6 +107,7 @@ func initKinematicCollision3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForKinematicCollision3D.fnGetColliderVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1914908202))
 	}
+
 }
 
 type KinematicCollision3D struct {

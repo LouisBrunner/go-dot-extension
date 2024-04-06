@@ -191,6 +191,7 @@ func initVideoStreamPlayerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForVideoStreamPlayer.fnGetVideoTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3635182373))
 	}
+
 }
 
 type VideoStreamPlayer struct {

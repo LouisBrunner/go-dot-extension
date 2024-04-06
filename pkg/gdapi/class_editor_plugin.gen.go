@@ -311,6 +311,7 @@ func initEditorPluginPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForEditorPlugin.fnGetPluginVersion = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
+
 }
 
 type EditorPlugin struct {

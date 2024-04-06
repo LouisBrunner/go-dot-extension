@@ -347,6 +347,7 @@ func initTextParagraphPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTextParagraph.fnHitTest = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3820158470))
 	}
+
 }
 
 type TextParagraph struct {

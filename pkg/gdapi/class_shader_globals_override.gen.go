@@ -23,6 +23,7 @@ func initShaderGlobalsOverridePtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("ShaderGlobalsOverride")
 	defer className.Destroy()
+
 }
 
 type ShaderGlobalsOverride struct {

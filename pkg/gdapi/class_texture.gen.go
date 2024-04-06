@@ -23,6 +23,7 @@ func initTexturePtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("Texture")
 	defer className.Destroy()
+
 }
 
 type Texture struct {

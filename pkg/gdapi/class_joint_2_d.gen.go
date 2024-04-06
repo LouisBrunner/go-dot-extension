@@ -77,6 +77,7 @@ func initJoint2DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForJoint2D.fnGetRid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
 	}
+
 }
 
 type Joint2D struct {

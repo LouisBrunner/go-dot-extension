@@ -101,6 +101,7 @@ func initPacketPeerUDPPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPacketPeerUDP.fnLeaveMulticastGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 852856452))
 	}
+
 }
 
 type PacketPeerUDP struct {
