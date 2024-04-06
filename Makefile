@@ -46,7 +46,7 @@ test-ci: download
 
 COV_IN_FILE ?= $(TEST_OUT_DIR)/coverage.out
 
-coverage-ci: download generate
+coverage-ci: download
 	go tool cover -html=$(COV_IN_FILE) -o $(COV_OUT_DIR)/coverage.html
 	go run github.com/t-yuki/gocover-cobertura < $(COV_IN_FILE) > $(COV_OUT_DIR)/cobertura.xml
 .PHONY: coverage-ci
