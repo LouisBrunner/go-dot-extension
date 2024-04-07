@@ -26,7 +26,7 @@ func (me *extension) addClassCallbacks() {
 
 type argsGetter func(argTypes []reflect.Type) ([]reflect.Value, error)
 
-func (me *extension) callHelper(methodUserdata unsafe.Pointer, pInstance gdc.ClassInstancePtr, agetter argsGetter) (*classMethod, []reflect.Value, error) {
+func (me *extension) callHelper(callType string, methodUserdata unsafe.Pointer, pInstance gdc.ClassInstancePtr, agetter argsGetter) (*classMethod, []reflect.Value, error) {
 	instance, err := restore[*classInstance](unsafe.Pointer(pInstance))
 	if err != nil {
 		return nil, nil, fmt.Errorf("could not restore class entry: %s", err.Error())
@@ -36,7 +36,7 @@ func (me *extension) callHelper(methodUserdata unsafe.Pointer, pInstance gdc.Cla
 		return nil, nil, fmt.Errorf("could not find method with ID %d", methodID)
 	}
 	method := instance.class.methods[methodID]
-	me.Logf(LogLevelTrace, "calling: %v", method.name)
+	me.Logf(LogLevelTrace, "calling %s: %v", callType, method.name)
 	args, err := agetter(method.argTypes)
 	if err != nil {
 		return nil, nil, fmt.Errorf("could not get arguments for %s: %s", method.name, err.Error())
@@ -151,7 +151,7 @@ func (me *extension) classToString(pInstance gdc.ClassInstancePtr, rIsValid *uin
 }
 
 func (me *extension) methodCall(methodUserdata unsafe.Pointer, pInstance gdc.ClassInstancePtr, pArgs *gdc.ConstVariantPtr, pArgumentCount gdc.Int, rReturn gdc.VariantPtr, rError *gdc.CallError) {
-	method, res, err := me.callHelper(methodUserdata, pInstance, func(argTypes []reflect.Type) ([]reflect.Value, error) {
+	method, res, err := me.callHelper("call", methodUserdata, pInstance, func(argTypes []reflect.Type) ([]reflect.Value, error) {
 		if int(pArgumentCount) != len(argTypes) {
 			return nil, fmt.Errorf("expected %d arguments, got %d", len(argTypes), pArgumentCount)
 		}
@@ -188,7 +188,7 @@ func (me *extension) methodCall(methodUserdata unsafe.Pointer, pInstance gdc.Cla
 }
 
 func (me *extension) methodPtrcall(methodUserdata unsafe.Pointer, pInstance gdc.ClassInstancePtr, pArgs *gdc.ConstTypePtr, rRet gdc.TypePtr) {
-	method, res, err := me.callHelper(methodUserdata, pInstance, func(argTypes []reflect.Type) ([]reflect.Value, error) {
+	method, res, err := me.callHelper("ptrcall", methodUserdata, pInstance, func(argTypes []reflect.Type) ([]reflect.Value, error) {
 		received := unsafe.Slice(pArgs, len(argTypes))
 		args := make([]reflect.Value, len(argTypes))
 		for i, pArg := range received {

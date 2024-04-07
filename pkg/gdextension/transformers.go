@@ -105,16 +105,20 @@ func typeFromReflect(val reflect.Value) (gdc.TypePtr, error) {
 	switch val.Kind() {
 	case reflect.Bool:
 		v := val.Bool()
-		return gdc.TypePtr(&v), nil
+		vInt := 0
+		if v {
+			vInt = 1
+		}
+		return gdc.TypePtr(uintptr(vInt)), nil
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
 		v := val.Int()
-		return gdc.TypePtr(&v), nil
+		return gdc.TypePtr(uintptr(v)), nil
 	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
 		v := val.Uint()
-		return gdc.TypePtr(&v), nil
+		return gdc.TypePtr(uintptr(v)), nil
 	case reflect.Float32, reflect.Float64:
 		v := val.Float()
-		return gdc.TypePtr(&v), nil
+		return gdc.TypePtr(uintptr(v)), nil
 	case reflect.String:
 		v := val.String()
 		return gdc.TypePtr(unsafe.SliceData([]byte(v))), nil
