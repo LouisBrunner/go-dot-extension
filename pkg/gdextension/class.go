@@ -109,6 +109,11 @@ func (me *extension) registerClass(class *classEntry) {
 		ToStringFunc:          gdc.Callbacks.GetClassCreationInfo2ToStringFuncCallback(),
 	})
 
+	for _, constant := range class.constants {
+		me.Logf(LogLevelDebug, "registering constant %s of class %q", constant.getName(), class.name)
+		constant.register(me, class)
+	}
+
 	for _, method := range class.methods {
 		me.Logf(LogLevelDebug, "registering method %q of class %q", method.name, class.name)
 		method.register(me, class)
@@ -124,30 +129,29 @@ func (me *extension) registerClass(class *classEntry) {
 		signal.register(me, class)
 	}
 
-	for _, constant := range class.constants {
-		me.Logf(LogLevelDebug, "registering constant %s of class %q", constant.getName(), class.name)
-		constant.register(me, class)
-	}
 }
 
 func (me *extension) unregisterClass(class *classEntry) {
 	me.Logf(LogLevelDebug, "unregistering class %q", class.name)
 
+	for _, constant := range class.constants {
+		me.Logf(LogLevelDebug, "unregistering constant %s of class %q", constant.getName(), class.name)
+		constant.unregister(me, class)
+	}
+
 	for _, method := range class.methods {
 		me.Logf(LogLevelDebug, "unregistering method %q of class %q", method.name, class.name)
 		method.unregister(me, class)
 	}
+
 	for _, property := range class.properties {
 		me.Logf(LogLevelDebug, "unregistering property %q of class %q", property.name, class.name)
 		property.unregister(me, class)
 	}
+
 	for _, signal := range class.signals {
 		me.Logf(LogLevelDebug, "unregistering signal %q of class %q", signal.name, class.name)
 		signal.unregister(me, class)
-	}
-	for _, constant := range class.constants {
-		me.Logf(LogLevelDebug, "unregistering constant %s of class %q", constant.getName(), class.name)
-		constant.unregister(me, class)
 	}
 
 	me.iface.ClassdbUnregisterExtensionClass(me.pLibrary, class.namePtr.AsCPtr())

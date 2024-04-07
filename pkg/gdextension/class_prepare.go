@@ -66,6 +66,28 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 	signals := make([]classSignal, 0)
 	subscribers := make([]classSubscriber, 0)
 	constants := make([]classConstant, 0)
+	enumMap := make(map[string]string)
+
+	withConstants, is := instance.(ClassWithConstants)
+	if is {
+		def := withConstants.Constants()
+		for name, value := range def.Constants {
+			constants = append(constants, classConstant{
+				valueName: strcase.ToScreamingSnake(name),
+				value:     value,
+			})
+		}
+		for enumName, values := range def.Enums {
+			enumMap[enumName] = strcase.ToCamel(enumName)
+			for valueName, value := range values {
+				constants = append(constants, classConstant{
+					enumName:  strcase.ToCamel(enumName),
+					valueName: strcase.ToScreamingSnake(valueName),
+					value:     value,
+				})
+			}
+		}
+	}
 
 	ignoredMethods := map[string]struct{}{}
 	for _, method := range reservedMethods {
@@ -117,7 +139,7 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 			continue
 		}
 
-		getter, setter, prop, err := makeProperty(len(methods), fieldName, info, typ, field, ignoredMethods)
+		getter, setter, prop, err := makeProperty(len(methods), fieldName, info, typ, field, ignoredMethods, enumMap)
 		if err != nil {
 			return nil, fmt.Errorf("property %q of class %q: %w", field.Name, className, err)
 		}
@@ -147,25 +169,9 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 					return nil, fmt.Errorf("method %q of class %q: does not follow the correct signature", method.Name, className)
 				}
 			case "Constants":
-				withConstants, is := instance.(ClassWithConstants)
+				_, is := instance.(ClassWithConstants)
 				if !is {
 					return nil, fmt.Errorf("method %q of class %q: does not follow the correct signature", method.Name, className)
-				}
-				def := withConstants.Constants()
-				for name, value := range def.Constants {
-					constants = append(constants, classConstant{
-						valueName: strcase.ToScreamingSnake(name),
-						value:     value,
-					})
-				}
-				for enumName, values := range def.Enums {
-					for valueName, value := range values {
-						constants = append(constants, classConstant{
-							enumName:  strcase.ToCamel(enumName),
-							valueName: strcase.ToScreamingSnake(valueName),
-							value:     value,
-						})
-					}
 				}
 			case "Destroy":
 				_, is := instance.(Destroyable)
@@ -176,7 +182,7 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 			continue
 		}
 
-		methodPtr, err := makeMethod(len(methods), method)
+		methodPtr, err := makeMethod(len(methods), method, enumMap)
 		if err != nil {
 			return nil, fmt.Errorf("method %q of class %q: %w", method.Name, className, err)
 		}
@@ -204,7 +210,7 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 	}, nil
 }
 
-func makeProperty(idx int, fieldName string, info *tagData, clazz reflect.Type, field reflect.StructField, ignoredMethods map[string]struct{}) (*classMethod, *classMethod, *classProperty, error) {
+func makeProperty(idx int, fieldName string, info *tagData, clazz reflect.Type, field reflect.StructField, ignoredMethods map[string]struct{}, enums map[string]string) (*classMethod, *classMethod, *classProperty, error) {
 	getterFn := any(func(me Class) reflect.Value {
 		return reflectGetField(me, field.Name)
 	})
@@ -244,7 +250,7 @@ func makeProperty(idx int, fieldName string, info *tagData, clazz reflect.Type, 
 	}
 	setter := gdapi.StringNameFromStr(setterName)
 
-	varType, isBClass, objClassName, err := typeToVariantNClass(field.Type)
+	varType, isBClass, objClassName, usage, err := typeToVariantNClass(field.Type, enums)
 	if err != nil {
 		return nil, nil, nil, err
 	}
@@ -257,7 +263,7 @@ func makeProperty(idx int, fieldName string, info *tagData, clazz reflect.Type, 
 		Type:       varType,
 		Hint:       uint(gdapi.PropertyHintNone),
 		HintString: gdapi.StringFromStr("").AsPtr(),
-		Usage:      uint(gdapi.PropertyUsageDefault),
+		Usage:      uint(usage),
 	}
 	pinner.Pin(propCpy)
 	argMetadata := []gdc.ClassMethodArgumentMetadata{gdc.MethodArgumentMetadataNone}
@@ -317,7 +323,7 @@ func makeProperty(idx int, fieldName string, info *tagData, clazz reflect.Type, 
 		}, nil
 }
 
-func makeMethod(idx int, method reflect.Method) (*classMethod, error) {
+func makeMethod(idx int, method reflect.Method, enums map[string]string) (*classMethod, error) {
 	methodName := strcase.ToSnake(method.Name)
 	flags := uint(gdapi.MethodFlagsDefault)
 	if strings.HasPrefix(methodName, "x_") {
@@ -349,7 +355,7 @@ func makeMethod(idx int, method reflect.Method) (*classMethod, error) {
 			arg := method.Type.In(i + 1)
 			argTypes[i] = arg
 			aname := fmt.Sprintf("arg%d", i)
-			varType, _, className, err := typeToVariantNClass(arg)
+			varType, _, className, usage, err := typeToVariantNClass(arg, enums)
 			if err != nil {
 				return nil, fmt.Errorf("argument %d: %w", i, err)
 			}
@@ -359,7 +365,7 @@ func makeMethod(idx int, method reflect.Method) (*classMethod, error) {
 				Type:       varType,
 				Hint:       uint(gdapi.PropertyHintNone),
 				HintString: gdapi.StringFromStr("").AsPtr(),
-				Usage:      uint(gdapi.PropertyUsageDefault),
+				Usage:      uint(usage),
 			}
 		}
 	}
@@ -387,7 +393,7 @@ func makeMethod(idx int, method reflect.Method) (*classMethod, error) {
 		hasReturn = gdc.Bool(1)
 		out := method.Type.Out(0)
 		retType = &out
-		varType, _, className, err := typeToVariantNClass(out)
+		varType, _, className, usage, err := typeToVariantNClass(out, enums)
 		if err != nil {
 			return nil, fmt.Errorf("return value: %w", err)
 		}
@@ -397,7 +403,7 @@ func makeMethod(idx int, method reflect.Method) (*classMethod, error) {
 			Type:       varType,
 			Hint:       uint(gdapi.PropertyHintNone),
 			HintString: gdapi.StringFromStr("").AsPtr(),
-			Usage:      uint(gdapi.PropertyUsageDefault),
+			Usage:      uint(usage),
 		}
 		pinner.Pin(retInfo)
 	}

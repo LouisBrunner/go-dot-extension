@@ -7,6 +7,7 @@ import (
 
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdapi"
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
+	"github.com/iancoleman/strcase"
 )
 
 func bclassForType(typ reflect.Type) (gdc.VariantType, bool) {
@@ -101,7 +102,6 @@ func (me *extension) reflectFromType(val gdc.ConstTypePtr, expected reflect.Type
 }
 
 func typeFromReflect(val reflect.Value) (gdc.TypePtr, error) {
-	// TODO: this will leak
 	switch val.Kind() {
 	case reflect.Bool:
 		v := val.Bool()
@@ -121,6 +121,7 @@ func typeFromReflect(val reflect.Value) (gdc.TypePtr, error) {
 		return gdc.TypePtr(uintptr(v)), nil
 	case reflect.String:
 		v := val.String()
+		// TODO: this will break
 		return gdc.TypePtr(unsafe.SliceData([]byte(v))), nil
 	case reflect.Struct:
 		addrV := reflect.New(val.Type())
@@ -211,22 +212,30 @@ func typeToVariant(val reflect.Type) (gdc.VariantType, bool, error) {
 	return gdc.VariantTypeNil, false, fmt.Errorf("unsupported type %s", val.Kind())
 }
 
-func typeToVariantNClass(val reflect.Type) (gdc.VariantType, bool, gdc.StringNamePtr, error) {
+func typeToVariantNClass(val reflect.Type, enums map[string]string) (gdc.VariantType, bool, gdc.StringNamePtr, gdapi.PropertyUsageFlags, error) {
 	va, isBclass, err := typeToVariant(val)
 	if err != nil {
-		return gdc.VariantTypeNil, false, nil, err
+		return gdc.VariantTypeNil, false, nil, 0, err
 	}
 	if va != gdc.VariantTypeObject {
-		return va, isBclass, gdapi.NewStringName().AsPtr(), nil
+		usage := gdapi.PropertyUsageDefault
+		var className gdapi.StringName
+		if _, ok := enums[val.Name()]; va == gdc.VariantTypeInt && ok {
+			className = *gdapi.StringNameFromStr(strcase.ToCamel(val.Name()))
+			usage |= gdapi.PropertyUsageClassIsEnum
+		} else {
+			className = *gdapi.NewStringName()
+		}
+		return va, isBclass, className.AsPtr(), usage, nil
 	}
 	instRaw := reflect.New(val).Interface()
 	inst, ok := instRaw.(Class)
 	if !ok {
-		return gdc.VariantTypeNil, false, nil, fmt.Errorf("unsupported object type %s (%T)", val, inst)
+		return gdc.VariantTypeNil, false, nil, 0, fmt.Errorf("unsupported object type %s (%T)", val, inst)
 	}
 	name, err := nameForClass(val, instRaw)
 	if err != nil {
-		return gdc.VariantTypeNil, false, nil, err
+		return gdc.VariantTypeNil, false, nil, 0, err
 	}
-	return va, true, gdapi.StringNameFromStr(name).AsPtr(), nil
+	return va, true, gdapi.StringNameFromStr(name).AsPtr(), gdapi.PropertyUsageDefault, nil
 }

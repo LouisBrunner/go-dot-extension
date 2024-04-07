@@ -11,9 +11,12 @@ import (
 type MyNode2D struct {
 	gdapi.Node2D
 
-	Speed  int
-	secret string
+	Speed     int
+	Direction Direction
+	secret    string
 }
+
+type Direction int
 
 func (n *MyNode2D) Constants() gde.ConstantsDefinition {
 	return gde.ConstantsDefinition{
@@ -21,12 +24,22 @@ func (n *MyNode2D) Constants() gde.ConstantsDefinition {
 			"MaxSpeed": 100, // all value names are automatically transformed to SNAKE_CASE automatically
 		},
 		Enums: map[string]map[string]int{
-			"Direction": { // all enum names are automatically transformed to CamelCase automatically
+			// all enum names are transformed to CamelCase automatically,
+			// if you want GDScript to have the right type hint, you will need this name to match your type name
+			"Direction": {
 				"UP":   0,
 				"DOWN": 1,
 			},
 		},
 	}
+}
+
+func (n *MyNode2D) Heading() Direction {
+	return Direction(0)
+}
+
+func (n *MyNode2D) SetHeading(dir Direction) {
+	fmt.Println("Heading set to", dir)
 }
 
 func (n *MyNode2D) Move(vec gdapi.Vector2) {
