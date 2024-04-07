@@ -15,6 +15,7 @@ type ConstantsDefinition struct {
 type Class interface {
 	BaseClass() string
 	SetBaseObject(obj gdc.ObjectPtr)
+	AsTypePtr() gdc.TypePtr
 }
 
 type ClassWithConstants interface {

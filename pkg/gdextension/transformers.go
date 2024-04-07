@@ -3,6 +3,7 @@ package gdextension
 import (
 	"fmt"
 	"reflect"
+	"unsafe"
 
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdapi"
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
@@ -21,13 +22,23 @@ func (me *extension) objectFromPtr(expected reflect.Type, obj gdc.ObjectPtr) (in
 	if err == nil {
 		return dobj, nil
 	}
-	regClass, isReg := me.registered[expected.String()]
-	if !isReg {
+
+	name, err := nameForClass(expected, reflect.New(expected).Elem().Interface())
+	if err != nil {
 		return nil, err
 	}
-	reg := regClass.constructor()
-	reg.SetBaseObject(obj)
-	return reg, nil
+	regClass, isReg := me.registered[name]
+	if !isReg {
+		return nil, fmt.Errorf("no class registered for %s", name)
+	}
+	objRef := gdapi.ObjectFromPtr(obj)
+	instanceID := objRef.GetInstanceId()
+
+	inst, err := regClass.lookupInstance(uint64(instanceID))
+	if err != nil {
+		return nil, err
+	}
+	return inst.instance, nil
 }
 
 func (me *extension) reflectFromType(val gdc.ConstTypePtr, expected reflect.Type) (reflect.Value, error) {
@@ -63,7 +74,7 @@ func (me *extension) reflectFromType(val gdc.ConstTypePtr, expected reflect.Type
 		return reflect.ValueOf(string(str.String())), nil
 	case reflect.Struct, reflect.Interface:
 		switch reflect.New(expected).Interface().(type) {
-		case *gdapi.Object:
+		case Class:
 			obj, err := me.objectFromPtr(expected, gdc.ObjectPtr(val))
 			if err != nil {
 				return reflect.ValueOf(nil), err
@@ -90,29 +101,46 @@ func (me *extension) reflectFromType(val gdc.ConstTypePtr, expected reflect.Type
 }
 
 func typeFromReflect(val reflect.Value) (gdc.TypePtr, error) {
-	panic("unimplemented") // TODO: finish
 	// TODO: this will leak
 	switch val.Kind() {
 	case reflect.Bool:
-	case reflect.Int:
-	case reflect.Int8:
-	case reflect.Int16:
-	case reflect.Int32:
-	case reflect.Int64:
-	case reflect.Uint:
-	case reflect.Uint8:
-	case reflect.Uint16:
-	case reflect.Uint32:
-	case reflect.Uint64:
-	case reflect.Float32:
-	case reflect.Float64:
+		v := val.Bool()
+		return gdc.TypePtr(&v), nil
+	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
+		v := val.Int()
+		return gdc.TypePtr(&v), nil
+	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
+		v := val.Uint()
+		return gdc.TypePtr(&v), nil
+	case reflect.Float32, reflect.Float64:
+		v := val.Float()
+		return gdc.TypePtr(&v), nil
 	case reflect.String:
-	case reflect.Array, reflect.Slice:
-	case reflect.Struct, reflect.Interface:
+		v := val.String()
+		return gdc.TypePtr(unsafe.SliceData([]byte(v))), nil
+	case reflect.Struct:
+		addrV := reflect.New(val.Type())
+		addrV.Elem().Set(val)
+		v := addrV.Interface()
+		bclazz, isBclass := v.(gdapi.BClass)
+		obj, isObj := v.(Class)
+		switch {
+		case isBclass:
+			return bclazz.AsTypePtr(), nil
+		case isObj:
+			return obj.AsTypePtr(), nil
+		}
+	case reflect.Interface:
+		v := val.Interface()
+		if bclazz, isBclass := v.(gdapi.BClass); isBclass {
+			return bclazz.AsTypePtr(), nil
+		} else if obj, isObj := v.(Class); isObj {
+			return obj.AsTypePtr(), nil
+		}
 	case reflect.Pointer:
 		return typeFromReflect(val.Elem())
 	}
-	return nil, fmt.Errorf("unsupported type: %s", val.Kind())
+	return nil, fmt.Errorf("unsupported type: %s (%T)", val.Kind(), val.Interface())
 }
 
 func variantFromReflect(val reflect.Value) (*gdapi.Variant, error) {

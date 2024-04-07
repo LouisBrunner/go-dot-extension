@@ -184,7 +184,6 @@ func (me *extension) methodCall(methodUserdata unsafe.Pointer, pInstance gdc.Cla
 		me.Logf(LogLevelError, "could not convert return value for %s: %s", method.name, err.Error())
 		return
 	}
-	defer va.Destroy()
 	me.iface.VariantNewCopy(gdc.UninitializedVariantPtr(rReturn), va.AsCPtr())
 }
 

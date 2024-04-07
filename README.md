@@ -136,7 +136,6 @@ You can find examples in the `examples` folder.
 
 - cannot connect to signals from within Go (do it from GDScript/the editor directly)
 - the extension will exit the whole program when unloaded, otherwise it will just crash (most likely SIGSEGV)
-- ptrcall methods return type conversion is unimplemented
 - `Signal`s have no arguments in the Godot documentation/type hint system
 
 ## Acknowledgements

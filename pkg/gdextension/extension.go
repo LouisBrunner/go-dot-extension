@@ -75,6 +75,11 @@ func (me *extension) Initialize(rInitialization *gdc.InitializationRaw, init gdc
 			me.Logf(LogLevelError, "could not prepare class %T: %s", instance, err.Error())
 			return gdc.Bool(0)
 		}
+		_, has := me.registered[entry.name]
+		if has {
+			me.Logf(LogLevelError, "class %T has already been registered", instance)
+			return gdc.Bool(0)
+		}
 		me.registered[entry.name] = entry
 	}
 	rInit := gdc.Initialization{

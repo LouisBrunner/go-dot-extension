@@ -190,3 +190,15 @@ type classEntry struct {
 	mutex     sync.Mutex
 	instances map[uint64]*classInstance
 }
+
+func (me *classEntry) lookupInstance(id uint64) (*classInstance, error) {
+	me.mutex.Lock()
+	defer me.mutex.Unlock()
+
+	for _, instance := range me.instances {
+		if instance.id == id {
+			return instance, nil
+		}
+	}
+	return nil, fmt.Errorf("internal error: could not find instance %d of class %q", id, me.name)
+}

@@ -181,15 +181,11 @@ func (me *extension) CreateClass(typ reflect.Type) (any, error) {
 	obj := me.iface.ClassdbConstructObject(entry.namePtr.AsCPtr())
 	id := me.iface.ObjectGetInstanceId(gdc.ConstObjectPtr(obj))
 
-	entry.mutex.Lock()
-	defer entry.mutex.Unlock()
-
-	for _, instance := range entry.instances {
-		if instance.id == id {
-			return instance.instance, nil
-		}
+	inst, err := entry.lookupInstance(id)
+	if err != nil {
+		return nil, err
 	}
-	return nil, fmt.Errorf("internal error: could not find instance %d of class %q", id, name)
+	return inst.instance, nil
 }
 
 func CreateClass[T Class](me Extension) (*T, error) {
