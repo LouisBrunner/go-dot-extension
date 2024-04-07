@@ -76,7 +76,8 @@ func (me *extension) reflectFromType(val gdc.ConstTypePtr, expected reflect.Type
 	case reflect.Struct, reflect.Interface:
 		switch reflect.New(expected).Interface().(type) {
 		case Class:
-			obj, err := me.objectFromPtr(expected, gdc.ObjectPtr(val))
+			valObj := *(*gdc.ObjectPtr)(val)
+			obj, err := me.objectFromPtr(expected, gdc.ObjectPtr(valObj))
 			if err != nil {
 				return reflect.ValueOf(nil), err
 			}
