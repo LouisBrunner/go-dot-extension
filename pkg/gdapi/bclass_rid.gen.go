@@ -118,6 +118,10 @@ func RIDFromPtr(ptr gdc.ConstTypePtr) *RID {
 	return me
 }
 
+func (me *RID) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *RID) Type() gdc.VariantType {
 	return gdc.VariantTypeRID
 }

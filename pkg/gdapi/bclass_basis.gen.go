@@ -336,6 +336,10 @@ func BasisFromPtr(ptr gdc.ConstTypePtr) *Basis {
 	return me
 }
 
+func (me *Basis) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *Basis) Type() gdc.VariantType {
 	return gdc.VariantTypeBasis
 }

@@ -153,6 +153,10 @@ func BoolFromPtr(ptr gdc.ConstTypePtr) *Bool {
 	return me
 }
 
+func (me *Bool) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *Bool) Type() gdc.VariantType {
 	return gdc.VariantTypeBool
 }

@@ -356,6 +356,10 @@ func ProjectionFromPtr(ptr gdc.ConstTypePtr) *Projection {
 	return me
 }
 
+func (me *Projection) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *Projection) Type() gdc.VariantType {
 	return gdc.VariantTypeProjection
 }

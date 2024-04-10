@@ -175,6 +175,10 @@ func NodePathFromPtr(ptr gdc.ConstTypePtr) *NodePath {
 	return me
 }
 
+func (me *NodePath) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *NodePath) Type() gdc.VariantType {
 	return gdc.VariantTypeNodePath
 }

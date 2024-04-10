@@ -313,6 +313,10 @@ func PlaneFromPtr(ptr gdc.ConstTypePtr) *Plane {
 	return me
 }
 
+func (me *Plane) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *Plane) Type() gdc.VariantType {
 	return gdc.VariantTypePlane
 }

@@ -492,6 +492,10 @@ func ArrayFromPtr(ptr gdc.ConstTypePtr) *Array {
 	return me
 }
 
+func (me *Array) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *Array) Type() gdc.VariantType {
 	return gdc.VariantTypeArray
 }

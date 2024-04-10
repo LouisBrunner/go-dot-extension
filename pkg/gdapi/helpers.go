@@ -8,6 +8,7 @@ import (
 import (
 	"fmt"
 	"reflect"
+	"runtime"
 	"unsafe"
 )
 
@@ -43,6 +44,11 @@ func dataFromPtr(data []byte, ptr gdc.ConstTypePtr) {
 	copy(data, slice)
 }
 
+func dataToPtr(ptr gdc.TypePtr, data []byte) {
+	slice := unsafe.Slice((*byte)(ptr), len(data))
+	copy(slice, data)
+}
+
 // Object
 
 type objectLike interface {
@@ -70,7 +76,11 @@ func DObjectFromPtr(className string, ptr gdc.ObjectPtr) (interface{}, error) {
 
 func (me *Object) AsVariant() *Variant {
 	va := newVariant()
-	va.iface.CallVariantFromTypeConstructorFunc(ensurePtr(ptrsForVariant.fromObjectFn), va.asUninitialized(), me.AsTypePtr())
+	objPtr := me.AsTypePtr()
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	pinner.Pin(&objPtr)
+	va.iface.CallVariantFromTypeConstructorFunc(ensurePtr(ptrsForVariant.fromObjectFn), va.asUninitialized(), gdc.TypePtr(&objPtr))
 	return va
 }
 

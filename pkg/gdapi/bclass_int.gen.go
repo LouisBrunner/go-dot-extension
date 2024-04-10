@@ -243,6 +243,10 @@ func IntFromPtr(ptr gdc.ConstTypePtr) *Int {
 	return me
 }
 
+func (me *Int) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *Int) Type() gdc.VariantType {
 	return gdc.VariantTypeInt
 }

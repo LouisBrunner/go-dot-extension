@@ -527,6 +527,10 @@ func Vector2FromPtr(ptr gdc.ConstTypePtr) *Vector2 {
 	return me
 }
 
+func (me *Vector2) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *Vector2) Type() gdc.VariantType {
 	return gdc.VariantTypeVector2
 }

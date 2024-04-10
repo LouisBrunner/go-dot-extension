@@ -252,6 +252,10 @@ func Rect2FromPtr(ptr gdc.ConstTypePtr) *Rect2 {
 	return me
 }
 
+func (me *Rect2) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *Rect2) Type() gdc.VariantType {
 	return gdc.VariantTypeRect2
 }

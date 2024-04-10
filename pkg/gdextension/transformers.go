@@ -3,7 +3,6 @@ package gdextension
 import (
 	"fmt"
 	"reflect"
-	"unsafe"
 
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdapi"
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
@@ -102,7 +101,7 @@ func (me *extension) reflectFromType(val gdc.ConstTypePtr, expected reflect.Type
 	return reflect.ValueOf(nil), fmt.Errorf("unsupported type: %s", expected)
 }
 
-func typeFromReflect(val reflect.Value) (gdc.TypePtr, error) {
+func assignTypeFromReflect(pRet gdc.TypePtr, val reflect.Value) error {
 	switch val.Kind() {
 	case reflect.Bool:
 		v := val.Bool()
@@ -110,20 +109,26 @@ func typeFromReflect(val reflect.Value) (gdc.TypePtr, error) {
 		if v {
 			vInt = 1
 		}
-		return gdc.TypePtr(uintptr(vInt)), nil
+		*(*uint8)(pRet) = uint8(vInt)
+		return nil
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
 		v := val.Int()
-		return gdc.TypePtr(uintptr(v)), nil
+		*(*int64)(pRet) = v
+		return nil
 	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
 		v := val.Uint()
-		return gdc.TypePtr(uintptr(v)), nil
+		*(*uint64)(pRet) = v
+		return nil
 	case reflect.Float32, reflect.Float64:
 		v := val.Float()
-		return gdc.TypePtr(uintptr(v)), nil
+		*(*float64)(pRet) = v
+		return nil
 	case reflect.String:
 		v := val.String()
-		// TODO: this will break
-		return gdc.TypePtr(unsafe.SliceData([]byte(v))), nil
+		str := gdapi.StringFromStr(v)
+		defer str.Destroy()
+		str.ToTypePtr(pRet)
+		return nil
 	case reflect.Struct:
 		addrV := reflect.New(val.Type())
 		addrV.Elem().Set(val)
@@ -132,21 +137,25 @@ func typeFromReflect(val reflect.Value) (gdc.TypePtr, error) {
 		obj, isObj := v.(Class)
 		switch {
 		case isBclass:
-			return bclazz.AsTypePtr(), nil
+			bclazz.ToTypePtr(pRet)
+			return nil
 		case isObj:
-			return obj.AsTypePtr(), nil
+			*(*gdc.ObjectPtr)(pRet) = (gdc.ObjectPtr)(obj.AsTypePtr()) // FIXME: silly cast
+			return nil
 		}
 	case reflect.Interface:
 		v := val.Interface()
 		if bclazz, isBclass := v.(gdapi.BClass); isBclass {
-			return bclazz.AsTypePtr(), nil
+			bclazz.ToTypePtr(pRet)
+			return nil
 		} else if obj, isObj := v.(Class); isObj {
-			return obj.AsTypePtr(), nil
+			*(*gdc.ObjectPtr)(pRet) = (gdc.ObjectPtr)(obj.AsTypePtr()) // FIXME: silly cast
+			return nil
 		}
 	case reflect.Pointer:
-		return typeFromReflect(val.Elem())
+		return assignTypeFromReflect(pRet, val.Elem())
 	}
-	return nil, fmt.Errorf("unsupported type: %s (%T)", val.Kind(), val.Interface())
+	return fmt.Errorf("unsupported type: %s (%T)", val.Kind(), val.Interface())
 }
 
 func variantFromReflect(val reflect.Value) (*gdapi.Variant, error) {

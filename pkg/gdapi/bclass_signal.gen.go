@@ -169,6 +169,10 @@ func SignalFromPtr(ptr gdc.ConstTypePtr) *Signal {
 	return me
 }
 
+func (me *Signal) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *Signal) Type() gdc.VariantType {
 	return gdc.VariantTypeSignal
 }

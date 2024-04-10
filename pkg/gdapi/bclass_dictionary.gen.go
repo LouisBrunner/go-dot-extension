@@ -195,6 +195,10 @@ func DictionaryFromPtr(ptr gdc.ConstTypePtr) *Dictionary {
 	return me
 }
 
+func (me *Dictionary) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *Dictionary) Type() gdc.VariantType {
 	return gdc.VariantTypeDictionary
 }

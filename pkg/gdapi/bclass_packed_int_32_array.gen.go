@@ -243,6 +243,10 @@ func PackedInt32ArrayFromPtr(ptr gdc.ConstTypePtr) *PackedInt32Array {
 	return me
 }
 
+func (me *PackedInt32Array) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *PackedInt32Array) Type() gdc.VariantType {
 	return gdc.VariantTypePackedInt32Array
 }

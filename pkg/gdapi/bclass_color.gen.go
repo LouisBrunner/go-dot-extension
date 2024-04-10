@@ -2324,6 +2324,10 @@ func ColorFromPtr(ptr gdc.ConstTypePtr) *Color {
 	return me
 }
 
+func (me *Color) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *Color) Type() gdc.VariantType {
 	return gdc.VariantTypeColor
 }

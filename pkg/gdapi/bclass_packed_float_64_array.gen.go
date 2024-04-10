@@ -243,6 +243,10 @@ func PackedFloat64ArrayFromPtr(ptr gdc.ConstTypePtr) *PackedFloat64Array {
 	return me
 }
 
+func (me *PackedFloat64Array) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *PackedFloat64Array) Type() gdc.VariantType {
 	return gdc.VariantTypePackedFloat64Array
 }

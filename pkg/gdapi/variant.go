@@ -14,6 +14,7 @@ import "runtime"
 type BClass interface {
 	Type() gdc.VariantType
 	Destroy()
+	ToTypePtr(ptr gdc.TypePtr)
 	AsTypePtr() gdc.TypePtr
 	AsVariant() *Variant
 }

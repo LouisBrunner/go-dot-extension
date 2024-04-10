@@ -288,6 +288,10 @@ func AABBFromPtr(ptr gdc.ConstTypePtr) *AABB {
 	return me
 }
 
+func (me *AABB) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *AABB) Type() gdc.VariantType {
 	return gdc.VariantTypeAABB
 }

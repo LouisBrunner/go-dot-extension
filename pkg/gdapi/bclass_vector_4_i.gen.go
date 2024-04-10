@@ -304,6 +304,10 @@ func Vector4iFromPtr(ptr gdc.ConstTypePtr) *Vector4i {
 	return me
 }
 
+func (me *Vector4i) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *Vector4i) Type() gdc.VariantType {
 	return gdc.VariantTypeVector4I
 }

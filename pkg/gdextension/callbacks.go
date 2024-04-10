@@ -213,10 +213,9 @@ func (me *extension) methodPtrcall(methodUserdata unsafe.Pointer, pInstance gdc.
 		ret = retRef
 	}
 	me.Logf(LogLevelTrace, "return: %v", ret)
-	typ, err := typeFromReflect(ret)
+	err = assignTypeFromReflect(rRet, ret)
 	if err != nil {
 		me.Logf(LogLevelError, "could not convert return value for ptrcall of %s: %s", method.name, err.Error())
 		return
 	}
-	*(*gdc.TypePtr)(rRet) = typ
 }

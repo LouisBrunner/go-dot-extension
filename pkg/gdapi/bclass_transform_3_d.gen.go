@@ -297,6 +297,10 @@ func Transform3DFromPtr(ptr gdc.ConstTypePtr) *Transform3D {
 	return me
 }
 
+func (me *Transform3D) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *Transform3D) Type() gdc.VariantType {
 	return gdc.VariantTypeTransform3D
 }

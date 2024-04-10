@@ -78,7 +78,7 @@ func (me *extension) prepareClass(ctr ClassConstructor) (*classEntry, error) {
 			})
 		}
 		for enumName, values := range def.Enums {
-			enumMap[enumName] = strcase.ToCamel(enumName)
+			enumMap[enumName] = fmt.Sprintf("%s.%s", className, strcase.ToCamel(enumName))
 			for valueName, value := range values {
 				constants = append(constants, classConstant{
 					enumName:  strcase.ToCamel(enumName),

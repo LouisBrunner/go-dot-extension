@@ -223,6 +223,10 @@ func CallableFromPtr(ptr gdc.ConstTypePtr) *Callable {
 	return me
 }
 
+func (me *Callable) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *Callable) Type() gdc.VariantType {
 	return gdc.VariantTypeCallable
 }

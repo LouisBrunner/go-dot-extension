@@ -229,6 +229,10 @@ func FloatFromPtr(ptr gdc.ConstTypePtr) *Float {
 	return me
 }
 
+func (me *Float) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *Float) Type() gdc.VariantType {
 	return gdc.VariantTypeFloat
 }

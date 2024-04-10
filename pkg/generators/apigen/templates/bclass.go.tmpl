@@ -148,6 +148,10 @@ func {{$Class}}FromPtr(ptr gdc.ConstTypePtr) *{{$Class}} {
   return me
 }
 
+func (me *{{$Class}}) ToTypePtr(ptr gdc.TypePtr) {
+  dataToPtr(ptr, me.data[:])
+}
+
 func (me *{{$Class}}) Type() gdc.VariantType {
   return gdc.VariantType{{pascalCased $.Name}}
 }

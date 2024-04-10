@@ -799,6 +799,10 @@ func StringNameFromPtr(ptr gdc.ConstTypePtr) *StringName {
 	return me
 }
 
+func (me *StringName) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *StringName) Type() gdc.VariantType {
 	return gdc.VariantTypeStringName
 }

@@ -331,6 +331,10 @@ func QuaternionFromPtr(ptr gdc.ConstTypePtr) *Quaternion {
 	return me
 }
 
+func (me *Quaternion) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *Quaternion) Type() gdc.VariantType {
 	return gdc.VariantTypeQuaternion
 }

@@ -249,6 +249,10 @@ func NilFromPtr(ptr gdc.ConstTypePtr) *Nil {
 	return me
 }
 
+func (me *Nil) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *Nil) Type() gdc.VariantType {
 	return gdc.VariantTypeNil
 }

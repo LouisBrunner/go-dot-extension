@@ -845,6 +845,10 @@ func StringFromPtr(ptr gdc.ConstTypePtr) *String {
 	return me
 }
 
+func (me *String) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *String) Type() gdc.VariantType {
 	return gdc.VariantTypeString
 }

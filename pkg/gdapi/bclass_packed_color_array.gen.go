@@ -243,6 +243,10 @@ func PackedColorArrayFromPtr(ptr gdc.ConstTypePtr) *PackedColorArray {
 	return me
 }
 
+func (me *PackedColorArray) ToTypePtr(ptr gdc.TypePtr) {
+	dataToPtr(ptr, me.data[:])
+}
+
 func (me *PackedColorArray) Type() gdc.VariantType {
 	return gdc.VariantTypePackedColorArray
 }
