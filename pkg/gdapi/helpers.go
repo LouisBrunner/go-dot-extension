@@ -182,6 +182,9 @@ func (me *String) AsCPtr() gdc.ConstStringPtr {
 
 func (me *String) String() string {
 	size := me.iface.StringToUtf8Chars(me.AsCPtr(), nil, 0)
+	if size == 0 {
+		return ""
+	}
 	buffer := make([]byte, size)
 	me.iface.StringToUtf8Chars(me.AsCPtr(), unsafe.SliceData(buffer), size)
 	return C.GoString((*C.char)(unsafe.Pointer(&buffer[0])))

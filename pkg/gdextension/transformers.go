@@ -126,7 +126,6 @@ func assignTypeFromReflect(pRet gdc.TypePtr, val reflect.Value) error {
 	case reflect.String:
 		v := val.String()
 		str := gdapi.StringFromStr(v)
-		defer str.Destroy()
 		str.ToTypePtr(pRet)
 		return nil
 	case reflect.Struct:
