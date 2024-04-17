@@ -55,7 +55,8 @@ func initRIDPtrs(iface gdc.Interface) {
 }
 
 type RID struct {
-	data   *[classSizeRID]byte
+	//data   *[classSizeRID]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -65,7 +66,8 @@ type RID struct {
 // Constructors
 func newRID() *RID {
 	me := &RID{
-		data:  new([classSizeRID]byte),
+		//data:   new([classSizeRID]byte),
+		data:  giface.MemAlloc(classSizeRID),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -91,7 +93,7 @@ func NewRIDFromRID(from RID) *RID {
 
 // Destructor
 func (me *RID) Destroy() {
-	me.pinner.Unpin()
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -114,12 +116,12 @@ func (me *RID) AsVariant() *Variant {
 // Pointers
 func RIDFromPtr(ptr gdc.ConstTypePtr) *RID {
 	me := newRID()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeRID)
 	return me
 }
 
 func (me *RID) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeRID)
 }
 
 func (me *RID) Type() gdc.VariantType {
@@ -127,7 +129,7 @@ func (me *RID) Type() gdc.VariantType {
 }
 
 func (me *RID) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *RID) AsCTypePtr() gdc.ConstTypePtr {

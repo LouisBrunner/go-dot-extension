@@ -131,7 +131,8 @@ func initDictionaryPtrs(iface gdc.Interface) {
 }
 
 type Dictionary struct {
-	data   *[classSizeDictionary]byte
+	//data   *[classSizeDictionary]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -141,7 +142,8 @@ type Dictionary struct {
 // Constructors
 func newDictionary() *Dictionary {
 	me := &Dictionary{
-		data:  new([classSizeDictionary]byte),
+		//data:   new([classSizeDictionary]byte),
+		data:  giface.MemAlloc(classSizeDictionary),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -167,8 +169,8 @@ func NewDictionaryFromDictionary(from Dictionary) *Dictionary {
 
 // Destructor
 func (me *Dictionary) Destroy() {
-	me.iface.CallPtrDestructor(ensurePtr(ptrsForDictionary.destructorFn), me.AsTypePtr())
-	me.pinner.Unpin()
+	//me.iface.CallPtrDestructor(ensurePtr(ptrsForDictionary.destructorFn), me.AsTypePtr())
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -191,12 +193,12 @@ func (me *Dictionary) AsVariant() *Variant {
 // Pointers
 func DictionaryFromPtr(ptr gdc.ConstTypePtr) *Dictionary {
 	me := newDictionary()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeDictionary)
 	return me
 }
 
 func (me *Dictionary) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeDictionary)
 }
 
 func (me *Dictionary) Type() gdc.VariantType {
@@ -204,7 +206,7 @@ func (me *Dictionary) Type() gdc.VariantType {
 }
 
 func (me *Dictionary) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *Dictionary) AsCTypePtr() gdc.ConstTypePtr {

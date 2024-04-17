@@ -297,7 +297,8 @@ func initVector4Ptrs(iface gdc.Interface) {
 }
 
 type Vector4 struct {
-	data   *[classSizeVector4]byte
+	//data   *[classSizeVector4]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -324,7 +325,8 @@ const (
 // Constructors
 func newVector4() *Vector4 {
 	me := &Vector4{
-		data:  new([classSizeVector4]byte),
+		//data:   new([classSizeVector4]byte),
+		data:  giface.MemAlloc(classSizeVector4),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -370,7 +372,7 @@ func NewVector4FromFloat32Float32Float32Float32(x float64, y float64, z float64,
 
 // Destructor
 func (me *Vector4) Destroy() {
-	me.pinner.Unpin()
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -393,12 +395,12 @@ func (me *Vector4) AsVariant() *Variant {
 // Pointers
 func Vector4FromPtr(ptr gdc.ConstTypePtr) *Vector4 {
 	me := newVector4()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeVector4)
 	return me
 }
 
 func (me *Vector4) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeVector4)
 }
 
 func (me *Vector4) Type() gdc.VariantType {
@@ -406,7 +408,7 @@ func (me *Vector4) Type() gdc.VariantType {
 }
 
 func (me *Vector4) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *Vector4) AsCTypePtr() gdc.ConstTypePtr {

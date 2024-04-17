@@ -161,7 +161,8 @@ func initRect2Ptrs(iface gdc.Interface) {
 }
 
 type Rect2 struct {
-	data   *[classSizeRect2]byte
+	//data   *[classSizeRect2]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -171,7 +172,8 @@ type Rect2 struct {
 // Constructors
 func newRect2() *Rect2 {
 	me := &Rect2{
-		data:  new([classSizeRect2]byte),
+		//data:   new([classSizeRect2]byte),
+		data:  giface.MemAlloc(classSizeRect2),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -225,7 +227,7 @@ func NewRect2FromFloat32Float32Float32Float32(x float64, y float64, width float6
 
 // Destructor
 func (me *Rect2) Destroy() {
-	me.pinner.Unpin()
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -248,12 +250,12 @@ func (me *Rect2) AsVariant() *Variant {
 // Pointers
 func Rect2FromPtr(ptr gdc.ConstTypePtr) *Rect2 {
 	me := newRect2()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeRect2)
 	return me
 }
 
 func (me *Rect2) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeRect2)
 }
 
 func (me *Rect2) Type() gdc.VariantType {
@@ -261,7 +263,7 @@ func (me *Rect2) Type() gdc.VariantType {
 }
 
 func (me *Rect2) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *Rect2) AsCTypePtr() gdc.ConstTypePtr {

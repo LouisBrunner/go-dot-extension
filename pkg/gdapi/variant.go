@@ -98,7 +98,7 @@ func (me *Variant) Type() gdc.VariantType {
 }
 
 func (me *Variant) Destroy() {
-	me.iface.VariantDestroy(me.AsPtr())
+	// me.iface.VariantDestroy(me.AsPtr())
 	if me.inner != nil {
 		me.inner.Destroy()
 	}

@@ -171,7 +171,8 @@ func initPackedInt32ArrayPtrs(iface gdc.Interface) {
 }
 
 type PackedInt32Array struct {
-	data   *[classSizePackedInt32Array]byte
+	//data   *[classSizePackedInt32Array]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -181,7 +182,8 @@ type PackedInt32Array struct {
 // Constructors
 func newPackedInt32Array() *PackedInt32Array {
 	me := &PackedInt32Array{
-		data:  new([classSizePackedInt32Array]byte),
+		//data:   new([classSizePackedInt32Array]byte),
+		data:  giface.MemAlloc(classSizePackedInt32Array),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -215,8 +217,8 @@ func NewPackedInt32ArrayFromArray(from Array) *PackedInt32Array {
 
 // Destructor
 func (me *PackedInt32Array) Destroy() {
-	me.iface.CallPtrDestructor(ensurePtr(ptrsForPackedInt32Array.destructorFn), me.AsTypePtr())
-	me.pinner.Unpin()
+	//me.iface.CallPtrDestructor(ensurePtr(ptrsForPackedInt32Array.destructorFn), me.AsTypePtr())
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -239,12 +241,12 @@ func (me *PackedInt32Array) AsVariant() *Variant {
 // Pointers
 func PackedInt32ArrayFromPtr(ptr gdc.ConstTypePtr) *PackedInt32Array {
 	me := newPackedInt32Array()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizePackedInt32Array)
 	return me
 }
 
 func (me *PackedInt32Array) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizePackedInt32Array)
 }
 
 func (me *PackedInt32Array) Type() gdc.VariantType {
@@ -252,7 +254,7 @@ func (me *PackedInt32Array) Type() gdc.VariantType {
 }
 
 func (me *PackedInt32Array) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *PackedInt32Array) AsCTypePtr() gdc.ConstTypePtr {

@@ -103,7 +103,8 @@ func initNodePathPtrs(iface gdc.Interface) {
 }
 
 type NodePath struct {
-	data   *[classSizeNodePath]byte
+	//data   *[classSizeNodePath]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -113,7 +114,8 @@ type NodePath struct {
 // Constructors
 func newNodePath() *NodePath {
 	me := &NodePath{
-		data:  new([classSizeNodePath]byte),
+		//data:   new([classSizeNodePath]byte),
+		data:  giface.MemAlloc(classSizeNodePath),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -147,8 +149,8 @@ func NewNodePathFromString(from String) *NodePath {
 
 // Destructor
 func (me *NodePath) Destroy() {
-	me.iface.CallPtrDestructor(ensurePtr(ptrsForNodePath.destructorFn), me.AsTypePtr())
-	me.pinner.Unpin()
+	//me.iface.CallPtrDestructor(ensurePtr(ptrsForNodePath.destructorFn), me.AsTypePtr())
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -171,12 +173,12 @@ func (me *NodePath) AsVariant() *Variant {
 // Pointers
 func NodePathFromPtr(ptr gdc.ConstTypePtr) *NodePath {
 	me := newNodePath()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeNodePath)
 	return me
 }
 
 func (me *NodePath) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeNodePath)
 }
 
 func (me *NodePath) Type() gdc.VariantType {
@@ -184,7 +186,7 @@ func (me *NodePath) Type() gdc.VariantType {
 }
 
 func (me *NodePath) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *NodePath) AsCTypePtr() gdc.ConstTypePtr {

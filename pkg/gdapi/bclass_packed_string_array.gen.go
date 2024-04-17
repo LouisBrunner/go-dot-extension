@@ -171,7 +171,8 @@ func initPackedStringArrayPtrs(iface gdc.Interface) {
 }
 
 type PackedStringArray struct {
-	data   *[classSizePackedStringArray]byte
+	//data   *[classSizePackedStringArray]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -181,7 +182,8 @@ type PackedStringArray struct {
 // Constructors
 func newPackedStringArray() *PackedStringArray {
 	me := &PackedStringArray{
-		data:  new([classSizePackedStringArray]byte),
+		//data:   new([classSizePackedStringArray]byte),
+		data:  giface.MemAlloc(classSizePackedStringArray),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -215,8 +217,8 @@ func NewPackedStringArrayFromArray(from Array) *PackedStringArray {
 
 // Destructor
 func (me *PackedStringArray) Destroy() {
-	me.iface.CallPtrDestructor(ensurePtr(ptrsForPackedStringArray.destructorFn), me.AsTypePtr())
-	me.pinner.Unpin()
+	//me.iface.CallPtrDestructor(ensurePtr(ptrsForPackedStringArray.destructorFn), me.AsTypePtr())
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -239,12 +241,12 @@ func (me *PackedStringArray) AsVariant() *Variant {
 // Pointers
 func PackedStringArrayFromPtr(ptr gdc.ConstTypePtr) *PackedStringArray {
 	me := newPackedStringArray()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizePackedStringArray)
 	return me
 }
 
 func (me *PackedStringArray) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizePackedStringArray)
 }
 
 func (me *PackedStringArray) Type() gdc.VariantType {
@@ -252,7 +254,7 @@ func (me *PackedStringArray) Type() gdc.VariantType {
 }
 
 func (me *PackedStringArray) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *PackedStringArray) AsCTypePtr() gdc.ConstTypePtr {

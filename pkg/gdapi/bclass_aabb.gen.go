@@ -217,7 +217,8 @@ func initAABBPtrs(iface gdc.Interface) {
 }
 
 type AABB struct {
-	data   *[classSizeAABB]byte
+	//data   *[classSizeAABB]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -227,7 +228,8 @@ type AABB struct {
 // Constructors
 func newAABB() *AABB {
 	me := &AABB{
-		data:  new([classSizeAABB]byte),
+		//data:   new([classSizeAABB]byte),
+		data:  giface.MemAlloc(classSizeAABB),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -261,7 +263,7 @@ func NewAABBFromVector3Vector3(position Vector3, size Vector3) *AABB {
 
 // Destructor
 func (me *AABB) Destroy() {
-	me.pinner.Unpin()
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -284,12 +286,12 @@ func (me *AABB) AsVariant() *Variant {
 // Pointers
 func AABBFromPtr(ptr gdc.ConstTypePtr) *AABB {
 	me := newAABB()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeAABB)
 	return me
 }
 
 func (me *AABB) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeAABB)
 }
 
 func (me *AABB) Type() gdc.VariantType {
@@ -297,7 +299,7 @@ func (me *AABB) Type() gdc.VariantType {
 }
 
 func (me *AABB) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *AABB) AsCTypePtr() gdc.ConstTypePtr {

@@ -71,7 +71,8 @@ func initBoolPtrs(iface gdc.Interface) {
 }
 
 type Bool struct {
-	data   *[classSizeBool]byte
+	//data   *[classSizeBool]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -81,7 +82,8 @@ type Bool struct {
 // Constructors
 func newBool() *Bool {
 	me := &Bool{
-		data:  new([classSizeBool]byte),
+		//data:   new([classSizeBool]byte),
+		data:  giface.MemAlloc(classSizeBool),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -126,7 +128,7 @@ func NewBoolFromFloat32(from float64) *Bool {
 
 // Destructor
 func (me *Bool) Destroy() {
-	me.pinner.Unpin()
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -149,12 +151,12 @@ func (me *Bool) AsVariant() *Variant {
 // Pointers
 func BoolFromPtr(ptr gdc.ConstTypePtr) *Bool {
 	me := newBool()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeBool)
 	return me
 }
 
 func (me *Bool) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeBool)
 }
 
 func (me *Bool) Type() gdc.VariantType {
@@ -162,7 +164,7 @@ func (me *Bool) Type() gdc.VariantType {
 }
 
 func (me *Bool) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *Bool) AsCTypePtr() gdc.ConstTypePtr {

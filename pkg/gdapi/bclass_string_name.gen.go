@@ -727,7 +727,8 @@ func initStringNamePtrs(iface gdc.Interface) {
 }
 
 type StringName struct {
-	data   *[classSizeStringName]byte
+	//data   *[classSizeStringName]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -737,7 +738,8 @@ type StringName struct {
 // Constructors
 func newStringName() *StringName {
 	me := &StringName{
-		data:  new([classSizeStringName]byte),
+		//data:   new([classSizeStringName]byte),
+		data:  giface.MemAlloc(classSizeStringName),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -771,8 +773,8 @@ func NewStringNameFromString(from String) *StringName {
 
 // Destructor
 func (me *StringName) Destroy() {
-	me.iface.CallPtrDestructor(ensurePtr(ptrsForStringName.destructorFn), me.AsTypePtr())
-	me.pinner.Unpin()
+	//me.iface.CallPtrDestructor(ensurePtr(ptrsForStringName.destructorFn), me.AsTypePtr())
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -795,12 +797,12 @@ func (me *StringName) AsVariant() *Variant {
 // Pointers
 func StringNameFromPtr(ptr gdc.ConstTypePtr) *StringName {
 	me := newStringName()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeStringName)
 	return me
 }
 
 func (me *StringName) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeStringName)
 }
 
 func (me *StringName) Type() gdc.VariantType {
@@ -808,7 +810,7 @@ func (me *StringName) Type() gdc.VariantType {
 }
 
 func (me *StringName) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *StringName) AsCTypePtr() gdc.ConstTypePtr {

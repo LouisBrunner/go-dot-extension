@@ -171,7 +171,8 @@ func initPackedFloat64ArrayPtrs(iface gdc.Interface) {
 }
 
 type PackedFloat64Array struct {
-	data   *[classSizePackedFloat64Array]byte
+	//data   *[classSizePackedFloat64Array]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -181,7 +182,8 @@ type PackedFloat64Array struct {
 // Constructors
 func newPackedFloat64Array() *PackedFloat64Array {
 	me := &PackedFloat64Array{
-		data:  new([classSizePackedFloat64Array]byte),
+		//data:   new([classSizePackedFloat64Array]byte),
+		data:  giface.MemAlloc(classSizePackedFloat64Array),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -215,8 +217,8 @@ func NewPackedFloat64ArrayFromArray(from Array) *PackedFloat64Array {
 
 // Destructor
 func (me *PackedFloat64Array) Destroy() {
-	me.iface.CallPtrDestructor(ensurePtr(ptrsForPackedFloat64Array.destructorFn), me.AsTypePtr())
-	me.pinner.Unpin()
+	//me.iface.CallPtrDestructor(ensurePtr(ptrsForPackedFloat64Array.destructorFn), me.AsTypePtr())
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -239,12 +241,12 @@ func (me *PackedFloat64Array) AsVariant() *Variant {
 // Pointers
 func PackedFloat64ArrayFromPtr(ptr gdc.ConstTypePtr) *PackedFloat64Array {
 	me := newPackedFloat64Array()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizePackedFloat64Array)
 	return me
 }
 
 func (me *PackedFloat64Array) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizePackedFloat64Array)
 }
 
 func (me *PackedFloat64Array) Type() gdc.VariantType {
@@ -252,7 +254,7 @@ func (me *PackedFloat64Array) Type() gdc.VariantType {
 }
 
 func (me *PackedFloat64Array) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *PackedFloat64Array) AsCTypePtr() gdc.ConstTypePtr {

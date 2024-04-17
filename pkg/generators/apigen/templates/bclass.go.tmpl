@@ -70,7 +70,8 @@ func init{{$Class}}Ptrs(iface gdc.Interface) {
 }
 
 type {{$Class}} struct {
-  data   *[classSize{{$Class}}]byte
+  //data   *[classSize{{$Class}}]byte
+  data   unsafe.Pointer
   iface  gdc.Interface
   pinner runtime.Pinner
 }
@@ -84,7 +85,8 @@ type {{$Class}} struct {
 // Constructors
 func new{{$Class}}() *{{$Class}} {
   me := &{{$Class}}{
-    data:   new([classSize{{$Class}}]byte),
+    //data:   new([classSize{{$Class}}]byte),
+    data:   giface.MemAlloc(classSize{{$Class}}),
     iface:  giface,
   }
   me.pinner.Pin(me)
@@ -119,9 +121,9 @@ func New{{$Class}}{{template "function_name" .}}({{range .Arguments}}{{mapName .
 // Destructor
 func (me *{{$Class}}) Destroy() {
 {{- if .HasDestructor}}
-	me.iface.CallPtrDestructor(ensurePtr(ptrsFor{{$Class}}.destructorFn), me.AsTypePtr())
+	//me.iface.CallPtrDestructor(ensurePtr(ptrsFor{{$Class}}.destructorFn), me.AsTypePtr())
 {{- end}}
-  me.pinner.Unpin()
+  //me.pinner.Unpin()
 }
 {{if ne $Class "Nil" }}
 // Variant support
@@ -144,12 +146,12 @@ func (me *{{$Class}}) AsVariant() *Variant {
 // Pointers
 func {{$Class}}FromPtr(ptr gdc.ConstTypePtr) *{{$Class}} {
   me := new{{$Class}}()
-  dataFromPtr(me.data[:], ptr)
+  dataCopy(me.data, unsafe.Pointer(ptr), classSize{{$Class}})
   return me
 }
 
 func (me *{{$Class}}) ToTypePtr(ptr gdc.TypePtr) {
-  dataToPtr(ptr, me.data[:])
+  dataCopy(unsafe.Pointer(ptr), me.data, classSize{{$Class}})
 }
 
 func (me *{{$Class}}) Type() gdc.VariantType {
@@ -157,7 +159,7 @@ func (me *{{$Class}}) Type() gdc.VariantType {
 }
 
 func (me *{{$Class}}) AsTypePtr() gdc.TypePtr {
-  return gdc.TypePtr(unsafe.Pointer(me.data))
+  return gdc.TypePtr(me.data)
 }
 
 func (me *{{$Class}}) AsCTypePtr() gdc.ConstTypePtr {

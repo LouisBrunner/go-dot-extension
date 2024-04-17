@@ -267,7 +267,8 @@ func initVector3iPtrs(iface gdc.Interface) {
 }
 
 type Vector3i struct {
-	data   *[classSizeVector3i]byte
+	//data   *[classSizeVector3i]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -300,7 +301,8 @@ const (
 // Constructors
 func newVector3i() *Vector3i {
 	me := &Vector3i{
-		data:  new([classSizeVector3i]byte),
+		//data:   new([classSizeVector3i]byte),
+		data:  giface.MemAlloc(classSizeVector3i),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -345,7 +347,7 @@ func NewVector3iFromIntIntInt(x int64, y int64, z int64) *Vector3i {
 
 // Destructor
 func (me *Vector3i) Destroy() {
-	me.pinner.Unpin()
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -368,12 +370,12 @@ func (me *Vector3i) AsVariant() *Variant {
 // Pointers
 func Vector3iFromPtr(ptr gdc.ConstTypePtr) *Vector3i {
 	me := newVector3i()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeVector3i)
 	return me
 }
 
 func (me *Vector3i) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeVector3i)
 }
 
 func (me *Vector3i) Type() gdc.VariantType {
@@ -381,7 +383,7 @@ func (me *Vector3i) Type() gdc.VariantType {
 }
 
 func (me *Vector3i) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *Vector3i) AsCTypePtr() gdc.ConstTypePtr {

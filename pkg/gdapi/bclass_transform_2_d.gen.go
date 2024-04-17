@@ -243,7 +243,8 @@ func initTransform2DPtrs(iface gdc.Interface) {
 }
 
 type Transform2D struct {
-	data   *[classSizeTransform2D]byte
+	//data   *[classSizeTransform2D]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -261,7 +262,8 @@ var (
 // Constructors
 func newTransform2D() *Transform2D {
 	me := &Transform2D{
-		data:  new([classSizeTransform2D]byte),
+		//data:   new([classSizeTransform2D]byte),
+		data:  giface.MemAlloc(classSizeTransform2D),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -314,7 +316,7 @@ func NewTransform2DFromVector2Vector2Vector2(x_axis Vector2, y_axis Vector2, ori
 
 // Destructor
 func (me *Transform2D) Destroy() {
-	me.pinner.Unpin()
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -337,12 +339,12 @@ func (me *Transform2D) AsVariant() *Variant {
 // Pointers
 func Transform2DFromPtr(ptr gdc.ConstTypePtr) *Transform2D {
 	me := newTransform2D()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeTransform2D)
 	return me
 }
 
 func (me *Transform2D) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeTransform2D)
 }
 
 func (me *Transform2D) Type() gdc.VariantType {
@@ -350,7 +352,7 @@ func (me *Transform2D) Type() gdc.VariantType {
 }
 
 func (me *Transform2D) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *Transform2D) AsCTypePtr() gdc.ConstTypePtr {

@@ -197,7 +197,8 @@ func initPlanePtrs(iface gdc.Interface) {
 }
 
 type Plane struct {
-	data   *[classSizePlane]byte
+	//data   *[classSizePlane]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -215,7 +216,8 @@ var (
 // Constructors
 func newPlane() *Plane {
 	me := &Plane{
-		data:  new([classSizePlane]byte),
+		//data:   new([classSizePlane]byte),
+		data:  giface.MemAlloc(classSizePlane),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -286,7 +288,7 @@ func NewPlaneFromFloat32Float32Float32Float32(a float64, b float64, c float64, d
 
 // Destructor
 func (me *Plane) Destroy() {
-	me.pinner.Unpin()
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -309,12 +311,12 @@ func (me *Plane) AsVariant() *Variant {
 // Pointers
 func PlaneFromPtr(ptr gdc.ConstTypePtr) *Plane {
 	me := newPlane()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizePlane)
 	return me
 }
 
 func (me *Plane) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizePlane)
 }
 
 func (me *Plane) Type() gdc.VariantType {
@@ -322,7 +324,7 @@ func (me *Plane) Type() gdc.VariantType {
 }
 
 func (me *Plane) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *Plane) AsCTypePtr() gdc.ConstTypePtr {

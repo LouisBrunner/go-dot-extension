@@ -50,12 +50,12 @@ func (me *classProperty) free(ext *extension, instance Class) {
 	if me.objClassNamePtr == nil {
 		return
 	}
-	val := reflectGetProperty(instance, me).Interface()
-	obj, is := val.(gdapi.Object)
-	if !is {
-		return
-	}
-	ext.iface.ObjectDestroy(obj.AsPtr())
+	// val := reflectGetProperty(instance, me).Interface()
+	// obj, is := val.(gdapi.Object)
+	// if !is {
+	// 	return
+	// }
+	// ext.iface.ObjectDestroy(obj.AsPtr())
 }
 
 func (me *classProperty) unregister(ext *extension, class *classEntry) {
@@ -142,11 +142,11 @@ func (me classSubscriber) create(ext *extension, instance Class) error {
 }
 
 func (me classSubscriber) free(ext *extension, instance Class) {
-	val := reflectGetFieldUnsafe(instance, string(me)).Interface()
-	subs, is := val.(gdapi.SignalSubscribers)
-	if !is {
-		ext.iface.ObjectDestroy(subs.AsPtr())
-	}
+	// val := reflectGetFieldUnsafe(instance, string(me)).Interface()
+	// subs, is := val.(gdapi.SignalSubscribers)
+	// if !is {
+	// 	ext.iface.ObjectDestroy(subs.AsPtr())
+	// }
 }
 
 type classConstant struct {

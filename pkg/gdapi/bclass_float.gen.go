@@ -139,7 +139,8 @@ func initFloatPtrs(iface gdc.Interface) {
 }
 
 type Float struct {
-	data   *[classSizeFloat]byte
+	//data   *[classSizeFloat]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -149,7 +150,8 @@ type Float struct {
 // Constructors
 func newFloat() *Float {
 	me := &Float{
-		data:  new([classSizeFloat]byte),
+		//data:   new([classSizeFloat]byte),
+		data:  giface.MemAlloc(classSizeFloat),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -202,7 +204,7 @@ func NewFloatFromString(from String) *Float {
 
 // Destructor
 func (me *Float) Destroy() {
-	me.pinner.Unpin()
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -225,12 +227,12 @@ func (me *Float) AsVariant() *Variant {
 // Pointers
 func FloatFromPtr(ptr gdc.ConstTypePtr) *Float {
 	me := newFloat()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeFloat)
 	return me
 }
 
 func (me *Float) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeFloat)
 }
 
 func (me *Float) Type() gdc.VariantType {
@@ -238,7 +240,7 @@ func (me *Float) Type() gdc.VariantType {
 }
 
 func (me *Float) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *Float) AsCTypePtr() gdc.ConstTypePtr {

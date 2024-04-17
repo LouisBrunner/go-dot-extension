@@ -203,7 +203,8 @@ func initNilPtrs(iface gdc.Interface) {
 }
 
 type Nil struct {
-	data   *[classSizeNil]byte
+	//data   *[classSizeNil]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -213,7 +214,8 @@ type Nil struct {
 // Constructors
 func newNil() *Nil {
 	me := &Nil{
-		data:  new([classSizeNil]byte),
+		//data:   new([classSizeNil]byte),
+		data:  giface.MemAlloc(classSizeNil),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -239,18 +241,18 @@ func NewNilFromVariant(from Variant) *Nil {
 
 // Destructor
 func (me *Nil) Destroy() {
-	me.pinner.Unpin()
+	//me.pinner.Unpin()
 }
 
 // Pointers
 func NilFromPtr(ptr gdc.ConstTypePtr) *Nil {
 	me := newNil()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeNil)
 	return me
 }
 
 func (me *Nil) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeNil)
 }
 
 func (me *Nil) Type() gdc.VariantType {
@@ -258,7 +260,7 @@ func (me *Nil) Type() gdc.VariantType {
 }
 
 func (me *Nil) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *Nil) AsCTypePtr() gdc.ConstTypePtr {

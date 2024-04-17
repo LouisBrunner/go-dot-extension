@@ -151,7 +151,8 @@ func initCallablePtrs(iface gdc.Interface) {
 }
 
 type Callable struct {
-	data   *[classSizeCallable]byte
+	//data   *[classSizeCallable]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -161,7 +162,8 @@ type Callable struct {
 // Constructors
 func newCallable() *Callable {
 	me := &Callable{
-		data:  new([classSizeCallable]byte),
+		//data:   new([classSizeCallable]byte),
+		data:  giface.MemAlloc(classSizeCallable),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -195,8 +197,8 @@ func NewCallableFromObjectStringName(object Object, method StringName) *Callable
 
 // Destructor
 func (me *Callable) Destroy() {
-	me.iface.CallPtrDestructor(ensurePtr(ptrsForCallable.destructorFn), me.AsTypePtr())
-	me.pinner.Unpin()
+	//me.iface.CallPtrDestructor(ensurePtr(ptrsForCallable.destructorFn), me.AsTypePtr())
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -219,12 +221,12 @@ func (me *Callable) AsVariant() *Variant {
 // Pointers
 func CallableFromPtr(ptr gdc.ConstTypePtr) *Callable {
 	me := newCallable()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeCallable)
 	return me
 }
 
 func (me *Callable) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeCallable)
 }
 
 func (me *Callable) Type() gdc.VariantType {
@@ -232,7 +234,7 @@ func (me *Callable) Type() gdc.VariantType {
 }
 
 func (me *Callable) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *Callable) AsCTypePtr() gdc.ConstTypePtr {

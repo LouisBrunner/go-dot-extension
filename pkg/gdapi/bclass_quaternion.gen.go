@@ -225,7 +225,8 @@ func initQuaternionPtrs(iface gdc.Interface) {
 }
 
 type Quaternion struct {
-	data   *[classSizeQuaternion]byte
+	//data   *[classSizeQuaternion]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -241,7 +242,8 @@ var (
 // Constructors
 func newQuaternion() *Quaternion {
 	me := &Quaternion{
-		data:  new([classSizeQuaternion]byte),
+		//data:   new([classSizeQuaternion]byte),
+		data:  giface.MemAlloc(classSizeQuaternion),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -304,7 +306,7 @@ func NewQuaternionFromFloat32Float32Float32Float32(x float64, y float64, z float
 
 // Destructor
 func (me *Quaternion) Destroy() {
-	me.pinner.Unpin()
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -327,12 +329,12 @@ func (me *Quaternion) AsVariant() *Variant {
 // Pointers
 func QuaternionFromPtr(ptr gdc.ConstTypePtr) *Quaternion {
 	me := newQuaternion()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeQuaternion)
 	return me
 }
 
 func (me *Quaternion) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeQuaternion)
 }
 
 func (me *Quaternion) Type() gdc.VariantType {
@@ -340,7 +342,7 @@ func (me *Quaternion) Type() gdc.VariantType {
 }
 
 func (me *Quaternion) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *Quaternion) AsCTypePtr() gdc.ConstTypePtr {

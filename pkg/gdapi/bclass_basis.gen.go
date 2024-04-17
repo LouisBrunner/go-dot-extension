@@ -239,7 +239,8 @@ func initBasisPtrs(iface gdc.Interface) {
 }
 
 type Basis struct {
-	data   *[classSizeBasis]byte
+	//data   *[classSizeBasis]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -258,7 +259,8 @@ var (
 // Constructors
 func newBasis() *Basis {
 	me := &Basis{
-		data:  new([classSizeBasis]byte),
+		//data:   new([classSizeBasis]byte),
+		data:  giface.MemAlloc(classSizeBasis),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -309,7 +311,7 @@ func NewBasisFromVector3Vector3Vector3(x_axis Vector3, y_axis Vector3, z_axis Ve
 
 // Destructor
 func (me *Basis) Destroy() {
-	me.pinner.Unpin()
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -332,12 +334,12 @@ func (me *Basis) AsVariant() *Variant {
 // Pointers
 func BasisFromPtr(ptr gdc.ConstTypePtr) *Basis {
 	me := newBasis()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeBasis)
 	return me
 }
 
 func (me *Basis) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeBasis)
 }
 
 func (me *Basis) Type() gdc.VariantType {
@@ -345,7 +347,7 @@ func (me *Basis) Type() gdc.VariantType {
 }
 
 func (me *Basis) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *Basis) AsCTypePtr() gdc.ConstTypePtr {

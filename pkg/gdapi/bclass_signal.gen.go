@@ -97,7 +97,8 @@ func initSignalPtrs(iface gdc.Interface) {
 }
 
 type Signal struct {
-	data   *[classSizeSignal]byte
+	//data   *[classSizeSignal]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -107,7 +108,8 @@ type Signal struct {
 // Constructors
 func newSignal() *Signal {
 	me := &Signal{
-		data:  new([classSizeSignal]byte),
+		//data:   new([classSizeSignal]byte),
+		data:  giface.MemAlloc(classSizeSignal),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -141,8 +143,8 @@ func NewSignalFromObjectStringName(object Object, signal StringName) *Signal {
 
 // Destructor
 func (me *Signal) Destroy() {
-	me.iface.CallPtrDestructor(ensurePtr(ptrsForSignal.destructorFn), me.AsTypePtr())
-	me.pinner.Unpin()
+	//me.iface.CallPtrDestructor(ensurePtr(ptrsForSignal.destructorFn), me.AsTypePtr())
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -165,12 +167,12 @@ func (me *Signal) AsVariant() *Variant {
 // Pointers
 func SignalFromPtr(ptr gdc.ConstTypePtr) *Signal {
 	me := newSignal()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeSignal)
 	return me
 }
 
 func (me *Signal) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeSignal)
 }
 
 func (me *Signal) Type() gdc.VariantType {
@@ -178,7 +180,7 @@ func (me *Signal) Type() gdc.VariantType {
 }
 
 func (me *Signal) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *Signal) AsCTypePtr() gdc.ConstTypePtr {

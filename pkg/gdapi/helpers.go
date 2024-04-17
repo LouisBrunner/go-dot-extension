@@ -39,14 +39,10 @@ func BClassForType(typ gdc.VariantType) (any, error) {
 	return ctr(), nil
 }
 
-func dataFromPtr(data []byte, ptr gdc.ConstTypePtr) {
-	slice := unsafe.Slice((*byte)(ptr), len(data))
-	copy(data, slice)
-}
-
-func dataToPtr(ptr gdc.TypePtr, data []byte) {
-	slice := unsafe.Slice((*byte)(ptr), len(data))
-	copy(slice, data)
+func dataCopy(dst, src unsafe.Pointer, size int) {
+	srcSlice := unsafe.Slice((*uint8)(src), size)
+	dstSlice := unsafe.Slice((*uint8)(dst), size)
+	copy(dstSlice, srcSlice)
 }
 
 // Object

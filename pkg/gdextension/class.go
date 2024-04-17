@@ -27,9 +27,9 @@ func (me *classInstance) String() string {
 func (me *extension) createClass(class *classEntry) (fobj gdc.ObjectPtr) {
 	obj := me.iface.ClassdbConstructObject(class.parentNamePtr.AsCPtr())
 	defer func() {
-		if fobj == nil {
-			me.iface.ObjectDestroy(obj)
-		}
+		// if fobj == nil {
+		// 	me.iface.ObjectDestroy(obj)
+		// }
 	}()
 
 	id := me.iface.ObjectGetInstanceId(gdc.ConstObjectPtr(obj))
@@ -132,6 +132,8 @@ func (me *extension) registerClass(class *classEntry) {
 }
 
 func (me *extension) unregisterClass(class *classEntry) {
+	return
+
 	me.Logf(LogLevelDebug, "unregistering class %q", class.name)
 
 	for _, constant := range class.constants {

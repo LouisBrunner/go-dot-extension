@@ -201,7 +201,8 @@ func initTransform3DPtrs(iface gdc.Interface) {
 }
 
 type Transform3D struct {
-	data   *[classSizeTransform3D]byte
+	//data   *[classSizeTransform3D]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -220,7 +221,8 @@ var (
 // Constructors
 func newTransform3D() *Transform3D {
 	me := &Transform3D{
-		data:  new([classSizeTransform3D]byte),
+		//data:   new([classSizeTransform3D]byte),
+		data:  giface.MemAlloc(classSizeTransform3D),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -270,7 +272,7 @@ func NewTransform3DFromProjection(from Projection) *Transform3D {
 
 // Destructor
 func (me *Transform3D) Destroy() {
-	me.pinner.Unpin()
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -293,12 +295,12 @@ func (me *Transform3D) AsVariant() *Variant {
 // Pointers
 func Transform3DFromPtr(ptr gdc.ConstTypePtr) *Transform3D {
 	me := newTransform3D()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeTransform3D)
 	return me
 }
 
 func (me *Transform3D) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeTransform3D)
 }
 
 func (me *Transform3D) Type() gdc.VariantType {
@@ -306,7 +308,7 @@ func (me *Transform3D) Type() gdc.VariantType {
 }
 
 func (me *Transform3D) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *Transform3D) AsCTypePtr() gdc.ConstTypePtr {

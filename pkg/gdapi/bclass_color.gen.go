@@ -2061,7 +2061,8 @@ func initColorPtrs(iface gdc.Interface) {
 }
 
 type Color struct {
-	data   *[classSizeColor]byte
+	//data   *[classSizeColor]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -2222,7 +2223,8 @@ var (
 // Constructors
 func newColor() *Color {
 	me := &Color{
-		data:  new([classSizeColor]byte),
+		//data:   new([classSizeColor]byte),
+		data:  giface.MemAlloc(classSizeColor),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -2297,7 +2299,7 @@ func NewColorFromStringFloat32(code String, alpha float64) *Color {
 
 // Destructor
 func (me *Color) Destroy() {
-	me.pinner.Unpin()
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -2320,12 +2322,12 @@ func (me *Color) AsVariant() *Variant {
 // Pointers
 func ColorFromPtr(ptr gdc.ConstTypePtr) *Color {
 	me := newColor()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeColor)
 	return me
 }
 
 func (me *Color) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeColor)
 }
 
 func (me *Color) Type() gdc.VariantType {
@@ -2333,7 +2335,7 @@ func (me *Color) Type() gdc.VariantType {
 }
 
 func (me *Color) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *Color) AsCTypePtr() gdc.ConstTypePtr {

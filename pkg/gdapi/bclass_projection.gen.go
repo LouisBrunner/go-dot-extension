@@ -259,7 +259,8 @@ func initProjectionPtrs(iface gdc.Interface) {
 }
 
 type Projection struct {
-	data   *[classSizeProjection]byte
+	//data   *[classSizeProjection]byte
+	data   unsafe.Pointer
 	iface  gdc.Interface
 	pinner runtime.Pinner
 }
@@ -287,7 +288,8 @@ const (
 // Constructors
 func newProjection() *Projection {
 	me := &Projection{
-		data:  new([classSizeProjection]byte),
+		//data:   new([classSizeProjection]byte),
+		data:  giface.MemAlloc(classSizeProjection),
 		iface: giface,
 	}
 	me.pinner.Pin(me)
@@ -329,7 +331,7 @@ func NewProjectionFromVector4Vector4Vector4Vector4(x_axis Vector4, y_axis Vector
 
 // Destructor
 func (me *Projection) Destroy() {
-	me.pinner.Unpin()
+	//me.pinner.Unpin()
 }
 
 // Variant support
@@ -352,12 +354,12 @@ func (me *Projection) AsVariant() *Variant {
 // Pointers
 func ProjectionFromPtr(ptr gdc.ConstTypePtr) *Projection {
 	me := newProjection()
-	dataFromPtr(me.data[:], ptr)
+	dataCopy(me.data, unsafe.Pointer(ptr), classSizeProjection)
 	return me
 }
 
 func (me *Projection) ToTypePtr(ptr gdc.TypePtr) {
-	dataToPtr(ptr, me.data[:])
+	dataCopy(unsafe.Pointer(ptr), me.data, classSizeProjection)
 }
 
 func (me *Projection) Type() gdc.VariantType {
@@ -365,7 +367,7 @@ func (me *Projection) Type() gdc.VariantType {
 }
 
 func (me *Projection) AsTypePtr() gdc.TypePtr {
-	return gdc.TypePtr(unsafe.Pointer(me.data))
+	return gdc.TypePtr(me.data)
 }
 
 func (me *Projection) AsCTypePtr() gdc.ConstTypePtr {
