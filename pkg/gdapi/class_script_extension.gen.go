@@ -33,6 +33,7 @@ type ptrsForScriptExtensionList struct {
 	fnXGetClassIconPath             gdc.MethodBindPtr
 	fnXHasMethod                    gdc.MethodBindPtr
 	fnXHasStaticMethod              gdc.MethodBindPtr
+	fnXGetScriptMethodArgumentCount gdc.MethodBindPtr
 	fnXGetMethodInfo                gdc.MethodBindPtr
 	fnXIsTool                       gdc.MethodBindPtr
 	fnXIsValid                      gdc.MethodBindPtr

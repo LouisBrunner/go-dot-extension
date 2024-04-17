@@ -31,6 +31,8 @@ type ptrsForNavigationMeshList struct {
 	fnGetCellSize                     gdc.MethodBindPtr
 	fnSetCellHeight                   gdc.MethodBindPtr
 	fnGetCellHeight                   gdc.MethodBindPtr
+	fnSetBorderSize                   gdc.MethodBindPtr
+	fnGetBorderSize                   gdc.MethodBindPtr
 	fnSetAgentHeight                  gdc.MethodBindPtr
 	fnGetAgentHeight                  gdc.MethodBindPtr
 	fnSetAgentRadius                  gdc.MethodBindPtr
@@ -158,6 +160,16 @@ func initNavigationMeshPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_cell_height")
 		defer methodName.Destroy()
 		ptrsForNavigationMesh.fnGetCellHeight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+	}
+	{
+		methodName := StringNameFromStr("set_border_size")
+		defer methodName.Destroy()
+		ptrsForNavigationMesh.fnSetBorderSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+	}
+	{
+		methodName := StringNameFromStr("get_border_size")
+		defer methodName.Destroy()
+		ptrsForNavigationMesh.fnGetBorderSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
 	{
 		methodName := StringNameFromStr("set_agent_height")
@@ -573,6 +585,25 @@ func (me *NavigationMesh) GetCellHeight() float64 {
 	ret := NewFloat()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationMesh.fnGetCellHeight), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *NavigationMesh) SetBorderSize(border_size float64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&border_size)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationMesh.fnSetBorderSize), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *NavigationMesh) GetBorderSize() float64 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewFloat()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationMesh.fnGetBorderSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 

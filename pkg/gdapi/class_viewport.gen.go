@@ -49,13 +49,12 @@ type ptrsForViewportList struct {
 	fnGetPhysicsObjectPicking                gdc.MethodBindPtr
 	fnSetPhysicsObjectPickingSort            gdc.MethodBindPtr
 	fnGetPhysicsObjectPickingSort            gdc.MethodBindPtr
+	fnSetPhysicsObjectPickingFirstOnly       gdc.MethodBindPtr
+	fnGetPhysicsObjectPickingFirstOnly       gdc.MethodBindPtr
 	fnGetViewportRid                         gdc.MethodBindPtr
 	fnPushTextInput                          gdc.MethodBindPtr
 	fnPushInput                              gdc.MethodBindPtr
 	fnPushUnhandledInput                     gdc.MethodBindPtr
-	fnGetCamera2D                            gdc.MethodBindPtr
-	fnSetAsAudioListener2D                   gdc.MethodBindPtr
-	fnIsAudioListener2D                      gdc.MethodBindPtr
 	fnGetMousePosition                       gdc.MethodBindPtr
 	fnWarpMouse                              gdc.MethodBindPtr
 	fnUpdateMouseCursorState                 gdc.MethodBindPtr
@@ -64,6 +63,7 @@ type ptrsForViewportList struct {
 	fnGuiIsDragSuccessful                    gdc.MethodBindPtr
 	fnGuiReleaseFocus                        gdc.MethodBindPtr
 	fnGuiGetFocusOwner                       gdc.MethodBindPtr
+	fnGuiGetHoveredControl                   gdc.MethodBindPtr
 	fnSetDisableInput                        gdc.MethodBindPtr
 	fnIsInputDisabled                        gdc.MethodBindPtr
 	fnSetPositionalShadowAtlasSize           gdc.MethodBindPtr
@@ -99,6 +99,9 @@ type ptrsForViewportList struct {
 	fnGetSdfScale                            gdc.MethodBindPtr
 	fnSetMeshLodThreshold                    gdc.MethodBindPtr
 	fnGetMeshLodThreshold                    gdc.MethodBindPtr
+	fnSetAsAudioListener2D                   gdc.MethodBindPtr
+	fnIsAudioListener2D                      gdc.MethodBindPtr
+	fnGetCamera2D                            gdc.MethodBindPtr
 	fnSetWorld3D                             gdc.MethodBindPtr
 	fnGetWorld3D                             gdc.MethodBindPtr
 	fnFindWorld3D                            gdc.MethodBindPtr
@@ -302,6 +305,16 @@ func initViewportPtrs(iface gdc.Interface) {
 		ptrsForViewport.fnGetPhysicsObjectPickingSort = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
 	}
 	{
+		methodName := StringNameFromStr("set_physics_object_picking_first_only")
+		defer methodName.Destroy()
+		ptrsForViewport.fnSetPhysicsObjectPickingFirstOnly = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("get_physics_object_picking_first_only")
+		defer methodName.Destroy()
+		ptrsForViewport.fnGetPhysicsObjectPickingFirstOnly = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+	}
+	{
 		methodName := StringNameFromStr("get_viewport_rid")
 		defer methodName.Destroy()
 		ptrsForViewport.fnGetViewportRid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
@@ -320,21 +333,6 @@ func initViewportPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("push_unhandled_input")
 		defer methodName.Destroy()
 		ptrsForViewport.fnPushUnhandledInput = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3644664830))
-	}
-	{
-		methodName := StringNameFromStr("get_camera_2d")
-		defer methodName.Destroy()
-		ptrsForViewport.fnGetCamera2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3551466917))
-	}
-	{
-		methodName := StringNameFromStr("set_as_audio_listener_2d")
-		defer methodName.Destroy()
-		ptrsForViewport.fnSetAsAudioListener2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
-	}
-	{
-		methodName := StringNameFromStr("is_audio_listener_2d")
-		defer methodName.Destroy()
-		ptrsForViewport.fnIsAudioListener2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
 		methodName := StringNameFromStr("get_mouse_position")
@@ -375,6 +373,11 @@ func initViewportPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("gui_get_focus_owner")
 		defer methodName.Destroy()
 		ptrsForViewport.fnGuiGetFocusOwner = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2783021301))
+	}
+	{
+		methodName := StringNameFromStr("gui_get_hovered_control")
+		defer methodName.Destroy()
+		ptrsForViewport.fnGuiGetHoveredControl = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2783021301))
 	}
 	{
 		methodName := StringNameFromStr("set_disable_input")
@@ -550,6 +553,21 @@ func initViewportPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_mesh_lod_threshold")
 		defer methodName.Destroy()
 		ptrsForViewport.fnGetMeshLodThreshold = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+	}
+	{
+		methodName := StringNameFromStr("set_as_audio_listener_2d")
+		defer methodName.Destroy()
+		ptrsForViewport.fnSetAsAudioListener2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("is_audio_listener_2d")
+		defer methodName.Destroy()
+		ptrsForViewport.fnIsAudioListener2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
+		methodName := StringNameFromStr("get_camera_2d")
+		defer methodName.Destroy()
+		ptrsForViewport.fnGetCamera2D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3551466917))
 	}
 	{
 		methodName := StringNameFromStr("set_world_3d")
@@ -748,7 +766,8 @@ type ViewportRenderInfoType int
 const (
 	ViewportRenderInfoTypeRenderInfoTypeVisible ViewportRenderInfoType = 0
 	ViewportRenderInfoTypeRenderInfoTypeShadow  ViewportRenderInfoType = 1
-	ViewportRenderInfoTypeRenderInfoTypeMax     ViewportRenderInfoType = 2
+	ViewportRenderInfoTypeRenderInfoTypeCanvas  ViewportRenderInfoType = 2
+	ViewportRenderInfoTypeRenderInfoTypeMax     ViewportRenderInfoType = 3
 )
 
 type ViewportDebugDraw int
@@ -1172,6 +1191,25 @@ func (me *Viewport) GetPhysicsObjectPickingSort() bool {
 	return ret.Get()
 }
 
+func (me *Viewport) SetPhysicsObjectPickingFirstOnly(enable bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetPhysicsObjectPickingFirstOnly), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Viewport) GetPhysicsObjectPickingFirstOnly() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetPhysicsObjectPickingFirstOnly), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
 func (me *Viewport) GetViewportRid() RID {
 	cargs := []gdc.ConstTypePtr{}
 	pinner := runtime.Pinner{}
@@ -1207,35 +1245,6 @@ func (me *Viewport) PushUnhandledInput(event InputEvent, in_local_coords bool) {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnPushUnhandledInput), me.obj, unsafe.SliceData(cargs), nil)
 
-}
-
-func (me *Viewport) GetCamera2D() Camera2D {
-	cargs := []gdc.ConstTypePtr{}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-	ret := NewCamera2D()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetCamera2D), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-	return *ret
-}
-
-func (me *Viewport) SetAsAudioListener2D(enable bool) {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable)}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetAsAudioListener2D), me.obj, unsafe.SliceData(cargs), nil)
-
-}
-
-func (me *Viewport) IsAudioListener2D() bool {
-	cargs := []gdc.ConstTypePtr{}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-	ret := NewBool()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnIsAudioListener2D), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-	return ret.Get()
 }
 
 func (me *Viewport) GetMousePosition() Vector2 {
@@ -1312,6 +1321,16 @@ func (me *Viewport) GuiGetFocusOwner() Control {
 	ret := NewControl()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGuiGetFocusOwner), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *Viewport) GuiGetHoveredControl() Control {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewControl()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGuiGetHoveredControl), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 
@@ -1654,6 +1673,35 @@ func (me *Viewport) GetMeshLodThreshold() float64 {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetMeshLodThreshold), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
+}
+
+func (me *Viewport) SetAsAudioListener2D(enable bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnSetAsAudioListener2D), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Viewport) IsAudioListener2D() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnIsAudioListener2D), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *Viewport) GetCamera2D() Camera2D {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewCamera2D()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForViewport.fnGetCamera2D), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
 }
 
 func (me *Viewport) SetWorld3D(world_3d World3D) {

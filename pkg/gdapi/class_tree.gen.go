@@ -1086,7 +1086,7 @@ func (me *Tree) DisconnectMultiSelected(subs SignalSubscribers, fn TreeMultiSele
 	me.Disconnect(*sig, *subs.remove(fn))
 }
 
-type TreeItemMouseSelectedSignalFn func(position Vector2, mouse_button_index int)
+type TreeItemMouseSelectedSignalFn func(mouse_position Vector2, mouse_button_index int)
 
 func (me *Tree) ConnectItemMouseSelected(subs SignalSubscribers, fn TreeItemMouseSelectedSignalFn) {
 	sig := StringNameFromStr("item_mouse_selected")
@@ -1100,7 +1100,7 @@ func (me *Tree) DisconnectItemMouseSelected(subs SignalSubscribers, fn TreeItemM
 	me.Disconnect(*sig, *subs.remove(fn))
 }
 
-type TreeEmptyClickedSignalFn func(position Vector2, mouse_button_index int)
+type TreeEmptyClickedSignalFn func(click_position Vector2, mouse_button_index int)
 
 func (me *Tree) ConnectEmptyClicked(subs SignalSubscribers, fn TreeEmptyClickedSignalFn) {
 	sig := StringNameFromStr("empty_clicked")

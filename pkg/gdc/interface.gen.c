@@ -26,6 +26,10 @@ void callCallableCustomCreate(GDExtensionInterfaceCallableCustomCreate fn, GDExt
   return fn(rCallable, pCallableCustomInfo);
 }
 
+void callCallableCustomCreate2(GDExtensionInterfaceCallableCustomCreate2 fn, GDExtensionUninitializedTypePtr rCallable, GDExtensionCallableCustomInfo2* pCallableCustomInfo) {
+  return fn(rCallable, pCallableCustomInfo);
+}
+
 void* callCallableCustomGetUserdata(GDExtensionInterfaceCallableCustomGetUserData fn, GDExtensionConstTypePtr pCallable, void* pToken) {
   return fn(pCallable, pToken);
 }
@@ -47,6 +51,10 @@ void callClassdbRegisterExtensionClass(GDExtensionInterfaceClassdbRegisterExtens
 }
 
 void callClassdbRegisterExtensionClass2(GDExtensionInterfaceClassdbRegisterExtensionClass2 fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName, GDExtensionConstStringNamePtr pParentClassName, GDExtensionClassCreationInfo2* pExtensionFuncs) {
+  return fn(pLibrary, pClassName, pParentClassName, pExtensionFuncs);
+}
+
+void callClassdbRegisterExtensionClass3(GDExtensionInterfaceClassdbRegisterExtensionClass3 fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName, GDExtensionConstStringNamePtr pParentClassName, GDExtensionClassCreationInfo3* pExtensionFuncs) {
   return fn(pLibrary, pClassName, pParentClassName, pExtensionFuncs);
 }
 
@@ -76,6 +84,10 @@ void callClassdbRegisterExtensionClassPropertySubgroup(GDExtensionInterfaceClass
 
 void callClassdbRegisterExtensionClassSignal(GDExtensionInterfaceClassdbRegisterExtensionClassSignal fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName, GDExtensionConstStringNamePtr pSignalName, GDExtensionPropertyInfo* pArgumentInfo, GDExtensionInt pArgumentCount) {
   return fn(pLibrary, pClassName, pSignalName, pArgumentInfo, pArgumentCount);
+}
+
+void callClassdbRegisterExtensionClassVirtualMethod(GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName, GDExtensionClassVirtualMethodInfo* pMethodInfo) {
+  return fn(pLibrary, pClassName, pMethodInfo);
 }
 
 void callClassdbUnregisterExtensionClass(GDExtensionInterfaceClassdbUnregisterExtensionClass fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName) {
@@ -150,6 +162,10 @@ void* callMemRealloc(GDExtensionInterfaceMemRealloc fn, void* pPtr, size_t pByte
   return fn(pPtr, pBytes);
 }
 
+void callObjectCallScriptMethod(GDExtensionInterfaceObjectCallScriptMethod fn, GDExtensionObjectPtr pObject, GDExtensionConstStringNamePtr pMethod, const GDExtensionConstVariantPtr* pArgs, GDExtensionInt pArgumentCount, GDExtensionUninitializedVariantPtr rReturn, GDExtensionCallError* rError) {
+  return fn(pObject, pMethod, pArgs, pArgumentCount, rReturn, rError);
+}
+
 GDExtensionObjectPtr callObjectCastTo(GDExtensionInterfaceObjectCastTo fn, GDExtensionConstObjectPtr pObject, void* pClassTag) {
   return fn(pObject, pClassTag);
 }
@@ -180,6 +196,10 @@ GDObjectInstanceID callObjectGetInstanceId(GDExtensionInterfaceObjectGetInstance
 
 GDExtensionScriptInstanceDataPtr callObjectGetScriptInstance(GDExtensionInterfaceObjectGetScriptInstance fn, GDExtensionConstObjectPtr pObject, GDExtensionObjectPtr pLanguage) {
   return fn(pObject, pLanguage);
+}
+
+GDExtensionBool callObjectHasScriptMethod(GDExtensionInterfaceObjectHasScriptMethod fn, GDExtensionConstObjectPtr pObject, GDExtensionConstStringNamePtr pMethod) {
+  return fn(pObject, pMethod);
 }
 
 void callObjectMethodBindCall(GDExtensionInterfaceObjectMethodBindCall fn, GDExtensionMethodBindPtr pMethodBind, GDExtensionObjectPtr pInstance, const GDExtensionConstVariantPtr* pArgs, GDExtensionInt pArgCount, GDExtensionUninitializedVariantPtr rRet, GDExtensionCallError* rError) {
@@ -315,6 +335,10 @@ GDExtensionScriptInstancePtr callScriptInstanceCreate(GDExtensionInterfaceScript
 }
 
 GDExtensionScriptInstancePtr callScriptInstanceCreate2(GDExtensionInterfaceScriptInstanceCreate2 fn, GDExtensionScriptInstanceInfo2* pInfo, GDExtensionScriptInstanceDataPtr pInstanceData) {
+  return fn(pInfo, pInstanceData);
+}
+
+GDExtensionScriptInstancePtr callScriptInstanceCreate3(GDExtensionInterfaceScriptInstanceCreate3 fn, GDExtensionScriptInstanceInfo3* pInfo, GDExtensionScriptInstanceDataPtr pInstanceData) {
   return fn(pInfo, pInstanceData);
 }
 
@@ -656,5 +680,13 @@ int64_t callWorkerThreadPoolAddNativeTask(GDExtensionInterfaceWorkerThreadPoolAd
 
 GDExtensionInt callXmlParserOpenBuffer(GDExtensionInterfaceXmlParserOpenBuffer fn, GDExtensionObjectPtr pInstance, const uint8_t* pBuffer, size_t pSize) {
   return fn(pInstance, pBuffer, pSize);
+}
+
+void callEditorHelpLoadXmlFromUtf8Chars(GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8Chars fn, const char* pData) {
+  return fn(pData);
+}
+
+void callEditorHelpLoadXmlFromUtf8CharsAndLen(GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8CharsAndLen fn, const char* pData, GDExtensionInt pSize) {
+  return fn(pData, pSize);
 }
 

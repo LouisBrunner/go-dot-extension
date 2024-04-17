@@ -35,6 +35,8 @@ type ptrsForLightmapGIList struct {
 	fnGetEnvironmentCustomColor  gdc.MethodBindPtr
 	fnSetEnvironmentCustomEnergy gdc.MethodBindPtr
 	fnGetEnvironmentCustomEnergy gdc.MethodBindPtr
+	fnSetTexelScale              gdc.MethodBindPtr
+	fnGetTexelScale              gdc.MethodBindPtr
 	fnSetMaxTextureSize          gdc.MethodBindPtr
 	fnGetMaxTextureSize          gdc.MethodBindPtr
 	fnSetUseDenoiser             gdc.MethodBindPtr
@@ -156,6 +158,16 @@ func initLightmapGIPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_environment_custom_energy")
 		defer methodName.Destroy()
 		ptrsForLightmapGI.fnGetEnvironmentCustomEnergy = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+	}
+	{
+		methodName := StringNameFromStr("set_texel_scale")
+		defer methodName.Destroy()
+		ptrsForLightmapGI.fnSetTexelScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+	}
+	{
+		methodName := StringNameFromStr("get_texel_scale")
+		defer methodName.Destroy()
+		ptrsForLightmapGI.fnGetTexelScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
 	{
 		methodName := StringNameFromStr("set_max_texture_size")
@@ -494,6 +506,25 @@ func (me *LightmapGI) GetEnvironmentCustomEnergy() float64 {
 	ret := NewFloat()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLightmapGI.fnGetEnvironmentCustomEnergy), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *LightmapGI) SetTexelScale(texel_scale float64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&texel_scale)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLightmapGI.fnSetTexelScale), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *LightmapGI) GetTexelScale() float64 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewFloat()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLightmapGI.fnGetTexelScale), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 

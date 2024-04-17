@@ -55,12 +55,15 @@ type ptrsForTreeItemList struct {
 	fnSetMetadata                          gdc.MethodBindPtr
 	fnGetMetadata                          gdc.MethodBindPtr
 	fnSetCustomDraw                        gdc.MethodBindPtr
+	fnSetCustomDrawCallback                gdc.MethodBindPtr
+	fnGetCustomDrawCallback                gdc.MethodBindPtr
 	fnSetCollapsed                         gdc.MethodBindPtr
 	fnIsCollapsed                          gdc.MethodBindPtr
 	fnSetCollapsedRecursive                gdc.MethodBindPtr
 	fnIsAnyCollapsed                       gdc.MethodBindPtr
 	fnSetVisible                           gdc.MethodBindPtr
 	fnIsVisible                            gdc.MethodBindPtr
+	fnIsVisibleInTree                      gdc.MethodBindPtr
 	fnUncollapseTree                       gdc.MethodBindPtr
 	fnSetCustomMinimumHeight               gdc.MethodBindPtr
 	fnGetCustomMinimumHeight               gdc.MethodBindPtr
@@ -88,6 +91,7 @@ type ptrsForTreeItemList struct {
 	fnGetButtonTooltipText                 gdc.MethodBindPtr
 	fnGetButtonId                          gdc.MethodBindPtr
 	fnGetButtonById                        gdc.MethodBindPtr
+	fnGetButtonColor                       gdc.MethodBindPtr
 	fnGetButton                            gdc.MethodBindPtr
 	fnSetButtonTooltipText                 gdc.MethodBindPtr
 	fnSetButton                            gdc.MethodBindPtr
@@ -331,6 +335,16 @@ func initTreeItemPtrs(iface gdc.Interface) {
 		ptrsForTreeItem.fnSetCustomDraw = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 272420368))
 	}
 	{
+		methodName := StringNameFromStr("set_custom_draw_callback")
+		defer methodName.Destroy()
+		ptrsForTreeItem.fnSetCustomDrawCallback = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 957362965))
+	}
+	{
+		methodName := StringNameFromStr("get_custom_draw_callback")
+		defer methodName.Destroy()
+		ptrsForTreeItem.fnGetCustomDrawCallback = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1317077508))
+	}
+	{
 		methodName := StringNameFromStr("set_collapsed")
 		defer methodName.Destroy()
 		ptrsForTreeItem.fnSetCollapsed = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
@@ -359,6 +373,11 @@ func initTreeItemPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("is_visible")
 		defer methodName.Destroy()
 		ptrsForTreeItem.fnIsVisible = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+	}
+	{
+		methodName := StringNameFromStr("is_visible_in_tree")
+		defer methodName.Destroy()
+		ptrsForTreeItem.fnIsVisibleInTree = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
 		methodName := StringNameFromStr("uncollapse_tree")
@@ -494,6 +513,11 @@ func initTreeItemPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_button_by_id")
 		defer methodName.Destroy()
 		ptrsForTreeItem.fnGetButtonById = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3175239445))
+	}
+	{
+		methodName := StringNameFromStr("get_button_color")
+		defer methodName.Destroy()
+		ptrsForTreeItem.fnGetButtonColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2165839948))
 	}
 	{
 		methodName := StringNameFromStr("get_button")
@@ -1110,6 +1134,26 @@ func (me *TreeItem) SetCustomDraw(column int64, object Object, callback StringNa
 
 }
 
+func (me *TreeItem) SetCustomDrawCallback(column int64, callback Callable) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), callback.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTreeItem.fnSetCustomDrawCallback), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *TreeItem) GetCustomDrawCallback(column int64) Callable {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewCallable()
+	pinner.Pin(&column)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTreeItem.fnGetCustomDrawCallback), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
 func (me *TreeItem) SetCollapsed(enable bool) {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable)}
 	pinner := runtime.Pinner{}
@@ -1165,6 +1209,16 @@ func (me *TreeItem) IsVisible() bool {
 	ret := NewBool()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTreeItem.fnIsVisible), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *TreeItem) IsVisibleInTree() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTreeItem.fnIsVisibleInTree), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 
@@ -1437,6 +1491,18 @@ func (me *TreeItem) GetButtonById(column int64, id int64) int64 {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTreeItem.fnGetButtonById), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
+}
+
+func (me *TreeItem) GetButtonColor(column int64, id int64) Color {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&column), gdc.ConstTypePtr(&id)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewColor()
+	pinner.Pin(&column)
+	pinner.Pin(&id)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTreeItem.fnGetButtonColor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
 }
 
 func (me *TreeItem) GetButton(column int64, button_index int64) Texture2D {

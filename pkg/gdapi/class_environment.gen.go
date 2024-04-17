@@ -139,6 +139,8 @@ type ptrsForEnvironmentList struct {
 	fnGetGlowMap                                  gdc.MethodBindPtr
 	fnSetFogEnabled                               gdc.MethodBindPtr
 	fnIsFogEnabled                                gdc.MethodBindPtr
+	fnSetFogMode                                  gdc.MethodBindPtr
+	fnGetFogMode                                  gdc.MethodBindPtr
 	fnSetFogLightColor                            gdc.MethodBindPtr
 	fnGetFogLightColor                            gdc.MethodBindPtr
 	fnSetFogLightEnergy                           gdc.MethodBindPtr
@@ -155,6 +157,12 @@ type ptrsForEnvironmentList struct {
 	fnGetFogAerialPerspective                     gdc.MethodBindPtr
 	fnSetFogSkyAffect                             gdc.MethodBindPtr
 	fnGetFogSkyAffect                             gdc.MethodBindPtr
+	fnSetFogDepthCurve                            gdc.MethodBindPtr
+	fnGetFogDepthCurve                            gdc.MethodBindPtr
+	fnSetFogDepthBegin                            gdc.MethodBindPtr
+	fnGetFogDepthBegin                            gdc.MethodBindPtr
+	fnSetFogDepthEnd                              gdc.MethodBindPtr
+	fnGetFogDepthEnd                              gdc.MethodBindPtr
 	fnSetVolumetricFogEnabled                     gdc.MethodBindPtr
 	fnIsVolumetricFogEnabled                      gdc.MethodBindPtr
 	fnSetVolumetricFogEmission                    gdc.MethodBindPtr
@@ -820,6 +828,16 @@ func initEnvironmentPtrs(iface gdc.Interface) {
 		ptrsForEnvironment.fnIsFogEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
+		methodName := StringNameFromStr("set_fog_mode")
+		defer methodName.Destroy()
+		ptrsForEnvironment.fnSetFogMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3059806579))
+	}
+	{
+		methodName := StringNameFromStr("get_fog_mode")
+		defer methodName.Destroy()
+		ptrsForEnvironment.fnGetFogMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2456062483))
+	}
+	{
 		methodName := StringNameFromStr("set_fog_light_color")
 		defer methodName.Destroy()
 		ptrsForEnvironment.fnSetFogLightColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2920490490))
@@ -898,6 +916,36 @@ func initEnvironmentPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_fog_sky_affect")
 		defer methodName.Destroy()
 		ptrsForEnvironment.fnGetFogSkyAffect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+	}
+	{
+		methodName := StringNameFromStr("set_fog_depth_curve")
+		defer methodName.Destroy()
+		ptrsForEnvironment.fnSetFogDepthCurve = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+	}
+	{
+		methodName := StringNameFromStr("get_fog_depth_curve")
+		defer methodName.Destroy()
+		ptrsForEnvironment.fnGetFogDepthCurve = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+	}
+	{
+		methodName := StringNameFromStr("set_fog_depth_begin")
+		defer methodName.Destroy()
+		ptrsForEnvironment.fnSetFogDepthBegin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+	}
+	{
+		methodName := StringNameFromStr("get_fog_depth_begin")
+		defer methodName.Destroy()
+		ptrsForEnvironment.fnGetFogDepthBegin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+	}
+	{
+		methodName := StringNameFromStr("set_fog_depth_end")
+		defer methodName.Destroy()
+		ptrsForEnvironment.fnSetFogDepthEnd = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+	}
+	{
+		methodName := StringNameFromStr("get_fog_depth_end")
+		defer methodName.Destroy()
+		ptrsForEnvironment.fnGetFogDepthEnd = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
 	{
 		methodName := StringNameFromStr("set_volumetric_fog_enabled")
@@ -1148,6 +1196,13 @@ const (
 	EnvironmentGlowBlendModeGlowBlendModeSoftlight EnvironmentGlowBlendMode = 2
 	EnvironmentGlowBlendModeGlowBlendModeReplace   EnvironmentGlowBlendMode = 3
 	EnvironmentGlowBlendModeGlowBlendModeMix       EnvironmentGlowBlendMode = 4
+)
+
+type EnvironmentFogMode int
+
+const (
+	EnvironmentFogModeFogModeExponential EnvironmentFogMode = 0
+	EnvironmentFogModeFogModeDepth       EnvironmentFogMode = 1
 )
 
 type EnvironmentSDFGIYScale int
@@ -2351,6 +2406,25 @@ func (me *Environment) IsFogEnabled() bool {
 	return ret.Get()
 }
 
+func (me *Environment) SetFogMode(mode EnvironmentFogMode) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEnvironment.fnSetFogMode), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Environment) GetFogMode() EnvironmentFogMode {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	var ret EnvironmentFogMode
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEnvironment.fnGetFogMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+	return ret
+}
+
 func (me *Environment) SetFogLightColor(light_color Color) {
 	cargs := []gdc.ConstTypePtr{light_color.AsCTypePtr()}
 	pinner := runtime.Pinner{}
@@ -2500,6 +2574,63 @@ func (me *Environment) GetFogSkyAffect() float64 {
 	ret := NewFloat()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEnvironment.fnGetFogSkyAffect), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *Environment) SetFogDepthCurve(curve float64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&curve)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEnvironment.fnSetFogDepthCurve), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Environment) GetFogDepthCurve() float64 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewFloat()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEnvironment.fnGetFogDepthCurve), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *Environment) SetFogDepthBegin(begin float64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&begin)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEnvironment.fnSetFogDepthBegin), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Environment) GetFogDepthBegin() float64 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewFloat()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEnvironment.fnGetFogDepthBegin), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *Environment) SetFogDepthEnd(end float64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&end)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEnvironment.fnSetFogDepthEnd), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Environment) GetFogDepthEnd() float64 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewFloat()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEnvironment.fnGetFogDepthEnd), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 

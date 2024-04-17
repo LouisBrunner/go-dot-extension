@@ -15,25 +15,29 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForNavigationObstacle3DList struct {
-	fnGetRid                 gdc.MethodBindPtr
-	fnSetAvoidanceEnabled    gdc.MethodBindPtr
-	fnGetAvoidanceEnabled    gdc.MethodBindPtr
-	fnSetNavigationMap       gdc.MethodBindPtr
-	fnGetNavigationMap       gdc.MethodBindPtr
-	fnSetRadius              gdc.MethodBindPtr
-	fnGetRadius              gdc.MethodBindPtr
-	fnSetHeight              gdc.MethodBindPtr
-	fnGetHeight              gdc.MethodBindPtr
-	fnSetVelocity            gdc.MethodBindPtr
-	fnGetVelocity            gdc.MethodBindPtr
-	fnSetVertices            gdc.MethodBindPtr
-	fnGetVertices            gdc.MethodBindPtr
-	fnSetAvoidanceLayers     gdc.MethodBindPtr
-	fnGetAvoidanceLayers     gdc.MethodBindPtr
-	fnSetAvoidanceLayerValue gdc.MethodBindPtr
-	fnGetAvoidanceLayerValue gdc.MethodBindPtr
-	fnSetUse3DAvoidance      gdc.MethodBindPtr
-	fnGetUse3DAvoidance      gdc.MethodBindPtr
+	fnGetRid                  gdc.MethodBindPtr
+	fnSetAvoidanceEnabled     gdc.MethodBindPtr
+	fnGetAvoidanceEnabled     gdc.MethodBindPtr
+	fnSetNavigationMap        gdc.MethodBindPtr
+	fnGetNavigationMap        gdc.MethodBindPtr
+	fnSetRadius               gdc.MethodBindPtr
+	fnGetRadius               gdc.MethodBindPtr
+	fnSetHeight               gdc.MethodBindPtr
+	fnGetHeight               gdc.MethodBindPtr
+	fnSetVelocity             gdc.MethodBindPtr
+	fnGetVelocity             gdc.MethodBindPtr
+	fnSetVertices             gdc.MethodBindPtr
+	fnGetVertices             gdc.MethodBindPtr
+	fnSetAvoidanceLayers      gdc.MethodBindPtr
+	fnGetAvoidanceLayers      gdc.MethodBindPtr
+	fnSetAvoidanceLayerValue  gdc.MethodBindPtr
+	fnGetAvoidanceLayerValue  gdc.MethodBindPtr
+	fnSetUse3DAvoidance       gdc.MethodBindPtr
+	fnGetUse3DAvoidance       gdc.MethodBindPtr
+	fnSetAffectNavigationMesh gdc.MethodBindPtr
+	fnGetAffectNavigationMesh gdc.MethodBindPtr
+	fnSetCarveNavigationMesh  gdc.MethodBindPtr
+	fnGetCarveNavigationMesh  gdc.MethodBindPtr
 }
 
 var ptrsForNavigationObstacle3D ptrsForNavigationObstacle3DList
@@ -136,6 +140,26 @@ func initNavigationObstacle3DPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_use_3d_avoidance")
 		defer methodName.Destroy()
 		ptrsForNavigationObstacle3D.fnGetUse3DAvoidance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
+		methodName := StringNameFromStr("set_affect_navigation_mesh")
+		defer methodName.Destroy()
+		ptrsForNavigationObstacle3D.fnSetAffectNavigationMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("get_affect_navigation_mesh")
+		defer methodName.Destroy()
+		ptrsForNavigationObstacle3D.fnGetAffectNavigationMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
+		methodName := StringNameFromStr("set_carve_navigation_mesh")
+		defer methodName.Destroy()
+		ptrsForNavigationObstacle3D.fnSetCarveNavigationMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("get_carve_navigation_mesh")
+		defer methodName.Destroy()
+		ptrsForNavigationObstacle3D.fnGetCarveNavigationMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 
 }
@@ -353,6 +377,44 @@ func (me *NavigationObstacle3D) GetUse3DAvoidance() bool {
 	ret := NewBool()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationObstacle3D.fnGetUse3DAvoidance), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *NavigationObstacle3D) SetAffectNavigationMesh(enabled bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationObstacle3D.fnSetAffectNavigationMesh), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *NavigationObstacle3D) GetAffectNavigationMesh() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationObstacle3D.fnGetAffectNavigationMesh), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *NavigationObstacle3D) SetCarveNavigationMesh(enabled bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationObstacle3D.fnSetCarveNavigationMesh), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *NavigationObstacle3D) GetCarveNavigationMesh() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationObstacle3D.fnGetCarveNavigationMesh), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 

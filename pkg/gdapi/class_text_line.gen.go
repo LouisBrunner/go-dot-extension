@@ -37,6 +37,8 @@ type ptrsForTextLineList struct {
 	fnGetFlags                  gdc.MethodBindPtr
 	fnSetTextOverrunBehavior    gdc.MethodBindPtr
 	fnGetTextOverrunBehavior    gdc.MethodBindPtr
+	fnSetEllipsisChar           gdc.MethodBindPtr
+	fnGetEllipsisChar           gdc.MethodBindPtr
 	fnGetObjects                gdc.MethodBindPtr
 	fnGetObjectRect             gdc.MethodBindPtr
 	fnGetSize                   gdc.MethodBindPtr
@@ -166,6 +168,16 @@ func initTextLinePtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_text_overrun_behavior")
 		defer methodName.Destroy()
 		ptrsForTextLine.fnGetTextOverrunBehavior = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3779142101))
+	}
+	{
+		methodName := StringNameFromStr("set_ellipsis_char")
+		defer methodName.Destroy()
+		ptrsForTextLine.fnSetEllipsisChar = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+	}
+	{
+		methodName := StringNameFromStr("get_ellipsis_char")
+		defer methodName.Destroy()
+		ptrsForTextLine.fnGetEllipsisChar = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
 	{
 		methodName := StringNameFromStr("get_objects")
@@ -477,6 +489,25 @@ func (me *TextLine) GetTextOverrunBehavior() TextServerOverrunBehavior {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextLine.fnGetTextOverrunBehavior), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
 	return ret
+}
+
+func (me *TextLine) SetEllipsisChar(char String) {
+	cargs := []gdc.ConstTypePtr{char.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextLine.fnSetEllipsisChar), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *TextLine) GetEllipsisChar() String {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewString()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextLine.fnGetEllipsisChar), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
 }
 
 func (me *TextLine) GetObjects() Array {

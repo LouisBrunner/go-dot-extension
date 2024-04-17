@@ -15,11 +15,8 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForGDExtensionList struct {
-	fnOpenLibrary                          gdc.MethodBindPtr
-	fnCloseLibrary                         gdc.MethodBindPtr
 	fnIsLibraryOpen                        gdc.MethodBindPtr
 	fnGetMinimumLibraryInitializationLevel gdc.MethodBindPtr
-	fnInitializeLibrary                    gdc.MethodBindPtr
 }
 
 var ptrsForGDExtension ptrsForGDExtensionList
@@ -71,25 +68,6 @@ func (me *GDExtension) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func (me *GDExtension) OpenLibrary(path String, entry_symbol String) Error {
-	cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), entry_symbol.AsCTypePtr()}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-	var ret Error
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGDExtension.fnOpenLibrary), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
-	return ret
-}
-
-func (me *GDExtension) CloseLibrary() {
-	cargs := []gdc.ConstTypePtr{}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGDExtension.fnCloseLibrary), me.obj, unsafe.SliceData(cargs), nil)
-
-}
-
 func (me *GDExtension) IsLibraryOpen() bool {
 	cargs := []gdc.ConstTypePtr{}
 	pinner := runtime.Pinner{}
@@ -108,15 +86,6 @@ func (me *GDExtension) GetMinimumLibraryInitializationLevel() GDExtensionInitial
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGDExtension.fnGetMinimumLibraryInitializationLevel), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
 	return ret
-}
-
-func (me *GDExtension) InitializeLibrary(level GDExtensionInitializationLevel) {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&level)}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGDExtension.fnInitializeLibrary), me.obj, unsafe.SliceData(cargs), nil)
-
 }
 
 // Signals

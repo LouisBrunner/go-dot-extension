@@ -23,6 +23,7 @@ type ptrsForWebXRInterfaceList struct {
 	fnSetOptionalFeatures             gdc.MethodBindPtr
 	fnGetOptionalFeatures             gdc.MethodBindPtr
 	fnGetReferenceSpaceType           gdc.MethodBindPtr
+	fnGetEnabledFeatures              gdc.MethodBindPtr
 	fnSetRequestedReferenceSpaceTypes gdc.MethodBindPtr
 	fnGetRequestedReferenceSpaceTypes gdc.MethodBindPtr
 	fnIsInputSourceActive             gdc.MethodBindPtr
@@ -79,6 +80,11 @@ func initWebXRInterfacePtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_reference_space_type")
 		defer methodName.Destroy()
 		ptrsForWebXRInterface.fnGetReferenceSpaceType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+	}
+	{
+		methodName := StringNameFromStr("get_enabled_features")
+		defer methodName.Destroy()
+		ptrsForWebXRInterface.fnGetEnabledFeatures = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
 	{
 		methodName := StringNameFromStr("set_requested_reference_space_types")
@@ -244,6 +250,16 @@ func (me *WebXRInterface) GetReferenceSpaceType() String {
 	ret := NewString()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnGetReferenceSpaceType), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *WebXRInterface) GetEnabledFeatures() String {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewString()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWebXRInterface.fnGetEnabledFeatures), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 

@@ -15,19 +15,22 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForResourceList struct {
-	fnXSetupLocalToScene gdc.MethodBindPtr
-	fnSetPath            gdc.MethodBindPtr
-	fnTakeOverPath       gdc.MethodBindPtr
-	fnGetPath            gdc.MethodBindPtr
-	fnSetName            gdc.MethodBindPtr
-	fnGetName            gdc.MethodBindPtr
-	fnGetRid             gdc.MethodBindPtr
-	fnSetLocalToScene    gdc.MethodBindPtr
-	fnIsLocalToScene     gdc.MethodBindPtr
-	fnGetLocalScene      gdc.MethodBindPtr
-	fnSetupLocalToScene  gdc.MethodBindPtr
-	fnEmitChanged        gdc.MethodBindPtr
-	fnDuplicate          gdc.MethodBindPtr
+	fnXSetupLocalToScene    gdc.MethodBindPtr
+	fnSetPath               gdc.MethodBindPtr
+	fnTakeOverPath          gdc.MethodBindPtr
+	fnGetPath               gdc.MethodBindPtr
+	fnSetName               gdc.MethodBindPtr
+	fnGetName               gdc.MethodBindPtr
+	fnGetRid                gdc.MethodBindPtr
+	fnSetLocalToScene       gdc.MethodBindPtr
+	fnIsLocalToScene        gdc.MethodBindPtr
+	fnGetLocalScene         gdc.MethodBindPtr
+	fnSetupLocalToScene     gdc.MethodBindPtr
+	fnGenerateSceneUniqueId gdc.MethodBindPtr
+	fnSetSceneUniqueId      gdc.MethodBindPtr
+	fnGetSceneUniqueId      gdc.MethodBindPtr
+	fnEmitChanged           gdc.MethodBindPtr
+	fnDuplicate             gdc.MethodBindPtr
 }
 
 var ptrsForResource ptrsForResourceList
@@ -85,6 +88,21 @@ func initResourcePtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("setup_local_to_scene")
 		defer methodName.Destroy()
 		ptrsForResource.fnSetupLocalToScene = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+	}
+	{
+		methodName := StringNameFromStr("generate_scene_unique_id")
+		defer methodName.Destroy()
+		ptrsForResource.fnGenerateSceneUniqueId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2841200299))
+	}
+	{
+		methodName := StringNameFromStr("set_scene_unique_id")
+		defer methodName.Destroy()
+		ptrsForResource.fnSetSceneUniqueId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+	}
+	{
+		methodName := StringNameFromStr("get_scene_unique_id")
+		defer methodName.Destroy()
+		ptrsForResource.fnGetSceneUniqueId = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
 	{
 		methodName := StringNameFromStr("emit_changed")
@@ -226,6 +244,35 @@ func (me *Resource) SetupLocalToScene() {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResource.fnSetupLocalToScene), me.obj, unsafe.SliceData(cargs), nil)
 
+}
+
+func ResourceGenerateSceneUniqueId() String {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewString()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResource.fnGenerateSceneUniqueId), nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *Resource) SetSceneUniqueId(id String) {
+	cargs := []gdc.ConstTypePtr{id.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResource.fnSetSceneUniqueId), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Resource) GetSceneUniqueId() String {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewString()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForResource.fnGetSceneUniqueId), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
 }
 
 func (me *Resource) EmitChanged() {

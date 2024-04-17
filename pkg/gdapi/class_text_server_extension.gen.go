@@ -47,6 +47,8 @@ type ptrsForTextServerExtensionList struct {
 	fnXFontGetStretch                         gdc.MethodBindPtr
 	fnXFontSetAntialiasing                    gdc.MethodBindPtr
 	fnXFontGetAntialiasing                    gdc.MethodBindPtr
+	fnXFontSetDisableEmbeddedBitmaps          gdc.MethodBindPtr
+	fnXFontGetDisableEmbeddedBitmaps          gdc.MethodBindPtr
 	fnXFontSetGenerateMipmaps                 gdc.MethodBindPtr
 	fnXFontGetGenerateMipmaps                 gdc.MethodBindPtr
 	fnXFontSetMultichannelSignedDistanceField gdc.MethodBindPtr
@@ -71,6 +73,8 @@ type ptrsForTextServerExtensionList struct {
 	fnXFontGetEmbolden                        gdc.MethodBindPtr
 	fnXFontSetSpacing                         gdc.MethodBindPtr
 	fnXFontGetSpacing                         gdc.MethodBindPtr
+	fnXFontSetBaselineOffset                  gdc.MethodBindPtr
+	fnXFontGetBaselineOffset                  gdc.MethodBindPtr
 	fnXFontSetTransform                       gdc.MethodBindPtr
 	fnXFontGetTransform                       gdc.MethodBindPtr
 	fnXFontSetVariationCoordinates            gdc.MethodBindPtr
@@ -152,6 +156,8 @@ type ptrsForTextServerExtensionList struct {
 	fnXShapedTextSetBidiOverride              gdc.MethodBindPtr
 	fnXShapedTextSetCustomPunctuation         gdc.MethodBindPtr
 	fnXShapedTextGetCustomPunctuation         gdc.MethodBindPtr
+	fnXShapedTextSetCustomEllipsis            gdc.MethodBindPtr
+	fnXShapedTextGetCustomEllipsis            gdc.MethodBindPtr
 	fnXShapedTextSetOrientation               gdc.MethodBindPtr
 	fnXShapedTextGetOrientation               gdc.MethodBindPtr
 	fnXShapedTextSetPreserveInvalid           gdc.MethodBindPtr
@@ -188,6 +194,8 @@ type ptrsForTextServerExtensionList struct {
 	fnXShapedTextOverrunTrimToWidth           gdc.MethodBindPtr
 	fnXShapedTextGetObjects                   gdc.MethodBindPtr
 	fnXShapedTextGetObjectRect                gdc.MethodBindPtr
+	fnXShapedTextGetObjectRange               gdc.MethodBindPtr
+	fnXShapedTextGetObjectGlyph               gdc.MethodBindPtr
 	fnXShapedTextGetSize                      gdc.MethodBindPtr
 	fnXShapedTextGetAscent                    gdc.MethodBindPtr
 	fnXShapedTextGetDescent                   gdc.MethodBindPtr
@@ -219,6 +227,7 @@ type ptrsForTextServerExtensionList struct {
 	fnXSpoofCheck                             gdc.MethodBindPtr
 	fnXStringToUpper                          gdc.MethodBindPtr
 	fnXStringToLower                          gdc.MethodBindPtr
+	fnXStringToTitle                          gdc.MethodBindPtr
 	fnXParseStructuredText                    gdc.MethodBindPtr
 	fnXCleanup                                gdc.MethodBindPtr
 }

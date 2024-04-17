@@ -41,6 +41,8 @@ type ptrsForTextParagraphList struct {
 	fnGetJustificationFlags     gdc.MethodBindPtr
 	fnSetTextOverrunBehavior    gdc.MethodBindPtr
 	fnGetTextOverrunBehavior    gdc.MethodBindPtr
+	fnSetEllipsisChar           gdc.MethodBindPtr
+	fnGetEllipsisChar           gdc.MethodBindPtr
 	fnSetWidth                  gdc.MethodBindPtr
 	fnGetWidth                  gdc.MethodBindPtr
 	fnGetNonWrappedSize         gdc.MethodBindPtr
@@ -206,6 +208,16 @@ func initTextParagraphPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_text_overrun_behavior")
 		defer methodName.Destroy()
 		ptrsForTextParagraph.fnGetTextOverrunBehavior = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3779142101))
+	}
+	{
+		methodName := StringNameFromStr("set_ellipsis_char")
+		defer methodName.Destroy()
+		ptrsForTextParagraph.fnSetEllipsisChar = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+	}
+	{
+		methodName := StringNameFromStr("get_ellipsis_char")
+		defer methodName.Destroy()
+		ptrsForTextParagraph.fnGetEllipsisChar = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
 	{
 		methodName := StringNameFromStr("set_width")
@@ -636,6 +648,25 @@ func (me *TextParagraph) GetTextOverrunBehavior() TextServerOverrunBehavior {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextParagraph.fnGetTextOverrunBehavior), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
 	return ret
+}
+
+func (me *TextParagraph) SetEllipsisChar(char String) {
+	cargs := []gdc.ConstTypePtr{char.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextParagraph.fnSetEllipsisChar), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *TextParagraph) GetEllipsisChar() String {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewString()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextParagraph.fnGetEllipsisChar), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
 }
 
 func (me *TextParagraph) SetWidth(width float64) {

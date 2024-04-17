@@ -503,32 +503,32 @@ func initControlPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("get_theme_icon")
 		defer methodName.Destroy()
-		ptrsForControl.fnGetThemeIcon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3163973443))
+		ptrsForControl.fnGetThemeIcon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2336455395))
 	}
 	{
 		methodName := StringNameFromStr("get_theme_stylebox")
 		defer methodName.Destroy()
-		ptrsForControl.fnGetThemeStylebox = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 604739069))
+		ptrsForControl.fnGetThemeStylebox = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2759935355))
 	}
 	{
 		methodName := StringNameFromStr("get_theme_font")
 		defer methodName.Destroy()
-		ptrsForControl.fnGetThemeFont = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2826986490))
+		ptrsForControl.fnGetThemeFont = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 387378635))
 	}
 	{
 		methodName := StringNameFromStr("get_theme_font_size")
 		defer methodName.Destroy()
-		ptrsForControl.fnGetThemeFontSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1327056374))
+		ptrsForControl.fnGetThemeFontSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 229578101))
 	}
 	{
 		methodName := StringNameFromStr("get_theme_color")
 		defer methodName.Destroy()
-		ptrsForControl.fnGetThemeColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2798751242))
+		ptrsForControl.fnGetThemeColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2377051548))
 	}
 	{
 		methodName := StringNameFromStr("get_theme_constant")
 		defer methodName.Destroy()
-		ptrsForControl.fnGetThemeConstant = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1327056374))
+		ptrsForControl.fnGetThemeConstant = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 229578101))
 	}
 	{
 		methodName := StringNameFromStr("has_theme_icon_override")
@@ -563,32 +563,32 @@ func initControlPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("has_theme_icon")
 		defer methodName.Destroy()
-		ptrsForControl.fnHasThemeIcon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 866386512))
+		ptrsForControl.fnHasThemeIcon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1187511791))
 	}
 	{
 		methodName := StringNameFromStr("has_theme_stylebox")
 		defer methodName.Destroy()
-		ptrsForControl.fnHasThemeStylebox = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 866386512))
+		ptrsForControl.fnHasThemeStylebox = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1187511791))
 	}
 	{
 		methodName := StringNameFromStr("has_theme_font")
 		defer methodName.Destroy()
-		ptrsForControl.fnHasThemeFont = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 866386512))
+		ptrsForControl.fnHasThemeFont = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1187511791))
 	}
 	{
 		methodName := StringNameFromStr("has_theme_font_size")
 		defer methodName.Destroy()
-		ptrsForControl.fnHasThemeFontSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 866386512))
+		ptrsForControl.fnHasThemeFontSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1187511791))
 	}
 	{
 		methodName := StringNameFromStr("has_theme_color")
 		defer methodName.Destroy()
-		ptrsForControl.fnHasThemeColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 866386512))
+		ptrsForControl.fnHasThemeColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1187511791))
 	}
 	{
 		methodName := StringNameFromStr("has_theme_constant")
 		defer methodName.Destroy()
-		ptrsForControl.fnHasThemeConstant = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 866386512))
+		ptrsForControl.fnHasThemeConstant = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1187511791))
 	}
 	{
 		methodName := StringNameFromStr("get_theme_default_base_scale")

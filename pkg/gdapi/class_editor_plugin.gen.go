@@ -99,12 +99,12 @@ func initEditorPluginPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("add_control_to_bottom_panel")
 		defer methodName.Destroy()
-		ptrsForEditorPlugin.fnAddControlToBottomPanel = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3526039376))
+		ptrsForEditorPlugin.fnAddControlToBottomPanel = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 111032269))
 	}
 	{
 		methodName := StringNameFromStr("add_control_to_dock")
 		defer methodName.Destroy()
-		ptrsForEditorPlugin.fnAddControlToDock = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3354871258))
+		ptrsForEditorPlugin.fnAddControlToDock = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2994930786))
 	}
 	{
 		methodName := StringNameFromStr("remove_control_from_docks")
@@ -396,8 +396,8 @@ func (me *EditorPlugin) AddControlToContainer(container EditorPluginCustomContro
 
 }
 
-func (me *EditorPlugin) AddControlToBottomPanel(control Control, title String) Button {
-	cargs := []gdc.ConstTypePtr{control.AsCTypePtr(), title.AsCTypePtr()}
+func (me *EditorPlugin) AddControlToBottomPanel(control Control, title String, shortcut Shortcut) Button {
+	cargs := []gdc.ConstTypePtr{control.AsCTypePtr(), title.AsCTypePtr(), shortcut.AsCTypePtr()}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewButton()
@@ -406,8 +406,8 @@ func (me *EditorPlugin) AddControlToBottomPanel(control Control, title String) B
 	return *ret
 }
 
-func (me *EditorPlugin) AddControlToDock(slot EditorPluginDockSlot, control Control) {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&slot), control.AsCTypePtr()}
+func (me *EditorPlugin) AddControlToDock(slot EditorPluginDockSlot, control Control, shortcut Shortcut) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&slot), control.AsCTypePtr(), shortcut.AsCTypePtr()}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 
@@ -844,6 +844,20 @@ func (me *EditorPlugin) ConnectResourceSaved(subs SignalSubscribers, fn EditorPl
 
 func (me *EditorPlugin) DisconnectResourceSaved(subs SignalSubscribers, fn EditorPluginResourceSavedSignalFn) {
 	sig := StringNameFromStr("resource_saved")
+	defer sig.Destroy()
+	me.Disconnect(*sig, *subs.remove(fn))
+}
+
+type EditorPluginSceneSavedSignalFn func(filepath String)
+
+func (me *EditorPlugin) ConnectSceneSaved(subs SignalSubscribers, fn EditorPluginSceneSavedSignalFn) {
+	sig := StringNameFromStr("scene_saved")
+	defer sig.Destroy()
+	me.Connect(*sig, subs.add(fn), 0)
+}
+
+func (me *EditorPlugin) DisconnectSceneSaved(subs SignalSubscribers, fn EditorPluginSceneSavedSignalFn) {
+	sig := StringNameFromStr("scene_saved")
 	defer sig.Destroy()
 	me.Disconnect(*sig, *subs.remove(fn))
 }

@@ -26,6 +26,8 @@ type ptrsForTabContainerList struct {
 	fnGetTabControl              gdc.MethodBindPtr
 	fnSetTabAlignment            gdc.MethodBindPtr
 	fnGetTabAlignment            gdc.MethodBindPtr
+	fnSetTabsPosition            gdc.MethodBindPtr
+	fnGetTabsPosition            gdc.MethodBindPtr
 	fnSetClipTabs                gdc.MethodBindPtr
 	fnGetClipTabs                gdc.MethodBindPtr
 	fnSetTabsVisible             gdc.MethodBindPtr
@@ -56,6 +58,8 @@ type ptrsForTabContainerList struct {
 	fnGetUseHiddenTabsForMinSize gdc.MethodBindPtr
 	fnSetTabFocusMode            gdc.MethodBindPtr
 	fnGetTabFocusMode            gdc.MethodBindPtr
+	fnSetDeselectEnabled         gdc.MethodBindPtr
+	fnGetDeselectEnabled         gdc.MethodBindPtr
 }
 
 var ptrsForTabContainer ptrsForTabContainerList
@@ -118,6 +122,16 @@ func initTabContainerPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_tab_alignment")
 		defer methodName.Destroy()
 		ptrsForTabContainer.fnGetTabAlignment = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2178122193))
+	}
+	{
+		methodName := StringNameFromStr("set_tabs_position")
+		defer methodName.Destroy()
+		ptrsForTabContainer.fnSetTabsPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 256673370))
+	}
+	{
+		methodName := StringNameFromStr("get_tabs_position")
+		defer methodName.Destroy()
+		ptrsForTabContainer.fnGetTabsPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 919937023))
 	}
 	{
 		methodName := StringNameFromStr("set_clip_tabs")
@@ -269,6 +283,16 @@ func initTabContainerPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForTabContainer.fnGetTabFocusMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2132829277))
 	}
+	{
+		methodName := StringNameFromStr("set_deselect_enabled")
+		defer methodName.Destroy()
+		ptrsForTabContainer.fnSetDeselectEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("get_deselect_enabled")
+		defer methodName.Destroy()
+		ptrsForTabContainer.fnGetDeselectEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
 
 }
 
@@ -291,6 +315,14 @@ func NewTabContainer() *TabContainer {
 }
 
 // Enums
+
+type TabContainerTabPosition int
+
+const (
+	TabContainerTabPositionPositionTop    TabContainerTabPosition = 0
+	TabContainerTabPositionPositionBottom TabContainerTabPosition = 1
+	TabContainerTabPositionPositionMax    TabContainerTabPosition = 2
+)
 
 func (me *TabContainer) Type() gdc.VariantType {
 	return gdc.VariantTypeObject
@@ -412,6 +444,25 @@ func (me *TabContainer) GetTabAlignment() TabBarAlignmentMode {
 	var ret TabBarAlignmentMode
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTabContainer.fnGetTabAlignment), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+	return ret
+}
+
+func (me *TabContainer) SetTabsPosition(tabs_position TabContainerTabPosition) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&tabs_position)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTabContainer.fnSetTabsPosition), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *TabContainer) GetTabsPosition() TabContainerTabPosition {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	var ret TabContainerTabPosition
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTabContainer.fnGetTabsPosition), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
 	return ret
 }
 
@@ -705,6 +756,25 @@ func (me *TabContainer) GetTabFocusMode() ControlFocusMode {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTabContainer.fnGetTabFocusMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
 	return ret
+}
+
+func (me *TabContainer) SetDeselectEnabled(enabled bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTabContainer.fnSetDeselectEnabled), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *TabContainer) GetDeselectEnabled() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTabContainer.fnGetDeselectEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
 }
 
 // Properties

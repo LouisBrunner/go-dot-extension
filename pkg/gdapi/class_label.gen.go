@@ -37,6 +37,8 @@ type ptrsForLabelList struct {
 	fnGetTabStops                          gdc.MethodBindPtr
 	fnSetTextOverrunBehavior               gdc.MethodBindPtr
 	fnGetTextOverrunBehavior               gdc.MethodBindPtr
+	fnSetEllipsisChar                      gdc.MethodBindPtr
+	fnGetEllipsisChar                      gdc.MethodBindPtr
 	fnSetUppercase                         gdc.MethodBindPtr
 	fnIsUppercase                          gdc.MethodBindPtr
 	fnGetLineHeight                        gdc.MethodBindPtr
@@ -57,6 +59,7 @@ type ptrsForLabelList struct {
 	fnGetStructuredTextBidiOverride        gdc.MethodBindPtr
 	fnSetStructuredTextBidiOverrideOptions gdc.MethodBindPtr
 	fnGetStructuredTextBidiOverrideOptions gdc.MethodBindPtr
+	fnGetCharacterBounds                   gdc.MethodBindPtr
 }
 
 var ptrsForLabel ptrsForLabelList
@@ -176,6 +179,16 @@ func initLabelPtrs(iface gdc.Interface) {
 		ptrsForLabel.fnGetTextOverrunBehavior = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3779142101))
 	}
 	{
+		methodName := StringNameFromStr("set_ellipsis_char")
+		defer methodName.Destroy()
+		ptrsForLabel.fnSetEllipsisChar = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+	}
+	{
+		methodName := StringNameFromStr("get_ellipsis_char")
+		defer methodName.Destroy()
+		ptrsForLabel.fnGetEllipsisChar = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+	}
+	{
 		methodName := StringNameFromStr("set_uppercase")
 		defer methodName.Destroy()
 		ptrsForLabel.fnSetUppercase = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
@@ -274,6 +287,11 @@ func initLabelPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_structured_text_bidi_override_options")
 		defer methodName.Destroy()
 		ptrsForLabel.fnGetStructuredTextBidiOverrideOptions = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+	}
+	{
+		methodName := StringNameFromStr("get_character_bounds")
+		defer methodName.Destroy()
+		ptrsForLabel.fnGetCharacterBounds = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3327874267))
 	}
 
 }
@@ -521,6 +539,25 @@ func (me *Label) GetTextOverrunBehavior() TextServerOverrunBehavior {
 	return ret
 }
 
+func (me *Label) SetEllipsisChar(char String) {
+	cargs := []gdc.ConstTypePtr{char.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLabel.fnSetEllipsisChar), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Label) GetEllipsisChar() String {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewString()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLabel.fnGetEllipsisChar), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
 func (me *Label) SetUppercase(enable bool) {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable)}
 	pinner := runtime.Pinner{}
@@ -711,6 +748,17 @@ func (me *Label) GetStructuredTextBidiOverrideOptions() Array {
 	ret := NewArray()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLabel.fnGetStructuredTextBidiOverrideOptions), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *Label) GetCharacterBounds(pos int64) Rect2 {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pos)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewRect2()
+	pinner.Pin(&pos)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForLabel.fnGetCharacterBounds), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 

@@ -21,6 +21,10 @@ type ptrsForOpenXRHandList struct {
 	fnGetHandSkeleton gdc.MethodBindPtr
 	fnSetMotionRange  gdc.MethodBindPtr
 	fnGetMotionRange  gdc.MethodBindPtr
+	fnSetSkeletonRig  gdc.MethodBindPtr
+	fnGetSkeletonRig  gdc.MethodBindPtr
+	fnSetBoneUpdate   gdc.MethodBindPtr
+	fnGetBoneUpdate   gdc.MethodBindPtr
 }
 
 var ptrsForOpenXRHand ptrsForOpenXRHandList
@@ -59,6 +63,26 @@ func initOpenXRHandPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForOpenXRHand.fnGetMotionRange = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2191822314))
 	}
+	{
+		methodName := StringNameFromStr("set_skeleton_rig")
+		defer methodName.Destroy()
+		ptrsForOpenXRHand.fnSetSkeletonRig = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1528072213))
+	}
+	{
+		methodName := StringNameFromStr("get_skeleton_rig")
+		defer methodName.Destroy()
+		ptrsForOpenXRHand.fnGetSkeletonRig = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 968409338))
+	}
+	{
+		methodName := StringNameFromStr("set_bone_update")
+		defer methodName.Destroy()
+		ptrsForOpenXRHand.fnSetBoneUpdate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3144625444))
+	}
+	{
+		methodName := StringNameFromStr("get_bone_update")
+		defer methodName.Destroy()
+		ptrsForOpenXRHand.fnGetBoneUpdate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1310695248))
+	}
 
 }
 
@@ -96,6 +120,22 @@ const (
 	OpenXRHandMotionRangeMotionRangeUnobstructed        OpenXRHandMotionRange = 0
 	OpenXRHandMotionRangeMotionRangeConformToController OpenXRHandMotionRange = 1
 	OpenXRHandMotionRangeMotionRangeMax                 OpenXRHandMotionRange = 2
+)
+
+type OpenXRHandSkeletonRig int
+
+const (
+	OpenXRHandSkeletonRigSkeletonRigOpenxr   OpenXRHandSkeletonRig = 0
+	OpenXRHandSkeletonRigSkeletonRigHumanoid OpenXRHandSkeletonRig = 1
+	OpenXRHandSkeletonRigSkeletonRigMax      OpenXRHandSkeletonRig = 2
+)
+
+type OpenXRHandBoneUpdate int
+
+const (
+	OpenXRHandBoneUpdateBoneUpdateFull         OpenXRHandBoneUpdate = 0
+	OpenXRHandBoneUpdateBoneUpdateRotationOnly OpenXRHandBoneUpdate = 1
+	OpenXRHandBoneUpdateBoneUpdateMax          OpenXRHandBoneUpdate = 2
 )
 
 func (me *OpenXRHand) Type() gdc.VariantType {
@@ -166,6 +206,44 @@ func (me *OpenXRHand) GetMotionRange() OpenXRHandMotionRange {
 	var ret OpenXRHandMotionRange
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRHand.fnGetMotionRange), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+	return ret
+}
+
+func (me *OpenXRHand) SetSkeletonRig(skeleton_rig OpenXRHandSkeletonRig) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&skeleton_rig)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRHand.fnSetSkeletonRig), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *OpenXRHand) GetSkeletonRig() OpenXRHandSkeletonRig {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	var ret OpenXRHandSkeletonRig
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRHand.fnGetSkeletonRig), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+	return ret
+}
+
+func (me *OpenXRHand) SetBoneUpdate(bone_update OpenXRHandBoneUpdate) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_update)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRHand.fnSetBoneUpdate), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *OpenXRHand) GetBoneUpdate() OpenXRHandBoneUpdate {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	var ret OpenXRHandBoneUpdate
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRHand.fnGetBoneUpdate), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
 	return ret
 }
 

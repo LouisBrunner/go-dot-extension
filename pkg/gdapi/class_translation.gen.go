@@ -48,27 +48,27 @@ func initTranslationPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("add_message")
 		defer methodName.Destroy()
-		ptrsForTranslation.fnAddMessage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3898530326))
+		ptrsForTranslation.fnAddMessage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 971803314))
 	}
 	{
 		methodName := StringNameFromStr("add_plural_message")
 		defer methodName.Destroy()
-		ptrsForTranslation.fnAddPluralMessage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2356982266))
+		ptrsForTranslation.fnAddPluralMessage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 360316719))
 	}
 	{
 		methodName := StringNameFromStr("get_message")
 		defer methodName.Destroy()
-		ptrsForTranslation.fnGetMessage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1829228469))
+		ptrsForTranslation.fnGetMessage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 58037827))
 	}
 	{
 		methodName := StringNameFromStr("get_plural_message")
 		defer methodName.Destroy()
-		ptrsForTranslation.fnGetPluralMessage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 229954002))
+		ptrsForTranslation.fnGetPluralMessage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1333931916))
 	}
 	{
 		methodName := StringNameFromStr("erase_message")
 		defer methodName.Destroy()
-		ptrsForTranslation.fnEraseMessage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3959009644))
+		ptrsForTranslation.fnEraseMessage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3919944288))
 	}
 	{
 		methodName := StringNameFromStr("get_message_list")

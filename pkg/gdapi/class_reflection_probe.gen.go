@@ -39,6 +39,8 @@ type ptrsForReflectionProbeList struct {
 	fnAreShadowsEnabled      gdc.MethodBindPtr
 	fnSetCullMask            gdc.MethodBindPtr
 	fnGetCullMask            gdc.MethodBindPtr
+	fnSetReflectionMask      gdc.MethodBindPtr
+	fnGetReflectionMask      gdc.MethodBindPtr
 	fnSetUpdateMode          gdc.MethodBindPtr
 	fnGetUpdateMode          gdc.MethodBindPtr
 }
@@ -168,6 +170,16 @@ func initReflectionProbePtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_cull_mask")
 		defer methodName.Destroy()
 		ptrsForReflectionProbe.fnGetCullMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+	}
+	{
+		methodName := StringNameFromStr("set_reflection_mask")
+		defer methodName.Destroy()
+		ptrsForReflectionProbe.fnSetReflectionMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+	}
+	{
+		methodName := StringNameFromStr("get_reflection_mask")
+		defer methodName.Destroy()
+		ptrsForReflectionProbe.fnGetReflectionMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
 	{
 		methodName := StringNameFromStr("set_update_mode")
@@ -456,6 +468,25 @@ func (me *ReflectionProbe) GetCullMask() int64 {
 	ret := NewInt()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForReflectionProbe.fnGetCullMask), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *ReflectionProbe) SetReflectionMask(layers int64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layers)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForReflectionProbe.fnSetReflectionMask), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *ReflectionProbe) GetReflectionMask() int64 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewInt()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForReflectionProbe.fnGetReflectionMask), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 

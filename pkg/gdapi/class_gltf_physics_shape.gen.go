@@ -17,6 +17,8 @@ var _ runtime.Pinner
 type ptrsForGLTFPhysicsShapeList struct {
 	fnFromNode        gdc.MethodBindPtr
 	fnToNode          gdc.MethodBindPtr
+	fnFromResource    gdc.MethodBindPtr
+	fnToResource      gdc.MethodBindPtr
 	fnFromDictionary  gdc.MethodBindPtr
 	fnToDictionary    gdc.MethodBindPtr
 	fnGetShapeType    gdc.MethodBindPtr
@@ -50,6 +52,16 @@ func initGLTFPhysicsShapePtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("to_node")
 		defer methodName.Destroy()
 		ptrsForGLTFPhysicsShape.fnToNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 563689933))
+	}
+	{
+		methodName := StringNameFromStr("from_resource")
+		defer methodName.Destroy()
+		ptrsForGLTFPhysicsShape.fnFromResource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3845569786))
+	}
+	{
+		methodName := StringNameFromStr("to_resource")
+		defer methodName.Destroy()
+		ptrsForGLTFPhysicsShape.fnToResource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1913542110))
 	}
 	{
 		methodName := StringNameFromStr("from_dictionary")
@@ -186,6 +198,27 @@ func (me *GLTFPhysicsShape) ToNode(cache_shapes bool) CollisionShape3D {
 	pinner.Pin(&cache_shapes)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFPhysicsShape.fnToNode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func GLTFPhysicsShapeFromResource(shape_resource Shape3D) GLTFPhysicsShape {
+	cargs := []gdc.ConstTypePtr{shape_resource.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewGLTFPhysicsShape()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFPhysicsShape.fnFromResource), nil, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *GLTFPhysicsShape) ToResource(cache_shapes bool) Shape3D {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&cache_shapes)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewShape3D()
+	pinner.Pin(&cache_shapes)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFPhysicsShape.fnToResource), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 

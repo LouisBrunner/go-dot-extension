@@ -24,6 +24,8 @@ type ptrsForInputEventKeyList struct {
 	fnGetKeyLabel                     gdc.MethodBindPtr
 	fnSetUnicode                      gdc.MethodBindPtr
 	fnGetUnicode                      gdc.MethodBindPtr
+	fnSetLocation                     gdc.MethodBindPtr
+	fnGetLocation                     gdc.MethodBindPtr
 	fnSetEcho                         gdc.MethodBindPtr
 	fnGetKeycodeWithModifiers         gdc.MethodBindPtr
 	fnGetPhysicalKeycodeWithModifiers gdc.MethodBindPtr
@@ -31,6 +33,7 @@ type ptrsForInputEventKeyList struct {
 	fnAsTextKeycode                   gdc.MethodBindPtr
 	fnAsTextPhysicalKeycode           gdc.MethodBindPtr
 	fnAsTextKeyLabel                  gdc.MethodBindPtr
+	fnAsTextLocation                  gdc.MethodBindPtr
 }
 
 var ptrsForInputEventKey ptrsForInputEventKeyList
@@ -85,6 +88,16 @@ func initInputEventKeyPtrs(iface gdc.Interface) {
 		ptrsForInputEventKey.fnGetUnicode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
 	{
+		methodName := StringNameFromStr("set_location")
+		defer methodName.Destroy()
+		ptrsForInputEventKey.fnSetLocation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 634453155))
+	}
+	{
+		methodName := StringNameFromStr("get_location")
+		defer methodName.Destroy()
+		ptrsForInputEventKey.fnGetLocation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 211810873))
+	}
+	{
 		methodName := StringNameFromStr("set_echo")
 		defer methodName.Destroy()
 		ptrsForInputEventKey.fnSetEcho = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
@@ -118,6 +131,11 @@ func initInputEventKeyPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("as_text_key_label")
 		defer methodName.Destroy()
 		ptrsForInputEventKey.fnAsTextKeyLabel = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+	}
+	{
+		methodName := StringNameFromStr("as_text_location")
+		defer methodName.Destroy()
+		ptrsForInputEventKey.fnAsTextLocation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
 
 }
@@ -241,6 +259,25 @@ func (me *InputEventKey) GetUnicode() int64 {
 	return ret.Get()
 }
 
+func (me *InputEventKey) SetLocation(location KeyLocation) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&location)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventKey.fnSetLocation), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *InputEventKey) GetLocation() KeyLocation {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	var ret KeyLocation
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventKey.fnGetLocation), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+	return ret
+}
+
 func (me *InputEventKey) SetEcho(echo bool) {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&echo)}
 	pinner := runtime.Pinner{}
@@ -307,6 +344,16 @@ func (me *InputEventKey) AsTextKeyLabel() String {
 	ret := NewString()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventKey.fnAsTextKeyLabel), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *InputEventKey) AsTextLocation() String {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewString()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventKey.fnAsTextLocation), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 

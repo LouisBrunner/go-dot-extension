@@ -23,6 +23,7 @@ type ptrsForScriptEditorList struct {
 	fnGetCurrentScript            gdc.MethodBindPtr
 	fnGetOpenScripts              gdc.MethodBindPtr
 	fnOpenScriptCreateDialog      gdc.MethodBindPtr
+	fnGotoHelp                    gdc.MethodBindPtr
 }
 
 var ptrsForScriptEditor ptrsForScriptEditorList
@@ -70,6 +71,11 @@ func initScriptEditorPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("open_script_create_dialog")
 		defer methodName.Destroy()
 		ptrsForScriptEditor.fnOpenScriptCreateDialog = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3186203200))
+	}
+	{
+		methodName := StringNameFromStr("goto_help")
+		defer methodName.Destroy()
+		ptrsForScriptEditor.fnGotoHelp = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
 	}
 
 }
@@ -193,6 +199,15 @@ func (me *ScriptEditor) OpenScriptCreateDialog(base_name String, base_path Strin
 	defer pinner.Unpin()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScriptEditor.fnOpenScriptCreateDialog), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *ScriptEditor) GotoHelp(topic String) {
+	cargs := []gdc.ConstTypePtr{topic.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScriptEditor.fnGotoHelp), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

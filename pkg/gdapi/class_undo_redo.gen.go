@@ -34,6 +34,8 @@ type ptrsForUndoRedoList struct {
 	fnHasUndo                   gdc.MethodBindPtr
 	fnHasRedo                   gdc.MethodBindPtr
 	fnGetVersion                gdc.MethodBindPtr
+	fnSetMaxSteps               gdc.MethodBindPtr
+	fnGetMaxSteps               gdc.MethodBindPtr
 	fnRedo                      gdc.MethodBindPtr
 	fnUndo                      gdc.MethodBindPtr
 }
@@ -138,6 +140,16 @@ func initUndoRedoPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_version")
 		defer methodName.Destroy()
 		ptrsForUndoRedo.fnGetVersion = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+	}
+	{
+		methodName := StringNameFromStr("set_max_steps")
+		defer methodName.Destroy()
+		ptrsForUndoRedo.fnSetMaxSteps = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+	}
+	{
+		methodName := StringNameFromStr("get_max_steps")
+		defer methodName.Destroy()
+		ptrsForUndoRedo.fnGetMaxSteps = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
 	{
 		methodName := StringNameFromStr("redo")
@@ -374,6 +386,25 @@ func (me *UndoRedo) GetVersion() int64 {
 	return ret.Get()
 }
 
+func (me *UndoRedo) SetMaxSteps(max_steps int64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&max_steps)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnSetMaxSteps), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *UndoRedo) GetMaxSteps() int64 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewInt()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnGetMaxSteps), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
 func (me *UndoRedo) Redo() bool {
 	cargs := []gdc.ConstTypePtr{}
 	pinner := runtime.Pinner{}
@@ -393,6 +424,9 @@ func (me *UndoRedo) Undo() bool {
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForUndoRedo.fnUndo), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
+
+// Properties
+// FIXME: can't seem to be able to use those from this side of the API
 
 // Signals
 

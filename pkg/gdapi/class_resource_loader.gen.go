@@ -130,9 +130,11 @@ const (
 type ResourceLoaderCacheMode int
 
 const (
-	ResourceLoaderCacheModeCacheModeIgnore  ResourceLoaderCacheMode = 0
-	ResourceLoaderCacheModeCacheModeReuse   ResourceLoaderCacheMode = 1
-	ResourceLoaderCacheModeCacheModeReplace ResourceLoaderCacheMode = 2
+	ResourceLoaderCacheModeCacheModeIgnore      ResourceLoaderCacheMode = 0
+	ResourceLoaderCacheModeCacheModeReuse       ResourceLoaderCacheMode = 1
+	ResourceLoaderCacheModeCacheModeReplace     ResourceLoaderCacheMode = 2
+	ResourceLoaderCacheModeCacheModeIgnoreDeep  ResourceLoaderCacheMode = 3
+	ResourceLoaderCacheModeCacheModeReplaceDeep ResourceLoaderCacheMode = 4
 )
 
 func (me *ResourceLoader) Type() gdc.VariantType {

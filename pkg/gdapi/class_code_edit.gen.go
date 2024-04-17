@@ -553,7 +553,7 @@ func initCodeEditPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("add_code_completion_option")
 		defer methodName.Destroy()
-		ptrsForCodeEdit.fnAddCodeCompletionOption = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 947964390))
+		ptrsForCodeEdit.fnAddCodeCompletionOption = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3944379502))
 	}
 	{
 		methodName := StringNameFromStr("update_code_completion_options")

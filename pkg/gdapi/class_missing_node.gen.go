@@ -17,6 +17,8 @@ var _ runtime.Pinner
 type ptrsForMissingNodeList struct {
 	fnSetOriginalClass       gdc.MethodBindPtr
 	fnGetOriginalClass       gdc.MethodBindPtr
+	fnSetOriginalScene       gdc.MethodBindPtr
+	fnGetOriginalScene       gdc.MethodBindPtr
 	fnSetRecordingProperties gdc.MethodBindPtr
 	fnIsRecordingProperties  gdc.MethodBindPtr
 }
@@ -36,6 +38,16 @@ func initMissingNodePtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_original_class")
 		defer methodName.Destroy()
 		ptrsForMissingNode.fnGetOriginalClass = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
+	}
+	{
+		methodName := StringNameFromStr("set_original_scene")
+		defer methodName.Destroy()
+		ptrsForMissingNode.fnSetOriginalScene = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+	}
+	{
+		methodName := StringNameFromStr("get_original_scene")
+		defer methodName.Destroy()
+		ptrsForMissingNode.fnGetOriginalScene = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 201670096))
 	}
 	{
 		methodName := StringNameFromStr("set_recording_properties")
@@ -100,6 +112,25 @@ func (me *MissingNode) GetOriginalClass() String {
 	ret := NewString()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMissingNode.fnGetOriginalClass), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *MissingNode) SetOriginalScene(name String) {
+	cargs := []gdc.ConstTypePtr{name.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMissingNode.fnSetOriginalScene), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *MissingNode) GetOriginalScene() String {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewString()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMissingNode.fnGetOriginalScene), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 

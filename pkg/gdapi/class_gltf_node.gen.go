@@ -15,6 +15,8 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForGLTFNodeList struct {
+	fnGetOriginalName   gdc.MethodBindPtr
+	fnSetOriginalName   gdc.MethodBindPtr
 	fnGetParent         gdc.MethodBindPtr
 	fnSetParent         gdc.MethodBindPtr
 	fnGetHeight         gdc.MethodBindPtr
@@ -49,6 +51,16 @@ func initGLTFNodePtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("GLTFNode")
 	defer className.Destroy()
+	{
+		methodName := StringNameFromStr("get_original_name")
+		defer methodName.Destroy()
+		ptrsForGLTFNode.fnGetOriginalName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2841200299))
+	}
+	{
+		methodName := StringNameFromStr("set_original_name")
+		defer methodName.Destroy()
+		ptrsForGLTFNode.fnSetOriginalName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+	}
 	{
 		methodName := StringNameFromStr("get_parent")
 		defer methodName.Destroy()
@@ -215,6 +227,25 @@ func (me *GLTFNode) AsCTypePtr() gdc.ConstTypePtr {
 }
 
 // Methods
+
+func (me *GLTFNode) GetOriginalName() String {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewString()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFNode.fnGetOriginalName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *GLTFNode) SetOriginalName(original_name String) {
+	cargs := []gdc.ConstTypePtr{original_name.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFNode.fnSetOriginalName), me.obj, unsafe.SliceData(cargs), nil)
+
+}
 
 func (me *GLTFNode) GetParent() int64 {
 	cargs := []gdc.ConstTypePtr{}

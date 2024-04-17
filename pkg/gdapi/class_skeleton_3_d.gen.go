@@ -34,6 +34,7 @@ type ptrsForSkeleton3DList struct {
 	fnLocalizeRests                         gdc.MethodBindPtr
 	fnClearBones                            gdc.MethodBindPtr
 	fnGetBonePose                           gdc.MethodBindPtr
+	fnSetBonePose                           gdc.MethodBindPtr
 	fnSetBonePosePosition                   gdc.MethodBindPtr
 	fnSetBonePoseRotation                   gdc.MethodBindPtr
 	fnSetBonePoseScale                      gdc.MethodBindPtr
@@ -44,17 +45,20 @@ type ptrsForSkeleton3DList struct {
 	fnResetBonePoses                        gdc.MethodBindPtr
 	fnIsBoneEnabled                         gdc.MethodBindPtr
 	fnSetBoneEnabled                        gdc.MethodBindPtr
-	fnClearBonesGlobalPoseOverride          gdc.MethodBindPtr
-	fnSetBoneGlobalPoseOverride             gdc.MethodBindPtr
-	fnGetBoneGlobalPoseOverride             gdc.MethodBindPtr
 	fnGetBoneGlobalPose                     gdc.MethodBindPtr
-	fnGetBoneGlobalPoseNoOverride           gdc.MethodBindPtr
+	fnSetBoneGlobalPose                     gdc.MethodBindPtr
 	fnForceUpdateAllBoneTransforms          gdc.MethodBindPtr
 	fnForceUpdateBoneChildTransform         gdc.MethodBindPtr
 	fnSetMotionScale                        gdc.MethodBindPtr
 	fnGetMotionScale                        gdc.MethodBindPtr
 	fnSetShowRestOnly                       gdc.MethodBindPtr
 	fnIsShowRestOnly                        gdc.MethodBindPtr
+	fnSetModifierCallbackModeProcess        gdc.MethodBindPtr
+	fnGetModifierCallbackModeProcess        gdc.MethodBindPtr
+	fnClearBonesGlobalPoseOverride          gdc.MethodBindPtr
+	fnSetBoneGlobalPoseOverride             gdc.MethodBindPtr
+	fnGetBoneGlobalPoseOverride             gdc.MethodBindPtr
+	fnGetBoneGlobalPoseNoOverride           gdc.MethodBindPtr
 	fnSetAnimatePhysicalBones               gdc.MethodBindPtr
 	fnGetAnimatePhysicalBones               gdc.MethodBindPtr
 	fnPhysicalBonesStopSimulation           gdc.MethodBindPtr
@@ -72,7 +76,7 @@ func initSkeleton3DPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("add_bone")
 		defer methodName.Destroy()
-		ptrsForSkeleton3D.fnAddBone = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+		ptrsForSkeleton3D.fnAddBone = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1597066294))
 	}
 	{
 		methodName := StringNameFromStr("find_bone")
@@ -165,6 +169,11 @@ func initSkeleton3DPtrs(iface gdc.Interface) {
 		ptrsForSkeleton3D.fnGetBonePose = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1965739696))
 	}
 	{
+		methodName := StringNameFromStr("set_bone_pose")
+		defer methodName.Destroy()
+		ptrsForSkeleton3D.fnSetBonePose = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3616898986))
+	}
+	{
 		methodName := StringNameFromStr("set_bone_pose_position")
 		defer methodName.Destroy()
 		ptrsForSkeleton3D.fnSetBonePosePosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1530502735))
@@ -215,29 +224,14 @@ func initSkeleton3DPtrs(iface gdc.Interface) {
 		ptrsForSkeleton3D.fnSetBoneEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 972357352))
 	}
 	{
-		methodName := StringNameFromStr("clear_bones_global_pose_override")
-		defer methodName.Destroy()
-		ptrsForSkeleton3D.fnClearBonesGlobalPoseOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
-	}
-	{
-		methodName := StringNameFromStr("set_bone_global_pose_override")
-		defer methodName.Destroy()
-		ptrsForSkeleton3D.fnSetBoneGlobalPoseOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3483398371))
-	}
-	{
-		methodName := StringNameFromStr("get_bone_global_pose_override")
-		defer methodName.Destroy()
-		ptrsForSkeleton3D.fnGetBoneGlobalPoseOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1965739696))
-	}
-	{
 		methodName := StringNameFromStr("get_bone_global_pose")
 		defer methodName.Destroy()
 		ptrsForSkeleton3D.fnGetBoneGlobalPose = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1965739696))
 	}
 	{
-		methodName := StringNameFromStr("get_bone_global_pose_no_override")
+		methodName := StringNameFromStr("set_bone_global_pose")
 		defer methodName.Destroy()
-		ptrsForSkeleton3D.fnGetBoneGlobalPoseNoOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1965739696))
+		ptrsForSkeleton3D.fnSetBoneGlobalPose = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3616898986))
 	}
 	{
 		methodName := StringNameFromStr("force_update_all_bone_transforms")
@@ -268,6 +262,36 @@ func initSkeleton3DPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("is_show_rest_only")
 		defer methodName.Destroy()
 		ptrsForSkeleton3D.fnIsShowRestOnly = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
+		methodName := StringNameFromStr("set_modifier_callback_mode_process")
+		defer methodName.Destroy()
+		ptrsForSkeleton3D.fnSetModifierCallbackModeProcess = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3916362634))
+	}
+	{
+		methodName := StringNameFromStr("get_modifier_callback_mode_process")
+		defer methodName.Destroy()
+		ptrsForSkeleton3D.fnGetModifierCallbackModeProcess = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 997182536))
+	}
+	{
+		methodName := StringNameFromStr("clear_bones_global_pose_override")
+		defer methodName.Destroy()
+		ptrsForSkeleton3D.fnClearBonesGlobalPoseOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+	}
+	{
+		methodName := StringNameFromStr("set_bone_global_pose_override")
+		defer methodName.Destroy()
+		ptrsForSkeleton3D.fnSetBoneGlobalPoseOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3483398371))
+	}
+	{
+		methodName := StringNameFromStr("get_bone_global_pose_override")
+		defer methodName.Destroy()
+		ptrsForSkeleton3D.fnGetBoneGlobalPoseOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1965739696))
+	}
+	{
+		methodName := StringNameFromStr("get_bone_global_pose_no_override")
+		defer methodName.Destroy()
+		ptrsForSkeleton3D.fnGetBoneGlobalPoseNoOverride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1965739696))
 	}
 	{
 		methodName := StringNameFromStr("set_animate_physical_bones")
@@ -328,6 +352,13 @@ var (
 
 // Enums
 
+type Skeleton3DModifierCallbackModeProcess int
+
+const (
+	Skeleton3DModifierCallbackModeProcessModifierCallbackModeProcessPhysics Skeleton3DModifierCallbackModeProcess = 0
+	Skeleton3DModifierCallbackModeProcessModifierCallbackModeProcessIdle    Skeleton3DModifierCallbackModeProcess = 1
+)
+
 func (me *Skeleton3D) Type() gdc.VariantType {
 	return gdc.VariantTypeObject
 }
@@ -342,13 +373,14 @@ func (me *Skeleton3D) AsCTypePtr() gdc.ConstTypePtr {
 
 // Methods
 
-func (me *Skeleton3D) AddBone(name String) {
+func (me *Skeleton3D) AddBone(name String) int64 {
 	cargs := []gdc.ConstTypePtr{name.AsCTypePtr()}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
+	ret := NewInt()
 
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeleton3D.fnAddBone), me.obj, unsafe.SliceData(cargs), nil)
-
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeleton3D.fnAddBone), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
 }
 
 func (me *Skeleton3D) FindBone(name String) int64 {
@@ -531,6 +563,15 @@ func (me *Skeleton3D) GetBonePose(bone_idx int64) Transform3D {
 	return *ret
 }
 
+func (me *Skeleton3D) SetBonePose(bone_idx int64, pose Transform3D) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), pose.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeleton3D.fnSetBonePose), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
 func (me *Skeleton3D) SetBonePosePosition(bone_idx int64, position Vector3) {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), position.AsCTypePtr()}
 	pinner := runtime.Pinner{}
@@ -629,35 +670,6 @@ func (me *Skeleton3D) SetBoneEnabled(bone_idx int64, enabled bool) {
 
 }
 
-func (me *Skeleton3D) ClearBonesGlobalPoseOverride() {
-	cargs := []gdc.ConstTypePtr{}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeleton3D.fnClearBonesGlobalPoseOverride), me.obj, unsafe.SliceData(cargs), nil)
-
-}
-
-func (me *Skeleton3D) SetBoneGlobalPoseOverride(bone_idx int64, pose Transform3D, amount float64, persistent bool) {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), pose.AsCTypePtr(), gdc.ConstTypePtr(&amount), gdc.ConstTypePtr(&persistent)}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeleton3D.fnSetBoneGlobalPoseOverride), me.obj, unsafe.SliceData(cargs), nil)
-
-}
-
-func (me *Skeleton3D) GetBoneGlobalPoseOverride(bone_idx int64) Transform3D {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx)}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-	ret := NewTransform3D()
-	pinner.Pin(&bone_idx)
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeleton3D.fnGetBoneGlobalPoseOverride), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-	return *ret
-}
-
 func (me *Skeleton3D) GetBoneGlobalPose(bone_idx int64) Transform3D {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx)}
 	pinner := runtime.Pinner{}
@@ -669,15 +681,13 @@ func (me *Skeleton3D) GetBoneGlobalPose(bone_idx int64) Transform3D {
 	return *ret
 }
 
-func (me *Skeleton3D) GetBoneGlobalPoseNoOverride(bone_idx int64) Transform3D {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx)}
+func (me *Skeleton3D) SetBoneGlobalPose(bone_idx int64, pose Transform3D) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), pose.AsCTypePtr()}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
-	ret := NewTransform3D()
-	pinner.Pin(&bone_idx)
 
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeleton3D.fnGetBoneGlobalPoseNoOverride), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-	return *ret
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeleton3D.fnSetBoneGlobalPose), me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func (me *Skeleton3D) ForceUpdateAllBoneTransforms() {
@@ -734,6 +744,65 @@ func (me *Skeleton3D) IsShowRestOnly() bool {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeleton3D.fnIsShowRestOnly), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
+}
+
+func (me *Skeleton3D) SetModifierCallbackModeProcess(mode Skeleton3DModifierCallbackModeProcess) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeleton3D.fnSetModifierCallbackModeProcess), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Skeleton3D) GetModifierCallbackModeProcess() Skeleton3DModifierCallbackModeProcess {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	var ret Skeleton3DModifierCallbackModeProcess
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeleton3D.fnGetModifierCallbackModeProcess), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+	return ret
+}
+
+func (me *Skeleton3D) ClearBonesGlobalPoseOverride() {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeleton3D.fnClearBonesGlobalPoseOverride), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Skeleton3D) SetBoneGlobalPoseOverride(bone_idx int64, pose Transform3D, amount float64, persistent bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), pose.AsCTypePtr(), gdc.ConstTypePtr(&amount), gdc.ConstTypePtr(&persistent)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeleton3D.fnSetBoneGlobalPoseOverride), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Skeleton3D) GetBoneGlobalPoseOverride(bone_idx int64) Transform3D {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewTransform3D()
+	pinner.Pin(&bone_idx)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeleton3D.fnGetBoneGlobalPoseOverride), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *Skeleton3D) GetBoneGlobalPoseNoOverride(bone_idx int64) Transform3D {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewTransform3D()
+	pinner.Pin(&bone_idx)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeleton3D.fnGetBoneGlobalPoseNoOverride), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
 }
 
 func (me *Skeleton3D) SetAnimatePhysicalBones(enabled bool) {
@@ -810,16 +879,16 @@ func (me *Skeleton3D) DisconnectPoseUpdated(subs SignalSubscribers, fn Skeleton3
 	me.Disconnect(*sig, *subs.remove(fn))
 }
 
-type Skeleton3DBonePoseChangedSignalFn func(bone_idx int)
+type Skeleton3DSkeletonUpdatedSignalFn func()
 
-func (me *Skeleton3D) ConnectBonePoseChanged(subs SignalSubscribers, fn Skeleton3DBonePoseChangedSignalFn) {
-	sig := StringNameFromStr("bone_pose_changed")
+func (me *Skeleton3D) ConnectSkeletonUpdated(subs SignalSubscribers, fn Skeleton3DSkeletonUpdatedSignalFn) {
+	sig := StringNameFromStr("skeleton_updated")
 	defer sig.Destroy()
 	me.Connect(*sig, subs.add(fn), 0)
 }
 
-func (me *Skeleton3D) DisconnectBonePoseChanged(subs SignalSubscribers, fn Skeleton3DBonePoseChangedSignalFn) {
-	sig := StringNameFromStr("bone_pose_changed")
+func (me *Skeleton3D) DisconnectSkeletonUpdated(subs SignalSubscribers, fn Skeleton3DSkeletonUpdatedSignalFn) {
+	sig := StringNameFromStr("skeleton_updated")
 	defer sig.Destroy()
 	me.Disconnect(*sig, *subs.remove(fn))
 }
@@ -834,6 +903,20 @@ func (me *Skeleton3D) ConnectBoneEnabledChanged(subs SignalSubscribers, fn Skele
 
 func (me *Skeleton3D) DisconnectBoneEnabledChanged(subs SignalSubscribers, fn Skeleton3DBoneEnabledChangedSignalFn) {
 	sig := StringNameFromStr("bone_enabled_changed")
+	defer sig.Destroy()
+	me.Disconnect(*sig, *subs.remove(fn))
+}
+
+type Skeleton3DBoneListChangedSignalFn func()
+
+func (me *Skeleton3D) ConnectBoneListChanged(subs SignalSubscribers, fn Skeleton3DBoneListChangedSignalFn) {
+	sig := StringNameFromStr("bone_list_changed")
+	defer sig.Destroy()
+	me.Connect(*sig, subs.add(fn), 0)
+}
+
+func (me *Skeleton3D) DisconnectBoneListChanged(subs SignalSubscribers, fn Skeleton3DBoneListChangedSignalFn) {
+	sig := StringNameFromStr("bone_list_changed")
 	defer sig.Destroy()
 	me.Disconnect(*sig, *subs.remove(fn))
 }

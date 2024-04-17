@@ -23,6 +23,7 @@ type ptrsForAnimationPlayerList struct {
 	fnGetDefaultBlendTime         gdc.MethodBindPtr
 	fnPlay                        gdc.MethodBindPtr
 	fnPlayBackwards               gdc.MethodBindPtr
+	fnPlayWithCapture             gdc.MethodBindPtr
 	fnPause                       gdc.MethodBindPtr
 	fnStop                        gdc.MethodBindPtr
 	fnIsPlaying                   gdc.MethodBindPtr
@@ -90,12 +91,17 @@ func initAnimationPlayerPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("play")
 		defer methodName.Destroy()
-		ptrsForAnimationPlayer.fnPlay = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3118260607))
+		ptrsForAnimationPlayer.fnPlay = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3697947785))
 	}
 	{
 		methodName := StringNameFromStr("play_backwards")
 		defer methodName.Destroy()
-		ptrsForAnimationPlayer.fnPlayBackwards = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2787282401))
+		ptrsForAnimationPlayer.fnPlayBackwards = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3890664824))
+	}
+	{
+		methodName := StringNameFromStr("play_with_capture")
+		defer methodName.Destroy()
+		ptrsForAnimationPlayer.fnPlayWithCapture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3265781472))
 	}
 	{
 		methodName := StringNameFromStr("pause")
@@ -351,6 +357,15 @@ func (me *AnimationPlayer) PlayBackwards(name StringName, custom_blend float64) 
 	defer pinner.Unpin()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationPlayer.fnPlayBackwards), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *AnimationPlayer) PlayWithCapture(name StringName, duration float64, custom_blend float64, custom_speed float64, from_end bool, trans_type TweenTransitionType, ease_type TweenEaseType) {
+	cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), gdc.ConstTypePtr(&duration), gdc.ConstTypePtr(&custom_blend), gdc.ConstTypePtr(&custom_speed), gdc.ConstTypePtr(&from_end), gdc.ConstTypePtr(&trans_type), gdc.ConstTypePtr(&ease_type)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationPlayer.fnPlayWithCapture), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

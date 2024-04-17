@@ -58,6 +58,10 @@ type ptrsForNavigationAgent3DList struct {
 	fnGetNavigationMap              gdc.MethodBindPtr
 	fnSetTargetPosition             gdc.MethodBindPtr
 	fnGetTargetPosition             gdc.MethodBindPtr
+	fnSetSimplifyPath               gdc.MethodBindPtr
+	fnGetSimplifyPath               gdc.MethodBindPtr
+	fnSetSimplifyEpsilon            gdc.MethodBindPtr
+	fnGetSimplifyEpsilon            gdc.MethodBindPtr
 	fnGetNextPathPosition           gdc.MethodBindPtr
 	fnSetVelocityForced             gdc.MethodBindPtr
 	fnSetVelocity                   gdc.MethodBindPtr
@@ -310,6 +314,26 @@ func initNavigationAgent3DPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_target_position")
 		defer methodName.Destroy()
 		ptrsForNavigationAgent3D.fnGetTargetPosition = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+	}
+	{
+		methodName := StringNameFromStr("set_simplify_path")
+		defer methodName.Destroy()
+		ptrsForNavigationAgent3D.fnSetSimplifyPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("get_simplify_path")
+		defer methodName.Destroy()
+		ptrsForNavigationAgent3D.fnGetSimplifyPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
+		methodName := StringNameFromStr("set_simplify_epsilon")
+		defer methodName.Destroy()
+		ptrsForNavigationAgent3D.fnSetSimplifyEpsilon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+	}
+	{
+		methodName := StringNameFromStr("get_simplify_epsilon")
+		defer methodName.Destroy()
+		ptrsForNavigationAgent3D.fnGetSimplifyEpsilon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
 	{
 		methodName := StringNameFromStr("get_next_path_position")
@@ -906,6 +930,44 @@ func (me *NavigationAgent3D) GetTargetPosition() Vector3 {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationAgent3D.fnGetTargetPosition), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
+}
+
+func (me *NavigationAgent3D) SetSimplifyPath(enabled bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationAgent3D.fnSetSimplifyPath), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *NavigationAgent3D) GetSimplifyPath() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationAgent3D.fnGetSimplifyPath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *NavigationAgent3D) SetSimplifyEpsilon(epsilon float64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&epsilon)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationAgent3D.fnSetSimplifyEpsilon), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *NavigationAgent3D) GetSimplifyEpsilon() float64 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewFloat()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationAgent3D.fnGetSimplifyEpsilon), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
 }
 
 func (me *NavigationAgent3D) GetNextPathPosition() Vector3 {

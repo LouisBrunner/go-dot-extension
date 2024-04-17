@@ -19,7 +19,7 @@ type ptrsForBoneAttachment3DList struct {
 	fnGetBoneName            gdc.MethodBindPtr
 	fnSetBoneIdx             gdc.MethodBindPtr
 	fnGetBoneIdx             gdc.MethodBindPtr
-	fnOnBonePoseUpdate       gdc.MethodBindPtr
+	fnOnSkeletonUpdate       gdc.MethodBindPtr
 	fnSetOverridePose        gdc.MethodBindPtr
 	fnGetOverridePose        gdc.MethodBindPtr
 	fnSetUseExternalSkeleton gdc.MethodBindPtr
@@ -55,9 +55,9 @@ func initBoneAttachment3DPtrs(iface gdc.Interface) {
 		ptrsForBoneAttachment3D.fnGetBoneIdx = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
 	{
-		methodName := StringNameFromStr("on_bone_pose_update")
+		methodName := StringNameFromStr("on_skeleton_update")
 		defer methodName.Destroy()
-		ptrsForBoneAttachment3D.fnOnBonePoseUpdate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+		ptrsForBoneAttachment3D.fnOnSkeletonUpdate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
 	{
 		methodName := StringNameFromStr("set_override_pose")
@@ -164,12 +164,12 @@ func (me *BoneAttachment3D) GetBoneIdx() int64 {
 	return ret.Get()
 }
 
-func (me *BoneAttachment3D) OnBonePoseUpdate(bone_index int64) {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_index)}
+func (me *BoneAttachment3D) OnSkeletonUpdate() {
+	cargs := []gdc.ConstTypePtr{}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoneAttachment3D.fnOnBonePoseUpdate), me.obj, unsafe.SliceData(cargs), nil)
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForBoneAttachment3D.fnOnSkeletonUpdate), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

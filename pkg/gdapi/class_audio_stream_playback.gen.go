@@ -23,6 +23,8 @@ type ptrsForAudioStreamPlaybackList struct {
 	fnXSeek                gdc.MethodBindPtr
 	fnXMix                 gdc.MethodBindPtr
 	fnXTagUsedStreams      gdc.MethodBindPtr
+	fnXSetParameter        gdc.MethodBindPtr
+	fnXGetParameter        gdc.MethodBindPtr
 }
 
 var ptrsForAudioStreamPlayback ptrsForAudioStreamPlaybackList

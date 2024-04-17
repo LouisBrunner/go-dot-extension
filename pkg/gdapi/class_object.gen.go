@@ -43,6 +43,7 @@ type ptrsForObjectList struct {
 	fnSetDeferred               gdc.MethodBindPtr
 	fnCallv                     gdc.MethodBindPtr
 	fnHasMethod                 gdc.MethodBindPtr
+	fnGetMethodArgumentCount    gdc.MethodBindPtr
 	fnHasSignal                 gdc.MethodBindPtr
 	fnGetSignalList             gdc.MethodBindPtr
 	fnGetSignalConnectionList   gdc.MethodBindPtr
@@ -208,6 +209,11 @@ func initObjectPtrs(iface gdc.Interface) {
 		ptrsForObject.fnHasMethod = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2619796661))
 	}
 	{
+		methodName := StringNameFromStr("get_method_argument_count")
+		defer methodName.Destroy()
+		ptrsForObject.fnGetMethodArgumentCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2458036349))
+	}
+	{
 		methodName := StringNameFromStr("has_signal")
 		defer methodName.Destroy()
 		ptrsForObject.fnHasSignal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2619796661))
@@ -270,12 +276,12 @@ func initObjectPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("tr")
 		defer methodName.Destroy()
-		ptrsForObject.fnTr = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1195764410))
+		ptrsForObject.fnTr = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2475554935))
 	}
 	{
 		methodName := StringNameFromStr("tr_n")
 		defer methodName.Destroy()
-		ptrsForObject.fnTrN = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 162698058))
+		ptrsForObject.fnTrN = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4021311862))
 	}
 	{
 		methodName := StringNameFromStr("is_queued_for_deletion")
@@ -315,8 +321,9 @@ func NewObject() *Object {
 // Constants
 
 var (
-	ObjectNotificationPostinitialize = 0
-	ObjectNotificationPredelete      = 1
+	ObjectNotificationPostinitialize    = 0
+	ObjectNotificationPredelete         = 1
+	ObjectNotificationExtensionReloaded = 2
 )
 
 // Enums
@@ -661,6 +668,16 @@ func (me *Object) HasMethod(method StringName) bool {
 	ret := NewBool()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForObject.fnHasMethod), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *Object) GetMethodArgumentCount(method StringName) int64 {
+	cargs := []gdc.ConstTypePtr{method.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewInt()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForObject.fnGetMethodArgumentCount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 

@@ -21,6 +21,7 @@ type ptrsForMeshInstance3DList struct {
 	fnGetSkeletonPath                 gdc.MethodBindPtr
 	fnSetSkin                         gdc.MethodBindPtr
 	fnGetSkin                         gdc.MethodBindPtr
+	fnGetSkinReference                gdc.MethodBindPtr
 	fnGetSurfaceOverrideMaterialCount gdc.MethodBindPtr
 	fnSetSurfaceOverrideMaterial      gdc.MethodBindPtr
 	fnGetSurfaceOverrideMaterial      gdc.MethodBindPtr
@@ -70,6 +71,11 @@ func initMeshInstance3DPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_skin")
 		defer methodName.Destroy()
 		ptrsForMeshInstance3D.fnGetSkin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2074563878))
+	}
+	{
+		methodName := StringNameFromStr("get_skin_reference")
+		defer methodName.Destroy()
+		ptrsForMeshInstance3D.fnGetSkinReference = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2060603409))
 	}
 	{
 		methodName := StringNameFromStr("get_surface_override_material_count")
@@ -222,6 +228,16 @@ func (me *MeshInstance3D) GetSkin() Skin {
 	ret := NewSkin()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMeshInstance3D.fnGetSkin), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *MeshInstance3D) GetSkinReference() SkinReference {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewSkinReference()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMeshInstance3D.fnGetSkinReference), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 

@@ -156,12 +156,12 @@ func initAStar2DPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("get_point_path")
 		defer methodName.Destroy()
-		ptrsForAStar2D.fnGetPointPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 281625055))
+		ptrsForAStar2D.fnGetPointPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3427490392))
 	}
 	{
 		methodName := StringNameFromStr("get_id_path")
 		defer methodName.Destroy()
-		ptrsForAStar2D.fnGetIdPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3404614526))
+		ptrsForAStar2D.fnGetIdPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3136199648))
 	}
 
 }
@@ -410,25 +410,27 @@ func (me *AStar2D) GetClosestPositionInSegment(to_position Vector2) Vector2 {
 	return *ret
 }
 
-func (me *AStar2D) GetPointPath(from_id int64, to_id int64) PackedVector2Array {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_id), gdc.ConstTypePtr(&to_id)}
+func (me *AStar2D) GetPointPath(from_id int64, to_id int64, allow_partial_path bool) PackedVector2Array {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_id), gdc.ConstTypePtr(&to_id), gdc.ConstTypePtr(&allow_partial_path)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewPackedVector2Array()
 	pinner.Pin(&from_id)
 	pinner.Pin(&to_id)
+	pinner.Pin(&allow_partial_path)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAStar2D.fnGetPointPath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 
-func (me *AStar2D) GetIdPath(from_id int64, to_id int64) PackedInt64Array {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_id), gdc.ConstTypePtr(&to_id)}
+func (me *AStar2D) GetIdPath(from_id int64, to_id int64, allow_partial_path bool) PackedInt64Array {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&from_id), gdc.ConstTypePtr(&to_id), gdc.ConstTypePtr(&allow_partial_path)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewPackedInt64Array()
 	pinner.Pin(&from_id)
 	pinner.Pin(&to_id)
+	pinner.Pin(&allow_partial_path)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAStar2D.fnGetIdPath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret

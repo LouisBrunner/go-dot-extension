@@ -27,6 +27,7 @@ type ptrsForPrimitiveMeshList struct {
 	fnGetAddUv2        gdc.MethodBindPtr
 	fnSetUv2Padding    gdc.MethodBindPtr
 	fnGetUv2Padding    gdc.MethodBindPtr
+	fnRequestUpdate    gdc.MethodBindPtr
 }
 
 var ptrsForPrimitiveMesh ptrsForPrimitiveMeshList
@@ -89,6 +90,11 @@ func initPrimitiveMeshPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_uv2_padding")
 		defer methodName.Destroy()
 		ptrsForPrimitiveMesh.fnGetUv2Padding = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+	}
+	{
+		methodName := StringNameFromStr("request_update")
+		defer methodName.Destroy()
+		ptrsForPrimitiveMesh.fnRequestUpdate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
 
 }
@@ -230,6 +236,15 @@ func (me *PrimitiveMesh) GetUv2Padding() float64 {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPrimitiveMesh.fnGetUv2Padding), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
+}
+
+func (me *PrimitiveMesh) RequestUpdate() {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPrimitiveMesh.fnRequestUpdate), me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Properties

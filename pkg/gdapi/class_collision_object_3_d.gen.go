@@ -585,7 +585,7 @@ func (me *CollisionObject3D) ShapeFindOwner(shape_index int64) int64 {
 
 // Signals
 
-type CollisionObject3DInputEventSignalFn func(camera Node, event InputEvent, position Vector3, normal Vector3, shape_idx int)
+type CollisionObject3DInputEventSignalFn func(camera Node, event InputEvent, event_position Vector3, normal Vector3, shape_idx int)
 
 func (me *CollisionObject3D) ConnectInputEvent(subs SignalSubscribers, fn CollisionObject3DInputEventSignalFn) {
 	sig := StringNameFromStr("input_event")

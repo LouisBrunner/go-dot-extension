@@ -15,16 +15,17 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForRandomNumberGeneratorList struct {
-	fnSetSeed    gdc.MethodBindPtr
-	fnGetSeed    gdc.MethodBindPtr
-	fnSetState   gdc.MethodBindPtr
-	fnGetState   gdc.MethodBindPtr
-	fnRandi      gdc.MethodBindPtr
-	fnRandf      gdc.MethodBindPtr
-	fnRandfn     gdc.MethodBindPtr
-	fnRandfRange gdc.MethodBindPtr
-	fnRandiRange gdc.MethodBindPtr
-	fnRandomize  gdc.MethodBindPtr
+	fnSetSeed      gdc.MethodBindPtr
+	fnGetSeed      gdc.MethodBindPtr
+	fnSetState     gdc.MethodBindPtr
+	fnGetState     gdc.MethodBindPtr
+	fnRandi        gdc.MethodBindPtr
+	fnRandf        gdc.MethodBindPtr
+	fnRandfn       gdc.MethodBindPtr
+	fnRandfRange   gdc.MethodBindPtr
+	fnRandiRange   gdc.MethodBindPtr
+	fnRandWeighted gdc.MethodBindPtr
+	fnRandomize    gdc.MethodBindPtr
 }
 
 var ptrsForRandomNumberGenerator ptrsForRandomNumberGeneratorList
@@ -77,6 +78,11 @@ func initRandomNumberGeneratorPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("randi_range")
 		defer methodName.Destroy()
 		ptrsForRandomNumberGenerator.fnRandiRange = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 50157827))
+	}
+	{
+		methodName := StringNameFromStr("rand_weighted")
+		defer methodName.Destroy()
+		ptrsForRandomNumberGenerator.fnRandWeighted = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4189642986))
 	}
 	{
 		methodName := StringNameFromStr("randomize")
@@ -211,6 +217,16 @@ func (me *RandomNumberGenerator) RandiRange(from int64, to int64) int64 {
 	pinner.Pin(&to)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRandomNumberGenerator.fnRandiRange), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *RandomNumberGenerator) RandWeighted(weights PackedFloat32Array) int64 {
+	cargs := []gdc.ConstTypePtr{weights.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewInt()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRandomNumberGenerator.fnRandWeighted), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 

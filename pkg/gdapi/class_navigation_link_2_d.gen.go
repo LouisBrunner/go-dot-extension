@@ -15,6 +15,7 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForNavigationLink2DList struct {
+	fnGetRid                  gdc.MethodBindPtr
 	fnSetEnabled              gdc.MethodBindPtr
 	fnIsEnabled               gdc.MethodBindPtr
 	fnSetBidirectional        gdc.MethodBindPtr
@@ -43,6 +44,11 @@ func initNavigationLink2DPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("NavigationLink2D")
 	defer className.Destroy()
+	{
+		methodName := StringNameFromStr("get_rid")
+		defer methodName.Destroy()
+		ptrsForNavigationLink2D.fnGetRid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
+	}
 	{
 		methodName := StringNameFromStr("set_enabled")
 		defer methodName.Destroy()
@@ -179,6 +185,16 @@ func (me *NavigationLink2D) AsCTypePtr() gdc.ConstTypePtr {
 }
 
 // Methods
+
+func (me *NavigationLink2D) GetRid() RID {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewRID()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationLink2D.fnGetRid), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
 
 func (me *NavigationLink2D) SetEnabled(enabled bool) {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled)}

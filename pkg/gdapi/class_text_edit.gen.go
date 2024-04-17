@@ -22,6 +22,8 @@ type ptrsForTextEditList struct {
 	fnXPaste                               gdc.MethodBindPtr
 	fnXPastePrimaryClipboard               gdc.MethodBindPtr
 	fnHasImeText                           gdc.MethodBindPtr
+	fnCancelIme                            gdc.MethodBindPtr
+	fnApplyIme                             gdc.MethodBindPtr
 	fnSetEditable                          gdc.MethodBindPtr
 	fnIsEditable                           gdc.MethodBindPtr
 	fnSetTextDirection                     gdc.MethodBindPtr
@@ -34,6 +36,8 @@ type ptrsForTextEditList struct {
 	fnGetStructuredTextBidiOverrideOptions gdc.MethodBindPtr
 	fnSetTabSize                           gdc.MethodBindPtr
 	fnGetTabSize                           gdc.MethodBindPtr
+	fnSetIndentWrappedLines                gdc.MethodBindPtr
+	fnIsIndentWrappedLines                 gdc.MethodBindPtr
 	fnSetOvertypeModeEnabled               gdc.MethodBindPtr
 	fnIsOvertypeModeEnabled                gdc.MethodBindPtr
 	fnSetContextMenuEnabled                gdc.MethodBindPtr
@@ -133,6 +137,7 @@ type ptrsForTextEditList struct {
 	fnSelectAll                            gdc.MethodBindPtr
 	fnSelectWordUnderCaret                 gdc.MethodBindPtr
 	fnAddSelectionForNextOccurrence        gdc.MethodBindPtr
+	fnSkipSelectionForNextOccurrence       gdc.MethodBindPtr
 	fnSelect                               gdc.MethodBindPtr
 	fnHasSelection                         gdc.MethodBindPtr
 	fnGetSelectedText                      gdc.MethodBindPtr
@@ -242,6 +247,16 @@ func initTextEditPtrs(iface gdc.Interface) {
 		ptrsForTextEdit.fnHasImeText = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
+		methodName := StringNameFromStr("cancel_ime")
+		defer methodName.Destroy()
+		ptrsForTextEdit.fnCancelIme = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+	}
+	{
+		methodName := StringNameFromStr("apply_ime")
+		defer methodName.Destroy()
+		ptrsForTextEdit.fnApplyIme = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+	}
+	{
 		methodName := StringNameFromStr("set_editable")
 		defer methodName.Destroy()
 		ptrsForTextEdit.fnSetEditable = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
@@ -300,6 +315,16 @@ func initTextEditPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_tab_size")
 		defer methodName.Destroy()
 		ptrsForTextEdit.fnGetTabSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+	}
+	{
+		methodName := StringNameFromStr("set_indent_wrapped_lines")
+		defer methodName.Destroy()
+		ptrsForTextEdit.fnSetIndentWrappedLines = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("is_indent_wrapped_lines")
+		defer methodName.Destroy()
+		ptrsForTextEdit.fnIsIndentWrappedLines = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
 		methodName := StringNameFromStr("set_overtype_mode_enabled")
@@ -795,6 +820,11 @@ func initTextEditPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("add_selection_for_next_occurrence")
 		defer methodName.Destroy()
 		ptrsForTextEdit.fnAddSelectionForNextOccurrence = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+	}
+	{
+		methodName := StringNameFromStr("skip_selection_for_next_occurrence")
+		defer methodName.Destroy()
+		ptrsForTextEdit.fnSkipSelectionForNextOccurrence = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
 	{
 		methodName := StringNameFromStr("select")
@@ -1403,6 +1433,24 @@ func (me *TextEdit) HasImeText() bool {
 	return ret.Get()
 }
 
+func (me *TextEdit) CancelIme() {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextEdit.fnCancelIme), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *TextEdit) ApplyIme() {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextEdit.fnApplyIme), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
 func (me *TextEdit) SetEditable(enabled bool) {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled)}
 	pinner := runtime.Pinner{}
@@ -1514,6 +1562,25 @@ func (me *TextEdit) GetTabSize() int64 {
 	ret := NewInt()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextEdit.fnGetTabSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *TextEdit) SetIndentWrappedLines(enabled bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextEdit.fnSetIndentWrappedLines), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *TextEdit) IsIndentWrappedLines() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextEdit.fnIsIndentWrappedLines), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 
@@ -2482,6 +2549,15 @@ func (me *TextEdit) AddSelectionForNextOccurrence() {
 	defer pinner.Unpin()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextEdit.fnAddSelectionForNextOccurrence), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *TextEdit) SkipSelectionForNextOccurrence() {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextEdit.fnSkipSelectionForNextOccurrence), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

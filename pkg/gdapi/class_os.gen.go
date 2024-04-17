@@ -34,12 +34,14 @@ type ptrsForOSList struct {
 	fnGetExecutablePath                 gdc.MethodBindPtr
 	fnReadStringFromStdin               gdc.MethodBindPtr
 	fnExecute                           gdc.MethodBindPtr
+	fnExecuteWithPipe                   gdc.MethodBindPtr
 	fnCreateProcess                     gdc.MethodBindPtr
 	fnCreateInstance                    gdc.MethodBindPtr
 	fnKill                              gdc.MethodBindPtr
 	fnShellOpen                         gdc.MethodBindPtr
 	fnShellShowInFileManager            gdc.MethodBindPtr
 	fnIsProcessRunning                  gdc.MethodBindPtr
+	fnGetProcessExitCode                gdc.MethodBindPtr
 	fnGetProcessId                      gdc.MethodBindPtr
 	fnHasEnvironment                    gdc.MethodBindPtr
 	fnGetEnvironment                    gdc.MethodBindPtr
@@ -189,6 +191,11 @@ func initOSPtrs(iface gdc.Interface) {
 		ptrsForOS.fnExecute = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1488299882))
 	}
 	{
+		methodName := StringNameFromStr("execute_with_pipe")
+		defer methodName.Destroy()
+		ptrsForOS.fnExecuteWithPipe = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3845631403))
+	}
+	{
 		methodName := StringNameFromStr("create_process")
 		defer methodName.Destroy()
 		ptrsForOS.fnCreateProcess = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2903767230))
@@ -217,6 +224,11 @@ func initOSPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("is_process_running")
 		defer methodName.Destroy()
 		ptrsForOS.fnIsProcessRunning = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
+	}
+	{
+		methodName := StringNameFromStr("get_process_exit_code")
+		defer methodName.Destroy()
+		ptrsForOS.fnGetProcessExitCode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 923996154))
 	}
 	{
 		methodName := StringNameFromStr("get_process_id")
@@ -471,6 +483,7 @@ type OSRenderingDriver int
 const (
 	OSRenderingDriverRenderingDriverVulkan  OSRenderingDriver = 0
 	OSRenderingDriverRenderingDriverOpengl3 OSRenderingDriver = 1
+	OSRenderingDriverRenderingDriverD3D12   OSRenderingDriver = 2
 )
 
 type OSSystemDir int
@@ -691,6 +704,16 @@ func (me *OS) Execute(path String, arguments PackedStringArray, output Array, re
 	return ret.Get()
 }
 
+func (me *OS) ExecuteWithPipe(path String, arguments PackedStringArray) Dictionary {
+	cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), arguments.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewDictionary()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOS.fnExecuteWithPipe), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
 func (me *OS) CreateProcess(path String, arguments PackedStringArray, open_console bool) int64 {
 	cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), arguments.AsCTypePtr(), gdc.ConstTypePtr(&open_console)}
 	pinner := runtime.Pinner{}
@@ -752,6 +775,17 @@ func (me *OS) IsProcessRunning(pid int64) bool {
 	pinner.Pin(&pid)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOS.fnIsProcessRunning), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *OS) GetProcessExitCode(pid int64) int64 {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pid)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewInt()
+	pinner.Pin(&pid)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOS.fnGetProcessExitCode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 

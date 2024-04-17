@@ -25,6 +25,8 @@ type ptrsForAStarGrid2DList struct {
 	fnGetOffset                   gdc.MethodBindPtr
 	fnSetCellSize                 gdc.MethodBindPtr
 	fnGetCellSize                 gdc.MethodBindPtr
+	fnSetCellShape                gdc.MethodBindPtr
+	fnGetCellShape                gdc.MethodBindPtr
 	fnIsInBounds                  gdc.MethodBindPtr
 	fnIsInBoundsv                 gdc.MethodBindPtr
 	fnIsDirty                     gdc.MethodBindPtr
@@ -94,6 +96,16 @@ func initAStarGrid2DPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_cell_size")
 		defer methodName.Destroy()
 		ptrsForAStarGrid2D.fnGetCellSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+	}
+	{
+		methodName := StringNameFromStr("set_cell_shape")
+		defer methodName.Destroy()
+		ptrsForAStarGrid2D.fnSetCellShape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4130591146))
+	}
+	{
+		methodName := StringNameFromStr("get_cell_shape")
+		defer methodName.Destroy()
+		ptrsForAStarGrid2D.fnGetCellShape = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3293463634))
 	}
 	{
 		methodName := StringNameFromStr("is_in_bounds")
@@ -198,12 +210,12 @@ func initAStarGrid2DPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("get_point_path")
 		defer methodName.Destroy()
-		ptrsForAStarGrid2D.fnGetPointPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 690373547))
+		ptrsForAStarGrid2D.fnGetPointPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1641925693))
 	}
 	{
 		methodName := StringNameFromStr("get_id_path")
 		defer methodName.Destroy()
-		ptrsForAStarGrid2D.fnGetIdPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1989391000))
+		ptrsForAStarGrid2D.fnGetIdPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1918132273))
 	}
 
 }
@@ -246,6 +258,15 @@ const (
 	AStarGrid2DDiagonalModeDiagonalModeAtLeastOneWalkable AStarGrid2DDiagonalMode = 2
 	AStarGrid2DDiagonalModeDiagonalModeOnlyIfNoObstacles  AStarGrid2DDiagonalMode = 3
 	AStarGrid2DDiagonalModeDiagonalModeMax                AStarGrid2DDiagonalMode = 4
+)
+
+type AStarGrid2DCellShape int
+
+const (
+	AStarGrid2DCellShapeCellShapeSquare         AStarGrid2DCellShape = 0
+	AStarGrid2DCellShapeCellShapeIsometricRight AStarGrid2DCellShape = 1
+	AStarGrid2DCellShapeCellShapeIsometricDown  AStarGrid2DCellShape = 2
+	AStarGrid2DCellShapeCellShapeMax            AStarGrid2DCellShape = 3
 )
 
 func (me *AStarGrid2D) Type() gdc.VariantType {
@@ -336,6 +357,25 @@ func (me *AStarGrid2D) GetCellSize() Vector2 {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAStarGrid2D.fnGetCellSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
+}
+
+func (me *AStarGrid2D) SetCellShape(cell_shape AStarGrid2DCellShape) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&cell_shape)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAStarGrid2D.fnSetCellShape), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *AStarGrid2D) GetCellShape() AStarGrid2DCellShape {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	var ret AStarGrid2DCellShape
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAStarGrid2D.fnGetCellShape), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+	return ret
 }
 
 func (me *AStarGrid2D) IsInBounds(x int64, y int64) bool {
@@ -530,22 +570,24 @@ func (me *AStarGrid2D) GetPointPosition(id Vector2i) Vector2 {
 	return *ret
 }
 
-func (me *AStarGrid2D) GetPointPath(from_id Vector2i, to_id Vector2i) PackedVector2Array {
-	cargs := []gdc.ConstTypePtr{from_id.AsCTypePtr(), to_id.AsCTypePtr()}
+func (me *AStarGrid2D) GetPointPath(from_id Vector2i, to_id Vector2i, allow_partial_path bool) PackedVector2Array {
+	cargs := []gdc.ConstTypePtr{from_id.AsCTypePtr(), to_id.AsCTypePtr(), gdc.ConstTypePtr(&allow_partial_path)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewPackedVector2Array()
+	pinner.Pin(&allow_partial_path)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAStarGrid2D.fnGetPointPath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 
-func (me *AStarGrid2D) GetIdPath(from_id Vector2i, to_id Vector2i) []Vector2i {
-	cargs := []gdc.ConstTypePtr{from_id.AsCTypePtr(), to_id.AsCTypePtr()}
+func (me *AStarGrid2D) GetIdPath(from_id Vector2i, to_id Vector2i, allow_partial_path bool) []Vector2i {
+	cargs := []gdc.ConstTypePtr{from_id.AsCTypePtr(), to_id.AsCTypePtr(), gdc.ConstTypePtr(&allow_partial_path)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewArray()
 	defer ret.Destroy()
+	pinner.Pin(&allow_partial_path)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAStarGrid2D.fnGetIdPath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	sliceRet, err := ConvertArrayToSlice[Vector2i](ret)

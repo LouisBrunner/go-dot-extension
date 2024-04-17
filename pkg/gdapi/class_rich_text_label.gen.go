@@ -242,7 +242,7 @@ func initRichTextLabelPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("push_meta")
 		defer methodName.Destroy()
-		ptrsForRichTextLabel.fnPushMeta = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1114965689))
+		ptrsForRichTextLabel.fnPushMeta = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2206155733))
 	}
 	{
 		methodName := StringNameFromStr("push_hint")
@@ -759,6 +759,14 @@ const (
 	RichTextLabelMenuItemsMenuMax       RichTextLabelMenuItems = 2
 )
 
+type RichTextLabelMetaUnderline int
+
+const (
+	RichTextLabelMetaUnderlineMetaUnderlineNever   RichTextLabelMetaUnderline = 0
+	RichTextLabelMetaUnderlineMetaUnderlineAlways  RichTextLabelMetaUnderline = 1
+	RichTextLabelMetaUnderlineMetaUnderlineOnHover RichTextLabelMetaUnderline = 2
+)
+
 type RichTextLabelImageUpdateMask int
 
 const (
@@ -969,8 +977,8 @@ func (me *RichTextLabel) PushList(level int64, type_ RichTextLabelListType, capi
 
 }
 
-func (me *RichTextLabel) PushMeta(data Variant) {
-	cargs := []gdc.ConstTypePtr{data.AsCTypePtr()}
+func (me *RichTextLabel) PushMeta(data Variant, underline_mode RichTextLabelMetaUnderline) {
+	cargs := []gdc.ConstTypePtr{data.AsCTypePtr(), gdc.ConstTypePtr(&underline_mode)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 

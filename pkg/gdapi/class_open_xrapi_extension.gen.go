@@ -15,20 +15,25 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForOpenXRAPIExtensionList struct {
-	fnGetInstance            gdc.MethodBindPtr
-	fnGetSystemId            gdc.MethodBindPtr
-	fnGetSession             gdc.MethodBindPtr
-	fnTransformFromPose      gdc.MethodBindPtr
-	fnXrResult               gdc.MethodBindPtr
-	fnOpenxrIsEnabled        gdc.MethodBindPtr
-	fnGetInstanceProcAddr    gdc.MethodBindPtr
-	fnGetErrorString         gdc.MethodBindPtr
-	fnGetSwapchainFormatName gdc.MethodBindPtr
-	fnIsInitialized          gdc.MethodBindPtr
-	fnIsRunning              gdc.MethodBindPtr
-	fnGetPlaySpace           gdc.MethodBindPtr
-	fnGetNextFrameTime       gdc.MethodBindPtr
-	fnCanRender              gdc.MethodBindPtr
+	fnGetInstance                              gdc.MethodBindPtr
+	fnGetSystemId                              gdc.MethodBindPtr
+	fnGetSession                               gdc.MethodBindPtr
+	fnTransformFromPose                        gdc.MethodBindPtr
+	fnXrResult                                 gdc.MethodBindPtr
+	fnOpenxrIsEnabled                          gdc.MethodBindPtr
+	fnGetInstanceProcAddr                      gdc.MethodBindPtr
+	fnGetErrorString                           gdc.MethodBindPtr
+	fnGetSwapchainFormatName                   gdc.MethodBindPtr
+	fnIsInitialized                            gdc.MethodBindPtr
+	fnIsRunning                                gdc.MethodBindPtr
+	fnGetPlaySpace                             gdc.MethodBindPtr
+	fnGetNextFrameTime                         gdc.MethodBindPtr
+	fnCanRender                                gdc.MethodBindPtr
+	fnGetHandTracker                           gdc.MethodBindPtr
+	fnRegisterCompositionLayerProvider         gdc.MethodBindPtr
+	fnUnregisterCompositionLayerProvider       gdc.MethodBindPtr
+	fnSetEmulateEnvironmentBlendModeAlphaBlend gdc.MethodBindPtr
+	fnIsEnvironmentBlendModeAlphaSupported     gdc.MethodBindPtr
 }
 
 var ptrsForOpenXRAPIExtension ptrsForOpenXRAPIExtensionList
@@ -107,6 +112,31 @@ func initOpenXRAPIExtensionPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForOpenXRAPIExtension.fnCanRender = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
 	}
+	{
+		methodName := StringNameFromStr("get_hand_tracker")
+		defer methodName.Destroy()
+		ptrsForOpenXRAPIExtension.fnGetHandTracker = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3744713108))
+	}
+	{
+		methodName := StringNameFromStr("register_composition_layer_provider")
+		defer methodName.Destroy()
+		ptrsForOpenXRAPIExtension.fnRegisterCompositionLayerProvider = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1997997368))
+	}
+	{
+		methodName := StringNameFromStr("unregister_composition_layer_provider")
+		defer methodName.Destroy()
+		ptrsForOpenXRAPIExtension.fnUnregisterCompositionLayerProvider = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1997997368))
+	}
+	{
+		methodName := StringNameFromStr("set_emulate_environment_blend_mode_alpha_blend")
+		defer methodName.Destroy()
+		ptrsForOpenXRAPIExtension.fnSetEmulateEnvironmentBlendModeAlphaBlend = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("is_environment_blend_mode_alpha_supported")
+		defer methodName.Destroy()
+		ptrsForOpenXRAPIExtension.fnIsEnvironmentBlendModeAlphaSupported = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1579290861))
+	}
 
 }
 
@@ -129,6 +159,14 @@ func NewOpenXRAPIExtension() *OpenXRAPIExtension {
 }
 
 // Enums
+
+type OpenXRAPIExtensionOpenXRAlphaBlendModeSupport int
+
+const (
+	OpenXRAPIExtensionOpenXRAlphaBlendModeSupportOpenxrAlphaBlendModeSupportNone      OpenXRAPIExtensionOpenXRAlphaBlendModeSupport = 0
+	OpenXRAPIExtensionOpenXRAlphaBlendModeSupportOpenxrAlphaBlendModeSupportReal      OpenXRAPIExtensionOpenXRAlphaBlendModeSupport = 1
+	OpenXRAPIExtensionOpenXRAlphaBlendModeSupportOpenxrAlphaBlendModeSupportEmulating OpenXRAPIExtensionOpenXRAlphaBlendModeSupport = 2
+)
 
 func (me *OpenXRAPIExtension) Type() gdc.VariantType {
 	return gdc.VariantTypeObject
@@ -287,6 +325,54 @@ func (me *OpenXRAPIExtension) CanRender() bool {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRAPIExtension.fnCanRender), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
+}
+
+func (me *OpenXRAPIExtension) GetHandTracker(hand_index int64) int64 {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hand_index)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewInt()
+	pinner.Pin(&hand_index)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRAPIExtension.fnGetHandTracker), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *OpenXRAPIExtension) RegisterCompositionLayerProvider(extension OpenXRExtensionWrapperExtension) {
+	cargs := []gdc.ConstTypePtr{extension.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRAPIExtension.fnRegisterCompositionLayerProvider), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *OpenXRAPIExtension) UnregisterCompositionLayerProvider(extension OpenXRExtensionWrapperExtension) {
+	cargs := []gdc.ConstTypePtr{extension.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRAPIExtension.fnUnregisterCompositionLayerProvider), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *OpenXRAPIExtension) SetEmulateEnvironmentBlendModeAlphaBlend(enabled bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRAPIExtension.fnSetEmulateEnvironmentBlendModeAlphaBlend), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *OpenXRAPIExtension) IsEnvironmentBlendModeAlphaSupported() OpenXRAPIExtensionOpenXRAlphaBlendModeSupport {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	var ret OpenXRAPIExtensionOpenXRAlphaBlendModeSupport
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRAPIExtension.fnIsEnvironmentBlendModeAlphaSupported), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+	return ret
 }
 
 // Signals

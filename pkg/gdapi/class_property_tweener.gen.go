@@ -15,12 +15,13 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForPropertyTweenerList struct {
-	fnFrom        gdc.MethodBindPtr
-	fnFromCurrent gdc.MethodBindPtr
-	fnAsRelative  gdc.MethodBindPtr
-	fnSetTrans    gdc.MethodBindPtr
-	fnSetEase     gdc.MethodBindPtr
-	fnSetDelay    gdc.MethodBindPtr
+	fnFrom                  gdc.MethodBindPtr
+	fnFromCurrent           gdc.MethodBindPtr
+	fnAsRelative            gdc.MethodBindPtr
+	fnSetTrans              gdc.MethodBindPtr
+	fnSetEase               gdc.MethodBindPtr
+	fnSetCustomInterpolator gdc.MethodBindPtr
+	fnSetDelay              gdc.MethodBindPtr
 }
 
 var ptrsForPropertyTweener ptrsForPropertyTweenerList
@@ -53,6 +54,11 @@ func initPropertyTweenerPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("set_ease")
 		defer methodName.Destroy()
 		ptrsForPropertyTweener.fnSetEase = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1080455622))
+	}
+	{
+		methodName := StringNameFromStr("set_custom_interpolator")
+		defer methodName.Destroy()
+		ptrsForPropertyTweener.fnSetCustomInterpolator = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3174170268))
 	}
 	{
 		methodName := StringNameFromStr("set_delay")
@@ -145,6 +151,16 @@ func (me *PropertyTweener) SetEase(ease TweenEaseType) PropertyTweener {
 	pinner.Pin(&ease)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPropertyTweener.fnSetEase), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *PropertyTweener) SetCustomInterpolator(interpolator_method Callable) PropertyTweener {
+	cargs := []gdc.ConstTypePtr{interpolator_method.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewPropertyTweener()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPropertyTweener.fnSetCustomInterpolator), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 

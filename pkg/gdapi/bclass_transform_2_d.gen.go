@@ -41,7 +41,9 @@ type ptrsForTransform2DList struct {
 	methodLookingAtFn                     gdc.PtrBuiltInMethod
 	operatorNotFn                         gdc.PtrOperatorEvaluator
 	operatorMultiplyIntFn                 gdc.PtrOperatorEvaluator
+	operatorDivideIntFn                   gdc.PtrOperatorEvaluator
 	operatorMultiplyFloat32Fn             gdc.PtrOperatorEvaluator
+	operatorDivideFloat32Fn               gdc.PtrOperatorEvaluator
 	operatorMultiplyVector2Fn             gdc.PtrOperatorEvaluator
 	operatorMultiplyRect2Fn               gdc.PtrOperatorEvaluator
 	operatorEqualTransform2DFn            gdc.PtrOperatorEvaluator
@@ -175,7 +177,9 @@ func initTransform2DPtrs(iface gdc.Interface) {
 	}
 	ptrsForTransform2D.operatorNotFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, gdc.VariantTypeTransform2D, gdc.VariantTypeNil))
 	ptrsForTransform2D.operatorMultiplyIntFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeTransform2D, gdc.VariantTypeInt))
+	ptrsForTransform2D.operatorDivideIntFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, gdc.VariantTypeTransform2D, gdc.VariantTypeInt))
 	ptrsForTransform2D.operatorMultiplyFloat32Fn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeTransform2D, gdc.VariantTypeFloat))
+	ptrsForTransform2D.operatorDivideFloat32Fn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, gdc.VariantTypeTransform2D, gdc.VariantTypeFloat))
 	ptrsForTransform2D.operatorMultiplyVector2Fn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeTransform2D, gdc.VariantTypeVector2))
 	ptrsForTransform2D.operatorMultiplyRect2Fn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeTransform2D, gdc.VariantTypeRect2))
 	ptrsForTransform2D.operatorEqualTransform2DFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, gdc.VariantTypeTransform2D, gdc.VariantTypeTransform2D))
@@ -592,11 +596,31 @@ func (me *Transform2D) MultiplyInt(rightArg int64) Transform2D {
 	return *ret
 }
 
+func (me *Transform2D) DivideInt(rightArg int64) Transform2D {
+	right := NewIntFromInt(rightArg)
+	defer right.Destroy()
+
+	opPtr := ptrsForTransform2D.operatorDivideIntFn
+	ret := NewTransform2D()
+	me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+	return *ret
+}
+
 func (me *Transform2D) MultiplyFloat32(rightArg float64) Transform2D {
 	right := NewFloatFromFloat32(rightArg)
 	defer right.Destroy()
 
 	opPtr := ptrsForTransform2D.operatorMultiplyFloat32Fn
+	ret := NewTransform2D()
+	me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *Transform2D) DivideFloat32(rightArg float64) Transform2D {
+	right := NewFloatFromFloat32(rightArg)
+	defer right.Destroy()
+
+	opPtr := ptrsForTransform2D.operatorDivideFloat32Fn
 	ret := NewTransform2D()
 	me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
 	return *ret

@@ -53,6 +53,7 @@ type ptrsForTileDataList struct {
 	fnGetTerrain                      gdc.MethodBindPtr
 	fnSetTerrainPeeringBit            gdc.MethodBindPtr
 	fnGetTerrainPeeringBit            gdc.MethodBindPtr
+	fnIsValidTerrainPeeringBit        gdc.MethodBindPtr
 	fnSetNavigationPolygon            gdc.MethodBindPtr
 	fnGetNavigationPolygon            gdc.MethodBindPtr
 	fnSetProbability                  gdc.MethodBindPtr
@@ -157,7 +158,7 @@ func initTileDataPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("get_occluder")
 		defer methodName.Destroy()
-		ptrsForTileData.fnGetOccluder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2458574231))
+		ptrsForTileData.fnGetOccluder = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2377324099))
 	}
 	{
 		methodName := StringNameFromStr("set_constant_linear_velocity")
@@ -260,6 +261,11 @@ func initTileDataPtrs(iface gdc.Interface) {
 		ptrsForTileData.fnGetTerrainPeeringBit = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3831796792))
 	}
 	{
+		methodName := StringNameFromStr("is_valid_terrain_peering_bit")
+		defer methodName.Destroy()
+		ptrsForTileData.fnIsValidTerrainPeeringBit = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 845723972))
+	}
+	{
 		methodName := StringNameFromStr("set_navigation_polygon")
 		defer methodName.Destroy()
 		ptrsForTileData.fnSetNavigationPolygon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2224691167))
@@ -267,7 +273,7 @@ func initTileDataPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("get_navigation_polygon")
 		defer methodName.Destroy()
-		ptrsForTileData.fnGetNavigationPolygon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3991786031))
+		ptrsForTileData.fnGetNavigationPolygon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2907127272))
 	}
 	{
 		methodName := StringNameFromStr("set_probability")
@@ -497,12 +503,15 @@ func (me *TileData) SetOccluder(layer_id int64, occluder_polygon OccluderPolygon
 
 }
 
-func (me *TileData) GetOccluder(layer_id int64) OccluderPolygon2D {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_id)}
+func (me *TileData) GetOccluder(layer_id int64, flip_h bool, flip_v bool, transpose bool) OccluderPolygon2D {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_id), gdc.ConstTypePtr(&flip_h), gdc.ConstTypePtr(&flip_v), gdc.ConstTypePtr(&transpose)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewOccluderPolygon2D()
 	pinner.Pin(&layer_id)
+	pinner.Pin(&flip_h)
+	pinner.Pin(&flip_v)
+	pinner.Pin(&transpose)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTileData.fnGetOccluder), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
@@ -707,6 +716,17 @@ func (me *TileData) GetTerrainPeeringBit(peering_bit TileSetCellNeighbor) int64 
 	return ret.Get()
 }
 
+func (me *TileData) IsValidTerrainPeeringBit(peering_bit TileSetCellNeighbor) bool {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&peering_bit)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+	pinner.Pin(&peering_bit)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTileData.fnIsValidTerrainPeeringBit), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
 func (me *TileData) SetNavigationPolygon(layer_id int64, navigation_polygon NavigationPolygon) {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_id), navigation_polygon.AsCTypePtr()}
 	pinner := runtime.Pinner{}
@@ -716,12 +736,15 @@ func (me *TileData) SetNavigationPolygon(layer_id int64, navigation_polygon Navi
 
 }
 
-func (me *TileData) GetNavigationPolygon(layer_id int64) NavigationPolygon {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_id)}
+func (me *TileData) GetNavigationPolygon(layer_id int64, flip_h bool, flip_v bool, transpose bool) NavigationPolygon {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_id), gdc.ConstTypePtr(&flip_h), gdc.ConstTypePtr(&flip_v), gdc.ConstTypePtr(&transpose)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewNavigationPolygon()
 	pinner.Pin(&layer_id)
+	pinner.Pin(&flip_h)
+	pinner.Pin(&flip_v)
+	pinner.Pin(&transpose)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTileData.fnGetNavigationPolygon), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret

@@ -20,6 +20,8 @@ type ptrsForVector2iList struct {
 	methodAspectFn                 gdc.PtrBuiltInMethod
 	methodMaxAxisIndexFn           gdc.PtrBuiltInMethod
 	methodMinAxisIndexFn           gdc.PtrBuiltInMethod
+	methodDistanceToFn             gdc.PtrBuiltInMethod
+	methodDistanceSquaredToFn      gdc.PtrBuiltInMethod
 	methodLengthFn                 gdc.PtrBuiltInMethod
 	methodLengthSquaredFn          gdc.PtrBuiltInMethod
 	methodSignFn                   gdc.PtrBuiltInMethod
@@ -76,6 +78,16 @@ func initVector2iPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("min_axis_index")
 		defer methodName.Destroy()
 		ptrsForVector2i.methodMinAxisIndexFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector2I, methodName.AsCPtr(), 3173160232))
+	}
+	{
+		methodName := StringNameFromStr("distance_to")
+		defer methodName.Destroy()
+		ptrsForVector2i.methodDistanceToFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector2I, methodName.AsCPtr(), 707501214))
+	}
+	{
+		methodName := StringNameFromStr("distance_squared_to")
+		defer methodName.Destroy()
+		ptrsForVector2i.methodDistanceSquaredToFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector2I, methodName.AsCPtr(), 1130029528))
 	}
 	{
 		methodName := StringNameFromStr("length")
@@ -388,6 +400,26 @@ func (me *Vector2i) MinAxisIndex() int64 {
 	args := []gdc.ConstTypePtr{}
 
 	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForVector2i.methodMinAxisIndexFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+	return ret.Get()
+}
+
+func (me *Vector2i) DistanceTo(to Vector2i) float64 {
+	ret := NewFloat()
+	defer ret.Destroy()
+
+	args := []gdc.ConstTypePtr{to.AsCTypePtr()}
+
+	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForVector2i.methodDistanceToFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+	return ret.Get()
+}
+
+func (me *Vector2i) DistanceSquaredTo(to Vector2i) int64 {
+	ret := NewInt()
+	defer ret.Destroy()
+
+	args := []gdc.ConstTypePtr{to.AsCTypePtr()}
+
+	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForVector2i.methodDistanceSquaredToFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
 	return ret.Get()
 }
 

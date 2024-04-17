@@ -25,6 +25,8 @@ type ptrsForAnimationNodeStateMachineTransitionList struct {
 	fnGetXfadeTime         gdc.MethodBindPtr
 	fnSetXfadeCurve        gdc.MethodBindPtr
 	fnGetXfadeCurve        gdc.MethodBindPtr
+	fnSetBreakLoopAtEnd    gdc.MethodBindPtr
+	fnIsLoopBrokenAtEnd    gdc.MethodBindPtr
 	fnSetReset             gdc.MethodBindPtr
 	fnIsReset              gdc.MethodBindPtr
 	fnSetPriority          gdc.MethodBindPtr
@@ -88,6 +90,16 @@ func initAnimationNodeStateMachineTransitionPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_xfade_curve")
 		defer methodName.Destroy()
 		ptrsForAnimationNodeStateMachineTransition.fnGetXfadeCurve = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2460114913))
+	}
+	{
+		methodName := StringNameFromStr("set_break_loop_at_end")
+		defer methodName.Destroy()
+		ptrsForAnimationNodeStateMachineTransition.fnSetBreakLoopAtEnd = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("is_loop_broken_at_end")
+		defer methodName.Destroy()
+		ptrsForAnimationNodeStateMachineTransition.fnIsLoopBrokenAtEnd = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
 		methodName := StringNameFromStr("set_reset")
@@ -265,6 +277,25 @@ func (me *AnimationNodeStateMachineTransition) GetXfadeCurve() Curve {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeStateMachineTransition.fnGetXfadeCurve), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
+}
+
+func (me *AnimationNodeStateMachineTransition) SetBreakLoopAtEnd(enable bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeStateMachineTransition.fnSetBreakLoopAtEnd), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *AnimationNodeStateMachineTransition) IsLoopBrokenAtEnd() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeStateMachineTransition.fnIsLoopBrokenAtEnd), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
 }
 
 func (me *AnimationNodeStateMachineTransition) SetReset(reset bool) {

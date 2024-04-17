@@ -19,6 +19,8 @@ type ptrsForButtonList struct {
 	fnGetText                  gdc.MethodBindPtr
 	fnSetTextOverrunBehavior   gdc.MethodBindPtr
 	fnGetTextOverrunBehavior   gdc.MethodBindPtr
+	fnSetAutowrapMode          gdc.MethodBindPtr
+	fnGetAutowrapMode          gdc.MethodBindPtr
 	fnSetTextDirection         gdc.MethodBindPtr
 	fnGetTextDirection         gdc.MethodBindPtr
 	fnSetLanguage              gdc.MethodBindPtr
@@ -64,6 +66,16 @@ func initButtonPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_text_overrun_behavior")
 		defer methodName.Destroy()
 		ptrsForButton.fnGetTextOverrunBehavior = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3779142101))
+	}
+	{
+		methodName := StringNameFromStr("set_autowrap_mode")
+		defer methodName.Destroy()
+		ptrsForButton.fnSetAutowrapMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3289138044))
+	}
+	{
+		methodName := StringNameFromStr("get_autowrap_mode")
+		defer methodName.Destroy()
+		ptrsForButton.fnGetAutowrapMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1549071663))
 	}
 	{
 		methodName := StringNameFromStr("set_text_direction")
@@ -227,6 +239,25 @@ func (me *Button) GetTextOverrunBehavior() TextServerOverrunBehavior {
 	var ret TextServerOverrunBehavior
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForButton.fnGetTextOverrunBehavior), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+	return ret
+}
+
+func (me *Button) SetAutowrapMode(autowrap_mode TextServerAutowrapMode) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&autowrap_mode)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForButton.fnSetAutowrapMode), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Button) GetAutowrapMode() TextServerAutowrapMode {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	var ret TextServerAutowrapMode
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForButton.fnGetAutowrapMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
 	return ret
 }
 

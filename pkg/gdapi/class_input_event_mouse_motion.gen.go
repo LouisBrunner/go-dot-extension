@@ -15,16 +15,20 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForInputEventMouseMotionList struct {
-	fnSetTilt        gdc.MethodBindPtr
-	fnGetTilt        gdc.MethodBindPtr
-	fnSetPressure    gdc.MethodBindPtr
-	fnGetPressure    gdc.MethodBindPtr
-	fnSetPenInverted gdc.MethodBindPtr
-	fnGetPenInverted gdc.MethodBindPtr
-	fnSetRelative    gdc.MethodBindPtr
-	fnGetRelative    gdc.MethodBindPtr
-	fnSetVelocity    gdc.MethodBindPtr
-	fnGetVelocity    gdc.MethodBindPtr
+	fnSetTilt           gdc.MethodBindPtr
+	fnGetTilt           gdc.MethodBindPtr
+	fnSetPressure       gdc.MethodBindPtr
+	fnGetPressure       gdc.MethodBindPtr
+	fnSetPenInverted    gdc.MethodBindPtr
+	fnGetPenInverted    gdc.MethodBindPtr
+	fnSetRelative       gdc.MethodBindPtr
+	fnGetRelative       gdc.MethodBindPtr
+	fnSetScreenRelative gdc.MethodBindPtr
+	fnGetScreenRelative gdc.MethodBindPtr
+	fnSetVelocity       gdc.MethodBindPtr
+	fnGetVelocity       gdc.MethodBindPtr
+	fnSetScreenVelocity gdc.MethodBindPtr
+	fnGetScreenVelocity gdc.MethodBindPtr
 }
 
 var ptrsForInputEventMouseMotion ptrsForInputEventMouseMotionList
@@ -74,6 +78,16 @@ func initInputEventMouseMotionPtrs(iface gdc.Interface) {
 		ptrsForInputEventMouseMotion.fnGetRelative = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
 	}
 	{
+		methodName := StringNameFromStr("set_screen_relative")
+		defer methodName.Destroy()
+		ptrsForInputEventMouseMotion.fnSetScreenRelative = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+	}
+	{
+		methodName := StringNameFromStr("get_screen_relative")
+		defer methodName.Destroy()
+		ptrsForInputEventMouseMotion.fnGetScreenRelative = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+	}
+	{
 		methodName := StringNameFromStr("set_velocity")
 		defer methodName.Destroy()
 		ptrsForInputEventMouseMotion.fnSetVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
@@ -82,6 +96,16 @@ func initInputEventMouseMotionPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_velocity")
 		defer methodName.Destroy()
 		ptrsForInputEventMouseMotion.fnGetVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+	}
+	{
+		methodName := StringNameFromStr("set_screen_velocity")
+		defer methodName.Destroy()
+		ptrsForInputEventMouseMotion.fnSetScreenVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+	}
+	{
+		methodName := StringNameFromStr("get_screen_velocity")
+		defer methodName.Destroy()
+		ptrsForInputEventMouseMotion.fnGetScreenVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
 	}
 
 }
@@ -196,6 +220,25 @@ func (me *InputEventMouseMotion) GetRelative() Vector2 {
 	return *ret
 }
 
+func (me *InputEventMouseMotion) SetScreenRelative(relative Vector2) {
+	cargs := []gdc.ConstTypePtr{relative.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventMouseMotion.fnSetScreenRelative), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *InputEventMouseMotion) GetScreenRelative() Vector2 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewVector2()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventMouseMotion.fnGetScreenRelative), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
 func (me *InputEventMouseMotion) SetVelocity(velocity Vector2) {
 	cargs := []gdc.ConstTypePtr{velocity.AsCTypePtr()}
 	pinner := runtime.Pinner{}
@@ -212,6 +255,25 @@ func (me *InputEventMouseMotion) GetVelocity() Vector2 {
 	ret := NewVector2()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventMouseMotion.fnGetVelocity), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *InputEventMouseMotion) SetScreenVelocity(velocity Vector2) {
+	cargs := []gdc.ConstTypePtr{velocity.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventMouseMotion.fnSetScreenVelocity), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *InputEventMouseMotion) GetScreenVelocity() Vector2 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewVector2()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInputEventMouseMotion.fnGetScreenVelocity), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 

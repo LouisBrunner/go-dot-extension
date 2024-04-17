@@ -80,6 +80,7 @@ type ptrsForCanvasItemList struct {
 	fnGetLocalMousePosition               gdc.MethodBindPtr
 	fnGetGlobalMousePosition              gdc.MethodBindPtr
 	fnGetCanvas                           gdc.MethodBindPtr
+	fnGetCanvasLayerNode                  gdc.MethodBindPtr
 	fnGetWorld2D                          gdc.MethodBindPtr
 	fnSetMaterial                         gdc.MethodBindPtr
 	fnGetMaterial                         gdc.MethodBindPtr
@@ -429,6 +430,11 @@ func initCanvasItemPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_canvas")
 		defer methodName.Destroy()
 		ptrsForCanvasItem.fnGetCanvas = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
+	}
+	{
+		methodName := StringNameFromStr("get_canvas_layer_node")
+		defer methodName.Destroy()
+		ptrsForCanvasItem.fnGetCanvasLayerNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2602762519))
 	}
 	{
 		methodName := StringNameFromStr("get_world_2d")
@@ -1215,6 +1221,16 @@ func (me *CanvasItem) GetCanvas() RID {
 	ret := NewRID()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasItem.fnGetCanvas), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *CanvasItem) GetCanvasLayerNode() CanvasLayer {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewCanvasLayer()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCanvasItem.fnGetCanvasLayerNode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 

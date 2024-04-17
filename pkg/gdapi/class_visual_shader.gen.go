@@ -15,26 +15,28 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForVisualShaderList struct {
-	fnSetMode            gdc.MethodBindPtr
-	fnAddNode            gdc.MethodBindPtr
-	fnGetNode            gdc.MethodBindPtr
-	fnSetNodePosition    gdc.MethodBindPtr
-	fnGetNodePosition    gdc.MethodBindPtr
-	fnGetNodeList        gdc.MethodBindPtr
-	fnGetValidNodeId     gdc.MethodBindPtr
-	fnRemoveNode         gdc.MethodBindPtr
-	fnReplaceNode        gdc.MethodBindPtr
-	fnIsNodeConnection   gdc.MethodBindPtr
-	fnCanConnectNodes    gdc.MethodBindPtr
-	fnConnectNodes       gdc.MethodBindPtr
-	fnDisconnectNodes    gdc.MethodBindPtr
-	fnConnectNodesForced gdc.MethodBindPtr
-	fnGetNodeConnections gdc.MethodBindPtr
-	fnSetGraphOffset     gdc.MethodBindPtr
-	fnGetGraphOffset     gdc.MethodBindPtr
-	fnAddVarying         gdc.MethodBindPtr
-	fnRemoveVarying      gdc.MethodBindPtr
-	fnHasVarying         gdc.MethodBindPtr
+	fnSetMode             gdc.MethodBindPtr
+	fnAddNode             gdc.MethodBindPtr
+	fnGetNode             gdc.MethodBindPtr
+	fnSetNodePosition     gdc.MethodBindPtr
+	fnGetNodePosition     gdc.MethodBindPtr
+	fnGetNodeList         gdc.MethodBindPtr
+	fnGetValidNodeId      gdc.MethodBindPtr
+	fnRemoveNode          gdc.MethodBindPtr
+	fnReplaceNode         gdc.MethodBindPtr
+	fnIsNodeConnection    gdc.MethodBindPtr
+	fnCanConnectNodes     gdc.MethodBindPtr
+	fnConnectNodes        gdc.MethodBindPtr
+	fnDisconnectNodes     gdc.MethodBindPtr
+	fnConnectNodesForced  gdc.MethodBindPtr
+	fnGetNodeConnections  gdc.MethodBindPtr
+	fnSetGraphOffset      gdc.MethodBindPtr
+	fnGetGraphOffset      gdc.MethodBindPtr
+	fnAttachNodeToFrame   gdc.MethodBindPtr
+	fnDetachNodeFromFrame gdc.MethodBindPtr
+	fnAddVarying          gdc.MethodBindPtr
+	fnRemoveVarying       gdc.MethodBindPtr
+	fnHasVarying          gdc.MethodBindPtr
 }
 
 var ptrsForVisualShader ptrsForVisualShaderList
@@ -127,6 +129,16 @@ func initVisualShaderPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_graph_offset")
 		defer methodName.Destroy()
 		ptrsForVisualShader.fnGetGraphOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+	}
+	{
+		methodName := StringNameFromStr("attach_node_to_frame")
+		defer methodName.Destroy()
+		ptrsForVisualShader.fnAttachNodeToFrame = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2479945279))
+	}
+	{
+		methodName := StringNameFromStr("detach_node_from_frame")
+		defer methodName.Destroy()
+		ptrsForVisualShader.fnDetachNodeFromFrame = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 844050912))
 	}
 	{
 		methodName := StringNameFromStr("add_varying")
@@ -413,6 +425,24 @@ func (me *VisualShader) GetGraphOffset() Vector2 {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShader.fnGetGraphOffset), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
+}
+
+func (me *VisualShader) AttachNodeToFrame(type_ VisualShaderType, id int64, frame int64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(&id), gdc.ConstTypePtr(&frame)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShader.fnAttachNodeToFrame), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *VisualShader) DetachNodeFromFrame(type_ VisualShaderType, id int64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&type_), gdc.ConstTypePtr(&id)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShader.fnDetachNodeFromFrame), me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 func (me *VisualShader) AddVarying(name String, mode VisualShaderVaryingMode, type_ VisualShaderVaryingType) {

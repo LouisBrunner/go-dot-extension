@@ -1,1 +1,3 @@
 *.gen.go -diff
+*.gen.c -diff
+*.gen.h -diff

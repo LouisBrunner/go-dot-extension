@@ -41,6 +41,8 @@ type ptrsForProceduralSkyMaterialList struct {
 	fnGetSunCurve               gdc.MethodBindPtr
 	fnSetUseDebanding           gdc.MethodBindPtr
 	fnGetUseDebanding           gdc.MethodBindPtr
+	fnSetEnergyMultiplier       gdc.MethodBindPtr
+	fnGetEnergyMultiplier       gdc.MethodBindPtr
 }
 
 var ptrsForProceduralSkyMaterial ptrsForProceduralSkyMaterialList
@@ -178,6 +180,16 @@ func initProceduralSkyMaterialPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_use_debanding")
 		defer methodName.Destroy()
 		ptrsForProceduralSkyMaterial.fnGetUseDebanding = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
+		methodName := StringNameFromStr("set_energy_multiplier")
+		defer methodName.Destroy()
+		ptrsForProceduralSkyMaterial.fnSetEnergyMultiplier = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+	}
+	{
+		methodName := StringNameFromStr("get_energy_multiplier")
+		defer methodName.Destroy()
+		ptrsForProceduralSkyMaterial.fnGetEnergyMultiplier = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
 
 }
@@ -460,6 +472,25 @@ func (me *ProceduralSkyMaterial) GetUseDebanding() bool {
 	ret := NewBool()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForProceduralSkyMaterial.fnGetUseDebanding), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *ProceduralSkyMaterial) SetEnergyMultiplier(multiplier float64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&multiplier)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForProceduralSkyMaterial.fnSetEnergyMultiplier), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *ProceduralSkyMaterial) GetEnergyMultiplier() float64 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewFloat()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForProceduralSkyMaterial.fnGetEnergyMultiplier), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 

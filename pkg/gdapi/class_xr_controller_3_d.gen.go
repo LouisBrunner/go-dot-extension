@@ -197,3 +197,17 @@ func (me *XRController3D) DisconnectInputVector2Changed(subs SignalSubscribers, 
 	defer sig.Destroy()
 	me.Disconnect(*sig, *subs.remove(fn))
 }
+
+type XRController3DProfileChangedSignalFn func(role String)
+
+func (me *XRController3D) ConnectProfileChanged(subs SignalSubscribers, fn XRController3DProfileChangedSignalFn) {
+	sig := StringNameFromStr("profile_changed")
+	defer sig.Destroy()
+	me.Connect(*sig, subs.add(fn), 0)
+}
+
+func (me *XRController3D) DisconnectProfileChanged(subs SignalSubscribers, fn XRController3DProfileChangedSignalFn) {
+	sig := StringNameFromStr("profile_changed")
+	defer sig.Destroy()
+	me.Disconnect(*sig, *subs.remove(fn))
+}

@@ -15,47 +15,50 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForSceneTreeList struct {
-	fnGetRoot                   gdc.MethodBindPtr
-	fnHasGroup                  gdc.MethodBindPtr
-	fnIsAutoAcceptQuit          gdc.MethodBindPtr
-	fnSetAutoAcceptQuit         gdc.MethodBindPtr
-	fnIsQuitOnGoBack            gdc.MethodBindPtr
-	fnSetQuitOnGoBack           gdc.MethodBindPtr
-	fnSetDebugCollisionsHint    gdc.MethodBindPtr
-	fnIsDebuggingCollisionsHint gdc.MethodBindPtr
-	fnSetDebugPathsHint         gdc.MethodBindPtr
-	fnIsDebuggingPathsHint      gdc.MethodBindPtr
-	fnSetDebugNavigationHint    gdc.MethodBindPtr
-	fnIsDebuggingNavigationHint gdc.MethodBindPtr
-	fnSetEditedSceneRoot        gdc.MethodBindPtr
-	fnGetEditedSceneRoot        gdc.MethodBindPtr
-	fnSetPause                  gdc.MethodBindPtr
-	fnIsPaused                  gdc.MethodBindPtr
-	fnCreateTimer               gdc.MethodBindPtr
-	fnCreateTween               gdc.MethodBindPtr
-	fnGetProcessedTweens        gdc.MethodBindPtr
-	fnGetNodeCount              gdc.MethodBindPtr
-	fnGetFrame                  gdc.MethodBindPtr
-	fnQuit                      gdc.MethodBindPtr
-	fnQueueDelete               gdc.MethodBindPtr
-	fnCallGroupFlags            gdc.MethodBindPtr
-	fnNotifyGroupFlags          gdc.MethodBindPtr
-	fnSetGroupFlags             gdc.MethodBindPtr
-	fnCallGroup                 gdc.MethodBindPtr
-	fnNotifyGroup               gdc.MethodBindPtr
-	fnSetGroup                  gdc.MethodBindPtr
-	fnGetNodesInGroup           gdc.MethodBindPtr
-	fnGetFirstNodeInGroup       gdc.MethodBindPtr
-	fnSetCurrentScene           gdc.MethodBindPtr
-	fnGetCurrentScene           gdc.MethodBindPtr
-	fnChangeSceneToFile         gdc.MethodBindPtr
-	fnChangeSceneToPacked       gdc.MethodBindPtr
-	fnReloadCurrentScene        gdc.MethodBindPtr
-	fnUnloadCurrentScene        gdc.MethodBindPtr
-	fnSetMultiplayer            gdc.MethodBindPtr
-	fnGetMultiplayer            gdc.MethodBindPtr
-	fnSetMultiplayerPollEnabled gdc.MethodBindPtr
-	fnIsMultiplayerPollEnabled  gdc.MethodBindPtr
+	fnGetRoot                        gdc.MethodBindPtr
+	fnHasGroup                       gdc.MethodBindPtr
+	fnIsAutoAcceptQuit               gdc.MethodBindPtr
+	fnSetAutoAcceptQuit              gdc.MethodBindPtr
+	fnIsQuitOnGoBack                 gdc.MethodBindPtr
+	fnSetQuitOnGoBack                gdc.MethodBindPtr
+	fnSetDebugCollisionsHint         gdc.MethodBindPtr
+	fnIsDebuggingCollisionsHint      gdc.MethodBindPtr
+	fnSetDebugPathsHint              gdc.MethodBindPtr
+	fnIsDebuggingPathsHint           gdc.MethodBindPtr
+	fnSetDebugNavigationHint         gdc.MethodBindPtr
+	fnIsDebuggingNavigationHint      gdc.MethodBindPtr
+	fnSetEditedSceneRoot             gdc.MethodBindPtr
+	fnGetEditedSceneRoot             gdc.MethodBindPtr
+	fnSetPause                       gdc.MethodBindPtr
+	fnIsPaused                       gdc.MethodBindPtr
+	fnCreateTimer                    gdc.MethodBindPtr
+	fnCreateTween                    gdc.MethodBindPtr
+	fnGetProcessedTweens             gdc.MethodBindPtr
+	fnGetNodeCount                   gdc.MethodBindPtr
+	fnGetFrame                       gdc.MethodBindPtr
+	fnQuit                           gdc.MethodBindPtr
+	fnSetPhysicsInterpolationEnabled gdc.MethodBindPtr
+	fnIsPhysicsInterpolationEnabled  gdc.MethodBindPtr
+	fnQueueDelete                    gdc.MethodBindPtr
+	fnCallGroupFlags                 gdc.MethodBindPtr
+	fnNotifyGroupFlags               gdc.MethodBindPtr
+	fnSetGroupFlags                  gdc.MethodBindPtr
+	fnCallGroup                      gdc.MethodBindPtr
+	fnNotifyGroup                    gdc.MethodBindPtr
+	fnSetGroup                       gdc.MethodBindPtr
+	fnGetNodesInGroup                gdc.MethodBindPtr
+	fnGetFirstNodeInGroup            gdc.MethodBindPtr
+	fnGetNodeCountInGroup            gdc.MethodBindPtr
+	fnSetCurrentScene                gdc.MethodBindPtr
+	fnGetCurrentScene                gdc.MethodBindPtr
+	fnChangeSceneToFile              gdc.MethodBindPtr
+	fnChangeSceneToPacked            gdc.MethodBindPtr
+	fnReloadCurrentScene             gdc.MethodBindPtr
+	fnUnloadCurrentScene             gdc.MethodBindPtr
+	fnSetMultiplayer                 gdc.MethodBindPtr
+	fnGetMultiplayer                 gdc.MethodBindPtr
+	fnSetMultiplayerPollEnabled      gdc.MethodBindPtr
+	fnIsMultiplayerPollEnabled       gdc.MethodBindPtr
 }
 
 var ptrsForSceneTree ptrsForSceneTreeList
@@ -175,6 +178,16 @@ func initSceneTreePtrs(iface gdc.Interface) {
 		ptrsForSceneTree.fnQuit = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1995695955))
 	}
 	{
+		methodName := StringNameFromStr("set_physics_interpolation_enabled")
+		defer methodName.Destroy()
+		ptrsForSceneTree.fnSetPhysicsInterpolationEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("is_physics_interpolation_enabled")
+		defer methodName.Destroy()
+		ptrsForSceneTree.fnIsPhysicsInterpolationEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
 		methodName := StringNameFromStr("queue_delete")
 		defer methodName.Destroy()
 		ptrsForSceneTree.fnQueueDelete = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3975164845))
@@ -218,6 +231,11 @@ func initSceneTreePtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_first_node_in_group")
 		defer methodName.Destroy()
 		ptrsForSceneTree.fnGetFirstNodeInGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4071044623))
+	}
+	{
+		methodName := StringNameFromStr("get_node_count_in_group")
+		defer methodName.Destroy()
+		ptrsForSceneTree.fnGetNodeCountInGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2458036349))
 	}
 	{
 		methodName := StringNameFromStr("set_current_scene")
@@ -537,6 +555,25 @@ func (me *SceneTree) Quit(exit_code int64) {
 
 }
 
+func (me *SceneTree) SetPhysicsInterpolationEnabled(enabled bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSceneTree.fnSetPhysicsInterpolationEnabled), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *SceneTree) IsPhysicsInterpolationEnabled() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSceneTree.fnIsPhysicsInterpolationEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
 func (me *SceneTree) QueueDelete(obj Object) {
 	cargs := []gdc.ConstTypePtr{obj.AsCTypePtr()}
 	pinner := runtime.Pinner{}
@@ -653,6 +690,16 @@ func (me *SceneTree) GetFirstNodeInGroup(group StringName) Node {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSceneTree.fnGetFirstNodeInGroup), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
+}
+
+func (me *SceneTree) GetNodeCountInGroup(group StringName) int64 {
+	cargs := []gdc.ConstTypePtr{group.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewInt()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSceneTree.fnGetNodeCountInGroup), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
 }
 
 func (me *SceneTree) SetCurrentScene(child_node Node) {

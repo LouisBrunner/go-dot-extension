@@ -48,6 +48,8 @@ type ptrsForWindowList struct {
 	fnShow                          gdc.MethodBindPtr
 	fnSetTransient                  gdc.MethodBindPtr
 	fnIsTransient                   gdc.MethodBindPtr
+	fnSetTransientToFocused         gdc.MethodBindPtr
+	fnIsTransientToFocused          gdc.MethodBindPtr
 	fnSetExclusive                  gdc.MethodBindPtr
 	fnIsExclusive                   gdc.MethodBindPtr
 	fnSetUnparentWhenInvisible      gdc.MethodBindPtr
@@ -58,6 +60,8 @@ type ptrsForWindowList struct {
 	fnSetImePosition                gdc.MethodBindPtr
 	fnIsEmbedded                    gdc.MethodBindPtr
 	fnGetContentsMinimumSize        gdc.MethodBindPtr
+	fnSetForceNative                gdc.MethodBindPtr
+	fnGetForceNative                gdc.MethodBindPtr
 	fnSetContentScaleSize           gdc.MethodBindPtr
 	fnGetContentScaleSize           gdc.MethodBindPtr
 	fnSetContentScaleMode           gdc.MethodBindPtr
@@ -300,6 +304,16 @@ func initWindowPtrs(iface gdc.Interface) {
 		ptrsForWindow.fnIsTransient = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
+		methodName := StringNameFromStr("set_transient_to_focused")
+		defer methodName.Destroy()
+		ptrsForWindow.fnSetTransientToFocused = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("is_transient_to_focused")
+		defer methodName.Destroy()
+		ptrsForWindow.fnIsTransientToFocused = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
 		methodName := StringNameFromStr("set_exclusive")
 		defer methodName.Destroy()
 		ptrsForWindow.fnSetExclusive = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
@@ -348,6 +362,16 @@ func initWindowPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_contents_minimum_size")
 		defer methodName.Destroy()
 		ptrsForWindow.fnGetContentsMinimumSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
+	}
+	{
+		methodName := StringNameFromStr("set_force_native")
+		defer methodName.Destroy()
+		ptrsForWindow.fnSetForceNative = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("get_force_native")
+		defer methodName.Destroy()
+		ptrsForWindow.fnGetForceNative = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
 		methodName := StringNameFromStr("set_content_scale_size")
@@ -537,32 +561,32 @@ func initWindowPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("get_theme_icon")
 		defer methodName.Destroy()
-		ptrsForWindow.fnGetThemeIcon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3163973443))
+		ptrsForWindow.fnGetThemeIcon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2336455395))
 	}
 	{
 		methodName := StringNameFromStr("get_theme_stylebox")
 		defer methodName.Destroy()
-		ptrsForWindow.fnGetThemeStylebox = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 604739069))
+		ptrsForWindow.fnGetThemeStylebox = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2759935355))
 	}
 	{
 		methodName := StringNameFromStr("get_theme_font")
 		defer methodName.Destroy()
-		ptrsForWindow.fnGetThemeFont = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2826986490))
+		ptrsForWindow.fnGetThemeFont = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 387378635))
 	}
 	{
 		methodName := StringNameFromStr("get_theme_font_size")
 		defer methodName.Destroy()
-		ptrsForWindow.fnGetThemeFontSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1327056374))
+		ptrsForWindow.fnGetThemeFontSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 229578101))
 	}
 	{
 		methodName := StringNameFromStr("get_theme_color")
 		defer methodName.Destroy()
-		ptrsForWindow.fnGetThemeColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2798751242))
+		ptrsForWindow.fnGetThemeColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2377051548))
 	}
 	{
 		methodName := StringNameFromStr("get_theme_constant")
 		defer methodName.Destroy()
-		ptrsForWindow.fnGetThemeConstant = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1327056374))
+		ptrsForWindow.fnGetThemeConstant = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 229578101))
 	}
 	{
 		methodName := StringNameFromStr("has_theme_icon_override")
@@ -597,32 +621,32 @@ func initWindowPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("has_theme_icon")
 		defer methodName.Destroy()
-		ptrsForWindow.fnHasThemeIcon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 866386512))
+		ptrsForWindow.fnHasThemeIcon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1187511791))
 	}
 	{
 		methodName := StringNameFromStr("has_theme_stylebox")
 		defer methodName.Destroy()
-		ptrsForWindow.fnHasThemeStylebox = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 866386512))
+		ptrsForWindow.fnHasThemeStylebox = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1187511791))
 	}
 	{
 		methodName := StringNameFromStr("has_theme_font")
 		defer methodName.Destroy()
-		ptrsForWindow.fnHasThemeFont = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 866386512))
+		ptrsForWindow.fnHasThemeFont = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1187511791))
 	}
 	{
 		methodName := StringNameFromStr("has_theme_font_size")
 		defer methodName.Destroy()
-		ptrsForWindow.fnHasThemeFontSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 866386512))
+		ptrsForWindow.fnHasThemeFontSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1187511791))
 	}
 	{
 		methodName := StringNameFromStr("has_theme_color")
 		defer methodName.Destroy()
-		ptrsForWindow.fnHasThemeColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 866386512))
+		ptrsForWindow.fnHasThemeColor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1187511791))
 	}
 	{
 		methodName := StringNameFromStr("has_theme_constant")
 		defer methodName.Destroy()
-		ptrsForWindow.fnHasThemeConstant = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 866386512))
+		ptrsForWindow.fnHasThemeConstant = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1187511791))
 	}
 	{
 		methodName := StringNameFromStr("get_theme_default_base_scale")
@@ -1131,6 +1155,25 @@ func (me *Window) IsTransient() bool {
 	return ret.Get()
 }
 
+func (me *Window) SetTransientToFocused(enable bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWindow.fnSetTransientToFocused), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Window) IsTransientToFocused() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWindow.fnIsTransientToFocused), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
 func (me *Window) SetExclusive(exclusive bool) {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&exclusive)}
 	pinner := runtime.Pinner{}
@@ -1224,6 +1267,25 @@ func (me *Window) GetContentsMinimumSize() Vector2 {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWindow.fnGetContentsMinimumSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
+}
+
+func (me *Window) SetForceNative(force_native bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&force_native)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWindow.fnSetForceNative), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Window) GetForceNative() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWindow.fnGetForceNative), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
 }
 
 func (me *Window) SetContentScaleSize(size Vector2i) {

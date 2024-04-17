@@ -16,6 +16,8 @@ var _ runtime.Pinner
 
 type ptrsForPopupMenuList struct {
 	fnActivateItemByEvent             gdc.MethodBindPtr
+	fnSetPreferNativeMenu             gdc.MethodBindPtr
+	fnIsPreferNativeMenu              gdc.MethodBindPtr
 	fnAddItem                         gdc.MethodBindPtr
 	fnAddIconItem                     gdc.MethodBindPtr
 	fnAddCheckItem                    gdc.MethodBindPtr
@@ -30,6 +32,7 @@ type ptrsForPopupMenuList struct {
 	fnAddRadioCheckShortcut           gdc.MethodBindPtr
 	fnAddIconRadioCheckShortcut       gdc.MethodBindPtr
 	fnAddSubmenuItem                  gdc.MethodBindPtr
+	fnAddSubmenuNodeItem              gdc.MethodBindPtr
 	fnSetItemText                     gdc.MethodBindPtr
 	fnSetItemTextDirection            gdc.MethodBindPtr
 	fnSetItemLanguage                 gdc.MethodBindPtr
@@ -42,6 +45,7 @@ type ptrsForPopupMenuList struct {
 	fnSetItemMetadata                 gdc.MethodBindPtr
 	fnSetItemDisabled                 gdc.MethodBindPtr
 	fnSetItemSubmenu                  gdc.MethodBindPtr
+	fnSetItemSubmenuNode              gdc.MethodBindPtr
 	fnSetItemAsSeparator              gdc.MethodBindPtr
 	fnSetItemAsCheckable              gdc.MethodBindPtr
 	fnSetItemAsRadioCheckable         gdc.MethodBindPtr
@@ -49,6 +53,7 @@ type ptrsForPopupMenuList struct {
 	fnSetItemShortcut                 gdc.MethodBindPtr
 	fnSetItemIndent                   gdc.MethodBindPtr
 	fnSetItemMultistate               gdc.MethodBindPtr
+	fnSetItemMultistateMax            gdc.MethodBindPtr
 	fnSetItemShortcutDisabled         gdc.MethodBindPtr
 	fnToggleItemChecked               gdc.MethodBindPtr
 	fnToggleItemMultistate            gdc.MethodBindPtr
@@ -65,6 +70,7 @@ type ptrsForPopupMenuList struct {
 	fnGetItemMetadata                 gdc.MethodBindPtr
 	fnIsItemDisabled                  gdc.MethodBindPtr
 	fnGetItemSubmenu                  gdc.MethodBindPtr
+	fnGetItemSubmenuNode              gdc.MethodBindPtr
 	fnIsItemSeparator                 gdc.MethodBindPtr
 	fnIsItemCheckable                 gdc.MethodBindPtr
 	fnIsItemRadioCheckable            gdc.MethodBindPtr
@@ -72,6 +78,8 @@ type ptrsForPopupMenuList struct {
 	fnGetItemTooltip                  gdc.MethodBindPtr
 	fnGetItemShortcut                 gdc.MethodBindPtr
 	fnGetItemIndent                   gdc.MethodBindPtr
+	fnGetItemMultistateMax            gdc.MethodBindPtr
+	fnGetItemMultistate               gdc.MethodBindPtr
 	fnSetFocusedItem                  gdc.MethodBindPtr
 	fnGetFocusedItem                  gdc.MethodBindPtr
 	fnSetItemCount                    gdc.MethodBindPtr
@@ -90,6 +98,9 @@ type ptrsForPopupMenuList struct {
 	fnGetSubmenuPopupDelay            gdc.MethodBindPtr
 	fnSetAllowSearch                  gdc.MethodBindPtr
 	fnGetAllowSearch                  gdc.MethodBindPtr
+	fnIsSystemMenu                    gdc.MethodBindPtr
+	fnSetSystemMenu                   gdc.MethodBindPtr
+	fnGetSystemMenu                   gdc.MethodBindPtr
 }
 
 var ptrsForPopupMenu ptrsForPopupMenuList
@@ -102,6 +113,16 @@ func initPopupMenuPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("activate_item_by_event")
 		defer methodName.Destroy()
 		ptrsForPopupMenu.fnActivateItemByEvent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3716412023))
+	}
+	{
+		methodName := StringNameFromStr("set_prefer_native_menu")
+		defer methodName.Destroy()
+		ptrsForPopupMenu.fnSetPreferNativeMenu = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("is_prefer_native_menu")
+		defer methodName.Destroy()
+		ptrsForPopupMenu.fnIsPreferNativeMenu = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
 		methodName := StringNameFromStr("add_item")
@@ -174,6 +195,11 @@ func initPopupMenuPtrs(iface gdc.Interface) {
 		ptrsForPopupMenu.fnAddSubmenuItem = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2979222410))
 	}
 	{
+		methodName := StringNameFromStr("add_submenu_node_item")
+		defer methodName.Destroy()
+		ptrsForPopupMenu.fnAddSubmenuNodeItem = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1325455216))
+	}
+	{
 		methodName := StringNameFromStr("set_item_text")
 		defer methodName.Destroy()
 		ptrsForPopupMenu.fnSetItemText = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 501894301))
@@ -234,6 +260,11 @@ func initPopupMenuPtrs(iface gdc.Interface) {
 		ptrsForPopupMenu.fnSetItemSubmenu = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 501894301))
 	}
 	{
+		methodName := StringNameFromStr("set_item_submenu_node")
+		defer methodName.Destroy()
+		ptrsForPopupMenu.fnSetItemSubmenuNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1068370740))
+	}
+	{
 		methodName := StringNameFromStr("set_item_as_separator")
 		defer methodName.Destroy()
 		ptrsForPopupMenu.fnSetItemAsSeparator = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 300928843))
@@ -267,6 +298,11 @@ func initPopupMenuPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("set_item_multistate")
 		defer methodName.Destroy()
 		ptrsForPopupMenu.fnSetItemMultistate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3937882851))
+	}
+	{
+		methodName := StringNameFromStr("set_item_multistate_max")
+		defer methodName.Destroy()
+		ptrsForPopupMenu.fnSetItemMultistateMax = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3937882851))
 	}
 	{
 		methodName := StringNameFromStr("set_item_shortcut_disabled")
@@ -349,6 +385,11 @@ func initPopupMenuPtrs(iface gdc.Interface) {
 		ptrsForPopupMenu.fnGetItemSubmenu = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 844755477))
 	}
 	{
+		methodName := StringNameFromStr("get_item_submenu_node")
+		defer methodName.Destroy()
+		ptrsForPopupMenu.fnGetItemSubmenuNode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2100501353))
+	}
+	{
 		methodName := StringNameFromStr("is_item_separator")
 		defer methodName.Destroy()
 		ptrsForPopupMenu.fnIsItemSeparator = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
@@ -382,6 +423,16 @@ func initPopupMenuPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_item_indent")
 		defer methodName.Destroy()
 		ptrsForPopupMenu.fnGetItemIndent = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 923996154))
+	}
+	{
+		methodName := StringNameFromStr("get_item_multistate_max")
+		defer methodName.Destroy()
+		ptrsForPopupMenu.fnGetItemMultistateMax = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 923996154))
+	}
+	{
+		methodName := StringNameFromStr("get_item_multistate")
+		defer methodName.Destroy()
+		ptrsForPopupMenu.fnGetItemMultistate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 923996154))
 	}
 	{
 		methodName := StringNameFromStr("set_focused_item")
@@ -473,6 +524,21 @@ func initPopupMenuPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForPopupMenu.fnGetAllowSearch = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
+	{
+		methodName := StringNameFromStr("is_system_menu")
+		defer methodName.Destroy()
+		ptrsForPopupMenu.fnIsSystemMenu = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
+		methodName := StringNameFromStr("set_system_menu")
+		defer methodName.Destroy()
+		ptrsForPopupMenu.fnSetSystemMenu = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 600639674))
+	}
+	{
+		methodName := StringNameFromStr("get_system_menu")
+		defer methodName.Destroy()
+		ptrsForPopupMenu.fnGetSystemMenu = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1222557358))
+	}
 
 }
 
@@ -518,6 +584,25 @@ func (me *PopupMenu) ActivateItemByEvent(event InputEvent, for_global_only bool)
 	pinner.Pin(&for_global_only)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPopupMenu.fnActivateItemByEvent), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *PopupMenu) SetPreferNativeMenu(enabled bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPopupMenu.fnSetPreferNativeMenu), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *PopupMenu) IsPreferNativeMenu() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPopupMenu.fnIsPreferNativeMenu), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 
@@ -647,6 +732,15 @@ func (me *PopupMenu) AddSubmenuItem(label String, submenu String, id int64) {
 
 }
 
+func (me *PopupMenu) AddSubmenuNodeItem(label String, submenu PopupMenu, id int64) {
+	cargs := []gdc.ConstTypePtr{label.AsCTypePtr(), submenu.AsCTypePtr(), gdc.ConstTypePtr(&id)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPopupMenu.fnAddSubmenuNodeItem), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
 func (me *PopupMenu) SetItemText(index int64, text String) {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), text.AsCTypePtr()}
 	pinner := runtime.Pinner{}
@@ -755,6 +849,15 @@ func (me *PopupMenu) SetItemSubmenu(index int64, submenu String) {
 
 }
 
+func (me *PopupMenu) SetItemSubmenuNode(index int64, submenu PopupMenu) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), submenu.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPopupMenu.fnSetItemSubmenuNode), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
 func (me *PopupMenu) SetItemAsSeparator(index int64, enable bool) {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), gdc.ConstTypePtr(&enable)}
 	pinner := runtime.Pinner{}
@@ -815,6 +918,15 @@ func (me *PopupMenu) SetItemMultistate(index int64, state int64) {
 	defer pinner.Unpin()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPopupMenu.fnSetItemMultistate), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *PopupMenu) SetItemMultistateMax(index int64, max_states int64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index), gdc.ConstTypePtr(&max_states)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPopupMenu.fnSetItemMultistateMax), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
@@ -988,6 +1100,17 @@ func (me *PopupMenu) GetItemSubmenu(index int64) String {
 	return *ret
 }
 
+func (me *PopupMenu) GetItemSubmenuNode(index int64) PopupMenu {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewPopupMenu()
+	pinner.Pin(&index)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPopupMenu.fnGetItemSubmenuNode), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
 func (me *PopupMenu) IsItemSeparator(index int64) bool {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index)}
 	pinner := runtime.Pinner{}
@@ -1062,6 +1185,28 @@ func (me *PopupMenu) GetItemIndent(index int64) int64 {
 	pinner.Pin(&index)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPopupMenu.fnGetItemIndent), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *PopupMenu) GetItemMultistateMax(index int64) int64 {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewInt()
+	pinner.Pin(&index)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPopupMenu.fnGetItemMultistateMax), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *PopupMenu) GetItemMultistate(index int64) int64 {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&index)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewInt()
+	pinner.Pin(&index)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPopupMenu.fnGetItemMultistate), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 
@@ -1232,6 +1377,35 @@ func (me *PopupMenu) GetAllowSearch() bool {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPopupMenu.fnGetAllowSearch), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
+}
+
+func (me *PopupMenu) IsSystemMenu() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPopupMenu.fnIsSystemMenu), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *PopupMenu) SetSystemMenu(system_menu_id NativeMenuSystemMenus) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&system_menu_id)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPopupMenu.fnSetSystemMenu), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *PopupMenu) GetSystemMenu() NativeMenuSystemMenus {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	var ret NativeMenuSystemMenus
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPopupMenu.fnGetSystemMenu), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+	return ret
 }
 
 // Properties

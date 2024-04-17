@@ -1041,10 +1041,10 @@ func (me *Vector3) Bounce(n Vector3) Vector3 {
 	return *ret
 }
 
-func (me *Vector3) Reflect(n Vector3) Vector3 {
+func (me *Vector3) Reflect(direction Vector3) Vector3 {
 	ret := NewVector3()
 
-	args := []gdc.ConstTypePtr{n.AsCTypePtr()}
+	args := []gdc.ConstTypePtr{direction.AsCTypePtr()}
 
 	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForVector3.methodReflectFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
 	return *ret

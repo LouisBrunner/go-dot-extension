@@ -15,72 +15,80 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForGraphEditList struct {
-	fnXIsInInputHotzone              gdc.MethodBindPtr
-	fnXIsInOutputHotzone             gdc.MethodBindPtr
-	fnXGetConnectionLine             gdc.MethodBindPtr
-	fnXIsNodeHoverValid              gdc.MethodBindPtr
-	fnConnectNode                    gdc.MethodBindPtr
-	fnIsNodeConnected                gdc.MethodBindPtr
-	fnDisconnectNode                 gdc.MethodBindPtr
-	fnSetConnectionActivity          gdc.MethodBindPtr
-	fnGetConnectionList              gdc.MethodBindPtr
-	fnClearConnections               gdc.MethodBindPtr
-	fnForceConnectionDragEnd         gdc.MethodBindPtr
-	fnGetScrollOffset                gdc.MethodBindPtr
-	fnSetScrollOffset                gdc.MethodBindPtr
-	fnAddValidRightDisconnectType    gdc.MethodBindPtr
-	fnRemoveValidRightDisconnectType gdc.MethodBindPtr
-	fnAddValidLeftDisconnectType     gdc.MethodBindPtr
-	fnRemoveValidLeftDisconnectType  gdc.MethodBindPtr
-	fnAddValidConnectionType         gdc.MethodBindPtr
-	fnRemoveValidConnectionType      gdc.MethodBindPtr
-	fnIsValidConnectionType          gdc.MethodBindPtr
-	fnGetConnectionLine              gdc.MethodBindPtr
-	fnSetPanningScheme               gdc.MethodBindPtr
-	fnGetPanningScheme               gdc.MethodBindPtr
-	fnSetZoom                        gdc.MethodBindPtr
-	fnGetZoom                        gdc.MethodBindPtr
-	fnSetZoomMin                     gdc.MethodBindPtr
-	fnGetZoomMin                     gdc.MethodBindPtr
-	fnSetZoomMax                     gdc.MethodBindPtr
-	fnGetZoomMax                     gdc.MethodBindPtr
-	fnSetZoomStep                    gdc.MethodBindPtr
-	fnGetZoomStep                    gdc.MethodBindPtr
-	fnSetShowGrid                    gdc.MethodBindPtr
-	fnIsShowingGrid                  gdc.MethodBindPtr
-	fnSetSnappingEnabled             gdc.MethodBindPtr
-	fnIsSnappingEnabled              gdc.MethodBindPtr
-	fnSetSnappingDistance            gdc.MethodBindPtr
-	fnGetSnappingDistance            gdc.MethodBindPtr
-	fnSetConnectionLinesCurvature    gdc.MethodBindPtr
-	fnGetConnectionLinesCurvature    gdc.MethodBindPtr
-	fnSetConnectionLinesThickness    gdc.MethodBindPtr
-	fnGetConnectionLinesThickness    gdc.MethodBindPtr
-	fnSetConnectionLinesAntialiased  gdc.MethodBindPtr
-	fnIsConnectionLinesAntialiased   gdc.MethodBindPtr
-	fnSetMinimapSize                 gdc.MethodBindPtr
-	fnGetMinimapSize                 gdc.MethodBindPtr
-	fnSetMinimapOpacity              gdc.MethodBindPtr
-	fnGetMinimapOpacity              gdc.MethodBindPtr
-	fnSetMinimapEnabled              gdc.MethodBindPtr
-	fnIsMinimapEnabled               gdc.MethodBindPtr
-	fnSetShowMenu                    gdc.MethodBindPtr
-	fnIsShowingMenu                  gdc.MethodBindPtr
-	fnSetShowZoomLabel               gdc.MethodBindPtr
-	fnIsShowingZoomLabel             gdc.MethodBindPtr
-	fnSetShowGridButtons             gdc.MethodBindPtr
-	fnIsShowingGridButtons           gdc.MethodBindPtr
-	fnSetShowZoomButtons             gdc.MethodBindPtr
-	fnIsShowingZoomButtons           gdc.MethodBindPtr
-	fnSetShowMinimapButton           gdc.MethodBindPtr
-	fnIsShowingMinimapButton         gdc.MethodBindPtr
-	fnSetShowArrangeButton           gdc.MethodBindPtr
-	fnIsShowingArrangeButton         gdc.MethodBindPtr
-	fnSetRightDisconnects            gdc.MethodBindPtr
-	fnIsRightDisconnectsEnabled      gdc.MethodBindPtr
-	fnGetMenuHbox                    gdc.MethodBindPtr
-	fnArrangeNodes                   gdc.MethodBindPtr
-	fnSetSelected                    gdc.MethodBindPtr
+	fnXIsInInputHotzone                  gdc.MethodBindPtr
+	fnXIsInOutputHotzone                 gdc.MethodBindPtr
+	fnXGetConnectionLine                 gdc.MethodBindPtr
+	fnXIsNodeHoverValid                  gdc.MethodBindPtr
+	fnConnectNode                        gdc.MethodBindPtr
+	fnIsNodeConnected                    gdc.MethodBindPtr
+	fnDisconnectNode                     gdc.MethodBindPtr
+	fnSetConnectionActivity              gdc.MethodBindPtr
+	fnGetConnectionList                  gdc.MethodBindPtr
+	fnGetClosestConnectionAtPoint        gdc.MethodBindPtr
+	fnGetConnectionsIntersectingWithRect gdc.MethodBindPtr
+	fnClearConnections                   gdc.MethodBindPtr
+	fnForceConnectionDragEnd             gdc.MethodBindPtr
+	fnGetScrollOffset                    gdc.MethodBindPtr
+	fnSetScrollOffset                    gdc.MethodBindPtr
+	fnAddValidRightDisconnectType        gdc.MethodBindPtr
+	fnRemoveValidRightDisconnectType     gdc.MethodBindPtr
+	fnAddValidLeftDisconnectType         gdc.MethodBindPtr
+	fnRemoveValidLeftDisconnectType      gdc.MethodBindPtr
+	fnAddValidConnectionType             gdc.MethodBindPtr
+	fnRemoveValidConnectionType          gdc.MethodBindPtr
+	fnIsValidConnectionType              gdc.MethodBindPtr
+	fnGetConnectionLine                  gdc.MethodBindPtr
+	fnAttachGraphElementToFrame          gdc.MethodBindPtr
+	fnDetachGraphElementFromFrame        gdc.MethodBindPtr
+	fnGetElementFrame                    gdc.MethodBindPtr
+	fnGetAttachedNodesOfFrame            gdc.MethodBindPtr
+	fnSetPanningScheme                   gdc.MethodBindPtr
+	fnGetPanningScheme                   gdc.MethodBindPtr
+	fnSetZoom                            gdc.MethodBindPtr
+	fnGetZoom                            gdc.MethodBindPtr
+	fnSetZoomMin                         gdc.MethodBindPtr
+	fnGetZoomMin                         gdc.MethodBindPtr
+	fnSetZoomMax                         gdc.MethodBindPtr
+	fnGetZoomMax                         gdc.MethodBindPtr
+	fnSetZoomStep                        gdc.MethodBindPtr
+	fnGetZoomStep                        gdc.MethodBindPtr
+	fnSetShowGrid                        gdc.MethodBindPtr
+	fnIsShowingGrid                      gdc.MethodBindPtr
+	fnSetGridPattern                     gdc.MethodBindPtr
+	fnGetGridPattern                     gdc.MethodBindPtr
+	fnSetSnappingEnabled                 gdc.MethodBindPtr
+	fnIsSnappingEnabled                  gdc.MethodBindPtr
+	fnSetSnappingDistance                gdc.MethodBindPtr
+	fnGetSnappingDistance                gdc.MethodBindPtr
+	fnSetConnectionLinesCurvature        gdc.MethodBindPtr
+	fnGetConnectionLinesCurvature        gdc.MethodBindPtr
+	fnSetConnectionLinesThickness        gdc.MethodBindPtr
+	fnGetConnectionLinesThickness        gdc.MethodBindPtr
+	fnSetConnectionLinesAntialiased      gdc.MethodBindPtr
+	fnIsConnectionLinesAntialiased       gdc.MethodBindPtr
+	fnSetMinimapSize                     gdc.MethodBindPtr
+	fnGetMinimapSize                     gdc.MethodBindPtr
+	fnSetMinimapOpacity                  gdc.MethodBindPtr
+	fnGetMinimapOpacity                  gdc.MethodBindPtr
+	fnSetMinimapEnabled                  gdc.MethodBindPtr
+	fnIsMinimapEnabled                   gdc.MethodBindPtr
+	fnSetShowMenu                        gdc.MethodBindPtr
+	fnIsShowingMenu                      gdc.MethodBindPtr
+	fnSetShowZoomLabel                   gdc.MethodBindPtr
+	fnIsShowingZoomLabel                 gdc.MethodBindPtr
+	fnSetShowGridButtons                 gdc.MethodBindPtr
+	fnIsShowingGridButtons               gdc.MethodBindPtr
+	fnSetShowZoomButtons                 gdc.MethodBindPtr
+	fnIsShowingZoomButtons               gdc.MethodBindPtr
+	fnSetShowMinimapButton               gdc.MethodBindPtr
+	fnIsShowingMinimapButton             gdc.MethodBindPtr
+	fnSetShowArrangeButton               gdc.MethodBindPtr
+	fnIsShowingArrangeButton             gdc.MethodBindPtr
+	fnSetRightDisconnects                gdc.MethodBindPtr
+	fnIsRightDisconnectsEnabled          gdc.MethodBindPtr
+	fnGetMenuHbox                        gdc.MethodBindPtr
+	fnArrangeNodes                       gdc.MethodBindPtr
+	fnSetSelected                        gdc.MethodBindPtr
 }
 
 var ptrsForGraphEdit ptrsForGraphEditList
@@ -113,6 +121,16 @@ func initGraphEditPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_connection_list")
 		defer methodName.Destroy()
 		ptrsForGraphEdit.fnGetConnectionList = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+	}
+	{
+		methodName := StringNameFromStr("get_closest_connection_at_point")
+		defer methodName.Destroy()
+		ptrsForGraphEdit.fnGetClosestConnectionAtPoint = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 453879819))
+	}
+	{
+		methodName := StringNameFromStr("get_connections_intersecting_with_rect")
+		defer methodName.Destroy()
+		ptrsForGraphEdit.fnGetConnectionsIntersectingWithRect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2709748719))
 	}
 	{
 		methodName := StringNameFromStr("clear_connections")
@@ -172,7 +190,27 @@ func initGraphEditPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("get_connection_line")
 		defer methodName.Destroy()
-		ptrsForGraphEdit.fnGetConnectionLine = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1562168077))
+		ptrsForGraphEdit.fnGetConnectionLine = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3932192302))
+	}
+	{
+		methodName := StringNameFromStr("attach_graph_element_to_frame")
+		defer methodName.Destroy()
+		ptrsForGraphEdit.fnAttachGraphElementToFrame = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3740211285))
+	}
+	{
+		methodName := StringNameFromStr("detach_graph_element_from_frame")
+		defer methodName.Destroy()
+		ptrsForGraphEdit.fnDetachGraphElementFromFrame = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3304788590))
+	}
+	{
+		methodName := StringNameFromStr("get_element_frame")
+		defer methodName.Destroy()
+		ptrsForGraphEdit.fnGetElementFrame = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 988084372))
+	}
+	{
+		methodName := StringNameFromStr("get_attached_nodes_of_frame")
+		defer methodName.Destroy()
+		ptrsForGraphEdit.fnGetAttachedNodesOfFrame = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 689397652))
 	}
 	{
 		methodName := StringNameFromStr("set_panning_scheme")
@@ -233,6 +271,16 @@ func initGraphEditPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("is_showing_grid")
 		defer methodName.Destroy()
 		ptrsForGraphEdit.fnIsShowingGrid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
+		methodName := StringNameFromStr("set_grid_pattern")
+		defer methodName.Destroy()
+		ptrsForGraphEdit.fnSetGridPattern = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1074098205))
+	}
+	{
+		methodName := StringNameFromStr("get_grid_pattern")
+		defer methodName.Destroy()
+		ptrsForGraphEdit.fnGetGridPattern = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286127528))
 	}
 	{
 		methodName := StringNameFromStr("set_snapping_enabled")
@@ -429,6 +477,13 @@ const (
 	GraphEditPanningSchemeScrollPans  GraphEditPanningScheme = 1
 )
 
+type GraphEditGridPattern int
+
+const (
+	GraphEditGridPatternGridPatternLines GraphEditGridPattern = 0
+	GraphEditGridPatternGridPatternDots  GraphEditGridPattern = 1
+)
+
 func (me *GraphEdit) Type() gdc.VariantType {
 	return gdc.VariantTypeObject
 }
@@ -493,6 +548,33 @@ func (me *GraphEdit) GetConnectionList() []Dictionary {
 	defer ret.Destroy()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphEdit.fnGetConnectionList), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
+	if err != nil {
+		log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+		return nil
+	}
+	return sliceRet
+}
+
+func (me *GraphEdit) GetClosestConnectionAtPoint(point Vector2, max_distance float64) Dictionary {
+	cargs := []gdc.ConstTypePtr{point.AsCTypePtr(), gdc.ConstTypePtr(&max_distance)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewDictionary()
+	pinner.Pin(&max_distance)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphEdit.fnGetClosestConnectionAtPoint), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *GraphEdit) GetConnectionsIntersectingWithRect(rect Rect2) []Dictionary {
+	cargs := []gdc.ConstTypePtr{rect.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewArray()
+	defer ret.Destroy()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphEdit.fnGetConnectionsIntersectingWithRect), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	sliceRet, err := ConvertArrayToSlice[Dictionary](ret)
 	if err != nil {
 		log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
@@ -614,6 +696,50 @@ func (me *GraphEdit) GetConnectionLine(from_node Vector2, to_node Vector2) Packe
 	return *ret
 }
 
+func (me *GraphEdit) AttachGraphElementToFrame(element StringName, frame StringName) {
+	cargs := []gdc.ConstTypePtr{element.AsCTypePtr(), frame.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphEdit.fnAttachGraphElementToFrame), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *GraphEdit) DetachGraphElementFromFrame(element StringName) {
+	cargs := []gdc.ConstTypePtr{element.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphEdit.fnDetachGraphElementFromFrame), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *GraphEdit) GetElementFrame(element StringName) GraphFrame {
+	cargs := []gdc.ConstTypePtr{element.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewGraphFrame()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphEdit.fnGetElementFrame), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *GraphEdit) GetAttachedNodesOfFrame(frame StringName) []StringName {
+	cargs := []gdc.ConstTypePtr{frame.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewArray()
+	defer ret.Destroy()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphEdit.fnGetAttachedNodesOfFrame), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	sliceRet, err := ConvertArrayToSlice[StringName](ret)
+	if err != nil {
+		log.Printf("Error converting return value to slice: %v", err) // FIXME: bad logging
+		return nil
+	}
+	return sliceRet
+}
+
 func (me *GraphEdit) SetPanningScheme(scheme GraphEditPanningScheme) {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&scheme)}
 	pinner := runtime.Pinner{}
@@ -726,6 +852,25 @@ func (me *GraphEdit) IsShowingGrid() bool {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphEdit.fnIsShowingGrid), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
+}
+
+func (me *GraphEdit) SetGridPattern(pattern GraphEditGridPattern) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&pattern)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphEdit.fnSetGridPattern), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *GraphEdit) GetGridPattern() GraphEditGridPattern {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	var ret GraphEditGridPattern
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphEdit.fnGetGridPattern), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+	return ret
 }
 
 func (me *GraphEdit) SetSnappingEnabled(enable bool) {
@@ -1214,7 +1359,21 @@ func (me *GraphEdit) DisconnectNodeDeselected(subs SignalSubscribers, fn GraphEd
 	me.Disconnect(*sig, *subs.remove(fn))
 }
 
-type GraphEditPopupRequestSignalFn func(position Vector2)
+type GraphEditFrameRectChangedSignalFn func(frame GraphFrame, new_rect Vector2)
+
+func (me *GraphEdit) ConnectFrameRectChanged(subs SignalSubscribers, fn GraphEditFrameRectChangedSignalFn) {
+	sig := StringNameFromStr("frame_rect_changed")
+	defer sig.Destroy()
+	me.Connect(*sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectFrameRectChanged(subs SignalSubscribers, fn GraphEditFrameRectChangedSignalFn) {
+	sig := StringNameFromStr("frame_rect_changed")
+	defer sig.Destroy()
+	me.Disconnect(*sig, *subs.remove(fn))
+}
+
+type GraphEditPopupRequestSignalFn func(at_position Vector2)
 
 func (me *GraphEdit) ConnectPopupRequest(subs SignalSubscribers, fn GraphEditPopupRequestSignalFn) {
 	sig := StringNameFromStr("popup_request")
@@ -1252,6 +1411,20 @@ func (me *GraphEdit) ConnectEndNodeMove(subs SignalSubscribers, fn GraphEditEndN
 
 func (me *GraphEdit) DisconnectEndNodeMove(subs SignalSubscribers, fn GraphEditEndNodeMoveSignalFn) {
 	sig := StringNameFromStr("end_node_move")
+	defer sig.Destroy()
+	me.Disconnect(*sig, *subs.remove(fn))
+}
+
+type GraphEditGraphElementsLinkedToFrameRequestSignalFn func(elements Array, frame StringName)
+
+func (me *GraphEdit) ConnectGraphElementsLinkedToFrameRequest(subs SignalSubscribers, fn GraphEditGraphElementsLinkedToFrameRequestSignalFn) {
+	sig := StringNameFromStr("graph_elements_linked_to_frame_request")
+	defer sig.Destroy()
+	me.Connect(*sig, subs.add(fn), 0)
+}
+
+func (me *GraphEdit) DisconnectGraphElementsLinkedToFrameRequest(subs SignalSubscribers, fn GraphEditGraphElementsLinkedToFrameRequestSignalFn) {
+	sig := StringNameFromStr("graph_elements_linked_to_frame_request")
 	defer sig.Destroy()
 	me.Disconnect(*sig, *subs.remove(fn))
 }

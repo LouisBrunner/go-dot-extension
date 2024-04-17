@@ -82,12 +82,12 @@ func initAcceptDialogPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("remove_button")
 		defer methodName.Destroy()
-		ptrsForAcceptDialog.fnRemoveButton = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1496901182))
+		ptrsForAcceptDialog.fnRemoveButton = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2068354942))
 	}
 	{
 		methodName := StringNameFromStr("register_text_enter")
 		defer methodName.Destroy()
-		ptrsForAcceptDialog.fnRegisterTextEnter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1496901182))
+		ptrsForAcceptDialog.fnRegisterTextEnter = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3714008017))
 	}
 	{
 		methodName := StringNameFromStr("set_text")
@@ -235,7 +235,7 @@ func (me *AcceptDialog) AddCancelButton(name String) Button {
 	return *ret
 }
 
-func (me *AcceptDialog) RemoveButton(button Control) {
+func (me *AcceptDialog) RemoveButton(button Button) {
 	cargs := []gdc.ConstTypePtr{button.AsCTypePtr()}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
@@ -244,7 +244,7 @@ func (me *AcceptDialog) RemoveButton(button Control) {
 
 }
 
-func (me *AcceptDialog) RegisterTextEnter(line_edit Control) {
+func (me *AcceptDialog) RegisterTextEnter(line_edit LineEdit) {
 	cargs := []gdc.ConstTypePtr{line_edit.AsCTypePtr()}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()

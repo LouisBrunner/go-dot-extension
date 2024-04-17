@@ -17,6 +17,7 @@ var _ runtime.Pinner
 type ptrsForPhysicsBody2DList struct {
 	fnMoveAndCollide               gdc.MethodBindPtr
 	fnTestMove                     gdc.MethodBindPtr
+	fnGetGravity                   gdc.MethodBindPtr
 	fnGetCollisionExceptions       gdc.MethodBindPtr
 	fnAddCollisionExceptionWith    gdc.MethodBindPtr
 	fnRemoveCollisionExceptionWith gdc.MethodBindPtr
@@ -37,6 +38,11 @@ func initPhysicsBody2DPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("test_move")
 		defer methodName.Destroy()
 		ptrsForPhysicsBody2D.fnTestMove = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3324464701))
+	}
+	{
+		methodName := StringNameFromStr("get_gravity")
+		defer methodName.Destroy()
+		ptrsForPhysicsBody2D.fnGetGravity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
 	}
 	{
 		methodName := StringNameFromStr("get_collision_exceptions")
@@ -113,6 +119,16 @@ func (me *PhysicsBody2D) TestMove(from Transform2D, motion Vector2, collision Ki
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsBody2D.fnTestMove), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
+}
+
+func (me *PhysicsBody2D) GetGravity() Vector2 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewVector2()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsBody2D.fnGetGravity), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
 }
 
 func (me *PhysicsBody2D) GetCollisionExceptions() []PhysicsBody2D {

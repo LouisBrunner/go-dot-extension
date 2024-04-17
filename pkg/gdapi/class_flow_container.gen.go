@@ -15,11 +15,13 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForFlowContainerList struct {
-	fnGetLineCount gdc.MethodBindPtr
-	fnSetAlignment gdc.MethodBindPtr
-	fnGetAlignment gdc.MethodBindPtr
-	fnSetVertical  gdc.MethodBindPtr
-	fnIsVertical   gdc.MethodBindPtr
+	fnGetLineCount   gdc.MethodBindPtr
+	fnSetAlignment   gdc.MethodBindPtr
+	fnGetAlignment   gdc.MethodBindPtr
+	fnSetVertical    gdc.MethodBindPtr
+	fnIsVertical     gdc.MethodBindPtr
+	fnSetReverseFill gdc.MethodBindPtr
+	fnIsReverseFill  gdc.MethodBindPtr
 }
 
 var ptrsForFlowContainer ptrsForFlowContainerList
@@ -52,6 +54,16 @@ func initFlowContainerPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("is_vertical")
 		defer methodName.Destroy()
 		ptrsForFlowContainer.fnIsVertical = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
+		methodName := StringNameFromStr("set_reverse_fill")
+		defer methodName.Destroy()
+		ptrsForFlowContainer.fnSetReverseFill = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("is_reverse_fill")
+		defer methodName.Destroy()
+		ptrsForFlowContainer.fnIsReverseFill = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 
 }
@@ -143,6 +155,25 @@ func (me *FlowContainer) IsVertical() bool {
 	ret := NewBool()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFlowContainer.fnIsVertical), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *FlowContainer) SetReverseFill(reverse_fill bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&reverse_fill)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFlowContainer.fnSetReverseFill), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *FlowContainer) IsReverseFill() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFlowContainer.fnIsReverseFill), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 

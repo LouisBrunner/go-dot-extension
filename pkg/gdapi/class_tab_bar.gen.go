@@ -66,6 +66,8 @@ type ptrsForTabBarList struct {
 	fnGetScrollToSelected       gdc.MethodBindPtr
 	fnSetSelectWithRmb          gdc.MethodBindPtr
 	fnGetSelectWithRmb          gdc.MethodBindPtr
+	fnSetDeselectEnabled        gdc.MethodBindPtr
+	fnGetDeselectEnabled        gdc.MethodBindPtr
 	fnClearTabs                 gdc.MethodBindPtr
 }
 
@@ -329,6 +331,16 @@ func initTabBarPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_select_with_rmb")
 		defer methodName.Destroy()
 		ptrsForTabBar.fnGetSelectWithRmb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
+		methodName := StringNameFromStr("set_deselect_enabled")
+		defer methodName.Destroy()
+		ptrsForTabBar.fnSetDeselectEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("get_deselect_enabled")
+		defer methodName.Destroy()
+		ptrsForTabBar.fnGetDeselectEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
 		methodName := StringNameFromStr("clear_tabs")
@@ -883,6 +895,25 @@ func (me *TabBar) GetSelectWithRmb() bool {
 	ret := NewBool()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTabBar.fnGetSelectWithRmb), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *TabBar) SetDeselectEnabled(enabled bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTabBar.fnSetDeselectEnabled), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *TabBar) GetDeselectEnabled() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTabBar.fnGetDeselectEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 

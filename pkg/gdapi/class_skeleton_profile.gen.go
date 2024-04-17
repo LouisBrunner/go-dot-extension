@@ -42,6 +42,8 @@ type ptrsForSkeletonProfileList struct {
 	fnSetHandleOffset  gdc.MethodBindPtr
 	fnGetGroup         gdc.MethodBindPtr
 	fnSetGroup         gdc.MethodBindPtr
+	fnIsRequired       gdc.MethodBindPtr
+	fnSetRequired      gdc.MethodBindPtr
 }
 
 var ptrsForSkeletonProfile ptrsForSkeletonProfileList
@@ -184,6 +186,16 @@ func initSkeletonProfilePtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("set_group")
 		defer methodName.Destroy()
 		ptrsForSkeletonProfile.fnSetGroup = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3780747571))
+	}
+	{
+		methodName := StringNameFromStr("is_required")
+		defer methodName.Destroy()
+		ptrsForSkeletonProfile.fnIsRequired = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
+	}
+	{
+		methodName := StringNameFromStr("set_required")
+		defer methodName.Destroy()
+		ptrsForSkeletonProfile.fnSetRequired = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 300928843))
 	}
 
 }
@@ -493,6 +505,26 @@ func (me *SkeletonProfile) SetGroup(bone_idx int64, group StringName) {
 	defer pinner.Unpin()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonProfile.fnSetGroup), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *SkeletonProfile) IsRequired(bone_idx int64) bool {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+	pinner.Pin(&bone_idx)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonProfile.fnIsRequired), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *SkeletonProfile) SetRequired(bone_idx int64, required bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&bone_idx), gdc.ConstTypePtr(&required)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonProfile.fnSetRequired), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

@@ -52,6 +52,8 @@ type ptrsForCamera3DList struct {
 	fnGetEnvironment        gdc.MethodBindPtr
 	fnSetAttributes         gdc.MethodBindPtr
 	fnGetAttributes         gdc.MethodBindPtr
+	fnSetCompositor         gdc.MethodBindPtr
+	fnGetCompositor         gdc.MethodBindPtr
 	fnSetKeepAspectMode     gdc.MethodBindPtr
 	fnGetKeepAspectMode     gdc.MethodBindPtr
 	fnSetDopplerTracking    gdc.MethodBindPtr
@@ -254,6 +256,16 @@ func initCamera3DPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_attributes")
 		defer methodName.Destroy()
 		ptrsForCamera3D.fnGetAttributes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3921283215))
+	}
+	{
+		methodName := StringNameFromStr("set_compositor")
+		defer methodName.Destroy()
+		ptrsForCamera3D.fnSetCompositor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1586754307))
+	}
+	{
+		methodName := StringNameFromStr("get_compositor")
+		defer methodName.Destroy()
+		ptrsForCamera3D.fnGetCompositor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3647707413))
 	}
 	{
 		methodName := StringNameFromStr("set_keep_aspect_mode")
@@ -716,6 +728,25 @@ func (me *Camera3D) GetAttributes() CameraAttributes {
 	ret := NewCameraAttributes()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCamera3D.fnGetAttributes), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *Camera3D) SetCompositor(compositor Compositor) {
+	cargs := []gdc.ConstTypePtr{compositor.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCamera3D.fnSetCompositor), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Camera3D) GetCompositor() Compositor {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewCompositor()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCamera3D.fnGetCompositor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 

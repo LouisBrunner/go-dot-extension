@@ -194,22 +194,22 @@ func initAnimationPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("position_track_interpolate")
 		defer methodName.Destroy()
-		ptrsForAnimation.fnPositionTrackInterpolate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3285246857))
+		ptrsForAnimation.fnPositionTrackInterpolate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3530011197))
 	}
 	{
 		methodName := StringNameFromStr("rotation_track_interpolate")
 		defer methodName.Destroy()
-		ptrsForAnimation.fnRotationTrackInterpolate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1988711975))
+		ptrsForAnimation.fnRotationTrackInterpolate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2915876792))
 	}
 	{
 		methodName := StringNameFromStr("scale_track_interpolate")
 		defer methodName.Destroy()
-		ptrsForAnimation.fnScaleTrackInterpolate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3285246857))
+		ptrsForAnimation.fnScaleTrackInterpolate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3530011197))
 	}
 	{
 		methodName := StringNameFromStr("blend_shape_track_interpolate")
 		defer methodName.Destroy()
-		ptrsForAnimation.fnBlendShapeTrackInterpolate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1900462983))
+		ptrsForAnimation.fnBlendShapeTrackInterpolate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2482365182))
 	}
 	{
 		methodName := StringNameFromStr("track_insert_key")
@@ -264,7 +264,7 @@ func initAnimationPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("track_find_key")
 		defer methodName.Destroy()
-		ptrsForAnimation.fnTrackFindKey = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3245197284))
+		ptrsForAnimation.fnTrackFindKey = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 189695464))
 	}
 	{
 		methodName := StringNameFromStr("track_set_interpolation_type")
@@ -304,7 +304,7 @@ func initAnimationPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("value_track_interpolate")
 		defer methodName.Destroy()
-		ptrsForAnimation.fnValueTrackInterpolate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 491147702))
+		ptrsForAnimation.fnValueTrackInterpolate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 747269075))
 	}
 	{
 		methodName := StringNameFromStr("method_track_get_name")
@@ -752,49 +752,53 @@ func (me *Animation) BlendShapeTrackInsertKey(track_idx int64, time float64, amo
 	return ret.Get()
 }
 
-func (me *Animation) PositionTrackInterpolate(track_idx int64, time_sec float64) Vector3 {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time_sec)}
+func (me *Animation) PositionTrackInterpolate(track_idx int64, time_sec float64, backward bool) Vector3 {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time_sec), gdc.ConstTypePtr(&backward)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewVector3()
 	pinner.Pin(&track_idx)
 	pinner.Pin(&time_sec)
+	pinner.Pin(&backward)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimation.fnPositionTrackInterpolate), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 
-func (me *Animation) RotationTrackInterpolate(track_idx int64, time_sec float64) Quaternion {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time_sec)}
+func (me *Animation) RotationTrackInterpolate(track_idx int64, time_sec float64, backward bool) Quaternion {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time_sec), gdc.ConstTypePtr(&backward)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewQuaternion()
 	pinner.Pin(&track_idx)
 	pinner.Pin(&time_sec)
+	pinner.Pin(&backward)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimation.fnRotationTrackInterpolate), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 
-func (me *Animation) ScaleTrackInterpolate(track_idx int64, time_sec float64) Vector3 {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time_sec)}
+func (me *Animation) ScaleTrackInterpolate(track_idx int64, time_sec float64, backward bool) Vector3 {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time_sec), gdc.ConstTypePtr(&backward)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewVector3()
 	pinner.Pin(&track_idx)
 	pinner.Pin(&time_sec)
+	pinner.Pin(&backward)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimation.fnScaleTrackInterpolate), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 
-func (me *Animation) BlendShapeTrackInterpolate(track_idx int64, time_sec float64) float64 {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time_sec)}
+func (me *Animation) BlendShapeTrackInterpolate(track_idx int64, time_sec float64, backward bool) float64 {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time_sec), gdc.ConstTypePtr(&backward)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewFloat()
 	pinner.Pin(&track_idx)
 	pinner.Pin(&time_sec)
+	pinner.Pin(&backward)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimation.fnBlendShapeTrackInterpolate), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
@@ -905,14 +909,15 @@ func (me *Animation) TrackGetKeyTime(track_idx int64, key_idx int64) float64 {
 	return ret.Get()
 }
 
-func (me *Animation) TrackFindKey(track_idx int64, time float64, find_mode AnimationFindMode) int64 {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time), gdc.ConstTypePtr(&find_mode)}
+func (me *Animation) TrackFindKey(track_idx int64, time float64, find_mode AnimationFindMode, limit bool) int64 {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time), gdc.ConstTypePtr(&find_mode), gdc.ConstTypePtr(&limit)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewInt()
 	pinner.Pin(&track_idx)
 	pinner.Pin(&time)
 	pinner.Pin(&find_mode)
+	pinner.Pin(&limit)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimation.fnTrackFindKey), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
@@ -989,13 +994,14 @@ func (me *Animation) ValueTrackGetUpdateMode(track_idx int64) AnimationUpdateMod
 	return ret
 }
 
-func (me *Animation) ValueTrackInterpolate(track_idx int64, time_sec float64) Variant {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time_sec)}
+func (me *Animation) ValueTrackInterpolate(track_idx int64, time_sec float64, backward bool) Variant {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&track_idx), gdc.ConstTypePtr(&time_sec), gdc.ConstTypePtr(&backward)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewVariant()
 	pinner.Pin(&track_idx)
 	pinner.Pin(&time_sec)
+	pinner.Pin(&backward)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimation.fnValueTrackInterpolate), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret

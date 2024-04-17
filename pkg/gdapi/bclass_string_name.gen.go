@@ -21,6 +21,8 @@ type ptrsForStringNameList struct {
 	methodNocasecmpToFn                gdc.PtrBuiltInMethod
 	methodNaturalcasecmpToFn           gdc.PtrBuiltInMethod
 	methodNaturalnocasecmpToFn         gdc.PtrBuiltInMethod
+	methodFilecasecmpToFn              gdc.PtrBuiltInMethod
+	methodFilenocasecmpToFn            gdc.PtrBuiltInMethod
 	methodLengthFn                     gdc.PtrBuiltInMethod
 	methodSubstrFn                     gdc.PtrBuiltInMethod
 	methodGetSliceFn                   gdc.PtrBuiltInMethod
@@ -198,6 +200,16 @@ func initStringNamePtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("naturalnocasecmp_to")
 		defer methodName.Destroy()
 		ptrsForStringName.methodNaturalnocasecmpToFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, methodName.AsCPtr(), 2920860731))
+	}
+	{
+		methodName := StringNameFromStr("filecasecmp_to")
+		defer methodName.Destroy()
+		ptrsForStringName.methodFilecasecmpToFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, methodName.AsCPtr(), 2920860731))
+	}
+	{
+		methodName := StringNameFromStr("filenocasecmp_to")
+		defer methodName.Destroy()
+		ptrsForStringName.methodFilenocasecmpToFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeStringName, methodName.AsCPtr(), 2920860731))
 	}
 	{
 		methodName := StringNameFromStr("length")
@@ -858,6 +870,26 @@ func (me *StringName) NaturalnocasecmpTo(to String) int64 {
 	args := []gdc.ConstTypePtr{to.AsCTypePtr()}
 
 	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForStringName.methodNaturalnocasecmpToFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+	return ret.Get()
+}
+
+func (me *StringName) FilecasecmpTo(to String) int64 {
+	ret := NewInt()
+	defer ret.Destroy()
+
+	args := []gdc.ConstTypePtr{to.AsCTypePtr()}
+
+	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForStringName.methodFilecasecmpToFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+	return ret.Get()
+}
+
+func (me *StringName) FilenocasecmpTo(to String) int64 {
+	ret := NewInt()
+	defer ret.Destroy()
+
+	args := []gdc.ConstTypePtr{to.AsCTypePtr()}
+
+	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForStringName.methodFilenocasecmpToFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
 	return ret.Get()
 }
 

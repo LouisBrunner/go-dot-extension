@@ -30,6 +30,7 @@ type ptrsForOpenXRInterfaceList struct {
 	fnGetAvailableDisplayRefreshRates gdc.MethodBindPtr
 	fnSetMotionRange                  gdc.MethodBindPtr
 	fnGetMotionRange                  gdc.MethodBindPtr
+	fnGetHandTrackingSource           gdc.MethodBindPtr
 	fnGetHandJointFlags               gdc.MethodBindPtr
 	fnGetHandJointRotation            gdc.MethodBindPtr
 	fnGetHandJointPosition            gdc.MethodBindPtr
@@ -122,6 +123,11 @@ func initOpenXRInterfacePtrs(iface gdc.Interface) {
 		ptrsForOpenXRInterface.fnGetMotionRange = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3955838114))
 	}
 	{
+		methodName := StringNameFromStr("get_hand_tracking_source")
+		defer methodName.Destroy()
+		ptrsForOpenXRInterface.fnGetHandTrackingSource = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4092421202))
+	}
+	{
 		methodName := StringNameFromStr("get_hand_joint_flags")
 		defer methodName.Destroy()
 		ptrsForOpenXRInterface.fnGetHandJointFlags = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 720567706))
@@ -198,6 +204,15 @@ const (
 	OpenXRInterfaceHandMotionRangeHandMotionRangeUnobstructed        OpenXRInterfaceHandMotionRange = 0
 	OpenXRInterfaceHandMotionRangeHandMotionRangeConformToController OpenXRInterfaceHandMotionRange = 1
 	OpenXRInterfaceHandMotionRangeHandMotionRangeMax                 OpenXRInterfaceHandMotionRange = 2
+)
+
+type OpenXRInterfaceHandTrackedSource int
+
+const (
+	OpenXRInterfaceHandTrackedSourceHandTrackedSourceUnknown      OpenXRInterfaceHandTrackedSource = 0
+	OpenXRInterfaceHandTrackedSourceHandTrackedSourceUnobstructed OpenXRInterfaceHandTrackedSource = 1
+	OpenXRInterfaceHandTrackedSourceHandTrackedSourceController   OpenXRInterfaceHandTrackedSource = 2
+	OpenXRInterfaceHandTrackedSourceHandTrackedSourceMax          OpenXRInterfaceHandTrackedSource = 3
 )
 
 type OpenXRInterfaceHandJoints int
@@ -403,6 +418,17 @@ func (me *OpenXRInterface) GetMotionRange(hand OpenXRInterfaceHand) OpenXRInterf
 	return ret
 }
 
+func (me *OpenXRInterface) GetHandTrackingSource(hand OpenXRInterfaceHand) OpenXRInterfaceHandTrackedSource {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hand)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	var ret OpenXRInterfaceHandTrackedSource
+	pinner.Pin(&hand)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForOpenXRInterface.fnGetHandTrackingSource), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+	return ret
+}
+
 func (me *OpenXRInterface) GetHandJointFlags(hand OpenXRInterfaceHand, joint OpenXRInterfaceHandJoints) OpenXRInterfaceHandJointFlags {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&hand), gdc.ConstTypePtr(&joint)}
 	pinner := runtime.Pinner{}
@@ -566,6 +592,20 @@ func (me *OpenXRInterface) ConnectPoseRecentered(subs SignalSubscribers, fn Open
 
 func (me *OpenXRInterface) DisconnectPoseRecentered(subs SignalSubscribers, fn OpenXRInterfacePoseRecenteredSignalFn) {
 	sig := StringNameFromStr("pose_recentered")
+	defer sig.Destroy()
+	me.Disconnect(*sig, *subs.remove(fn))
+}
+
+type OpenXRInterfaceRefreshRateChangedSignalFn func(refresh_rate float32)
+
+func (me *OpenXRInterface) ConnectRefreshRateChanged(subs SignalSubscribers, fn OpenXRInterfaceRefreshRateChangedSignalFn) {
+	sig := StringNameFromStr("refresh_rate_changed")
+	defer sig.Destroy()
+	me.Connect(*sig, subs.add(fn), 0)
+}
+
+func (me *OpenXRInterface) DisconnectRefreshRateChanged(subs SignalSubscribers, fn OpenXRInterfaceRefreshRateChangedSignalFn) {
+	sig := StringNameFromStr("refresh_rate_changed")
 	defer sig.Destroy()
 	me.Disconnect(*sig, *subs.remove(fn))
 }

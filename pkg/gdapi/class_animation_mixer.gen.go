@@ -35,6 +35,8 @@ type ptrsForAnimationMixerList struct {
 	fnGetCallbackModeProcess           gdc.MethodBindPtr
 	fnSetCallbackModeMethod            gdc.MethodBindPtr
 	fnGetCallbackModeMethod            gdc.MethodBindPtr
+	fnSetCallbackModeDiscrete          gdc.MethodBindPtr
+	fnGetCallbackModeDiscrete          gdc.MethodBindPtr
 	fnSetAudioMaxPolyphony             gdc.MethodBindPtr
 	fnGetAudioMaxPolyphony             gdc.MethodBindPtr
 	fnSetRootMotionTrack               gdc.MethodBindPtr
@@ -47,6 +49,7 @@ type ptrsForAnimationMixerList struct {
 	fnGetRootMotionScaleAccumulator    gdc.MethodBindPtr
 	fnClearCaches                      gdc.MethodBindPtr
 	fnAdvance                          gdc.MethodBindPtr
+	fnCapture                          gdc.MethodBindPtr
 	fnSetResetOnSaveEnabled            gdc.MethodBindPtr
 	fnIsResetOnSaveEnabled             gdc.MethodBindPtr
 	fnFindAnimation                    gdc.MethodBindPtr
@@ -155,6 +158,16 @@ func initAnimationMixerPtrs(iface gdc.Interface) {
 		ptrsForAnimationMixer.fnGetCallbackModeMethod = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 489449656))
 	}
 	{
+		methodName := StringNameFromStr("set_callback_mode_discrete")
+		defer methodName.Destroy()
+		ptrsForAnimationMixer.fnSetCallbackModeDiscrete = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1998944670))
+	}
+	{
+		methodName := StringNameFromStr("get_callback_mode_discrete")
+		defer methodName.Destroy()
+		ptrsForAnimationMixer.fnGetCallbackModeDiscrete = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3493168860))
+	}
+	{
 		methodName := StringNameFromStr("set_audio_max_polyphony")
 		defer methodName.Destroy()
 		ptrsForAnimationMixer.fnSetAudioMaxPolyphony = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
@@ -215,6 +228,11 @@ func initAnimationMixerPtrs(iface gdc.Interface) {
 		ptrsForAnimationMixer.fnAdvance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
 	}
 	{
+		methodName := StringNameFromStr("capture")
+		defer methodName.Destroy()
+		ptrsForAnimationMixer.fnCapture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1333632127))
+	}
+	{
 		methodName := StringNameFromStr("set_reset_on_save_enabled")
 		defer methodName.Destroy()
 		ptrsForAnimationMixer.fnSetResetOnSaveEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
@@ -270,6 +288,14 @@ type AnimationMixerAnimationCallbackModeMethod int
 const (
 	AnimationMixerAnimationCallbackModeMethodAnimationCallbackModeMethodDeferred  AnimationMixerAnimationCallbackModeMethod = 0
 	AnimationMixerAnimationCallbackModeMethodAnimationCallbackModeMethodImmediate AnimationMixerAnimationCallbackModeMethod = 1
+)
+
+type AnimationMixerAnimationCallbackModeDiscrete int
+
+const (
+	AnimationMixerAnimationCallbackModeDiscreteAnimationCallbackModeDiscreteDominant        AnimationMixerAnimationCallbackModeDiscrete = 0
+	AnimationMixerAnimationCallbackModeDiscreteAnimationCallbackModeDiscreteRecessive       AnimationMixerAnimationCallbackModeDiscrete = 1
+	AnimationMixerAnimationCallbackModeDiscreteAnimationCallbackModeDiscreteForceContinuous AnimationMixerAnimationCallbackModeDiscrete = 2
 )
 
 func (me *AnimationMixer) Type() gdc.VariantType {
@@ -475,6 +501,25 @@ func (me *AnimationMixer) GetCallbackModeMethod() AnimationMixerAnimationCallbac
 	return ret
 }
 
+func (me *AnimationMixer) SetCallbackModeDiscrete(mode AnimationMixerAnimationCallbackModeDiscrete) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationMixer.fnSetCallbackModeDiscrete), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *AnimationMixer) GetCallbackModeDiscrete() AnimationMixerAnimationCallbackModeDiscrete {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	var ret AnimationMixerAnimationCallbackModeDiscrete
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationMixer.fnGetCallbackModeDiscrete), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+	return ret
+}
+
 func (me *AnimationMixer) SetAudioMaxPolyphony(max_polyphony int64) {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&max_polyphony)}
 	pinner := runtime.Pinner{}
@@ -591,6 +636,15 @@ func (me *AnimationMixer) Advance(delta float64) {
 
 }
 
+func (me *AnimationMixer) Capture(name StringName, duration float64, trans_type TweenTransitionType, ease_type TweenEaseType) {
+	cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), gdc.ConstTypePtr(&duration), gdc.ConstTypePtr(&trans_type), gdc.ConstTypePtr(&ease_type)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationMixer.fnCapture), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
 func (me *AnimationMixer) SetResetOnSaveEnabled(enabled bool) {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled)}
 	pinner := runtime.Pinner{}
@@ -634,20 +688,6 @@ func (me *AnimationMixer) FindAnimationLibrary(animation Animation) StringName {
 // FIXME: can't seem to be able to use those from this side of the API
 
 // Signals
-
-type AnimationMixerMixerUpdatedSignalFn func()
-
-func (me *AnimationMixer) ConnectMixerUpdated(subs SignalSubscribers, fn AnimationMixerMixerUpdatedSignalFn) {
-	sig := StringNameFromStr("mixer_updated")
-	defer sig.Destroy()
-	me.Connect(*sig, subs.add(fn), 0)
-}
-
-func (me *AnimationMixer) DisconnectMixerUpdated(subs SignalSubscribers, fn AnimationMixerMixerUpdatedSignalFn) {
-	sig := StringNameFromStr("mixer_updated")
-	defer sig.Destroy()
-	me.Disconnect(*sig, *subs.remove(fn))
-}
 
 type AnimationMixerAnimationListChangedSignalFn func()
 
@@ -715,6 +755,34 @@ func (me *AnimationMixer) ConnectCachesCleared(subs SignalSubscribers, fn Animat
 
 func (me *AnimationMixer) DisconnectCachesCleared(subs SignalSubscribers, fn AnimationMixerCachesClearedSignalFn) {
 	sig := StringNameFromStr("caches_cleared")
+	defer sig.Destroy()
+	me.Disconnect(*sig, *subs.remove(fn))
+}
+
+type AnimationMixerMixerAppliedSignalFn func()
+
+func (me *AnimationMixer) ConnectMixerApplied(subs SignalSubscribers, fn AnimationMixerMixerAppliedSignalFn) {
+	sig := StringNameFromStr("mixer_applied")
+	defer sig.Destroy()
+	me.Connect(*sig, subs.add(fn), 0)
+}
+
+func (me *AnimationMixer) DisconnectMixerApplied(subs SignalSubscribers, fn AnimationMixerMixerAppliedSignalFn) {
+	sig := StringNameFromStr("mixer_applied")
+	defer sig.Destroy()
+	me.Disconnect(*sig, *subs.remove(fn))
+}
+
+type AnimationMixerMixerUpdatedSignalFn func()
+
+func (me *AnimationMixer) ConnectMixerUpdated(subs SignalSubscribers, fn AnimationMixerMixerUpdatedSignalFn) {
+	sig := StringNameFromStr("mixer_updated")
+	defer sig.Destroy()
+	me.Connect(*sig, subs.add(fn), 0)
+}
+
+func (me *AnimationMixer) DisconnectMixerUpdated(subs SignalSubscribers, fn AnimationMixerMixerUpdatedSignalFn) {
+	sig := StringNameFromStr("mixer_updated")
 	defer sig.Destroy()
 	me.Disconnect(*sig, *subs.remove(fn))
 }

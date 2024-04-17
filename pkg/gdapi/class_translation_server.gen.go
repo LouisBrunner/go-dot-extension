@@ -109,12 +109,12 @@ func initTranslationServerPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("translate")
 		defer methodName.Destroy()
-		ptrsForTranslationServer.fnTranslate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1829228469))
+		ptrsForTranslationServer.fnTranslate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 58037827))
 	}
 	{
 		methodName := StringNameFromStr("translate_plural")
 		defer methodName.Destroy()
-		ptrsForTranslationServer.fnTranslatePlural = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 229954002))
+		ptrsForTranslationServer.fnTranslatePlural = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1333931916))
 	}
 	{
 		methodName := StringNameFromStr("add_translation")

@@ -27,6 +27,8 @@ type ptrsForFontVariationList struct {
 	fnGetVariationTransform gdc.MethodBindPtr
 	fnSetOpentypeFeatures   gdc.MethodBindPtr
 	fnSetSpacing            gdc.MethodBindPtr
+	fnSetBaselineOffset     gdc.MethodBindPtr
+	fnGetBaselineOffset     gdc.MethodBindPtr
 }
 
 var ptrsForFontVariation ptrsForFontVariationList
@@ -94,6 +96,16 @@ func initFontVariationPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("set_spacing")
 		defer methodName.Destroy()
 		ptrsForFontVariation.fnSetSpacing = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3122339690))
+	}
+	{
+		methodName := StringNameFromStr("set_baseline_offset")
+		defer methodName.Destroy()
+		ptrsForFontVariation.fnSetBaselineOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+	}
+	{
+		methodName := StringNameFromStr("get_baseline_offset")
+		defer methodName.Destroy()
+		ptrsForFontVariation.fnGetBaselineOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
 
 }
@@ -243,6 +255,25 @@ func (me *FontVariation) SetSpacing(spacing TextServerSpacingType, value int64) 
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFontVariation.fnSetSpacing), me.obj, unsafe.SliceData(cargs), nil)
 
+}
+
+func (me *FontVariation) SetBaselineOffset(baseline_offset float64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&baseline_offset)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFontVariation.fnSetBaselineOffset), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *FontVariation) GetBaselineOffset() float64 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewFloat()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFontVariation.fnGetBaselineOffset), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
 }
 
 // Properties

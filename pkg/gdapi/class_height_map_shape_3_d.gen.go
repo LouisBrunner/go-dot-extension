@@ -15,12 +15,15 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForHeightMapShape3DList struct {
-	fnSetMapWidth gdc.MethodBindPtr
-	fnGetMapWidth gdc.MethodBindPtr
-	fnSetMapDepth gdc.MethodBindPtr
-	fnGetMapDepth gdc.MethodBindPtr
-	fnSetMapData  gdc.MethodBindPtr
-	fnGetMapData  gdc.MethodBindPtr
+	fnSetMapWidth            gdc.MethodBindPtr
+	fnGetMapWidth            gdc.MethodBindPtr
+	fnSetMapDepth            gdc.MethodBindPtr
+	fnGetMapDepth            gdc.MethodBindPtr
+	fnSetMapData             gdc.MethodBindPtr
+	fnGetMapData             gdc.MethodBindPtr
+	fnGetMinHeight           gdc.MethodBindPtr
+	fnGetMaxHeight           gdc.MethodBindPtr
+	fnUpdateMapDataFromImage gdc.MethodBindPtr
 }
 
 var ptrsForHeightMapShape3D ptrsForHeightMapShape3DList
@@ -58,6 +61,21 @@ func initHeightMapShape3DPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_map_data")
 		defer methodName.Destroy()
 		ptrsForHeightMapShape3D.fnGetMapData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 675695659))
+	}
+	{
+		methodName := StringNameFromStr("get_min_height")
+		defer methodName.Destroy()
+		ptrsForHeightMapShape3D.fnGetMinHeight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+	}
+	{
+		methodName := StringNameFromStr("get_max_height")
+		defer methodName.Destroy()
+		ptrsForHeightMapShape3D.fnGetMaxHeight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+	}
+	{
+		methodName := StringNameFromStr("update_map_data_from_image")
+		defer methodName.Destroy()
+		ptrsForHeightMapShape3D.fnUpdateMapDataFromImage = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2636652979))
 	}
 
 }
@@ -151,6 +169,35 @@ func (me *HeightMapShape3D) GetMapData() PackedFloat32Array {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHeightMapShape3D.fnGetMapData), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
+}
+
+func (me *HeightMapShape3D) GetMinHeight() float64 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewFloat()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHeightMapShape3D.fnGetMinHeight), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *HeightMapShape3D) GetMaxHeight() float64 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewFloat()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHeightMapShape3D.fnGetMaxHeight), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *HeightMapShape3D) UpdateMapDataFromImage(image Image, height_min float64, height_max float64) {
+	cargs := []gdc.ConstTypePtr{image.AsCTypePtr(), gdc.ConstTypePtr(&height_min), gdc.ConstTypePtr(&height_max)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForHeightMapShape3D.fnUpdateMapDataFromImage), me.obj, unsafe.SliceData(cargs), nil)
+
 }
 
 // Properties

@@ -19,6 +19,7 @@ type ptrsForEditorNode3DGizmoList struct {
 	fnXGetHandleName             gdc.MethodBindPtr
 	fnXIsHandleHighlighted       gdc.MethodBindPtr
 	fnXGetHandleValue            gdc.MethodBindPtr
+	fnXBeginHandleAction         gdc.MethodBindPtr
 	fnXSetHandle                 gdc.MethodBindPtr
 	fnXCommitHandle              gdc.MethodBindPtr
 	fnXSubgizmosIntersectRay     gdc.MethodBindPtr

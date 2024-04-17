@@ -39,7 +39,9 @@ type ptrsForBasisList struct {
 	methodFromEulerFn              gdc.PtrBuiltInMethod
 	operatorNotFn                  gdc.PtrOperatorEvaluator
 	operatorMultiplyIntFn          gdc.PtrOperatorEvaluator
+	operatorDivideIntFn            gdc.PtrOperatorEvaluator
 	operatorMultiplyFloat32Fn      gdc.PtrOperatorEvaluator
+	operatorDivideFloat32Fn        gdc.PtrOperatorEvaluator
 	operatorMultiplyVector3Fn      gdc.PtrOperatorEvaluator
 	operatorEqualBasisFn           gdc.PtrOperatorEvaluator
 	operatorNotEqualBasisFn        gdc.PtrOperatorEvaluator
@@ -161,7 +163,9 @@ func initBasisPtrs(iface gdc.Interface) {
 	}
 	ptrsForBasis.operatorNotFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, gdc.VariantTypeBasis, gdc.VariantTypeNil))
 	ptrsForBasis.operatorMultiplyIntFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeBasis, gdc.VariantTypeInt))
+	ptrsForBasis.operatorDivideIntFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, gdc.VariantTypeBasis, gdc.VariantTypeInt))
 	ptrsForBasis.operatorMultiplyFloat32Fn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeBasis, gdc.VariantTypeFloat))
+	ptrsForBasis.operatorDivideFloat32Fn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, gdc.VariantTypeBasis, gdc.VariantTypeFloat))
 	ptrsForBasis.operatorMultiplyVector3Fn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeBasis, gdc.VariantTypeVector3))
 	ptrsForBasis.operatorEqualBasisFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpEqual, gdc.VariantTypeBasis, gdc.VariantTypeBasis))
 	ptrsForBasis.operatorNotEqualBasisFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNotEqual, gdc.VariantTypeBasis, gdc.VariantTypeBasis))
@@ -576,11 +580,31 @@ func (me *Basis) MultiplyInt(rightArg int64) Basis {
 	return *ret
 }
 
+func (me *Basis) DivideInt(rightArg int64) Basis {
+	right := NewIntFromInt(rightArg)
+	defer right.Destroy()
+
+	opPtr := ptrsForBasis.operatorDivideIntFn
+	ret := NewBasis()
+	me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+	return *ret
+}
+
 func (me *Basis) MultiplyFloat32(rightArg float64) Basis {
 	right := NewFloatFromFloat32(rightArg)
 	defer right.Destroy()
 
 	opPtr := ptrsForBasis.operatorMultiplyFloat32Fn
+	ret := NewBasis()
+	me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *Basis) DivideFloat32(rightArg float64) Basis {
+	right := NewFloatFromFloat32(rightArg)
+	defer right.Destroy()
+
+	opPtr := ptrsForBasis.operatorDivideFloat32Fn
 	ret := NewBasis()
 	me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
 	return *ret

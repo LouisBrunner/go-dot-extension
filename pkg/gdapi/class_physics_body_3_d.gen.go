@@ -17,6 +17,7 @@ var _ runtime.Pinner
 type ptrsForPhysicsBody3DList struct {
 	fnMoveAndCollide               gdc.MethodBindPtr
 	fnTestMove                     gdc.MethodBindPtr
+	fnGetGravity                   gdc.MethodBindPtr
 	fnSetAxisLock                  gdc.MethodBindPtr
 	fnGetAxisLock                  gdc.MethodBindPtr
 	fnGetCollisionExceptions       gdc.MethodBindPtr
@@ -39,6 +40,11 @@ func initPhysicsBody3DPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("test_move")
 		defer methodName.Destroy()
 		ptrsForPhysicsBody3D.fnTestMove = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2481691619))
+	}
+	{
+		methodName := StringNameFromStr("get_gravity")
+		defer methodName.Destroy()
+		ptrsForPhysicsBody3D.fnGetGravity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
 	}
 	{
 		methodName := StringNameFromStr("set_axis_lock")
@@ -127,6 +133,16 @@ func (me *PhysicsBody3D) TestMove(from Transform3D, motion Vector3, collision Ki
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsBody3D.fnTestMove), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
+}
+
+func (me *PhysicsBody3D) GetGravity() Vector3 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewVector3()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPhysicsBody3D.fnGetGravity), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
 }
 
 func (me *PhysicsBody3D) SetAxisLock(axis PhysicsServer3DBodyAxis, lock bool) {

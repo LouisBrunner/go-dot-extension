@@ -15,55 +15,60 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForInputList struct {
-	fnIsAnythingPressed       gdc.MethodBindPtr
-	fnIsKeyPressed            gdc.MethodBindPtr
-	fnIsPhysicalKeyPressed    gdc.MethodBindPtr
-	fnIsKeyLabelPressed       gdc.MethodBindPtr
-	fnIsMouseButtonPressed    gdc.MethodBindPtr
-	fnIsJoyButtonPressed      gdc.MethodBindPtr
-	fnIsActionPressed         gdc.MethodBindPtr
-	fnIsActionJustPressed     gdc.MethodBindPtr
-	fnIsActionJustReleased    gdc.MethodBindPtr
-	fnGetActionStrength       gdc.MethodBindPtr
-	fnGetActionRawStrength    gdc.MethodBindPtr
-	fnGetAxis                 gdc.MethodBindPtr
-	fnGetVector               gdc.MethodBindPtr
-	fnAddJoyMapping           gdc.MethodBindPtr
-	fnRemoveJoyMapping        gdc.MethodBindPtr
-	fnIsJoyKnown              gdc.MethodBindPtr
-	fnGetJoyAxis              gdc.MethodBindPtr
-	fnGetJoyName              gdc.MethodBindPtr
-	fnGetJoyGuid              gdc.MethodBindPtr
-	fnGetJoyInfo              gdc.MethodBindPtr
-	fnShouldIgnoreDevice      gdc.MethodBindPtr
-	fnGetConnectedJoypads     gdc.MethodBindPtr
-	fnGetJoyVibrationStrength gdc.MethodBindPtr
-	fnGetJoyVibrationDuration gdc.MethodBindPtr
-	fnStartJoyVibration       gdc.MethodBindPtr
-	fnStopJoyVibration        gdc.MethodBindPtr
-	fnVibrateHandheld         gdc.MethodBindPtr
-	fnGetGravity              gdc.MethodBindPtr
-	fnGetAccelerometer        gdc.MethodBindPtr
-	fnGetMagnetometer         gdc.MethodBindPtr
-	fnGetGyroscope            gdc.MethodBindPtr
-	fnSetGravity              gdc.MethodBindPtr
-	fnSetAccelerometer        gdc.MethodBindPtr
-	fnSetMagnetometer         gdc.MethodBindPtr
-	fnSetGyroscope            gdc.MethodBindPtr
-	fnGetLastMouseVelocity    gdc.MethodBindPtr
-	fnGetMouseButtonMask      gdc.MethodBindPtr
-	fnSetMouseMode            gdc.MethodBindPtr
-	fnGetMouseMode            gdc.MethodBindPtr
-	fnWarpMouse               gdc.MethodBindPtr
-	fnActionPress             gdc.MethodBindPtr
-	fnActionRelease           gdc.MethodBindPtr
-	fnSetDefaultCursorShape   gdc.MethodBindPtr
-	fnGetCurrentCursorShape   gdc.MethodBindPtr
-	fnSetCustomMouseCursor    gdc.MethodBindPtr
-	fnParseInputEvent         gdc.MethodBindPtr
-	fnSetUseAccumulatedInput  gdc.MethodBindPtr
-	fnIsUsingAccumulatedInput gdc.MethodBindPtr
-	fnFlushBufferedEvents     gdc.MethodBindPtr
+	fnIsAnythingPressed          gdc.MethodBindPtr
+	fnIsKeyPressed               gdc.MethodBindPtr
+	fnIsPhysicalKeyPressed       gdc.MethodBindPtr
+	fnIsKeyLabelPressed          gdc.MethodBindPtr
+	fnIsMouseButtonPressed       gdc.MethodBindPtr
+	fnIsJoyButtonPressed         gdc.MethodBindPtr
+	fnIsActionPressed            gdc.MethodBindPtr
+	fnIsActionJustPressed        gdc.MethodBindPtr
+	fnIsActionJustReleased       gdc.MethodBindPtr
+	fnGetActionStrength          gdc.MethodBindPtr
+	fnGetActionRawStrength       gdc.MethodBindPtr
+	fnGetAxis                    gdc.MethodBindPtr
+	fnGetVector                  gdc.MethodBindPtr
+	fnAddJoyMapping              gdc.MethodBindPtr
+	fnRemoveJoyMapping           gdc.MethodBindPtr
+	fnIsJoyKnown                 gdc.MethodBindPtr
+	fnGetJoyAxis                 gdc.MethodBindPtr
+	fnGetJoyName                 gdc.MethodBindPtr
+	fnGetJoyGuid                 gdc.MethodBindPtr
+	fnGetJoyInfo                 gdc.MethodBindPtr
+	fnShouldIgnoreDevice         gdc.MethodBindPtr
+	fnGetConnectedJoypads        gdc.MethodBindPtr
+	fnGetJoyVibrationStrength    gdc.MethodBindPtr
+	fnGetJoyVibrationDuration    gdc.MethodBindPtr
+	fnStartJoyVibration          gdc.MethodBindPtr
+	fnStopJoyVibration           gdc.MethodBindPtr
+	fnVibrateHandheld            gdc.MethodBindPtr
+	fnGetGravity                 gdc.MethodBindPtr
+	fnGetAccelerometer           gdc.MethodBindPtr
+	fnGetMagnetometer            gdc.MethodBindPtr
+	fnGetGyroscope               gdc.MethodBindPtr
+	fnSetGravity                 gdc.MethodBindPtr
+	fnSetAccelerometer           gdc.MethodBindPtr
+	fnSetMagnetometer            gdc.MethodBindPtr
+	fnSetGyroscope               gdc.MethodBindPtr
+	fnGetLastMouseVelocity       gdc.MethodBindPtr
+	fnGetLastMouseScreenVelocity gdc.MethodBindPtr
+	fnGetMouseButtonMask         gdc.MethodBindPtr
+	fnSetMouseMode               gdc.MethodBindPtr
+	fnGetMouseMode               gdc.MethodBindPtr
+	fnWarpMouse                  gdc.MethodBindPtr
+	fnActionPress                gdc.MethodBindPtr
+	fnActionRelease              gdc.MethodBindPtr
+	fnSetDefaultCursorShape      gdc.MethodBindPtr
+	fnGetCurrentCursorShape      gdc.MethodBindPtr
+	fnSetCustomMouseCursor       gdc.MethodBindPtr
+	fnParseInputEvent            gdc.MethodBindPtr
+	fnSetUseAccumulatedInput     gdc.MethodBindPtr
+	fnIsUsingAccumulatedInput    gdc.MethodBindPtr
+	fnFlushBufferedEvents        gdc.MethodBindPtr
+	fnSetEmulateMouseFromTouch   gdc.MethodBindPtr
+	fnIsEmulatingMouseFromTouch  gdc.MethodBindPtr
+	fnSetEmulateTouchFromMouse   gdc.MethodBindPtr
+	fnIsEmulatingTouchFromMouse  gdc.MethodBindPtr
 }
 
 var ptrsForInput ptrsForInputList
@@ -253,6 +258,11 @@ func initInputPtrs(iface gdc.Interface) {
 		ptrsForInput.fnGetLastMouseVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1497962370))
 	}
 	{
+		methodName := StringNameFromStr("get_last_mouse_screen_velocity")
+		defer methodName.Destroy()
+		ptrsForInput.fnGetLastMouseScreenVelocity = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1497962370))
+	}
+	{
 		methodName := StringNameFromStr("get_mouse_button_mask")
 		defer methodName.Destroy()
 		ptrsForInput.fnGetMouseButtonMask = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2512161324))
@@ -316,6 +326,26 @@ func initInputPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("flush_buffered_events")
 		defer methodName.Destroy()
 		ptrsForInput.fnFlushBufferedEvents = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+	}
+	{
+		methodName := StringNameFromStr("set_emulate_mouse_from_touch")
+		defer methodName.Destroy()
+		ptrsForInput.fnSetEmulateMouseFromTouch = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("is_emulating_mouse_from_touch")
+		defer methodName.Destroy()
+		ptrsForInput.fnIsEmulatingMouseFromTouch = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
+		methodName := StringNameFromStr("set_emulate_touch_from_mouse")
+		defer methodName.Destroy()
+		ptrsForInput.fnSetEmulateTouchFromMouse = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("is_emulating_touch_from_mouse")
+		defer methodName.Destroy()
+		ptrsForInput.fnIsEmulatingTouchFromMouse = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 
 }
@@ -765,6 +795,16 @@ func (me *Input) GetLastMouseVelocity() Vector2 {
 	return *ret
 }
 
+func (me *Input) GetLastMouseScreenVelocity() Vector2 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewVector2()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInput.fnGetLastMouseScreenVelocity), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
 func (me *Input) GetMouseButtonMask() MouseButtonMask {
 	cargs := []gdc.ConstTypePtr{}
 	pinner := runtime.Pinner{}
@@ -884,6 +924,44 @@ func (me *Input) FlushBufferedEvents() {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInput.fnFlushBufferedEvents), me.obj, unsafe.SliceData(cargs), nil)
 
+}
+
+func (me *Input) SetEmulateMouseFromTouch(enable bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInput.fnSetEmulateMouseFromTouch), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Input) IsEmulatingMouseFromTouch() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInput.fnIsEmulatingMouseFromTouch), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *Input) SetEmulateTouchFromMouse(enable bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInput.fnSetEmulateTouchFromMouse), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Input) IsEmulatingTouchFromMouse() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForInput.fnIsEmulatingTouchFromMouse), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
 }
 
 // Properties

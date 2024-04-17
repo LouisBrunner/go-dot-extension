@@ -276,7 +276,7 @@ func (me *GraphElement) DisconnectDeleteRequest(subs SignalSubscribers, fn Graph
 	me.Disconnect(*sig, *subs.remove(fn))
 }
 
-type GraphElementResizeRequestSignalFn func(new_minsize Vector2)
+type GraphElementResizeRequestSignalFn func(new_size Vector2)
 
 func (me *GraphElement) ConnectResizeRequest(subs SignalSubscribers, fn GraphElementResizeRequestSignalFn) {
 	sig := StringNameFromStr("resize_request")
@@ -286,6 +286,20 @@ func (me *GraphElement) ConnectResizeRequest(subs SignalSubscribers, fn GraphEle
 
 func (me *GraphElement) DisconnectResizeRequest(subs SignalSubscribers, fn GraphElementResizeRequestSignalFn) {
 	sig := StringNameFromStr("resize_request")
+	defer sig.Destroy()
+	me.Disconnect(*sig, *subs.remove(fn))
+}
+
+type GraphElementResizeEndSignalFn func(new_size Vector2)
+
+func (me *GraphElement) ConnectResizeEnd(subs SignalSubscribers, fn GraphElementResizeEndSignalFn) {
+	sig := StringNameFromStr("resize_end")
+	defer sig.Destroy()
+	me.Connect(*sig, subs.add(fn), 0)
+}
+
+func (me *GraphElement) DisconnectResizeEnd(subs SignalSubscribers, fn GraphElementResizeEndSignalFn) {
+	sig := StringNameFromStr("resize_end")
 	defer sig.Destroy()
 	me.Disconnect(*sig, *subs.remove(fn))
 }

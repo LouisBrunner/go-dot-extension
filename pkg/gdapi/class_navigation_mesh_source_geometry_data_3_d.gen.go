@@ -15,15 +15,20 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForNavigationMeshSourceGeometryData3DList struct {
-	fnSetVertices  gdc.MethodBindPtr
-	fnGetVertices  gdc.MethodBindPtr
-	fnSetIndices   gdc.MethodBindPtr
-	fnGetIndices   gdc.MethodBindPtr
-	fnClear        gdc.MethodBindPtr
-	fnHasData      gdc.MethodBindPtr
-	fnAddMesh      gdc.MethodBindPtr
-	fnAddMeshArray gdc.MethodBindPtr
-	fnAddFaces     gdc.MethodBindPtr
+	fnSetVertices                gdc.MethodBindPtr
+	fnGetVertices                gdc.MethodBindPtr
+	fnSetIndices                 gdc.MethodBindPtr
+	fnGetIndices                 gdc.MethodBindPtr
+	fnClear                      gdc.MethodBindPtr
+	fnHasData                    gdc.MethodBindPtr
+	fnAddMesh                    gdc.MethodBindPtr
+	fnAddMeshArray               gdc.MethodBindPtr
+	fnAddFaces                   gdc.MethodBindPtr
+	fnMerge                      gdc.MethodBindPtr
+	fnAddProjectedObstruction    gdc.MethodBindPtr
+	fnClearProjectedObstructions gdc.MethodBindPtr
+	fnSetProjectedObstructions   gdc.MethodBindPtr
+	fnGetProjectedObstructions   gdc.MethodBindPtr
 }
 
 var ptrsForNavigationMeshSourceGeometryData3D ptrsForNavigationMeshSourceGeometryData3DList
@@ -76,6 +81,31 @@ func initNavigationMeshSourceGeometryData3DPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("add_faces")
 		defer methodName.Destroy()
 		ptrsForNavigationMeshSourceGeometryData3D.fnAddFaces = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1440358797))
+	}
+	{
+		methodName := StringNameFromStr("merge")
+		defer methodName.Destroy()
+		ptrsForNavigationMeshSourceGeometryData3D.fnMerge = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 655828145))
+	}
+	{
+		methodName := StringNameFromStr("add_projected_obstruction")
+		defer methodName.Destroy()
+		ptrsForNavigationMeshSourceGeometryData3D.fnAddProjectedObstruction = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3351846707))
+	}
+	{
+		methodName := StringNameFromStr("clear_projected_obstructions")
+		defer methodName.Destroy()
+		ptrsForNavigationMeshSourceGeometryData3D.fnClearProjectedObstructions = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+	}
+	{
+		methodName := StringNameFromStr("set_projected_obstructions")
+		defer methodName.Destroy()
+		ptrsForNavigationMeshSourceGeometryData3D.fnSetProjectedObstructions = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 381264803))
+	}
+	{
+		methodName := StringNameFromStr("get_projected_obstructions")
+		defer methodName.Destroy()
+		ptrsForNavigationMeshSourceGeometryData3D.fnGetProjectedObstructions = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
 	}
 
 }
@@ -196,6 +226,52 @@ func (me *NavigationMeshSourceGeometryData3D) AddFaces(faces PackedVector3Array,
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationMeshSourceGeometryData3D.fnAddFaces), me.obj, unsafe.SliceData(cargs), nil)
 
+}
+
+func (me *NavigationMeshSourceGeometryData3D) Merge(other_geometry NavigationMeshSourceGeometryData3D) {
+	cargs := []gdc.ConstTypePtr{other_geometry.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationMeshSourceGeometryData3D.fnMerge), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *NavigationMeshSourceGeometryData3D) AddProjectedObstruction(vertices PackedVector3Array, elevation float64, height float64, carve bool) {
+	cargs := []gdc.ConstTypePtr{vertices.AsCTypePtr(), gdc.ConstTypePtr(&elevation), gdc.ConstTypePtr(&height), gdc.ConstTypePtr(&carve)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationMeshSourceGeometryData3D.fnAddProjectedObstruction), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *NavigationMeshSourceGeometryData3D) ClearProjectedObstructions() {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationMeshSourceGeometryData3D.fnClearProjectedObstructions), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *NavigationMeshSourceGeometryData3D) SetProjectedObstructions(projected_obstructions Array) {
+	cargs := []gdc.ConstTypePtr{projected_obstructions.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationMeshSourceGeometryData3D.fnSetProjectedObstructions), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *NavigationMeshSourceGeometryData3D) GetProjectedObstructions() Array {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewArray()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationMeshSourceGeometryData3D.fnGetProjectedObstructions), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
 }
 
 // Properties

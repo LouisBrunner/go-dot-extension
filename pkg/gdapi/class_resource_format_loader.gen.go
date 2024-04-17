@@ -60,9 +60,11 @@ func NewResourceFormatLoader() *ResourceFormatLoader {
 type ResourceFormatLoaderCacheMode int
 
 const (
-	ResourceFormatLoaderCacheModeCacheModeIgnore  ResourceFormatLoaderCacheMode = 0
-	ResourceFormatLoaderCacheModeCacheModeReuse   ResourceFormatLoaderCacheMode = 1
-	ResourceFormatLoaderCacheModeCacheModeReplace ResourceFormatLoaderCacheMode = 2
+	ResourceFormatLoaderCacheModeCacheModeIgnore      ResourceFormatLoaderCacheMode = 0
+	ResourceFormatLoaderCacheModeCacheModeReuse       ResourceFormatLoaderCacheMode = 1
+	ResourceFormatLoaderCacheModeCacheModeReplace     ResourceFormatLoaderCacheMode = 2
+	ResourceFormatLoaderCacheModeCacheModeIgnoreDeep  ResourceFormatLoaderCacheMode = 3
+	ResourceFormatLoaderCacheModeCacheModeReplaceDeep ResourceFormatLoaderCacheMode = 4
 )
 
 func (me *ResourceFormatLoader) Type() gdc.VariantType {

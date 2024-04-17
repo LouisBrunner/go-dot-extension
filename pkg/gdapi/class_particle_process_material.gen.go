@@ -23,6 +23,8 @@ type ptrsForParticleProcessMaterialList struct {
 	fnGetSpread                      gdc.MethodBindPtr
 	fnSetFlatness                    gdc.MethodBindPtr
 	fnGetFlatness                    gdc.MethodBindPtr
+	fnSetParam                       gdc.MethodBindPtr
+	fnGetParam                       gdc.MethodBindPtr
 	fnSetParamMin                    gdc.MethodBindPtr
 	fnGetParamMin                    gdc.MethodBindPtr
 	fnSetParamMax                    gdc.MethodBindPtr
@@ -152,6 +154,16 @@ func initParticleProcessMaterialPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_flatness")
 		defer methodName.Destroy()
 		ptrsForParticleProcessMaterial.fnGetFlatness = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+	}
+	{
+		methodName := StringNameFromStr("set_param")
+		defer methodName.Destroy()
+		ptrsForParticleProcessMaterial.fnSetParam = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 676779352))
+	}
+	{
+		methodName := StringNameFromStr("get_param")
+		defer methodName.Destroy()
+		ptrsForParticleProcessMaterial.fnGetParam = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2623708480))
 	}
 	{
 		methodName := StringNameFromStr("set_param_min")
@@ -740,6 +752,26 @@ func (me *ParticleProcessMaterial) GetFlatness() float64 {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForParticleProcessMaterial.fnGetFlatness), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
+}
+
+func (me *ParticleProcessMaterial) SetParam(param ParticleProcessMaterialParameter, value Vector2) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param), value.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForParticleProcessMaterial.fnSetParam), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *ParticleProcessMaterial) GetParam(param ParticleProcessMaterialParameter) Vector2 {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&param)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewVector2()
+	pinner.Pin(&param)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForParticleProcessMaterial.fnGetParam), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
 }
 
 func (me *ParticleProcessMaterial) SetParamMin(param ParticleProcessMaterialParameter, value float64) {

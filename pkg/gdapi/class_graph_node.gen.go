@@ -15,37 +15,41 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForGraphNodeList struct {
-	fnXDrawPort             gdc.MethodBindPtr
-	fnSetTitle              gdc.MethodBindPtr
-	fnGetTitle              gdc.MethodBindPtr
-	fnGetTitlebarHbox       gdc.MethodBindPtr
-	fnSetSlot               gdc.MethodBindPtr
-	fnClearSlot             gdc.MethodBindPtr
-	fnClearAllSlots         gdc.MethodBindPtr
-	fnIsSlotEnabledLeft     gdc.MethodBindPtr
-	fnSetSlotEnabledLeft    gdc.MethodBindPtr
-	fnSetSlotTypeLeft       gdc.MethodBindPtr
-	fnGetSlotTypeLeft       gdc.MethodBindPtr
-	fnSetSlotColorLeft      gdc.MethodBindPtr
-	fnGetSlotColorLeft      gdc.MethodBindPtr
-	fnIsSlotEnabledRight    gdc.MethodBindPtr
-	fnSetSlotEnabledRight   gdc.MethodBindPtr
-	fnSetSlotTypeRight      gdc.MethodBindPtr
-	fnGetSlotTypeRight      gdc.MethodBindPtr
-	fnSetSlotColorRight     gdc.MethodBindPtr
-	fnGetSlotColorRight     gdc.MethodBindPtr
-	fnIsSlotDrawStylebox    gdc.MethodBindPtr
-	fnSetSlotDrawStylebox   gdc.MethodBindPtr
-	fnGetInputPortCount     gdc.MethodBindPtr
-	fnGetInputPortPosition  gdc.MethodBindPtr
-	fnGetInputPortType      gdc.MethodBindPtr
-	fnGetInputPortColor     gdc.MethodBindPtr
-	fnGetInputPortSlot      gdc.MethodBindPtr
-	fnGetOutputPortCount    gdc.MethodBindPtr
-	fnGetOutputPortPosition gdc.MethodBindPtr
-	fnGetOutputPortType     gdc.MethodBindPtr
-	fnGetOutputPortColor    gdc.MethodBindPtr
-	fnGetOutputPortSlot     gdc.MethodBindPtr
+	fnXDrawPort              gdc.MethodBindPtr
+	fnSetTitle               gdc.MethodBindPtr
+	fnGetTitle               gdc.MethodBindPtr
+	fnGetTitlebarHbox        gdc.MethodBindPtr
+	fnSetSlot                gdc.MethodBindPtr
+	fnClearSlot              gdc.MethodBindPtr
+	fnClearAllSlots          gdc.MethodBindPtr
+	fnIsSlotEnabledLeft      gdc.MethodBindPtr
+	fnSetSlotEnabledLeft     gdc.MethodBindPtr
+	fnSetSlotTypeLeft        gdc.MethodBindPtr
+	fnGetSlotTypeLeft        gdc.MethodBindPtr
+	fnSetSlotColorLeft       gdc.MethodBindPtr
+	fnGetSlotColorLeft       gdc.MethodBindPtr
+	fnSetSlotCustomIconLeft  gdc.MethodBindPtr
+	fnGetSlotCustomIconLeft  gdc.MethodBindPtr
+	fnIsSlotEnabledRight     gdc.MethodBindPtr
+	fnSetSlotEnabledRight    gdc.MethodBindPtr
+	fnSetSlotTypeRight       gdc.MethodBindPtr
+	fnGetSlotTypeRight       gdc.MethodBindPtr
+	fnSetSlotColorRight      gdc.MethodBindPtr
+	fnGetSlotColorRight      gdc.MethodBindPtr
+	fnSetSlotCustomIconRight gdc.MethodBindPtr
+	fnGetSlotCustomIconRight gdc.MethodBindPtr
+	fnIsSlotDrawStylebox     gdc.MethodBindPtr
+	fnSetSlotDrawStylebox    gdc.MethodBindPtr
+	fnGetInputPortCount      gdc.MethodBindPtr
+	fnGetInputPortPosition   gdc.MethodBindPtr
+	fnGetInputPortType       gdc.MethodBindPtr
+	fnGetInputPortColor      gdc.MethodBindPtr
+	fnGetInputPortSlot       gdc.MethodBindPtr
+	fnGetOutputPortCount     gdc.MethodBindPtr
+	fnGetOutputPortPosition  gdc.MethodBindPtr
+	fnGetOutputPortType      gdc.MethodBindPtr
+	fnGetOutputPortColor     gdc.MethodBindPtr
+	fnGetOutputPortSlot      gdc.MethodBindPtr
 }
 
 var ptrsForGraphNode ptrsForGraphNodeList
@@ -115,6 +119,16 @@ func initGraphNodePtrs(iface gdc.Interface) {
 		ptrsForGraphNode.fnGetSlotColorLeft = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3457211756))
 	}
 	{
+		methodName := StringNameFromStr("set_slot_custom_icon_left")
+		defer methodName.Destroy()
+		ptrsForGraphNode.fnSetSlotCustomIconLeft = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 666127730))
+	}
+	{
+		methodName := StringNameFromStr("get_slot_custom_icon_left")
+		defer methodName.Destroy()
+		ptrsForGraphNode.fnGetSlotCustomIconLeft = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3536238170))
+	}
+	{
 		methodName := StringNameFromStr("is_slot_enabled_right")
 		defer methodName.Destroy()
 		ptrsForGraphNode.fnIsSlotEnabledRight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
@@ -143,6 +157,16 @@ func initGraphNodePtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_slot_color_right")
 		defer methodName.Destroy()
 		ptrsForGraphNode.fnGetSlotColorRight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3457211756))
+	}
+	{
+		methodName := StringNameFromStr("set_slot_custom_icon_right")
+		defer methodName.Destroy()
+		ptrsForGraphNode.fnSetSlotCustomIconRight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 666127730))
+	}
+	{
+		methodName := StringNameFromStr("get_slot_custom_icon_right")
+		defer methodName.Destroy()
+		ptrsForGraphNode.fnGetSlotCustomIconRight = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3536238170))
 	}
 	{
 		methodName := StringNameFromStr("is_slot_draw_stylebox")
@@ -357,6 +381,26 @@ func (me *GraphNode) GetSlotColorLeft(slot_index int64) Color {
 	return *ret
 }
 
+func (me *GraphNode) SetSlotCustomIconLeft(slot_index int64, custom_icon Texture2D) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&slot_index), custom_icon.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphNode.fnSetSlotCustomIconLeft), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *GraphNode) GetSlotCustomIconLeft(slot_index int64) Texture2D {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&slot_index)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewTexture2D()
+	pinner.Pin(&slot_index)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphNode.fnGetSlotCustomIconLeft), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
 func (me *GraphNode) IsSlotEnabledRight(slot_index int64) bool {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&slot_index)}
 	pinner := runtime.Pinner{}
@@ -414,6 +458,26 @@ func (me *GraphNode) GetSlotColorRight(slot_index int64) Color {
 	pinner.Pin(&slot_index)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphNode.fnGetSlotColorRight), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *GraphNode) SetSlotCustomIconRight(slot_index int64, custom_icon Texture2D) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&slot_index), custom_icon.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphNode.fnSetSlotCustomIconRight), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *GraphNode) GetSlotCustomIconRight(slot_index int64) Texture2D {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&slot_index)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewTexture2D()
+	pinner.Pin(&slot_index)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGraphNode.fnGetSlotCustomIconRight), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 

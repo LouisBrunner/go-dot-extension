@@ -23,6 +23,8 @@ type ptrsForAnimationNodeOneShotList struct {
 	fnGetFadeoutTime            gdc.MethodBindPtr
 	fnSetFadeoutCurve           gdc.MethodBindPtr
 	fnGetFadeoutCurve           gdc.MethodBindPtr
+	fnSetBreakLoopAtEnd         gdc.MethodBindPtr
+	fnIsLoopBrokenAtEnd         gdc.MethodBindPtr
 	fnSetAutorestart            gdc.MethodBindPtr
 	fnHasAutorestart            gdc.MethodBindPtr
 	fnSetAutorestartDelay       gdc.MethodBindPtr
@@ -78,6 +80,16 @@ func initAnimationNodeOneShotPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_fadeout_curve")
 		defer methodName.Destroy()
 		ptrsForAnimationNodeOneShot.fnGetFadeoutCurve = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2460114913))
+	}
+	{
+		methodName := StringNameFromStr("set_break_loop_at_end")
+		defer methodName.Destroy()
+		ptrsForAnimationNodeOneShot.fnSetBreakLoopAtEnd = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("is_loop_broken_at_end")
+		defer methodName.Destroy()
+		ptrsForAnimationNodeOneShot.fnIsLoopBrokenAtEnd = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
 		methodName := StringNameFromStr("set_autorestart")
@@ -246,6 +258,25 @@ func (me *AnimationNodeOneShot) GetFadeoutCurve() Curve {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnGetFadeoutCurve), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
+}
+
+func (me *AnimationNodeOneShot) SetBreakLoopAtEnd(enable bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enable)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnSetBreakLoopAtEnd), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *AnimationNodeOneShot) IsLoopBrokenAtEnd() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeOneShot.fnIsLoopBrokenAtEnd), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
 }
 
 func (me *AnimationNodeOneShot) SetAutorestart(active bool) {

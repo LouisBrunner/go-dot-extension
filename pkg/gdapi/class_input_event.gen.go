@@ -134,6 +134,12 @@ func NewInputEvent() *InputEvent {
 	return obj
 }
 
+// Constants
+
+var (
+	InputEventDeviceIdEmulation = -1
+)
+
 // Enums
 
 func (me *InputEvent) Type() gdc.VariantType {

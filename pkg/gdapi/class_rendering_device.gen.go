@@ -56,6 +56,7 @@ type ptrsForRenderingDeviceList struct {
 	fnTextureBufferCreate                gdc.MethodBindPtr
 	fnUniformSetCreate                   gdc.MethodBindPtr
 	fnUniformSetIsValid                  gdc.MethodBindPtr
+	fnBufferCopy                         gdc.MethodBindPtr
 	fnBufferUpdate                       gdc.MethodBindPtr
 	fnBufferClear                        gdc.MethodBindPtr
 	fnBufferGetData                      gdc.MethodBindPtr
@@ -86,6 +87,7 @@ type ptrsForRenderingDeviceList struct {
 	fnComputeListSetPushConstant         gdc.MethodBindPtr
 	fnComputeListBindUniformSet          gdc.MethodBindPtr
 	fnComputeListDispatch                gdc.MethodBindPtr
+	fnComputeListDispatchIndirect        gdc.MethodBindPtr
 	fnComputeListAddBarrier              gdc.MethodBindPtr
 	fnComputeListEnd                     gdc.MethodBindPtr
 	fnFreeRid                            gdc.MethodBindPtr
@@ -142,7 +144,7 @@ func initRenderingDevicePtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("texture_update")
 		defer methodName.Destroy()
-		ptrsForRenderingDevice.fnTextureUpdate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2096463824))
+		ptrsForRenderingDevice.fnTextureUpdate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1349464008))
 	}
 	{
 		methodName := StringNameFromStr("texture_get_data")
@@ -167,17 +169,17 @@ func initRenderingDevicePtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("texture_copy")
 		defer methodName.Destroy()
-		ptrsForRenderingDevice.fnTextureCopy = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2339493201))
+		ptrsForRenderingDevice.fnTextureCopy = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2859522160))
 	}
 	{
 		methodName := StringNameFromStr("texture_clear")
 		defer methodName.Destroy()
-		ptrsForRenderingDevice.fnTextureClear = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3396867530))
+		ptrsForRenderingDevice.fnTextureClear = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3477703247))
 	}
 	{
 		methodName := StringNameFromStr("texture_resolve_multisample")
 		defer methodName.Destroy()
-		ptrsForRenderingDevice.fnTextureResolveMultisample = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 594679454))
+		ptrsForRenderingDevice.fnTextureResolveMultisample = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3181288260))
 	}
 	{
 		methodName := StringNameFromStr("texture_get_format")
@@ -325,14 +327,19 @@ func initRenderingDevicePtrs(iface gdc.Interface) {
 		ptrsForRenderingDevice.fnUniformSetIsValid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3521089500))
 	}
 	{
+		methodName := StringNameFromStr("buffer_copy")
+		defer methodName.Destroy()
+		ptrsForRenderingDevice.fnBufferCopy = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 864257779))
+	}
+	{
 		methodName := StringNameFromStr("buffer_update")
 		defer methodName.Destroy()
-		ptrsForRenderingDevice.fnBufferUpdate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3793150683))
+		ptrsForRenderingDevice.fnBufferUpdate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3454956949))
 	}
 	{
 		methodName := StringNameFromStr("buffer_clear")
 		defer methodName.Destroy()
-		ptrsForRenderingDevice.fnBufferClear = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2797041220))
+		ptrsForRenderingDevice.fnBufferClear = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2452320800))
 	}
 	{
 		methodName := StringNameFromStr("buffer_get_data")
@@ -372,7 +379,7 @@ func initRenderingDevicePtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("screen_get_framebuffer_format")
 		defer methodName.Destroy()
-		ptrsForRenderingDevice.fnScreenGetFramebufferFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+		ptrsForRenderingDevice.fnScreenGetFramebufferFormat = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1591665591))
 	}
 	{
 		methodName := StringNameFromStr("draw_list_begin_for_screen")
@@ -382,7 +389,7 @@ func initRenderingDevicePtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("draw_list_begin")
 		defer methodName.Destroy()
-		ptrsForRenderingDevice.fnDrawListBegin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2468082605))
+		ptrsForRenderingDevice.fnDrawListBegin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2686605154))
 	}
 	{
 		methodName := StringNameFromStr("draw_list_begin_split")
@@ -447,12 +454,12 @@ func initRenderingDevicePtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("draw_list_end")
 		defer methodName.Destroy()
-		ptrsForRenderingDevice.fnDrawListEnd = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3920951950))
+		ptrsForRenderingDevice.fnDrawListEnd = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
 	{
 		methodName := StringNameFromStr("compute_list_begin")
 		defer methodName.Destroy()
-		ptrsForRenderingDevice.fnComputeListBegin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 968564752))
+		ptrsForRenderingDevice.fnComputeListBegin = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2455072627))
 	}
 	{
 		methodName := StringNameFromStr("compute_list_bind_compute_pipeline")
@@ -475,6 +482,11 @@ func initRenderingDevicePtrs(iface gdc.Interface) {
 		ptrsForRenderingDevice.fnComputeListDispatch = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4275841770))
 	}
 	{
+		methodName := StringNameFromStr("compute_list_dispatch_indirect")
+		defer methodName.Destroy()
+		ptrsForRenderingDevice.fnComputeListDispatchIndirect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 749655778))
+	}
+	{
 		methodName := StringNameFromStr("compute_list_add_barrier")
 		defer methodName.Destroy()
 		ptrsForRenderingDevice.fnComputeListAddBarrier = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
@@ -482,7 +494,7 @@ func initRenderingDevicePtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("compute_list_end")
 		defer methodName.Destroy()
-		ptrsForRenderingDevice.fnComputeListEnd = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3920951950))
+		ptrsForRenderingDevice.fnComputeListEnd = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
 	}
 	{
 		methodName := StringNameFromStr("free_rid")
@@ -643,6 +655,19 @@ const (
 type RenderingDeviceDriverResource int
 
 const (
+	RenderingDeviceDriverResourceDriverResourceLogicalDevice                  RenderingDeviceDriverResource = 0
+	RenderingDeviceDriverResourceDriverResourcePhysicalDevice                 RenderingDeviceDriverResource = 1
+	RenderingDeviceDriverResourceDriverResourceTopmostObject                  RenderingDeviceDriverResource = 2
+	RenderingDeviceDriverResourceDriverResourceCommandQueue                   RenderingDeviceDriverResource = 3
+	RenderingDeviceDriverResourceDriverResourceQueueFamily                    RenderingDeviceDriverResource = 4
+	RenderingDeviceDriverResourceDriverResourceTexture                        RenderingDeviceDriverResource = 5
+	RenderingDeviceDriverResourceDriverResourceTextureView                    RenderingDeviceDriverResource = 6
+	RenderingDeviceDriverResourceDriverResourceTextureDataFormat              RenderingDeviceDriverResource = 7
+	RenderingDeviceDriverResourceDriverResourceSampler                        RenderingDeviceDriverResource = 8
+	RenderingDeviceDriverResourceDriverResourceUniformSet                     RenderingDeviceDriverResource = 9
+	RenderingDeviceDriverResourceDriverResourceBuffer                         RenderingDeviceDriverResource = 10
+	RenderingDeviceDriverResourceDriverResourceComputePipeline                RenderingDeviceDriverResource = 11
+	RenderingDeviceDriverResourceDriverResourceRenderPipeline                 RenderingDeviceDriverResource = 12
 	RenderingDeviceDriverResourceDriverResourceVulkanDevice                   RenderingDeviceDriverResource = 0
 	RenderingDeviceDriverResourceDriverResourceVulkanPhysicalDevice           RenderingDeviceDriverResource = 1
 	RenderingDeviceDriverResourceDriverResourceVulkanInstance                 RenderingDeviceDriverResource = 2
@@ -1155,22 +1180,25 @@ const (
 type RenderingDeviceInitialAction int
 
 const (
-	RenderingDeviceInitialActionInitialActionClear               RenderingDeviceInitialAction = 0
+	RenderingDeviceInitialActionInitialActionLoad                RenderingDeviceInitialAction = 0
+	RenderingDeviceInitialActionInitialActionClear               RenderingDeviceInitialAction = 1
+	RenderingDeviceInitialActionInitialActionDiscard             RenderingDeviceInitialAction = 2
+	RenderingDeviceInitialActionInitialActionMax                 RenderingDeviceInitialAction = 3
 	RenderingDeviceInitialActionInitialActionClearRegion         RenderingDeviceInitialAction = 1
-	RenderingDeviceInitialActionInitialActionClearRegionContinue RenderingDeviceInitialAction = 2
-	RenderingDeviceInitialActionInitialActionKeep                RenderingDeviceInitialAction = 3
-	RenderingDeviceInitialActionInitialActionDrop                RenderingDeviceInitialAction = 4
-	RenderingDeviceInitialActionInitialActionContinue            RenderingDeviceInitialAction = 5
-	RenderingDeviceInitialActionInitialActionMax                 RenderingDeviceInitialAction = 6
+	RenderingDeviceInitialActionInitialActionClearRegionContinue RenderingDeviceInitialAction = 1
+	RenderingDeviceInitialActionInitialActionKeep                RenderingDeviceInitialAction = 0
+	RenderingDeviceInitialActionInitialActionDrop                RenderingDeviceInitialAction = 2
+	RenderingDeviceInitialActionInitialActionContinue            RenderingDeviceInitialAction = 0
 )
 
 type RenderingDeviceFinalAction int
 
 const (
-	RenderingDeviceFinalActionFinalActionRead     RenderingDeviceFinalAction = 0
+	RenderingDeviceFinalActionFinalActionStore    RenderingDeviceFinalAction = 0
 	RenderingDeviceFinalActionFinalActionDiscard  RenderingDeviceFinalAction = 1
-	RenderingDeviceFinalActionFinalActionContinue RenderingDeviceFinalAction = 2
-	RenderingDeviceFinalActionFinalActionMax      RenderingDeviceFinalAction = 3
+	RenderingDeviceFinalActionFinalActionMax      RenderingDeviceFinalAction = 2
+	RenderingDeviceFinalActionFinalActionRead     RenderingDeviceFinalAction = 0
+	RenderingDeviceFinalActionFinalActionContinue RenderingDeviceFinalAction = 0
 )
 
 type RenderingDeviceShaderStage int
@@ -1322,13 +1350,12 @@ func (me *RenderingDevice) TextureCreateFromExtension(type_ RenderingDeviceTextu
 	return *ret
 }
 
-func (me *RenderingDevice) TextureUpdate(texture RID, layer int64, data PackedByteArray, post_barrier RenderingDeviceBarrierMask) Error {
-	cargs := []gdc.ConstTypePtr{texture.AsCTypePtr(), gdc.ConstTypePtr(&layer), data.AsCTypePtr(), gdc.ConstTypePtr(&post_barrier)}
+func (me *RenderingDevice) TextureUpdate(texture RID, layer int64, data PackedByteArray) Error {
+	cargs := []gdc.ConstTypePtr{texture.AsCTypePtr(), gdc.ConstTypePtr(&layer), data.AsCTypePtr()}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	var ret Error
 	pinner.Pin(&layer)
-	pinner.Pin(&post_barrier)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderingDevice.fnTextureUpdate), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
 	return ret
@@ -1377,8 +1404,8 @@ func (me *RenderingDevice) TextureIsValid(texture RID) bool {
 	return ret.Get()
 }
 
-func (me *RenderingDevice) TextureCopy(from_texture RID, to_texture RID, from_pos Vector3, to_pos Vector3, size Vector3, src_mipmap int64, dst_mipmap int64, src_layer int64, dst_layer int64, post_barrier RenderingDeviceBarrierMask) Error {
-	cargs := []gdc.ConstTypePtr{from_texture.AsCTypePtr(), to_texture.AsCTypePtr(), from_pos.AsCTypePtr(), to_pos.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&src_mipmap), gdc.ConstTypePtr(&dst_mipmap), gdc.ConstTypePtr(&src_layer), gdc.ConstTypePtr(&dst_layer), gdc.ConstTypePtr(&post_barrier)}
+func (me *RenderingDevice) TextureCopy(from_texture RID, to_texture RID, from_pos Vector3, to_pos Vector3, size Vector3, src_mipmap int64, dst_mipmap int64, src_layer int64, dst_layer int64) Error {
+	cargs := []gdc.ConstTypePtr{from_texture.AsCTypePtr(), to_texture.AsCTypePtr(), from_pos.AsCTypePtr(), to_pos.AsCTypePtr(), size.AsCTypePtr(), gdc.ConstTypePtr(&src_mipmap), gdc.ConstTypePtr(&dst_mipmap), gdc.ConstTypePtr(&src_layer), gdc.ConstTypePtr(&dst_layer)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	var ret Error
@@ -1386,14 +1413,13 @@ func (me *RenderingDevice) TextureCopy(from_texture RID, to_texture RID, from_po
 	pinner.Pin(&dst_mipmap)
 	pinner.Pin(&src_layer)
 	pinner.Pin(&dst_layer)
-	pinner.Pin(&post_barrier)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderingDevice.fnTextureCopy), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
 	return ret
 }
 
-func (me *RenderingDevice) TextureClear(texture RID, color Color, base_mipmap int64, mipmap_count int64, base_layer int64, layer_count int64, post_barrier RenderingDeviceBarrierMask) Error {
-	cargs := []gdc.ConstTypePtr{texture.AsCTypePtr(), color.AsCTypePtr(), gdc.ConstTypePtr(&base_mipmap), gdc.ConstTypePtr(&mipmap_count), gdc.ConstTypePtr(&base_layer), gdc.ConstTypePtr(&layer_count), gdc.ConstTypePtr(&post_barrier)}
+func (me *RenderingDevice) TextureClear(texture RID, color Color, base_mipmap int64, mipmap_count int64, base_layer int64, layer_count int64) Error {
+	cargs := []gdc.ConstTypePtr{texture.AsCTypePtr(), color.AsCTypePtr(), gdc.ConstTypePtr(&base_mipmap), gdc.ConstTypePtr(&mipmap_count), gdc.ConstTypePtr(&base_layer), gdc.ConstTypePtr(&layer_count)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	var ret Error
@@ -1401,18 +1427,16 @@ func (me *RenderingDevice) TextureClear(texture RID, color Color, base_mipmap in
 	pinner.Pin(&mipmap_count)
 	pinner.Pin(&base_layer)
 	pinner.Pin(&layer_count)
-	pinner.Pin(&post_barrier)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderingDevice.fnTextureClear), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
 	return ret
 }
 
-func (me *RenderingDevice) TextureResolveMultisample(from_texture RID, to_texture RID, post_barrier RenderingDeviceBarrierMask) Error {
-	cargs := []gdc.ConstTypePtr{from_texture.AsCTypePtr(), to_texture.AsCTypePtr(), gdc.ConstTypePtr(&post_barrier)}
+func (me *RenderingDevice) TextureResolveMultisample(from_texture RID, to_texture RID) Error {
+	cargs := []gdc.ConstTypePtr{from_texture.AsCTypePtr(), to_texture.AsCTypePtr()}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	var ret Error
-	pinner.Pin(&post_barrier)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderingDevice.fnTextureResolveMultisample), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
 	return ret
@@ -1746,27 +1770,38 @@ func (me *RenderingDevice) UniformSetIsValid(uniform_set RID) bool {
 	return ret.Get()
 }
 
-func (me *RenderingDevice) BufferUpdate(buffer RID, offset int64, size_bytes int64, data PackedByteArray, post_barrier RenderingDeviceBarrierMask) Error {
-	cargs := []gdc.ConstTypePtr{buffer.AsCTypePtr(), gdc.ConstTypePtr(&offset), gdc.ConstTypePtr(&size_bytes), data.AsCTypePtr(), gdc.ConstTypePtr(&post_barrier)}
+func (me *RenderingDevice) BufferCopy(src_buffer RID, dst_buffer RID, src_offset int64, dst_offset int64, size int64) Error {
+	cargs := []gdc.ConstTypePtr{src_buffer.AsCTypePtr(), dst_buffer.AsCTypePtr(), gdc.ConstTypePtr(&src_offset), gdc.ConstTypePtr(&dst_offset), gdc.ConstTypePtr(&size)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	var ret Error
+	pinner.Pin(&src_offset)
+	pinner.Pin(&dst_offset)
+	pinner.Pin(&size)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderingDevice.fnBufferCopy), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+	return ret
+}
+
+func (me *RenderingDevice) BufferUpdate(buffer RID, offset int64, size_bytes int64, data PackedByteArray) Error {
+	cargs := []gdc.ConstTypePtr{buffer.AsCTypePtr(), gdc.ConstTypePtr(&offset), gdc.ConstTypePtr(&size_bytes), data.AsCTypePtr()}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	var ret Error
 	pinner.Pin(&offset)
 	pinner.Pin(&size_bytes)
-	pinner.Pin(&post_barrier)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderingDevice.fnBufferUpdate), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
 	return ret
 }
 
-func (me *RenderingDevice) BufferClear(buffer RID, offset int64, size_bytes int64, post_barrier RenderingDeviceBarrierMask) Error {
-	cargs := []gdc.ConstTypePtr{buffer.AsCTypePtr(), gdc.ConstTypePtr(&offset), gdc.ConstTypePtr(&size_bytes), gdc.ConstTypePtr(&post_barrier)}
+func (me *RenderingDevice) BufferClear(buffer RID, offset int64, size_bytes int64) Error {
+	cargs := []gdc.ConstTypePtr{buffer.AsCTypePtr(), gdc.ConstTypePtr(&offset), gdc.ConstTypePtr(&size_bytes)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	var ret Error
 	pinner.Pin(&offset)
 	pinner.Pin(&size_bytes)
-	pinner.Pin(&post_barrier)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderingDevice.fnBufferClear), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
 	return ret
@@ -1853,11 +1888,12 @@ func (me *RenderingDevice) ScreenGetHeight(screen int64) int64 {
 	return ret.Get()
 }
 
-func (me *RenderingDevice) ScreenGetFramebufferFormat() int64 {
-	cargs := []gdc.ConstTypePtr{}
+func (me *RenderingDevice) ScreenGetFramebufferFormat(screen int64) int64 {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&screen)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewInt()
+	pinner.Pin(&screen)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderingDevice.fnScreenGetFramebufferFormat), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
@@ -1874,8 +1910,8 @@ func (me *RenderingDevice) DrawListBeginForScreen(screen int64, clear_color Colo
 	return ret.Get()
 }
 
-func (me *RenderingDevice) DrawListBegin(framebuffer RID, initial_color_action RenderingDeviceInitialAction, final_color_action RenderingDeviceFinalAction, initial_depth_action RenderingDeviceInitialAction, final_depth_action RenderingDeviceFinalAction, clear_color_values PackedColorArray, clear_depth float64, clear_stencil int64, region Rect2, storage_textures []RID) int64 {
-	cargs := []gdc.ConstTypePtr{framebuffer.AsCTypePtr(), gdc.ConstTypePtr(&initial_color_action), gdc.ConstTypePtr(&final_color_action), gdc.ConstTypePtr(&initial_depth_action), gdc.ConstTypePtr(&final_depth_action), clear_color_values.AsCTypePtr(), gdc.ConstTypePtr(&clear_depth), gdc.ConstTypePtr(&clear_stencil), region.AsCTypePtr(), gdc.ConstTypePtr(&storage_textures)}
+func (me *RenderingDevice) DrawListBegin(framebuffer RID, initial_color_action RenderingDeviceInitialAction, final_color_action RenderingDeviceFinalAction, initial_depth_action RenderingDeviceInitialAction, final_depth_action RenderingDeviceFinalAction, clear_color_values PackedColorArray, clear_depth float64, clear_stencil int64, region Rect2) int64 {
+	cargs := []gdc.ConstTypePtr{framebuffer.AsCTypePtr(), gdc.ConstTypePtr(&initial_color_action), gdc.ConstTypePtr(&final_color_action), gdc.ConstTypePtr(&initial_depth_action), gdc.ConstTypePtr(&final_depth_action), clear_color_values.AsCTypePtr(), gdc.ConstTypePtr(&clear_depth), gdc.ConstTypePtr(&clear_stencil), region.AsCTypePtr()}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewInt()
@@ -1885,7 +1921,6 @@ func (me *RenderingDevice) DrawListBegin(framebuffer RID, initial_color_action R
 	pinner.Pin(&final_depth_action)
 	pinner.Pin(&clear_depth)
 	pinner.Pin(&clear_stencil)
-	pinner.Pin(&storage_textures)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderingDevice.fnDrawListBegin), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
@@ -2011,8 +2046,8 @@ func (me *RenderingDevice) DrawListSwitchToNextPassSplit(splits int64) PackedInt
 	return *ret
 }
 
-func (me *RenderingDevice) DrawListEnd(post_barrier RenderingDeviceBarrierMask) {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&post_barrier)}
+func (me *RenderingDevice) DrawListEnd() {
+	cargs := []gdc.ConstTypePtr{}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 
@@ -2020,12 +2055,11 @@ func (me *RenderingDevice) DrawListEnd(post_barrier RenderingDeviceBarrierMask) 
 
 }
 
-func (me *RenderingDevice) ComputeListBegin(allow_draw_overlap bool) int64 {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&allow_draw_overlap)}
+func (me *RenderingDevice) ComputeListBegin() int64 {
+	cargs := []gdc.ConstTypePtr{}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewInt()
-	pinner.Pin(&allow_draw_overlap)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderingDevice.fnComputeListBegin), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
@@ -2067,6 +2101,15 @@ func (me *RenderingDevice) ComputeListDispatch(compute_list int64, x_groups int6
 
 }
 
+func (me *RenderingDevice) ComputeListDispatchIndirect(compute_list int64, buffer RID, offset int64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&compute_list), buffer.AsCTypePtr(), gdc.ConstTypePtr(&offset)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderingDevice.fnComputeListDispatchIndirect), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
 func (me *RenderingDevice) ComputeListAddBarrier(compute_list int64) {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&compute_list)}
 	pinner := runtime.Pinner{}
@@ -2076,8 +2119,8 @@ func (me *RenderingDevice) ComputeListAddBarrier(compute_list int64) {
 
 }
 
-func (me *RenderingDevice) ComputeListEnd(post_barrier RenderingDeviceBarrierMask) {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&post_barrier)}
+func (me *RenderingDevice) ComputeListEnd() {
+	cargs := []gdc.ConstTypePtr{}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 

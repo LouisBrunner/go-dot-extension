@@ -32,6 +32,8 @@ type ptrsForNavigationPolygonList struct {
 	fnMakePolygonsFromOutlines    gdc.MethodBindPtr
 	fnSetCellSize                 gdc.MethodBindPtr
 	fnGetCellSize                 gdc.MethodBindPtr
+	fnSetBorderSize               gdc.MethodBindPtr
+	fnGetBorderSize               gdc.MethodBindPtr
 	fnSetParsedGeometryType       gdc.MethodBindPtr
 	fnGetParsedGeometryType       gdc.MethodBindPtr
 	fnSetParsedCollisionMask      gdc.MethodBindPtr
@@ -44,6 +46,10 @@ type ptrsForNavigationPolygonList struct {
 	fnGetSourceGeometryGroupName  gdc.MethodBindPtr
 	fnSetAgentRadius              gdc.MethodBindPtr
 	fnGetAgentRadius              gdc.MethodBindPtr
+	fnSetBakingRect               gdc.MethodBindPtr
+	fnGetBakingRect               gdc.MethodBindPtr
+	fnSetBakingRectOffset         gdc.MethodBindPtr
+	fnGetBakingRectOffset         gdc.MethodBindPtr
 	fnClear                       gdc.MethodBindPtr
 }
 
@@ -139,6 +145,16 @@ func initNavigationPolygonPtrs(iface gdc.Interface) {
 		ptrsForNavigationPolygon.fnGetCellSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
 	{
+		methodName := StringNameFromStr("set_border_size")
+		defer methodName.Destroy()
+		ptrsForNavigationPolygon.fnSetBorderSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+	}
+	{
+		methodName := StringNameFromStr("get_border_size")
+		defer methodName.Destroy()
+		ptrsForNavigationPolygon.fnGetBorderSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+	}
+	{
 		methodName := StringNameFromStr("set_parsed_geometry_type")
 		defer methodName.Destroy()
 		ptrsForNavigationPolygon.fnSetParsedGeometryType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2507971764))
@@ -197,6 +213,26 @@ func initNavigationPolygonPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_agent_radius")
 		defer methodName.Destroy()
 		ptrsForNavigationPolygon.fnGetAgentRadius = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+	}
+	{
+		methodName := StringNameFromStr("set_baking_rect")
+		defer methodName.Destroy()
+		ptrsForNavigationPolygon.fnSetBakingRect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2046264180))
+	}
+	{
+		methodName := StringNameFromStr("get_baking_rect")
+		defer methodName.Destroy()
+		ptrsForNavigationPolygon.fnGetBakingRect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1639390495))
+	}
+	{
+		methodName := StringNameFromStr("set_baking_rect_offset")
+		defer methodName.Destroy()
+		ptrsForNavigationPolygon.fnSetBakingRectOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 743155724))
+	}
+	{
+		methodName := StringNameFromStr("get_baking_rect_offset")
+		defer methodName.Destroy()
+		ptrsForNavigationPolygon.fnGetBakingRectOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3341600327))
 	}
 	{
 		methodName := StringNameFromStr("clear")
@@ -420,6 +456,25 @@ func (me *NavigationPolygon) GetCellSize() float64 {
 	return ret.Get()
 }
 
+func (me *NavigationPolygon) SetBorderSize(border_size float64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&border_size)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPolygon.fnSetBorderSize), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *NavigationPolygon) GetBorderSize() float64 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewFloat()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPolygon.fnGetBorderSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
 func (me *NavigationPolygon) SetParsedGeometryType(geometry_type NavigationPolygonParsedGeometryType) {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&geometry_type)}
 	pinner := runtime.Pinner{}
@@ -533,6 +588,44 @@ func (me *NavigationPolygon) GetAgentRadius() float64 {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPolygon.fnGetAgentRadius), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
+}
+
+func (me *NavigationPolygon) SetBakingRect(rect Rect2) {
+	cargs := []gdc.ConstTypePtr{rect.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPolygon.fnSetBakingRect), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *NavigationPolygon) GetBakingRect() Rect2 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewRect2()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPolygon.fnGetBakingRect), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *NavigationPolygon) SetBakingRectOffset(rect_offset Vector2) {
+	cargs := []gdc.ConstTypePtr{rect_offset.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPolygon.fnSetBakingRectOffset), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *NavigationPolygon) GetBakingRectOffset() Vector2 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewVector2()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPolygon.fnGetBakingRectOffset), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
 }
 
 func (me *NavigationPolygon) Clear() {

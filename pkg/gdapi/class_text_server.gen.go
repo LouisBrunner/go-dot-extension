@@ -46,6 +46,8 @@ type ptrsForTextServerList struct {
 	fnFontGetStretch                         gdc.MethodBindPtr
 	fnFontSetAntialiasing                    gdc.MethodBindPtr
 	fnFontGetAntialiasing                    gdc.MethodBindPtr
+	fnFontSetDisableEmbeddedBitmaps          gdc.MethodBindPtr
+	fnFontGetDisableEmbeddedBitmaps          gdc.MethodBindPtr
 	fnFontSetGenerateMipmaps                 gdc.MethodBindPtr
 	fnFontGetGenerateMipmaps                 gdc.MethodBindPtr
 	fnFontSetMultichannelSignedDistanceField gdc.MethodBindPtr
@@ -70,6 +72,8 @@ type ptrsForTextServerList struct {
 	fnFontGetEmbolden                        gdc.MethodBindPtr
 	fnFontSetSpacing                         gdc.MethodBindPtr
 	fnFontGetSpacing                         gdc.MethodBindPtr
+	fnFontSetBaselineOffset                  gdc.MethodBindPtr
+	fnFontGetBaselineOffset                  gdc.MethodBindPtr
 	fnFontSetTransform                       gdc.MethodBindPtr
 	fnFontGetTransform                       gdc.MethodBindPtr
 	fnFontSetVariationCoordinates            gdc.MethodBindPtr
@@ -151,6 +155,8 @@ type ptrsForTextServerList struct {
 	fnShapedTextSetBidiOverride              gdc.MethodBindPtr
 	fnShapedTextSetCustomPunctuation         gdc.MethodBindPtr
 	fnShapedTextGetCustomPunctuation         gdc.MethodBindPtr
+	fnShapedTextSetCustomEllipsis            gdc.MethodBindPtr
+	fnShapedTextGetCustomEllipsis            gdc.MethodBindPtr
 	fnShapedTextSetOrientation               gdc.MethodBindPtr
 	fnShapedTextGetOrientation               gdc.MethodBindPtr
 	fnShapedTextSetPreserveInvalid           gdc.MethodBindPtr
@@ -186,6 +192,8 @@ type ptrsForTextServerList struct {
 	fnShapedTextOverrunTrimToWidth           gdc.MethodBindPtr
 	fnShapedTextGetObjects                   gdc.MethodBindPtr
 	fnShapedTextGetObjectRect                gdc.MethodBindPtr
+	fnShapedTextGetObjectRange               gdc.MethodBindPtr
+	fnShapedTextGetObjectGlyph               gdc.MethodBindPtr
 	fnShapedTextGetSize                      gdc.MethodBindPtr
 	fnShapedTextGetAscent                    gdc.MethodBindPtr
 	fnShapedTextGetDescent                   gdc.MethodBindPtr
@@ -217,6 +225,7 @@ type ptrsForTextServerList struct {
 	fnIsValidIdentifier                      gdc.MethodBindPtr
 	fnStringToUpper                          gdc.MethodBindPtr
 	fnStringToLower                          gdc.MethodBindPtr
+	fnStringToTitle                          gdc.MethodBindPtr
 	fnParseStructuredText                    gdc.MethodBindPtr
 }
 
@@ -382,6 +391,16 @@ func initTextServerPtrs(iface gdc.Interface) {
 		ptrsForTextServer.fnFontGetAntialiasing = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3389420495))
 	}
 	{
+		methodName := StringNameFromStr("font_set_disable_embedded_bitmaps")
+		defer methodName.Destroy()
+		ptrsForTextServer.fnFontSetDisableEmbeddedBitmaps = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1265174801))
+	}
+	{
+		methodName := StringNameFromStr("font_get_disable_embedded_bitmaps")
+		defer methodName.Destroy()
+		ptrsForTextServer.fnFontGetDisableEmbeddedBitmaps = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4155700596))
+	}
+	{
 		methodName := StringNameFromStr("font_set_generate_mipmaps")
 		defer methodName.Destroy()
 		ptrsForTextServer.fnFontSetGenerateMipmaps = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1265174801))
@@ -500,6 +519,16 @@ func initTextServerPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("font_get_spacing")
 		defer methodName.Destroy()
 		ptrsForTextServer.fnFontGetSpacing = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1213653558))
+	}
+	{
+		methodName := StringNameFromStr("font_set_baseline_offset")
+		defer methodName.Destroy()
+		ptrsForTextServer.fnFontSetBaselineOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1794382983))
+	}
+	{
+		methodName := StringNameFromStr("font_get_baseline_offset")
+		defer methodName.Destroy()
+		ptrsForTextServer.fnFontGetBaselineOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 866169185))
 	}
 	{
 		methodName := StringNameFromStr("font_set_transform")
@@ -907,6 +936,16 @@ func initTextServerPtrs(iface gdc.Interface) {
 		ptrsForTextServer.fnShapedTextGetCustomPunctuation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 642473191))
 	}
 	{
+		methodName := StringNameFromStr("shaped_text_set_custom_ellipsis")
+		defer methodName.Destroy()
+		ptrsForTextServer.fnShapedTextSetCustomEllipsis = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3411492887))
+	}
+	{
+		methodName := StringNameFromStr("shaped_text_get_custom_ellipsis")
+		defer methodName.Destroy()
+		ptrsForTextServer.fnShapedTextGetCustomEllipsis = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2198884583))
+	}
+	{
 		methodName := StringNameFromStr("shaped_text_set_orientation")
 		defer methodName.Destroy()
 		ptrsForTextServer.fnShapedTextSetOrientation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3019609126))
@@ -1082,6 +1121,16 @@ func initTextServerPtrs(iface gdc.Interface) {
 		ptrsForTextServer.fnShapedTextGetObjectRect = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 447978354))
 	}
 	{
+		methodName := StringNameFromStr("shaped_text_get_object_range")
+		defer methodName.Destroy()
+		ptrsForTextServer.fnShapedTextGetObjectRange = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2524675647))
+	}
+	{
+		methodName := StringNameFromStr("shaped_text_get_object_glyph")
+		defer methodName.Destroy()
+		ptrsForTextServer.fnShapedTextGetObjectGlyph = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1260085030))
+	}
+	{
 		methodName := StringNameFromStr("shaped_text_get_size")
 		defer methodName.Destroy()
 		ptrsForTextServer.fnShapedTextGetSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2440833711))
@@ -1237,6 +1286,11 @@ func initTextServerPtrs(iface gdc.Interface) {
 		ptrsForTextServer.fnStringToLower = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2664628024))
 	}
 	{
+		methodName := StringNameFromStr("string_to_title")
+		defer methodName.Destroy()
+		ptrsForTextServer.fnStringToTitle = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2664628024))
+	}
+	{
 		methodName := StringNameFromStr("parse_structured_text")
 		defer methodName.Destroy()
 		ptrsForTextServer.fnParseStructuredText = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3310685015))
@@ -1331,6 +1385,7 @@ const (
 	TextServerLineBreakFlagBreakGraphemeBound  TextServerLineBreakFlag = 4
 	TextServerLineBreakFlagBreakAdaptive       TextServerLineBreakFlag = 8
 	TextServerLineBreakFlagBreakTrimEdgeSpaces TextServerLineBreakFlag = 16
+	TextServerLineBreakFlagBreakTrimIndent     TextServerLineBreakFlag = 32
 )
 
 type TextServerVisibleCharactersBehavior int
@@ -1380,6 +1435,7 @@ const (
 	TextServerGraphemeFlagGraphemeIsConnected           TextServerGraphemeFlag = 1024
 	TextServerGraphemeFlagGraphemeIsSafeToInsertTatweel TextServerGraphemeFlag = 2048
 	TextServerGraphemeFlagGraphemeIsEmbeddedObject      TextServerGraphemeFlag = 4096
+	TextServerGraphemeFlagGraphemeIsSoftHyphen          TextServerGraphemeFlag = 8192
 )
 
 type TextServerHinting int
@@ -1784,6 +1840,25 @@ func (me *TextServer) FontGetAntialiasing(font_rid RID) TextServerFontAntialiasi
 	return ret
 }
 
+func (me *TextServer) FontSetDisableEmbeddedBitmaps(font_rid RID, disable_embedded_bitmaps bool) {
+	cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&disable_embedded_bitmaps)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServer.fnFontSetDisableEmbeddedBitmaps), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *TextServer) FontGetDisableEmbeddedBitmaps(font_rid RID) bool {
+	cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServer.fnFontGetDisableEmbeddedBitmaps), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
 func (me *TextServer) FontSetGenerateMipmaps(font_rid RID, generate_mipmaps bool) {
 	cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&generate_mipmaps)}
 	pinner := runtime.Pinner{}
@@ -2010,6 +2085,25 @@ func (me *TextServer) FontGetSpacing(font_rid RID, spacing TextServerSpacingType
 	pinner.Pin(&spacing)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServer.fnFontGetSpacing), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *TextServer) FontSetBaselineOffset(font_rid RID, baseline_offset float64) {
+	cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr(), gdc.ConstTypePtr(&baseline_offset)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServer.fnFontSetBaselineOffset), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *TextServer) FontGetBaselineOffset(font_rid RID) float64 {
+	cargs := []gdc.ConstTypePtr{font_rid.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewFloat()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServer.fnFontGetBaselineOffset), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 
@@ -2825,6 +2919,25 @@ func (me *TextServer) ShapedTextGetCustomPunctuation(shaped RID) String {
 	return *ret
 }
 
+func (me *TextServer) ShapedTextSetCustomEllipsis(shaped RID, char int64) {
+	cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&char)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServer.fnShapedTextSetCustomEllipsis), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *TextServer) ShapedTextGetCustomEllipsis(shaped RID) int64 {
+	cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewInt()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServer.fnShapedTextGetCustomEllipsis), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
 func (me *TextServer) ShapedTextSetOrientation(shaped RID, orientation TextServerOrientation) {
 	cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), gdc.ConstTypePtr(&orientation)}
 	pinner := runtime.Pinner{}
@@ -3207,6 +3320,26 @@ func (me *TextServer) ShapedTextGetObjectRect(shaped RID, key Variant) Rect2 {
 	return *ret
 }
 
+func (me *TextServer) ShapedTextGetObjectRange(shaped RID, key Variant) Vector2i {
+	cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), key.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewVector2i()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServer.fnShapedTextGetObjectRange), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *TextServer) ShapedTextGetObjectGlyph(shaped RID, key Variant) int64 {
+	cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr(), key.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewInt()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServer.fnShapedTextGetObjectGlyph), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
 func (me *TextServer) ShapedTextGetSize(shaped RID) Vector2 {
 	cargs := []gdc.ConstTypePtr{shaped.AsCTypePtr()}
 	pinner := runtime.Pinner{}
@@ -3526,6 +3659,16 @@ func (me *TextServer) StringToLower(string_ String, language String) String {
 	ret := NewString()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServer.fnStringToLower), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *TextServer) StringToTitle(string_ String, language String) String {
+	cargs := []gdc.ConstTypePtr{string_.AsCTypePtr(), language.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewString()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForTextServer.fnStringToTitle), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 

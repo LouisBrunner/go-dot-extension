@@ -15,22 +15,26 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForGLTFPhysicsBodyList struct {
-	fnFromNode           gdc.MethodBindPtr
-	fnToNode             gdc.MethodBindPtr
-	fnFromDictionary     gdc.MethodBindPtr
-	fnToDictionary       gdc.MethodBindPtr
-	fnGetBodyType        gdc.MethodBindPtr
-	fnSetBodyType        gdc.MethodBindPtr
-	fnGetMass            gdc.MethodBindPtr
-	fnSetMass            gdc.MethodBindPtr
-	fnGetLinearVelocity  gdc.MethodBindPtr
-	fnSetLinearVelocity  gdc.MethodBindPtr
-	fnGetAngularVelocity gdc.MethodBindPtr
-	fnSetAngularVelocity gdc.MethodBindPtr
-	fnGetCenterOfMass    gdc.MethodBindPtr
-	fnSetCenterOfMass    gdc.MethodBindPtr
-	fnGetInertiaTensor   gdc.MethodBindPtr
-	fnSetInertiaTensor   gdc.MethodBindPtr
+	fnFromNode              gdc.MethodBindPtr
+	fnToNode                gdc.MethodBindPtr
+	fnFromDictionary        gdc.MethodBindPtr
+	fnToDictionary          gdc.MethodBindPtr
+	fnGetBodyType           gdc.MethodBindPtr
+	fnSetBodyType           gdc.MethodBindPtr
+	fnGetMass               gdc.MethodBindPtr
+	fnSetMass               gdc.MethodBindPtr
+	fnGetLinearVelocity     gdc.MethodBindPtr
+	fnSetLinearVelocity     gdc.MethodBindPtr
+	fnGetAngularVelocity    gdc.MethodBindPtr
+	fnSetAngularVelocity    gdc.MethodBindPtr
+	fnGetCenterOfMass       gdc.MethodBindPtr
+	fnSetCenterOfMass       gdc.MethodBindPtr
+	fnGetInertiaDiagonal    gdc.MethodBindPtr
+	fnSetInertiaDiagonal    gdc.MethodBindPtr
+	fnGetInertiaOrientation gdc.MethodBindPtr
+	fnSetInertiaOrientation gdc.MethodBindPtr
+	fnGetInertiaTensor      gdc.MethodBindPtr
+	fnSetInertiaTensor      gdc.MethodBindPtr
 }
 
 var ptrsForGLTFPhysicsBody ptrsForGLTFPhysicsBodyList
@@ -108,6 +112,26 @@ func initGLTFPhysicsBodyPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("set_center_of_mass")
 		defer methodName.Destroy()
 		ptrsForGLTFPhysicsBody.fnSetCenterOfMass = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+	}
+	{
+		methodName := StringNameFromStr("get_inertia_diagonal")
+		defer methodName.Destroy()
+		ptrsForGLTFPhysicsBody.fnGetInertiaDiagonal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3360562783))
+	}
+	{
+		methodName := StringNameFromStr("set_inertia_diagonal")
+		defer methodName.Destroy()
+		ptrsForGLTFPhysicsBody.fnSetInertiaDiagonal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3460891852))
+	}
+	{
+		methodName := StringNameFromStr("get_inertia_orientation")
+		defer methodName.Destroy()
+		ptrsForGLTFPhysicsBody.fnGetInertiaOrientation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1222331677))
+	}
+	{
+		methodName := StringNameFromStr("set_inertia_orientation")
+		defer methodName.Destroy()
+		ptrsForGLTFPhysicsBody.fnSetInertiaOrientation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1727505552))
 	}
 	{
 		methodName := StringNameFromStr("get_inertia_tensor")
@@ -288,6 +312,44 @@ func (me *GLTFPhysicsBody) SetCenterOfMass(center_of_mass Vector3) {
 	defer pinner.Unpin()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFPhysicsBody.fnSetCenterOfMass), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *GLTFPhysicsBody) GetInertiaDiagonal() Vector3 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewVector3()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFPhysicsBody.fnGetInertiaDiagonal), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *GLTFPhysicsBody) SetInertiaDiagonal(inertia_diagonal Vector3) {
+	cargs := []gdc.ConstTypePtr{inertia_diagonal.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFPhysicsBody.fnSetInertiaDiagonal), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *GLTFPhysicsBody) GetInertiaOrientation() Quaternion {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewQuaternion()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFPhysicsBody.fnGetInertiaOrientation), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *GLTFPhysicsBody) SetInertiaOrientation(inertia_orientation Quaternion) {
+	cargs := []gdc.ConstTypePtr{inertia_orientation.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFPhysicsBody.fnSetInertiaOrientation), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

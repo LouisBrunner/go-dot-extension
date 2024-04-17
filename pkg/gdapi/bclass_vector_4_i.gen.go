@@ -25,6 +25,8 @@ type ptrsForVector4iList struct {
 	methodAbsFn                    gdc.PtrBuiltInMethod
 	methodClampFn                  gdc.PtrBuiltInMethod
 	methodSnappedFn                gdc.PtrBuiltInMethod
+	methodDistanceToFn             gdc.PtrBuiltInMethod
+	methodDistanceSquaredToFn      gdc.PtrBuiltInMethod
 	operatorNegateFn               gdc.PtrOperatorEvaluator
 	operatorPositiveFn             gdc.PtrOperatorEvaluator
 	operatorNotFn                  gdc.PtrOperatorEvaluator
@@ -104,6 +106,16 @@ func initVector4iPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("snapped")
 		defer methodName.Destroy()
 		ptrsForVector4i.methodSnappedFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector4I, methodName.AsCPtr(), 1181693102))
+	}
+	{
+		methodName := StringNameFromStr("distance_to")
+		defer methodName.Destroy()
+		ptrsForVector4i.methodDistanceToFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector4I, methodName.AsCPtr(), 3446086573))
+	}
+	{
+		methodName := StringNameFromStr("distance_squared_to")
+		defer methodName.Destroy()
+		ptrsForVector4i.methodDistanceSquaredToFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeVector4I, methodName.AsCPtr(), 346708794))
 	}
 	ptrsForVector4i.operatorNegateFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNegate, gdc.VariantTypeVector4I, gdc.VariantTypeNil))
 	ptrsForVector4i.operatorPositiveFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpPositive, gdc.VariantTypeVector4I, gdc.VariantTypeNil))
@@ -396,6 +408,26 @@ func (me *Vector4i) Snapped(step Vector4i) Vector4i {
 
 	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForVector4i.methodSnappedFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
 	return *ret
+}
+
+func (me *Vector4i) DistanceTo(to Vector4i) float64 {
+	ret := NewFloat()
+	defer ret.Destroy()
+
+	args := []gdc.ConstTypePtr{to.AsCTypePtr()}
+
+	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForVector4i.methodDistanceToFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+	return ret.Get()
+}
+
+func (me *Vector4i) DistanceSquaredTo(to Vector4i) int64 {
+	ret := NewInt()
+	defer ret.Destroy()
+
+	args := []gdc.ConstTypePtr{to.AsCTypePtr()}
+
+	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForVector4i.methodDistanceSquaredToFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+	return ret.Get()
 }
 
 // Operators

@@ -19,6 +19,16 @@ type ptrsForEditorFileDialogList struct {
 	fnAddFilter                  gdc.MethodBindPtr
 	fnSetFilters                 gdc.MethodBindPtr
 	fnGetFilters                 gdc.MethodBindPtr
+	fnGetOptionName              gdc.MethodBindPtr
+	fnGetOptionValues            gdc.MethodBindPtr
+	fnGetOptionDefault           gdc.MethodBindPtr
+	fnSetOptionName              gdc.MethodBindPtr
+	fnSetOptionValues            gdc.MethodBindPtr
+	fnSetOptionDefault           gdc.MethodBindPtr
+	fnSetOptionCount             gdc.MethodBindPtr
+	fnGetOptionCount             gdc.MethodBindPtr
+	fnAddOption                  gdc.MethodBindPtr
+	fnGetSelectedOptions         gdc.MethodBindPtr
 	fnGetCurrentDir              gdc.MethodBindPtr
 	fnGetCurrentFile             gdc.MethodBindPtr
 	fnGetCurrentPath             gdc.MethodBindPtr
@@ -66,6 +76,56 @@ func initEditorFileDialogPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_filters")
 		defer methodName.Destroy()
 		ptrsForEditorFileDialog.fnGetFilters = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1139954409))
+	}
+	{
+		methodName := StringNameFromStr("get_option_name")
+		defer methodName.Destroy()
+		ptrsForEditorFileDialog.fnGetOptionName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 844755477))
+	}
+	{
+		methodName := StringNameFromStr("get_option_values")
+		defer methodName.Destroy()
+		ptrsForEditorFileDialog.fnGetOptionValues = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 647634434))
+	}
+	{
+		methodName := StringNameFromStr("get_option_default")
+		defer methodName.Destroy()
+		ptrsForEditorFileDialog.fnGetOptionDefault = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 923996154))
+	}
+	{
+		methodName := StringNameFromStr("set_option_name")
+		defer methodName.Destroy()
+		ptrsForEditorFileDialog.fnSetOptionName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 501894301))
+	}
+	{
+		methodName := StringNameFromStr("set_option_values")
+		defer methodName.Destroy()
+		ptrsForEditorFileDialog.fnSetOptionValues = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3353661094))
+	}
+	{
+		methodName := StringNameFromStr("set_option_default")
+		defer methodName.Destroy()
+		ptrsForEditorFileDialog.fnSetOptionDefault = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3937882851))
+	}
+	{
+		methodName := StringNameFromStr("set_option_count")
+		defer methodName.Destroy()
+		ptrsForEditorFileDialog.fnSetOptionCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+	}
+	{
+		methodName := StringNameFromStr("get_option_count")
+		defer methodName.Destroy()
+		ptrsForEditorFileDialog.fnGetOptionCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
+	}
+	{
+		methodName := StringNameFromStr("add_option")
+		defer methodName.Destroy()
+		ptrsForEditorFileDialog.fnAddOption = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 149592325))
+	}
+	{
+		methodName := StringNameFromStr("get_selected_options")
+		defer methodName.Destroy()
+		ptrsForEditorFileDialog.fnGetSelectedOptions = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3102165223))
 	}
 	{
 		methodName := StringNameFromStr("get_current_dir")
@@ -263,6 +323,104 @@ func (me *EditorFileDialog) GetFilters() PackedStringArray {
 	ret := NewPackedStringArray()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileDialog.fnGetFilters), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *EditorFileDialog) GetOptionName(option int64) String {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&option)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewString()
+	pinner.Pin(&option)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileDialog.fnGetOptionName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *EditorFileDialog) GetOptionValues(option int64) PackedStringArray {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&option)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewPackedStringArray()
+	pinner.Pin(&option)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileDialog.fnGetOptionValues), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *EditorFileDialog) GetOptionDefault(option int64) int64 {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&option)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewInt()
+	pinner.Pin(&option)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileDialog.fnGetOptionDefault), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *EditorFileDialog) SetOptionName(option int64, name String) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&option), name.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileDialog.fnSetOptionName), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *EditorFileDialog) SetOptionValues(option int64, values PackedStringArray) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&option), values.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileDialog.fnSetOptionValues), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *EditorFileDialog) SetOptionDefault(option int64, default_value_index int64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&option), gdc.ConstTypePtr(&default_value_index)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileDialog.fnSetOptionDefault), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *EditorFileDialog) SetOptionCount(count int64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&count)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileDialog.fnSetOptionCount), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *EditorFileDialog) GetOptionCount() int64 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewInt()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileDialog.fnGetOptionCount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *EditorFileDialog) AddOption(name String, values PackedStringArray, default_value_index int64) {
+	cargs := []gdc.ConstTypePtr{name.AsCTypePtr(), values.AsCTypePtr(), gdc.ConstTypePtr(&default_value_index)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileDialog.fnAddOption), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *EditorFileDialog) GetSelectedOptions() Dictionary {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewDictionary()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorFileDialog.fnGetSelectedOptions), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 

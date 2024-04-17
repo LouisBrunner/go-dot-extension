@@ -37,8 +37,10 @@ type ptrsForScriptLanguageExtensionList struct {
 	fnXCanInheritFromFile             gdc.MethodBindPtr
 	fnXFindFunction                   gdc.MethodBindPtr
 	fnXMakeFunction                   gdc.MethodBindPtr
+	fnXCanMakeFunction                gdc.MethodBindPtr
 	fnXOpenInExternalEditor           gdc.MethodBindPtr
 	fnXOverridesExternalEditor        gdc.MethodBindPtr
+	fnXPreferredFileNameCasing        gdc.MethodBindPtr
 	fnXCompleteCode                   gdc.MethodBindPtr
 	fnXLookupCode                     gdc.MethodBindPtr
 	fnXAutoIndentCode                 gdc.MethodBindPtr
@@ -65,6 +67,7 @@ type ptrsForScriptLanguageExtensionList struct {
 	fnXGetPublicAnnotations           gdc.MethodBindPtr
 	fnXProfilingStart                 gdc.MethodBindPtr
 	fnXProfilingStop                  gdc.MethodBindPtr
+	fnXProfilingSetSaveNativeCalls    gdc.MethodBindPtr
 	fnXProfilingGetAccumulatedData    gdc.MethodBindPtr
 	fnXProfilingGetFrameData          gdc.MethodBindPtr
 	fnXFrame                          gdc.MethodBindPtr

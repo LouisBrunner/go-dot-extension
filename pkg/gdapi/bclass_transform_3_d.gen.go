@@ -33,7 +33,9 @@ type ptrsForTransform3DList struct {
 	methodIsFiniteFn                      gdc.PtrBuiltInMethod
 	operatorNotFn                         gdc.PtrOperatorEvaluator
 	operatorMultiplyIntFn                 gdc.PtrOperatorEvaluator
+	operatorDivideIntFn                   gdc.PtrOperatorEvaluator
 	operatorMultiplyFloat32Fn             gdc.PtrOperatorEvaluator
+	operatorDivideFloat32Fn               gdc.PtrOperatorEvaluator
 	operatorMultiplyVector3Fn             gdc.PtrOperatorEvaluator
 	operatorMultiplyPlaneFn               gdc.PtrOperatorEvaluator
 	operatorMultiplyAABBFn                gdc.PtrOperatorEvaluator
@@ -126,7 +128,9 @@ func initTransform3DPtrs(iface gdc.Interface) {
 	}
 	ptrsForTransform3D.operatorNotFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpNot, gdc.VariantTypeTransform3D, gdc.VariantTypeNil))
 	ptrsForTransform3D.operatorMultiplyIntFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeTransform3D, gdc.VariantTypeInt))
+	ptrsForTransform3D.operatorDivideIntFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, gdc.VariantTypeTransform3D, gdc.VariantTypeInt))
 	ptrsForTransform3D.operatorMultiplyFloat32Fn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeTransform3D, gdc.VariantTypeFloat))
+	ptrsForTransform3D.operatorDivideFloat32Fn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpDivide, gdc.VariantTypeTransform3D, gdc.VariantTypeFloat))
 	ptrsForTransform3D.operatorMultiplyVector3Fn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeTransform3D, gdc.VariantTypeVector3))
 	ptrsForTransform3D.operatorMultiplyPlaneFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeTransform3D, gdc.VariantTypePlane))
 	ptrsForTransform3D.operatorMultiplyAABBFn = ensurePtr(iface.VariantGetPtrOperatorEvaluator(gdc.VariantOpMultiply, gdc.VariantTypeTransform3D, gdc.VariantTypeAABB))
@@ -478,11 +482,31 @@ func (me *Transform3D) MultiplyInt(rightArg int64) Transform3D {
 	return *ret
 }
 
+func (me *Transform3D) DivideInt(rightArg int64) Transform3D {
+	right := NewIntFromInt(rightArg)
+	defer right.Destroy()
+
+	opPtr := ptrsForTransform3D.operatorDivideIntFn
+	ret := NewTransform3D()
+	me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+	return *ret
+}
+
 func (me *Transform3D) MultiplyFloat32(rightArg float64) Transform3D {
 	right := NewFloatFromFloat32(rightArg)
 	defer right.Destroy()
 
 	opPtr := ptrsForTransform3D.operatorMultiplyFloat32Fn
+	ret := NewTransform3D()
+	me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *Transform3D) DivideFloat32(rightArg float64) Transform3D {
+	right := NewFloatFromFloat32(rightArg)
+	defer right.Destroy()
+
+	opPtr := ptrsForTransform3D.operatorDivideFloat32Fn
 	ret := NewTransform3D()
 	me.iface.CallPtrOperatorEvaluator(ensurePtr(opPtr), me.AsCTypePtr(), right.AsCTypePtr(), ret.AsTypePtr())
 	return *ret

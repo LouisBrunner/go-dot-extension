@@ -15,16 +15,19 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForGLTFBufferViewList struct {
-	fnGetBuffer     gdc.MethodBindPtr
-	fnSetBuffer     gdc.MethodBindPtr
-	fnGetByteOffset gdc.MethodBindPtr
-	fnSetByteOffset gdc.MethodBindPtr
-	fnGetByteLength gdc.MethodBindPtr
-	fnSetByteLength gdc.MethodBindPtr
-	fnGetByteStride gdc.MethodBindPtr
-	fnSetByteStride gdc.MethodBindPtr
-	fnGetIndices    gdc.MethodBindPtr
-	fnSetIndices    gdc.MethodBindPtr
+	fnLoadBufferViewData  gdc.MethodBindPtr
+	fnGetBuffer           gdc.MethodBindPtr
+	fnSetBuffer           gdc.MethodBindPtr
+	fnGetByteOffset       gdc.MethodBindPtr
+	fnSetByteOffset       gdc.MethodBindPtr
+	fnGetByteLength       gdc.MethodBindPtr
+	fnSetByteLength       gdc.MethodBindPtr
+	fnGetByteStride       gdc.MethodBindPtr
+	fnSetByteStride       gdc.MethodBindPtr
+	fnGetIndices          gdc.MethodBindPtr
+	fnSetIndices          gdc.MethodBindPtr
+	fnGetVertexAttributes gdc.MethodBindPtr
+	fnSetVertexAttributes gdc.MethodBindPtr
 }
 
 var ptrsForGLTFBufferView ptrsForGLTFBufferViewList
@@ -34,9 +37,14 @@ func initGLTFBufferViewPtrs(iface gdc.Interface) {
 	className := StringNameFromStr("GLTFBufferView")
 	defer className.Destroy()
 	{
+		methodName := StringNameFromStr("load_buffer_view_data")
+		defer methodName.Destroy()
+		ptrsForGLTFBufferView.fnLoadBufferViewData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3945446907))
+	}
+	{
 		methodName := StringNameFromStr("get_buffer")
 		defer methodName.Destroy()
-		ptrsForGLTFBufferView.fnGetBuffer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2455072627))
+		ptrsForGLTFBufferView.fnGetBuffer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
 	{
 		methodName := StringNameFromStr("set_buffer")
@@ -46,7 +54,7 @@ func initGLTFBufferViewPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("get_byte_offset")
 		defer methodName.Destroy()
-		ptrsForGLTFBufferView.fnGetByteOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2455072627))
+		ptrsForGLTFBufferView.fnGetByteOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
 	{
 		methodName := StringNameFromStr("set_byte_offset")
@@ -56,7 +64,7 @@ func initGLTFBufferViewPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("get_byte_length")
 		defer methodName.Destroy()
-		ptrsForGLTFBufferView.fnGetByteLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2455072627))
+		ptrsForGLTFBufferView.fnGetByteLength = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
 	{
 		methodName := StringNameFromStr("set_byte_length")
@@ -66,7 +74,7 @@ func initGLTFBufferViewPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("get_byte_stride")
 		defer methodName.Destroy()
-		ptrsForGLTFBufferView.fnGetByteStride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2455072627))
+		ptrsForGLTFBufferView.fnGetByteStride = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
 	{
 		methodName := StringNameFromStr("set_byte_stride")
@@ -76,12 +84,22 @@ func initGLTFBufferViewPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("get_indices")
 		defer methodName.Destroy()
-		ptrsForGLTFBufferView.fnGetIndices = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+		ptrsForGLTFBufferView.fnGetIndices = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
 		methodName := StringNameFromStr("set_indices")
 		defer methodName.Destroy()
 		ptrsForGLTFBufferView.fnSetIndices = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("get_vertex_attributes")
+		defer methodName.Destroy()
+		ptrsForGLTFBufferView.fnGetVertexAttributes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
+		methodName := StringNameFromStr("set_vertex_attributes")
+		defer methodName.Destroy()
+		ptrsForGLTFBufferView.fnSetVertexAttributes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
 	}
 
 }
@@ -119,6 +137,16 @@ func (me *GLTFBufferView) AsCTypePtr() gdc.ConstTypePtr {
 }
 
 // Methods
+
+func (me *GLTFBufferView) LoadBufferViewData(state GLTFState) PackedByteArray {
+	cargs := []gdc.ConstTypePtr{state.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewPackedByteArray()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFBufferView.fnLoadBufferViewData), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
 
 func (me *GLTFBufferView) GetBuffer() int64 {
 	cargs := []gdc.ConstTypePtr{}
@@ -212,6 +240,25 @@ func (me *GLTFBufferView) SetIndices(indices bool) {
 	defer pinner.Unpin()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFBufferView.fnSetIndices), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *GLTFBufferView) GetVertexAttributes() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFBufferView.fnGetVertexAttributes), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *GLTFBufferView) SetVertexAttributes(is_attributes bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&is_attributes)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFBufferView.fnSetVertexAttributes), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

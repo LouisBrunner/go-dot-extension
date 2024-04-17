@@ -29,6 +29,10 @@ type ptrsForNavigationPathQueryParameters3DList struct {
 	fnGetNavigationLayers     gdc.MethodBindPtr
 	fnSetMetadataFlags        gdc.MethodBindPtr
 	fnGetMetadataFlags        gdc.MethodBindPtr
+	fnSetSimplifyPath         gdc.MethodBindPtr
+	fnGetSimplifyPath         gdc.MethodBindPtr
+	fnSetSimplifyEpsilon      gdc.MethodBindPtr
+	fnGetSimplifyEpsilon      gdc.MethodBindPtr
 }
 
 var ptrsForNavigationPathQueryParameters3D ptrsForNavigationPathQueryParameters3DList
@@ -106,6 +110,26 @@ func initNavigationPathQueryParameters3DPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_metadata_flags")
 		defer methodName.Destroy()
 		ptrsForNavigationPathQueryParameters3D.fnGetMetadataFlags = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1582332802))
+	}
+	{
+		methodName := StringNameFromStr("set_simplify_path")
+		defer methodName.Destroy()
+		ptrsForNavigationPathQueryParameters3D.fnSetSimplifyPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("get_simplify_path")
+		defer methodName.Destroy()
+		ptrsForNavigationPathQueryParameters3D.fnGetSimplifyPath = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
+		methodName := StringNameFromStr("set_simplify_epsilon")
+		defer methodName.Destroy()
+		ptrsForNavigationPathQueryParameters3D.fnSetSimplifyEpsilon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+	}
+	{
+		methodName := StringNameFromStr("get_simplify_epsilon")
+		defer methodName.Destroy()
+		ptrsForNavigationPathQueryParameters3D.fnGetSimplifyEpsilon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
 
 }
@@ -298,6 +322,44 @@ func (me *NavigationPathQueryParameters3D) GetMetadataFlags() NavigationPathQuer
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnGetMetadataFlags), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
 	return ret
+}
+
+func (me *NavigationPathQueryParameters3D) SetSimplifyPath(enabled bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnSetSimplifyPath), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *NavigationPathQueryParameters3D) GetSimplifyPath() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnGetSimplifyPath), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *NavigationPathQueryParameters3D) SetSimplifyEpsilon(epsilon float64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&epsilon)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnSetSimplifyEpsilon), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *NavigationPathQueryParameters3D) GetSimplifyEpsilon() float64 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewFloat()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationPathQueryParameters3D.fnGetSimplifyEpsilon), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
 }
 
 // Properties

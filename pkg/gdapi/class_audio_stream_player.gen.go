@@ -119,7 +119,7 @@ func initAudioStreamPlayerPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("is_autoplay_enabled")
 		defer methodName.Destroy()
-		ptrsForAudioStreamPlayer.fnIsAutoplayEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+		ptrsForAudioStreamPlayer.fnIsAutoplayEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
 		methodName := StringNameFromStr("set_mix_target")

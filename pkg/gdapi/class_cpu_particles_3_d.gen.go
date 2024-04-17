@@ -22,6 +22,7 @@ type ptrsForCPUParticles3DList struct {
 	fnSetPreProcessTime          gdc.MethodBindPtr
 	fnSetExplosivenessRatio      gdc.MethodBindPtr
 	fnSetRandomnessRatio         gdc.MethodBindPtr
+	fnSetVisibilityAabb          gdc.MethodBindPtr
 	fnSetLifetimeRandomness      gdc.MethodBindPtr
 	fnSetUseLocalCoordinates     gdc.MethodBindPtr
 	fnSetFixedFps                gdc.MethodBindPtr
@@ -34,6 +35,7 @@ type ptrsForCPUParticles3DList struct {
 	fnGetPreProcessTime          gdc.MethodBindPtr
 	fnGetExplosivenessRatio      gdc.MethodBindPtr
 	fnGetRandomnessRatio         gdc.MethodBindPtr
+	fnGetVisibilityAabb          gdc.MethodBindPtr
 	fnGetLifetimeRandomness      gdc.MethodBindPtr
 	fnGetUseLocalCoordinates     gdc.MethodBindPtr
 	fnGetFixedFps                gdc.MethodBindPtr
@@ -139,6 +141,11 @@ func initCPUParticles3DPtrs(iface gdc.Interface) {
 		ptrsForCPUParticles3D.fnSetRandomnessRatio = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
 	}
 	{
+		methodName := StringNameFromStr("set_visibility_aabb")
+		defer methodName.Destroy()
+		ptrsForCPUParticles3D.fnSetVisibilityAabb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 259215842))
+	}
+	{
 		methodName := StringNameFromStr("set_lifetime_randomness")
 		defer methodName.Destroy()
 		ptrsForCPUParticles3D.fnSetLifetimeRandomness = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
@@ -197,6 +204,11 @@ func initCPUParticles3DPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_randomness_ratio")
 		defer methodName.Destroy()
 		ptrsForCPUParticles3D.fnGetRandomnessRatio = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
+	}
+	{
+		methodName := StringNameFromStr("get_visibility_aabb")
+		defer methodName.Destroy()
+		ptrsForCPUParticles3D.fnGetVisibilityAabb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1068685055))
 	}
 	{
 		methodName := StringNameFromStr("get_lifetime_randomness")
@@ -651,6 +663,15 @@ func (me *CPUParticles3D) SetRandomnessRatio(ratio float64) {
 
 }
 
+func (me *CPUParticles3D) SetVisibilityAabb(aabb AABB) {
+	cargs := []gdc.ConstTypePtr{aabb.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCPUParticles3D.fnSetVisibilityAabb), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
 func (me *CPUParticles3D) SetLifetimeRandomness(random float64) {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&random)}
 	pinner := runtime.Pinner{}
@@ -764,6 +785,16 @@ func (me *CPUParticles3D) GetRandomnessRatio() float64 {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCPUParticles3D.fnGetRandomnessRatio), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
+}
+
+func (me *CPUParticles3D) GetVisibilityAabb() AABB {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewAABB()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForCPUParticles3D.fnGetVisibilityAabb), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
 }
 
 func (me *CPUParticles3D) GetLifetimeRandomness() float64 {

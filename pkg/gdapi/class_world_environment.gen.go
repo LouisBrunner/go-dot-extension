@@ -19,6 +19,8 @@ type ptrsForWorldEnvironmentList struct {
 	fnGetEnvironment      gdc.MethodBindPtr
 	fnSetCameraAttributes gdc.MethodBindPtr
 	fnGetCameraAttributes gdc.MethodBindPtr
+	fnSetCompositor       gdc.MethodBindPtr
+	fnGetCompositor       gdc.MethodBindPtr
 }
 
 var ptrsForWorldEnvironment ptrsForWorldEnvironmentList
@@ -46,6 +48,16 @@ func initWorldEnvironmentPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_camera_attributes")
 		defer methodName.Destroy()
 		ptrsForWorldEnvironment.fnGetCameraAttributes = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3921283215))
+	}
+	{
+		methodName := StringNameFromStr("set_compositor")
+		defer methodName.Destroy()
+		ptrsForWorldEnvironment.fnSetCompositor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1586754307))
+	}
+	{
+		methodName := StringNameFromStr("get_compositor")
+		defer methodName.Destroy()
+		ptrsForWorldEnvironment.fnGetCompositor = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3647707413))
 	}
 
 }
@@ -119,6 +131,25 @@ func (me *WorldEnvironment) GetCameraAttributes() CameraAttributes {
 	ret := NewCameraAttributes()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWorldEnvironment.fnGetCameraAttributes), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *WorldEnvironment) SetCompositor(compositor Compositor) {
+	cargs := []gdc.ConstTypePtr{compositor.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWorldEnvironment.fnSetCompositor), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *WorldEnvironment) GetCompositor() Compositor {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewCompositor()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForWorldEnvironment.fnGetCompositor), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 

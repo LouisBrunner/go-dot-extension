@@ -896,10 +896,10 @@ func (me *Vector2) Bounce(n Vector2) Vector2 {
 	return *ret
 }
 
-func (me *Vector2) Reflect(n Vector2) Vector2 {
+func (me *Vector2) Reflect(line Vector2) Vector2 {
 	ret := NewVector2()
 
-	args := []gdc.ConstTypePtr{n.AsCTypePtr()}
+	args := []gdc.ConstTypePtr{line.AsCTypePtr()}
 
 	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForVector2.methodReflectFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
 	return *ret

@@ -46,6 +46,15 @@ func NewScriptLanguage() *ScriptLanguage {
 
 // Enums
 
+type ScriptLanguageScriptNameCasing int
+
+const (
+	ScriptLanguageScriptNameCasingScriptNameCasingAuto       ScriptLanguageScriptNameCasing = 0
+	ScriptLanguageScriptNameCasingScriptNameCasingPascalCase ScriptLanguageScriptNameCasing = 1
+	ScriptLanguageScriptNameCasingScriptNameCasingSnakeCase  ScriptLanguageScriptNameCasing = 2
+	ScriptLanguageScriptNameCasingScriptNameCasingKebabCase  ScriptLanguageScriptNameCasing = 3
+)
+
 func (me *ScriptLanguage) Type() gdc.VariantType {
 	return gdc.VariantTypeObject
 }

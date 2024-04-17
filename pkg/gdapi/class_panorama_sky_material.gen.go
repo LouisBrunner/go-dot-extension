@@ -19,6 +19,8 @@ type ptrsForPanoramaSkyMaterialList struct {
 	fnGetPanorama         gdc.MethodBindPtr
 	fnSetFilteringEnabled gdc.MethodBindPtr
 	fnIsFilteringEnabled  gdc.MethodBindPtr
+	fnSetEnergyMultiplier gdc.MethodBindPtr
+	fnGetEnergyMultiplier gdc.MethodBindPtr
 }
 
 var ptrsForPanoramaSkyMaterial ptrsForPanoramaSkyMaterialList
@@ -46,6 +48,16 @@ func initPanoramaSkyMaterialPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("is_filtering_enabled")
 		defer methodName.Destroy()
 		ptrsForPanoramaSkyMaterial.fnIsFilteringEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
+		methodName := StringNameFromStr("set_energy_multiplier")
+		defer methodName.Destroy()
+		ptrsForPanoramaSkyMaterial.fnSetEnergyMultiplier = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+	}
+	{
+		methodName := StringNameFromStr("get_energy_multiplier")
+		defer methodName.Destroy()
+		ptrsForPanoramaSkyMaterial.fnGetEnergyMultiplier = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
 
 }
@@ -119,6 +131,25 @@ func (me *PanoramaSkyMaterial) IsFilteringEnabled() bool {
 	ret := NewBool()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPanoramaSkyMaterial.fnIsFilteringEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *PanoramaSkyMaterial) SetEnergyMultiplier(multiplier float64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&multiplier)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPanoramaSkyMaterial.fnSetEnergyMultiplier), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *PanoramaSkyMaterial) GetEnergyMultiplier() float64 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewFloat()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForPanoramaSkyMaterial.fnGetEnergyMultiplier), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 

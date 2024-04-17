@@ -35,6 +35,8 @@ type ptrsForMultiMeshList struct {
 	fnGetInstanceColor        gdc.MethodBindPtr
 	fnSetInstanceCustomData   gdc.MethodBindPtr
 	fnGetInstanceCustomData   gdc.MethodBindPtr
+	fnSetCustomAabb           gdc.MethodBindPtr
+	fnGetCustomAabb           gdc.MethodBindPtr
 	fnGetAabb                 gdc.MethodBindPtr
 	fnGetBuffer               gdc.MethodBindPtr
 	fnSetBuffer               gdc.MethodBindPtr
@@ -145,6 +147,16 @@ func initMultiMeshPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_instance_custom_data")
 		defer methodName.Destroy()
 		ptrsForMultiMesh.fnGetInstanceCustomData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3457211756))
+	}
+	{
+		methodName := StringNameFromStr("set_custom_aabb")
+		defer methodName.Destroy()
+		ptrsForMultiMesh.fnSetCustomAabb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 259215842))
+	}
+	{
+		methodName := StringNameFromStr("get_custom_aabb")
+		defer methodName.Destroy()
+		ptrsForMultiMesh.fnGetCustomAabb = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1068685055))
 	}
 	{
 		methodName := StringNameFromStr("get_aabb")
@@ -396,6 +408,25 @@ func (me *MultiMesh) GetInstanceCustomData(instance int64) Color {
 	pinner.Pin(&instance)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnGetInstanceCustomData), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *MultiMesh) SetCustomAabb(aabb AABB) {
+	cargs := []gdc.ConstTypePtr{aabb.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnSetCustomAabb), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *MultiMesh) GetCustomAabb() AABB {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewAABB()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForMultiMesh.fnGetCustomAabb), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 

@@ -27,6 +27,7 @@ type ptrsForEditorImportPluginList struct {
 	fnXGetImportOrder              gdc.MethodBindPtr
 	fnXGetOptionVisibility         gdc.MethodBindPtr
 	fnXImport                      gdc.MethodBindPtr
+	fnXCanImportThreaded           gdc.MethodBindPtr
 	fnAppendImportExternalResource gdc.MethodBindPtr
 }
 

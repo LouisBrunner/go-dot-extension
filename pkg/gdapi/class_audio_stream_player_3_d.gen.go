@@ -161,7 +161,7 @@ func initAudioStreamPlayer3DPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("is_autoplay_enabled")
 		defer methodName.Destroy()
-		ptrsForAudioStreamPlayer3D.fnIsAutoplayEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+		ptrsForAudioStreamPlayer3D.fnIsAutoplayEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
 		methodName := StringNameFromStr("set_max_distance")

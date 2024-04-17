@@ -70,7 +70,7 @@ func initFontPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("find_variation")
 		defer methodName.Destroy()
-		ptrsForFont.fnFindVariation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3344325384))
+		ptrsForFont.fnFindVariation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2553855095))
 	}
 	{
 		methodName := StringNameFromStr("get_rids")
@@ -289,8 +289,8 @@ func (me *Font) GetFallbacks() []Font {
 	return sliceRet
 }
 
-func (me *Font) FindVariation(variation_coordinates Dictionary, face_index int64, strength float64, transform Transform2D, spacing_top int64, spacing_bottom int64, spacing_space int64, spacing_glyph int64) RID {
-	cargs := []gdc.ConstTypePtr{variation_coordinates.AsCTypePtr(), gdc.ConstTypePtr(&face_index), gdc.ConstTypePtr(&strength), transform.AsCTypePtr(), gdc.ConstTypePtr(&spacing_top), gdc.ConstTypePtr(&spacing_bottom), gdc.ConstTypePtr(&spacing_space), gdc.ConstTypePtr(&spacing_glyph)}
+func (me *Font) FindVariation(variation_coordinates Dictionary, face_index int64, strength float64, transform Transform2D, spacing_top int64, spacing_bottom int64, spacing_space int64, spacing_glyph int64, baseline_offset float64) RID {
+	cargs := []gdc.ConstTypePtr{variation_coordinates.AsCTypePtr(), gdc.ConstTypePtr(&face_index), gdc.ConstTypePtr(&strength), transform.AsCTypePtr(), gdc.ConstTypePtr(&spacing_top), gdc.ConstTypePtr(&spacing_bottom), gdc.ConstTypePtr(&spacing_space), gdc.ConstTypePtr(&spacing_glyph), gdc.ConstTypePtr(&baseline_offset)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewRID()
@@ -300,6 +300,7 @@ func (me *Font) FindVariation(variation_coordinates Dictionary, face_index int64
 	pinner.Pin(&spacing_bottom)
 	pinner.Pin(&spacing_space)
 	pinner.Pin(&spacing_glyph)
+	pinner.Pin(&baseline_offset)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFont.fnFindVariation), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret

@@ -17,6 +17,8 @@ var _ runtime.Pinner
 type ptrsForSystemFontList struct {
 	fnSetAntialiasing                    gdc.MethodBindPtr
 	fnGetAntialiasing                    gdc.MethodBindPtr
+	fnSetDisableEmbeddedBitmaps          gdc.MethodBindPtr
+	fnGetDisableEmbeddedBitmaps          gdc.MethodBindPtr
 	fnSetGenerateMipmaps                 gdc.MethodBindPtr
 	fnGetGenerateMipmaps                 gdc.MethodBindPtr
 	fnSetAllowSystemFallback             gdc.MethodBindPtr
@@ -58,6 +60,16 @@ func initSystemFontPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_antialiasing")
 		defer methodName.Destroy()
 		ptrsForSystemFont.fnGetAntialiasing = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4262718649))
+	}
+	{
+		methodName := StringNameFromStr("set_disable_embedded_bitmaps")
+		defer methodName.Destroy()
+		ptrsForSystemFont.fnSetDisableEmbeddedBitmaps = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("get_disable_embedded_bitmaps")
+		defer methodName.Destroy()
+		ptrsForSystemFont.fnGetDisableEmbeddedBitmaps = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
 		methodName := StringNameFromStr("set_generate_mipmaps")
@@ -233,6 +245,25 @@ func (me *SystemFont) GetAntialiasing() TextServerFontAntialiasing {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSystemFont.fnGetAntialiasing), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
 	return ret
+}
+
+func (me *SystemFont) SetDisableEmbeddedBitmaps(disable_embedded_bitmaps bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&disable_embedded_bitmaps)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSystemFont.fnSetDisableEmbeddedBitmaps), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *SystemFont) GetDisableEmbeddedBitmaps() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSystemFont.fnGetDisableEmbeddedBitmaps), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
 }
 
 func (me *SystemFont) SetGenerateMipmaps(generate_mipmaps bool) {

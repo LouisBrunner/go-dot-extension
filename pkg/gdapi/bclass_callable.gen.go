@@ -17,6 +17,7 @@ type ptrsForCallableList struct {
 	ctrFromCallableFn              gdc.PtrConstructor
 	ctrFromObjectStringNameFn      gdc.PtrConstructor
 	destructorFn                   gdc.PtrDestructor
+	methodCreateFn                 gdc.PtrBuiltInMethod
 	methodCallvFn                  gdc.PtrBuiltInMethod
 	methodIsNullFn                 gdc.PtrBuiltInMethod
 	methodIsCustomFn               gdc.PtrBuiltInMethod
@@ -25,6 +26,7 @@ type ptrsForCallableList struct {
 	methodGetObjectFn              gdc.PtrBuiltInMethod
 	methodGetObjectIdFn            gdc.PtrBuiltInMethod
 	methodGetMethodFn              gdc.PtrBuiltInMethod
+	methodGetArgumentCountFn       gdc.PtrBuiltInMethod
 	methodGetBoundArgumentsCountFn gdc.PtrBuiltInMethod
 	methodGetBoundArgumentsFn      gdc.PtrBuiltInMethod
 	methodHashFn                   gdc.PtrBuiltInMethod
@@ -51,6 +53,11 @@ func initCallablePtrs(iface gdc.Interface) {
 	ptrsForCallable.ctrFromCallableFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeCallable, 1))
 	ptrsForCallable.ctrFromObjectStringNameFn = ensurePtr(iface.VariantGetPtrConstructor(gdc.VariantTypeCallable, 2))
 	ptrsForCallable.destructorFn = ensurePtr(iface.VariantGetPtrDestructor(gdc.VariantTypeCallable))
+	{
+		methodName := StringNameFromStr("create")
+		defer methodName.Destroy()
+		ptrsForCallable.methodCreateFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, methodName.AsCPtr(), 1709381114))
+	}
 	{
 		methodName := StringNameFromStr("callv")
 		defer methodName.Destroy()
@@ -90,6 +97,11 @@ func initCallablePtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_method")
 		defer methodName.Destroy()
 		ptrsForCallable.methodGetMethodFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, methodName.AsCPtr(), 1825232092))
+	}
+	{
+		methodName := StringNameFromStr("get_argument_count")
+		defer methodName.Destroy()
+		ptrsForCallable.methodGetArgumentCountFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeCallable, methodName.AsCPtr(), 3173160232))
 	}
 	{
 		methodName := StringNameFromStr("get_bound_arguments_count")
@@ -245,6 +257,15 @@ func (me *Callable) asUninitialized() gdc.UninitializedTypePtr {
 
 // Methods
 
+func CallableCreate(variant Variant, method StringName) Callable {
+	ret := NewCallable()
+
+	args := []gdc.ConstTypePtr{variant.AsCTypePtr(), method.AsCTypePtr()}
+
+	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForCallable.methodCreateFn), nil, unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+	return *ret
+}
+
 func (me *Callable) Callv(arguments Array) Variant {
 	ret := NewVariant()
 
@@ -315,6 +336,15 @@ func (me *Callable) GetMethod() StringName {
 
 	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForCallable.methodGetMethodFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
 	return *ret
+}
+
+func (me *Callable) GetArgumentCount() int64 {
+	ret := NewInt()
+	defer ret.Destroy()
+	args := []gdc.ConstTypePtr{}
+
+	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForCallable.methodGetArgumentCountFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+	return ret.Get()
 }
 
 func (me *Callable) GetBoundArgumentsCount() int64 {

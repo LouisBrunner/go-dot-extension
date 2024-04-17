@@ -16,6 +16,8 @@ void callArraySetTyped(GDExtensionInterfaceArraySetTyped fn, GDExtensionTypePtr 
 
 void callCallableCustomCreate(GDExtensionInterfaceCallableCustomCreate fn, GDExtensionUninitializedTypePtr rCallable, GDExtensionCallableCustomInfo* pCallableCustomInfo);
 
+void callCallableCustomCreate2(GDExtensionInterfaceCallableCustomCreate2 fn, GDExtensionUninitializedTypePtr rCallable, GDExtensionCallableCustomInfo2* pCallableCustomInfo);
+
 void* callCallableCustomGetUserdata(GDExtensionInterfaceCallableCustomGetUserData fn, GDExtensionConstTypePtr pCallable, void* pToken);
 
 GDExtensionObjectPtr callClassdbConstructObject(GDExtensionInterfaceClassdbConstructObject fn, GDExtensionConstStringNamePtr pClassname);
@@ -27,6 +29,8 @@ const GDExtensionMethodBindPtr callClassdbGetMethodBind(GDExtensionInterfaceClas
 void callClassdbRegisterExtensionClass(GDExtensionInterfaceClassdbRegisterExtensionClass fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName, GDExtensionConstStringNamePtr pParentClassName, GDExtensionClassCreationInfo* pExtensionFuncs);
 
 void callClassdbRegisterExtensionClass2(GDExtensionInterfaceClassdbRegisterExtensionClass2 fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName, GDExtensionConstStringNamePtr pParentClassName, GDExtensionClassCreationInfo2* pExtensionFuncs);
+
+void callClassdbRegisterExtensionClass3(GDExtensionInterfaceClassdbRegisterExtensionClass3 fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName, GDExtensionConstStringNamePtr pParentClassName, GDExtensionClassCreationInfo3* pExtensionFuncs);
 
 void callClassdbRegisterExtensionClassIntegerConstant(GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName, GDExtensionConstStringNamePtr pEnumName, GDExtensionConstStringNamePtr pConstantName, GDExtensionInt pConstantValue, GDExtensionBool pIsBitfield);
 
@@ -41,6 +45,8 @@ void callClassdbRegisterExtensionClassPropertyIndexed(GDExtensionInterfaceClassd
 void callClassdbRegisterExtensionClassPropertySubgroup(GDExtensionInterfaceClassdbRegisterExtensionClassPropertySubgroup fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName, GDExtensionConstStringPtr pSubgroupName, GDExtensionConstStringPtr pPrefix);
 
 void callClassdbRegisterExtensionClassSignal(GDExtensionInterfaceClassdbRegisterExtensionClassSignal fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName, GDExtensionConstStringNamePtr pSignalName, GDExtensionPropertyInfo* pArgumentInfo, GDExtensionInt pArgumentCount);
+
+void callClassdbRegisterExtensionClassVirtualMethod(GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName, GDExtensionClassVirtualMethodInfo* pMethodInfo);
 
 void callClassdbUnregisterExtensionClass(GDExtensionInterfaceClassdbUnregisterExtensionClass fn, GDExtensionClassLibraryPtr pLibrary, GDExtensionConstStringNamePtr pClassName);
 
@@ -78,6 +84,8 @@ void callMemFree(GDExtensionInterfaceMemFree fn, void* pPtr);
 
 void* callMemRealloc(GDExtensionInterfaceMemRealloc fn, void* pPtr, size_t pBytes);
 
+void callObjectCallScriptMethod(GDExtensionInterfaceObjectCallScriptMethod fn, GDExtensionObjectPtr pObject, GDExtensionConstStringNamePtr pMethod, const GDExtensionConstVariantPtr* pArgs, GDExtensionInt pArgumentCount, GDExtensionUninitializedVariantPtr rReturn, GDExtensionCallError* rError);
+
 GDExtensionObjectPtr callObjectCastTo(GDExtensionInterfaceObjectCastTo fn, GDExtensionConstObjectPtr pObject, void* pClassTag);
 
 void callObjectDestroy(GDExtensionInterfaceObjectDestroy fn, GDExtensionObjectPtr pO);
@@ -93,6 +101,8 @@ GDExtensionObjectPtr callObjectGetInstanceFromId(GDExtensionInterfaceObjectGetIn
 GDObjectInstanceID callObjectGetInstanceId(GDExtensionInterfaceObjectGetInstanceId fn, GDExtensionConstObjectPtr pObject);
 
 GDExtensionScriptInstanceDataPtr callObjectGetScriptInstance(GDExtensionInterfaceObjectGetScriptInstance fn, GDExtensionConstObjectPtr pObject, GDExtensionObjectPtr pLanguage);
+
+GDExtensionBool callObjectHasScriptMethod(GDExtensionInterfaceObjectHasScriptMethod fn, GDExtensionConstObjectPtr pObject, GDExtensionConstStringNamePtr pMethod);
 
 void callObjectMethodBindCall(GDExtensionInterfaceObjectMethodBindCall fn, GDExtensionMethodBindPtr pMethodBind, GDExtensionObjectPtr pInstance, const GDExtensionConstVariantPtr* pArgs, GDExtensionInt pArgCount, GDExtensionUninitializedVariantPtr rRet, GDExtensionCallError* rError);
 
@@ -161,6 +171,8 @@ void callRefSetObject(GDExtensionInterfaceRefSetObject fn, GDExtensionRefPtr pRe
 GDExtensionScriptInstancePtr callScriptInstanceCreate(GDExtensionInterfaceScriptInstanceCreate fn, GDExtensionScriptInstanceInfo* pInfo, GDExtensionScriptInstanceDataPtr pInstanceData);
 
 GDExtensionScriptInstancePtr callScriptInstanceCreate2(GDExtensionInterfaceScriptInstanceCreate2 fn, GDExtensionScriptInstanceInfo2* pInfo, GDExtensionScriptInstanceDataPtr pInstanceData);
+
+GDExtensionScriptInstancePtr callScriptInstanceCreate3(GDExtensionInterfaceScriptInstanceCreate3 fn, GDExtensionScriptInstanceInfo3* pInfo, GDExtensionScriptInstanceDataPtr pInstanceData);
 
 void callStringNameNewWithLatin1Chars(GDExtensionInterfaceStringNameNewWithLatin1Chars fn, GDExtensionUninitializedStringNamePtr rDest, const char* pContents, GDExtensionBool pIsStatic);
 
@@ -331,4 +343,8 @@ int64_t callWorkerThreadPoolAddNativeGroupTask(GDExtensionInterfaceWorkerThreadP
 int64_t callWorkerThreadPoolAddNativeTask(GDExtensionInterfaceWorkerThreadPoolAddNativeTask fn, GDExtensionObjectPtr pInstance, void* pFunc, void* pUserdata, GDExtensionBool pHighPriority, GDExtensionConstStringPtr pDescription);
 
 GDExtensionInt callXmlParserOpenBuffer(GDExtensionInterfaceXmlParserOpenBuffer fn, GDExtensionObjectPtr pInstance, const uint8_t* pBuffer, size_t pSize);
+
+void callEditorHelpLoadXmlFromUtf8Chars(GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8Chars fn, const char* pData);
+
+void callEditorHelpLoadXmlFromUtf8CharsAndLen(GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8CharsAndLen fn, const char* pData, GDExtensionInt pSize);
 

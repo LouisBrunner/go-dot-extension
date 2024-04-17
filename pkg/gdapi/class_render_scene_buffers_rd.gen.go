@@ -34,6 +34,7 @@ type ptrsForRenderSceneBuffersRDList struct {
 	fnGetRenderTarget         gdc.MethodBindPtr
 	fnGetViewCount            gdc.MethodBindPtr
 	fnGetInternalSize         gdc.MethodBindPtr
+	fnGetMsaa3D               gdc.MethodBindPtr
 	fnGetUseTaa               gdc.MethodBindPtr
 }
 
@@ -96,32 +97,32 @@ func initRenderSceneBuffersRDPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("get_color_texture")
 		defer methodName.Destroy()
-		ptrsForRenderSceneBuffersRD.fnGetColorTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 529393457))
+		ptrsForRenderSceneBuffersRD.fnGetColorTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3050822880))
 	}
 	{
 		methodName := StringNameFromStr("get_color_layer")
 		defer methodName.Destroy()
-		ptrsForRenderSceneBuffersRD.fnGetColorLayer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 937000113))
+		ptrsForRenderSceneBuffersRD.fnGetColorLayer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3087988589))
 	}
 	{
 		methodName := StringNameFromStr("get_depth_texture")
 		defer methodName.Destroy()
-		ptrsForRenderSceneBuffersRD.fnGetDepthTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 529393457))
+		ptrsForRenderSceneBuffersRD.fnGetDepthTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3050822880))
 	}
 	{
 		methodName := StringNameFromStr("get_depth_layer")
 		defer methodName.Destroy()
-		ptrsForRenderSceneBuffersRD.fnGetDepthLayer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 937000113))
+		ptrsForRenderSceneBuffersRD.fnGetDepthLayer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3087988589))
 	}
 	{
 		methodName := StringNameFromStr("get_velocity_texture")
 		defer methodName.Destroy()
-		ptrsForRenderSceneBuffersRD.fnGetVelocityTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 529393457))
+		ptrsForRenderSceneBuffersRD.fnGetVelocityTexture = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3050822880))
 	}
 	{
 		methodName := StringNameFromStr("get_velocity_layer")
 		defer methodName.Destroy()
-		ptrsForRenderSceneBuffersRD.fnGetVelocityLayer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 937000113))
+		ptrsForRenderSceneBuffersRD.fnGetVelocityLayer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3087988589))
 	}
 	{
 		methodName := StringNameFromStr("get_render_target")
@@ -137,6 +138,11 @@ func initRenderSceneBuffersRDPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_internal_size")
 		defer methodName.Destroy()
 		ptrsForRenderSceneBuffersRD.fnGetInternalSize = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3690982128))
+	}
+	{
+		methodName := StringNameFromStr("get_msaa_3d")
+		defer methodName.Destroy()
+		ptrsForRenderSceneBuffersRD.fnGetMsaa3D = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3109158617))
 	}
 	{
 		methodName := StringNameFromStr("get_use_taa")
@@ -295,64 +301,70 @@ func (me *RenderSceneBuffersRD) ClearContext(context StringName) {
 
 }
 
-func (me *RenderSceneBuffersRD) GetColorTexture() RID {
-	cargs := []gdc.ConstTypePtr{}
+func (me *RenderSceneBuffersRD) GetColorTexture(msaa bool) RID {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&msaa)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewRID()
+	pinner.Pin(&msaa)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderSceneBuffersRD.fnGetColorTexture), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 
-func (me *RenderSceneBuffersRD) GetColorLayer(layer int64) RID {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer)}
+func (me *RenderSceneBuffersRD) GetColorLayer(layer int64, msaa bool) RID {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer), gdc.ConstTypePtr(&msaa)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewRID()
 	pinner.Pin(&layer)
+	pinner.Pin(&msaa)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderSceneBuffersRD.fnGetColorLayer), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 
-func (me *RenderSceneBuffersRD) GetDepthTexture() RID {
-	cargs := []gdc.ConstTypePtr{}
+func (me *RenderSceneBuffersRD) GetDepthTexture(msaa bool) RID {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&msaa)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewRID()
+	pinner.Pin(&msaa)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderSceneBuffersRD.fnGetDepthTexture), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 
-func (me *RenderSceneBuffersRD) GetDepthLayer(layer int64) RID {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer)}
+func (me *RenderSceneBuffersRD) GetDepthLayer(layer int64, msaa bool) RID {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer), gdc.ConstTypePtr(&msaa)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewRID()
 	pinner.Pin(&layer)
+	pinner.Pin(&msaa)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderSceneBuffersRD.fnGetDepthLayer), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 
-func (me *RenderSceneBuffersRD) GetVelocityTexture() RID {
-	cargs := []gdc.ConstTypePtr{}
+func (me *RenderSceneBuffersRD) GetVelocityTexture(msaa bool) RID {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&msaa)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewRID()
+	pinner.Pin(&msaa)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderSceneBuffersRD.fnGetVelocityTexture), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 
-func (me *RenderSceneBuffersRD) GetVelocityLayer(layer int64) RID {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer)}
+func (me *RenderSceneBuffersRD) GetVelocityLayer(layer int64, msaa bool) RID {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer), gdc.ConstTypePtr(&msaa)}
 	pinner := runtime.Pinner{}
 	defer pinner.Unpin()
 	ret := NewRID()
 	pinner.Pin(&layer)
+	pinner.Pin(&msaa)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderSceneBuffersRD.fnGetVelocityLayer), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
@@ -386,6 +398,16 @@ func (me *RenderSceneBuffersRD) GetInternalSize() Vector2i {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderSceneBuffersRD.fnGetInternalSize), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
+}
+
+func (me *RenderSceneBuffersRD) GetMsaa3D() RenderingServerViewportMSAA {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	var ret RenderingServerViewportMSAA
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForRenderSceneBuffersRD.fnGetMsaa3D), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+	return ret
 }
 
 func (me *RenderSceneBuffersRD) GetUseTaa() bool {

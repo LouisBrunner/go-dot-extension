@@ -19,8 +19,6 @@ type ptrsForSkeletonIK3DList struct {
 	fnGetRootBone         gdc.MethodBindPtr
 	fnSetTipBone          gdc.MethodBindPtr
 	fnGetTipBone          gdc.MethodBindPtr
-	fnSetInterpolation    gdc.MethodBindPtr
-	fnGetInterpolation    gdc.MethodBindPtr
 	fnSetTargetTransform  gdc.MethodBindPtr
 	fnGetTargetTransform  gdc.MethodBindPtr
 	fnSetTargetNode       gdc.MethodBindPtr
@@ -66,16 +64,6 @@ func initSkeletonIK3DPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_tip_bone")
 		defer methodName.Destroy()
 		ptrsForSkeletonIK3D.fnGetTipBone = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2002593661))
-	}
-	{
-		methodName := StringNameFromStr("set_interpolation")
-		defer methodName.Destroy()
-		ptrsForSkeletonIK3D.fnSetInterpolation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
-	}
-	{
-		methodName := StringNameFromStr("get_interpolation")
-		defer methodName.Destroy()
-		ptrsForSkeletonIK3D.fnGetInterpolation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
 	}
 	{
 		methodName := StringNameFromStr("set_target_transform")
@@ -171,7 +159,7 @@ func initSkeletonIK3DPtrs(iface gdc.Interface) {
 }
 
 type SkeletonIK3D struct {
-	Node
+	SkeletonModifier3D
 }
 
 func (me *SkeletonIK3D) BaseClass() string {
@@ -240,25 +228,6 @@ func (me *SkeletonIK3D) GetTipBone() StringName {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonIK3D.fnGetTipBone), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
-}
-
-func (me *SkeletonIK3D) SetInterpolation(interpolation float64) {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&interpolation)}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonIK3D.fnSetInterpolation), me.obj, unsafe.SliceData(cargs), nil)
-
-}
-
-func (me *SkeletonIK3D) GetInterpolation() float64 {
-	cargs := []gdc.ConstTypePtr{}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-	ret := NewFloat()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForSkeletonIK3D.fnGetInterpolation), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-	return ret.Get()
 }
 
 func (me *SkeletonIK3D) SetTargetTransform(target Transform3D) {

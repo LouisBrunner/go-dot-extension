@@ -15,12 +15,16 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForGLTFMeshList struct {
+	fnGetOriginalName      gdc.MethodBindPtr
+	fnSetOriginalName      gdc.MethodBindPtr
 	fnGetMesh              gdc.MethodBindPtr
 	fnSetMesh              gdc.MethodBindPtr
 	fnGetBlendWeights      gdc.MethodBindPtr
 	fnSetBlendWeights      gdc.MethodBindPtr
 	fnGetInstanceMaterials gdc.MethodBindPtr
 	fnSetInstanceMaterials gdc.MethodBindPtr
+	fnGetAdditionalData    gdc.MethodBindPtr
+	fnSetAdditionalData    gdc.MethodBindPtr
 }
 
 var ptrsForGLTFMesh ptrsForGLTFMeshList
@@ -29,6 +33,16 @@ func initGLTFMeshPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("GLTFMesh")
 	defer className.Destroy()
+	{
+		methodName := StringNameFromStr("get_original_name")
+		defer methodName.Destroy()
+		ptrsForGLTFMesh.fnGetOriginalName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2841200299))
+	}
+	{
+		methodName := StringNameFromStr("set_original_name")
+		defer methodName.Destroy()
+		ptrsForGLTFMesh.fnSetOriginalName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+	}
 	{
 		methodName := StringNameFromStr("get_mesh")
 		defer methodName.Destroy()
@@ -58,6 +72,16 @@ func initGLTFMeshPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("set_instance_materials")
 		defer methodName.Destroy()
 		ptrsForGLTFMesh.fnSetInstanceMaterials = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 381264803))
+	}
+	{
+		methodName := StringNameFromStr("get_additional_data")
+		defer methodName.Destroy()
+		ptrsForGLTFMesh.fnGetAdditionalData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2138907829))
+	}
+	{
+		methodName := StringNameFromStr("set_additional_data")
+		defer methodName.Destroy()
+		ptrsForGLTFMesh.fnSetAdditionalData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3776071444))
 	}
 
 }
@@ -95,6 +119,25 @@ func (me *GLTFMesh) AsCTypePtr() gdc.ConstTypePtr {
 }
 
 // Methods
+
+func (me *GLTFMesh) GetOriginalName() String {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewString()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFMesh.fnGetOriginalName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *GLTFMesh) SetOriginalName(original_name String) {
+	cargs := []gdc.ConstTypePtr{original_name.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFMesh.fnSetOriginalName), me.obj, unsafe.SliceData(cargs), nil)
+
+}
 
 func (me *GLTFMesh) GetMesh() ImporterMesh {
 	cargs := []gdc.ConstTypePtr{}
@@ -156,6 +199,25 @@ func (me *GLTFMesh) SetInstanceMaterials(instance_materials []Material) {
 	defer pinner.Unpin()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFMesh.fnSetInstanceMaterials), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *GLTFMesh) GetAdditionalData(extension_name StringName) Variant {
+	cargs := []gdc.ConstTypePtr{extension_name.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewVariant()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFMesh.fnGetAdditionalData), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *GLTFMesh) SetAdditionalData(extension_name StringName, additional_data Variant) {
+	cargs := []gdc.ConstTypePtr{extension_name.AsCTypePtr(), additional_data.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFMesh.fnSetAdditionalData), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

@@ -292,6 +292,14 @@ const (
 	KeyMaskGroupSwitch KeyModifierMask = 1073741824
 )
 
+type KeyLocation int
+
+const (
+	KeyLocationUnspecified KeyLocation = 0
+	KeyLocationLeft        KeyLocation = 1
+	KeyLocationRight       KeyLocation = 2
+)
+
 type MouseButton int
 
 const (

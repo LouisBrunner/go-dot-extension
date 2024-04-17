@@ -34,6 +34,7 @@ type ptrsForEditorInterfaceList struct {
 	fnSetMainScreenEditor          gdc.MethodBindPtr
 	fnSetDistractionFreeMode       gdc.MethodBindPtr
 	fnIsDistractionFreeModeEnabled gdc.MethodBindPtr
+	fnIsMultiWindowEnabled         gdc.MethodBindPtr
 	fnGetEditorScale               gdc.MethodBindPtr
 	fnPopupDialog                  gdc.MethodBindPtr
 	fnPopupDialogCentered          gdc.MethodBindPtr
@@ -41,6 +42,8 @@ type ptrsForEditorInterfaceList struct {
 	fnPopupDialogCenteredClamped   gdc.MethodBindPtr
 	fnGetCurrentFeatureProfile     gdc.MethodBindPtr
 	fnSetCurrentFeatureProfile     gdc.MethodBindPtr
+	fnPopupNodeSelector            gdc.MethodBindPtr
+	fnPopupPropertySelector        gdc.MethodBindPtr
 	fnGetFileSystemDock            gdc.MethodBindPtr
 	fnSelectFile                   gdc.MethodBindPtr
 	fnGetSelectedPaths             gdc.MethodBindPtr
@@ -171,6 +174,11 @@ func initEditorInterfacePtrs(iface gdc.Interface) {
 		ptrsForEditorInterface.fnIsDistractionFreeModeEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
+		methodName := StringNameFromStr("is_multi_window_enabled")
+		defer methodName.Destroy()
+		ptrsForEditorInterface.fnIsMultiWindowEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
 		methodName := StringNameFromStr("get_editor_scale")
 		defer methodName.Destroy()
 		ptrsForEditorInterface.fnGetEditorScale = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1740695150))
@@ -204,6 +212,16 @@ func initEditorInterfacePtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("set_current_feature_profile")
 		defer methodName.Destroy()
 		ptrsForEditorInterface.fnSetCurrentFeatureProfile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 83702148))
+	}
+	{
+		methodName := StringNameFromStr("popup_node_selector")
+		defer methodName.Destroy()
+		ptrsForEditorInterface.fnPopupNodeSelector = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2271411043))
+	}
+	{
+		methodName := StringNameFromStr("popup_property_selector")
+		defer methodName.Destroy()
+		ptrsForEditorInterface.fnPopupPropertySelector = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 261221679))
 	}
 	{
 		methodName := StringNameFromStr("get_file_system_dock")
@@ -567,6 +585,16 @@ func (me *EditorInterface) IsDistractionFreeModeEnabled() bool {
 	return ret.Get()
 }
 
+func (me *EditorInterface) IsMultiWindowEnabled() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorInterface.fnIsMultiWindowEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
 func (me *EditorInterface) GetEditorScale() float64 {
 	cargs := []gdc.ConstTypePtr{}
 	pinner := runtime.Pinner{}
@@ -629,6 +657,24 @@ func (me *EditorInterface) SetCurrentFeatureProfile(profile_name String) {
 	defer pinner.Unpin()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorInterface.fnSetCurrentFeatureProfile), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *EditorInterface) PopupNodeSelector(callback Callable, valid_types []StringName) {
+	cargs := []gdc.ConstTypePtr{callback.AsCTypePtr(), gdc.ConstTypePtr(&valid_types)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorInterface.fnPopupNodeSelector), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *EditorInterface) PopupPropertySelector(object Object, callback Callable, type_filter PackedInt32Array) {
+	cargs := []gdc.ConstTypePtr{object.AsCTypePtr(), callback.AsCTypePtr(), type_filter.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForEditorInterface.fnPopupPropertySelector), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

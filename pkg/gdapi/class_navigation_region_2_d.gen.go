@@ -15,6 +15,7 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForNavigationRegion2DList struct {
+	fnGetRid                  gdc.MethodBindPtr
 	fnSetNavigationPolygon    gdc.MethodBindPtr
 	fnGetNavigationPolygon    gdc.MethodBindPtr
 	fnSetEnabled              gdc.MethodBindPtr
@@ -27,18 +28,13 @@ type ptrsForNavigationRegion2DList struct {
 	fnGetNavigationLayers     gdc.MethodBindPtr
 	fnSetNavigationLayerValue gdc.MethodBindPtr
 	fnGetNavigationLayerValue gdc.MethodBindPtr
-	fnSetConstrainAvoidance   gdc.MethodBindPtr
-	fnGetConstrainAvoidance   gdc.MethodBindPtr
-	fnSetAvoidanceLayers      gdc.MethodBindPtr
-	fnGetAvoidanceLayers      gdc.MethodBindPtr
-	fnSetAvoidanceLayerValue  gdc.MethodBindPtr
-	fnGetAvoidanceLayerValue  gdc.MethodBindPtr
 	fnGetRegionRid            gdc.MethodBindPtr
 	fnSetEnterCost            gdc.MethodBindPtr
 	fnGetEnterCost            gdc.MethodBindPtr
 	fnSetTravelCost           gdc.MethodBindPtr
 	fnGetTravelCost           gdc.MethodBindPtr
 	fnBakeNavigationPolygon   gdc.MethodBindPtr
+	fnIsBaking                gdc.MethodBindPtr
 }
 
 var ptrsForNavigationRegion2D ptrsForNavigationRegion2DList
@@ -47,6 +43,11 @@ func initNavigationRegion2DPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("NavigationRegion2D")
 	defer className.Destroy()
+	{
+		methodName := StringNameFromStr("get_rid")
+		defer methodName.Destroy()
+		ptrsForNavigationRegion2D.fnGetRid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
+	}
 	{
 		methodName := StringNameFromStr("set_navigation_polygon")
 		defer methodName.Destroy()
@@ -108,36 +109,6 @@ func initNavigationRegion2DPtrs(iface gdc.Interface) {
 		ptrsForNavigationRegion2D.fnGetNavigationLayerValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
 	}
 	{
-		methodName := StringNameFromStr("set_constrain_avoidance")
-		defer methodName.Destroy()
-		ptrsForNavigationRegion2D.fnSetConstrainAvoidance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
-	}
-	{
-		methodName := StringNameFromStr("get_constrain_avoidance")
-		defer methodName.Destroy()
-		ptrsForNavigationRegion2D.fnGetConstrainAvoidance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
-	}
-	{
-		methodName := StringNameFromStr("set_avoidance_layers")
-		defer methodName.Destroy()
-		ptrsForNavigationRegion2D.fnSetAvoidanceLayers = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
-	}
-	{
-		methodName := StringNameFromStr("get_avoidance_layers")
-		defer methodName.Destroy()
-		ptrsForNavigationRegion2D.fnGetAvoidanceLayers = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
-	}
-	{
-		methodName := StringNameFromStr("set_avoidance_layer_value")
-		defer methodName.Destroy()
-		ptrsForNavigationRegion2D.fnSetAvoidanceLayerValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 300928843))
-	}
-	{
-		methodName := StringNameFromStr("get_avoidance_layer_value")
-		defer methodName.Destroy()
-		ptrsForNavigationRegion2D.fnGetAvoidanceLayerValue = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
-	}
-	{
 		methodName := StringNameFromStr("get_region_rid")
 		defer methodName.Destroy()
 		ptrsForNavigationRegion2D.fnGetRegionRid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
@@ -166,6 +137,11 @@ func initNavigationRegion2DPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("bake_navigation_polygon")
 		defer methodName.Destroy()
 		ptrsForNavigationRegion2D.fnBakeNavigationPolygon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3216645846))
+	}
+	{
+		methodName := StringNameFromStr("is_baking")
+		defer methodName.Destroy()
+		ptrsForNavigationRegion2D.fnIsBaking = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 
 }
@@ -203,6 +179,16 @@ func (me *NavigationRegion2D) AsCTypePtr() gdc.ConstTypePtr {
 }
 
 // Methods
+
+func (me *NavigationRegion2D) GetRid() RID {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewRID()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion2D.fnGetRid), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
 
 func (me *NavigationRegion2D) SetNavigationPolygon(navigation_polygon NavigationPolygon) {
 	cargs := []gdc.ConstTypePtr{navigation_polygon.AsCTypePtr()}
@@ -319,64 +305,6 @@ func (me *NavigationRegion2D) GetNavigationLayerValue(layer_number int64) bool {
 	return ret.Get()
 }
 
-func (me *NavigationRegion2D) SetConstrainAvoidance(enabled bool) {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&enabled)}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion2D.fnSetConstrainAvoidance), me.obj, unsafe.SliceData(cargs), nil)
-
-}
-
-func (me *NavigationRegion2D) GetConstrainAvoidance() bool {
-	cargs := []gdc.ConstTypePtr{}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-	ret := NewBool()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion2D.fnGetConstrainAvoidance), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-	return ret.Get()
-}
-
-func (me *NavigationRegion2D) SetAvoidanceLayers(layers int64) {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layers)}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion2D.fnSetAvoidanceLayers), me.obj, unsafe.SliceData(cargs), nil)
-
-}
-
-func (me *NavigationRegion2D) GetAvoidanceLayers() int64 {
-	cargs := []gdc.ConstTypePtr{}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-	ret := NewInt()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion2D.fnGetAvoidanceLayers), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-	return ret.Get()
-}
-
-func (me *NavigationRegion2D) SetAvoidanceLayerValue(layer_number int64, value bool) {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number), gdc.ConstTypePtr(&value)}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion2D.fnSetAvoidanceLayerValue), me.obj, unsafe.SliceData(cargs), nil)
-
-}
-
-func (me *NavigationRegion2D) GetAvoidanceLayerValue(layer_number int64) bool {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&layer_number)}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-	ret := NewBool()
-	pinner.Pin(&layer_number)
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion2D.fnGetAvoidanceLayerValue), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-	return ret.Get()
-}
-
 func (me *NavigationRegion2D) GetRegionRid() RID {
 	cargs := []gdc.ConstTypePtr{}
 	pinner := runtime.Pinner{}
@@ -432,6 +360,16 @@ func (me *NavigationRegion2D) BakeNavigationPolygon(on_thread bool) {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion2D.fnBakeNavigationPolygon), me.obj, unsafe.SliceData(cargs), nil)
 
+}
+
+func (me *NavigationRegion2D) IsBaking() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion2D.fnIsBaking), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
 }
 
 // Properties

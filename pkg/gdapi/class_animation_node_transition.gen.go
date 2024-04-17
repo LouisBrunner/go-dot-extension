@@ -18,6 +18,8 @@ type ptrsForAnimationNodeTransitionList struct {
 	fnSetInputCount            gdc.MethodBindPtr
 	fnSetInputAsAutoAdvance    gdc.MethodBindPtr
 	fnIsInputSetAsAutoAdvance  gdc.MethodBindPtr
+	fnSetInputBreakLoopAtEnd   gdc.MethodBindPtr
+	fnIsInputLoopBrokenAtEnd   gdc.MethodBindPtr
 	fnSetInputReset            gdc.MethodBindPtr
 	fnIsInputReset             gdc.MethodBindPtr
 	fnSetXfadeTime             gdc.MethodBindPtr
@@ -48,6 +50,16 @@ func initAnimationNodeTransitionPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("is_input_set_as_auto_advance")
 		defer methodName.Destroy()
 		ptrsForAnimationNodeTransition.fnIsInputSetAsAutoAdvance = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
+	}
+	{
+		methodName := StringNameFromStr("set_input_break_loop_at_end")
+		defer methodName.Destroy()
+		ptrsForAnimationNodeTransition.fnSetInputBreakLoopAtEnd = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 300928843))
+	}
+	{
+		methodName := StringNameFromStr("is_input_loop_broken_at_end")
+		defer methodName.Destroy()
+		ptrsForAnimationNodeTransition.fnIsInputLoopBrokenAtEnd = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1116898809))
 	}
 	{
 		methodName := StringNameFromStr("set_input_reset")
@@ -152,6 +164,26 @@ func (me *AnimationNodeTransition) IsInputSetAsAutoAdvance(input int64) bool {
 	pinner.Pin(&input)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeTransition.fnIsInputSetAsAutoAdvance), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *AnimationNodeTransition) SetInputBreakLoopAtEnd(input int64, enable bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input), gdc.ConstTypePtr(&enable)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeTransition.fnSetInputBreakLoopAtEnd), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *AnimationNodeTransition) IsInputLoopBrokenAtEnd(input int64) bool {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&input)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+	pinner.Pin(&input)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForAnimationNodeTransition.fnIsInputLoopBrokenAtEnd), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 

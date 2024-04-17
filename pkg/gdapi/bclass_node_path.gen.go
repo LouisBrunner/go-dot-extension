@@ -25,6 +25,7 @@ type ptrsForNodePathList struct {
 	methodGetSubnameFn              gdc.PtrBuiltInMethod
 	methodGetConcatenatedNamesFn    gdc.PtrBuiltInMethod
 	methodGetConcatenatedSubnamesFn gdc.PtrBuiltInMethod
+	methodSliceFn                   gdc.PtrBuiltInMethod
 	methodGetAsPropertyPathFn       gdc.PtrBuiltInMethod
 	methodIsEmptyFn                 gdc.PtrBuiltInMethod
 	operatorNotFn                   gdc.PtrOperatorEvaluator
@@ -82,6 +83,11 @@ func initNodePathPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_concatenated_subnames")
 		defer methodName.Destroy()
 		ptrsForNodePath.methodGetConcatenatedSubnamesFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, methodName.AsCPtr(), 1825232092))
+	}
+	{
+		methodName := StringNameFromStr("slice")
+		defer methodName.Destroy()
+		ptrsForNodePath.methodSliceFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeNodePath, methodName.AsCPtr(), 421628484))
 	}
 	{
 		methodName := StringNameFromStr("get_as_property_path")
@@ -270,6 +276,19 @@ func (me *NodePath) GetConcatenatedSubnames() StringName {
 	args := []gdc.ConstTypePtr{}
 
 	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForNodePath.methodGetConcatenatedSubnamesFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+	return *ret
+}
+
+func (me *NodePath) Slice(begin int64, end int64) NodePath {
+	ret := NewNodePath()
+
+	varg0 := NewIntFromInt(begin)
+	defer varg0.Destroy()
+	varg1 := NewIntFromInt(end)
+	defer varg1.Destroy()
+	args := []gdc.ConstTypePtr{varg0.AsCTypePtr(), varg1.AsCTypePtr()}
+
+	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForNodePath.methodSliceFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
 	return *ret
 }
 

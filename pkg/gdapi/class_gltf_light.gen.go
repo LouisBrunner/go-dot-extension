@@ -31,6 +31,8 @@ type ptrsForGLTFLightList struct {
 	fnSetInnerConeAngle gdc.MethodBindPtr
 	fnGetOuterConeAngle gdc.MethodBindPtr
 	fnSetOuterConeAngle gdc.MethodBindPtr
+	fnGetAdditionalData gdc.MethodBindPtr
+	fnSetAdditionalData gdc.MethodBindPtr
 }
 
 var ptrsForGLTFLight ptrsForGLTFLightList
@@ -118,6 +120,16 @@ func initGLTFLightPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("set_outer_cone_angle")
 		defer methodName.Destroy()
 		ptrsForGLTFLight.fnSetOuterConeAngle = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 373806689))
+	}
+	{
+		methodName := StringNameFromStr("get_additional_data")
+		defer methodName.Destroy()
+		ptrsForGLTFLight.fnGetAdditionalData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2138907829))
+	}
+	{
+		methodName := StringNameFromStr("set_additional_data")
+		defer methodName.Destroy()
+		ptrsForGLTFLight.fnSetAdditionalData = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3776071444))
 	}
 
 }
@@ -307,6 +319,25 @@ func (me *GLTFLight) SetOuterConeAngle(outer_cone_angle float64) {
 	defer pinner.Unpin()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFLight.fnSetOuterConeAngle), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *GLTFLight) GetAdditionalData(extension_name StringName) Variant {
+	cargs := []gdc.ConstTypePtr{extension_name.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewVariant()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFLight.fnGetAdditionalData), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *GLTFLight) SetAdditionalData(extension_name StringName, additional_data Variant) {
+	cargs := []gdc.ConstTypePtr{extension_name.AsCTypePtr(), additional_data.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFLight.fnSetAdditionalData), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 

@@ -23,6 +23,7 @@ type ptrsForScriptList struct {
 	fnReload                  gdc.MethodBindPtr
 	fnGetBaseScript           gdc.MethodBindPtr
 	fnGetInstanceBaseType     gdc.MethodBindPtr
+	fnGetGlobalName           gdc.MethodBindPtr
 	fnHasScriptSignal         gdc.MethodBindPtr
 	fnGetScriptPropertyList   gdc.MethodBindPtr
 	fnGetScriptMethodList     gdc.MethodBindPtr
@@ -78,6 +79,11 @@ func initScriptPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_instance_base_type")
 		defer methodName.Destroy()
 		ptrsForScript.fnGetInstanceBaseType = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2002593661))
+	}
+	{
+		methodName := StringNameFromStr("get_global_name")
+		defer methodName.Destroy()
+		ptrsForScript.fnGetGlobalName = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2002593661))
 	}
 	{
 		methodName := StringNameFromStr("has_script_signal")
@@ -233,6 +239,16 @@ func (me *Script) GetInstanceBaseType() StringName {
 	ret := NewStringName()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScript.fnGetInstanceBaseType), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *Script) GetGlobalName() StringName {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewStringName()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForScript.fnGetGlobalName), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 

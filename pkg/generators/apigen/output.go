@@ -103,6 +103,8 @@ var forbiddenSingletons = []string{
 	"NavigationServer3D",
 	"XRServer",
 	"CameraServer",
+	// eeh?
+	"NativeMenu",
 }
 
 func output(api *gencommon.ExtensionAPI, outputDir string) error {

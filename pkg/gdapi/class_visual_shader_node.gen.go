@@ -24,6 +24,8 @@ type ptrsForVisualShaderNodeList struct {
 	fnClearDefaultInputValues     gdc.MethodBindPtr
 	fnSetDefaultInputValues       gdc.MethodBindPtr
 	fnGetDefaultInputValues       gdc.MethodBindPtr
+	fnSetFrame                    gdc.MethodBindPtr
+	fnGetFrame                    gdc.MethodBindPtr
 }
 
 var ptrsForVisualShaderNode ptrsForVisualShaderNodeList
@@ -76,6 +78,16 @@ func initVisualShaderNodePtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_default_input_values")
 		defer methodName.Destroy()
 		ptrsForVisualShaderNode.fnGetDefaultInputValues = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3995934104))
+	}
+	{
+		methodName := StringNameFromStr("set_frame")
+		defer methodName.Destroy()
+		ptrsForVisualShaderNode.fnSetFrame = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1286410249))
+	}
+	{
+		methodName := StringNameFromStr("get_frame")
+		defer methodName.Destroy()
+		ptrsForVisualShaderNode.fnGetFrame = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3905245786))
 	}
 
 }
@@ -214,6 +226,25 @@ func (me *VisualShaderNode) GetDefaultInputValues() Array {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNode.fnGetDefaultInputValues), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
+}
+
+func (me *VisualShaderNode) SetFrame(frame int64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&frame)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNode.fnSetFrame), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *VisualShaderNode) GetFrame() int64 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewInt()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForVisualShaderNode.fnGetFrame), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
 }
 
 // Properties

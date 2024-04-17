@@ -15,10 +15,14 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForProgressBarList struct {
-	fnSetFillMode       gdc.MethodBindPtr
-	fnGetFillMode       gdc.MethodBindPtr
-	fnSetShowPercentage gdc.MethodBindPtr
-	fnIsPercentageShown gdc.MethodBindPtr
+	fnSetFillMode                         gdc.MethodBindPtr
+	fnGetFillMode                         gdc.MethodBindPtr
+	fnSetShowPercentage                   gdc.MethodBindPtr
+	fnIsPercentageShown                   gdc.MethodBindPtr
+	fnSetIndeterminate                    gdc.MethodBindPtr
+	fnIsIndeterminate                     gdc.MethodBindPtr
+	fnSetEditorPreviewIndeterminate       gdc.MethodBindPtr
+	fnIsEditorPreviewIndeterminateEnabled gdc.MethodBindPtr
 }
 
 var ptrsForProgressBar ptrsForProgressBarList
@@ -46,6 +50,26 @@ func initProgressBarPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("is_percentage_shown")
 		defer methodName.Destroy()
 		ptrsForProgressBar.fnIsPercentageShown = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
+		methodName := StringNameFromStr("set_indeterminate")
+		defer methodName.Destroy()
+		ptrsForProgressBar.fnSetIndeterminate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("is_indeterminate")
+		defer methodName.Destroy()
+		ptrsForProgressBar.fnIsIndeterminate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
+		methodName := StringNameFromStr("set_editor_preview_indeterminate")
+		defer methodName.Destroy()
+		ptrsForProgressBar.fnSetEditorPreviewIndeterminate = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("is_editor_preview_indeterminate_enabled")
+		defer methodName.Destroy()
+		ptrsForProgressBar.fnIsEditorPreviewIndeterminateEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 
 }
@@ -128,6 +152,44 @@ func (me *ProgressBar) IsPercentageShown() bool {
 	ret := NewBool()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForProgressBar.fnIsPercentageShown), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *ProgressBar) SetIndeterminate(indeterminate bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&indeterminate)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForProgressBar.fnSetIndeterminate), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *ProgressBar) IsIndeterminate() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForProgressBar.fnIsIndeterminate), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *ProgressBar) SetEditorPreviewIndeterminate(preview_indeterminate bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&preview_indeterminate)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForProgressBar.fnSetEditorPreviewIndeterminate), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *ProgressBar) IsEditorPreviewIndeterminateEnabled() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForProgressBar.fnIsEditorPreviewIndeterminateEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 

@@ -15,18 +15,18 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForGLTFDocumentList struct {
-	fnAppendFromFile                  gdc.MethodBindPtr
-	fnAppendFromBuffer                gdc.MethodBindPtr
-	fnAppendFromScene                 gdc.MethodBindPtr
-	fnGenerateScene                   gdc.MethodBindPtr
-	fnGenerateBuffer                  gdc.MethodBindPtr
-	fnWriteToFilesystem               gdc.MethodBindPtr
 	fnSetImageFormat                  gdc.MethodBindPtr
 	fnGetImageFormat                  gdc.MethodBindPtr
 	fnSetLossyQuality                 gdc.MethodBindPtr
 	fnGetLossyQuality                 gdc.MethodBindPtr
 	fnSetRootNodeMode                 gdc.MethodBindPtr
 	fnGetRootNodeMode                 gdc.MethodBindPtr
+	fnAppendFromFile                  gdc.MethodBindPtr
+	fnAppendFromBuffer                gdc.MethodBindPtr
+	fnAppendFromScene                 gdc.MethodBindPtr
+	fnGenerateScene                   gdc.MethodBindPtr
+	fnGenerateBuffer                  gdc.MethodBindPtr
+	fnWriteToFilesystem               gdc.MethodBindPtr
 	fnRegisterGltfDocumentExtension   gdc.MethodBindPtr
 	fnUnregisterGltfDocumentExtension gdc.MethodBindPtr
 }
@@ -37,36 +37,6 @@ func initGLTFDocumentPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("GLTFDocument")
 	defer className.Destroy()
-	{
-		methodName := StringNameFromStr("append_from_file")
-		defer methodName.Destroy()
-		ptrsForGLTFDocument.fnAppendFromFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 866380864))
-	}
-	{
-		methodName := StringNameFromStr("append_from_buffer")
-		defer methodName.Destroy()
-		ptrsForGLTFDocument.fnAppendFromBuffer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1616081266))
-	}
-	{
-		methodName := StringNameFromStr("append_from_scene")
-		defer methodName.Destroy()
-		ptrsForGLTFDocument.fnAppendFromScene = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1622574258))
-	}
-	{
-		methodName := StringNameFromStr("generate_scene")
-		defer methodName.Destroy()
-		ptrsForGLTFDocument.fnGenerateScene = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 596118388))
-	}
-	{
-		methodName := StringNameFromStr("generate_buffer")
-		defer methodName.Destroy()
-		ptrsForGLTFDocument.fnGenerateBuffer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 741783455))
-	}
-	{
-		methodName := StringNameFromStr("write_to_filesystem")
-		defer methodName.Destroy()
-		ptrsForGLTFDocument.fnWriteToFilesystem = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1784551478))
-	}
 	{
 		methodName := StringNameFromStr("set_image_format")
 		defer methodName.Destroy()
@@ -96,6 +66,36 @@ func initGLTFDocumentPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_root_node_mode")
 		defer methodName.Destroy()
 		ptrsForGLTFDocument.fnGetRootNodeMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 948057992))
+	}
+	{
+		methodName := StringNameFromStr("append_from_file")
+		defer methodName.Destroy()
+		ptrsForGLTFDocument.fnAppendFromFile = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 866380864))
+	}
+	{
+		methodName := StringNameFromStr("append_from_buffer")
+		defer methodName.Destroy()
+		ptrsForGLTFDocument.fnAppendFromBuffer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1616081266))
+	}
+	{
+		methodName := StringNameFromStr("append_from_scene")
+		defer methodName.Destroy()
+		ptrsForGLTFDocument.fnAppendFromScene = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1622574258))
+	}
+	{
+		methodName := StringNameFromStr("generate_scene")
+		defer methodName.Destroy()
+		ptrsForGLTFDocument.fnGenerateScene = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 596118388))
+	}
+	{
+		methodName := StringNameFromStr("generate_buffer")
+		defer methodName.Destroy()
+		ptrsForGLTFDocument.fnGenerateBuffer = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 741783455))
+	}
+	{
+		methodName := StringNameFromStr("write_to_filesystem")
+		defer methodName.Destroy()
+		ptrsForGLTFDocument.fnWriteToFilesystem = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1784551478))
 	}
 	{
 		methodName := StringNameFromStr("register_gltf_document_extension")
@@ -151,6 +151,63 @@ func (me *GLTFDocument) AsCTypePtr() gdc.ConstTypePtr {
 }
 
 // Methods
+
+func (me *GLTFDocument) SetImageFormat(image_format String) {
+	cargs := []gdc.ConstTypePtr{image_format.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFDocument.fnSetImageFormat), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *GLTFDocument) GetImageFormat() String {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewString()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFDocument.fnGetImageFormat), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *GLTFDocument) SetLossyQuality(lossy_quality float64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&lossy_quality)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFDocument.fnSetLossyQuality), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *GLTFDocument) GetLossyQuality() float64 {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewFloat()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFDocument.fnGetLossyQuality), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *GLTFDocument) SetRootNodeMode(root_node_mode GLTFDocumentRootNodeMode) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&root_node_mode)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFDocument.fnSetRootNodeMode), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *GLTFDocument) GetRootNodeMode() GLTFDocumentRootNodeMode {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	var ret GLTFDocumentRootNodeMode
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFDocument.fnGetRootNodeMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+	return ret
+}
 
 func (me *GLTFDocument) AppendFromFile(path String, state GLTFState, flags int64, base_path String) Error {
 	cargs := []gdc.ConstTypePtr{path.AsCTypePtr(), state.AsCTypePtr(), gdc.ConstTypePtr(&flags), base_path.AsCTypePtr()}
@@ -215,63 +272,6 @@ func (me *GLTFDocument) WriteToFilesystem(state GLTFState, path String) Error {
 	var ret Error
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFDocument.fnWriteToFilesystem), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
-	return ret
-}
-
-func (me *GLTFDocument) SetImageFormat(image_format String) {
-	cargs := []gdc.ConstTypePtr{image_format.AsCTypePtr()}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFDocument.fnSetImageFormat), me.obj, unsafe.SliceData(cargs), nil)
-
-}
-
-func (me *GLTFDocument) GetImageFormat() String {
-	cargs := []gdc.ConstTypePtr{}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-	ret := NewString()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFDocument.fnGetImageFormat), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-	return *ret
-}
-
-func (me *GLTFDocument) SetLossyQuality(lossy_quality float64) {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&lossy_quality)}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFDocument.fnSetLossyQuality), me.obj, unsafe.SliceData(cargs), nil)
-
-}
-
-func (me *GLTFDocument) GetLossyQuality() float64 {
-	cargs := []gdc.ConstTypePtr{}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-	ret := NewFloat()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFDocument.fnGetLossyQuality), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
-	return ret.Get()
-}
-
-func (me *GLTFDocument) SetRootNodeMode(root_node_mode GLTFDocumentRootNodeMode) {
-	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&root_node_mode)}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFDocument.fnSetRootNodeMode), me.obj, unsafe.SliceData(cargs), nil)
-
-}
-
-func (me *GLTFDocument) GetRootNodeMode() GLTFDocumentRootNodeMode {
-	cargs := []gdc.ConstTypePtr{}
-	pinner := runtime.Pinner{}
-	defer pinner.Unpin()
-	var ret GLTFDocumentRootNodeMode
-
-	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFDocument.fnGetRootNodeMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
 	return ret
 }
 

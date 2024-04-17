@@ -21,6 +21,7 @@ type ptrsForAudioStreamList struct {
 	fnXIsMonophonic        gdc.MethodBindPtr
 	fnXGetBpm              gdc.MethodBindPtr
 	fnXGetBeatCount        gdc.MethodBindPtr
+	fnXGetParameterList    gdc.MethodBindPtr
 	fnGetLength            gdc.MethodBindPtr
 	fnIsMonophonic         gdc.MethodBindPtr
 	fnInstantiatePlayback  gdc.MethodBindPtr
@@ -115,3 +116,17 @@ func (me *AudioStream) InstantiatePlayback() AudioStreamPlayback {
 }
 
 // Signals
+
+type AudioStreamParameterListChangedSignalFn func()
+
+func (me *AudioStream) ConnectParameterListChanged(subs SignalSubscribers, fn AudioStreamParameterListChangedSignalFn) {
+	sig := StringNameFromStr("parameter_list_changed")
+	defer sig.Destroy()
+	me.Connect(*sig, subs.add(fn), 0)
+}
+
+func (me *AudioStream) DisconnectParameterListChanged(subs SignalSubscribers, fn AudioStreamParameterListChangedSignalFn) {
+	sig := StringNameFromStr("parameter_list_changed")
+	defer sig.Destroy()
+	me.Disconnect(*sig, *subs.remove(fn))
+}

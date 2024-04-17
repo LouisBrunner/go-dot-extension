@@ -29,6 +29,7 @@ type ptrsForClassDBList struct {
 	fnClassGetProperty            gdc.MethodBindPtr
 	fnClassSetProperty            gdc.MethodBindPtr
 	fnClassHasMethod              gdc.MethodBindPtr
+	fnClassGetMethodArgumentCount gdc.MethodBindPtr
 	fnClassGetMethodList          gdc.MethodBindPtr
 	fnClassGetIntegerConstantList gdc.MethodBindPtr
 	fnClassHasIntegerConstant     gdc.MethodBindPtr
@@ -115,6 +116,11 @@ func initClassDBPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("class_has_method")
 		defer methodName.Destroy()
 		ptrsForClassDB.fnClassHasMethod = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3860701026))
+	}
+	{
+		methodName := StringNameFromStr("class_get_method_argument_count")
+		defer methodName.Destroy()
+		ptrsForClassDB.fnClassGetMethodArgumentCount = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3885694822))
 	}
 	{
 		methodName := StringNameFromStr("class_get_method_list")
@@ -350,6 +356,17 @@ func (me *ClassDB) ClassHasMethod(class StringName, method StringName, no_inheri
 	pinner.Pin(&no_inheritance)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForClassDB.fnClassHasMethod), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *ClassDB) ClassGetMethodArgumentCount(class StringName, method StringName, no_inheritance bool) int64 {
+	cargs := []gdc.ConstTypePtr{class.AsCTypePtr(), method.AsCTypePtr(), gdc.ConstTypePtr(&no_inheritance)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewInt()
+	pinner.Pin(&no_inheritance)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForClassDB.fnClassGetMethodArgumentCount), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 

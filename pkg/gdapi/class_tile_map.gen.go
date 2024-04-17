@@ -236,7 +236,7 @@ func initTileMapPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("get_collision_visibility_mode")
 		defer methodName.Destroy()
-		ptrsForTileMap.fnGetCollisionVisibilityMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2026313073))
+		ptrsForTileMap.fnGetCollisionVisibilityMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1697018252))
 	}
 	{
 		methodName := StringNameFromStr("set_navigation_visibility_mode")
@@ -246,7 +246,7 @@ func initTileMapPtrs(iface gdc.Interface) {
 	{
 		methodName := StringNameFromStr("get_navigation_visibility_mode")
 		defer methodName.Destroy()
-		ptrsForTileMap.fnGetNavigationVisibilityMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2026313073))
+		ptrsForTileMap.fnGetNavigationVisibilityMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1697018252))
 	}
 	{
 		methodName := StringNameFromStr("set_cell")

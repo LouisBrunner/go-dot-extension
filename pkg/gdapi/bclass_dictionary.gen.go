@@ -20,6 +20,7 @@ type ptrsForDictionaryList struct {
 	methodIsEmptyFn              gdc.PtrBuiltInMethod
 	methodClearFn                gdc.PtrBuiltInMethod
 	methodMergeFn                gdc.PtrBuiltInMethod
+	methodMergedFn               gdc.PtrBuiltInMethod
 	methodHasFn                  gdc.PtrBuiltInMethod
 	methodHasAllFn               gdc.PtrBuiltInMethod
 	methodFindKeyFn              gdc.PtrBuiltInMethod
@@ -29,6 +30,7 @@ type ptrsForDictionaryList struct {
 	methodValuesFn               gdc.PtrBuiltInMethod
 	methodDuplicateFn            gdc.PtrBuiltInMethod
 	methodGetFn                  gdc.PtrBuiltInMethod
+	methodGetOrAddFn             gdc.PtrBuiltInMethod
 	methodMakeReadOnlyFn         gdc.PtrBuiltInMethod
 	methodIsReadOnlyFn           gdc.PtrBuiltInMethod
 	operatorNotFn                gdc.PtrOperatorEvaluator
@@ -65,6 +67,11 @@ func initDictionaryPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("merge")
 		defer methodName.Destroy()
 		ptrsForDictionary.methodMergeFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 2079548978))
+	}
+	{
+		methodName := StringNameFromStr("merged")
+		defer methodName.Destroy()
+		ptrsForDictionary.methodMergedFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 2271165639))
 	}
 	{
 		methodName := StringNameFromStr("has")
@@ -110,6 +117,11 @@ func initDictionaryPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get")
 		defer methodName.Destroy()
 		ptrsForDictionary.methodGetFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 2205440559))
+	}
+	{
+		methodName := StringNameFromStr("get_or_add")
+		defer methodName.Destroy()
+		ptrsForDictionary.methodGetOrAddFn = ensurePtr(iface.VariantGetPtrBuiltinMethod(gdc.VariantTypeDictionary, methodName.AsCPtr(), 1052551076))
 	}
 	{
 		methodName := StringNameFromStr("make_read_only")
@@ -250,6 +262,17 @@ func (me *Dictionary) Merge(dictionary Dictionary, overwrite bool) {
 	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodMergeFn), me.AsTypePtr(), unsafe.SliceData(args), nil, len(args))
 }
 
+func (me *Dictionary) Merged(dictionary Dictionary, overwrite bool) Dictionary {
+	ret := NewDictionary()
+
+	varg1 := NewBoolFromBool(overwrite)
+	defer varg1.Destroy()
+	args := []gdc.ConstTypePtr{dictionary.AsCTypePtr(), varg1.AsCTypePtr()}
+
+	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodMergedFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+	return *ret
+}
+
 func (me *Dictionary) Has(key Variant) bool {
 	ret := NewBool()
 	defer ret.Destroy()
@@ -333,6 +356,15 @@ func (me *Dictionary) Get(key Variant, default_ Variant) Variant {
 	args := []gdc.ConstTypePtr{key.AsCTypePtr(), default_.AsCTypePtr()}
 
 	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodGetFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
+	return *ret
+}
+
+func (me *Dictionary) GetOrAdd(key Variant, default_ Variant) Variant {
+	ret := NewVariant()
+
+	args := []gdc.ConstTypePtr{key.AsCTypePtr(), default_.AsCTypePtr()}
+
+	giface.CallPtrBuiltInMethod(ensurePtr(ptrsForDictionary.methodGetOrAddFn), me.AsTypePtr(), unsafe.SliceData(args), ret.AsTypePtr(), len(args))
 	return *ret
 }
 

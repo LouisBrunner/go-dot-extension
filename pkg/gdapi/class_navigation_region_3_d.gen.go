@@ -15,6 +15,7 @@ var _ unsafe.Pointer
 var _ runtime.Pinner
 
 type ptrsForNavigationRegion3DList struct {
+	fnGetRid                  gdc.MethodBindPtr
 	fnSetNavigationMesh       gdc.MethodBindPtr
 	fnGetNavigationMesh       gdc.MethodBindPtr
 	fnSetEnabled              gdc.MethodBindPtr
@@ -33,6 +34,7 @@ type ptrsForNavigationRegion3DList struct {
 	fnSetTravelCost           gdc.MethodBindPtr
 	fnGetTravelCost           gdc.MethodBindPtr
 	fnBakeNavigationMesh      gdc.MethodBindPtr
+	fnIsBaking                gdc.MethodBindPtr
 }
 
 var ptrsForNavigationRegion3D ptrsForNavigationRegion3DList
@@ -41,6 +43,11 @@ func initNavigationRegion3DPtrs(iface gdc.Interface) {
 
 	className := StringNameFromStr("NavigationRegion3D")
 	defer className.Destroy()
+	{
+		methodName := StringNameFromStr("get_rid")
+		defer methodName.Destroy()
+		ptrsForNavigationRegion3D.fnGetRid = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2944877500))
+	}
 	{
 		methodName := StringNameFromStr("set_navigation_mesh")
 		defer methodName.Destroy()
@@ -131,6 +138,11 @@ func initNavigationRegion3DPtrs(iface gdc.Interface) {
 		defer methodName.Destroy()
 		ptrsForNavigationRegion3D.fnBakeNavigationMesh = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3216645846))
 	}
+	{
+		methodName := StringNameFromStr("is_baking")
+		defer methodName.Destroy()
+		ptrsForNavigationRegion3D.fnIsBaking = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
 
 }
 
@@ -167,6 +179,16 @@ func (me *NavigationRegion3D) AsCTypePtr() gdc.ConstTypePtr {
 }
 
 // Methods
+
+func (me *NavigationRegion3D) GetRid() RID {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewRID()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnGetRid), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
 
 func (me *NavigationRegion3D) SetNavigationMesh(navigation_mesh NavigationMesh) {
 	cargs := []gdc.ConstTypePtr{navigation_mesh.AsCTypePtr()}
@@ -338,6 +360,16 @@ func (me *NavigationRegion3D) BakeNavigationMesh(on_thread bool) {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnBakeNavigationMesh), me.obj, unsafe.SliceData(cargs), nil)
 
+}
+
+func (me *NavigationRegion3D) IsBaking() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNavigationRegion3D.fnIsBaking), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
 }
 
 // Properties

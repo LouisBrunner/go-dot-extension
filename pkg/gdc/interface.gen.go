@@ -21,12 +21,14 @@ type Interface interface {
 	ArrayRef(pSelf TypePtr, pFrom ConstTypePtr)
 	ArraySetTyped(pSelf TypePtr, pType VariantType, pClassName ConstStringNamePtr, pScript ConstVariantPtr)
 	CallableCustomCreate(rCallable UninitializedTypePtr, pCallableCustomInfo *CallableCustomInfo)
+	CallableCustomCreate2(rCallable UninitializedTypePtr, pCallableCustomInfo *CallableCustomInfo2)
 	CallableCustomGetUserdata(pCallable ConstTypePtr, pToken unsafe.Pointer) unsafe.Pointer
 	ClassdbConstructObject(pClassname ConstStringNamePtr) ObjectPtr
 	ClassdbGetClassTag(pClassname ConstStringNamePtr) unsafe.Pointer
 	ClassdbGetMethodBind(pClassname ConstStringNamePtr, pMethodname ConstStringNamePtr, pHash Int) MethodBindPtr
 	ClassdbRegisterExtensionClass(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pParentClassName ConstStringNamePtr, pExtensionFuncs *ClassCreationInfo)
 	ClassdbRegisterExtensionClass2(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pParentClassName ConstStringNamePtr, pExtensionFuncs *ClassCreationInfo2)
+	ClassdbRegisterExtensionClass3(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pParentClassName ConstStringNamePtr, pExtensionFuncs *ClassCreationInfo3)
 	ClassdbRegisterExtensionClassIntegerConstant(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pEnumName ConstStringNamePtr, pConstantName ConstStringNamePtr, pConstantValue Int, pIsBitfield Bool)
 	ClassdbRegisterExtensionClassMethod(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pMethodInfo *ClassMethodInfo)
 	ClassdbRegisterExtensionClassProperty(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pInfo *PropertyInfo, pSetter ConstStringNamePtr, pGetter ConstStringNamePtr)
@@ -34,6 +36,7 @@ type Interface interface {
 	ClassdbRegisterExtensionClassPropertyIndexed(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pInfo *PropertyInfo, pSetter ConstStringNamePtr, pGetter ConstStringNamePtr, pIndex Int)
 	ClassdbRegisterExtensionClassPropertySubgroup(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pSubgroupName ConstStringPtr, pPrefix ConstStringPtr)
 	ClassdbRegisterExtensionClassSignal(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pSignalName ConstStringNamePtr, pArgumentInfo *PropertyInfo, pArgumentCount Int)
+	ClassdbRegisterExtensionClassVirtualMethod(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pMethodInfo *ClassVirtualMethodInfo)
 	ClassdbUnregisterExtensionClass(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr)
 	DictionaryOperatorIndex(pSelf TypePtr, pKey ConstVariantPtr) VariantPtr
 	DictionaryOperatorIndexConst(pSelf ConstTypePtr, pKey ConstVariantPtr) VariantPtr
@@ -52,6 +55,7 @@ type Interface interface {
 	MemAlloc(pBytes uint64) unsafe.Pointer
 	MemFree(pPtr unsafe.Pointer)
 	MemRealloc(pPtr unsafe.Pointer, pBytes uint64) unsafe.Pointer
+	ObjectCallScriptMethod(pObject ObjectPtr, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn UninitializedVariantPtr, rError *CallError)
 	ObjectCastTo(pObject ConstObjectPtr, pClassTag unsafe.Pointer) ObjectPtr
 	ObjectDestroy(pO ObjectPtr)
 	ObjectFreeInstanceBinding(pO ObjectPtr, pToken unsafe.Pointer)
@@ -60,6 +64,7 @@ type Interface interface {
 	ObjectGetInstanceFromId(pInstanceId uint64) ObjectPtr
 	ObjectGetInstanceId(pObject ConstObjectPtr) uint64
 	ObjectGetScriptInstance(pObject ConstObjectPtr, pLanguage ObjectPtr) ScriptInstanceDataPtr
+	ObjectHasScriptMethod(pObject ConstObjectPtr, pMethod ConstStringNamePtr) Bool
 	ObjectMethodBindCall(pMethodBind MethodBindPtr, pInstance ObjectPtr, pArgs *ConstVariantPtr, pArgCount Int, rRet UninitializedVariantPtr, rError *CallError)
 	ObjectMethodBindPtrcall(pMethodBind MethodBindPtr, pInstance ObjectPtr, pArgs *ConstTypePtr, rRet TypePtr)
 	ObjectSetInstance(pO ObjectPtr, pClassname ConstStringNamePtr, pInstance ClassInstancePtr)
@@ -94,6 +99,7 @@ type Interface interface {
 	RefSetObject(pRef RefPtr, pObject ObjectPtr)
 	ScriptInstanceCreate(pInfo *ScriptInstanceInfo, pInstanceData ScriptInstanceDataPtr) ScriptInstancePtr
 	ScriptInstanceCreate2(pInfo *ScriptInstanceInfo2, pInstanceData ScriptInstanceDataPtr) ScriptInstancePtr
+	ScriptInstanceCreate3(pInfo *ScriptInstanceInfo3, pInstanceData ScriptInstanceDataPtr) ScriptInstancePtr
 	StringNameNewWithLatin1Chars(rDest UninitializedStringNamePtr, pContents string, pIsStatic Bool)
 	StringNameNewWithUtf8Chars(rDest UninitializedStringNamePtr, pContents string)
 	StringNameNewWithUtf8CharsAndLen(rDest UninitializedStringNamePtr, pContents string, pSize Int)
@@ -179,6 +185,8 @@ type Interface interface {
 	WorkerThreadPoolAddNativeGroupTask(pInstance ObjectPtr, pFunc unsafe.Pointer, pUserdata unsafe.Pointer, pElements int, pTasks int, pHighPriority Bool, pDescription ConstStringPtr) int64
 	WorkerThreadPoolAddNativeTask(pInstance ObjectPtr, pFunc unsafe.Pointer, pUserdata unsafe.Pointer, pHighPriority Bool, pDescription ConstStringPtr) int64
 	XmlParserOpenBuffer(pInstance ObjectPtr, pBuffer *uint8, pSize uint64) Int
+	EditorHelpLoadXmlFromUtf8Chars(pData string)
+	EditorHelpLoadXmlFromUtf8CharsAndLen(pData string, pSize Int)
 }
 
 func callGetProcAddress[T any](getProcAddr InterfaceGetProcAddress, proc string) (T, error) {
@@ -223,6 +231,11 @@ func NewInterface(getProcAddr InterfaceGetProcAddress) (Interface, error) {
 		return nil, err
 	}
 
+	iface.ptrCallableCustomCreate2, err = callGetProcAddress[InterfaceCallableCustomCreate2](getProcAddr, "callable_custom_create2")
+	if err != nil {
+		return nil, err
+	}
+
 	iface.ptrCallableCustomGetUserdata, err = callGetProcAddress[InterfaceCallableCustomGetUserData](getProcAddr, "callable_custom_get_userdata")
 	if err != nil {
 		return nil, err
@@ -249,6 +262,11 @@ func NewInterface(getProcAddr InterfaceGetProcAddress) (Interface, error) {
 	}
 
 	iface.ptrClassdbRegisterExtensionClass2, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClass2](getProcAddr, "classdb_register_extension_class2")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrClassdbRegisterExtensionClass3, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClass3](getProcAddr, "classdb_register_extension_class3")
 	if err != nil {
 		return nil, err
 	}
@@ -284,6 +302,11 @@ func NewInterface(getProcAddr InterfaceGetProcAddress) (Interface, error) {
 	}
 
 	iface.ptrClassdbRegisterExtensionClassSignal, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassSignal](getProcAddr, "classdb_register_extension_class_signal")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrClassdbRegisterExtensionClassVirtualMethod, err = callGetProcAddress[InterfaceClassdbRegisterExtensionClassVirtualMethod](getProcAddr, "classdb_register_extension_class_virtual_method")
 	if err != nil {
 		return nil, err
 	}
@@ -368,6 +391,11 @@ func NewInterface(getProcAddr InterfaceGetProcAddress) (Interface, error) {
 		return nil, err
 	}
 
+	iface.ptrObjectCallScriptMethod, err = callGetProcAddress[InterfaceObjectCallScriptMethod](getProcAddr, "object_call_script_method")
+	if err != nil {
+		return nil, err
+	}
+
 	iface.ptrObjectCastTo, err = callGetProcAddress[InterfaceObjectCastTo](getProcAddr, "object_cast_to")
 	if err != nil {
 		return nil, err
@@ -404,6 +432,11 @@ func NewInterface(getProcAddr InterfaceGetProcAddress) (Interface, error) {
 	}
 
 	iface.ptrObjectGetScriptInstance, err = callGetProcAddress[InterfaceObjectGetScriptInstance](getProcAddr, "object_get_script_instance")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrObjectHasScriptMethod, err = callGetProcAddress[InterfaceObjectHasScriptMethod](getProcAddr, "object_has_script_method")
 	if err != nil {
 		return nil, err
 	}
@@ -574,6 +607,11 @@ func NewInterface(getProcAddr InterfaceGetProcAddress) (Interface, error) {
 	}
 
 	iface.ptrScriptInstanceCreate2, err = callGetProcAddress[InterfaceScriptInstanceCreate2](getProcAddr, "script_instance_create2")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrScriptInstanceCreate3, err = callGetProcAddress[InterfaceScriptInstanceCreate3](getProcAddr, "script_instance_create3")
 	if err != nil {
 		return nil, err
 	}
@@ -943,6 +981,16 @@ func NewInterface(getProcAddr InterfaceGetProcAddress) (Interface, error) {
 		return nil, err
 	}
 
+	iface.ptrEditorHelpLoadXmlFromUtf8Chars, err = callGetProcAddress[sInterfaceEditorHelpLoadXmlFromUtf8Chars](getProcAddr, "editor_help_load_xml_from_utf8_chars")
+	if err != nil {
+		return nil, err
+	}
+
+	iface.ptrEditorHelpLoadXmlFromUtf8CharsAndLen, err = callGetProcAddress[sInterfaceEditorHelpLoadXmlFromUtf8CharsAndLen](getProcAddr, "editor_help_load_xml_from_utf8_chars_and_len")
+	if err != nil {
+		return nil, err
+	}
+
 	return iface, nil
 }
 
@@ -952,12 +1000,14 @@ type interfaceImpl struct {
 	ptrArrayRef                                      InterfaceArrayRef
 	ptrArraySetTyped                                 InterfaceArraySetTyped
 	ptrCallableCustomCreate                          InterfaceCallableCustomCreate
+	ptrCallableCustomCreate2                         InterfaceCallableCustomCreate2
 	ptrCallableCustomGetUserdata                     InterfaceCallableCustomGetUserData
 	ptrClassdbConstructObject                        InterfaceClassdbConstructObject
 	ptrClassdbGetClassTag                            InterfaceClassdbGetClassTag
 	ptrClassdbGetMethodBind                          InterfaceClassdbGetMethodBind
 	ptrClassdbRegisterExtensionClass                 InterfaceClassdbRegisterExtensionClass
 	ptrClassdbRegisterExtensionClass2                InterfaceClassdbRegisterExtensionClass2
+	ptrClassdbRegisterExtensionClass3                InterfaceClassdbRegisterExtensionClass3
 	ptrClassdbRegisterExtensionClassIntegerConstant  InterfaceClassdbRegisterExtensionClassIntegerConstant
 	ptrClassdbRegisterExtensionClassMethod           InterfaceClassdbRegisterExtensionClassMethod
 	ptrClassdbRegisterExtensionClassProperty         InterfaceClassdbRegisterExtensionClassProperty
@@ -965,6 +1015,7 @@ type interfaceImpl struct {
 	ptrClassdbRegisterExtensionClassPropertyIndexed  InterfaceClassdbRegisterExtensionClassPropertyIndexed
 	ptrClassdbRegisterExtensionClassPropertySubgroup InterfaceClassdbRegisterExtensionClassPropertySubgroup
 	ptrClassdbRegisterExtensionClassSignal           InterfaceClassdbRegisterExtensionClassSignal
+	ptrClassdbRegisterExtensionClassVirtualMethod    InterfaceClassdbRegisterExtensionClassVirtualMethod
 	ptrClassdbUnregisterExtensionClass               InterfaceClassdbUnregisterExtensionClass
 	ptrDictionaryOperatorIndex                       InterfaceDictionaryOperatorIndex
 	ptrDictionaryOperatorIndexConst                  InterfaceDictionaryOperatorIndexConst
@@ -981,6 +1032,7 @@ type interfaceImpl struct {
 	ptrMemAlloc                                      InterfaceMemAlloc
 	ptrMemFree                                       InterfaceMemFree
 	ptrMemRealloc                                    InterfaceMemRealloc
+	ptrObjectCallScriptMethod                        InterfaceObjectCallScriptMethod
 	ptrObjectCastTo                                  InterfaceObjectCastTo
 	ptrObjectDestroy                                 InterfaceObjectDestroy
 	ptrObjectFreeInstanceBinding                     InterfaceObjectFreeInstanceBinding
@@ -989,6 +1041,7 @@ type interfaceImpl struct {
 	ptrObjectGetInstanceFromId                       InterfaceObjectGetInstanceFromId
 	ptrObjectGetInstanceId                           InterfaceObjectGetInstanceId
 	ptrObjectGetScriptInstance                       InterfaceObjectGetScriptInstance
+	ptrObjectHasScriptMethod                         InterfaceObjectHasScriptMethod
 	ptrObjectMethodBindCall                          InterfaceObjectMethodBindCall
 	ptrObjectMethodBindPtrcall                       InterfaceObjectMethodBindPtrcall
 	ptrObjectSetInstance                             InterfaceObjectSetInstance
@@ -1023,6 +1076,7 @@ type interfaceImpl struct {
 	ptrRefSetObject                                  InterfaceRefSetObject
 	ptrScriptInstanceCreate                          InterfaceScriptInstanceCreate
 	ptrScriptInstanceCreate2                         InterfaceScriptInstanceCreate2
+	ptrScriptInstanceCreate3                         InterfaceScriptInstanceCreate3
 	ptrStringNameNewWithLatin1Chars                  InterfaceStringNameNewWithLatin1Chars
 	ptrStringNameNewWithUtf8Chars                    InterfaceStringNameNewWithUtf8Chars
 	ptrStringNameNewWithUtf8CharsAndLen              InterfaceStringNameNewWithUtf8CharsAndLen
@@ -1096,6 +1150,8 @@ type interfaceImpl struct {
 	ptrWorkerThreadPoolAddNativeGroupTask            InterfaceWorkerThreadPoolAddNativeGroupTask
 	ptrWorkerThreadPoolAddNativeTask                 InterfaceWorkerThreadPoolAddNativeTask
 	ptrXmlParserOpenBuffer                           InterfaceXmlParserOpenBuffer
+	ptrEditorHelpLoadXmlFromUtf8Chars                sInterfaceEditorHelpLoadXmlFromUtf8Chars
+	ptrEditorHelpLoadXmlFromUtf8CharsAndLen          sInterfaceEditorHelpLoadXmlFromUtf8CharsAndLen
 }
 
 func (me *interfaceImpl) ArrayOperatorIndex(pSelf TypePtr, pIndex Int) VariantPtr {
@@ -1123,6 +1179,11 @@ func (me *interfaceImpl) ArraySetTyped(pSelf TypePtr, pType VariantType, pClassN
 func (me *interfaceImpl) CallableCustomCreate(rCallable UninitializedTypePtr, pCallableCustomInfo *CallableCustomInfo) {
 
 	C.callCallableCustomCreate(me.ptrCallableCustomCreate, C.GDExtensionUninitializedTypePtr(rCallable), (*C.GDExtensionCallableCustomInfo)(unsafe.Pointer(pCallableCustomInfo)))
+}
+
+func (me *interfaceImpl) CallableCustomCreate2(rCallable UninitializedTypePtr, pCallableCustomInfo *CallableCustomInfo2) {
+
+	C.callCallableCustomCreate2(me.ptrCallableCustomCreate2, C.GDExtensionUninitializedTypePtr(rCallable), (*C.GDExtensionCallableCustomInfo2)(unsafe.Pointer(pCallableCustomInfo)))
 }
 
 func (me *interfaceImpl) CallableCustomGetUserdata(pCallable ConstTypePtr, pToken unsafe.Pointer) unsafe.Pointer {
@@ -1159,6 +1220,11 @@ func (me *interfaceImpl) ClassdbRegisterExtensionClass2(pLibrary ClassLibraryPtr
 	C.callClassdbRegisterExtensionClass2(me.ptrClassdbRegisterExtensionClass2, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringNamePtr(pParentClassName), (*C.GDExtensionClassCreationInfo2)(unsafe.Pointer(pExtensionFuncs)))
 }
 
+func (me *interfaceImpl) ClassdbRegisterExtensionClass3(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pParentClassName ConstStringNamePtr, pExtensionFuncs *ClassCreationInfo3) {
+
+	C.callClassdbRegisterExtensionClass3(me.ptrClassdbRegisterExtensionClass3, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringNamePtr(pParentClassName), (*C.GDExtensionClassCreationInfo3)(unsafe.Pointer(pExtensionFuncs)))
+}
+
 func (me *interfaceImpl) ClassdbRegisterExtensionClassIntegerConstant(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pEnumName ConstStringNamePtr, pConstantName ConstStringNamePtr, pConstantValue Int, pIsBitfield Bool) {
 
 	C.callClassdbRegisterExtensionClassIntegerConstant(me.ptrClassdbRegisterExtensionClassIntegerConstant, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringNamePtr(pEnumName), C.GDExtensionConstStringNamePtr(pConstantName), C.GDExtensionInt(pConstantValue), C.GDExtensionBool(pIsBitfield))
@@ -1192,6 +1258,11 @@ func (me *interfaceImpl) ClassdbRegisterExtensionClassPropertySubgroup(pLibrary 
 func (me *interfaceImpl) ClassdbRegisterExtensionClassSignal(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pSignalName ConstStringNamePtr, pArgumentInfo *PropertyInfo, pArgumentCount Int) {
 
 	C.callClassdbRegisterExtensionClassSignal(me.ptrClassdbRegisterExtensionClassSignal, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), C.GDExtensionConstStringNamePtr(pSignalName), (*C.GDExtensionPropertyInfo)(unsafe.Pointer(pArgumentInfo)), C.GDExtensionInt(pArgumentCount))
+}
+
+func (me *interfaceImpl) ClassdbRegisterExtensionClassVirtualMethod(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr, pMethodInfo *ClassVirtualMethodInfo) {
+
+	C.callClassdbRegisterExtensionClassVirtualMethod(me.ptrClassdbRegisterExtensionClassVirtualMethod, C.GDExtensionClassLibraryPtr(pLibrary), C.GDExtensionConstStringNamePtr(pClassName), (*C.GDExtensionClassVirtualMethodInfo)(unsafe.Pointer(pMethodInfo)))
 }
 
 func (me *interfaceImpl) ClassdbUnregisterExtensionClass(pLibrary ClassLibraryPtr, pClassName ConstStringNamePtr) {
@@ -1299,6 +1370,11 @@ func (me *interfaceImpl) MemRealloc(pPtr unsafe.Pointer, pBytes uint64) unsafe.P
 	return unsafe.Pointer(ret)
 }
 
+func (me *interfaceImpl) ObjectCallScriptMethod(pObject ObjectPtr, pMethod ConstStringNamePtr, pArgs *ConstVariantPtr, pArgumentCount Int, rReturn UninitializedVariantPtr, rError *CallError) {
+
+	C.callObjectCallScriptMethod(me.ptrObjectCallScriptMethod, C.GDExtensionObjectPtr(pObject), C.GDExtensionConstStringNamePtr(pMethod), *(**C.GDExtensionConstVariantPtr)(unsafe.Pointer(&pArgs)), C.GDExtensionInt(pArgumentCount), C.GDExtensionUninitializedVariantPtr(rReturn), (*C.GDExtensionCallError)(unsafe.Pointer(rError)))
+}
+
 func (me *interfaceImpl) ObjectCastTo(pObject ConstObjectPtr, pClassTag unsafe.Pointer) ObjectPtr {
 
 	ret := C.callObjectCastTo(me.ptrObjectCastTo, C.GDExtensionConstObjectPtr(pObject), pClassTag)
@@ -1343,6 +1419,12 @@ func (me *interfaceImpl) ObjectGetScriptInstance(pObject ConstObjectPtr, pLangua
 
 	ret := C.callObjectGetScriptInstance(me.ptrObjectGetScriptInstance, C.GDExtensionConstObjectPtr(pObject), C.GDExtensionObjectPtr(pLanguage))
 	return ScriptInstanceDataPtr(ret)
+}
+
+func (me *interfaceImpl) ObjectHasScriptMethod(pObject ConstObjectPtr, pMethod ConstStringNamePtr) Bool {
+
+	ret := C.callObjectHasScriptMethod(me.ptrObjectHasScriptMethod, C.GDExtensionConstObjectPtr(pObject), C.GDExtensionConstStringNamePtr(pMethod))
+	return Bool(ret)
 }
 
 func (me *interfaceImpl) ObjectMethodBindCall(pMethodBind MethodBindPtr, pInstance ObjectPtr, pArgs *ConstVariantPtr, pArgCount Int, rRet UninitializedVariantPtr, rError *CallError) {
@@ -1582,6 +1664,12 @@ func (me *interfaceImpl) ScriptInstanceCreate(pInfo *ScriptInstanceInfo, pInstan
 func (me *interfaceImpl) ScriptInstanceCreate2(pInfo *ScriptInstanceInfo2, pInstanceData ScriptInstanceDataPtr) ScriptInstancePtr {
 
 	ret := C.callScriptInstanceCreate2(me.ptrScriptInstanceCreate2, (*C.GDExtensionScriptInstanceInfo2)(unsafe.Pointer(pInfo)), C.GDExtensionScriptInstanceDataPtr(pInstanceData))
+	return ScriptInstancePtr(ret)
+}
+
+func (me *interfaceImpl) ScriptInstanceCreate3(pInfo *ScriptInstanceInfo3, pInstanceData ScriptInstanceDataPtr) ScriptInstancePtr {
+
+	ret := C.callScriptInstanceCreate3(me.ptrScriptInstanceCreate3, (*C.GDExtensionScriptInstanceInfo3)(unsafe.Pointer(pInfo)), C.GDExtensionScriptInstanceDataPtr(pInstanceData))
 	return ScriptInstancePtr(ret)
 }
 
@@ -2104,4 +2192,20 @@ func (me *interfaceImpl) XmlParserOpenBuffer(pInstance ObjectPtr, pBuffer *uint8
 
 	ret := C.callXmlParserOpenBuffer(me.ptrXmlParserOpenBuffer, C.GDExtensionObjectPtr(pInstance), *(**C.uint8_t)(unsafe.Pointer(&pBuffer)), C.size_t(pSize))
 	return Int(ret)
+}
+
+func (me *interfaceImpl) EditorHelpLoadXmlFromUtf8Chars(pData string) {
+	cpData := C.CString(pData)
+	defer func() {
+		C.free(unsafe.Pointer(cpData))
+	}()
+	C.callEditorHelpLoadXmlFromUtf8Chars(me.ptrEditorHelpLoadXmlFromUtf8Chars, cpData)
+}
+
+func (me *interfaceImpl) EditorHelpLoadXmlFromUtf8CharsAndLen(pData string, pSize Int) {
+	cpData := C.CString(pData)
+	defer func() {
+		C.free(unsafe.Pointer(cpData))
+	}()
+	C.callEditorHelpLoadXmlFromUtf8CharsAndLen(me.ptrEditorHelpLoadXmlFromUtf8CharsAndLen, cpData, C.GDExtensionInt(pSize))
 }

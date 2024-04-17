@@ -29,6 +29,7 @@ type ptrsForGeometry3DList struct {
 	fnSegmentIntersectsCylinder        gdc.MethodBindPtr
 	fnSegmentIntersectsConvex          gdc.MethodBindPtr
 	fnClipPolygon                      gdc.MethodBindPtr
+	fnTetrahedralizeDelaunay           gdc.MethodBindPtr
 }
 
 var ptrsForGeometry3D ptrsForGeometry3DList
@@ -106,6 +107,11 @@ func initGeometry3DPtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("clip_polygon")
 		defer methodName.Destroy()
 		ptrsForGeometry3D.fnClipPolygon = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2603188319))
+	}
+	{
+		methodName := StringNameFromStr("tetrahedralize_delaunay")
+		defer methodName.Destroy()
+		ptrsForGeometry3D.fnTetrahedralizeDelaunay = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1230191221))
 	}
 
 }
@@ -313,6 +319,16 @@ func (me *Geometry3D) ClipPolygon(points PackedVector3Array, plane Plane) Packed
 	ret := NewPackedVector3Array()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGeometry3D.fnClipPolygon), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *Geometry3D) TetrahedralizeDelaunay(points PackedVector3Array) PackedInt32Array {
+	cargs := []gdc.ConstTypePtr{points.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewPackedInt32Array()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGeometry3D.fnTetrahedralizeDelaunay), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return *ret
 }
 

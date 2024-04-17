@@ -26,6 +26,8 @@ type ptrsForFontFileList struct {
 	fnSetFontStretch                     gdc.MethodBindPtr
 	fnSetAntialiasing                    gdc.MethodBindPtr
 	fnGetAntialiasing                    gdc.MethodBindPtr
+	fnSetDisableEmbeddedBitmaps          gdc.MethodBindPtr
+	fnGetDisableEmbeddedBitmaps          gdc.MethodBindPtr
 	fnSetGenerateMipmaps                 gdc.MethodBindPtr
 	fnGetGenerateMipmaps                 gdc.MethodBindPtr
 	fnSetMultichannelSignedDistanceField gdc.MethodBindPtr
@@ -62,6 +64,8 @@ type ptrsForFontFileList struct {
 	fnGetTransform                       gdc.MethodBindPtr
 	fnSetExtraSpacing                    gdc.MethodBindPtr
 	fnGetExtraSpacing                    gdc.MethodBindPtr
+	fnSetExtraBaselineOffset             gdc.MethodBindPtr
+	fnGetExtraBaselineOffset             gdc.MethodBindPtr
 	fnSetFaceIndex                       gdc.MethodBindPtr
 	fnGetFaceIndex                       gdc.MethodBindPtr
 	fnSetCacheAscent                     gdc.MethodBindPtr
@@ -175,6 +179,16 @@ func initFontFilePtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_antialiasing")
 		defer methodName.Destroy()
 		ptrsForFontFile.fnGetAntialiasing = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4262718649))
+	}
+	{
+		methodName := StringNameFromStr("set_disable_embedded_bitmaps")
+		defer methodName.Destroy()
+		ptrsForFontFile.fnSetDisableEmbeddedBitmaps = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
+		methodName := StringNameFromStr("get_disable_embedded_bitmaps")
+		defer methodName.Destroy()
+		ptrsForFontFile.fnGetDisableEmbeddedBitmaps = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
 		methodName := StringNameFromStr("set_generate_mipmaps")
@@ -355,6 +369,16 @@ func initFontFilePtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("get_extra_spacing")
 		defer methodName.Destroy()
 		ptrsForFontFile.fnGetExtraSpacing = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1924257185))
+	}
+	{
+		methodName := StringNameFromStr("set_extra_baseline_offset")
+		defer methodName.Destroy()
+		ptrsForFontFile.fnSetExtraBaselineOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1602489585))
+	}
+	{
+		methodName := StringNameFromStr("get_extra_baseline_offset")
+		defer methodName.Destroy()
+		ptrsForFontFile.fnGetExtraBaselineOffset = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2339986948))
 	}
 	{
 		methodName := StringNameFromStr("set_face_index")
@@ -751,6 +775,25 @@ func (me *FontFile) GetAntialiasing() TextServerFontAntialiasing {
 	return ret
 }
 
+func (me *FontFile) SetDisableEmbeddedBitmaps(disable_embedded_bitmaps bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&disable_embedded_bitmaps)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFontFile.fnSetDisableEmbeddedBitmaps), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *FontFile) GetDisableEmbeddedBitmaps() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFontFile.fnGetDisableEmbeddedBitmaps), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
 func (me *FontFile) SetGenerateMipmaps(generate_mipmaps bool) {
 	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&generate_mipmaps)}
 	pinner := runtime.Pinner{}
@@ -1101,6 +1144,26 @@ func (me *FontFile) GetExtraSpacing(cache_index int64, spacing TextServerSpacing
 	pinner.Pin(&spacing)
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFontFile.fnGetExtraSpacing), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *FontFile) SetExtraBaselineOffset(cache_index int64, baseline_offset float64) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&cache_index), gdc.ConstTypePtr(&baseline_offset)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFontFile.fnSetExtraBaselineOffset), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *FontFile) GetExtraBaselineOffset(cache_index int64) float64 {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&cache_index)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewFloat()
+	pinner.Pin(&cache_index)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForFontFile.fnGetExtraBaselineOffset), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
 }
 

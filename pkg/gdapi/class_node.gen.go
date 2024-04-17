@@ -98,6 +98,13 @@ type ptrsForNodeList struct {
 	fnIsProcessingInternal            gdc.MethodBindPtr
 	fnSetPhysicsProcessInternal       gdc.MethodBindPtr
 	fnIsPhysicsProcessingInternal     gdc.MethodBindPtr
+	fnSetPhysicsInterpolationMode     gdc.MethodBindPtr
+	fnGetPhysicsInterpolationMode     gdc.MethodBindPtr
+	fnIsPhysicsInterpolated           gdc.MethodBindPtr
+	fnIsPhysicsInterpolatedAndEnabled gdc.MethodBindPtr
+	fnResetPhysicsInterpolation       gdc.MethodBindPtr
+	fnSetAutoTranslateMode            gdc.MethodBindPtr
+	fnGetAutoTranslateMode            gdc.MethodBindPtr
 	fnGetWindow                       gdc.MethodBindPtr
 	fnGetLastExclusiveWindow          gdc.MethodBindPtr
 	fnGetTree                         gdc.MethodBindPtr
@@ -121,6 +128,8 @@ type ptrsForNodeList struct {
 	fnGetEditorDescription            gdc.MethodBindPtr
 	fnSetUniqueNameInOwner            gdc.MethodBindPtr
 	fnIsUniqueNameInOwner             gdc.MethodBindPtr
+	fnAtr                             gdc.MethodBindPtr
+	fnAtrN                            gdc.MethodBindPtr
 	fnRpc                             gdc.MethodBindPtr
 	fnRpcId                           gdc.MethodBindPtr
 	fnUpdateConfigurationWarnings     gdc.MethodBindPtr
@@ -504,6 +513,41 @@ func initNodePtrs(iface gdc.Interface) {
 		ptrsForNode.fnIsPhysicsProcessingInternal = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
+		methodName := StringNameFromStr("set_physics_interpolation_mode")
+		defer methodName.Destroy()
+		ptrsForNode.fnSetPhysicsInterpolationMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3202404928))
+	}
+	{
+		methodName := StringNameFromStr("get_physics_interpolation_mode")
+		defer methodName.Destroy()
+		ptrsForNode.fnGetPhysicsInterpolationMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2920385216))
+	}
+	{
+		methodName := StringNameFromStr("is_physics_interpolated")
+		defer methodName.Destroy()
+		ptrsForNode.fnIsPhysicsInterpolated = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
+		methodName := StringNameFromStr("is_physics_interpolated_and_enabled")
+		defer methodName.Destroy()
+		ptrsForNode.fnIsPhysicsInterpolatedAndEnabled = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
+	}
+	{
+		methodName := StringNameFromStr("reset_physics_interpolation")
+		defer methodName.Destroy()
+		ptrsForNode.fnResetPhysicsInterpolation = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3218959716))
+	}
+	{
+		methodName := StringNameFromStr("set_auto_translate_mode")
+		defer methodName.Destroy()
+		ptrsForNode.fnSetAutoTranslateMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 776149714))
+	}
+	{
+		methodName := StringNameFromStr("get_auto_translate_mode")
+		defer methodName.Destroy()
+		ptrsForNode.fnGetAutoTranslateMode = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2498906432))
+	}
+	{
 		methodName := StringNameFromStr("get_window")
 		defer methodName.Destroy()
 		ptrsForNode.fnGetWindow = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1757182445))
@@ -619,6 +663,16 @@ func initNodePtrs(iface gdc.Interface) {
 		ptrsForNode.fnIsUniqueNameInOwner = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 36873697))
 	}
 	{
+		methodName := StringNameFromStr("atr")
+		defer methodName.Destroy()
+		ptrsForNode.fnAtr = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 3344478075))
+	}
+	{
+		methodName := StringNameFromStr("atr_n")
+		defer methodName.Destroy()
+		ptrsForNode.fnAtrN = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 259354841))
+	}
+	{
 		methodName := StringNameFromStr("rpc")
 		defer methodName.Destroy()
 		ptrsForNode.fnRpc = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 4047867050))
@@ -687,48 +741,49 @@ func NewNode() *Node {
 // Constants
 
 var (
-	NodeNotificationEnterTree              = 10
-	NodeNotificationExitTree               = 11
-	NodeNotificationMovedInParent          = 12
-	NodeNotificationReady                  = 13
-	NodeNotificationPaused                 = 14
-	NodeNotificationUnpaused               = 15
-	NodeNotificationPhysicsProcess         = 16
-	NodeNotificationProcess                = 17
-	NodeNotificationParented               = 18
-	NodeNotificationUnparented             = 19
-	NodeNotificationSceneInstantiated      = 20
-	NodeNotificationDragBegin              = 21
-	NodeNotificationDragEnd                = 22
-	NodeNotificationPathRenamed            = 23
-	NodeNotificationChildOrderChanged      = 24
-	NodeNotificationInternalProcess        = 25
-	NodeNotificationInternalPhysicsProcess = 26
-	NodeNotificationPostEnterTree          = 27
-	NodeNotificationDisabled               = 28
-	NodeNotificationEnabled                = 29
-	NodeNotificationEditorPreSave          = 9001
-	NodeNotificationEditorPostSave         = 9002
-	NodeNotificationWmMouseEnter           = 1002
-	NodeNotificationWmMouseExit            = 1003
-	NodeNotificationWmWindowFocusIn        = 1004
-	NodeNotificationWmWindowFocusOut       = 1005
-	NodeNotificationWmCloseRequest         = 1006
-	NodeNotificationWmGoBackRequest        = 1007
-	NodeNotificationWmSizeChanged          = 1008
-	NodeNotificationWmDpiChange            = 1009
-	NodeNotificationVpMouseEnter           = 1010
-	NodeNotificationVpMouseExit            = 1011
-	NodeNotificationOsMemoryWarning        = 2009
-	NodeNotificationTranslationChanged     = 2010
-	NodeNotificationWmAbout                = 2011
-	NodeNotificationCrash                  = 2012
-	NodeNotificationOsImeUpdate            = 2013
-	NodeNotificationApplicationResumed     = 2014
-	NodeNotificationApplicationPaused      = 2015
-	NodeNotificationApplicationFocusIn     = 2016
-	NodeNotificationApplicationFocusOut    = 2017
-	NodeNotificationTextServerChanged      = 2018
+	NodeNotificationEnterTree                 = 10
+	NodeNotificationExitTree                  = 11
+	NodeNotificationMovedInParent             = 12
+	NodeNotificationReady                     = 13
+	NodeNotificationPaused                    = 14
+	NodeNotificationUnpaused                  = 15
+	NodeNotificationPhysicsProcess            = 16
+	NodeNotificationProcess                   = 17
+	NodeNotificationParented                  = 18
+	NodeNotificationUnparented                = 19
+	NodeNotificationSceneInstantiated         = 20
+	NodeNotificationDragBegin                 = 21
+	NodeNotificationDragEnd                   = 22
+	NodeNotificationPathRenamed               = 23
+	NodeNotificationChildOrderChanged         = 24
+	NodeNotificationInternalProcess           = 25
+	NodeNotificationInternalPhysicsProcess    = 26
+	NodeNotificationPostEnterTree             = 27
+	NodeNotificationDisabled                  = 28
+	NodeNotificationEnabled                   = 29
+	NodeNotificationResetPhysicsInterpolation = 2001
+	NodeNotificationEditorPreSave             = 9001
+	NodeNotificationEditorPostSave            = 9002
+	NodeNotificationWmMouseEnter              = 1002
+	NodeNotificationWmMouseExit               = 1003
+	NodeNotificationWmWindowFocusIn           = 1004
+	NodeNotificationWmWindowFocusOut          = 1005
+	NodeNotificationWmCloseRequest            = 1006
+	NodeNotificationWmGoBackRequest           = 1007
+	NodeNotificationWmSizeChanged             = 1008
+	NodeNotificationWmDpiChange               = 1009
+	NodeNotificationVpMouseEnter              = 1010
+	NodeNotificationVpMouseExit               = 1011
+	NodeNotificationOsMemoryWarning           = 2009
+	NodeNotificationTranslationChanged        = 2010
+	NodeNotificationWmAbout                   = 2011
+	NodeNotificationCrash                     = 2012
+	NodeNotificationOsImeUpdate               = 2013
+	NodeNotificationApplicationResumed        = 2014
+	NodeNotificationApplicationPaused         = 2015
+	NodeNotificationApplicationFocusIn        = 2016
+	NodeNotificationApplicationFocusOut       = 2017
+	NodeNotificationTextServerChanged         = 2018
 )
 
 // Enums
@@ -759,6 +814,14 @@ const (
 	NodeProcessThreadMessagesFlagProcessThreadMessagesAll     NodeProcessThreadMessages = 3
 )
 
+type NodePhysicsInterpolationMode int
+
+const (
+	NodePhysicsInterpolationModePhysicsInterpolationModeInherit NodePhysicsInterpolationMode = 0
+	NodePhysicsInterpolationModePhysicsInterpolationModeOn      NodePhysicsInterpolationMode = 1
+	NodePhysicsInterpolationModePhysicsInterpolationModeOff     NodePhysicsInterpolationMode = 2
+)
+
 type NodeDuplicateFlags int
 
 const (
@@ -774,6 +837,14 @@ const (
 	NodeInternalModeInternalModeDisabled NodeInternalMode = 0
 	NodeInternalModeInternalModeFront    NodeInternalMode = 1
 	NodeInternalModeInternalModeBack     NodeInternalMode = 2
+)
+
+type NodeAutoTranslateMode int
+
+const (
+	NodeAutoTranslateModeAutoTranslateModeInherit  NodeAutoTranslateMode = 0
+	NodeAutoTranslateModeAutoTranslateModeAlways   NodeAutoTranslateMode = 1
+	NodeAutoTranslateModeAutoTranslateModeDisabled NodeAutoTranslateMode = 2
 )
 
 func (me *Node) Type() gdc.VariantType {
@@ -1518,6 +1589,73 @@ func (me *Node) IsPhysicsProcessingInternal() bool {
 	return ret.Get()
 }
 
+func (me *Node) SetPhysicsInterpolationMode(mode NodePhysicsInterpolationMode) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetPhysicsInterpolationMode), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Node) GetPhysicsInterpolationMode() NodePhysicsInterpolationMode {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	var ret NodePhysicsInterpolationMode
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetPhysicsInterpolationMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+	return ret
+}
+
+func (me *Node) IsPhysicsInterpolated() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsPhysicsInterpolated), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *Node) IsPhysicsInterpolatedAndEnabled() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsPhysicsInterpolatedAndEnabled), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *Node) ResetPhysicsInterpolation() {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnResetPhysicsInterpolation), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Node) SetAutoTranslateMode(mode NodeAutoTranslateMode) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&mode)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnSetAutoTranslateMode), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *Node) GetAutoTranslateMode() NodeAutoTranslateMode {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	var ret NodeAutoTranslateMode
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnGetAutoTranslateMode), me.obj, unsafe.SliceData(cargs), gdc.TypePtr(unsafe.Pointer(&ret)))
+	return ret
+}
+
 func (me *Node) GetWindow() Window {
 	cargs := []gdc.ConstTypePtr{}
 	pinner := runtime.Pinner{}
@@ -1738,6 +1876,27 @@ func (me *Node) IsUniqueNameInOwner() bool {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnIsUniqueNameInOwner), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
 	return ret.Get()
+}
+
+func (me *Node) Atr(message String, context StringName) String {
+	cargs := []gdc.ConstTypePtr{message.AsCTypePtr(), context.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewString()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnAtr), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
+}
+
+func (me *Node) AtrN(message String, plural_message StringName, n int64, context StringName) String {
+	cargs := []gdc.ConstTypePtr{message.AsCTypePtr(), plural_message.AsCTypePtr(), gdc.ConstTypePtr(&n), context.AsCTypePtr()}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewString()
+	pinner.Pin(&n)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForNode.fnAtrN), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return *ret
 }
 
 func (me *Node) Rpc(method StringName, varargs ...Variant) Error {
@@ -2001,6 +2160,20 @@ func (me *Node) ConnectReplacingBy(subs SignalSubscribers, fn NodeReplacingBySig
 
 func (me *Node) DisconnectReplacingBy(subs SignalSubscribers, fn NodeReplacingBySignalFn) {
 	sig := StringNameFromStr("replacing_by")
+	defer sig.Destroy()
+	me.Disconnect(*sig, *subs.remove(fn))
+}
+
+type NodeEditorDescriptionChangedSignalFn func(node Node)
+
+func (me *Node) ConnectEditorDescriptionChanged(subs SignalSubscribers, fn NodeEditorDescriptionChangedSignalFn) {
+	sig := StringNameFromStr("editor_description_changed")
+	defer sig.Destroy()
+	me.Connect(*sig, subs.add(fn), 0)
+}
+
+func (me *Node) DisconnectEditorDescriptionChanged(subs SignalSubscribers, fn NodeEditorDescriptionChangedSignalFn) {
+	sig := StringNameFromStr("editor_description_changed")
 	defer sig.Destroy()
 	me.Disconnect(*sig, *subs.remove(fn))
 }

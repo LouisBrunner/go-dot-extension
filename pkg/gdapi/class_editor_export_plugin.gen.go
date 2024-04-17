@@ -26,6 +26,7 @@ type ptrsForEditorExportPluginList struct {
 	fnXEndCustomizeScenes                           gdc.MethodBindPtr
 	fnXEndCustomizeResources                        gdc.MethodBindPtr
 	fnXGetExportOptions                             gdc.MethodBindPtr
+	fnXGetExportOptionsOverrides                    gdc.MethodBindPtr
 	fnXShouldUpdateExportOptions                    gdc.MethodBindPtr
 	fnXGetExportOptionWarning                       gdc.MethodBindPtr
 	fnXGetExportFeatures                            gdc.MethodBindPtr

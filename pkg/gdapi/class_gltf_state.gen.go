@@ -16,6 +16,7 @@ var _ runtime.Pinner
 
 type ptrsForGLTFStateList struct {
 	fnAddUsedExtension         gdc.MethodBindPtr
+	fnAppendDataToBuffers      gdc.MethodBindPtr
 	fnGetJson                  gdc.MethodBindPtr
 	fnSetJson                  gdc.MethodBindPtr
 	fnGetMajorVersion          gdc.MethodBindPtr
@@ -70,6 +71,8 @@ type ptrsForGLTFStateList struct {
 	fnSetSkeletons             gdc.MethodBindPtr
 	fnGetCreateAnimations      gdc.MethodBindPtr
 	fnSetCreateAnimations      gdc.MethodBindPtr
+	fnGetImportAsSkeletonBones gdc.MethodBindPtr
+	fnSetImportAsSkeletonBones gdc.MethodBindPtr
 	fnGetAnimations            gdc.MethodBindPtr
 	fnSetAnimations            gdc.MethodBindPtr
 	fnGetSceneNode             gdc.MethodBindPtr
@@ -90,6 +93,11 @@ func initGLTFStatePtrs(iface gdc.Interface) {
 		methodName := StringNameFromStr("add_used_extension")
 		defer methodName.Destroy()
 		ptrsForGLTFState.fnAddUsedExtension = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2678287736))
+	}
+	{
+		methodName := StringNameFromStr("append_data_to_buffers")
+		defer methodName.Destroy()
+		ptrsForGLTFState.fnAppendDataToBuffers = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 1460416665))
 	}
 	{
 		methodName := StringNameFromStr("get_json")
@@ -362,6 +370,16 @@ func initGLTFStatePtrs(iface gdc.Interface) {
 		ptrsForGLTFState.fnSetCreateAnimations = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
 	}
 	{
+		methodName := StringNameFromStr("get_import_as_skeleton_bones")
+		defer methodName.Destroy()
+		ptrsForGLTFState.fnGetImportAsSkeletonBones = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2240911060))
+	}
+	{
+		methodName := StringNameFromStr("set_import_as_skeleton_bones")
+		defer methodName.Destroy()
+		ptrsForGLTFState.fnSetImportAsSkeletonBones = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2586408642))
+	}
+	{
 		methodName := StringNameFromStr("get_animations")
 		defer methodName.Destroy()
 		ptrsForGLTFState.fnGetAnimations = ensurePtr(iface.ClassdbGetMethodBind(className.AsCPtr(), methodName.AsCPtr(), 2915620761))
@@ -454,6 +472,17 @@ func (me *GLTFState) AddUsedExtension(extension_name String, required bool) {
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFState.fnAddUsedExtension), me.obj, unsafe.SliceData(cargs), nil)
 
+}
+
+func (me *GLTFState) AppendDataToBuffers(data PackedByteArray, deduplication bool) int64 {
+	cargs := []gdc.ConstTypePtr{data.AsCTypePtr(), gdc.ConstTypePtr(&deduplication)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewInt()
+	pinner.Pin(&deduplication)
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFState.fnAppendDataToBuffers), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
 }
 
 func (me *GLTFState) GetJson() Dictionary {
@@ -1059,6 +1088,25 @@ func (me *GLTFState) SetCreateAnimations(create_animations bool) {
 	defer pinner.Unpin()
 
 	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFState.fnSetCreateAnimations), me.obj, unsafe.SliceData(cargs), nil)
+
+}
+
+func (me *GLTFState) GetImportAsSkeletonBones() bool {
+	cargs := []gdc.ConstTypePtr{}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+	ret := NewBool()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFState.fnGetImportAsSkeletonBones), me.obj, unsafe.SliceData(cargs), ret.AsTypePtr())
+	return ret.Get()
+}
+
+func (me *GLTFState) SetImportAsSkeletonBones(import_as_skeleton_bones bool) {
+	cargs := []gdc.ConstTypePtr{gdc.ConstTypePtr(&import_as_skeleton_bones)}
+	pinner := runtime.Pinner{}
+	defer pinner.Unpin()
+
+	giface.ObjectMethodBindPtrcall(ensurePtr(ptrsForGLTFState.fnSetImportAsSkeletonBones), me.obj, unsafe.SliceData(cargs), nil)
 
 }
 
