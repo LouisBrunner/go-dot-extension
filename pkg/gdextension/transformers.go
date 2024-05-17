@@ -158,6 +158,10 @@ func assignTypeFromReflect(pRet gdc.TypePtr, val reflect.Value) error {
 }
 
 func variantFromReflect(val reflect.Value) (*gdapi.Variant, error) {
+	return variantFromReflectWithFallback(val, nil)
+}
+
+func variantFromReflectWithFallback(val reflect.Value, onUnsupported func(val reflect.Value) (*gdapi.Variant, error)) (*gdapi.Variant, error) {
 	switch val.Kind() {
 	case reflect.Bool:
 		return gdapi.NewBoolFromBool(val.Bool()).AsVariant(), nil
@@ -172,7 +176,7 @@ func variantFromReflect(val reflect.Value) (*gdapi.Variant, error) {
 	case reflect.Array, reflect.Slice:
 		arr := gdapi.NewArray()
 		for i := 0; i < val.Len(); i++ {
-			va, err := variantFromReflect(val.Index(i))
+			va, err := variantFromReflectWithFallback(val.Index(i), onUnsupported)
 			if err != nil {
 				return nil, fmt.Errorf("error marshalling array element %d: %w", i, err)
 			}
@@ -191,7 +195,11 @@ func variantFromReflect(val reflect.Value) (*gdapi.Variant, error) {
 		if val.IsNil() {
 			return nil, nil
 		}
-		return variantFromReflect(val.Elem())
+		return variantFromReflectWithFallback(val.Elem(), onUnsupported)
+	}
+
+	if onUnsupported != nil {
+		return onUnsupported(val)
 	}
 	return nil, fmt.Errorf("unsupported type: %s (%+v)", val.Type().String(), val.Interface())
 }

@@ -27,7 +27,16 @@ func MarshalDict(data any) (*gdapi.Dictionary, error) {
 
 	dict := gdapi.NewDictionary()
 	for key, value := range asMap {
-		va, err := variantFromReflect(reflect.ValueOf(value))
+		va, err := variantFromReflectWithFallback(reflect.ValueOf(value), func(val reflect.Value) (*gdapi.Variant, error) {
+			if val.Kind() != reflect.Struct && (val.Kind() == reflect.Ptr && val.Elem().Kind() != reflect.Struct) {
+				return nil, fmt.Errorf("expected struct (or ptr), got %s (%T)", val.Kind(), val.Interface())
+			}
+			dict, err := MarshalDict(val.Interface())
+			if err != nil {
+				return nil, fmt.Errorf("error marshalling dict for key %q: %w", key, err)
+			}
+			return dict.AsVariant(), nil
+		})
 		if err != nil {
 			return nil, fmt.Errorf("error marshalling value for key %q: %w", key, err)
 		}
