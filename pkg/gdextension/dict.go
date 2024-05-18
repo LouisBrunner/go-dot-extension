@@ -3,6 +3,7 @@ package gdextension
 import (
 	"fmt"
 	"reflect"
+	"strings"
 
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdapi"
 	"github.com/LouisBrunner/go-dot-extension/pkg/gdc"
@@ -10,24 +11,30 @@ import (
 )
 
 func MarshalDict(data any) (*gdapi.Dictionary, error) {
-	asMap := make(map[string]interface{})
-
-	decoder, err := mapstructure.NewDecoder(&mapstructure.DecoderConfig{
-		TagName: "json",
-		Result:  &asMap,
-	})
-	if err != nil {
-		return nil, err
-	}
-
-	err = decoder.Decode(data)
-	if err != nil {
-		return nil, err
-	}
-
 	dict := gdapi.NewDictionary()
-	for key, value := range asMap {
-		va, err := variantFromReflectWithFallback(reflect.ValueOf(value), func(val reflect.Value) (*gdapi.Variant, error) {
+
+	val := reflect.ValueOf(data)
+	orig := val
+
+	for val.Kind() == reflect.Ptr {
+		val = val.Elem()
+	}
+	if val.Kind() != reflect.Struct {
+		return nil, fmt.Errorf("expected struct, got %s (%T)", orig.Kind(), orig.Interface())
+	}
+
+	for i := 0; i < val.NumField(); i++ {
+		fieldT := val.Type().Field(i)
+		key := fieldT.Name
+		if fieldT.Tag.Get("json") != "" {
+			key = strings.Split(fieldT.Tag.Get("json"), ",")[0]
+		}
+		if key == "-" {
+			continue
+		}
+		field := val.Field(i)
+
+		va, err := variantFromReflectWithFallback(field, func(val reflect.Value) (*gdapi.Variant, error) {
 			if val.Kind() != reflect.Struct && (val.Kind() == reflect.Ptr && val.Elem().Kind() != reflect.Struct) {
 				return nil, fmt.Errorf("expected struct (or ptr), got %s (%T)", val.Kind(), val.Interface())
 			}
